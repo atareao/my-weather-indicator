@@ -1,0 +1,196 @@
+my-weather-indicator (0.7.0-0extras15.10.0) wily; urgency=medium
+
+  * Updated url to retrieve woeid from yahoo
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 24 Jan 2016 10:58:14 +0100
+
+my-weather-indicator (0.6.9-0extras14.04.3) trusty; urgency=medium
+
+  * Fixed a bug with APPID for openweathermap
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Thu, 22 Oct 2015 07:47:11 +0200
+
+my-weather-indicator (0.6.9-0extras14.04.2) trusty; urgency=medium
+
+  * Updated monochrome icons from http://opendesktop.org/content/show.php/Mono+icons+for+my-weather-indicator?content=165293
+  * Changed way of update
+
+ -- Lorenzo Carbonell <atareao@trusty>  Tue, 19 Aug 2014 20:24:12 +0200
+
+my-weather-indicator (0.6.9-0extras14.04.1) trusty; urgency=medium
+
+  * Added new Widget (All in one cicle conky http://speedracker.deviantart.com/art/All-In-one-circle-conky-Made-for-Conky-Manager-463373113)
+  * Monochrome icons in widgets
+  * Added delay to autostart
+
+ -- Lorenzo Carbonell <atareao@trusty>  Mon, 21 Jul 2014 21:36:48 +0200
+
+my-weather-indicator (0.6.8-0extras14.04.8) trusty; urgency=medium
+
+  * Fixed bug #1338753, Cannot use API after last update (end of June 2014)
+  * Fixed bug #1337940, Missing parameter in is_day_now, applet crashes on initialization for Weather Underground
+  * Fixed bug #1337425, Sunrise, sunset, dawn, dusk times 4 hours off
+
+ -- Lorenzo Carbonell <atareao@trusty>  Tue, 15 Jul 2014 19:37:50 +0200
+
+my-weather-indicator (0.6.8-0extras14.04.5) trusty; urgency=medium
+
+  * Fixed bug #1221245, my-weather-indicator icon is "?" when thunderstorm condition.
+  * Fixed bug #1336087, showing wrong time in widget
+  * Fixed bug #1259124, Space missing before colon in French translation
+  * Fixed bug #1335812, Borked encoding
+
+ -- Lorenzo Carbonell <atareao@trusty>  Thu, 03 Jul 2014 21:32:46 +0200
+
+my-weather-indicator (0.6.8-0extras14.04.3) trusty; urgency=medium
+
+  * Fixed bug #1327804
+  * Fixed bug #1314246 weather applet crashes frequently in 14.04
+  * Fixed bug #1310398 my-weather-indicator crashed w/ coredump on first run
+  * Fixed bug #1312557 my-weather-indicator blocks suspend / standby on Ubuntu 14.04
+  * Fixed bug #1296945 Crash with OpenWeatherMaps
+  * Fixed bug #1314051 weather applet crashes at login with 14.04
+  * Fixed bug #1293522 Forecast not fitting on 1024X600 screen
+  * Fixed bug #1272632 Characters outside of the widget
+  * Fixed bug #1328624 Weather applet crashed on login if there is no connection
+  * Fixed bug #1169750 get_dew_point raises unhandled ValueError with negative humidity
+  * Fixed bug #1112072 small resolution can't see all options/boxes
+  * Fixed bug #1181864 widgets close when reducing all windows
+  * Fixed bug #1097614 Font characters in widget showing as squares
+  * Fixed bug #1174152 Didn't support vietnamese font
+  * Fixed bug #1117887 Local time incorrect when 24 hr format used as system time
+  * Fixed bug #1186876 Evolution crashes with yahoo service
+  * Fixed bug #1189930 My-weather-indicator crashes on ubuntu 13.04
+  * Fixed bug #1193982 Yahoo weather service always showing forecast conditions the same as current.
+  * Fixed bug #1194454 Shows all day sunrise as all day sunset
+  * Fixed bug #1204764 Wrong time in Dawn/Sunrise/Sunset/Dusk (i.e. "20:60")
+  * Fixed bug #1128974 does not update the weather
+  * Fixed bug #1129045 no time setting the correct location,
+  * Fixed bug #1132014 Second weather location displays wrong time by -2Hrs
+  * Fixed bug #1174057 Images Mixed Up
+  * Fixed bug #1182799 No forecast data for the next 4 days from Yahoo
+  * Fixed bug #1183015 Current weather symbol for the secondary location is wrong
+  * Fixed bug #1212505 Evolution only on Second Location and not working properly
+  * Fixed bug #1212850 occasional HTTP 503 errors causes applet to stop updating
+  * Fixed bug #1215654 Time not sincronized from widget to PC
+  * Fixed bug #1217088 weather applet don't launch
+  * Fixed bug #1224743 second location missing from panel after reboot
+  * Fixed bug #1227444 Incorrect icons: daytime ones displayed at night
+  * Fixed bug #1243068 Day/night time weather icon problem for the second location
+  * Fixed bug #1247447 Auto location not working at all.
+  * Fixed bug #1252092 My-weather-indicator crashes on ubuntu 13.10
+  * Fixed bug #1252113 my-weather-indicator crashes on startup after changing weather source
+  * Fixed bug #1256490 my weather indicator crashed after changing the weather source
+  * Fixed bug #1294894 Sunrise time 6:60 instead of 7:00
+  * Fixed bug #1332135 Wrong Sunrise and Sunset timo
+  * Fixed bug #1210840 Crash al cambiar la localización
+
+ -- Lorenzo Carbonell <atareao@trusty>  Tue, 01 Jul 2014 21:14:47 +0200
+
+my-weather-indicator (0.6.7-0extras14.04.5) trusty; urgency=medium
+
+  * Replaced Open Sans Condensed by Encode Sans Condensed
+  * Fixed bug #1309774 widget dissapears afeter click on desktop
+
+ -- Lorenzo Carbonell <atareao@trusty>  Fri, 02 May 2014 18:24:54 +0200
+
+my-weather-indicator (0.6.7-0extras14.04.2) trusty; urgency=low
+
+  * Added pin to widget
+  * Added css style to pin
+
+ -- Lorenzo Carbonell <atareao@trusty>  Sun, 06 Apr 2014 20:56:15 +0200
+
+my-weather-indicator (0.6.6-0extras14.04.1) trusty; urgency=low
+
+  * Added a new widget called simple
+  * Now only show degrees character
+  * Fixed bug with showing widget on top
+
+ -- Lorenzo Carbonell <atareao@trusty>  Sat, 05 Apr 2014 08:21:38 +0200
+
+my-weather-indicator (0.6.5-0extras14.04.2) trusty; urgency=medium
+
+  * +x my-weather-indicator
+  * removed shadows...
+
+ -- Lorenzo Carbonell <atareao@trusty>  Tue, 01 Apr 2014 21:52:32 +0200
+
+my-weather-indicator (0.6.5-0extras14.04.0) trusty; urgency=low
+
+  * Migrated to Trusty Tahr
+  * Updated translations
+
+ -- Lorenzo Carbonell <atareao@trusty>  Sun, 30 Mar 2014 20:54:52 +0200
+
+my-weather-indicator (0.6.5-0extras13.10.1) saucy; urgency=low
+
+  * Fixing a bug with http code 512
+
+ -- Lorenzo <atareao_s@saucy>  Wed, 05 Feb 2014 17:26:40 +0100
+
+my-weather-indicator (0.6.5-0extras13.04.2) raring; urgency=low
+
+  * Fixing a bug with geocode. Thanks to Carla.
+
+ -- Lorenzo <atareao_r@raring>  Sat, 21 Sep 2013 10:59:53 +0200
+
+my-weather-indicator (0.6.5-0extras13.04.1) raring; urgency=low
+
+  * Added two options to connect with openweathermap (id and latitude and longitude)
+  * Added following translations: English (Australia), Hindi, Malayalam
+  * Changed charts javascript engine to Highcharts JS
+  * Improved speed
+  * Changed function is_day
+
+ -- Lorenzo <atareao_r@raring>  Sun, 18 Aug 2013 08:31:52 +0200
+
+my-weather-indicator (0.6.4-0extras12.10.0) quantal; urgency=low
+
+  * Fixed some bugs
+  * Added Evolution
+  * Open Weather Map to api 2.5
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 19 May 2013 23:56:12 +0200
+
+my-weather-indicator (0.6.3-0extras12.10.3) quantal; urgency=low
+
+  * Fixed a bug with Yahoo woeid
+  * Updated translations
+  * To USC
+  * Added keys for Weather Underground and for World Weather Online
+  * A clock in the widget
+  * Fixed some bugs:
+  * #1102382 Dawn, sunrise, sunset and dusk time are not correct
+  * #1103863 widget too large can't click "OK" button
+  * #1102980 Drop-down box in update intervall settings not translatable
+  * #1105179 Widget at midnight, it still says 00:00 instead of 12:00.﻿
+  * Updated translations 
+  * Improved WhereAmI
+  * Updated translations
+  * Fixed some bugs:
+  * #1098068 CPU Spikes to 100% When Network Connection Drops
+  * #1093801 'Forecast' FAILED when 'Open Weather Map' is set in Preferences
+  * #1099938 Crashes on start
+  * #1092059 Weather status is Error: mixed rain and sleet
+  * #1102423 the weather forecast for 5 days shows the last day of the forecast with a higher minimum temperature than maximum temperature.
+  * #1093394 24hour format is displayed incorrectly in the weather app
+  * #1093450 low temp in higher
+  * Fixed a bug with CPU
+  * Using OpenLayer for WhereAmI
+  * Added anotherone skin
+  * Clocks to location
+  * Round times
+  * Updated time with Glib
+  * Fixed a bug with quotes
+  * Fixed bug #1092902
+  * #1093406 the text is out of the widget or overlaps 
+  * #1093394 24hour format is displayed incorrectly in the weather app 
+  * #1093358 The sunrise and sunset times are wrongly displayed for the secondary location. 
+  * #1093344 Error updating the weather forecast, when the service is selected OpenWeatherMap. 
+  * Fixed some bugs with widgets
+  * Added super widget thans to Andrew - WebUpd8
+  * Fixed a bug with sunrise and sunset, added twilight
+  * Fixed some bugs
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 20 Apr 2013 08:49:51 +0200

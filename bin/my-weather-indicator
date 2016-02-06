@@ -1,0 +1,53 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+#
+# My-Weather-Indicator launcher
+#
+# Copyright (C) 2011-2014 Lorenzo Carbonell Cerezo
+# lorenzo.carbonell.cerezo@gmail.com
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+#
+import os
+import sys
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+from gi.repository import Notify
+import signal
+
+def handleSigTERM():
+    shutdown()
+signal.signal(signal.SIGTERM, handleSigTERM)  
+
+if __name__ == '__main__':
+	if __file__.startswith('/opt/extras.ubuntu.com/my-weather-indicator') or os.getcwd().startswith('/opt/extras.ubuntu.com/my-weather-indicator'):
+		sys.path.insert(1, '/opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator')
+	else:
+		sys.path.insert(1,os.path.normpath(os.path.join(os.getcwd(), '../src')))
+	####################################################################
+	import machine_information
+	import comun
+	from myweatherindicator import MWI
+	####################################################################
+	print(machine_information.get_information())
+	print('My-Weather-Indicator version: %s'%comun.VERSION)
+	print('#####################################################')
+	Notify.init('my-weather-indicator')
+	mwi=MWI()
+	Gtk.main()
+exit(0)
+	

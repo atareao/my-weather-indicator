@@ -1,0 +1,32 @@
+====================
+My-Weather-Indicator
+====================
+
+My-Weather-Indicator an indicator for the weather
+
+For more information, please visit our website:
+http://launchpad.net/my-weather-indicator/
+or
+http://www.atareao.es
+
+============
+Requirements
+============
+
+Required dependencies:
+
+	gir1.2-gtk-3.0,
+	gir1.2-gdkpixbuf-2.0,
+	gir1.2-appindicator3-0.1,
+	gir1.2-notify-0.7,
+	python-gdata,	
+	python-lxml,
+	python-dateutil
+
+========
+Download
+========
+
+Download the package:
+
+    $ bzr branch lp:my-weather-indicator

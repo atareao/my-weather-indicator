@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+
+%:
+	dh $@ --with python2
+
+override_dh_auto_install:
+	dh_auto_install -- --install-scripts=/opt/extras.ubuntu.com/my-weather-indicator/bin  --install-data=/opt/extras.ubuntu.com/my-weather-indicator --install-lib=/opt/extras.ubuntu.com/my-weather-indicator

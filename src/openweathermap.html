@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="-1" />
+		<script src="http://code.jquery.com/jquery-1.7.min.js" ></script>
+		<script src="http://openlayers.org/api/OpenLayers.js"></script>
+		<script src="http://openweathermap.org/js/OWM.OpenLayers.1.3.4.js" ></script>
+		<style type="text/css">
+			#basicMap {
+				width: 98%;
+				height: 98%;
+				padding: 10px;
+				position: absolute;
+			}
+
+
+			#mylinks {
+				background: #575757;
+				color: white;
+				z-index:2000;
+				width: 30%;
+				font-size: 1em;
+				text-align: left;
+				position: absolute;
+				bottom: 0.2em;
+				left: 0.2em;
+				padding: 5px;
+				width: 33%;
+				/* for IE */
+				filter:alpha(opacity=90);
+				/* CSS3 standard */
+				opacity:0.9;
+				border-radius: 4px;
+			}
+
+
+			#mylinksRight {
+				background: #575757;
+				color: white;
+				z-index:1000;
+				font-size: 1em;
+				text-align: left;
+				position: absolute;
+				right: 3px;
+				bottom: 0.2em;
+				padding: 5px;
+				width: 400px;
+				/* for IE */
+				filter:alpha(opacity=90);
+				/* CSS3 standard */
+				opacity:0.9;
+				border-radius: 4px;
+			}
+
+			#myAnnotRight {
+				background: #575757;
+				color: white;
+				z-index:1000;
+				font-size: 1em;
+				text-align: left;
+				position: absolute;
+				right: 3px;
+				bottom: 40px;
+				padding: 4px;
+				/* for IE */
+				filter:alpha(opacity=90);
+				/* CSS3 standard */
+				opacity:0.9;
+				border-radius: 4px;
+			}
+
+			.olControlLayerSwitcher .layersDiv {
+				background-color:#575757 !important;
+
+				/* for IE */
+				filter:alpha(opacity=90);
+				/* CSS3 standard */
+				opacity:0.9;
+				border-radius: 4px;
+				color: white;
+
+				font-family: sans-serif;
+				font-size: smaller;  
+				font-weight: bold;
+			}
+
+			.olControlAttribution {
+				background: #575757;
+				color: white;
+				z-index:1000;
+				font-size: 1em;
+				text-align: left;
+				position: absolute;
+				right: 3px;
+				bottom: 0.2em;
+				padding: 4px;
+				/* for IE */
+				filter:alpha(opacity=90);
+				/* CSS3 standard */
+				opacity:0.9;
+				border-radius: 4px;
+			}
+
+
+			/*hack*/
+			.olButton {
+				color: white;
+				font-family: arial;  
+				display: inline;
+			}
+
+			a:link, a:visited, a:hover, a:active {
+				color: #CCCCCC;
+			}
+						
+			.olPopupCloseBox {
+				background: url("http://openweathermap.org/img/glyphicons-halflings.png") no-repeat scroll 0% 0% transparent !important;
+				background-position: -48px -96px !important;
+			}
+
+			.olPopup {
+				font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+				border-radius: 8px;
+				padding: 4px;
+			}
+
+			#FramedCloud_GroupDiv {}
+
+			p.weather_title {
+				font-size: medium; font-weight: bold; color:black;
+			}
+
+			weather_title_link {
+				text-decoration: underline; color: red; !important;
+			}
+			 
+			div.weather_block{
+				float: left; 
+			}
+
+			div.small_temp_block {
+				display: block; width: 30px; overflow: visible;
+			}
+
+			div.big_temp {
+				display: block; font-size: 30px;  padding-top: 6px;
+			}
+
+			div.small_temp, div.small_temp_grey {
+				float: left; 	text-align: center; font-size: small; 
+			}
+
+			div.small_val, div.small_val_grey {
+				display: block; clear: left; font-size: x-small; 
+			/*padding: 0pt 3pt;*/
+			}
+
+			div.small_temp_grey, div.small_val_grey { color: gray; }
+
+			img.weather_image {
+				float: left; border: medium none; width: 50px; height: 45px; repeat scroll 0% 0% transparent;}
+
+			img.station_image {
+				float: left; border: medium none; width: 25px; height: 25px; scroll 0% 0% transparent;
+				padding-left: 12px; padding-right: 12px; padding-top: 4px; padding-bottom: 8px
+			}
+
+			div.cur_weather_block, div.temp_block {float: left;}
+		</style>
+		<script>
+			var map;
+			var mlat;
+			var mlon;
+			var munits;
+		</script>
+	</head>
+	<body>
+		<div id="basicMap"></div>
+		<div style="" id="myAnnotRight">
+			<img src="http://openweathermap.org/img/a/NT.png" id="img_CLOUDS" alt="Clouds"/>
+			<img src="http://openweathermap.org/img/a/PR.png" id="img_PRECIPITATION" alt="Precipitation"/>
+			<img src="http://openweathermap.org/img/a/UV.png" id="img_WIND" alt="Wind"/>
+			<img src="http://openweathermap.org/img/a/PN.png" id="img_PRESSURE" alt="Pressure"/>
+			<img src="http://openweathermap.org/img/a/TT.png" id="img_TEMPERATURE" alt="Temperature"/>
+			<img src="http://openweathermap.org/img/a/RN.png" id="img_RAIN" alt="Rain"/>
+			<img src="http://openweathermap.org/img/a/SN.png" id="img_SNOW" alt="Snow"/>
+		</div>
+	</body>		
+	<script type="text/javascript">		
+		var geographic = new OpenLayers.Projection("EPSG:4326");
+		var mercator = new OpenLayers.Projection("EPSG:900913");
+		OpenLayers.Layer.OWMCanada = OpenLayers.Class(OpenLayers.Layer.WMS, {
+			initialize:function(layer, name, params)
+			{
+				if(params == undefined) { 
+					params = {isBaseLayer: false, opacity: 0.3}
+				}
+				if( ! layer ) layer = GLBETA_PR;
+				if( ! name ) name = layer;
+					var newArguments = [
+				name,
+				"",
+				{
+					layers: layer, 
+					SERVICE: 'WMS',
+					VERSION: "1.1.1",
+					REQUEST: 'GetMap',
+					transparent: "true", 
+					format: 'image/png'
+				}, 
+					params
+				];
+
+				OpenLayers.Layer.WMS.prototype.initialize.apply(this,newArguments);	
+			},
+
+		getURL: function (bounds) {
+
+			bounds = this.adjustBounds(bounds); 
+				   
+			var imageSize = this.getImageSize();
+			var newParams = {};
+			// WMS 1.3 introduced axis order
+			var reverseAxisOrder = this.reverseAxisOrder();
+			newParams.BBOX = this.encodeBBOX ?
+						bounds.toBBOX(null, reverseAxisOrder) :
+						bounds.toArray(reverseAxisOrder);
+			newParams.WIDTH = imageSize.w;
+			newParams.HEIGHT = imageSize.h;
+			var requestString = this.getFullRequestString(newParams);
+			requestString = "http://rain.openweathermap.org/t/t?url="+requestString.replace(/&/g,"%26");
+			return requestString;
+		}
+		});			
+		function send(msg) {
+			document.title = "null";
+			document.title = msg;
+		}
+		function loadmap(mlat,mlon){
+			var world = new OpenLayers.Bounds(-180, -89, 180, 89).transform(geographic, mercator);
+			var StyleMap = new OpenLayers.Style({
+						fontColor: "black",
+						fontSize: "14px",
+						fontFamily: "Arial, Courier New",
+						labelAlign: "lt",
+						labelXOffset: "-15",
+						labelYOffset: "-17",
+						labelOutlineColor: "white",
+						labelOutlineWidth: 3,
+						externalGraphic: "${icon}",
+						graphicWidth: 48,
+						label : "${myCustomLabel}"
+						},
+						{
+						context: 
+						{
+							myCustomLabel:  function(feature) {
+								if(munits=='C')
+									return  Math.round(feature.attributes.station.main.temp-273.15) + ' ºC';
+								else
+									if(munits=='F')
+										return  Math.round((feature.attributes.station.main.temp-273.15)*9.0/5.0+32.0) + ' ºF';
+								return Math.round(feature.attributes.station.main.temp) + ' ºK';
+							},
+							icon:  function(feature) {
+								return feature.layer.options.getIcon(feature.attributes.station);
+							}
+						}	
+						}
+
+					);			
+			map = new OpenLayers.Map({
+				div: "basicMap",
+				projection: mercator,
+				displayProjection: geographic,
+				units: 'm',
+			});
+			
+			var mapnik = new OpenLayers.Layer.OSM();
+			var opencyclemap = new OpenLayers.Layer.XYZ(
+					"OpenCycleMap",
+					"http://a.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png",
+					{
+						numZoomLevels: 18, 
+						sphericalMercator: true
+					}
+				);						
+			var stations = new OpenLayers.Layer.Vector.OWMStations("Stations information", {styleMap: StyleMap});
+			var city = new OpenLayers.Layer.Vector.OWMWeather("Current weather", {styleMap: StyleMap});
+			var CLOUDS_MAP = new OpenLayers.Layer.XYZ("Clouds",
+				"http://${s}.tile.openweathermap.org/map/clouds/${z}/${x}/${y}.png",
+				{
+					isBaseLayer: false,
+					opacity: 0.60,
+					sphericalMercator: true
+
+				}
+			);
+			CLOUDS_MAP.setVisibility(false);			
+			$("#img_CLOUDS").hide();
+			CLOUDS_MAP.events.register('visibilitychanged', CLOUDS_MAP, function (e) {    
+				if(CLOUDS_MAP.getVisibility()) {	
+					$("#img_CLOUDS").show();
+				}else{
+					$("#img_CLOUDS").hide();
+				}
+			});			
+			var PRECIPITATION_MAP = new OpenLayers.Layer.XYZ("Precipitation",
+				"http://${s}.tile.openweathermap.org/map/precipitation/${z}/${x}/${y}.png",
+				{
+					isBaseLayer: false,
+					opacity: 0.60,
+					sphericalMercator: true
+
+				}
+			);
+			PRECIPITATION_MAP.setVisibility(false);			
+			$("#img_PRECIPITATION").hide();
+			PRECIPITATION_MAP.events.register('visibilitychanged', PRECIPITATION_MAP, function (e) {    
+				if(PRECIPITATION_MAP.getVisibility()) {	
+					$("#img_PRECIPITATION").show();
+				}else{
+					$("#img_PRECIPITATION").hide();
+				}
+			});			
+			var WIND_MAP = new OpenLayers.Layer.XYZ("Wind",
+				"http://${s}.tile.openweathermap.org/map/wind/${z}/${x}/${y}.png",
+				{
+					isBaseLayer: false,
+					opacity: 0.60,
+					sphericalMercator: true
+
+				}
+			);
+			WIND_MAP.setVisibility(false);			
+			$("#img_WIND").hide();
+			WIND_MAP.events.register('visibilitychanged', WIND_MAP, function (e) {    
+				if(WIND_MAP.getVisibility()) {	
+					$("#img_WIND").show();
+				}else{
+					$("#img_WIND").hide();
+				}
+			}); 
+			var PRESSURE_MAP = new OpenLayers.Layer.XYZ("Pressure",
+				"http://${s}.tile.openweathermap.org/map/pressure/${z}/${x}/${y}.png",
+				{
+					isBaseLayer: false,
+					opacity: 0.60,
+					sphericalMercator: true
+
+				}
+			);
+			PRESSURE_MAP.setVisibility(false);			
+			var PRESSURE_CONTOUR_MAP = new OpenLayers.Layer.XYZ("Pressure",
+				"http://${s}.tile.openweathermap.org/map/pressure_cntr/${z}/${x}/${y}.png",
+				{
+					isBaseLayer: false,
+					opacity: 0.60,
+					sphericalMercator: true
+
+				}
+			);
+			PRESSURE_CONTOUR_MAP.setVisibility(false);			
+			$("#img_PRESSURE").hide();
+			PRESSURE_MAP.events.register('visibilitychanged', PRESSURE_MAP, function (e) {    
+				if(PRESSURE_MAP.getVisibility()) {	
+					$("#img_PRESSURE").show();
+				}else{
+					$("#img_PRESSURE").hide();
+				}
+			});
+			var TEMPERATURE_MAP = new OpenLayers.Layer.XYZ("Temperature",
+				"http://${s}.tile.openweathermap.org/map/temp/${z}/${x}/${y}.png",
+				{
+					isBaseLayer: false,
+					opacity: 0.60,
+					sphericalMercator: true
+
+				}
+			);
+			TEMPERATURE_MAP.setVisibility(false);			
+			$("#img_TEMPERATURE").hide();
+			TEMPERATURE_MAP.events.register('visibilitychanged', TEMPERATURE_MAP, function (e) {    
+				if(TEMPERATURE_MAP.getVisibility()) {	
+					$("#img_TEMPERATURE").show();
+				}else{
+					$("#img_TEMPERATURE").hide();
+				}
+			});
+			var RAIN_MAP = new OpenLayers.Layer.XYZ("Rain",
+				"http://${s}.tile.openweathermap.org/map/rain/${z}/${x}/${y}.png",
+				{
+					isBaseLayer: false,
+					opacity: 0.60,
+					sphericalMercator: true
+
+				}
+			);
+			RAIN_MAP.setVisibility(false);			
+			$("#img_RAIN").hide();
+			RAIN_MAP.events.register('visibilitychanged', RAIN_MAP, function (e) {    
+				if(RAIN_MAP.getVisibility()) {	
+					$("#img_RAIN").show();
+				}else{
+					$("#img_RAIN").hide();
+				}
+			});
+			var SNOW_MAP = new OpenLayers.Layer.XYZ("Snow",
+				"http://${s}.tile.openweathermap.org/map/snow/${z}/${x}/${y}.png",
+				{
+					isBaseLayer: false,
+					opacity: 0.60,
+					sphericalMercator: true
+
+				}
+			);
+			SNOW_MAP.setVisibility(false);			
+			$("#img_SNOW").hide();
+			SNOW_MAP.events.register('visibilitychanged', SNOW_MAP, function (e) {    
+				if(SNOW_MAP.getVisibility()) {	
+					$("#img_SNOW").show();
+				}else{
+					$("#img_SNOW").hide();
+				}
+			});
+			map.addLayers([mapnik,opencyclemap, stations, city]);
+			map.addLayer(CLOUDS_MAP);
+			map.addLayer(PRECIPITATION_MAP);
+			map.addLayer(WIND_MAP);			
+			map.addLayer(PRESSURE_MAP);
+			map.addLayer(PRESSURE_CONTOUR_MAP);
+			map.addLayer(TEMPERATURE_MAP);
+			map.addLayer(RAIN_MAP);
+			map.addLayer(SNOW_MAP);
+
+			var centre = new OpenLayers.LonLat(mlon, mlat);
+			centre.transform(geographic, mercator);	
+			map.setCenter( centre, 10);
+
+			// Layers switcher
+			var ls = new OpenLayers.Control.LayerSwitcher({'ascending':false});
+			map.addControl(ls);
+			ls.maximizeControl();
+
+			//    var external_panel = new OpenLayers.Control.LayerSwitcher({ div: document.getElementById('mylinksRight') });
+			//    map.addControl(external_panel);
+
+			map.addControl(new OpenLayers.Control.Permalink('permalink'));
+
+
+			// Activate Popup windows 
+			selectControl = new OpenLayers.Control.SelectFeature([stations, city]);
+			map.addControl(selectControl);
+			selectControl.activate(); 			
+			
+			send('"test"');
+			};
+			jQuery(document).ready(function() {
+				loadmap(mlat,mlon);
+			});
+	</script>
+</html>
