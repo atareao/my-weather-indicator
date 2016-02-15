@@ -1,3 +1,10 @@
+my-weather-indicator (0.7.1-0extras15.10.0) wily; urgency=medium
+
+  * Fixed location with Yahoo
+  * Fixed WhereAmI dialog
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 15 Feb 2016 21:32:19 +0100
+
 my-weather-indicator (0.7.0-0extras15.10.0) wily; urgency=medium
 
   * Updated url to retrieve woeid from yahoo
