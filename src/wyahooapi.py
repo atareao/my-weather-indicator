@@ -91,6 +91,14 @@ CODE[47] = 'isolated thundershowers'
 CODE[3200] = 'not available'
 
 
+def s2f(word):
+    try:
+        return float(word)
+    except Exception as e:
+        print(e)
+    return 0
+
+
 class YahooWeatherService(WeatherService):
 
     def __init__(self,
@@ -117,94 +125,92 @@ class YahooWeatherService(WeatherService):
         print('Yahoo Weather Service woeid: %s' % self.woeid)
         print('-------------------------------------------------------')
         print('-------------------------------------------------------')
-        try:
-            query = 'select * from weather.forecast where woeid="%s"' % \
-                (self.woeid)
-            ans = self.y.execute(query)
-            print('************************************************')
-            print(query)
-            print(ans.results)
-            print('************************************************')
-            readed = read_from_url(self.url).decode()
-            wind_conditions = get_wind_conditions(readed)
-            atmosphere_conditions = get_atmosphere_conditions(readed)
-            current_conditions = get_current_conditions(readed)
-            forecast_conditions = get_forecast_conditions(readed)
-            current_location = get_location(readed)
-            temperature = current_conditions[1]
-            velocity = wind_conditions[1]
-            direction = wind_conditions[0]
-            pressure = atmosphere_conditions[2]/0.0294985250737
-            visibility = atmosphere_conditions[1]
-            humidity = atmosphere_conditions[0]
-            condition = current_conditions[0]
-            weather_data['current_conditions']['condition'] = condition
-            weather_data['current_conditions']['condition_text'] =\
-                weatherservice.get_condition(condition, 'text')
-            if weather_data['current_conditions']['isday']:
-                weather_data['current_conditions']['condition_image'] =\
-                    weatherservice.get_condition(condition, 'image')
-                weather_data['current_conditions']['condition_icon_dark'] =\
-                    weatherservice.get_condition(condition, 'icon-dark')
-                weather_data['current_conditions']['condition_icon_light'] =\
-                    weatherservice.get_condition(condition, 'icon-light')
-            else:
-                weather_data['current_conditions']['condition_image'] =\
-                    weatherservice.get_condition(condition, 'image-night')
-                weather_data['current_conditions']['condition_icon_dark'] =\
-                    weatherservice.get_condition(condition, 'icon-night-dark')
-                weather_data['current_conditions']['condition_icon_light'] =\
-                    weatherservice.get_condition(condition, 'icon-night-light')
-            weather_data['current_conditions']['temperature'] =\
-                weatherservice.change_temperature(temperature,
-                                                  self.units.temperature)
-            weather_data['current_conditions']['pressure'] =\
-                weatherservice.change_pressure(pressure, self.units.pressure)
-            weather_data['current_conditions']['humidity'] = '%s %%' %\
-                (humidity)
-            weather_data['current_conditions']['dew_point'] =\
-                weatherservice.get_dew_point(humidity,
-                                             temperature,
-                                             self.units.temperature)
-            wind_direction = weatherservice.degToCompass2(direction)
-            weather_data['current_conditions']['wind_condition'] =\
-                weatherservice.get_wind_condition2(velocity,
-                                                   wind_direction[0],
-                                                   self.units.wind)
-            weather_data['current_conditions']['wind_icon'] = wind_direction[2]
-            #
-            weather_data['current_conditions']['heat_index'] =\
-                weatherservice.get_heat_index(temperature, humidity)
-            weather_data['current_conditions']['windchill'] =\
-                weatherservice.get_wind_chill(temperature, velocity)
-            #
-            weather_data['current_conditions']['feels_like'] =\
-                weatherservice.get_feels_like(temperature,
-                                              humidity,
-                                              velocity,
+        # try:
+        query = 'select * from weather.forecast where woeid="%s"' % \
+            (self.woeid)
+        ans = self.y.execute(query)
+        print('************************************************')
+        print(query)
+        data = ans.results['channel']
+        print(data)
+        print('************************************************')
+        '''
+        readed = read_from_url(self.url).decode()
+        wind_conditions = get_wind_conditions(readed)
+        atmosphere_conditions = get_atmosphere_conditions(readed)
+        current_conditions = get_current_conditions(readed)
+        forecast_conditions = get_forecast_conditions(readed)
+        current_location = get_location(readed)
+        '''
+        temperature = s2f(data['item']['condition']['temp'])
+        velocity = s2f(data['wind']['speed'])
+        direction = s2f(data['wind']['direction'])
+        pressure = s2f(data['atmosphere']['pressure'])/0.0294985250737
+        visibility = s2f(data['atmosphere']['visibility'])
+        humidity = s2f(data['atmosphere']['humidity'])
+        condition = CODE[int(data['item']['condition']['code'])]
+        weather_data['current_conditions']['condition'] = condition
+        weather_data['current_conditions']['condition_text'] =\
+            weatherservice.get_condition(condition, 'text')
+        if weather_data['current_conditions']['isday']:
+            weather_data['current_conditions']['condition_image'] =\
+                weatherservice.get_condition(condition, 'image')
+            weather_data['current_conditions']['condition_icon_dark'] =\
+                weatherservice.get_condition(condition, 'icon-dark')
+            weather_data['current_conditions']['condition_icon_light'] =\
+                weatherservice.get_condition(condition, 'icon-light')
+        else:
+            weather_data['current_conditions']['condition_image'] =\
+                weatherservice.get_condition(condition, 'image-night')
+            weather_data['current_conditions']['condition_icon_dark'] =\
+                weatherservice.get_condition(condition, 'icon-night-dark')
+            weather_data['current_conditions']['condition_icon_light'] =\
+                weatherservice.get_condition(condition, 'icon-night-light')
+        weather_data['current_conditions']['temperature'] =\
+            weatherservice.change_temperature(temperature,
                                               self.units.temperature)
-            #
-            weather_data['current_conditions']['visibility'] =\
-                weatherservice.change_distance(visibility,
-                                               self.units.visibility)
-            weather_data['current_conditions']['solarradiation'] = None
-            weather_data['current_conditions']['UV'] = None
-            weather_data['current_conditions']['precip_1hr'] = None
-            weather_data['current_conditions']['precip_today'] = None
-            for i, forecast_condition in enumerate(forecast_conditions):
-                t1 = weatherservice.s2f(forecast_condition[1])
-                t2 = weatherservice.s2f(forecast_condition[2])
-                if t1 < t2:
-                    tmin = str(t1)
-                    tmax = str(t2)
-                else:
-                    tmin = str(t2)
-                    tmax = str(t1)
+        weather_data['current_conditions']['pressure'] =\
+            weatherservice.change_pressure(pressure, self.units.pressure)
+        weather_data['current_conditions']['humidity'] = '%s %%' %\
+            (humidity)
+        weather_data['current_conditions']['dew_point'] =\
+            weatherservice.get_dew_point(humidity,
+                                         temperature,
+                                         self.units.temperature)
+        wind_direction = weatherservice.degToCompass2(direction)
+        weather_data['current_conditions']['wind_condition'] =\
+            weatherservice.get_wind_condition2(velocity,
+                                               wind_direction[0],
+                                               self.units.wind)
+        weather_data['current_conditions']['wind_icon'] = wind_direction[2]
+        #
+        weather_data['current_conditions']['heat_index'] =\
+            weatherservice.get_heat_index(temperature, humidity)
+        weather_data['current_conditions']['windchill'] =\
+            weatherservice.get_wind_chill(temperature, velocity)
+        #
+        weather_data['current_conditions']['feels_like'] =\
+            weatherservice.get_feels_like(temperature,
+                                          humidity,
+                                          velocity,
+                                          self.units.temperature)
+        #
+        weather_data['current_conditions']['visibility'] =\
+            weatherservice.change_distance(visibility,
+                                           self.units.visibility)
+        weather_data['current_conditions']['solarradiation'] = None
+        weather_data['current_conditions']['UV'] = None
+        weather_data['current_conditions']['precip_1hr'] = None
+        weather_data['current_conditions']['precip_today'] = None
+        for i, forecast_condition in enumerate(data['item']['forecast']):
+            if i < 7:
+                tlow = s2f(forecast_condition['low'])
+                thight = s2f(forecast_condition['high'])
                 weather_data['forecasts'][i]['low'] =\
-                    weatherservice.change_temperature(tmin,
+                    weatherservice.change_temperature(tlow,
                                                       self.units.temperature)
                 weather_data['forecasts'][i]['high'] =\
-                    weatherservice.change_temperature(tmax,
+                    weatherservice.change_temperature(thight,
                                                       self.units.temperature)
                 #
                 weather_data['forecasts'][i]['qpf_allday'] = None
@@ -219,19 +225,16 @@ class YahooWeatherService(WeatherService):
                 weather_data['forecasts'][i]['maxhumidity'] = None
                 weather_data['forecasts'][i]['minhumidity'] = None
                 #
-                weather_data['forecasts'][i]['condition'] =\
-                    forecast_condition[0]
+                condition = CODE[int(forecast_condition['code'])]
+                weather_data['forecasts'][i]['condition'] = condition
                 weather_data['forecasts'][i]['condition_text'] =\
-                    weatherservice.get_condition(forecast_condition[0],
-                                                 'text')
+                    weatherservice.get_condition(condition, 'text')
                 weather_data['forecasts'][i]['condition_image'] =\
-                    weatherservice.get_condition(forecast_condition[0],
-                                                 'image')
+                    weatherservice.get_condition(condition, 'image')
                 weather_data['forecasts'][i]['condition_icon'] =\
-                    weatherservice.get_condition(forecast_condition[0],
-                                                 'icon-light')
-        except Exception as e:
-            print(e)
+                    weatherservice.get_condition(condition, 'icon-light')
+        # except Exception as e:
+        #    print(e)
         return weather_data
 
 if __name__ == "__main__":
