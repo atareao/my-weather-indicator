@@ -189,6 +189,7 @@ def get_inv_directions(lat, lon):
 
 
 if __name__ == "__main__":
+    print(get_inv_directions(40,0))
     '''
     print(get_timezoneId(28.63098,77.21725))
     print(get_rawOffset(get_timezoneId(28.63098,77.21725)))
