@@ -24,30 +24,42 @@
 import os
 import sys
 import gi
-gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from gi.repository import Notify
 import signal
+try:
+    gi.require_version('Gtk', '3.0')
+except:
+    exit(1)
+
 
 def handleSigTERM():
     shutdown()
-signal.signal(signal.SIGTERM, handleSigTERM)  
+signal.signal(signal.SIGTERM, handleSigTERM)
 
 if __name__ == '__main__':
-	if __file__.startswith('/opt/extras.ubuntu.com/my-weather-indicator') or os.getcwd().startswith('/opt/extras.ubuntu.com/my-weather-indicator'):
-		sys.path.insert(1, '/opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator')
-	else:
-		sys.path.insert(1,os.path.normpath(os.path.join(os.getcwd(), '../src')))
-	####################################################################
-	import machine_information
-	import comun
-	from myweatherindicator import MWI
-	####################################################################
-	print(machine_information.get_information())
-	print('My-Weather-Indicator version: %s'%comun.VERSION)
-	print('#####################################################')
-	Notify.init('my-weather-indicator')
-	mwi=MWI()
-	Gtk.main()
+    if __file__.startswith('/opt/extras.ubuntu.com/my-weather-indicator') or\
+            os.getcwd().startswith(
+                '/opt/extras.ubuntu.com/my-weather-indicator'):
+        sys.path.insert(1,
+                        '/opt/extras.ubuntu.com/my-weather-indicator/share/\
+my-weather-indicator')
+    else:
+        filedir = os.path.dirname(__file__)
+        print(filedir)
+        print(os.getcwd())
+        print(os.path.normpath(os.path.join(os.path.dirname(__file__),
+                                            '../src')))
+        sys.path.insert(1,
+                        os.path.normpath(
+                            os.path.join(os.path.dirname(__file__), '../src')))
+    import machine_information
+    import comun
+    from myweatherindicator import MWI
+    print(machine_information.get_information())
+    print('My-Weather-Indicator version: %s' % comun.VERSION)
+    print('#####################################################')
+    Notify.init('my-weather-indicator')
+    mwi = MWI()
+    Gtk.main()
 exit(0)
-	

@@ -64,15 +64,6 @@ except Exception as e:
     exit(1)
 
 
-def wait(time_lapse):
-    time_start = time.time()
-    time_end = (time_start + time_lapse)
-    while time_end > time.time():
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-        time.sleep(0.3)
-
-
 def add2menu(menu, text=None, icon=None,
              conector_event=None, conector_action=None):
     if text is not None:
@@ -101,12 +92,12 @@ class MWI():
             print("application already running")
             exit(0)
         #
-        self.last_notification = 0
-        self.actualization_time = 0
         self.current_conditions = None
         self.current_conditions2 = None
         self.preferences_out = False
         self.forecast_out = False
+        self.weather_updater = 0
+        self.widgets_updater = 0
         #
         self.notification = Notify.Notification.new('', '', None)
         status = appindicator.IndicatorCategory.APPLICATION_STATUS
@@ -123,7 +114,12 @@ class MWI():
         #
         while internet_on() == False:
             print('Waiting for internet')
-            wait(1)
+            time_start = time.time()
+            time_end = (time_start + 1)
+            while time_end > time.time():
+                while Gtk.events_pending():
+                    Gtk.main_iteration()
+                time.sleep(0.3)
         print(comun.CONFIG_FILE, os.path.exists(comun.CONFIG_FILE))
         if not os.path.exists(comun.CONFIG_FILE):
             configuration = Configuration()
@@ -145,83 +141,34 @@ class MWI():
         self.WW1 = None
         self.WW2 = None
         self.load_preferences()
-        self.actualization_time = 0
-        self.seclast = 60
-        self.work()
-        '''
-        while(datetime.now().second !=0):
-            wait(0.1)
-        utcnow = datetime.utcnow()
-        if self.WW1 is not None:
-            self.WW1.set_datetime(utcnow)
-        if self.WW2 is not None:
-            self.WW2.set_datetime(utcnow)
-        '''
-        GLib.timeout_add(500, self.update_widgets)
-        GLib.timeout_add(60000, self.work)
 
     def update_widgets(self):
         utcnow = datetime.utcnow()
         secnow = utcnow.second
-        if secnow < self.seclast:
-            if self.WW1 is not None:
-                self.WW1.set_datetime(utcnow)
-            if self.WW2 is not None:
-                self.WW2.set_datetime(utcnow)
-        self.seclast = secnow
-        return True
-
-    def work(self):
-        ut = int(round((time.time()-self.actualization_time)/60.0, 0))
-        if self.actualization_time == 0:
-            msg = _('Updated now')
-        elif ut == 1:
-            msg = _('Updated: 1 min ago')
-        else:
-            msg = _('Updated: %s mins ago' % ut)
-        self.menu_refresh.set_label(_('Refresh weather') + ' ('+msg+')')
-        self.menu2_refresh.set_label(_('Refresh weather') + ' ('+msg+')')
-        '''
-        utcnow = datetime.utcnow()
         if self.WW1 is not None:
             self.WW1.set_datetime(utcnow)
         if self.WW2 is not None:
             self.WW2.set_datetime(utcnow)
-        '''
-        print('///////////////////////////////////////////////////////')
-        print('///////////////////////////////////////////////////////')
-        print('time.time() = %s' % int(time.time()))
-        print('self.actualization_time = %s' % int(self.actualization_time))
-        print('(time.time()-self.actualization_time) = %s' % int(
-            (time.time() - self.actualization_time)))
-        print('self.refresh*3600 = %s' % (int(self.refresh*3600)))
-        print('///////////////////////////////////////////////////////')
-        print('///////////////////////////////////////////////////////')
-        if (time.time()-self.actualization_time) > self.refresh*3600:
-            while internet_on() == False:
-                wait(1)
-                '''
-                utcnow = datetime.utcnow()
-                if self.WW1 is not None:
-                    self.WW1.set_datetime(utcnow)
-                if self.WW2 is not None:
-                    self.WW2.set_datetime(utcnow)
-                '''
-            if self.main_location:
-                self.set_menu()
-                self.indicator.set_status(
-                    appindicator.IndicatorStatus.ACTIVE)
-            else:
-                self.indicator.set_status(
-                    appindicator.IndicatorStatus.PASSIVE)
-            if self.second_location:
-                self.set_menu2()
-                self.indicator2.set_status(
-                    appindicator.IndicatorStatus.ACTIVE)
-            else:
-                self.indicator2.set_status(
-                    appindicator.IndicatorStatus.PASSIVE)
-            self.actualization_time = time.time()
+        return True
+
+    def work(self):
+        print('***** refreshing weather *****')
+        self.menu_refresh.set_label(_('Refresh weather'))
+        self.menu2_refresh.set_label(_('Refresh weather'))
+        if self.main_location:
+            self.set_menu()
+            self.indicator.set_status(
+                appindicator.IndicatorStatus.ACTIVE)
+        else:
+            self.indicator.set_status(
+                appindicator.IndicatorStatus.PASSIVE)
+        if self.second_location:
+            self.set_menu2()
+            self.indicator2.set_status(
+                appindicator.IndicatorStatus.ACTIVE)
+        else:
+            self.indicator2.set_status(
+                appindicator.IndicatorStatus.PASSIVE)
         return True
 
     def get_help_menu(self):
@@ -445,8 +392,35 @@ class MWI():
             self.WW2.hide()
             self.WW2.destroy()
             self.WW2 = None
-        self.actualization_time = 0
+        self.start_weather_updater()
+        if self.widget1 or self.widget2:
+            self.start_widgets_updater()
+        else:
+            self.stop_widgets_updater()
+
+    def start_widgets_updater(self):
+        if self.widgets_updater > 0:
+            GLib.source_remove(self.widgets_updater)
+        self.update_widgets()
+        self.widgets_updater = GLib.timeout_add(500,
+                                                self.update_widgets)
+
+    def stop_widgets_updater(self):
+        if self.widgets_updater > 0:
+            GLib.source_remove(self.widgets_updater)
+            self.widgets_updater = 0
+
+    def start_weather_updater(self):
+        if self.weather_updater > 0:
+            GLib.source_remove(self.weather_updater)
         self.work()
+        self.weather_updater = GLib.timeout_add_seconds(self.refresh * 3600,
+                                                        self.work)
+
+    def stop_weather_updater(self):
+        if self.weather_updater > 0:
+            GLib.source_remove(self.weather_updater)
+            self.weather_updater = 0
 
     def on_pinit(self, widget, data, widget_number):
         utcnow = datetime.utcnow()
@@ -988,13 +962,10 @@ class MWI():
             cm.hide()
             cm.destroy()
             self.load_preferences()
-            self.actualization_time = 0
-            self.work()
         cm.destroy()
         self.menu_offon(True)
 
     def menu_refresh_weather_response(self, widget):
-        self.actualization_time = 0
         self.work()
 
     def menu_exit_response(self, widget):

@@ -34,15 +34,6 @@ import comun
 from comun import _
 
 
-def wait(time_lapse):
-    time_start = time.time()
-    time_end = (time_start + time_lapse)
-    while time_end > time.time():
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-        time.sleep(1)
-
-
 class Graph(Gtk.Dialog):
     def __init__(self, title='', subtitle='', temperature='', humidity='',
                  cloudiness=''):
