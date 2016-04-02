@@ -28,25 +28,21 @@ from comun import read_from_url
 import locale
 import datetime
 import pytz
+import yql
 
 locale.setlocale(locale.LC_MESSAGES, '')
-LANG = locale.getlocale(locale.LC_MESSAGES)[0]
+LANG = locale.getlocale(locale.LC_MESSAGES)[0].replace('_','-')
+API_KEY = 'dj0yJmk9djNkNk5hRUZNODFCJmQ9WVdrOWVEbFVXRWxITTJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZW\
+NyZXQmeD1jMQ--'
+SHARED_SECRET = '27dcb39434d1ee95b90e5f3a7e227d3992ecd573'
 
-URLDIR_YAHOO = 'http://query.yahooapis.com/v1/public/yql?q=\
-                select * from geo.placefinder where text="%s" and gflags="R"\
-                and locale="%s"&format=json'
-URLDIR_YAHOO2 = 'http://gws2.maps.yahoo.com/findlocation?pf=1&locale=%s\
-                 &offset=15&flags=&q=%s&gflags=R&start=0&count=10&format=json'
-URLINV_YAHOO = 'http://query.yahooapis.com/v1/public/yql?q=\
-                select * from geo.placefinder where text="%s,%s" and\
-                gflags="R" and locale="%s"&format=json'
 URLINV_YAHOO2 = 'http://gws2.maps.yahoo.com/findlocation?pf=1&locale=%s\
 &offset=15&flags=&q=%s,%s&gflags=R&start=0&count=10&format=json'
 
 
-def s2f(cadena):
+def s2f(word):
     try:
-        value = float(cadena)
+        value = float(word)
     except:
         value = 0.0
     return value
@@ -141,25 +137,40 @@ def get_inv_direction(lat, lon):
     return None
 
 
+def get_inv_directions2(lat, lon):
+    y = yql.TwoLegged(API_KEY, SHARED_SECRET)
+    query = 'select * from geo.places where text="%s,%s"' % (lat, lon)
+    print(query)
+    ans = y.execute(query)
+    print(ans.results)
+
+
 def get_directions(search_string):
-    print('******* Adquiring directions *******')
+    print('******* Adquiring directions yql*******')
     directions = []
     try:
-        url = URLDIR_YAHOO2 % (LANG, search_string)
-        yahooResponse = read_from_url(url)
-        if sys.version_info[0] == 3:
-            jsonResponse = json.loads(yahooResponse.decode())
-        else:
-            jsonResponse = json.loads(yahooResponse)
-        if int(jsonResponse['Found']) > 1:
-            for ans in jsonResponse['Result']:
-                directions.append(fromjson2direction(ans))
-        else:
-            ans = jsonResponse['Result']
-            directions.append(fromjson2direction(ans))
+        y = yql.TwoLegged(API_KEY, SHARED_SECRET)
+        query = 'select * from geo.places where text="%s" and lang="%s"' %\
+            (search_string, LANG)
+        ans = y.execute(query)
+        if ans is not None and ans.results is not None and 'place' in\
+                ans.results.keys():
+            for element in ans.results['place']:
+                if element is not None:
+                    direction = {}
+                    if element['locality1'] is not None:
+                        direction['city'] = element['locality1']['content']
+                        direction['state'] = element['admin1']['content']
+                        direction['country'] = element['country']['content']
+                        direction['lat'] = s2f(element['centroid']['latitude'])
+                        direction['lng'] =\
+                            s2f(element['centroid']['longitude'])
+                        direction['woeid'] = element['woeid']
+                        direction['search_string'] =\
+                            element['locality1']['content']
+                        directions.append(direction)
     except Exception as e:
-        print('******* Error adquiring directions *******')
-        print('Error:', e)
+        print('yql', e)
     return directions
 
 
@@ -168,11 +179,9 @@ def get_inv_directions(lat, lon):
     directions = []
     try:
         url = URLINV_YAHOO2 % (LANG, lat, lon)
+        print(url)
         yahooResponse = read_from_url(url)
-        if sys.version_info[0] == 3:
-            jsonResponse = json.loads(yahooResponse.decode())
-        else:
-            jsonResponse = json.loads(yahooResponse)
+        jsonResponse = json.loads(yahooResponse.decode())
         if int(jsonResponse['Found']) > 1:
             for ans in jsonResponse['Result']:
                 directions.append(fromjson2direction(ans))
@@ -187,17 +196,5 @@ def get_inv_directions(lat, lon):
 
 if __name__ == "__main__":
     print(get_inv_directions(40, 0))
-    '''
-    print(get_timezoneId(28.63098,77.21725))
-    print(get_rawOffset(get_timezoneId(28.63098,77.21725)))
-    print('***********')
-    print(get_timezoneId(34.2,58.3))
-    print(get_rawOffset(get_timezoneId(-34.60851,-58.37349)))
-    print(get_inv_directions(28.63098,77.21725))
-    '''
-    """
-    direc3 = get_inv_direction(39.4697524227712, -0.377386808395386)
-    print(direc3)
-    print(get_directions('valencia'))
-    """
-    print(get_directions('alicante'))
+    print('************************************************')
+    print(get_directions('Silla'))

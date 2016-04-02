@@ -122,6 +122,7 @@ class MWI():
         self.create_menu2()
         #
         while internet_on() == False:
+            print('Waiting for internet')
             wait(1)
         print(comun.CONFIG_FILE, os.path.exists(comun.CONFIG_FILE))
         if not os.path.exists(comun.CONFIG_FILE):

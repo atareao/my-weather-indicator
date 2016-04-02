@@ -1,9 +1,9 @@
-my-weather-indicator (0.7.3-0extras15.10.0) wily; urgency=medium
+my-weather-indicator (0.7.4-0extras15.10.0) wily; urgency=medium
 
   * Improved Yahoo data adquisition
   * Reformat code following PEP
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 02 Apr 2016 10:34:14 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 02 Apr 2016 20:45:47 +0200
 
 my-weather-indicator (0.7.2-0extras15.10.0) wily; urgency=medium
 

@@ -37,7 +37,7 @@
 	<script type="text/javascript">
 		var geographic = new OpenLayers.Projection("EPSG:4326");
 		var mercator = new OpenLayers.Projection("EPSG:900913");
-		OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
+		OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
                 defaultHandlerOptions: {
                     'single': true,
                     'double': false,
@@ -52,17 +52,17 @@
                     );
                     OpenLayers.Control.prototype.initialize.apply(
                         this, arguments
-                    ); 
+                    );
                     this.handler = new OpenLayers.Handler.Click(
                         this, {
                             'click': this.trigger
                         }, this.handlerOptions
                     );
-                }, 
+                },
 
                 trigger: function(e) {
 					var lonlat = map.getLonLatFromPixel(e.xy);
-					lonlat.transform(mercator,geographic);	
+					lonlat.transform(mercator,geographic);
 					console.log(lonlat);
 					send(lonlat);
                 }
@@ -70,7 +70,7 @@
             });
 
 		function loadmap(mlat,mlon){
-			var world = new OpenLayers.Bounds(-180, -89, 180, 89).transform(geographic, mercator);	
+			var world = new OpenLayers.Bounds(-180, -89, 180, 89).transform(geographic, mercator);
 			map = new OpenLayers.Map({
 				div: "basicMap",
 				projection: mercator,
@@ -82,10 +82,10 @@
 					"OpenCycleMap",
 					"http://a.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png",
 					{
-						numZoomLevels: 18, 
+						numZoomLevels: 18,
 						sphericalMercator: true
 					}
-			);						
+			);
 			markers = new OpenLayers.Layer.Markers("Markers");
 			vector = new OpenLayers.Layer.Vector('vector');
 			map.addLayers([mapnik,opencyclemap,markers]);
@@ -103,7 +103,7 @@
 		};
 		function center(mlat,mlon){
 			var centre = new OpenLayers.LonLat(mlon, mlat);
-			centre.transform(geographic, mercator);	
+			centre.transform(geographic, mercator);
 			map.setCenter( centre, 13);
 			var size = new OpenLayers.Size(48,48);
 			var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
@@ -111,7 +111,7 @@
 		   "marker.svg",
 			size,offset);
 			markers.clearMarkers();
-			markers.addMarker(new OpenLayers.Marker(centre, icon));			
+			markers.addMarker(new OpenLayers.Marker(centre, icon));
 		};
 		function geolocFail(){
 		};
@@ -119,7 +119,7 @@
 			if (navigator.geolocation){
 				var location_timeout = setTimeout("geolocFail()", 10000);
 				console.log('esta esta');
-				navigator.geolocation.getCurrentPosition( 		 
+				navigator.geolocation.getCurrentPosition(
 					function (position){
 						clearTimeout(location_timeout);
 						console.log(position.coords.longitude);
@@ -136,7 +136,7 @@
 		function findme(){
 			if (navigator.geolocation){
 				console.log('esta');
-				navigator.geolocation.getCurrentPosition( 		 
+				navigator.geolocation.getCurrentPosition(
 					function (position){
 						console.log(position.coords.longitude);
 						console.log(position.coords.latitude);

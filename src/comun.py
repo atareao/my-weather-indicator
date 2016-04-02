@@ -26,6 +26,7 @@ import os
 import locale
 import gettext
 import sys
+import urllib.request
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
 __date__ = '$24/09/2011'
@@ -154,60 +155,39 @@ except Exception as e:
     print(e)
     _ = str
 APPNAME = _(APPNAME)
-if sys.version_info[0] == 3:
-    import urllib.request
 
-    def read_from_url(url):
-        try:
-            url = url.replace(' ', '%20')
+
+def read_from_url(url, timeout=0):
+    try:
+        url = url.replace(' ', '%20')
+        if timeout > 0:
+            request = urllib.request.Request(url,
+                                            timeout=timeout,
+                                             headers={'User-Agent':
+                                                      'Magic Browser'})
+        else:
             request = urllib.request.Request(url,
                                              headers={'User-Agent':
                                                       'Magic Browser'})
-            f = urllib.request.urlopen(request)
-            json_string = f.read()
-            f.close()
-            return json_string
-        except:
-            return None
+        f = urllib.request.urlopen(request)
+        json_string = f.read()
+        f.close()
+        return json_string
+    except:
+        return None
 
-    def internet_on():
-        try:
-            response = urllib.request.urlopen(OPENWEATHERMAPWEB, timeout=1)
-            return True
-        except:
-            pass
-        return False
 
-    def fromunicode(cadena):
-        return cadena
+def internet_on():
+    try:
+        response = read_from_url(OPENWEATHERMAPWEB, timeout=1)
+        return True
+    except:
+        pass
+    return False
 
-else:
-    import urllib2
-    import urllib
 
-    def read_from_url(url):
-        try:
-            url = url.replace(' ', '%20')
-            request = urllib2.Request(url,
-                                      headers={'User-Agent': 'Magic Browser'})
-            f = urllib2.urlopen(request)
-            json_string = f.read()
-            f.close()
-            return json_string
-        except:
-            return None
+def fromunicode(cadena):
+    return cadena
 
-    def internet_on():
-        try:
-            response = urllib2.urlopen(OPENWEATHERMAPWEB, timeout=1)
-            return True
-        except:
-            pass
-        return False
-
-    def fromunicode(cadena):
-        if type(cadena) == unicode:
-            ans = cadena.encode('utf-8')
-            print(type(ans), ans)
-            return ans
-        return cadena
+if __name__ == '__main__':
+    print(internet_on())

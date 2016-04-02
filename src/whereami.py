@@ -200,7 +200,9 @@ class WhereAmI(Gtk.Dialog):
         model = self.treeview.get_model()
         model.clear()
         self.expander.set_expanded(True)
+        print(search_string)
         for direction in geocodeapi.get_directions(search_string):
+            print(direction)
             # city, county, state, country, latitude, longitude
             model.append([direction['city'], direction['state'],
                           direction['country'], direction['lat'],
