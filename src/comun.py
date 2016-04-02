@@ -103,7 +103,7 @@ if is_package():
     SOCIALDIR = os.path.join(APPDIR, 'social')
     WIMAGESDIR = os.path.join(APPDIR, 'wimages')
     CHANGELOG = os.path.join(APPDIR, 'changelog')
-    ICON =  os.path.join(ROOTDIR, 'pixmaps/my-weather-indicator.png')
+    ICON = os.path.join(ROOTDIR, 'pixmaps/my-weather-indicator.png')
     AUTOSTART = os.path.join(APPDIR, 'my-weather-indicator-autostart.desktop')
 else:
     ROOTDIR = os.path.dirname(__file__)

@@ -28,53 +28,58 @@ import json
 import requests
 from geocodeapi import get_inv_direction
 
+
 def s2f(cadena):
-	try:
-		value = float(cadena)
-	except:
-		value = 0.0
-	return value
+    try:
+        value = float(cadena)
+    except:
+        value = 0.0
+    return value
+
 
 def get_ip():
-	try:
-		r = requests.request('GET','http://www.telize.com/ip')
-		r.raise_for_status()
-		if r.status_code == 200:
-			return r.text
-	except Exception as e:
-		print(e)
-	return None	
+    try:
+        r = requests.request('GET', 'http://www.telize.com/ip')
+        r.raise_for_status()
+        if r.status_code == 200:
+            return r.text
+    except Exception as e:
+        print(e)
+    return None
+
 
 def get_current_location():
-	try:
-		r = requests.request('GET','http://www.telize.com/geoip')
-		r.raise_for_status()
-		if r.status_code == 200:
-			ans = r.json()
-			latitude = s2f(ans['latitude'])
-			longitude = s2f(ans['longitude'])
-			return latitude,longitude
-	except Exception as e:
-		print(e)
-	return 0.0,0.0
-	
+    try:
+        r = requests.request('GET', 'http://www.telize.com/geoip')
+        r.raise_for_status()
+        if r.status_code == 200:
+            ans = r.json()
+            latitude = s2f(ans['latitude'])
+            longitude = s2f(ans['longitude'])
+            return latitude, longitude
+    except Exception as e:
+        print(e)
+    return 0.0, 0.0
+
+
 def get_address_from_ip2():
-	lat,lon = get_current_location()
-	return get_inv_direction(lat,lon)['search_string']
+    lat, lon = get_current_location()
+    return get_inv_direction(lat, lon)['search_string']
+
 
 def get_address_from_ip():
-	try:
-		r = requests.request('GET','http://www.telize.com/geoip')
-		r.raise_for_status()
-		if r.status_code == 200:
-			ans = r.json()
-			return ans['city']
-	except Exception as e:
-		print(e)
-	return ''
+    try:
+        r = requests.request('GET', 'http://www.telize.com/geoip')
+        r.raise_for_status()
+        if r.status_code == 200:
+            ans = r.json()
+            return ans['city']
+    except Exception as e:
+        print(e)
+    return ''
 
 if __name__ == "__main__":
-	print(get_ip())
-	print(get_current_location())
-	print(get_address_from_ip())
-	print(get_address_from_ip2())
+    print(get_ip())
+    print(get_current_location())
+    print(get_address_from_ip())
+    print(get_address_from_ip2())

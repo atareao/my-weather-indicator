@@ -126,10 +126,8 @@ def get_rawOffset(timezoneId):
         try:
             timezone = pytz.timezone(timezoneId)
             timeinzone = timezone.localize(datetime.datetime.now())
-            nowdt = timeinzone.strftime('%z')
-            h = s2f(nowdt)
-            m = (h - int(h))/60.0
-            h = int(h/100.0)+m
+            nowdelta = timeinzone.utcoffset()
+            h = nowdelta.total_seconds() / 3600
             return h
         except Exception as e:
             print('Error calculating rawOffset: %s' % (str(e)))
@@ -144,16 +142,15 @@ def get_inv_direction(lat, lon):
 
 
 def get_directions(search_string):
+    print('******* Adquiring directions *******')
     directions = []
     try:
         url = URLDIR_YAHOO2 % (LANG, search_string)
-        print('Searching url: %s' % (url))
         yahooResponse = read_from_url(url)
         if sys.version_info[0] == 3:
             jsonResponse = json.loads(yahooResponse.decode())
         else:
             jsonResponse = json.loads(yahooResponse)
-        print(jsonResponse)
         if int(jsonResponse['Found']) > 1:
             for ans in jsonResponse['Result']:
                 directions.append(fromjson2direction(ans))
@@ -161,22 +158,21 @@ def get_directions(search_string):
             ans = jsonResponse['Result']
             directions.append(fromjson2direction(ans))
     except Exception as e:
+        print('******* Error adquiring directions *******')
         print('Error:', e)
     return directions
 
 
 def get_inv_directions(lat, lon):
+    print('******* Adquiring inv directions *******')
     directions = []
     try:
         url = URLINV_YAHOO2 % (LANG, lat, lon)
-        print('Searching url: %s' % (url))
         yahooResponse = read_from_url(url)
         if sys.version_info[0] == 3:
-            print(yahooResponse)
             jsonResponse = json.loads(yahooResponse.decode())
         else:
             jsonResponse = json.loads(yahooResponse)
-        print(jsonResponse)
         if int(jsonResponse['Found']) > 1:
             for ans in jsonResponse['Result']:
                 directions.append(fromjson2direction(ans))
@@ -184,12 +180,13 @@ def get_inv_directions(lat, lon):
             ans = jsonResponse['Result']
             directions.append(fromjson2direction(ans))
     except Exception as e:
+        print('******* Error adquiring inv directions *******')
         print('Error:', e)
     return directions
 
 
 if __name__ == "__main__":
-    print(get_inv_directions(40,0))
+    print(get_inv_directions(40, 0))
     '''
     print(get_timezoneId(28.63098,77.21725))
     print(get_rawOffset(get_timezoneId(28.63098,77.21725)))

@@ -24,19 +24,20 @@
 #
 
 import platform
-	
-def get_information():
-	information = '#####################################################\n'
-	information += ('System: %s\n')%(platform.system())
-	information += ('Machine: %s\n')%(platform.machine())
-	information += ('Node: %s\n')%(platform.node())
-	information += ('Release: %s\n')%(platform.release())
-	information += ('Version: %s\n')%(platform.version())
-	information += ('Platform: %s\n')%(platform.platform())
-	information += '#####################################################\n'
-	return information
 
-	
-if __name__=='__main__':
-	print(get_information())
-	exit(0)
+
+def get_information():
+    information = '#####################################################\n'
+    information += ('System: %s\n') % (platform.system())
+    information += ('Machine: %s\n') % (platform.machine())
+    information += ('Node: %s\n') % (platform.node())
+    information += ('Release: %s\n') % (platform.release())
+    information += ('Version: %s\n') % (platform.version())
+    information += ('Platform: %s\n') % (platform.platform())
+    information += '#####################################################\n'
+    return information
+
+
+if __name__ == '__main__':
+    print(get_information())
+    exit(0)

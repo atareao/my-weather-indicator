@@ -8,52 +8,55 @@ Cf. http://en.wikipedia.org/wiki/Lunar_phase#Lunar_phase_calculation
 from comun import _
 
 
-import math, decimal, datetime
+import math
+import decimal
+import datetime
+
 dec = decimal.Decimal
 
+
 class Moon(object):
-	def __init__(self,date):
-		#date is datetime
-		self.date = date
+    def __init__(self, date):
+        self.date = date
 
-	def position(self): 
-		diff = self.date - datetime.datetime(2001, 1, 1)
-		days = dec(diff.days) + (dec(diff.seconds) / dec(86400))
-		lunations = dec('0.20439731') + (days * dec('0.03386319269'))
-		return lunations % dec(1)
+    def position(self):
+        diff = self.date - datetime.datetime(2001, 1, 1)
+        days = dec(diff.days) + (dec(diff.seconds) / dec(86400))
+        lunations = dec('0.20439731') + (days * dec('0.03386319269'))
+        return lunations % dec(1)
 
-	def phase(self): 
-		pos =self.position()
-		index = (pos * dec(8)) + dec('0.5')
-		index = math.floor(index)
-		return {
-			0: _('New Moon'), 
-			1: _('Waxing Crescent'),
-			2: _('First Quarter'),
-			3: _('Waxing Gibbous'), 
-			4: _('Full Moon'),
-			5: _('Waning Gibbous'),
-			6: _('Last Quarter'),
-			7: _('Waning Crescent')
-		}[int(index) & 7]
+    def phase(self):
+        pos = self.position()
+        index = (pos * dec(8)) + dec('0.5')
+        index = math.floor(index)
+        return {
+            0: _('New Moon'),
+            1: _('Waxing Crescent'),
+            2: _('First Quarter'),
+            3: _('Waxing Gibbous'),
+            4: _('Full Moon'),
+            5: _('Waning Gibbous'),
+            6: _('Last Quarter'),
+            7: _('Waning Crescent')
+        }[int(index) & 7]
 
-	def icon(self): 
-		pos = self.position()
-		index = (pos * dec(28))+ dec('0.5')
-		index = int(math.floor(index))
-		index = str(index)
-		if len(index)<2:
-			index = '0'+index
-		#return 'moon'+index
-		return 'mwi-moon'+index+'.png'
+    def icon(self):
+        pos = self.position()
+        index = (pos * dec(28)) + dec('0.5')
+        index = int(math.floor(index))
+        index = str(index)
+        if len(index) < 2:
+            index = '0' + index
+        return 'mwi-moon' + index + '.png'
 
 if __name__ == '__main__':
-	y = 2030
-	m = 3
-	days = 29
-	for i in range(1,days):
-		moon = Moon(datetime.datetime(y, m, i))
-		phasename = moon.phase()
-		roundedpos = round(float(moon.position()), 3)
-		print('dia %s -> %s (%s): %s' % (i, phasename, roundedpos, moon.icon()))
-	exit(0)
+    y = 2030
+    m = 3
+    days = 29
+    for i in range(1, days):
+        moon = Moon(datetime.datetime(y, m, i))
+        phasename = moon.phase()
+        roundedpos = round(float(moon.position()), 3)
+        print('dia %s -> %s (%s): %s' % (i, phasename,
+                                         roundedpos, moon.icon()))
+    exit(0)

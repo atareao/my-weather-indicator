@@ -36,7 +36,7 @@ __version__ = "1.1"
 MESSAGES = {}
 
 
-def usage (ecode, msg=''):
+def usage(ecode, msg=''):
     """
     Print usage and msg and exit with given code.
     """
@@ -46,7 +46,7 @@ def usage (ecode, msg=''):
     sys.exit(ecode)
 
 
-def add (msgid, transtr, fuzzy):
+def add(msgid, transtr, fuzzy):
     """
     Add a non-fuzzy translation to the dictionary.
     """
@@ -55,7 +55,7 @@ def add (msgid, transtr, fuzzy):
         MESSAGES[msgid] = transtr
 
 
-def generate ():
+def generate():
     """
     Return the generated output.
     """
@@ -99,7 +99,7 @@ def generate ():
     return output
 
 
-def make (filename, outfile):
+def make(filename, outfile):
     ID = 1
     STR = 2
     global MESSAGES
@@ -183,12 +183,12 @@ def make (filename, outfile):
     output = generate()
 
     try:
-        open(outfile,"wb").write(output)
-    except IOError,msg:
+        open(outfile, "wb").write(output)
+    except IOError, msg:
         print >> sys.stderr, msg
 
 
-def main ():
+def main():
     try:
         opts, args = getopt.getopt(sys.argv[1:], 'hVo:',
                                    ['help', 'version', 'output-file='])
