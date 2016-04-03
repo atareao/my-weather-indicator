@@ -1,3 +1,9 @@
+my-weather-indicator (0.7.6-0extras15.10.0) wily; urgency=medium
+
+  * Fixed some bugs
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 03 Apr 2016 18:57:33 +0200
+
 my-weather-indicator (0.7.5-0extras15.10.0) wily; urgency=medium
 
   * Improved update weather and widgets

@@ -514,7 +514,7 @@ class MWI():
         #
         self.menus[index]['sunrise'] = Gtk.ImageMenuItem(
             label=_('Sunrise'))
-        self.menus[index]['dawn'].set_image(
+        self.menus[index]['sunrise'].set_image(
             Gtk.Image.new_from_file(
                 os.path.join(comun.IMAGESDIR, 'mwig-clear.png')))
         self.menus[index]['sunrise'].set_always_show_image(True)
@@ -523,7 +523,7 @@ class MWI():
         #
         self.menus[index]['sunset'] = Gtk.ImageMenuItem(
             label=_('Sunset'))
-        self.menus[index]['dawn'].set_image(
+        self.menus[index]['sunset'].set_image(
             Gtk.Image.new_from_file(
                 os.path.join(comun.IMAGESDIR, 'mwig-clear-night.png')))
         self.menus[index]['sunset'].set_always_show_image(True)
@@ -532,7 +532,7 @@ class MWI():
         #
         self.menus[index]['dusk'] = Gtk.ImageMenuItem(
             label=_('Dusk'))
-        self.menus[index]['dawn'].set_image(
+        self.menus[index]['dusk'].set_image(
             Gtk.Image.new_from_file(
                 os.path.join(comun.IMAGESDIR, 'mwig-clear-night.png')))
         self.menus[index]['dusk'].set_always_show_image(True)

@@ -33,13 +33,6 @@ API_KEY = 'dj0yJmk9djNkNk5hRUZNODFCJmQ9WVdrOWVEbFVXRWxITTJVbWNHbzlNQS0tJnM9Y29uc
 NyZXQmeD1jMQ--'
 SHARED_SECRET = '27dcb39434d1ee95b90e5f3a7e227d3992ecd573'
 
-ID = '_slN0oHV34Exg09kl5EASmbGBs5y3GJES1N.Oon0wd5Lnh6E5hGdtQmx_MdxpOxKAzf\
-tS1dB0yNI_NzTpWaKFXEm'
-YAHOO_WOEID_URL = 'http://where.yahooapis.com/geocode?q=%s,+%s&gflags=R&\
-appid=%s'
-YAHOO_WEATHER_URL = 'http://weather.yahooapis.com/forecastrss?w=%s&u=f'
-WEATHER_NS = 'http://xml.weather.yahoo.com/ns/rss/1.0'
-
 CODE = {}
 CODE[0] = 'tornado'
 CODE[1] = 'tropical storm'
@@ -116,21 +109,15 @@ class YahooWeatherService(WeatherService):
                                                       longitude)['woeid']
             self.y = yql.TwoLegged(API_KEY, SHARED_SECRET)
 
-    def get_weather(self, tries=3):
+    def get_weather(self, tries=5):
         weather_data = self.get_default_values()
         if self.woeid is None:
             print('Yahoo Weather Service, not found woeid')
             return weather_data
-        print('-------------------------------------------------------')
-        print('Yahoo Weather Service woeid: %s' % self.woeid)
-        print('-------------------------------------------------------')
         try:
             query = 'select * from weather.forecast where woeid="%s"' % \
                 (self.woeid)
             ans = self.y.execute(query)
-            print('************************************************')
-            print(query)
-            print('************************************************')
             if ans.results is None or 'channel' not in ans.results.keys():
                 if tries > 0:
                     tries = tries - 1
@@ -143,7 +130,7 @@ class YahooWeatherService(WeatherService):
             temperature = s2f(data['item']['condition']['temp'])
             velocity = s2f(data['wind']['speed'])
             direction = s2f(data['wind']['direction'])
-            pressure = s2f(data['atmosphere']['pressure'])/0.0294985250737
+            pressure = s2f(data['atmosphere']['pressure']) #/0.0294985250737
             visibility = s2f(data['atmosphere']['visibility'])
             humidity = s2f(data['atmosphere']['humidity'])
             condition = CODE[int(data['item']['condition']['code'])]
@@ -245,10 +232,7 @@ class YahooWeatherService(WeatherService):
 if __name__ == "__main__":
     longitude = -0.418
     latitude = 39.360
-    # latitude, longitude = 44.434295, 26.102965
-    # latitude ,longitude = 52.229958,21.013653
-    # print(geocodeapi.get_inv_direction(latitude,longitude))
-    # print(get_search_string(latitude,longitude))
     yws = YahooWeatherService(longitude=longitude, latitude=latitude)
-    print(yws.get_weather())
+    ans = yws.get_weather()
+    print(ans['current_conditions']['pressure'])
     exit(0)
