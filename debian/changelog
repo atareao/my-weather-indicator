@@ -1,3 +1,10 @@
+my-weather-indicator (0.7.5-0extras15.10.0) wily; urgency=medium
+
+  * Improved update weather and widgets
+  * Reformat code with arrays to simplify
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 03 Apr 2016 10:33:28 +0200
+
 my-weather-indicator (0.7.4-0extras15.10.11) wily; urgency=medium
 
   * Improved Yahoo data adquisition
