@@ -27,14 +27,10 @@ from comun import read_from_url
 import locale
 import datetime
 import pytz
-import yql
 from gi.repository import GeocodeGlib
 
 locale.setlocale(locale.LC_MESSAGES, '')
 LANG = locale.getlocale(locale.LC_MESSAGES)[0].replace('_', '-')
-API_KEY = 'dj0yJmk9djNkNk5hRUZNODFCJmQ9WVdrOWVEbFVXRWxITTJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZW\
-NyZXQmeD1jMQ--'
-SHARED_SECRET = '27dcb39434d1ee95b90e5f3a7e227d3992ecd573'
 
 URLINV_YAHOO2 = 'http://gws2.maps.yahoo.com/findlocation?pf=1&locale=%s\
 &offset=15&flags=&q=%s,%s&gflags=R&start=0&count=10&format=json'
@@ -136,14 +132,6 @@ def get_inv_direction(lat, lon):
     direction['woeid'] = None
     direction['search_string'] = aplace.get_name()
     return direction
-
-
-def get_inv_directions2(lat, lon):
-    y = yql.TwoLegged(API_KEY, SHARED_SECRET)
-    query = 'select * from geo.places where text="%s,%s"' % (lat, lon)
-    print(query)
-    ans = y.execute(query)
-    print(ans.results)
 
 
 def get_directions(search_string):
