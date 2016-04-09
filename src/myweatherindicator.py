@@ -461,11 +461,6 @@ class MWI():
         self.menus[index]['dew_point'].show()
         main_menu.append(self.menus[index]['dew_point'])
         #
-        self.menus[index]['dew_point'] = Gtk.MenuItem(
-            label=_('Dew Point'))
-        self.menus[index]['dew_point'].show()
-        main_menu.append(self.menus[index]['dew_point'])
-        #
         self.menus[index]['wind'] = Gtk.ImageMenuItem(
             label=_('Wind'))
         self.menus[index]['wind'].set_always_show_image(True)

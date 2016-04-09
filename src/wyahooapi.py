@@ -106,10 +106,10 @@ class YahooWeatherService(WeatherService):
         else:
             self.y = None
 
-    def get_weather(self, tries=5):
+    def get_weather(self, tries=3):
         weather_data = self.get_default_values()
         if self.woeid is None:
-            self.woeid = geocodeapi.get_woeid(latitude, longitude)
+            self.woeid = geocodeapi.get_woeid(self.latitude, self.longitude)
             if self.woeid is None:
                 print('Yahoo Weather Service, not found woeid')
                 return weather_data

@@ -27,6 +27,8 @@ Required dependencies:
     python3-lxml,
     python3-dateutil,
     python3-requests
+    geoclue-hostip,
+    geoclue-ubuntu-geoip
 
 ========
 Download

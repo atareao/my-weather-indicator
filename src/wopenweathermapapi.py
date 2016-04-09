@@ -112,7 +112,7 @@ class OWMWeatherService(WeatherService):
 		self.id = find_city(longitude,latitude)
 		self.latidute = latitude
 		self.longitude = longitude
-		
+
 	def get_hourly_weather(self):
 		weatherdata=[]
 		if self.id:
@@ -122,7 +122,7 @@ class OWMWeatherService(WeatherService):
 		print('OWMWeatherService Current Weather url:%s'%(url))
 		json_string = read_from_url(url)
 		parsed_json = json.loads(json_string.decode())
-		for contador, data in enumerate(parsed_json['list']):				
+		for contador, data in enumerate(parsed_json['list']):
 			condition = CONDITION[data['weather'][0]['id']]
 			temperature = fa2f(data['main']['temp'])
 			cloudiness = data['clouds']['all']
@@ -137,14 +137,14 @@ class OWMWeatherService(WeatherService):
 				temp_max=str(t2)
 			else:
 				temp_min=str(t2)
-				temp_max=str(t1)							
-			wind_direction = weatherservice.degToCompass2(direction)					
+				temp_max=str(t1)
+			wind_direction = weatherservice.degToCompass2(direction)
 			wdd = {}
 			wdd['datetime']=datetime.fromtimestamp(data['dt'])
 			wdd['condition'] = condition
 			wdd['condition_text'] = weatherservice.get_condition(condition,'text')
 			wdd['condition_image'] = weatherservice.get_condition(condition,'image')
-			wdd['condition_icon'] = weatherservice.get_condition(condition,'icon-light')																	
+			wdd['condition_icon'] = weatherservice.get_condition(condition,'icon-light')
 			wdd['temperature'] = weatherservice.change_temperature(temperature,self.units.temperature).split(' ')[0]
 			wdd['low'] = weatherservice.change_temperature(temp_min,self.units.temperature)
 			wdd['high'] = weatherservice.change_temperature(temp_max,self.units.temperature)
@@ -155,7 +155,7 @@ class OWMWeatherService(WeatherService):
 			weatherdata.append(wdd)
 		return weatherdata
 
-	def get_weather(self):
+	def get_weather(self, tries=3):
 		self.id = None
 		weather_data = self.get_default_values()
 		#try:
@@ -167,10 +167,13 @@ class OWMWeatherService(WeatherService):
 		print('-------------------------------------------------------')
 		print('OpenWeatherMap Weather Service url:%s'%(url))
 		print('-------------------------------------------------------')
-		print('-------------------------------------------------------')			
+		print('-------------------------------------------------------')
 		json_string = read_from_url(url)
 		if json_string is None:
-			return None
+			if tries > 0:
+				tries = tries - 1
+				weather_data = self.get_weather(tries)
+			return weather_data
 		parsed_json = json.loads(json_string.decode())
 		if  'weather' not in parsed_json.keys() or 'main' not in parsed_json.keys() or 'wind' not in parsed_json.keys() or 'clouds' not in parsed_json.keys():
 			return None
@@ -212,9 +215,9 @@ class OWMWeatherService(WeatherService):
 		weather_data['current_conditions']['solarradiation'] = None
 		weather_data['current_conditions']['UV'] = None
 		weather_data['current_conditions']['precip_1hr'] = None
-		weather_data['current_conditions']['precip_today'] = None			
+		weather_data['current_conditions']['precip_today'] = None
 		#
-		
+
 		#try:
 		if self.id:
 			url = URL_FORECAST_CITY_ID%self.id
@@ -239,12 +242,12 @@ class OWMWeatherService(WeatherService):
 				temp_max=str(t2)
 			else:
 				temp_min=str(t2)
-				temp_max=str(t1)							
-			wind_direction = weatherservice.degToCompass2(direction)					
+				temp_max=str(t1)
+			wind_direction = weatherservice.degToCompass2(direction)
 			weather_data['forecasts'][contador]['condition'] = condition
 			weather_data['forecasts'][contador]['condition_text'] = weatherservice.get_condition(condition,'text')
 			weather_data['forecasts'][contador]['condition_image'] = weatherservice.get_condition(condition,'image')
-			weather_data['forecasts'][contador]['condition_icon'] = weatherservice.get_condition(condition,'icon-light')																	
+			weather_data['forecasts'][contador]['condition_icon'] = weatherservice.get_condition(condition,'icon-light')
 			weather_data['forecasts'][contador]['low'] = weatherservice.change_temperature(temp_min,self.units.temperature)
 			weather_data['forecasts'][contador]['high'] = weatherservice.change_temperature(temp_max,self.units.temperature)
 			weather_data['forecasts'][contador]['cloudiness'] = '%s %%'%(cloudiness)
@@ -259,7 +262,7 @@ class OWMWeatherService(WeatherService):
 			weather_data['forecasts'][contador]['snow_night'] = None
 			weather_data['forecasts'][contador]['maxwind'] = None
 			weather_data['forecasts'][contador]['maxhumidity'] = None
-			weather_data['forecasts'][contador]['minhumidity'] = None					
+			weather_data['forecasts'][contador]['minhumidity'] = None
 		#except Exception as e:
 		#	print(e)
 		return weather_data
@@ -270,7 +273,7 @@ if __name__ == "__main__":
 	#latitude = 42.98
 	#longitude = -81.23
 	#print(find_city(longitude,latitude))
-	owm = OWMWeatherService(longitude=longitude,latitude=latitude)	
+	owm = OWMWeatherService(longitude=longitude,latitude=latitude)
 	print(owm.get_hourly_weather())
 	result = 'Fecha,Temperature,Humidity,Cloudiness\\n'
 	for data in owm.get_hourly_weather():
