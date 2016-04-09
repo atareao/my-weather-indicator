@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 """
 Python YQL
 ==========
@@ -22,10 +24,8 @@ from yql.utils import get_http_method, clean_url, clean_query
 from yql.logger import get_logger
 import oauth2 as oauth
 
-try:
-    from urlparse import parse_qs, parse_qsl
-except ImportError:  # pragma: no cover
-    from cgi import parse_qs, parse_qsl
+from urllib.parse import parse_qs
+from urllib.parse import parse_qsl
 
 
 __author__ = 'Stuart Colville'

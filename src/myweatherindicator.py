@@ -586,30 +586,30 @@ class MWI():
                 if self.ws == 'yahoo':
                     self.weatherservices[index] =\
                         wyahooapi.YahooWeatherService(
-                        longitude=self.longitude,
-                        latitude=self.latitude,
+                        longitude=self.preferences[index]['latitude'],
+                        latitude=self.preferences[index]['latitude'],
                         units=self.units)
                     self.menus[index]['evolution'].hide()
                 elif self.ws == 'worldweatheronline':
                     self.weatherservices[index] =\
                         worldweatheronlineapi.WorldWeatherOnlineService(
-                            longitude=self.longitude,
-                            latitude=self.latitude,
+                            longitude=self.preferences[index]['latitude'],
+                            latitude=self.preferences[index]['latitude'],
                             units=self.units,
                             key=self.key)
                     self.menus[index]['evolution'].hide()
                 elif self.ws == 'openweathermap':
                     self.weatherservices[index] =\
                         wopenweathermapapi.OWMWeatherService(
-                            longitude=self.longitude,
-                            latitude=self.latitude,
+                            longitude=self.preferences[index]['latitude'],
+                            latitude=self.preferences[index]['latitude'],
                             units=self.units)
                     self.menus[index]['evolution'].show()
                 elif self.ws == 'wunderground':
                     self.weatherservices[index] =\
                         wundergroundapi.UndergroundWeatherService(
-                            longitude=self.longitude,
-                            latitude=self.latitude,
+                            longitude=self.preferences[index]['latitude'],
+                            latitude=self.preferences[index]['latitude'],
                             units=self.units,
                             key=self.key)
                     self.menus[index]['evolution'].hide()
