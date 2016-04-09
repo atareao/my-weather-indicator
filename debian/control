@@ -2,23 +2,25 @@ Source: my-weather-indicator
 Section: utils
 Priority: extra
 Maintainer: Lorenzo Carbonell Cerezo <lorenzo.carbonell.cerezo@gmail.com>
-Build-Depends: debhelper (>= 8), python, python-distutils-extra, python-polib, python3-tz, python3-urllib3, 
+Build-Depends: debhelper (>= 8), python, python-distutils-extra, python-polib, python3-tz, python3-urllib3,
 Standards-Version: 3.9.3
 Homepage: http://www.atareao.es
 
 Package: my-weather-indicator
 Architecture: all
 Depends: ${misc:Depends}, ${python:Depends},
-	gir1.2-gtk-3.0,
-	gir1.2-gdkpixbuf-2.0,
-	gir1.2-appindicator3-0.1,
-	gir1.2-notify-0.7,	
-	gir1.2-webkit-3.0,
-	python3-tz,
-	python3-cairo,
-	python-lxml,
-	python-dateutil,
-	python3-requests
+    gir1.2-gtk-3.0,
+    gir1.2-glib-2.0,
+    gir1.2-gdkpixbuf-2.0,
+    gir1.2-appindicator3-0.1,
+    gir1.2-notify-0.7,
+    gir1.2-webkit-3.0,
+    gir1.2-geocodelib-1.0,
+    python3-tz,
+    python3-cairo,
+    python3-lxml,
+    python3-dateutil,
+    python3-requests
 Description: Get weather information for your town with My-Weather-Indicator
  My-Weather-Indicator is an an application especially designed for Ubuntu,
  you will be informed of current weather and the weather forecast.

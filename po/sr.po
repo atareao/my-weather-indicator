@@ -5,9 +5,9 @@
 # Марко М. Костић <marko.m.kostic@gmail.com>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: my-weather-indicator 0.6.9\n"
+"Project-Id-Version: my-weather-indicator 0.7.6\n"
 "Report-Msgid-Bugs-To: lorenzo.carbonell.cerezo@gmail.com\n"
-"POT-Creation-Date: 2014-08-19 20:26+0200\n"
+"POT-Creation-Date: 2016-04-09 12:17+0200\n"
 "PO-Revision-Date: 2014-02-13 19:59+0000\n"
 "Last-Translator: Nikola Petković <Unknown>\n"
 "Language-Team: Ubuntu Serbian Translators\n"
@@ -18,1696 +18,1651 @@ msgstr ""
 "X-Generator: Launchpad (build 17082)\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:54
-msgid "Where Am I"
-msgstr "Где сам ја"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:37
+msgid "Blowing sand"
+msgstr "Разарајући песак"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:71
-msgid "Search location"
-msgstr "Претрага места"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:45
+msgid "Blizzard"
+msgstr "мећава"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:72
-msgid "Clear location"
-msgstr "Очисти место"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:53
+msgid "Blowing snow"
+msgstr "Јака падавина снега"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:73
-msgid "Input the name of your city"
-msgstr "Унеси назив града"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:61
+msgid "Blowing widespread dust"
+msgstr "Ветровита прашина"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:78
-msgid "Search"
-msgstr "Претражи"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:66
+msgid "Chance of a thunderstorm"
+msgstr "могућност грмљавине"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:82
-msgid "Find me"
-msgstr "Нађи ме"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:74
+msgid "Chance of flurries"
+msgstr "могуће снежење"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:85
-#, fuzzy
-msgid "Locations found"
-msgstr "Пронађена места"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:81
+msgid "Chance of rain"
+msgstr "могућа киша"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:103
-msgid "City"
-msgstr "Град"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:89
+msgid "Chance of showers"
+msgstr "могући пљускови"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:106
-msgid "State"
-msgstr "Република"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:96
+msgid "Chance of snow"
+msgstr "могућ снег"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/whereami.py:109
-msgid "Country"
-msgstr "Држава"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:97
+msgid "Chance of storm"
+msgstr "могућа олуја"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:70
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:434
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:470
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:98
+msgid "Chance of thunderstorms"
+msgstr "могућа грмљавина"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:99
+msgid "Chance of tstorm"
+msgstr "могућа грмљавина"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:100
+msgid "Clear"
+msgstr "Ведро"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:101
+msgid "Cloudy"
+msgstr "облачно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:102
+msgid "Cold"
+msgstr "хладно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:103
+msgid "Drizzle"
+msgstr "ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:104
+msgid "Drizzle rain"
+msgstr "ситна киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:105
+msgid "Dust whirls"
+msgstr "ковитлаци прашине"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:106
+msgid "Dust"
+msgstr "прашина"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:107
+msgid "Extreme rain"
+msgstr "јака киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:108
+msgid "Fair"
+msgstr "пријатно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:109
+msgid "Flurries"
+msgstr "снежење"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:110
+msgid "Fog patches"
+msgstr "џепови магле"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:111
+msgid "Fog"
+msgstr "магла"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:112
+msgid "Foggy"
+msgstr "магловито"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:113
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:114
+msgid "Freezing drizzle"
+msgstr "ледено ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:115
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:116
+msgid "Freezing fog"
+msgstr "Ледена магла"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:117
+msgid "Freezing rain"
+msgstr "ледена киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:118
+msgid "Funnel cloud"
+msgstr "левкасти облак"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:119
+msgid "Hail showers"
+msgstr "пљусак града"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:120
+msgid "Hail"
+msgstr "град"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:121
+msgid "Haze"
+msgstr "измаглица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:122
+msgid "Heavy freezing drizzle"
+msgstr "јако прохладно ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:123
+msgid "Heavy intensity drizzle"
+msgstr "велика"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:124
+msgid "Heavy intensity drizzle rain"
+msgstr "јако ромињање кише"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:125
+msgid "Heavy intensity rain"
+msgstr "јака киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:126
+msgid "Heavy intensity shower rain"
+msgstr "јак краткотрајни пљусак"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:127
+msgid "Heavy rain at times"
+msgstr "повремени тешки пљускови"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:128
+msgid "Heavy rain"
+msgstr "јака киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:129
+msgid "Heavy snow"
+msgstr "јак снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:130
+msgid "Heavy thunderstorm"
+msgstr "тешка олуја"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:131
+msgid "Hot"
+msgstr "топло"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:132
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:667
+msgid "Hurricane"
+msgstr "ураган"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:133
+msgid "Ice crystals"
+msgstr "леденице"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:134
+msgid "Ice pellet showers"
+msgstr "град"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:135
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:136
+msgid "Ice pellets"
+msgstr "град"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:137
+msgid "Icy"
+msgstr "снежно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:138
+msgid "Intensity drizzle"
+msgstr "јако ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:139
+msgid "Intensity drizzle rain"
+msgstr "Интезивно ромињање кише"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:140
+msgid "Intensity rain"
+msgstr "Интезивна киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:141
+msgid "Isolated showers"
+msgstr "повремени пљускови"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:142
+msgid "Isolated thunderstorms"
+msgstr "повремене грмљавине"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:143
+msgid "Light drizzle"
+msgstr "слабо ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:144
+msgid "Light freezing rain"
+msgstr "слаба ледена киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:145
+msgid "Light intensity drizzle"
+msgstr "слабо ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:146
+msgid "Light intensity drizzle rain"
+msgstr "слабо ромињање кише"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:147
+msgid "Light intensity shower rain"
+msgstr "слаби краткотрајни пљускови"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:148
+msgid "Light rain shower"
+msgstr "слаб пљусак"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:149
+msgid "Light rain"
+msgstr "кишица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:150
+msgid "Light showers of ice pellets"
+msgstr "лагани пљускови леда"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:151
+msgid "Light sleet showers"
+msgstr "слаби налети суснежице"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:152
+msgid "Light sleet"
+msgstr "слаба суснежица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:153
+msgid "Light snow showers"
+msgstr "блага падавина снега"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:154
+msgid "Light snow"
+msgstr "слаб снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:155
+msgid "Light thunderstorm"
+msgstr "слаба олуја"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:156
+msgid "Low drifting sand"
+msgstr "слаби наноси песка"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:157
+msgid "Low drifting snow"
+msgstr "лака суснежица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:158
+msgid "Low drifting widespread dust"
+msgstr "слаби наноси распршене прашине"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:159
+msgid "Mist"
+msgstr "измаглица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:160
+msgid "Mixed rain and snow"
+msgstr "мешавина кише и снега"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:161
+msgid "Mixed rain and sleet"
+msgstr "мешавина кише и суснежице"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:162
+msgid "Mixed snow and sleet"
+msgstr "суснежица са снегом"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:163
+msgid "Moderate or heavy freezing rain"
+msgstr "умерена или јака прохладна киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:164
+msgid "Moderate or heavy rain in area with thunder"
+msgstr "умерена или јака киша у области олује"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:165
+msgid "Moderate or heavy rain shower"
+msgstr "умерени или јаки пљускови"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:166
+msgid "Moderate or heavy showers of ice pellets"
+msgstr "умерени или јаки налети града"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:167
+msgid "Moderate or heavy sleet showers"
+msgstr "умерена или јака суснежица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:168
+msgid "Moderate or heavy sleet"
+msgstr "умерена или јака суснежица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:169
+msgid "Moderate or heavy snow in area with thunder"
+msgstr "умерен или слаб снег са местимином грмљавином"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:170
+msgid "Moderate or heavy snow showers"
+msgstr "умерено или јако падање снега"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:171
+msgid "Moderate rain at times"
+msgstr "умерени налети кише"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:172
+msgid "Moderate rain"
+msgstr "умерена киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:173
+msgid "Moderate snow"
+msgstr "умерен снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:174
+msgid "Mostly cloudy"
+msgstr "претежно облачно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:175
+msgid "Mostly sunny"
+msgstr "углавном сунчано"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:176
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:730
+msgid "Not available"
+msgstr "недоступно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:177
+msgid "Overcast"
+msgstr "облачно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:178
+msgid "Partial fog"
+msgstr "местимична магла"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:179
+msgid "Partly cloudy"
+msgstr "повремено облачно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:180
+msgid "Partly sunny"
+msgstr "повремено сунчано"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:181
+msgid "Patches of fog"
+msgstr "трагови магле"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:182
+msgid "Patchy freezing drizzle nearby"
+msgstr "делимично ледено ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:183
+msgid "Patchy heavy snow"
+msgstr "делимично јак снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:184
+msgid "Patchy light drizzle"
+msgstr "делимично слабо ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:185
+msgid "Patchy light rain in area with thunder"
+msgstr "делимично слаба киша са грмљавином"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:186
+msgid "Patchy light rain"
+msgstr "делимично лагана киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:187
+msgid "Patchy light snow in area with thunder"
+msgstr "делимично лаган снег са грмљавином"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:188
+msgid "Patchy light snow"
+msgstr "делимично лаган снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:189
+msgid "Patchy moderate snow"
+msgstr "делимично умерен снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:190
+msgid "Patchy rain nearby"
+msgstr "местимична киша у близини"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:191
+msgid "Patchy sleet nearby"
+msgstr "местимични град у близини"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:192
+msgid "Patchy snow nearby"
+msgstr "местимични глад у близини"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:193
+msgid "Ragged thunderstorm"
+msgstr "изузетно јака грмљавина"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:194
+msgid "Rain and snow"
+msgstr "киша и снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:195
+msgid "Rain mist"
+msgstr "кишна измаглица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:196
+msgid "Rain showers"
+msgstr "пљускови"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:197
+msgid "Rain"
+msgstr "киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:198
+msgid "Sand"
+msgstr "песак"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:199
+msgid "Sandstorm"
+msgstr "пешчана олуја"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:200
+msgid "Scattered clouds"
+msgstr "распирени облаци"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:201
+msgid "Scattered showers"
+msgstr "местимични пљускови"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:202
+msgid "Scattered thunderstorms"
+msgstr "местимична олуја"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:203
+msgid "Shallow fog"
+msgstr "слабашна магла"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:204
+msgid "Showers"
+msgstr "пљускови"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:205
+msgid "Shower drizzle"
+msgstr "ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:206
+msgid "Shower rain"
+msgstr "плускови кише"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:207
+msgid "Shower snow"
+msgstr "суснежица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:208
+msgid "Sleet"
+msgstr "суснежица"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:209
+msgid "Small hail showers"
+msgstr "мали налети града"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:210
+msgid "Small hail"
+msgstr "мањи град"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:211
+msgid "Smoke"
+msgstr "смог"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:212
+msgid "Snow blowing snow mist"
+msgstr "снежна измаглица са снегом"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:213
+msgid "Snow flurries"
+msgstr "снежно ромињање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:214
+msgid "Snow grains"
+msgstr "трунке снега"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:215
+msgid "Snow showers"
+msgstr "снежни пљускови"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:216
+msgid "Snow"
+msgstr "снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:217
+msgid "Spray"
+msgstr "налети"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:218
+msgid "Squalls"
+msgstr "бура"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:219
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:663
+msgid "Storm"
+msgstr "олуја"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:220
+msgid "Sunny"
+msgstr "сунчано"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:221
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:222
+msgid "Thunderstorm"
+msgstr "грмљавина"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:223
+msgid "Thunderstorms and ice pellets"
+msgstr "грмљавине са градом"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:224
+msgid "Thunderstorms and rain"
+msgstr "грмљавине и киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:225
+msgid "Thunderstorms and snow"
+msgstr "грмљавине и снег"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:226
+msgid "Thunderstorms with hail"
+msgstr "грмљавине са градом"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:227
+msgid "Thunderstorms with small hail"
+msgstr "грмљавине са малим градом"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:228
+msgid "Thunderstorm with light rain"
+msgstr "грмљавина са слабом кишом"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:229
+msgid "Thunderstorm with rain"
+msgstr "грмљавина са кишом"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:230
+msgid "Thunderstorm with heavy rain"
+msgstr "грмљавина са јаком кишом"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:231
+msgid "Thunderstorm with light drizzle"
+msgstr "грмљавина са слабим ромињањем кише"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:232
+msgid "Thunderstorm with drizzle"
+msgstr "грмљавина са ромињањем"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:233
+msgid "Thunderstorm with heavy drizzle"
+msgstr "грмљавина са јаким ромињањем"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:234
+msgid "Thundery outbreaks in nearby"
+msgstr "грмљавина у близини"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:235
+msgid "Tornado"
+msgstr "торнадо"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:236
+msgid "Torrential rain shower"
+msgstr "силовита киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:237
+msgid "Tropical storm"
+msgstr "тропска олуја"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:238
+msgid "Unknown precipitation"
+msgstr "непознате падавине"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:239
+msgid "Unknown"
+msgstr "непознато"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:240
+msgid "Very heavy rain"
+msgstr "веома јака киша"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:241
+msgid "Volcanic ash"
+msgstr "вулкански пепео"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:242
+msgid "Widespread dust"
+msgstr "распршени песак"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:243
+msgid "Windy"
+msgstr "ветровито"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:248
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:249
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:286
+msgid "North"
+msgstr "Север"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:250
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:287
+msgid "North by east"
+msgstr "Североисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:251
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:288
+msgid "North-northeast"
+msgstr "Север-североисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:252
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:289
+msgid "Northeast by north"
+msgstr "Североисток-север"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:253
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:290
+msgid "Northeast"
+msgstr "Североисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:254
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:291
+msgid "Northeast by east"
+msgstr "Североисток-исток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:255
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:292
+msgid "East-northeast"
+msgstr "Исток-североисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:256
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:293
+msgid "East by north"
+msgstr "Североисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:257
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:258
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:294
+msgid "East"
+msgstr "Исток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:259
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:295
+msgid "East by south"
+msgstr "Југоисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:260
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:296
+msgid "East-southeast"
+msgstr "Исток-југоисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:261
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:297
+msgid "Southeast by east"
+msgstr "Југоисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:262
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:298
+msgid "Southeast"
+msgstr "Југоисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:263
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:299
+msgid "Southeast by south"
+msgstr "Југоисток-југ"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:264
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:300
+msgid "South-southeast"
+msgstr "Југ-североисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:265
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:301
+msgid "South by east"
+msgstr "Североисток"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:266
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:267
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:302
+msgid "South"
+msgstr "Југ"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:268
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:303
+msgid "South by west"
+msgstr "Северозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:269
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:304
+msgid "South-southwest"
+msgstr "Југо-југозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:270
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:305
+msgid "Southwest by south"
+msgstr "Југозапад-југ"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:271
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:306
+msgid "Southwest"
+msgstr "Југозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:272
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:307
+msgid "Southwest by west"
+msgstr "Југозапад-запад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:273
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:308
+msgid "West-southwest"
+msgstr "Запад-југозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:274
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:309
+msgid "West by south"
+msgstr "Северозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:275
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:276
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:310
+msgid "West"
+msgstr "Запад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:277
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:311
+msgid "West by north"
+msgstr "Северозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:278
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:312
+msgid "West-northwest"
+msgstr "Запад-северозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:279
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:313
+msgid "Northwest by west"
+msgstr "Северозапад-запад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:280
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:314
+msgid "Northwest"
+msgstr "Северозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:281
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:315
+msgid "Northwest by north"
+msgstr "Северозапад-север"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:282
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:316
+msgid "North-northwest"
+msgstr "Север-северозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:283
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:317
+msgid "North by west"
+msgstr "Северозапад"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:284
+msgid "Variable"
+msgstr "Променљиво"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:379
+msgid "Heavy"
+msgstr "Јако"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:382
+msgid "Light"
+msgstr "Светло"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:542
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:544
+msgid "from"
+msgstr "од"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:544
+msgid "at"
+msgstr "у"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:545
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:575
+msgid "n/a"
+msgstr "није доступно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:605
+msgid "millibar"
+msgstr "милибара"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:605
+msgid "inches of mercury"
+msgstr "инчи живиног стуба"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:606
+msgid "millimeters of mercury"
+msgstr "милиметара живиног стуба"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:619
+msgid "mi"
+msgstr "миља"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:619
+msgid "km"
+msgstr "км"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:627
+msgid "in"
+msgstr "ин"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:627
+msgid "cm"
+msgstr "цм"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:627
+msgid "mm"
+msgstr "мм"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:637
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:367
+msgid "mph"
+msgstr "мп/ч"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:637
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:364
+msgid "km/h"
+msgstr "км/ч"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:637
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:366
+msgid "m/s"
+msgstr "м/с"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:638
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:365
+msgid "knots"
+msgstr "чворова"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:638
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:363
+msgid "ft/s"
+msgstr "фт/с"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:643
+msgid "Calm"
+msgstr "Мирно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:645
+msgid "Light air"
+msgstr "Лаки ваздух"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:647
+msgid "Light breeze"
+msgstr "Лаки поветарац"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:649
+msgid "Gentle breeze"
+msgstr "Нежни поветарац"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:651
+msgid "Moderate breeze"
+msgstr "Умерен поветарац"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:653
+msgid "Fresh breeze"
+msgstr "Свеж поветарац"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:655
+msgid "Strong breeze"
+msgstr "Јак поветарац"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:657
+msgid "High wind"
+msgstr "Јак ветар"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:659
+msgid "Gale"
+msgstr "Бура"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:661
+msgid "Strong gale"
+msgstr "Јака бура"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:665
+msgid "Violent storm"
+msgstr "Јака олуја"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:734
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:735
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:736
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:737
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:738
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:741
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:742
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:744
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:746
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:747
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:748
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:749
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:750
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:751
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:838
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:839
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:840
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:842
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:843
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:844
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:845
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:846
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:847
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:848
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:849
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:851
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:852
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:853
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:855
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:856
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/worldweatheronlineapi.py:95
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/worldweatheronlineapi.py:103
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/worldweatheronlineapi.py:112
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/wundergroundapi.py:44
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/wundergroundapi.py:51
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/wundergroundapi.py:61
+msgid "N/A"
+msgstr "Није доступно"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:758
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:759
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:760
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:761
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:789
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:790
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:791
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:792
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:821
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:822
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:828
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:829
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:862
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:863
+msgid "Down all day"
+msgstr ""
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:764
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:765
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:766
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:767
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:794
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:795
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:796
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:797
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:818
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:819
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:825
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:826
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:865
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:866
+msgid "Up all day"
+msgstr ""
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:84
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:403
+msgid "Forecast"
+msgstr "Прогноза"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:146
+msgid "Day of week"
+msgstr "Дан у седмици"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:153
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:515
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:671
+msgid "Sunrise"
+msgstr "Излазак Сунца"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:160
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:524
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:673
+msgid "Sunset"
+msgstr "Залазак Сунца"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:167
+msgid "Moon Phase"
+msgstr "Месечева мена"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:174
+msgid "Condition"
+msgstr "Стање"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:181
+msgid "High temperature"
+msgstr "Висока температура"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:188
+msgid "Low temperature"
+msgstr "Ниска температура"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:196
+msgid "Maximum wind"
+msgstr "Најјачи ветар"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:203
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:239
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:254
+msgid "Average wind"
+msgstr "Просечан ветар"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:210
+msgid "Maximum humidity"
+msgstr "Највећа влажност"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:217
+msgid "Minumum humidity"
+msgstr "Најмања влажност"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:224
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:246
+msgid "Rain measurement"
+msgstr "Мерења кише"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:231
+msgid "Snow measurement"
+msgstr "Мерења снега"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:261
+msgid "Average humidity"
+msgstr "Просечна влажност"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:268
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:481
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:711
+msgid "Cloudiness"
+msgstr "Облачности"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:76
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:559
 msgid "Preferences"
 msgstr "Поставке"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:85
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:93
 msgid "Main Location"
 msgstr "Главно место"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:88
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:158
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:419
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:94
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:162
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:423
 msgid "General options"
 msgstr "Опште поставке"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:94
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:163
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:98
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:167
 #, fuzzy
 msgid "Show"
 msgstr "пљускови"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:98
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:102
 msgid "Auto Location"
 msgstr "Ауто локација"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:102
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:167
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:106
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:171
 msgid "Locality"
 msgstr "Место"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:110
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:176
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:114
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:180
 msgid "Search Location"
 msgstr "Пронађи место"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:114
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:180
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:118
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:184
 msgid "Show temperature"
 msgstr "Прикажи температуру"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:117
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:183
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:121
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:187
 msgid "Show notifications"
 msgstr "Прикажи обавештења"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:120
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:187
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:124
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:191
 #, fuzzy
 msgid "Widget options"
 msgstr "Додатак на врху"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:126
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:194
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:130
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:198
 msgid "Show widget"
 msgstr "покажи додатак"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:130
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:198
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:134
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:202
 msgid "Hide indicator when show widget"
 msgstr "Сакриј индикатор кад је показан додатак"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:133
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:201
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:137
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:205
 msgid "Widget on top"
 msgstr "Додатак на врху"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:136
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:204
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:140
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:208
 msgid "Show in taskbar"
 msgstr "Покажи у траци задатка"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:139
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:207
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:143
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:211
 msgid "On all desktops"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:155
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:159
 msgid "Second Location"
 msgstr "Друго место"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:222
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:226
 msgid "Weather Services"
 msgstr "Сервис времена"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:267
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:271
 msgid "Input World Weather Online key"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:269
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:290
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:273
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:294
 msgid "Activate"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:270
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:274
 msgid "Click to activate World Weather Online"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:287
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:291
 msgid "Input Weather Underground key"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:291
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:295
 msgid "Click to activate Weather Underground"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:299
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:303
 msgid "Units"
 msgstr "Јединице"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:303
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:414
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:450
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:524
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:585
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:609
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:668
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:307
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:440
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:635
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:744
 msgid "Temperature"
 msgstr "Температура"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:310
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:314
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:314
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:318
 msgid "Celsius"
 msgstr "Целзијус"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:311
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:315
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:315
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:319
 msgid "Fahrenheit"
 msgstr "Фаренхајт"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:312
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:316
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:316
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:320
 msgid "Kelvin"
 msgstr "Келвин"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:324
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:415
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:451
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:560
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:643
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:328
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:445
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:702
 msgid "Pressure"
 msgstr "Притисак"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:329
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:333
 msgid "Millibar"
 msgstr "милибара"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:330
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:334
 msgid "Inches of mercury"
 msgstr "инча живиног стуба"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:331
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:335
 msgid "Millimeters of mercury"
 msgstr "милиметара живиног стуба"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:339
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:420
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:456
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:562
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:645
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:343
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:476
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:707
 msgid "Visibility"
 msgstr "Видљивост"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:344
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:348
 msgid "mile"
 msgstr "миља"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:345
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:349
 msgid "kilometer"
 msgstr "километар"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:353
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:357
 msgid "Wind velocity"
 msgstr "брзина ветра"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:358
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:362
 msgid "Beaufort"
 msgstr "Бофор"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:359
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:542
-msgid "ft/s"
-msgstr "фт/с"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:360
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:542
-msgid "km/h"
-msgstr "км/ч"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:361
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:542
-msgid "knots"
-msgstr "чворова"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:362
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:542
-msgid "m/s"
-msgstr "м/с"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:363
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:542
-msgid "mph"
-msgstr "мп/ч"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:371
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:375
 msgid "Rain Gauge"
 msgstr "Количина падавина"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:376
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:391
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:380
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:395
 msgid "Inches"
 msgstr "Инчи"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:377
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:392
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:381
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:396
 msgid "Centimeters"
 msgstr "Центиметри"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:378
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:393
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:382
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:397
 msgid "Millimeters"
 msgstr "Милиметри"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:386
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:390
 msgid "Snow Gauge"
 msgstr "Дебљина снега"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:401
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:405
 msgid "Time Format"
 msgstr "Формат времена"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:406
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:410
 msgid "24 h"
 msgstr "24 ч"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:407
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:411
 msgid "AM/PM"
 msgstr "prepodne/popodne"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:423
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:427
 msgid "Autostart"
 msgstr "Самопокретање"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:426
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:430
 msgid "Refresh frequency"
 msgstr "Учесталост освежавања"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:430
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:431
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:434
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:435
 msgid "minutes"
 msgstr "минута"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:432
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:436
 msgid "hour"
 msgstr "час"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:433
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:434
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:435
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:436
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:437
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:437
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:438
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:439
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:440
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:441
 msgid "hours"
 msgstr "часова"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/preferences.py:445
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:449
 msgid "Select icon theme"
 msgstr "Изаберите тему иконице"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:165
-msgid "Updated now"
-msgstr "Освежи сад"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:53
+msgid "Where Am I"
+msgstr "Где сам ја"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:167
-msgid "Updated: 1 min ago"
-msgstr "Ажурирано: пре 1 мин"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:79
+msgid "Search location"
+msgstr "Претрага места"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:169
-#, python-format
-msgid "Updated: %s mins ago"
-msgstr "Ажурирано: пре %s мин"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:81
+msgid "Clear location"
+msgstr "Очисти место"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:170
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:172
-msgid "Refresh weather"
-msgstr "Освежи време"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:82
+msgid "Input the name of your city"
+msgstr "Унеси назив града"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:215
-msgid "In Launchpad"
-msgstr "У лаунчпаду"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:87
+msgid "Search"
+msgstr "Претражи"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:216
-msgid "Get help online..."
-msgstr "Нађите помоћ на мрежи..."
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:91
+msgid "Find me"
+msgstr "Нађи ме"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:217
-msgid "Translate this application..."
-msgstr "Преведите овај програм..."
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:94
+#, fuzzy
+msgid "Locations found"
+msgstr "Пронађена места"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:218
-msgid "Report a bug..."
-msgstr "Пријавите грешку..."
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:113
+msgid "City"
+msgstr "Град"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:220
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:117
+msgid "State"
+msgstr "Република"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:121
+msgid "Country"
+msgstr "Држава"
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:176
 msgid "Homepage"
 msgstr "Почетна страна"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:221
-msgid "Follow us in Twitter"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:184
+msgid "Get help online..."
+msgstr "Нађите помоћ на мрежи..."
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:192
+msgid "Translate this application..."
+msgstr "Преведите овај програм..."
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:200
+msgid "Report a bug..."
+msgstr "Пријавите грешку..."
+
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:212
+#, fuzzy
+msgid "Follow me in Twitter"
 msgstr "Пратите нас на Твитеру"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:222
-msgid "Follow us in Google+"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:220
+#, fuzzy
+msgid "Follow me in Google+"
 msgstr "Пратите нас на Гугл+"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:223
-msgid "Follow us in Facebook"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:229
+#, fuzzy
+msgid "Follow me in Facebook"
 msgstr "Пратите нас на Фејсбуку"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:225
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:236
 msgid "About"
 msgstr "О програму"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:406
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:443
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:79
-msgid "Forecast"
-msgstr "Прогноза"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:407
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:444
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:410
 msgid "Evolution"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:409
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:445
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:417
 msgid "Forecast Map"
 msgstr "Карта прогнозе"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:410
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:446
-msgid "Last Update"
-msgstr "Последње ажурирање"
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:424
+#, fuzzy
+msgid "Update weather"
+msgstr "Освежи сад"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:413
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:449
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:523
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:608
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:435
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:634
 msgid "Location"
 msgstr "Место"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:416
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:452
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:526
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:586
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:610
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:669
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:450
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:638
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:746
 msgid "Humidity"
 msgstr "Влажност"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:417
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:453
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:527
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:611
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:455
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:640
 msgid "Feels like"
 msgstr "Субјективни осећај"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:418
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:454
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:528
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:612
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:460
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:465
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:642
 msgid "Dew Point"
 msgstr "Тачка росе"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:419
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:455
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:530
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:587
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:614
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:670
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:470
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:645
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:748
 msgid "Wind"
 msgstr "Ветар"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:421
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:457
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:564
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:647
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:227
-msgid "Cloudiness"
-msgstr "Облачности"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:422
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:458
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:566
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:649
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:486
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:715
 msgid "UV"
 msgstr "УВ"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:423
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:459
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:568
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:651
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:491
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:719
 msgid "Precipitation"
 msgstr "Падавине"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:426
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:462
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:541
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:620
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:506
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:669
 msgid "Dawn"
 msgstr "Зора"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:427
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:463
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:542
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:621
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:170
-msgid "Sunrise"
-msgstr "Излазак Сунца"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:428
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:464
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:543
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:622
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:174
-msgid "Sunset"
-msgstr "Залазак Сунца"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:429
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:465
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:544
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:623
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:533
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:675
 msgid "Dusk"
 msgstr "Свитање"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:435
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:471
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:566
 msgid "Help"
 msgstr "Помоћ"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:437
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:473
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:572
 msgid "Exit"
 msgstr "Изађи"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:584
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:667
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:742
 msgid "Conditions in"
 msgstr "Стање у"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:708
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:723
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:790
 msgid "Forecast for next hours"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:709
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:724
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:791
 msgid "Weather service"
 msgstr ""
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/myweatherindicator.py:766
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:92
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:93
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:94
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:95
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:96
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:97
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:98
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:99
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:100
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:101
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:102
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:103
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:104
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:105
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:106
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:107
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:108
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:109
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:110
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:111
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:112
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:113
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:114
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:115
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:116
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:117
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:118
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:119
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:120
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:121
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:122
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:123
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:124
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:125
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:126
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:127
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:128
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:129
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:130
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:131
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:138
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:139
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:140
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:145
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:146
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:153
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:154
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:155
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:158
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:161
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:828
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:92
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:93
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:94
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:95
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:96
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:97
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:98
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:99
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:100
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:101
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:102
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:103
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:104
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:105
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:106
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:107
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:108
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:109
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:110
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:111
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:112
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:113
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:114
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:115
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:116
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:117
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:118
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:119
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:120
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:121
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:122
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:123
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:124
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:125
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:126
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:127
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:128
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:129
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:130
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:131
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:138
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:139
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:140
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:145
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:146
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:153
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:154
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:155
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:158
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:161
 msgid "A weather indicator"
 msgstr "Показивач времена"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/worldweatheronlineapi.py:95
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/worldweatheronlineapi.py:103
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/worldweatheronlineapi.py:112
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/wundergroundapi.py:44
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/wundergroundapi.py:51
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/wundergroundapi.py:61
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:630
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:631
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:632
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:633
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:634
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:637
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:638
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:640
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:642
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:643
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:644
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:645
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:646
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:647
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:715
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:716
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:717
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:719
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:720
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:721
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:722
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:723
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:724
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:725
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:726
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:728
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:729
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:730
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:732
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:733
-msgid "N/A"
-msgstr "Није доступно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/moon.py:30
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/moon.py:33
 msgid "New Moon"
 msgstr "Млад месец"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/moon.py:31
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/moon.py:34
 msgid "Waxing Crescent"
 msgstr "Прва четвртина"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/moon.py:32
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/moon.py:35
 msgid "First Quarter"
 msgstr "Прва четврт"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/moon.py:33
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/moon.py:36
 msgid "Waxing Gibbous"
 msgstr "Последња четврт"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/moon.py:34
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/moon.py:37
 msgid "Full Moon"
 msgstr "Пун месец"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/moon.py:35
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/moon.py:38
 msgid "Waning Gibbous"
 msgstr "Трећа четврт"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/moon.py:36
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/moon.py:39
 msgid "Last Quarter"
 msgstr "Последња четврт"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/moon.py:37
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/moon.py:40
 msgid "Waning Crescent"
 msgstr "Пун месец"
 
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:166
-msgid "Day of week"
-msgstr "Дан у седмици"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:178
-msgid "Moon Phase"
-msgstr "Месечева мена"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:182
-msgid "Condition"
-msgstr "Стање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:186
-msgid "High temperature"
-msgstr "Висока температура"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:190
-msgid "Low temperature"
-msgstr "Ниска температура"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:195
-msgid "Maximum wind"
-msgstr "Најјачи ветар"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:198
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:214
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:221
-msgid "Average wind"
-msgstr "Просечан ветар"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:201
-msgid "Maximum humidity"
-msgstr "Највећа влажност"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:204
-msgid "Minumum humidity"
-msgstr "Најмања влажност"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:207
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:217
-msgid "Rain measurement"
-msgstr "Мерења кише"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:210
-msgid "Snow measurement"
-msgstr "Мерења снега"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/forecastw.py:224
-msgid "Average humidity"
-msgstr "Просечна влажност"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:36
-msgid "Blowing sand"
-msgstr "Разарајући песак"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:37
-msgid "Blizzard"
-msgstr "мећава"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:38
-msgid "Blowing snow"
-msgstr "Јака падавина снега"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:39
-msgid "Blowing widespread dust"
-msgstr "Ветровита прашина"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:40
-msgid "Chance of a thunderstorm"
-msgstr "могућност грмљавине"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:41
-msgid "Chance of flurries"
-msgstr "могуће снежење"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:42
-msgid "Chance of rain"
-msgstr "могућа киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:43
-msgid "Chance of showers"
-msgstr "могући пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:44
-msgid "Chance of snow"
-msgstr "могућ снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:45
-msgid "Chance of storm"
-msgstr "могућа олуја"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:46
-msgid "Chance of thunderstorms"
-msgstr "могућа грмљавина"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:47
-msgid "Chance of tstorm"
-msgstr "могућа грмљавина"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:48
-msgid "Clear"
-msgstr "Ведро"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:49
-msgid "Cloudy"
-msgstr "облачно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:50
-msgid "Cold"
-msgstr "хладно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:51
-msgid "Drizzle"
-msgstr "ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:52
-msgid "Drizzle rain"
-msgstr "ситна киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:53
-msgid "Dust whirls"
-msgstr "ковитлаци прашине"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:54
-msgid "Dust"
-msgstr "прашина"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:55
-msgid "Extreme rain"
-msgstr "јака киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:56
-msgid "Fair"
-msgstr "пријатно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:57
-msgid "Flurries"
-msgstr "снежење"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:58
-msgid "Fog patches"
-msgstr "џепови магле"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:59
-msgid "Fog"
-msgstr "магла"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:60
-msgid "Foggy"
-msgstr "магловито"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:61
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:62
-msgid "Freezing drizzle"
-msgstr "ледено ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:63
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:64
-msgid "Freezing fog"
-msgstr "Ледена магла"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:65
-msgid "Freezing rain"
-msgstr "ледена киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:66
-msgid "Funnel cloud"
-msgstr "левкасти облак"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:67
-msgid "Hail showers"
-msgstr "пљусак града"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:68
-msgid "Hail"
-msgstr "град"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:69
-msgid "Haze"
-msgstr "измаглица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:70
-msgid "Heavy freezing drizzle"
-msgstr "јако прохладно ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:71
-msgid "Heavy intensity drizzle"
-msgstr "велика"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:72
-msgid "Heavy intensity drizzle rain"
-msgstr "јако ромињање кише"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:73
-msgid "Heavy intensity rain"
-msgstr "јака киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:74
-msgid "Heavy intensity shower rain"
-msgstr "јак краткотрајни пљусак"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:75
-msgid "Heavy rain at times"
-msgstr "повремени тешки пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:76
-msgid "Heavy rain"
-msgstr "јака киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:77
-msgid "Heavy snow"
-msgstr "јак снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:78
-msgid "Heavy thunderstorm"
-msgstr "тешка олуја"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:79
-msgid "Hot"
-msgstr "топло"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:80
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:571
-msgid "Hurricane"
-msgstr "ураган"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:81
-msgid "Ice crystals"
-msgstr "леденице"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:82
-msgid "Ice pellet showers"
-msgstr "град"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:83
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:84
-msgid "Ice pellets"
-msgstr "град"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:85
-msgid "Icy"
-msgstr "снежно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:86
-msgid "Intensity drizzle"
-msgstr "јако ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:87
-msgid "Intensity drizzle rain"
-msgstr "Интезивно ромињање кише"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:88
-msgid "Intensity rain"
-msgstr "Интезивна киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:89
-msgid "Isolated showers"
-msgstr "повремени пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:90
-msgid "Isolated thunderstorms"
-msgstr "повремене грмљавине"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:91
-msgid "Light drizzle"
-msgstr "слабо ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:92
-msgid "Light freezing rain"
-msgstr "слаба ледена киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:93
-msgid "Light intensity drizzle"
-msgstr "слабо ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:94
-msgid "Light intensity drizzle rain"
-msgstr "слабо ромињање кише"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:95
-msgid "Light intensity shower rain"
-msgstr "слаби краткотрајни пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:96
-msgid "Light rain shower"
-msgstr "слаб пљусак"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:97
-msgid "Light rain"
-msgstr "кишица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:98
-msgid "Light showers of ice pellets"
-msgstr "лагани пљускови леда"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:99
-msgid "Light sleet showers"
-msgstr "слаби налети суснежице"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:100
-msgid "Light sleet"
-msgstr "слаба суснежица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:101
-msgid "Light snow showers"
-msgstr "блага падавина снега"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:102
-msgid "Light snow"
-msgstr "слаб снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:103
-msgid "Light thunderstorm"
-msgstr "слаба олуја"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:104
-msgid "Low drifting sand"
-msgstr "слаби наноси песка"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:105
-msgid "Low drifting snow"
-msgstr "лака суснежица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:106
-msgid "Low drifting widespread dust"
-msgstr "слаби наноси распршене прашине"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:107
-msgid "Mist"
-msgstr "измаглица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:108
-msgid "Mixed rain and snow"
-msgstr "мешавина кише и снега"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:109
-msgid "Mixed rain and sleet"
-msgstr "мешавина кише и суснежице"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:110
-msgid "Mixed snow and sleet"
-msgstr "суснежица са снегом"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:111
-msgid "Moderate or heavy freezing rain"
-msgstr "умерена или јака прохладна киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:112
-msgid "Moderate or heavy rain in area with thunder"
-msgstr "умерена или јака киша у области олује"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:113
-msgid "Moderate or heavy rain shower"
-msgstr "умерени или јаки пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:114
-msgid "Moderate or heavy showers of ice pellets"
-msgstr "умерени или јаки налети града"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:115
-msgid "Moderate or heavy sleet showers"
-msgstr "умерена или јака суснежица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:116
-msgid "Moderate or heavy sleet"
-msgstr "умерена или јака суснежица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:117
-msgid "Moderate or heavy snow in area with thunder"
-msgstr "умерен или слаб снег са местимином грмљавином"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:118
-msgid "Moderate or heavy snow showers"
-msgstr "умерено или јако падање снега"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:119
-msgid "Moderate rain at times"
-msgstr "умерени налети кише"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:120
-msgid "Moderate rain"
-msgstr "умерена киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:121
-msgid "Moderate snow"
-msgstr "умерен снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:122
-msgid "Mostly cloudy"
-msgstr "претежно облачно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:123
-msgid "Mostly sunny"
-msgstr "углавном сунчано"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:124
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:626
-msgid "Not available"
-msgstr "недоступно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:125
-msgid "Overcast"
-msgstr "облачно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:126
-msgid "Partial fog"
-msgstr "местимична магла"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:127
-msgid "Partly cloudy"
-msgstr "повремено облачно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:128
-msgid "Partly sunny"
-msgstr "повремено сунчано"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:129
-msgid "Patches of fog"
-msgstr "трагови магле"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:130
-msgid "Patchy freezing drizzle nearby"
-msgstr "делимично ледено ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:131
-msgid "Patchy heavy snow"
-msgstr "делимично јак снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:132
-msgid "Patchy light drizzle"
-msgstr "делимично слабо ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:133
-msgid "Patchy light rain in area with thunder"
-msgstr "делимично слаба киша са грмљавином"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:134
-msgid "Patchy light rain"
-msgstr "делимично лагана киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:135
-msgid "Patchy light snow in area with thunder"
-msgstr "делимично лаган снег са грмљавином"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:136
-msgid "Patchy light snow"
-msgstr "делимично лаган снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:137
-msgid "Patchy moderate snow"
-msgstr "делимично умерен снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:138
-msgid "Patchy rain nearby"
-msgstr "местимична киша у близини"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:139
-msgid "Patchy sleet nearby"
-msgstr "местимични град у близини"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:140
-msgid "Patchy snow nearby"
-msgstr "местимични глад у близини"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:141
-msgid "Ragged thunderstorm"
-msgstr "изузетно јака грмљавина"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:142
-msgid "Rain and snow"
-msgstr "киша и снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:143
-msgid "Rain mist"
-msgstr "кишна измаглица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:144
-msgid "Rain showers"
-msgstr "пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:145
-msgid "Rain"
-msgstr "киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:146
-msgid "Sand"
-msgstr "песак"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:147
-msgid "Sandstorm"
-msgstr "пешчана олуја"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:148
-msgid "Scattered clouds"
-msgstr "распирени облаци"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:149
-msgid "Scattered showers"
-msgstr "местимични пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:150
-msgid "Scattered thunderstorms"
-msgstr "местимична олуја"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:151
-msgid "Shallow fog"
-msgstr "слабашна магла"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:152
-msgid "Showers"
-msgstr "пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:153
-msgid "Shower drizzle"
-msgstr "ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:154
-msgid "Shower rain"
-msgstr "плускови кише"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:155
-msgid "Shower snow"
-msgstr "суснежица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:156
-msgid "Sleet"
-msgstr "суснежица"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:157
-msgid "Small hail showers"
-msgstr "мали налети града"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:158
-msgid "Small hail"
-msgstr "мањи град"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:159
-msgid "Smoke"
-msgstr "смог"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:160
-msgid "Snow blowing snow mist"
-msgstr "снежна измаглица са снегом"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:161
-msgid "Snow flurries"
-msgstr "снежно ромињање"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:162
-msgid "Snow grains"
-msgstr "трунке снега"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:163
-msgid "Snow showers"
-msgstr "снежни пљускови"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:164
-msgid "Snow"
-msgstr "снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:165
-msgid "Spray"
-msgstr "налети"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:166
-msgid "Squalls"
-msgstr "бура"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:167
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:567
-msgid "Storm"
-msgstr "олуја"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:168
-msgid "Sunny"
-msgstr "сунчано"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:169
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:170
-msgid "Thunderstorm"
-msgstr "грмљавина"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:171
-msgid "Thunderstorms and ice pellets"
-msgstr "грмљавине са градом"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:172
-msgid "Thunderstorms and rain"
-msgstr "грмљавине и киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:173
-msgid "Thunderstorms and snow"
-msgstr "грмљавине и снег"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:174
-msgid "Thunderstorms with hail"
-msgstr "грмљавине са градом"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:175
-msgid "Thunderstorms with small hail"
-msgstr "грмљавине са малим градом"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:176
-msgid "Thunderstorm with light rain"
-msgstr "грмљавина са слабом кишом"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:177
-msgid "Thunderstorm with rain"
-msgstr "грмљавина са кишом"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:178
-msgid "Thunderstorm with heavy rain"
-msgstr "грмљавина са јаком кишом"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:179
-msgid "Thunderstorm with light drizzle"
-msgstr "грмљавина са слабим ромињањем кише"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:180
-msgid "Thunderstorm with drizzle"
-msgstr "грмљавина са ромињањем"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:181
-msgid "Thunderstorm with heavy drizzle"
-msgstr "грмљавина са јаким ромињањем"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:182
-msgid "Thundery outbreaks in nearby"
-msgstr "грмљавина у близини"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:183
-msgid "Tornado"
-msgstr "торнадо"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:184
-msgid "Torrential rain shower"
-msgstr "силовита киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:185
-msgid "Tropical storm"
-msgstr "тропска олуја"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:186
-msgid "Unknown precipitation"
-msgstr "непознате падавине"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:187
-msgid "Unknown"
-msgstr "непознато"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:188
-msgid "Very heavy rain"
-msgstr "веома јака киша"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:189
-msgid "Volcanic ash"
-msgstr "вулкански пепео"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:190
-msgid "Widespread dust"
-msgstr "распршени песак"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:191
-msgid "Windy"
-msgstr "ветровито"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:196
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:197
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:234
-msgid "North"
-msgstr "Север"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:198
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:235
-msgid "North by east"
-msgstr "Североисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:199
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:236
-msgid "North-northeast"
-msgstr "Север-североисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:200
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:237
-msgid "Northeast by north"
-msgstr "Североисток-север"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:201
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:238
-msgid "Northeast"
-msgstr "Североисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:202
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:239
-msgid "Northeast by east"
-msgstr "Североисток-исток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:203
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:240
-msgid "East-northeast"
-msgstr "Исток-североисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:204
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:241
-msgid "East by north"
-msgstr "Североисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:205
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:206
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:242
-msgid "East"
-msgstr "Исток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:207
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:243
-msgid "East by south"
-msgstr "Југоисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:208
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:244
-msgid "East-southeast"
-msgstr "Исток-југоисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:209
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:245
-msgid "Southeast by east"
-msgstr "Југоисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:210
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:246
-msgid "Southeast"
-msgstr "Југоисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:211
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:247
-msgid "Southeast by south"
-msgstr "Југоисток-југ"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:212
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:248
-msgid "South-southeast"
-msgstr "Југ-североисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:213
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:249
-msgid "South by east"
-msgstr "Североисток"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:214
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:215
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:250
-msgid "South"
-msgstr "Југ"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:216
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:251
-msgid "South by west"
-msgstr "Северозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:217
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:252
-msgid "South-southwest"
-msgstr "Југо-југозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:218
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:253
-msgid "Southwest by south"
-msgstr "Југозапад-југ"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:219
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:254
-msgid "Southwest"
-msgstr "Југозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:220
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:255
-msgid "Southwest by west"
-msgstr "Југозапад-запад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:221
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:256
-msgid "West-southwest"
-msgstr "Запад-југозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:222
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:257
-msgid "West by south"
-msgstr "Северозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:223
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:224
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:258
-msgid "West"
-msgstr "Запад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:225
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:259
-msgid "West by north"
-msgstr "Северозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:226
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:260
-msgid "West-northwest"
-msgstr "Запад-северозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:227
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:261
-msgid "Northwest by west"
-msgstr "Северозапад-запад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:228
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:262
-msgid "Northwest"
-msgstr "Северозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:229
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:263
-msgid "Northwest by north"
-msgstr "Северозапад-север"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:230
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:264
-msgid "North-northwest"
-msgstr "Север-северозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:231
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:265
-msgid "North by west"
-msgstr "Северозапад"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:232
-msgid "Variable"
-msgstr "Променљиво"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:320
-msgid "Heavy"
-msgstr "Јако"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:323
-msgid "Light"
-msgstr "Светло"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:457
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:459
-msgid "from"
-msgstr "од"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:459
-msgid "at"
-msgstr "у"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:460
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:488
-msgid "n/a"
-msgstr "није доступно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:515
-msgid "millibar"
-msgstr "милибара"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:515
-msgid "inches of mercury"
-msgstr "инчи живиног стуба"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:515
-msgid "millimeters of mercury"
-msgstr "милиметара живиног стуба"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:526
-msgid "mi"
-msgstr "миља"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:526
-msgid "km"
-msgstr "км"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:533
-msgid "in"
-msgstr "ин"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:533
-msgid "cm"
-msgstr "цм"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:533
-msgid "mm"
-msgstr "мм"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:547
-msgid "Calm"
-msgstr "Мирно"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:549
-msgid "Light air"
-msgstr "Лаки ваздух"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:551
-msgid "Light breeze"
-msgstr "Лаки поветарац"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:553
-msgid "Gentle breeze"
-msgstr "Нежни поветарац"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:555
-msgid "Moderate breeze"
-msgstr "Умерен поветарац"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:557
-msgid "Fresh breeze"
-msgstr "Свеж поветарац"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:559
-msgid "Strong breeze"
-msgstr "Јак поветарац"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:561
-msgid "High wind"
-msgstr "Јак ветар"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:563
-msgid "Gale"
-msgstr "Бура"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:565
-msgid "Strong gale"
-msgstr "Јака бура"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:569
-msgid "Violent storm"
-msgstr "Јака олуја"
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:652
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:653
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:654
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:655
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:673
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:674
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:675
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:676
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:698
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:699
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:705
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:706
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:739
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:740
-msgid "Down all day"
-msgstr ""
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:658
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:659
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:660
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:661
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:678
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:679
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:680
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:681
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:695
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:696
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:702
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:703
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:742
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/src/weatherservice.py:743
-msgid "Up all day"
-msgstr ""
-
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:12
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:13
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:14
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:15
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:16
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:17
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:18
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:19
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:20
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:21
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:22
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:23
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:24
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:25
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:26
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:27
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:28
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:29
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:30
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:31
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:32
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:33
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:34
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:35
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:36
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:37
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:38
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:39
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:40
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:41
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:42
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:43
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:44
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:45
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:46
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:47
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:48
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:49
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:50
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:51
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:52
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:53
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:54
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:55
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:56
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:57
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:58
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:59
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:60
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:61
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:62
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:63
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:64
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:65
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:66
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:67
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:68
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:69
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:70
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:71
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:72
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:73
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:74
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:75
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:76
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:77
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:78
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:79
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:80
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:81
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:82
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:83
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:84
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:85
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:86
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:87
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:88
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:89
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:90
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:91
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:132
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:133
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:134
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:135
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:136
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:137
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:141
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:142
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:143
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:144
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:147
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:148
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:149
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:150
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:151
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:152
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:156
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:157
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:159
-#: /home/atareao/Copy/PROGRAMACION/Python/trusty/my-weather-indicator/extras-my-weather-indicator.desktop.in:160
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:12
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:13
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:14
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:15
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:16
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:17
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:18
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:19
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:20
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:21
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:22
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:23
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:24
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:25
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:26
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:27
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:28
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:29
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:30
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:31
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:32
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:33
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:34
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:35
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:36
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:37
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:38
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:39
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:40
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:41
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:42
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:43
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:44
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:45
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:46
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:47
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:48
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:49
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:50
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:51
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:52
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:53
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:54
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:55
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:56
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:57
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:58
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:59
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:60
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:61
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:62
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:63
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:64
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:65
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:66
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:67
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:68
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:69
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:70
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:71
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:72
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:73
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:74
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:75
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:76
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:77
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:78
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:79
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:80
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:81
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:82
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:83
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:84
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:85
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:86
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:87
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:88
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:89
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:90
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:91
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:132
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:133
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:134
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:135
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:136
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:137
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:141
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:142
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:143
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:144
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:147
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:148
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:149
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:150
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:151
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:152
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:156
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:157
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:159
+#: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/extras-my-weather-indicator.desktop.in:160
 msgid "My-Weather-Indicator"
 msgstr "Мој-показивач-времена"
+
+#~ msgid "Updated: 1 min ago"
+#~ msgstr "Ажурирано: пре 1 мин"
+
+#~ msgid "Updated: %s mins ago"
+#~ msgstr "Ажурирано: пре %s мин"
+
+#~ msgid "Refresh weather"
+#~ msgstr "Освежи време"
+
+#~ msgid "In Launchpad"
+#~ msgstr "У лаунчпаду"
+
+#~ msgid "Last Update"
+#~ msgstr "Последње ажурирање"

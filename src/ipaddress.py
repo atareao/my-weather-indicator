@@ -22,64 +22,88 @@
 #
 #
 #
-
+import dbus
 import sys
-import json
-import requests
+from functools import partial
+from collections import namedtuple
 from geocodeapi import get_inv_direction
 
 
-def s2f(cadena):
-    try:
-        value = float(cadena)
-    except:
-        value = 0.0
-    return value
+def convert(dbus_obj):
+    """Converts dbus_obj from dbus type to python type.
+    :param dbus_obj: dbus object.
+    :returns: dbus_obj in python type.
+    """
+    _isinstance = partial(isinstance, dbus_obj)
+    ConvertType = namedtuple('ConvertType', 'pytype dbustypes')
 
+    pyint = ConvertType(int, (dbus.Byte, dbus.Int16, dbus.Int32, dbus.Int64,
+                              dbus.UInt16, dbus.UInt32, dbus.UInt64))
+    pybool = ConvertType(bool, (dbus.Boolean, ))
+    pyfloat = ConvertType(float, (dbus.Double, ))
+    pylist = ConvertType(lambda _obj: list(map(convert, dbus_obj)),
+                         (dbus.Array, ))
+    pytuple = ConvertType(lambda _obj: tuple(map(convert, dbus_obj)),
+                          (dbus.Struct, ))
+    types_str = (dbus.ObjectPath, dbus.Signature, dbus.String)
+    pystr = ConvertType(str, types_str)
 
-def get_ip():
-    try:
-        r = requests.request('GET', 'http://www.telize.com/ip')
-        r.raise_for_status()
-        if r.status_code == 200:
-            return r.text
-    except Exception as e:
-        print(e)
-    return None
+    pydict = ConvertType(
+        lambda _obj: dict(zip(map(convert, dbus_obj.keys()),
+                              map(convert, dbus_obj.values())
+                              )
+                          ),
+        (dbus.Dictionary, )
+    )
+
+    for conv in (pyint, pybool, pyfloat, pylist, pytuple, pystr, pydict):
+        if any(map(_isinstance, conv.dbustypes)):
+            return conv.pytype(dbus_obj)
+    else:
+        return dbus_obj
 
 
 def get_current_location():
+    '''Gets the current location from geolocation via IP (only method
+       currently supported)'''
+    latitude = 0
+    longitude = 0
+    bus = dbus.SessionBus()
+
+    # For now we default to the UbuntuGeoIP provider and we fall back to
+    # Hostip. We should probably be cleverer about provider detection, but
+    # this solution works for now and does not rely solely on UbuntuGeoIP,
+    # which means qreator can run on other distros
     try:
-        r = requests.request('GET', 'http://www.telize.com/geoip')
-        r.raise_for_status()
-        if r.status_code == 200:
-            ans = r.json()
-            latitude = s2f(ans['latitude'])
-            longitude = s2f(ans['longitude'])
-            return latitude, longitude
-    except Exception as e:
-        print(e)
-    return 0.0, 0.0
-
-
-def get_address_from_ip2():
-    lat, lon = get_current_location()
-    return get_inv_direction(lat, lon)['search_string']
+        geoclue = bus.get_object(
+            'org.freedesktop.Geoclue.Providers.UbuntuGeoIP',
+            '/org/freedesktop/Geoclue/Providers/UbuntuGeoIP')
+        position_info = geoclue.GetPosition(
+            dbus_interface='org.freedesktop.Geoclue.Position')
+        latitude = convert(position_info[2])
+        longitude = convert(position_info[3])
+    except dbus.exceptions.DBusException as e:
+        print('Error 1', e)
+        try:
+            geoclue = bus.get_object(
+                'org.freedesktop.Geoclue.Providers.Hostip',
+                '/org/freedesktop/Geoclue/Providers/Hostip')
+            position_info = geoclue.GetPosition(
+                dbus_interface='org.freedesktop.Geoclue.Position')
+            latitude = convert(position_info[2])
+            longitude = convert(position_info[3])
+        except dbus.exceptions.DBusException as e:
+            print('Error 2', e)
+    return latitude, longitude
 
 
 def get_address_from_ip():
-    try:
-        r = requests.request('GET', 'http://www.telize.com/geoip')
-        r.raise_for_status()
-        if r.status_code == 200:
-            ans = r.json()
-            return ans['city']
-    except Exception as e:
-        print(e)
-    return ''
+    lat, lon = get_current_location()
+    ans = get_inv_direction(lat, lon)
+    return ans
+
 
 if __name__ == "__main__":
-    print(get_ip())
+    # print(get_ip())
     print(get_current_location())
     print(get_address_from_ip())
-    print(get_address_from_ip2())

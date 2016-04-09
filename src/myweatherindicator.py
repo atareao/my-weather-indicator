@@ -152,7 +152,6 @@ class MWI():
 
     def update_widgets(self):
         utcnow = datetime.utcnow()
-        secnow = utcnow.second
         for i in range(INDICATORS):
             if self.widgets[i] is not None:
                 self.widgets[i].set_datetime(utcnow)

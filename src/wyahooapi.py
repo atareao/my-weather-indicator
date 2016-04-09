@@ -100,20 +100,20 @@ class YahooWeatherService(WeatherService):
                  latitude=39.360,
                  units=weatherservice.Units()):
         WeatherService.__init__(self, longitude, latitude, units)
-        gw = geocodeapi.get_inv_direction(latitude, longitude)
-        if gw is None:
-            self.woeid = None
-            self.y = None
-        else:
-            self.woeid = geocodeapi.get_inv_direction(latitude,
-                                                      longitude)['woeid']
+        self.woeid = geocodeapi.get_woeid(latitude, longitude)
+        if self.woeid is not None:
             self.y = yql.TwoLegged(API_KEY, SHARED_SECRET)
+        else:
+            self.y = None
 
     def get_weather(self, tries=5):
         weather_data = self.get_default_values()
         if self.woeid is None:
-            print('Yahoo Weather Service, not found woeid')
-            return weather_data
+            self.woeid = geocodeapi.get_woeid(latitude, longitude)
+            if self.woeid is None:
+                print('Yahoo Weather Service, not found woeid')
+                return weather_data
+            self.y = yql.TwoLegged(API_KEY, SHARED_SECRET)
         try:
             query = 'select * from weather.forecast where woeid="%s"' % \
                 (self.woeid)

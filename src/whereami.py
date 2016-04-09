@@ -47,8 +47,8 @@ def wait(time_lapse):
 
 
 class WhereAmI(Gtk.Dialog):
-    def __init__(self, parent=None, location=None, latitude=None,
-                 longitude=None):
+    def __init__(self, parent=None, location=None, latitude=0,
+                 longitude=0):
         # ***************************************************************
         Gtk.Dialog.__init__(self, 'my-weather-indicator | ' + _('Where Am I'),
                             parent, Gtk.DialogFlags.MODAL |
@@ -59,6 +59,10 @@ class WhereAmI(Gtk.Dialog):
         # self.set_size_request(450, 350)
         self.connect('destroy', self.on_close_application)
         self.set_icon_from_file(comun.ICON)
+        #
+        self.lat = latitude
+        self.lng = longitude
+        self.locality = location
         #
         vbox = Gtk.VBox()
         self.get_content_area().add(vbox)
@@ -152,11 +156,12 @@ class WhereAmI(Gtk.Dialog):
             wait(1)
         self.search_string = ''
         self.locality = ''
-        if latitude and longitude:
-            self.search_location(latitude, longitude)
-        elif location and len(location) > 0:
+        if location and len(location) > 0:
             self.entry1.set_text(location)
+            self.locality = location
             self.on_button1_clicked(None)
+        elif latitude and longitude:
+            self.search_location(latitude, longitude)
         else:
             # latitude,longitude = ipaddress.get_current_location()
             self.search_location2()
@@ -173,6 +178,7 @@ class WhereAmI(Gtk.Dialog):
             model, aiter = treeview.get_selection().get_selected()
             if model is not None and aiter is not None:
                 self.entry1.set_text(model[aiter][0])
+                self.locality = model[aiter][0]
                 self.lat = model[aiter][3]
                 self.lng = model[aiter][4]
                 self.web_send('center(%s, %s)' % (self.lat, self.lng))
@@ -204,9 +210,12 @@ class WhereAmI(Gtk.Dialog):
         for direction in geocodeapi.get_directions(search_string):
             print(direction)
             # city, county, state, country, latitude, longitude
-            model.append([direction['city'], direction['state'],
-                          direction['country'], direction['lat'],
-                          direction['lng']])
+            if 'city' in direction.keys() and\
+                    direction['city'] is not None and\
+                    len(direction['city']) > 0:
+                model.append([direction['city'], direction['state'],
+                              direction['country'], direction['lat'],
+                              direction['lng']])
         if len(model) > 0:
             self.treeview.set_cursor(0)
         self.set_normal_cursor()
@@ -220,7 +229,10 @@ class WhereAmI(Gtk.Dialog):
         self.set_wait_cursor()
         direction = geocodeapi.get_inv_direction(latitude, longitude)
         print(direction)
-        if direction is not None:
+        if direction is not None and\
+                'city' in direction.keys() and\
+                direction['city'] is not None and\
+                len(direction['city']) > 0:
             self.lat = direction['lat']
             self.lng = direction['lng']
             self.locality = direction['city']
@@ -247,6 +259,9 @@ class WhereAmI(Gtk.Dialog):
         while Gtk.events_pending():
             Gtk.main_iteration()
         msg = self.web_recv()
+        print(' **** msg **** ')
+        print(msg)
+        print(' **** *** **** ')
         if msg:
             try:
                 if msg.startswith('lon='):
