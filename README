@@ -21,7 +21,7 @@ Required dependencies:
     gir1.2-appindicator3-0.1,
     gir1.2-notify-0.7,
     gir1.2-webkit-3.0,
-    gir1.2-geocodelib-1.0,
+    gir1.2-geocodeglib-1.0,
     python3-tz,
     python3-cairo,
     python3-lxml,
