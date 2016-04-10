@@ -138,7 +138,7 @@ class MWI():
                 city = ''
             configuration.set('latitude', latitude)
             configuration.set('longitude', longitude)
-            configuration.set('location', city['city'])
+            configuration.set('location', city)
             configuration.save()
             cm = preferences.CM()
             if cm.run() == Gtk.ResponseType.ACCEPT:

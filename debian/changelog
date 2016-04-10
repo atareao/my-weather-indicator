@@ -1,8 +1,8 @@
-my-weather-indicator (0.7.8-0extras15.10.7) wily; urgency=medium
+my-weather-indicator (0.7.8-0extras15.10.8) wily; urgency=medium
 
   * Yahoo, oauth and requests
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 10 Apr 2016 12:22:33 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 10 Apr 2016 15:14:11 +0200
 
 my-weather-indicator (0.7.7-0extras15.10.6) wily; urgency=medium
 
