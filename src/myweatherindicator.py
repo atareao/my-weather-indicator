@@ -133,11 +133,12 @@ class MWI():
             configuration = Configuration()
             configuration.reset()
             latitude, longitude = ipaddress.get_current_location()
-            city = geocodeapi.get_inv_direction(latitude, longitude)
+            city = geocodeapi.get_inv_direction(latitude, longitude)['city']
+            if city is None:
+                city = ''
             configuration.set('latitude', latitude)
             configuration.set('longitude', longitude)
-            if city is not None:
-                configuration.set('location', city['city'])
+            configuration.set('location', city['city'])
             configuration.save()
             cm = preferences.CM()
             if cm.run() == Gtk.ResponseType.ACCEPT:
@@ -577,23 +578,26 @@ class MWI():
         print('--- Updating data in location %s ---' % (index))
         if self.preferences[index]['autolocation']:
             lat, lon = ipaddress.get_current_location()
-            self.preferences[index]['location'] =\
-                ipaddress.get_address_from_ip()
+            location = geocodeapi.get_inv_direction(lat, lon)['city']
+            if location is None:
+                location = ''
+            print(lat, lon, location)
             if self.preferences[index]['latitude'] != lat and\
                     self.preferences[index]['longitude'] != lon:
                 self.preferences[index]['latitude'] = lat
                 self.preferences[index]['longitude'] = lon
+                self.preferences[index]['location'] = location
                 if self.ws == 'yahoo':
                     self.weatherservices[index] =\
                         wyahooapi.YahooWeatherService(
-                        longitude=self.preferences[index]['latitude'],
+                        longitude=self.preferences[index]['longitude'],
                         latitude=self.preferences[index]['latitude'],
                         units=self.units)
                     self.menus[index]['evolution'].hide()
                 elif self.ws == 'worldweatheronline':
                     self.weatherservices[index] =\
                         worldweatheronlineapi.WorldWeatherOnlineService(
-                            longitude=self.preferences[index]['latitude'],
+                            longitude=self.preferences[index]['longitude'],
                             latitude=self.preferences[index]['latitude'],
                             units=self.units,
                             key=self.key)
@@ -601,14 +605,14 @@ class MWI():
                 elif self.ws == 'openweathermap':
                     self.weatherservices[index] =\
                         wopenweathermapapi.OWMWeatherService(
-                            longitude=self.preferences[index]['latitude'],
+                            longitude=self.preferences[index]['longitude'],
                             latitude=self.preferences[index]['latitude'],
                             units=self.units)
                     self.menus[index]['evolution'].show()
                 elif self.ws == 'wunderground':
                     self.weatherservices[index] =\
                         wundergroundapi.UndergroundWeatherService(
-                            longitude=self.preferences[index]['latitude'],
+                            longitude=self.preferences[index]['longitude'],
                             latitude=self.preferences[index]['latitude'],
                             units=self.units,
                             key=self.key)

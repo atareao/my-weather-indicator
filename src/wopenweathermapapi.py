@@ -34,7 +34,7 @@ APPID = '4516154e5c8a6494e7e13b550408c863'
 OWMURL = 'http://api.openweathermap.org/data/2.5'
 URL_FIND_CITY = OWMURL + '/find?lat=%s&lon=%s&cnt=1&appid='+APPID
 URL_CURRENT_CITY_ID = OWMURL + '/weather?id=%s&appid='+APPID
-URL_FORECAST_CITY_ID =OWMURL + '/forecast/daily?id=%s&cnt=7&\
+URL_FORECAST_CITY_ID = OWMURL + '/forecast/daily?id=%s&cnt=7&\
 mode=json&appid='+APPID
 URL_HOURLY_CITY_ID = OWMURL + '/forecast?id=%s&appid='+APPID
 URL_CURRENT_CITY_LL = OWMURL + '/weather?lat=%s&lon=%s&appid='+APPID
@@ -116,6 +116,8 @@ class OWMWeatherService(WeatherService):
         self.id = find_city(longitude, latitude)
         self.latidute = latitude
         self.longitude = longitude
+        print('** OWM **')
+        print(self.id, longitude, latitude)
 
     def get_hourly_weather(self):
         weatherdata = []

@@ -1,9 +1,9 @@
-my-weather-indicator (0.7.7-0extras15.10.5) wily; urgency=medium
+my-weather-indicator (0.7.7-0extras15.10.6) wily; urgency=medium
 
   * Using GeocodeGLib and dbus ubuntu-geoip for Geo location
   * Fixed some bugs
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 09 Apr 2016 19:49:23 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 10 Apr 2016 09:21:08 +0200
 
 my-weather-indicator (0.7.6-0extras15.10.0) wily; urgency=medium
 

@@ -175,3 +175,5 @@ if __name__ == "__main__":
     print(get_direction('Silla'))
     print('************************************************')
     print(get_woeid(40, 0))
+    print(get_inv_direction(39.3667, -0.4167))
+    print(get_inv_direction(39.4, -0.4))

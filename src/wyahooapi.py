@@ -130,7 +130,7 @@ class YahooWeatherService(WeatherService):
             temperature = s2f(data['item']['condition']['temp'])
             velocity = s2f(data['wind']['speed'])
             direction = s2f(data['wind']['direction'])
-            pressure = s2f(data['atmosphere']['pressure']) #/0.0294985250737
+            pressure = s2f(data['atmosphere']['pressure'])
             visibility = s2f(data['atmosphere']['visibility'])
             humidity = s2f(data['atmosphere']['humidity'])
             condition = CODE[int(data['item']['condition']['code'])]
