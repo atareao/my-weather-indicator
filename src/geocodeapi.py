@@ -23,7 +23,7 @@
 #
 import sys
 import json
-from comun import read_from_url
+from comun import read_json_from_url
 import locale
 import datetime
 import pytz
@@ -73,10 +73,9 @@ def get_direction(search_string):
 def get_timezoneId(lat, lon):
     print('****** Requesting timezone identificacion')
     try:
-        response = read_from_url('http://api.geonames.org/timezoneJSON?lat=\
-                                 %s&lng=%s&username=atareao'
-                                 % (lat, lon)).decode()
-        json_response = json.loads(response)
+        json_response = read_json_from_url(
+            'http://api.geonames.org/timezoneJSON?lat=\
+            %s&lng=%s&username=atareao' % (lat, lon))
         if json_response and 'timezoneId' in json_response.keys():
             return json_response['timezoneId']
     except Exception as e:
@@ -104,8 +103,7 @@ def get_woeid(lat, lon):
     while(tries > 0):
         try:
             url = URLINV_YAHOO2 % (LANG, lat, lon)
-            yahooResponse = read_from_url(url)
-            jsonResponse = json.loads(yahooResponse.decode())
+            jsonResponse = read_json_from_url(url)
             if int(jsonResponse['Found']) > 1:
                 woeid = jsonResponse['Result'][0]['woeid']
             else:

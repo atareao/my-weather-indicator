@@ -26,7 +26,6 @@ from weatherservice import WeatherService
 from weatherservice import change_temperature
 import geocodeapi
 from comun import _
-from comun import read_from_url
 import requests
 from requests_oauthlib import OAuth1
 

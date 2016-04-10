@@ -23,14 +23,10 @@
 #
 
 import sys
-if sys.version_info[0] > 2:
-	import urllib as urllib2
-else:
-	import urllib2
 import json
 import weatherservice
 from  weatherservice import WeatherService
-from comun import read_from_url
+from comun import read_json_from_url
 from comun import _
 
 KEY = 'ea472f3ba2b2b77b'
@@ -50,7 +46,7 @@ def gvfi(key,tree):
 				return tree['current_observation']['display_location'][key]
 	return _('N/A')
 
-	
+
 def gvff(key, day, tree):
 	if 'forecast' in tree.keys():
 		if 'simpleforecast' in tree['forecast'].keys():
@@ -66,26 +62,26 @@ class UndergroundWeatherService(WeatherService):
 
 	def test_connection(self):
 		try:
-			json_string = read_from_url(URL%(self.key,self.latitude,self.longitude))
-			if json_string.decode().find('error')!=-1:
+			parsed_json = read_json_from_url(URL%(self.key,self.latitude,self.longitude))
+			if parsed_json is None:
 				print('error found')
 				return False
 			return True
 		except Exception as e:
 			print(e)
 		return False
-		
+
 	def _get_weather(self):
 		weather_data = self.get_default_values()
 		print('-------------------------------------------------------')
 		print('-------------------------------------------------------')
 		print('Underground Weather Service url: %s'%URL%(self.key,self.latitude,self.longitude))
 		print('-------------------------------------------------------')
-		print('-------------------------------------------------------')		
-		json_string = read_from_url(URL%(self.key,self.latitude,self.longitude))
-		if json_string is None:
+		print('-------------------------------------------------------')
+		parsed_json = read_json_from_url(
+			URL % (self.key, self.latitude, self.longitude))
+		if parsed_json is None:
 			return None
-		parsed_json = json.loads(json_string.decode())
 		condition = gvfco('weather',parsed_json).lower()
 		#
 		weather_data['current_conditions']['condition_text'] = weatherservice.get_condition(condition,'text')

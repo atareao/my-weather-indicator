@@ -26,7 +26,7 @@ import os
 import locale
 import gettext
 import sys
-import urllib.request
+import requests
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
 __date__ = '$24/09/2011'
@@ -160,29 +160,32 @@ APPNAME = _(APPNAME)
 def read_from_url(url, timeout=0):
     try:
         url = url.replace(' ', '%20')
-        if timeout > 0:
-            request = urllib.request.Request(url,
-                                            timeout=timeout,
-                                             headers={'User-Agent':
-                                                      'Magic Browser'})
-        else:
-            request = urllib.request.Request(url,
-                                             headers={'User-Agent':
-                                                      'Magic Browser'})
-        f = urllib.request.urlopen(request)
-        json_string = f.read()
-        f.close()
-        return json_string
-    except:
-        return None
+        ans = requests.get(url)
+        if ans.status_code == 200:
+            return ans.text
+    except Exception as e:
+        print(e)
+    return None
+
+
+def read_json_from_url(url, timeout=0):
+    try:
+        url = url.replace(' ', '%20')
+        ans = requests.get(url)
+        if ans.status_code == 200:
+            return ans.json()
+    except Exception as e:
+        print(e)
+    return None
 
 
 def internet_on():
     try:
-        response = read_from_url(OPENWEATHERMAPWEB, timeout=1)
-        return True
-    except:
-        pass
+        ans = requests.get(OPENWEATHERMAPWEB, timeout=1)
+        if ans.status_code == 200:
+            return True
+    except Exception as e:
+        print(e)
     return False
 
 

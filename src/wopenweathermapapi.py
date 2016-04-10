@@ -26,7 +26,7 @@ import weatherservice
 from datetime import datetime
 from weatherservice import WeatherService
 from comun import _
-from comun import read_from_url
+from comun import read_json_from_url
 
 
 APPID = '4516154e5c8a6494e7e13b550408c863'
@@ -95,9 +95,8 @@ CONDITION[906] = 'hail'
 
 def find_city(longitude, latitude):
         url = URL_FIND_CITY % (latitude, longitude)
-        json_string = read_from_url(url)
-        if json_string:
-            parsed_json = json.loads(json_string.decode())
+        parsed_json = read_json_from_url(url)
+        if parsed_json:
             elist = parsed_json['list']
             if len(elist) > 0:
                 return elist[0]['id']
@@ -126,8 +125,9 @@ class OWMWeatherService(WeatherService):
         else:
             url = URL_HOURLY_CITY_LL % (self.latitude, self.longitude)
         print('OWMWeatherService Current Weather url:%s' % (url))
-        json_string = read_from_url(url)
-        parsed_json = json.loads(json_string.decode())
+        parsed_json = read_json_from_url(url)
+        if parsed_json is None:
+            return weatherdata
         for contador, data in enumerate(parsed_json['list']):
             condition = CONDITION[data['weather'][0]['id']]
             temperature = fa2f(data['main']['temp'])
@@ -183,13 +183,12 @@ class OWMWeatherService(WeatherService):
         print('OpenWeatherMap Weather Service url:%s' % (url))
         print('-------------------------------------------------------')
         print('-------------------------------------------------------')
-        json_string = read_from_url(url)
-        if json_string is None:
+        parsed_json = read_json_from_url(url)
+        if parsed_json is None:
             if tries > 0:
                 tries = tries - 1
                 weather_data = self.get_weather(tries)
             return weather_data
-        parsed_json = json.loads(json_string.decode())
         if 'weather' not in parsed_json.keys() or\
                 'main' not in parsed_json.keys() or\
                 'wind' not in parsed_json.keys() or\
@@ -264,10 +263,9 @@ class OWMWeatherService(WeatherService):
             url = URL_FORECAST_CITY_ID % self.id
         else:
             url = URL_FORECAST_CITY_LL % (self.latitude, self.longitude)
-        json_string = read_from_url(url)
-        if json_string is None:
+        parsed_json = read_json_from_url(url)
+        if parsed_json is None:
             return weather_data
-        parsed_json = json.loads(json_string.decode())
         for contador, data in enumerate(parsed_json['list']):
             condition = CONDITION[data['weather'][0]['id']]
             temperature = fa2f(data['temp']['day'])

@@ -2,7 +2,7 @@ Source: my-weather-indicator
 Section: utils
 Priority: extra
 Maintainer: Lorenzo Carbonell Cerezo <lorenzo.carbonell.cerezo@gmail.com>
-Build-Depends: debhelper (>= 8), python, python-distutils-extra, python-polib, python3-tz, python3-urllib3,
+Build-Depends: debhelper (>= 8), python, python-distutils-extra, python-polib
 Standards-Version: 3.9.3
 Homepage: http://www.atareao.es
 
@@ -21,7 +21,7 @@ Depends: ${misc:Depends}, ${python:Depends},
     python3-lxml,
     python3-dateutil,
     python3-requests,
-    python3-httplib2,
+    python3-requests-oauthlib,
     geoclue-hostip,
     geoclue-ubuntu-geoip
 Description: Get weather information for your town with My-Weather-Indicator

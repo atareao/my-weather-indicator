@@ -27,7 +27,7 @@ import json
 import weatherservice
 from  weatherservice import WeatherService
 from comun import _
-from comun import read_from_url
+from comun import read_json_from_url
 
 KEY = '5aa718e771170840121008'
 URL = 'http://api.worldweatheronline.com/free/v1/weather.ashx?q=%s,%s&format=json&num_of_days=5&key=%s'#(latitude,longitude)
@@ -102,7 +102,7 @@ def gvfi(key,tree):
 					return tree['data']['current_condition'][0][key]
 	return _('N/A')
 
-	
+
 def gvff(key, day, tree):
 	if 'data' in tree.keys():
 		if 'weather' in tree['data'].keys():
@@ -116,28 +116,27 @@ class WorldWeatherOnlineService(WeatherService):
 		WeatherService.__init__(self,longitude,latitude,units, key)
 	def test_connection(self):
 		try:
-			json_string = read_from_url(URL%(self.latitude,self.longitude,self.key))
-			if json_string is None or json_string.decode().find('error')!=-1:
-				print(json_string.decode())
+			parsed_json = read_json_from_url(URL%(self.latitude,self.longitude,self.key))
+			if parsed_json is None:
+				print(parsed_json)
 				return False
 		except Exception as e:
 			print(e)
 			return False
 		return True
-		
+
 	def get_weather(self):
 		weather_data = self.get_default_values()
 		print('-------------------------------------------------------')
-		print('-------------------------------------------------------')		
+		print('-------------------------------------------------------')
 		print('WorldWeatherOnline Weather Service url:%s'%(URL%(self.latitude,self.longitude,self.key)))
 		print('-------------------------------------------------------')
-		print('-------------------------------------------------------')		
-		try:			
-			json_string = read_from_url(URL%(self.latitude,self.longitude,self.key))
+		print('-------------------------------------------------------')
+		try:
+			parsed_json = read_json_from_url(URL%(self.latitude,self.longitude,self.key))
 
-			if json_string is None:
+			if parsed_json is None:
 				return None
-			parsed_json = json.loads(json_string.decode())
 			if  'weather' not in parsed_json.keys() or 'main' not in parsed_json.keys() or 'wind' not in parsed_json.keys() or 'clouds' not in parsed_json.keys():
 				return None
 			number_condition = gvfco('weatherCode',parsed_json).lower()
@@ -162,7 +161,7 @@ class WorldWeatherOnlineService(WeatherService):
 			wind_velocity = weatherservice.s2f(gvfco('windspeedMiles',parsed_json))
 			wind_direction = weatherservice.degToCompass2(gvfco('winddirDegree',parsed_json))
 			weather_data['current_conditions']['wind_condition'] = weatherservice.get_wind_condition2(wind_velocity,wind_direction[0],self.units.wind)
-			weather_data['current_conditions']['wind_icon'] = wind_direction[2]			
+			weather_data['current_conditions']['wind_icon'] = wind_direction[2]
 			#
 			weather_data['current_conditions']['heat_index'] = weatherservice.get_heat_index(temperature,humidity)
 			weather_data['current_conditions']['windchill'] = weatherservice.get_wind_chill(temperature,wind_velocity)
@@ -183,8 +182,8 @@ class WorldWeatherOnlineService(WeatherService):
 				else:
 					tmin=str(t2)
 					tmax=str(t1)
-				weather_data['forecasts'][i]['low'] = weatherservice.change_temperature(tmin,self.units.temperature)				
-				weather_data['forecasts'][i]['high'] = weatherservice.change_temperature(tmax,self.units.temperature)				
+				weather_data['forecasts'][i]['low'] = weatherservice.change_temperature(tmin,self.units.temperature)
+				weather_data['forecasts'][i]['high'] = weatherservice.change_temperature(tmax,self.units.temperature)
 				#
 				weather_data['forecasts'][i]['qpf_allday'] = weatherservice.change_longitude(weatherservice.s2f(gvff('precipMM',i,parsed_json))/25.4,self.units.rain)
 				weather_data['forecasts'][i]['qpf_day'] = None
@@ -194,7 +193,7 @@ class WorldWeatherOnlineService(WeatherService):
 				weather_data['forecasts'][i]['snow_night'] = None
 				weather_data['forecasts'][i]['maxwind'] = None
 				winddir = gvff('winddirDegree',i,parsed_json)
-				winsped = gvff('windspeedMiles',i,parsed_json)				
+				winsped = gvff('windspeedMiles',i,parsed_json)
 				wind_direction = weatherservice.degToCompass2(winddir)
 				weather_data['forecasts'][i]['avewind'] = weatherservice.get_wind_condition2(winsped,wind_direction[0],self.units.wind)
 				weather_data['forecasts'][i]['wind_icon'] = wind_direction[2]
@@ -219,7 +218,7 @@ class WorldWeatherOnlineService(WeatherService):
 if __name__ == '__main__':
 	lat = 49.9026653
 	lon = 18.8278352
-	
+
 	uws = WorldWeatherOnlineService(longitude=lat,latitude=lon,key='1227f7624fa47506bc0b125184cda68e32f131e2')
 	weather_data = uws.get_weather()
 	print(weather_data['forecasts'])
