@@ -25,9 +25,10 @@ import weatherservice
 from weatherservice import WeatherService
 from weatherservice import change_temperature
 import geocodeapi
-import yql
 from comun import _
 from comun import read_from_url
+import requests
+from requests_oauthlib import OAuth1
 
 API_KEY = 'dj0yJmk9djNkNk5hRUZNODFCJmQ9WVdrOWVEbFVXRWxITTJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZW\
 NyZXQmeD1jMQ--'
@@ -100,11 +101,18 @@ class YahooWeatherService(WeatherService):
                  latitude=39.360,
                  units=weatherservice.Units()):
         WeatherService.__init__(self, longitude, latitude, units)
+        self.oauth = OAuth1(API_KEY, SHARED_SECRET)
         self.woeid = geocodeapi.get_woeid(latitude, longitude)
-        if self.woeid is not None:
-            self.y = yql.TwoLegged(API_KEY, SHARED_SECRET)
-        else:
-            self.y = None
+
+    def run_query(self):
+        q = 'select * from weather.forecast where woeid=%s' % self.woeid
+        url = 'https://query.yahooapis.com/v1/yql?q=%s' % q
+        params = {}
+        params['format'] = 'json'
+        ans = requests.get(url, auth=self.oauth, params=params)
+        if ans.status_code == 200:
+            return ans.json()
+        return None
 
     def get_weather(self, tries=3):
         weather_data = self.get_default_values()
@@ -113,12 +121,12 @@ class YahooWeatherService(WeatherService):
             if self.woeid is None:
                 print('Yahoo Weather Service, not found woeid')
                 return weather_data
-            self.y = yql.TwoLegged(API_KEY, SHARED_SECRET)
         try:
-            query = 'select * from weather.forecast where woeid="%s"' % \
-                (self.woeid)
-            ans = self.y.execute(query)
-            if ans.results is None or 'channel' not in ans.results.keys():
+            ans = self.run_query()
+            if ans is None or\
+                    'query' not in ans.keys() or\
+                    'results' not in ans['query'].keys() or\
+                    'channel' not in ans['query']['results'].keys():
                 if tries > 0:
                     tries = tries - 1
                     print('************ === ************')
@@ -126,7 +134,7 @@ class YahooWeatherService(WeatherService):
                     print('************ === ************')
                     weather_data = self.get_weather(tries)
                 return weather_data
-            data = ans.results['channel']
+            data = ans['query']['results']['channel']
             temperature = s2f(data['item']['condition']['temp'])
             velocity = s2f(data['wind']['speed'])
             direction = s2f(data['wind']['direction'])
@@ -233,6 +241,7 @@ if __name__ == "__main__":
     longitude = -0.418
     latitude = 39.360
     yws = YahooWeatherService(longitude=longitude, latitude=latitude)
+    print(yws.woeid)
     ans = yws.get_weather()
     print(ans['current_conditions']['pressure'])
     exit(0)

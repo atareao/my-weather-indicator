@@ -23,12 +23,6 @@ DATA_FILES = [
     ('/opt/extras.ubuntu.com/my-weather-indicator/bin', glob.glob('bin/*')),
     ('/opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator',
      glob.glob('src/*.py')),
-    ('/opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator\
-/yql', glob.glob('src/yql/*.py')),
-    ('/opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator\
-/oauth2', glob.glob('src/oauth2/*.py')),
-    ('/opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator\
-/oauth2/clients', glob.glob('src/oauth2/clients/*.py')),
     ('/opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator',
      glob.glob('src/*.js')),
     ('/opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator',
