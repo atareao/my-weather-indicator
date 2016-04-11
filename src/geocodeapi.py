@@ -24,6 +24,7 @@
 import sys
 import json
 from comun import read_json_from_url
+from comun import internet_on
 import locale
 import datetime
 import pytz
@@ -99,8 +100,8 @@ def get_rawOffset(timezoneId):
 
 def get_woeid(lat, lon):
     print('******* Adquiring woeids *******')
-    tries = 5
-    while(tries > 0):
+    tries = 3
+    while(tries > 0 and internet_on()):
         try:
             url = URLINV_YAHOO2 % (LANG, lat, lon)
             jsonResponse = read_json_from_url(url)

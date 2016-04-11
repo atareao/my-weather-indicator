@@ -28,6 +28,7 @@ import geocodeapi
 from comun import _
 import requests
 from requests_oauthlib import OAuth1
+from requests.exceptions import SSLError
 
 API_KEY = 'dj0yJmk9djNkNk5hRUZNODFCJmQ9WVdrOWVEbFVXRWxITTJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZW\
 NyZXQmeD1jMQ--'
@@ -108,7 +109,15 @@ class YahooWeatherService(WeatherService):
         url = 'https://query.yahooapis.com/v1/yql?q=%s' % q
         params = {}
         params['format'] = 'json'
-        ans = requests.get(url, auth=self.oauth, params=params)
+        try:
+            ans = requests.get(url, auth=self.oauth, params=params)
+        except SSLError as e:
+            '''
+            Bug #1568774
+            '''
+            print(e)
+            ans = requests.get(
+                url, auth=self.oauth, params=params, verify=False)
         if ans.status_code == 200:
             return ans.json()
         return None

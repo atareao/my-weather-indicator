@@ -1,3 +1,11 @@
+my-weather-indicator (0.7.10-0extras15.10.0) wily; urgency=medium
+
+  * Improved check connection with socket
+  * No wait for internet #1569040 and #1568978
+  * Not using ssl module for Yahoo #1568774
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 11 Apr 2016 23:37:44 +0200
+
 my-weather-indicator (0.7.9-0extras15.10.0) wily; urgency=medium
 
   * Replaced urllib for Requests. HTTP library for human beings.

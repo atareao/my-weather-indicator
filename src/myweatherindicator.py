@@ -121,6 +121,7 @@ class MWI():
         for i in range(INDICATORS):
             self.create_menu(i)
         #
+        '''
         while internet_on() == False:
             print('Waiting for internet')
             time_start = time.time()
@@ -129,7 +130,8 @@ class MWI():
                 while Gtk.events_pending():
                     Gtk.main_iteration()
                 time.sleep(0.3)
-        if not os.path.exists(comun.CONFIG_FILE):
+        '''
+        if not os.path.exists(comun.CONFIG_FILE) and internet_on():
             configuration = Configuration()
             configuration.reset()
             latitude, longitude = ipaddress.get_current_location()
@@ -575,6 +577,28 @@ class MWI():
         self.indicators[index].set_menu(main_menu)
 
     def update_menu(self, index):
+        if not internet_on():
+            if self.icon_light:
+                icon = os.path.join(
+                    comun.ICONDIR,
+                    weatherservice.CONDITIONS['not available']['icon-light'])
+            else:
+                icon = os.path.join(
+                    comun.ICONDIR,
+                    weatherservice.CONDITIONS['not available']['icon-dark'])
+            self.indicators[index].set_icon(icon)
+            self.indicators[index].set_label('', '')
+            msg = weatherservice.CONDITIONS['not available']['text']
+            msg += '\n'+_('Not Internet connection')
+            image = os.path.join(
+                comun.IMAGESDIR,
+                weatherservice.CONDITIONS['not available']['image'])
+            self.notifications[index].update(
+                'My-Weather-Indicator',
+                msg,
+                image)
+            self.notifications[index].show()
+            return
         print('--- Updating data in location %s ---' % (index))
         if self.preferences[index]['autolocation']:
             lat, lon = ipaddress.get_current_location()

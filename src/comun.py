@@ -27,6 +27,7 @@ import locale
 import gettext
 import sys
 import requests
+import socket
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
 __date__ = '$24/09/2011'
@@ -179,13 +180,18 @@ def read_json_from_url(url, timeout=0):
     return None
 
 
-def internet_on():
+def internet_on(host="8.8.8.8", port=53):
+    """
+    Host: 8.8.8.8 (google-public-dns-a.google.com)
+    OpenPort: 53/tcp
+    Service: domain (DNS/TCP)
+    """
     try:
-        ans = requests.get(OPENWEATHERMAPWEB, timeout=1)
-        if ans.status_code == 200:
-            return True
-    except Exception as e:
-        print(e)
+        socket.setdefaulttimeout(1)
+        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+        return True
+    except Exception as ex:
+        print(ex)
     return False
 
 
