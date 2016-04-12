@@ -1,3 +1,9 @@
+my-weather-indicator (0.7.10-0extras15.10.1) wily; urgency=medium
+
+  * To fix #1568774
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 12 Apr 2016 16:03:25 +0200
+
 my-weather-indicator (0.7.10-0extras15.10.0) wily; urgency=medium
 
   * Improved check connection with socket

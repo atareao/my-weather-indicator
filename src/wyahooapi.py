@@ -115,9 +115,9 @@ class YahooWeatherService(WeatherService):
             '''
             Bug #1568774
             '''
-            print(e)
-            ans = requests.get(
-                url, auth=self.oauth, params=params, verify=False)
+            print('Bug #1568774', str(e))
+            url = 'http://query.yahooapis.com/v1/yql?q=%s' % q
+            ans = requests.get(url, auth=self.oauth, params=params)
         if ans.status_code == 200:
             return ans.json()
         return None
