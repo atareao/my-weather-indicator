@@ -21,6 +21,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #
+import time
 import weatherservice
 from weatherservice import WeatherService
 from weatherservice import change_temperature
@@ -231,21 +232,15 @@ class YahooWeatherService(WeatherService):
                     weather_data['forecasts'][i]['condition_icon'] =\
                         weatherservice.get_condition(condition, 'icon-light')
         except Exception as e:
-            print('************ === ************')
-            print('Try: %s' % (tries))
-            print(e)
-            print('************ === ************')
-            if tries > 0:
-                tries = tries - 1
-                weather_data = self.get_weather(tries)
             print(e)
         return weather_data
 
 if __name__ == "__main__":
+    import pprint
     longitude = -0.418
     latitude = 39.360
     yws = YahooWeatherService(longitude=longitude, latitude=latitude)
     print(yws.woeid)
     ans = yws.get_weather()
-    print(ans['current_conditions']['pressure'])
+    pprint.pprint(ans)
     exit(0)

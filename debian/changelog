@@ -1,10 +1,10 @@
-my-weather-indicator (0.7.11-0extras15.10.0) wily; urgency=medium
+my-weather-indicator (0.7.11-0extras15.10.1) wily; urgency=medium
 
   * Fixed Weather Underground
   * Fixed Weather World Online
   * Removed tries in Yahoo and in OpenWeatherMap
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 18 Apr 2016 22:28:42 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 18 Apr 2016 23:41:07 +0200
 
 my-weather-indicator (0.7.10-0extras15.10.1) wily; urgency=medium
 
