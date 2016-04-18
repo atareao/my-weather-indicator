@@ -175,6 +175,10 @@ def read_json_from_url(url, timeout=0):
         ans = requests.get(url)
         if ans.status_code == 200:
             return ans.json()
+        else:
+            print('==== **** ====')
+            print('Error accessing url: ', ans.status_code)
+            print('==== **** ====')
     except Exception as e:
         print(e)
     return None
@@ -191,7 +195,8 @@ def internet_on(host="8.8.8.8", port=53):
         socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
         return True
     except Exception as ex:
-        print(ex)
+        print('No internet connection available.')
+        print('^^^^^', ex, '^^^^^')
     return False
 
 

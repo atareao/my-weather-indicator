@@ -397,11 +397,6 @@ def get_humidity(text):
 def is_day_now(sunrise, sunset, rawOffset):
     now = datetime.time(datetime.utcnow() + timedelta(hours=rawOffset))
     hora = ('%s:%s') % (now.hour, now.minute)
-    print('********************************************************')
-    print('********************************************************')
-    print(('%s << %s << %s') % (sunrise, hora, sunset))
-    print('********************************************************')
-    print('********************************************************')
     if time_is_lower(sunset, sunrise):
         # The sunset actually occurs on the next day based on UTC
         if time_is_lower(hora, sunrise) and time_is_upper(hora, sunset):
@@ -886,6 +881,8 @@ class WeatherService():
         forecast_information['unit_system'] = 'SI'
         #
         weather_data = {}
+        weather_data['update_time'] = 0
+        weather_data['ok'] = False
         weather_data['current_conditions'] = current_conditions
         weather_data['forecasts'] = forecast_conditions
         weather_data['forecast_information'] = forecast_information

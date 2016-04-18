@@ -122,7 +122,7 @@ class YahooWeatherService(WeatherService):
             return ans.json()
         return None
 
-    def get_weather(self, tries=3):
+    def get_weather(self):
         weather_data = self.get_default_values()
         if self.woeid is None:
             self.woeid = geocodeapi.get_woeid(self.latitude, self.longitude)
@@ -135,13 +135,9 @@ class YahooWeatherService(WeatherService):
                     'query' not in ans.keys() or\
                     'results' not in ans['query'].keys() or\
                     'channel' not in ans['query']['results'].keys():
-                if tries > 0:
-                    tries = tries - 1
-                    print('************ === ************')
-                    print('Try: %s' % (tries))
-                    print('************ === ************')
-                    weather_data = self.get_weather(tries)
                 return weather_data
+            weather_data['update_time'] = time.time()
+            weather_data['ok'] = True
             data = ans['query']['results']['channel']
             temperature = s2f(data['item']['condition']['temp'])
             velocity = s2f(data['wind']['speed'])

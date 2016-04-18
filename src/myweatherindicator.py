@@ -644,7 +644,10 @@ class MWI():
         print('****** Updating weather')
         weather = self.weatherservices[index].get_weather()
         print('****** Updated weather')
-        if weather is None:
+        print(self.weathers[index])
+        if weather is None or (weather['ok'] is False and (
+                self.weathers[index] is not None and
+                self.weathers[index]['ok'] is True)):
             return
         temporal_current_conditions = weather['current_conditions']
         conditions_changed = False

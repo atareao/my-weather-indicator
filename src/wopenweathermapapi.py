@@ -23,6 +23,7 @@
 #
 import json
 import weatherservice
+import time
 from datetime import datetime
 from weatherservice import WeatherService
 from comun import _
@@ -170,30 +171,27 @@ class OWMWeatherService(WeatherService):
             weatherdata.append(wdd)
         return weatherdata
 
-    def get_weather(self, tries=3):
+    def get_weather(self):
         weather_data = self.get_default_values()
         if self.id is None:
             self.id = find_city(self.longitude, self.latitude)
+            print('****', self.id)
         if self.id is not None:
             url = URL_CURRENT_CITY_ID % self.id
         else:
             url = URL_CURRENT_CITY_LL % (self.latitude, self.longitude)
         print('-------------------------------------------------------')
-        print('-------------------------------------------------------')
         print('OpenWeatherMap Weather Service url:%s' % (url))
         print('-------------------------------------------------------')
-        print('-------------------------------------------------------')
         parsed_json = read_json_from_url(url)
-        if parsed_json is None:
-            if tries > 0:
-                tries = tries - 1
-                weather_data = self.get_weather(tries)
-            return weather_data
-        if 'weather' not in parsed_json.keys() or\
+        if parsed_json is None or\
+                'weather' not in parsed_json.keys() or\
                 'main' not in parsed_json.keys() or\
                 'wind' not in parsed_json.keys() or\
                 'clouds' not in parsed_json.keys():
-            return None
+            return weather_data
+        weather_data['update_time'] = time.time()
+        weather_data['ok'] = True
         if parsed_json['weather'][0]['id'] not in CONDITION.keys():
             condition = 'not available'
         else:
@@ -319,9 +317,12 @@ class OWMWeatherService(WeatherService):
         return weather_data
 
 if __name__ == "__main__":
+    import pprint
     longitude = -0.418
     latitude = 39.360
     owm = OWMWeatherService(longitude=longitude, latitude=latitude)
+    pprint.pprint(owm.get_weather())
+    '''
     print(owm.get_hourly_weather())
     result = 'Fecha,Temperature,Humidity,Cloudiness\\n'
     for data in owm.get_hourly_weather():
@@ -335,3 +336,4 @@ if __name__ == "__main__":
     print(result)
     from graph import Graph
     graph = Graph(result)
+    '''
