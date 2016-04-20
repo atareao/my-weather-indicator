@@ -99,6 +99,7 @@ class MWI():
         self.weathers = []
         self.current_conditions = []
         self.preferences = []
+        self.last_update_time = 0
         # Iniciate variables
         for i in range(INDICATORS):
             self.menus.append(None)
@@ -121,27 +122,19 @@ class MWI():
         for i in range(INDICATORS):
             self.create_menu(i)
         #
-        '''
-        while internet_on() == False:
-            print('Waiting for internet')
-            time_start = time.time()
-            time_end = (time_start + 1)
-            while time_end > time.time():
-                while Gtk.events_pending():
-                    Gtk.main_iteration()
-                time.sleep(0.3)
-        '''
-        if not os.path.exists(comun.CONFIG_FILE) and internet_on():
-            configuration = Configuration()
-            configuration.reset()
-            latitude, longitude = ipaddress.get_current_location()
-            city = geocodeapi.get_inv_direction(latitude, longitude)['city']
-            if city is None:
-                city = ''
-            configuration.set('latitude', latitude)
-            configuration.set('longitude', longitude)
-            configuration.set('location', city)
-            configuration.save()
+        if not os.path.exists(comun.CONFIG_FILE):
+            if internet_on():
+                configuration = Configuration()
+                configuration.reset()
+                latitude, longitude = ipaddress.get_current_location()
+                city = geocodeapi.get_inv_direction(
+                    latitude, longitude)['city']
+                if city is None:
+                    city = ''
+                configuration.set('latitude', latitude)
+                configuration.set('longitude', longitude)
+                configuration.set('location', city)
+                configuration.save()
             cm = preferences.CM()
             if cm.run() == Gtk.ResponseType.ACCEPT:
                 cm.save_preferences()
@@ -578,6 +571,7 @@ class MWI():
 
     def update_menu(self, index):
         if not internet_on():
+            print('--- Not internet connection ---')
             if self.icon_light:
                 icon = os.path.join(
                     comun.ICONDIR,
@@ -785,6 +779,7 @@ class MWI():
             while Gtk.events_pending():
                 Gtk.main_iteration()
         print('--- End of updating data in location %s ---' % (index))
+        self.last_update_time = time.time()
 
     def menu_offon(self, ison):
         for i in range(INDICATORS):
@@ -839,7 +834,8 @@ class MWI():
         self.menu_offon(True)
 
     def menu_refresh_weather_response(self, widget, index):
-        self.work()
+        if self.last_update_time + 600 < time.time():
+            self.start_weather_updater()
 
     def menu_exit_response(self, widget):
         exit(0)
