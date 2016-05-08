@@ -27,11 +27,23 @@
 #
 import os
 import gi
+try:
+    gi.require_version('GLib', '2.0')
+    gi.require_version('AppIndicator3', '0.1')
+    gi.require_version('Gtk', '3.0')
+    gi.require_version('GdkPixbuf', '2.0')
+    gi.require_version('Notify', '0.7')
+    gi.require_version('GeocodeGlib', '1.0')
+    gi.require_version('WebKit', '3.0')
+except:
+    print('Repository version required not present')
+    exit(1)
 from gi.repository import GLib
 from gi.repository import AppIndicator3 as appindicator
 from gi.repository import Gtk
 from gi.repository import GdkPixbuf
 from gi.repository import Notify
+from gi.repository import GObject
 import sys
 import time
 import preferences
@@ -56,12 +68,7 @@ from graph import Graph
 from comun import _
 from comun import internet_on
 from weatherwidget import WeatherWidget
-
-try:
-    gi.require_version('Gtk', '3.0')
-except Exception as e:
-    print(e)
-    exit(1)
+from mooncalendarwindow import CalendarWindow
 
 INDICATORS = 2
 
@@ -82,8 +89,16 @@ def cambia(valor, a):
     return str(valor)
 
 
-class MWI():
+class MWI(GObject.Object):
+    __gsignals__ = {
+        'internet-out': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
+        'internet-in': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
+        'update-weather': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
+        'update-widgets': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
+    }
+
     def __init__(self):
+        GObject.Object.__init__(self)
         if dbus.SessionBus().request_name('es.atareao.MyWeatherIndicator') !=\
                 dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
             print("application already running")
@@ -91,6 +106,8 @@ class MWI():
         #
         self.weather_updater = 0
         self.widgets_updater = 0
+        self.internet_updater = 0
+        self.internet_connection = False
         self.menus = []
         self.indicators = []
         self.notifications = []
@@ -118,42 +135,22 @@ class MWI():
         self.notifications[1] = Notify.Notification.new('', '', None)
         self.indicators[1] = appindicator.Indicator.new(
             'My-Weather-Indicator2', 'My-Weather-Indicator', status)
-        #
         for i in range(INDICATORS):
             self.create_menu(i)
-        #
-        if not os.path.exists(comun.CONFIG_FILE):
-            if internet_on():
-                configuration = Configuration()
-                configuration.reset()
-                latitude, longitude = ipaddress.get_current_location()
-                city = geocodeapi.get_inv_direction(
-                    latitude, longitude)['city']
-                if city is None:
-                    city = ''
-                configuration.set('latitude', latitude)
-                configuration.set('longitude', longitude)
-                configuration.set('location', city)
-                configuration.save()
-            cm = preferences.CM()
-            if cm.run() == Gtk.ResponseType.ACCEPT:
-                cm.save_preferences()
-            else:
-                exit(0)
-            cm.hide()
-            cm.destroy()
         for i in range(INDICATORS):
             self.widgets[i] = None
         self.load_preferences()
 
     def update_widgets(self):
+        update = False
         utcnow = datetime.utcnow()
         for i in range(INDICATORS):
             if self.widgets[i] is not None:
                 self.widgets[i].set_datetime(utcnow)
-        return True
+                update = True
+        return update
 
-    def work(self):
+    def update_weather(self):
         print('***** refreshing weather *****')
         for i in range(INDICATORS):
             if self.preferences[i]['show']:
@@ -241,6 +238,26 @@ class MWI():
         return help_menu
 
     def load_preferences(self):
+        if not os.path.exists(comun.CONFIG_FILE):
+            if internet_on():
+                configuration = Configuration()
+                configuration.reset()
+                latitude, longitude = ipaddress.get_current_location()
+                city = geocodeapi.get_inv_direction(
+                    latitude, longitude)['city']
+                if city is None:
+                    city = ''
+                configuration.set('latitude', latitude)
+                configuration.set('longitude', longitude)
+                configuration.set('location', city)
+                configuration.save()
+            cm = preferences.CM()
+            if cm.run() == Gtk.ResponseType.ACCEPT:
+                cm.save_preferences()
+            else:
+                exit(0)
+            cm.hide()
+            cm.destroy()
         configuration = Configuration()
         self.first_time = configuration.get('first-time')
         self.refresh = configuration.get('refresh')
@@ -347,11 +364,9 @@ class MWI():
                     self.widgets[i].hide()
                     self.widgets[i].destroy()
                     self.widgets[i] = None
-        self.start_weather_updater()
-        for i in range(INDICATORS):
-            if self.preferences[i]['widget']:
-                self.start_widgets_updater()
-                return
+        print(1)
+        self.update_weather()
+        self.start_looking_for_internet()
 
     def start_widgets_updater(self):
         if self.widgets_updater > 0:
@@ -368,14 +383,39 @@ class MWI():
     def start_weather_updater(self):
         if self.weather_updater > 0:
             GLib.source_remove(self.weather_updater)
-        self.work()
+        self.update_weather()
         self.weather_updater = GLib.timeout_add_seconds(self.refresh * 3600,
-                                                        self.work)
+                                                        self.update_weather)
 
     def stop_weather_updater(self):
         if self.weather_updater > 0:
             GLib.source_remove(self.weather_updater)
             self.weather_updater = 0
+
+    def start_looking_for_internet(self):
+        if self.internet_updater > 0:
+            GLib.source_remove(self.internet_updater)
+        if self.looking_for_internet():
+            self.internet_updater = GLib.timeout_add_seconds(
+                5, self.looking_for_internet)
+
+    def stop_looking_for_internet(self):
+        if self.internet_updater > 0:
+            GLib.source_remove(self.internet_updater)
+            self.internet_updater = 0
+
+    def looking_for_internet(self):
+        print('*** Looking For Internet ***')
+        if internet_on():
+            print('*** Internet Found ***')
+            self.stop_looking_for_internet()
+            self.start_weather_updater()
+            self.start_widgets_updater()
+            return False
+        print('*** Internet Not Found ***')
+        self.stop_weather_updater()
+        self.stop_widgets_updater()
+        return True
 
     def on_pinit(self, widget, data, index):
         utcnow = datetime.utcnow()
@@ -539,6 +579,8 @@ class MWI():
             Gtk.Image.new_from_file(
                 os.path.join(comun.IMAGESDIR, 'mwig-clear-night.png')))
         self.menus[index]['moon_phase'].set_always_show_image(True)
+        self.menus[index]['moon_phase'].connect(
+            'activate', self.on_moon_clicked)
         self.menus[index]['moon_phase'].show()
         main_menu.append(self.menus[index]['moon_phase'])
         #
@@ -780,6 +822,10 @@ class MWI():
                 Gtk.main_iteration()
         print('--- End of updating data in location %s ---' % (index))
         self.last_update_time = time.time()
+
+    def on_moon_clicked(self, widget):
+        p = CalendarWindow()
+        p.show_all()
 
     def menu_offon(self, ison):
         for i in range(INDICATORS):

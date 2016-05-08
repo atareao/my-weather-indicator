@@ -40,6 +40,12 @@ class Moon(object):
             7: _('Waning Crescent')
         }[int(index) & 7]
 
+    def phase_int(self):
+        pos = self.position()
+        index = (pos * dec(8)) + dec('0.5')
+        index = math.floor(index)
+        return int(index) & 7
+
     def icon(self):
         pos = self.position()
         index = (pos * dec(28)) + dec('0.5')
@@ -49,10 +55,19 @@ class Moon(object):
             index = '0' + index
         return 'mwi-moon' + index + '.png'
 
+    def image(self):
+        pos = self.position()
+        index = (pos * dec(28)) + dec('0.5')
+        index = int(math.floor(index))
+        index = str(index)
+        if len(index) < 2:
+            index = '0' + index
+        return 'mwi-moon' + index + '.svg'
+
 if __name__ == '__main__':
     y = 2030
     m = 3
-    days = 29
+    days = 31
     for i in range(1, days):
         moon = Moon(datetime.datetime(y, m, i))
         phasename = moon.phase()

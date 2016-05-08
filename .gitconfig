@@ -1,0 +1,2 @@
+[url "git+ssh://lorenzo-carbonell@git.launchpad.net/"]
+        insteadof = lp:

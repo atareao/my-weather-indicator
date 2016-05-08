@@ -605,12 +605,12 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
 
     def on_checkbutton11_toggled(self, widget):
         self.set_sensitive_frame1(self.checkbutton11.get_active())
-        if self.checkbutton11.get_active() == False:
+        if self.checkbutton11.get_active() is False:
             self.checkbutton21.set_sensitive(False)
-        elif (self.checkbutton11.get_active() == True and
-              self.checkbutton21.get_active() == False):
+        elif (self.checkbutton11.get_active() is True and
+              self.checkbutton21.get_active() is False):
             self.checkbutton11.set_sensitive(False)
-        elif self.checkbutton21.get_sensitive() == False:
+        elif self.checkbutton21.get_sensitive() is False:
             self.checkbutton21.set_sensitive(True)
 
     def on_checkbutton14_toggled(self, widget):
@@ -623,12 +623,12 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
     def on_checkbutton21_toggled(self, widget):
         self.set_sensitive_frame2(self.checkbutton21.get_active())
         (self.checkbutton21.get_active())
-        if self.checkbutton21.get_active() == False:
+        if self.checkbutton21.get_active() is False:
             self.checkbutton11.set_sensitive(False)
-        elif (self.checkbutton21.get_active() == True and
-              self.checkbutton11.get_active() == False):
+        elif (self.checkbutton21.get_active() is True and
+              self.checkbutton11.get_active() is False):
             self.checkbutton21.set_sensitive(False)
-        elif self.checkbutton11.get_sensitive() == False:
+        elif self.checkbutton11.get_sensitive() is False:
             self.checkbutton11.set_sensitive(True)
 
     def on_checkbutton24_toggled(self, widget):

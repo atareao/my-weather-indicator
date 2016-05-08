@@ -28,6 +28,7 @@ import gettext
 import sys
 import requests
 import socket
+import urllib
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
 __date__ = '$24/09/2011'
@@ -83,7 +84,11 @@ PARAMS = {'first-time': True,
           'wp1-x': 0,
           'wp1-y': 0,
           'wp2-x': 0,
-          'wp2-y': 0
+          'wp2-y': 0,
+          'http-proxy': '',
+          'http-port': 0,
+          'https-proxy': '',
+          'https-port': 0,
           }
 
 APP = 'my-weather-indicator'
@@ -161,7 +166,7 @@ APPNAME = _(APPNAME)
 def read_from_url(url, timeout=0):
     try:
         url = url.replace(' ', '%20')
-        ans = requests.get(url)
+        ans = requests.get(url, proxies=urllib.request.getproxies())
         if ans.status_code == 200:
             return ans.text
     except Exception as e:
@@ -172,7 +177,7 @@ def read_from_url(url, timeout=0):
 def read_json_from_url(url, timeout=0):
     try:
         url = url.replace(' ', '%20')
-        ans = requests.get(url)
+        ans = requests.get(url, proxies=urllib.request.getproxies())
         if ans.status_code == 200:
             return ans.json()
         else:
@@ -191,7 +196,7 @@ def internet_on(host="8.8.8.8", port=53):
     Service: domain (DNS/TCP)
     """
     try:
-        socket.setdefaulttimeout(1)
+        socket.setdefaulttimeout(5)
         socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
         return True
     except Exception as ex:
@@ -205,3 +210,9 @@ def fromunicode(cadena):
 
 if __name__ == '__main__':
     print(internet_on())
+    connect_timeout = 5
+    try:
+        response = requests.get(url="http://www.atareao.es",
+                                timeout=(connect_timeout, 10.0))
+    except requests.exceptions.ConnectTimeout as e:
+        print("Too slow Mojo!")

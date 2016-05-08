@@ -24,13 +24,21 @@
 import os
 import sys
 import gi
+import gi
+try:
+    gi.require_version('GLib', '2.0')
+    gi.require_version('AppIndicator3', '0.1')
+    gi.require_version('Gtk', '3.0')
+    gi.require_version('GdkPixbuf', '2.0')
+    gi.require_version('Notify', '0.7')
+    gi.require_version('GeocodeGlib', '1.0')
+    gi.require_version('WebKit', '3.0')
+except:
+    print('Repository version required not present')
+    exit(1)
 from gi.repository import Gtk
 from gi.repository import Notify
 import signal
-try:
-    gi.require_version('Gtk', '3.0')
-except:
-    exit(1)
 
 
 def handleSigTERM():
@@ -57,8 +65,6 @@ my-weather-indicator')
     import comun
     from myweatherindicator import MWI
     print(machine_information.get_information())
-    print('My-Weather-Indicator version: %s' % comun.VERSION)
-    print('#####################################################')
     Notify.init('my-weather-indicator')
     mwi = MWI()
     Gtk.main()

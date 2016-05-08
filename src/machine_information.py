@@ -24,6 +24,7 @@
 #
 
 import platform
+import comun
 
 
 def get_information():
@@ -34,6 +35,7 @@ def get_information():
     information += ('Release: %s\n') % (platform.release())
     information += ('Version: %s\n') % (platform.version())
     information += ('Platform: %s\n') % (platform.platform())
+    information += ('%s version: %s\n') % (comun.APPNAME, comun.VERSION)
     information += '#####################################################\n'
     return information
 
