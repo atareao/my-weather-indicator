@@ -71,6 +71,7 @@ from weatherwidget import WeatherWidget
 from mooncalendarwindow import CalendarWindow
 
 INDICATORS = 2
+TIME_TO_CHECK = 15
 
 
 def redondea(valor):
@@ -397,7 +398,7 @@ class MWI(GObject.Object):
             GLib.source_remove(self.internet_updater)
         if self.looking_for_internet():
             self.internet_updater = GLib.timeout_add_seconds(
-                5, self.looking_for_internet)
+                TIME_TO_CHECK, self.looking_for_internet)
 
     def stop_looking_for_internet(self):
         if self.internet_updater > 0:
