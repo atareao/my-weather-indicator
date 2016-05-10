@@ -189,17 +189,11 @@ def read_json_from_url(url, timeout=0):
     return None
 
 
-def internet_on(host="8.8.8.8", port=53):
-    """
-    Host: 8.8.8.8 (google-public-dns-a.google.com)
-    OpenPort: 53/tcp
-    Service: domain (DNS/TCP)
-    """
+def internet_on(reference="http://www.baidu.com/"):
     try:
-        socket.setdefaulttimeout(5)
-        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+        urllib.request.urlopen(reference, timeout=5)
         return True
-    except Exception as ex:
+    except urllib.request.URLError:
         print('No internet connection available.')
         print('^^^^^', ex, '^^^^^')
     return False
