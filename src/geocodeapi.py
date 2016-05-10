@@ -152,7 +152,7 @@ def get_directions(search_string):
 
 def get_inv_directions(lat, lon):
     print('******* Adquiring inv directions *******')
-    location = GeocodeGlib.Location.new(lat, lon, 500)
+    location = GeocodeGlib.Location.new(lat, lon, 2000)
     reverse = GeocodeGlib.Reverse.new_for_location(location)
     aplace = reverse.resolve()
     directions = []
@@ -165,6 +165,7 @@ def get_inv_directions(lat, lon):
     direction['woeid'] = None
     direction['search_string'] = aplace.get_name()
     directions.append(direction)
+    directions = get_directions(aplace.get_name())
     return directions
 
 

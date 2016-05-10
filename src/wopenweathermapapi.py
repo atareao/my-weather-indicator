@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 #
@@ -318,8 +318,8 @@ class OWMWeatherService(WeatherService):
 
 if __name__ == "__main__":
     import pprint
-    longitude = -0.418
-    latitude = 39.360
+    longitude = -0.4016816
+    latitude = 39.3527902
     owm = OWMWeatherService(longitude=longitude, latitude=latitude)
     pprint.pprint(owm.get_weather())
     '''
