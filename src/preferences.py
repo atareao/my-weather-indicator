@@ -115,6 +115,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         self.entry11 = Gtk.Entry()
+        self.entry11.set_editable(False)
         table11.attach(self.entry11, 1, 2, 2, 3,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
@@ -488,21 +489,21 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
-        label41 = Gtk.Label.new(_('Refresh frequency')+':')
+        label41 = Gtk.Label.new(_('Refresh frequency') + ':')
         label41.set_alignment(0, 0.5)
         table3.attach(label41, 0, 1, 1, 2,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         self.liststore45 = Gtk.ListStore(str, float)
-        self.liststore45.append(['15 '+_('minutes'), 0.25])
-        self.liststore45.append(['30 '+_('minutes'), 0.5])
-        self.liststore45.append(['1 '+_('hour'), 1.0])
-        self.liststore45.append(['2 '+_('hours'), 2.0])
-        self.liststore45.append(['4 '+_('hours'), 4.0])
-        self.liststore45.append(['8 '+_('hours'), 8.0])
-        self.liststore45.append(['12 '+_('hours'), 12.0])
-        self.liststore45.append(['24 '+_('hours'), 24.0])
+        self.liststore45.append(['15 ' + _('minutes'), 0.25])
+        self.liststore45.append(['30 ' + _('minutes'), 0.5])
+        self.liststore45.append(['1 ' + _('hour'), 1.0])
+        self.liststore45.append(['2 ' + _('hours'), 2.0])
+        self.liststore45.append(['4 ' + _('hours'), 4.0])
+        self.liststore45.append(['8 ' + _('hours'), 8.0])
+        self.liststore45.append(['12 ' + _('hours'), 12.0])
+        self.liststore45.append(['24 ' + _('hours'), 24.0])
         self.combobox45 = Gtk.ComboBox.new()
         self.combobox45.set_model(self.liststore45)
         cell45 = Gtk.CellRendererText()
@@ -791,12 +792,14 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         configuration.set('show-notifications',
                           self.checkbutton13.get_active())
         configuration.set('widget1', self.checkbutton14.get_active())
-        configuration.set('onwidget1hide', self.checkbutton15.get_active())
-        configuration.set('onwidget1top', self.checkbutton16.get_active())
-        configuration.set('showintaskbar1', self.checkbutton17.get_active())
-        configuration.set('onalldesktop1', self.checkbutton18.get_active())
-        configuration.set('skin1',
-                          get_selected_value_in_combo(self.comboboxskin1))
+        if self.checkbutton14.get_active() is True:
+            configuration.set('onwidget1hide', self.checkbutton15.get_active())
+            configuration.set('onwidget1top', self.checkbutton16.get_active())
+            configuration.set('showintaskbar1',
+                              self.checkbutton17.get_active())
+            configuration.set('onalldesktop1', self.checkbutton18.get_active())
+            configuration.set('skin1',
+                              get_selected_value_in_combo(self.comboboxskin1))
         #
         configuration.set('second-location', self.checkbutton21.get_active())
         configuration.set('location2', self.location2)
@@ -806,12 +809,14 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         configuration.set('show-notifications2',
                           self.checkbutton23.get_active())
         configuration.set('widget2', self.checkbutton24.get_active())
-        configuration.set('onwidget2hide', self.checkbutton25.get_active())
-        configuration.set('onwidget2top', self.checkbutton26.get_active())
-        configuration.set('showintaskbar2', self.checkbutton27.get_active())
-        configuration.set('onalldesktop2', self.checkbutton28.get_active())
-        configuration.set('skin2',
-                          get_selected_value_in_combo(self.comboboxskin2))
+        if self.checkbutton24.get_active() is True:
+            configuration.set('onwidget2hide', self.checkbutton25.get_active())
+            configuration.set('onwidget2top', self.checkbutton26.get_active())
+            configuration.set('showintaskbar2',
+                              self.checkbutton27.get_active())
+            configuration.set('onalldesktop2', self.checkbutton28.get_active())
+            configuration.set('skin2',
+                              get_selected_value_in_combo(self.comboboxskin2))
         #
         if self.radiobutton251.get_active():
             configuration.set('weather-service', 'yahoo')

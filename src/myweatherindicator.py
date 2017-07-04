@@ -35,6 +35,7 @@ try:
     gi.require_version('Notify', '0.7')
     gi.require_version('GeocodeGlib', '1.0')
     gi.require_version('WebKit', '3.0')
+
 except:
     print('Repository version required not present')
     exit(1)
@@ -356,8 +357,7 @@ class MWI(GObject.Object):
                     self.widgets[i].hide()
                     self.widgets[i].destroy()
                     self.widgets[i] = None
-                self.widgets[i] = WeatherWidget(
-                    self.indicators[i], i)
+                self.widgets[i] = WeatherWidget(self.indicators[i], i)
                 self.widgets[i].set_datetime(utcnow)
                 self.widgets[i].set_location(self.preferences[i]['location'])
                 self.widgets[i].connect('pinit', self.on_pinit, i)

@@ -21,6 +21,12 @@
 #
 #
 #
+import gi
+try:
+    gi.require_version('GeocodeGlib', '1.0')
+except:
+    print('Repository version required not present')
+    exit(1)
 import sys
 import json
 from comun import read_json_from_url
@@ -71,17 +77,30 @@ def get_direction(search_string):
     return None
 
 
-def get_timezoneId(lat, lon):
+def get_timezoneId(latitude, longitude):
     print('****** Requesting timezone identificacion')
     try:
         json_response = read_json_from_url(
-            'http://api.geonames.org/timezoneJSON?lat=\
-            %s&lng=%s&username=atareao' % (lat, lon))
+            'http://api.geonames.org/timezoneJSON?lat=%s&lng=%s&\
+username=atareao' % (latitude, longitude))
         if json_response and 'timezoneId' in json_response.keys():
             return json_response['timezoneId']
+        raise Exception
     except Exception as e:
         print('Error requesting timezone identification: %s' % (str(e)))
-    return 'Europe/London'
+        try:
+            json_response = read_json_from_url(
+                'http://api.timezonedb.com/v2/get-time-zone?\
+key=02SRH5M6VFLC&format=json&by=position&lat=%s&lng=%s' % (latitude,
+                                                           longitude))
+            if json_response is not None and\
+                    'status' in json_response.keys() and\
+                    json_response['status'] == 'OK':
+                return json_response['zoneName']
+            raise Exception
+        except Exception as e:
+            print('Error requesting timezone identification: %s' % (str(e)))
+    return None
 
 
 def get_rawOffset(timezoneId):
@@ -170,6 +189,7 @@ def get_inv_directions(lat, lon):
 
 
 if __name__ == "__main__":
+    '''
     print(get_inv_direction(40, 0))
     print('************************************************')
     print(get_direction('Silla'))
@@ -177,3 +197,6 @@ if __name__ == "__main__":
     print(get_woeid(40, 0))
     print(get_inv_direction(39.3667, -0.4167))
     print(get_inv_direction(39.4, -0.4))
+    '''
+    print(get_timezoneId(40, 0))
+    print(get_directions('Silla'))

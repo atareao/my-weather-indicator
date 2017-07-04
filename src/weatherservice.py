@@ -62,6 +62,11 @@ CONDITIONS['blowing widespread dust'] = {
     'image': 'mwig-windy.png', 'image-night': 'mwig-windy.png',
     'icon-dark': 'mwid-windy.png', 'icon-night-dark': 'mwid-windy.png',
     'icon-light': 'mwil-windy.png', 'icon-night-light': 'mwil-windy.png'}
+CONDITIONS['blustery'] = {
+    'text': _('Blustery'), 'image': 'mwig-storm.png',
+    'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
+    'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png',
+    'icon-night-light': 'mwil-storm.png'}
 CONDITIONS['chance of a thunderstorm'] = {
     'text': _('Chance of a thunderstorm'),
     'image': 'mwig-chance-of-thunderstorms.png',

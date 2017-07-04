@@ -27,7 +27,7 @@ import locale
 import gettext
 import sys
 import requests
-import socket
+from check_connection import check_connectivity3
 import urllib
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
@@ -112,6 +112,7 @@ if is_package():
     CHANGELOG = os.path.join(APPDIR, 'changelog')
     ICON = os.path.join(ROOTDIR, 'pixmaps/my-weather-indicator.png')
     AUTOSTART = os.path.join(APPDIR, 'my-weather-indicator-autostart.desktop')
+    AEMETDB = os.path.join(APPDIR, 'spain-data.db')
 else:
     ROOTDIR = os.path.dirname(__file__)
     LANGDIR = os.path.normpath(os.path.join(ROOTDIR, '../template1'))
@@ -126,6 +127,7 @@ else:
     CHANGELOG = os.path.join(DEBIANDIR, 'changelog')
     ICON = os.path.join(IMAGESDIR, 'my-weather-indicator.png')
     AUTOSTART = os.path.join(DATADIR, 'my-weather-indicator-autostart.desktop')
+    AEMETDB = os.path.join(DATADIR, 'spain-data.db')
 
 f = open(CHANGELOG, 'r')
 line = f.readline()
@@ -182,31 +184,18 @@ def read_json_from_url(url, timeout=0):
             return ans.json()
         else:
             print('==== **** ====')
-            print('Error accessing url: ', ans.status_code)
+            print('Error accessing url: ', url, ans.status_code)
             print('==== **** ====')
     except Exception as e:
         print(e)
     return None
 
 
-def internet_on(reference="http://www.baidu.com/"):
-    try:
-        urllib.request.urlopen(reference, timeout=5)
-        return True
-    except urllib.request.URLError:
-        print('No internet connection available.')
-        print('^^^^^', ex, '^^^^^')
-    return False
+def internet_on():
+    return check_connectivity3()
 
-
-def fromunicode(cadena):
-    return cadena
 
 if __name__ == '__main__':
+    print(' === ')
     print(internet_on())
-    connect_timeout = 5
-    try:
-        response = requests.get(url="http://www.atareao.es",
-                                timeout=(connect_timeout, 10.0))
-    except requests.exceptions.ConnectTimeout as e:
-        print("Too slow Mojo!")
+    print(' ======= ')

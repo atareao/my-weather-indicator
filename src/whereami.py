@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 #
 #
-#
 # Copyright (C) 2012 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
 #
@@ -18,17 +17,23 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
 
+import gi
+try:
+    gi.require_version('Gtk', '3.0')
+    gi.require_version('OsmGpsMap', '1.0')
+    gi.require_version('GLib', '2.0')
+except Exception as e:
+    print(e)
+    exit(-1)
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import WebKit
-import queue as queue
+from gi.repository import OsmGpsMap
+from geolocation import get_latitude_longitude_city
+from async import async_function
 import geocodeapi
 import comun
-import time
 from comun import _
 
 
@@ -36,14 +41,6 @@ def match_anywhere(completion, entrystr, iter, data):
     modelstr = completion.get_model()[iter][2]['city'].lower()
     print(entrystr, modelstr)
     return modelstr.startswith(entrystr.lower())
-
-
-def wait(time_lapse):
-    time_start = time.time()
-    time_end = (time_start + time_lapse)
-    while time_end > time.time():
-        while Gtk.events_pending():
-            Gtk.main_iteration()
 
 
 class WhereAmI(Gtk.Dialog):
@@ -136,34 +133,45 @@ class WhereAmI(Gtk.Dialog):
         scrolledwindow.set_shadow_type(Gtk.ShadowType.IN)
         vbox.pack_start(scrolledwindow, True, True, 0)
         #
-        self.viewer = WebKit.WebView()
-        self.viewer.connect('title-changed', self.title_changed)
-        self.viewer.connect('geolocation-policy-decision-requested',
-                            self.on_permission_request)
-        self.viewer.open('file://' + comun.HTML_WAI)
-        # self.viewer.open('/home/atareao/Escritorio/whereami.html')
+        self.viewer = OsmGpsMap.Map()
+        self.viewer.layer_add(OsmGpsMap.MapOsd(show_dpad=True,
+                                               show_zoom=True,
+                                               show_crosshair=True))
+        # connect keyboard shortcuts
+        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.FULLSCREEN,
+                                          Gdk.keyval_from_name("F11"))
+        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.UP,
+                                          Gdk.keyval_from_name("Up"))
+        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.DOWN,
+                                          Gdk.keyval_from_name("Down"))
+        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.LEFT,
+                                          Gdk.keyval_from_name("Left"))
+        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.RIGHT,
+                                          Gdk.keyval_from_name("Right"))
         scrolledwindow.add(self.viewer)
-        scrolledwindow.set_size_request(450, 350)
-        #
-        self.coordinates = None
-        self.time = time.time()
-        self.message_queue = queue.Queue()
+        scrolledwindow.set_size_request(550, 550)
+
         #
         self.show_all()
         #
         self.set_wait_cursor()
-        while(self.viewer.get_load_status() != WebKit.LoadStatus.FINISHED):
-            wait(1)
         self.search_string = ''
         self.locality = ''
-        if location and len(location) > 0:
-            self.entry1.set_text(location)
-            self.locality = location
-            self.on_button1_clicked(None)
-        elif latitude and longitude:
-            self.search_location(latitude, longitude)
+        print('============================')
+        print(location, latitude, longitude)
+        print('============================')
+        if latitude and longitude:
+            self.latitude = latitude
+            self.longitude = longitude
+            self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
+            if location is not None and len(location) > 0:
+                self.locality = location
+                print(1)
+                self.entry1.set_text(location)
+            else:
+                print(2)
+                self.do_search_location(latitude, longitude)
         else:
-            # latitude,longitude = ipaddress.get_current_location()
             self.search_location2()
         self.set_normal_cursor()
 
@@ -181,7 +189,7 @@ class WhereAmI(Gtk.Dialog):
                 self.locality = model[aiter][0]
                 self.lat = model[aiter][3]
                 self.lng = model[aiter][4]
-                self.web_send('center(%s, %s)' % (self.lat, self.lng))
+                self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
 
     def on_icon_press(self, widget, icon_pos, event):
         if icon_pos == Gtk.EntryIconPosition.PRIMARY:
@@ -194,11 +202,27 @@ class WhereAmI(Gtk.Dialog):
         return True
 
     def on_button2_clicked(self, widget):
+        self.do_center()
+
+    def do_center(self):
+        def on_center_done(result, error):
+            print(result)
+            if result is not None:
+                latitude, longitude, city = result
+                self.lat = latitude
+                self.lng = longitude
+                self.locality = city
+                self.entry1.set_text(city)
+                print(self.lat, self.lng)
+                self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
+            self.set_normal_cursor()
+
+        @async_function(on_done=on_center_done)
+        def do_center_in_thread():
+            return get_latitude_longitude_city()
+
         self.set_wait_cursor()
-        # latitude,longitude = ipaddress.get_current_location()
-        self.set_normal_cursor()
-        # self.search_location(latitude,longitude)
-        self.search_location2()
+        do_center_in_thread()
 
     def on_button1_clicked(self, widget):
         self.set_wait_cursor()
@@ -221,24 +245,35 @@ class WhereAmI(Gtk.Dialog):
         self.set_normal_cursor()
 
     def search_location2(self):
-        self.set_wait_cursor()
-        self.web_send('findme()')
-        self.set_normal_cursor()
+        self.do_center()
 
-    def search_location(self, latitude, longitude):
+    def do_search_location(self, latitude, longitude):
+        def on_search_location_done(result, error):
+            print(6)
+            print(result)
+            if result is not None:
+                self.lat = result['lat']
+                self.lng = result['lng']
+                if result['city'] is None:
+                    if result['state'] is not None:
+                        city = result['state']
+                    else:
+                        city = result['country']
+                else:
+                    city = result['city']
+                self.locality = city
+                self.entry1.set_text(city)
+                self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
+            self.set_normal_cursor()
+
+        @async_function(on_done=on_search_location_done)
+        def do_search_location_in_thread(latitude, longitude):
+            print(5)
+            return geocodeapi.get_inv_direction(latitude, longitude)
+        print(3)
         self.set_wait_cursor()
-        direction = geocodeapi.get_inv_direction(latitude, longitude)
-        print(direction)
-        if direction is not None and\
-                'city' in direction.keys() and\
-                direction['city'] is not None and\
-                len(direction['city']) > 0:
-            self.lat = direction['lat']
-            self.lng = direction['lng']
-            self.locality = direction['city']
-            self.entry1.set_text(direction['city'])
-            self.web_send('center(%s, %s)' % (self.lat, self.lng))
-        self.set_normal_cursor()
+        print(4)
+        do_search_location_in_thread(latitude, longitude)
 
     def on_close_application(self, widget):
         self.set_normal_cursor()
@@ -246,60 +281,6 @@ class WhereAmI(Gtk.Dialog):
 
     def get_lat_lon_loc(self):
         return self.lat, self.lng, self.locality
-
-    '''
-    ##########################ENGINE####################################
-    '''
-
-    def inicialize(self):
-        self.web_send('mlat=%s;' % (self.lat))
-        self.web_send('mlon=%s;' % (self.lon))
-
-    def work(self):
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-        msg = self.web_recv()
-        print(' **** msg **** ')
-        print(msg)
-        print(' **** *** **** ')
-        if msg:
-            try:
-                if msg.startswith('lon='):
-                    longitude, latitude = msg.split(',')
-                    longitude = longitude[4:]
-                    latitude = latitude[4:]
-                    self.search_location(latitude, longitude)
-                    print(self.lat, self.lng)
-                    print(latitude, longitude)
-                    self.lat = latitude
-                    self.lng = longitude
-                    self.web_send('center(%s, %s)' % (self.lat, self.lng))
-            except Exception as e:
-                msg = None
-                print('Error: %s' % e)
-        if msg == 'exit':
-            self.close_application(None)
-
-    '''
-    #########################BROWSER####################################
-    '''
-
-    def title_changed(self, widget, frame, title):
-        if title != 'null':
-            self.message_queue.put(title)
-            self.work()
-
-    def web_recv(self):
-        if self.message_queue.empty():
-            return None
-        else:
-            msg = self.message_queue.get()
-            print('recivied: %s' % (msg))
-            return msg
-
-    def web_send(self, msg):
-        print('send: %s' % (msg))
-        self.viewer.execute_script(msg)
 
     def set_wait_cursor(self):
         self.get_root_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
@@ -310,6 +291,7 @@ class WhereAmI(Gtk.Dialog):
         self.get_root_window().set_cursor(Gdk.Cursor(Gdk.CursorType.ARROW))
         while Gtk.events_pending():
             Gtk.main_iteration()
+
 
 if __name__ == '__main__':
     cm = WhereAmI()

@@ -253,6 +253,7 @@ class WeatherWidget(Gtk.Window):
             else:
                 self.indicator.set_status(appindicator.IndicatorStatus.PASSIVE)
         if event.button == 1:
+            print(int(event.x_root), int(event.y_root), event.time)
             self.begin_move_drag(
                 1, int(event.x_root), int(event.y_root), event.time)
             return True

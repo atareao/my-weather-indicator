@@ -1,11 +1,11 @@
-my-weather-indicator (0.8.1-0extras16.04.0) xenial; urgency=medium
+my-weather-indicator (0.8.1-0extras16.04.1) xenial; urgency=medium
 
   * Added moon phases window
   * Added proxy from system
   * Without internet wait for connection
   * Fixed minor bugs
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 10 May 2016 22:37:52 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Thu, 12 May 2016 20:47:08 +0200
 
 my-weather-indicator (0.7.11-0extras15.10.2) wily; urgency=medium
 

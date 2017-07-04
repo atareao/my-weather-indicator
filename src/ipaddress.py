@@ -24,6 +24,9 @@
 #
 import dbus
 import sys
+import comun
+import re
+import json
 from functools import partial
 from collections import namedtuple
 from geocodeapi import get_inv_direction
@@ -63,7 +66,7 @@ def convert(dbus_obj):
         return dbus_obj
 
 
-def get_current_location():
+def get_current_location2():
     '''Gets the current location from geolocation via IP (only method
        currently supported)'''
     latitude = 0
@@ -97,6 +100,21 @@ def get_current_location():
     return latitude, longitude
 
 
+def get_ip():
+    # url = 'http://checkip.dyndns.com/'
+    url = 'http://whatismyip.org'
+    ans = comun.read_from_url(url)
+    # print(ans)
+    return re.compile(r'(\d+\.\d+\.\d+\.\d+)').search(ans).group(1)
+
+
+def get_current_location():
+    url = 'http://geoip.nekudo.com/api/'
+    print(url)
+    ans = json.loads(comun.read_from_url(url))
+    return ans['location']['latitude'], ans['location']['longitude']
+
+
 def get_address_from_ip():
     lat, lon = get_current_location()
     ans = get_inv_direction(lat, lon)
@@ -104,6 +122,10 @@ def get_address_from_ip():
 
 
 if __name__ == "__main__":
-    # print(get_ip())
-    print(get_current_location())
-    print(get_address_from_ip())
+    import requests
+    #r = requests.get("https://stackoverflow.com")
+
+    #print(get_ip())
+    print(get_current_location2())
+    #print(get_current_location())
+    # print(get_address_from_ip())

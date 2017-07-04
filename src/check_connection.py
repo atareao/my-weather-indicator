@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # A library for access to geocode for address
@@ -20,9 +20,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+import requests
 import urllib.request
 import urllib.parse
-import requests
 import socket
 import time
 import http.client
@@ -38,7 +38,7 @@ def check_connectivity1(reference):
 
 def check_connectivity2(reference, timeout=5):
     try:
-        _ = requests.get(reference, timeout=timeout)
+        requests.get(reference, timeout=timeout, verify=False)
         return True
     except requests.ConnectionError:
         print("No internet connection available.")
@@ -87,10 +87,11 @@ def check_connectivity5():
                 urllib.parse.urlparse(data.geturl()).hostname))
     return True
 
+
 if __name__ == '__main__':
     TESTURL = 'https://www.google.com'
     atime = time.time()
-    print(1, check_connectivity1(TESTURL), time.time() - atime)
+    #print(1, check_connectivity1(TESTURL), time.time() - atime)
     atime = time.time()
     print(2, check_connectivity2(TESTURL), time.time() - atime)
     atime = time.time()

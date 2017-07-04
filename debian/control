@@ -2,8 +2,8 @@ Source: my-weather-indicator
 Section: utils
 Priority: extra
 Maintainer: Lorenzo Carbonell Cerezo <lorenzo.carbonell.cerezo@gmail.com>
-Build-Depends: debhelper (>= 8), python, python-distutils-extra, python-polib
-Standards-Version: 3.9.3
+Build-Depends: debhelper (>= 9), python, python-distutils-extra, python-polib
+Standards-Version: 3.9.5
 Homepage: http://www.atareao.es
 
 Package: my-weather-indicator
@@ -16,6 +16,7 @@ Depends: ${misc:Depends}, ${python:Depends},
     gir1.2-notify-0.7,
     gir1.2-webkit-3.0,
     gir1.2-geocodeglib-1.0,
+    gir1.2-osmgpsmap-1.0,
     python3-tz,
     python3-cairo,
     python3-lxml,
