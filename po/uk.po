@@ -978,7 +978,7 @@ msgstr "Недоступно"
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:862
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:863
 msgid "Down all day"
-msgstr ""
+msgstr "Опускається увесь день"
 
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:764
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:765
@@ -995,7 +995,7 @@ msgstr ""
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:865
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/weatherservice.py:866
 msgid "Up all day"
-msgstr ""
+msgstr "Піднімається увесь день"
 
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/forecastw.py:84
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:403
@@ -1145,7 +1145,7 @@ msgstr "Показувати на панелі задач"
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:143
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:211
 msgid "On all desktops"
-msgstr ""
+msgstr "На всіх стільницях"
 
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:159
 msgid "Second Location"
@@ -1275,7 +1275,7 @@ msgstr "24 г."
 
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:411
 msgid "AM/PM"
-msgstr "AM/PM"
+msgstr "12 г."
 
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/preferences.py:427
 msgid "Autostart"
@@ -1333,7 +1333,7 @@ msgstr "Знайти мене"
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:94
 #, fuzzy
 msgid "Locations found"
-msgstr "знайдені місця"
+msgstr "Знайдені місця"
 
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/whereami.py:113
 msgid "City"
@@ -1393,7 +1393,7 @@ msgstr "Прогноз на мапі"
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:424
 #, fuzzy
 msgid "Update weather"
-msgstr "Щойно оновлено"
+msgstr "Оновити прогноз"
 
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:435
 #: /home/lorenzo/CloudStation/Programacion/Python/current/my-weather-indicator/src/myweatherindicator.py:634
