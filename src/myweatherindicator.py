@@ -35,8 +35,8 @@ try:
     gi.require_version('Notify', '0.7')
     gi.require_version('GeocodeGlib', '1.0')
     gi.require_version('WebKit', '3.0')
-
-except:
+except Exception as e:
+    print(e)
     print('Repository version required not present')
     exit(1)
 from gi.repository import GLib
@@ -45,16 +45,13 @@ from gi.repository import Gtk
 from gi.repository import GdkPixbuf
 from gi.repository import Notify
 from gi.repository import GObject
-import sys
 import time
 import preferences
 import dbus
-import time
 import webbrowser
 from datetime import datetime
 from forecastw import FC
 from openweathermap import ForecastMap
-from preferences import CM
 from configurator import Configuration
 import ipaddress
 import geocodeapi
@@ -77,7 +74,7 @@ TIME_TO_CHECK = 15
 
 def redondea(valor):
     valor = valor * 10.0
-    return int(valor)/10.0
+    return int(valor) / 10.0
 
 
 def cambia(valor, a):
@@ -205,9 +202,9 @@ class MWI(GObject.Object):
         #
         twitter_item = Gtk.MenuItem(label=_(
             'Follow me in Twitter'))
-        twitter_item.connect('activate',
-                             lambda x: webbrowser.open(
-                                'https://twitter.com/atareao'))
+        twitter_item.connect(
+            'activate',
+            lambda x: webbrowser.open('https://twitter.com/atareao'))
         twitter_item.show()
         help_menu.append(twitter_item)
         #
@@ -222,9 +219,9 @@ class MWI(GObject.Object):
         #
         facebook_item = Gtk.MenuItem(label=_(
             'Follow me in Facebook'))
-        facebook_item.connect('activate',
-                              lambda x: webbrowser.open(
-                                'http://www.facebook.com/elatareao'))
+        facebook_item.connect(
+            'activate',
+            lambda x: webbrowser.open('http://www.facebook.com/elatareao'))
         facebook_item.show()
         help_menu.append(facebook_item)
         #
@@ -626,7 +623,7 @@ class MWI(GObject.Object):
             self.indicators[index].set_icon(icon)
             self.indicators[index].set_label('', '')
             msg = weatherservice.CONDITIONS['not available']['text']
-            msg += '\n'+_('Not Internet connection')
+            msg += '\n' + _('Not Internet connection')
             image = os.path.join(
                 comun.IMAGESDIR,
                 weatherservice.CONDITIONS['not available']['image'])
@@ -687,7 +684,6 @@ class MWI(GObject.Object):
                 self.weathers[index]['ok'] is True)):
             return
         temporal_current_conditions = weather['current_conditions']
-        conditions_changed = False
         if len(temporal_current_conditions) != 0:
             self.current_conditions[index] = temporal_current_conditions
             self.weathers[index] = weather
@@ -700,7 +696,7 @@ class MWI(GObject.Object):
             self.menus[index]['humidity'].set_label(
                 _('Humidity') + ': ' +
                 self.current_conditions[index]['humidity'])
-            self.menus[index]['feels_like'].set_label(_('Feels like')+': \
+            self.menus[index]['feels_like'].set_label(_('Feels like') + ': \
 {0}{1:c}'.format(self.current_conditions[index]['feels_like'], 176))
             self.menus[index]['dew_point'].set_label(_('Dew Point') + ': \
 {0}{1:c}'.format(self.current_conditions[index]['dew_point'], 176))
@@ -714,28 +710,23 @@ class MWI(GObject.Object):
                 self.menus[index]['wind'].set_image(image)
             self.menus[index]['condition'].set_label(
                 self.current_conditions[index]['condition_text'])
-            afile = os.path.join(
-                comun.IMAGESDIR,
-                self.current_conditions[index]['condition_image'])
             self.menus[index]['condition'].set_image(
                 Gtk.Image.new_from_file(os.path.join(
                     comun.IMAGESDIR,
                     self.current_conditions[index]['condition_image'])))
-            filename = os.path.join(
-                comun.WIMAGESDIR,
-                self.current_conditions[index]['condition_image'])
             if self.widgets[index] is not None:
                 self.widgets[index].set_location(
                     self.preferences[index]['location'])
                 self.widgets[index].set_weather(weather)
             self.menus[index]['dawn'].set_label(
-                _('Dawn')+': '+self.current_conditions[index]['dawn'])
+                _('Dawn') + ': ' + self.current_conditions[index]['dawn'])
             self.menus[index]['sunrise'].set_label(
-                _('Sunrise')+': '+self.current_conditions[index]['sunrise'])
+                _('Sunrise') + ': ' +
+                self.current_conditions[index]['sunrise'])
             self.menus[index]['sunset'].set_label(
-                _('Sunset')+': '+self.current_conditions[index]['sunset'])
+                _('Sunset') + ': ' + self.current_conditions[index]['sunset'])
             self.menus[index]['dusk'].set_label(
-                _('Dusk')+': '+self.current_conditions[index]['dusk'])
+                _('Dusk') + ': ' + self.current_conditions[index]['dusk'])
             self.menus[index]['moon_phase'].set_label(
                 self.current_conditions[index]['moon_phase'])
             self.menus[index]['moon_phase'].set_image(
@@ -802,14 +793,14 @@ class MWI(GObject.Object):
                     self.current_conditions[index]['condition_icon_dark'])
             self.indicators[index].set_icon(icon)
             if self.preferences[index]['show-notifications'] is True:
-                msg = _('Conditions in')+' '
+                msg = _('Conditions in') + ' '
                 msg += self.preferences[index]['location'] + '\n'
-                msg += _('Temperature')+': ' +\
+                msg += _('Temperature') + ': ' +\
                     self.current_conditions[index]['temperature'] + '\n'
                 msg += _('Humidity') + ': ' + \
                     self.current_conditions[index]['humidity'] + '\n'
                 msg += _('Wind') + ': ' +\
-                    self.current_conditions[index]['wind_condition']+'\n'
+                    self.current_conditions[index]['wind_condition'] + '\n'
                 msg += self.current_conditions[index]['condition_text']
                 image = os.path.join(
                     comun.IMAGESDIR,
@@ -838,9 +829,9 @@ class MWI(GObject.Object):
 
     def menu_forecast_map_response(self, widget, index):
         self.menu_offon(False)
-        fc = ForecastMap(self.preferences[index]['latitude'],
-                         self.preferences[index]['longitude'],
-                         self.units.temperature)
+        ForecastMap(self.preferences[index]['latitude'],
+                    self.preferences[index]['longitude'],
+                    self.units.temperature)
         self.menu_offon(True)
 
     def menu_evolution_response(self, widget, index):
@@ -856,16 +847,15 @@ class MWI(GObject.Object):
             humidities.append([value, float(data['avehumidity'])])
             cloudinesses.append([value, float(data['cloudiness'])])
         title = _('Forecast for next hours')
-        subtitle = _('Weather service')+': OpenWeatherMap'
-        graph = Graph(title, subtitle, temperature=temperatures,
-                      humidity=humidities, cloudiness=cloudinesses)
+        subtitle = _('Weather service') + ': OpenWeatherMap'
+        Graph(title, subtitle, temperature=temperatures, humidity=humidities,
+              cloudiness=cloudinesses)
         self.menu_offon(True)
 
     def menu_forecast_response(self, widget, index):
         self.menu_offon(False)
         self.preferences[index]['location']
-        fc = FC(self.preferences[index]['location'], self.ws,
-                self.weathers[index])
+        FC(self.preferences[index]['location'], self.ws, self.weathers[index])
         self.menu_offon(True)
 
     def menu_set_preferences_response(self, widget):
