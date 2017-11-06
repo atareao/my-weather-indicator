@@ -24,7 +24,6 @@
 import os
 import sys
 import gi
-import gi
 try:
     gi.require_version('GLib', '2.0')
     gi.require_version('AppIndicator3', '0.1')
