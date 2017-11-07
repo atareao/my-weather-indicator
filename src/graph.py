@@ -126,6 +126,7 @@ cloudiness);' % (self.title, self.subtitle, self.humidity, self.cloudiness,
     def close_application(self, widget):
         self.destroy()
 
+
 if __name__ == '__main__':
     title = 'Title'
     subtitle = 'Subtitle'

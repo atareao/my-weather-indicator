@@ -45,7 +45,7 @@ def s2f(cadena):
 
 
 def from_utc_to_local(value, rawOffset=0):
-    value +=rawOffset
+    value += rawOffset
     if value < 0:
         value = value + 24
     if value > 24:
@@ -557,10 +557,10 @@ class Sun:
         """
         Return julian day.
         """
-        if calendar.isleap(year):# Bissextil year, 366 days
+        if calendar.isleap(year):  # Bissextil year, 366 days
             lMonth = [0, 31, 60, 91, 121, 152,
                       182, 213, 244, 274, 305, 335, 366]
-        else:# Normal year, 365 days
+        else:  # Normal year, 365 days
             lMonth = [0, 31, 59, 90, 120, 151, 181, 212,
                       243, 273, 304, 334, 365]
 

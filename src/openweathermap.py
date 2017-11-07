@@ -124,5 +124,6 @@ class ForecastMap(Gtk.Dialog):
     def close_application(self, widget):
         self.destroy()
 
+
 if __name__ == '__main__':
     forecastmap = ForecastMap(39.36873, -2.417274645879)

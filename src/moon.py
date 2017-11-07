@@ -64,6 +64,7 @@ class Moon(object):
             index = '0' + index
         return 'mwi-moon' + index + '.svg'
 
+
 if __name__ == '__main__':
     y = 2030
     m = 3

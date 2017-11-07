@@ -84,7 +84,7 @@ def check_connectivity5():
     # Ensure conn_url is an IPv4 address otherwise future queries will fail
     conn_url = 'http://' + (
         host[0] if len(host) == 2 else socket.gethostbyname(
-                urllib.parse.urlparse(data.geturl()).hostname))
+            urllib.parse.urlparse(data.geturl()).hostname))
     return True
 
 

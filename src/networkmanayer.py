@@ -26,6 +26,7 @@ try:
 except:
     debug = lambda *args: None
 
+
 class NMDbusInterface(object):
     bus = dbus.SystemBus()
     dbus_service = 'org.freedesktop.NetworkManager'
@@ -55,6 +56,7 @@ class NMDbusInterface(object):
             data = self.proxy.Get(self.interface_name, name, dbus_interface='org.freedesktop.DBus.Properties')
             debug("Received property %s.%s" % (self.interface_name, name), data)
             return self.postprocess(name, self.unwrap(data))
+
         def set_func(self, value):
             value = self.wrap(self.preprocess(name, (value,), {})[0][0])
             debug("Setting property %s.%s" % (self.interface_name, name), value)
@@ -67,13 +69,13 @@ class NMDbusInterface(object):
         if isinstance(val, (dbus.Array, list, tuple)):
             return [self.unwrap(x) for x in val]
         if isinstance(val, (dbus.Dictionary, dict)):
-            return dict([(self.unwrap(x), self.unwrap(y)) for x,y in val.items()])
+            return dict([(self.unwrap(x), self.unwrap(y)) for x, y in val.items()])
         if isinstance(val, dbus.ObjectPath):
             if val.startswith('/org/freedesktop/NetworkManager/'):
                 classname = val.split('/')[4]
                 classname = {
-                   'Settings': 'Connection',
-                   'Devices': 'Device',
+                    'Settings': 'Connection',
+                    'Devices': 'Device',
                 }.get(classname, classname)
                 return globals()[classname](val)
         if isinstance(val, (dbus.Signature, dbus.String)):
@@ -102,7 +104,7 @@ class NMDbusInterface(object):
                 return [self.wrap(x) for x in val]
         return val
 
-    def  __getattr__(self, name):
+    def __getattr__(self, name):
         try:
             return super(NMDbusInterface, self).__getattribute__(name)
         except AttributeError:
@@ -134,6 +136,7 @@ class NMDbusInterface(object):
     def preprocess(self, name, args, kwargs):
         return args, kwargs
 
+
 class NetworkManager(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager'
     object_path = '/org/freedesktop/NetworkManager'
@@ -152,26 +155,32 @@ class NetworkManager(NMDbusInterface):
                 settings['802-11-wireless']['ssid'] = fixups.ssid_to_dbus(settings['802-11-wireless']['ssid'])
             if 'ipv4' in settings:
                 if 'addresses' in settings['ipv4']:
-                    settings['ipv4']['addresses'] = [fixups.addrconf_to_dbus(addr,socket.AF_INET) for addr in settings['ipv4']['addresses']]
+                    settings['ipv4']['addresses'] = [fixups.addrconf_to_dbus(addr, socket.AF_INET) for addr in settings['ipv4']['addresses']]
                 if 'routes' in settings['ipv4']:
-                    settings['ipv4']['routes'] = [fixups.route_to_dbus(route,socket.AF_INET) for route in settings['ipv4']['routes']]
+                    settings['ipv4']['routes'] = [fixups.route_to_dbus(route, socket.AF_INET) for route in settings['ipv4']['routes']]
                 if 'dns' in settings['ipv4']:
-                    settings['ipv4']['dns'] = [fixups.addr_to_dbus(addr,socket.AF_INET) for addr in settings['ipv4']['dns']]
+                    settings['ipv4']['dns'] = [fixups.addr_to_dbus(addr, socket.AF_INET) for addr in settings['ipv4']['dns']]
             if 'ipv6' in settings:
                 if 'addresses' in settings['ipv6']:
-                    settings['ipv6']['addresses'] = [fixups.addrconf_to_dbus(addr,socket.AF_INET6) for addr in settings['ipv6']['addresses']]
+                    settings['ipv6']['addresses'] = [fixups.addrconf_to_dbus(addr, socket.AF_INET6) for addr in settings['ipv6']['addresses']]
                 if 'routes' in settings['ipv6']:
-                    settings['ipv6']['routes'] = [fixups.route_to_dbus(route,socket.AF_INET6) for route in settings['ipv6']['routes']]
+                    settings['ipv6']['routes'] = [fixups.route_to_dbus(route, socket.AF_INET6) for route in settings['ipv6']['routes']]
                 if 'dns' in settings['ipv6']:
-                    settings['ipv6']['dns'] = [fixups.addr_to_dbus(addr,socket.AF_INET6) for addr in settings['ipv6']['dns']]
+                    settings['ipv6']['dns'] = [fixups.addr_to_dbus(addr, socket.AF_INET6) for addr in settings['ipv6']['dns']]
         return args, kwargs
+
+
 NetworkManager = NetworkManager()
+
 
 class Settings(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Settings'
     object_path = '/org/freedesktop/NetworkManager/Settings'
     preprocess = NetworkManager.preprocess
+
+
 Settings = Settings()
+
 
 class Connection(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Settings.Connection'
@@ -204,18 +213,20 @@ class Connection(NMDbusInterface):
                 if 'bssid' in val_:
                     val_['bssid'] = fixups.mac_to_python(val_['bssid'])
             if 'ipv4' in val:
-                val['ipv4']['addresses'] = [fixups.addrconf_to_python(addr,socket.AF_INET) for addr in val['ipv4']['addresses']]
-                val['ipv4']['routes'] = [fixups.route_to_python(route,socket.AF_INET) for route in val['ipv4']['routes']]
-                val['ipv4']['dns'] = [fixups.addr_to_python(addr,socket.AF_INET) for addr in val['ipv4']['dns']]
+                val['ipv4']['addresses'] = [fixups.addrconf_to_python(addr, socket.AF_INET) for addr in val['ipv4']['addresses']]
+                val['ipv4']['routes'] = [fixups.route_to_python(route, socket.AF_INET) for route in val['ipv4']['routes']]
+                val['ipv4']['dns'] = [fixups.addr_to_python(addr, socket.AF_INET) for addr in val['ipv4']['dns']]
             if 'ipv6' in val:
-                val['ipv6']['addresses'] = [fixups.addrconf_to_python(addr,socket.AF_INET6) for addr in val['ipv6']['addresses']]
-                val['ipv6']['routes'] = [fixups.route_to_python(route,socket.AF_INET6) for route in val['ipv6']['routes']]
-                val['ipv6']['dns'] = [fixups.addr_to_python(addr,socket.AF_INET6) for addr in val['ipv6']['dns']]
+                val['ipv6']['addresses'] = [fixups.addrconf_to_python(addr, socket.AF_INET6) for addr in val['ipv6']['addresses']]
+                val['ipv6']['routes'] = [fixups.route_to_python(route, socket.AF_INET6) for route in val['ipv6']['routes']]
+                val['ipv6']['dns'] = [fixups.addr_to_python(addr, socket.AF_INET6) for addr in val['ipv6']['dns']]
         return val
     preprocess = NetworkManager.preprocess
 
+
 class ActiveConnection(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Connection.Active'
+
 
 class Device(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device'
@@ -238,10 +249,11 @@ class Device(NMDbusInterface):
 
     def postprocess(self, name, val):
         if name == 'Ip4Address':
-            return fixups.addr_to_python(val,socket.AF_INET)
+            return fixups.addr_to_python(val, socket.AF_INET)
         if name == 'Ip6Address':
-            return fixups.addr_to_python(val,socket.AF_INET6)
+            return fixups.addr_to_python(val, socket.AF_INET6)
         return val
+
 
 class AccessPoint(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.AccessPoint'
@@ -253,93 +265,115 @@ class AccessPoint(NMDbusInterface):
             return fixups.strength_to_python(val)
         return val
 
+
 class Wired(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Wired'
+
 
 class Wireless(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Wireless'
 
+
 class Modem(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Modem'
+
 
 class Bluetooth(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Bluetooth'
 
+
 class OlpcMesh(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.OlpcMesh'
+
 
 class Wimax(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Wimax'
 
+
 class Infiniband(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Infiniband'
+
 
 class Bond(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Bond'
 
+
 class Bridge(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Bridge'
+
 
 class Vlan(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Vlan'
 
+
 class Adsl(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.adsl'
+
 
 class Generic(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Device.Generic'
 
+
 class NSP(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.Wimax.NSP'
+
 
 class IP4Config(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.IP4Config'
 
     def postprocess(self, name, val):
         if name == 'Addresses':
-            return [fixups.addrconf_to_python(addr,socket.AF_INET) for addr in val]
+            return [fixups.addrconf_to_python(addr, socket.AF_INET) for addr in val]
         if name == 'Routes':
-            return [fixups.route_to_python(route,socket.AF_INET) for route in val]
+            return [fixups.route_to_python(route, socket.AF_INET) for route in val]
         if name in ('Nameservers', 'WinsServers'):
-            return [fixups.addr_to_python(addr,socket.AF_INET) for addr in val]
+            return [fixups.addr_to_python(addr, socket.AF_INET) for addr in val]
         return val
+
 
 class IP6Config(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.IP6Config'
 
     def postprocess(self, name, val):
         if name == 'Addresses':
-            return [fixups.addrconf_to_python(addr,socket.AF_INET6) for addr in val]
+            return [fixups.addrconf_to_python(addr, socket.AF_INET6) for addr in val]
         if name == 'Routes':
-            return [fixups.route_to_python(route,socket.AF_INET6) for route in val]
+            return [fixups.route_to_python(route, socket.AF_INET6) for route in val]
         if name in ('Nameservers', 'WinsServers'):
-            return [fixups.addr_to_python(addr,socket.AF_INET6) for addr in val]
+            return [fixups.addr_to_python(addr, socket.AF_INET6) for addr in val]
         return val
+
 
 class DHCP4Config(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.DHCP4Config'
 
+
 class DHCP6Config(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.DHCP6Config'
+
 
 class AgentManager(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.AgentManager'
 
+
 class SecretAgent(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.SecretAgent'
+
 
 class VPNConnection(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.VPN.Connection'
 
     def preprocess(self, name, args, kwargs):
         conf = args[0]
-        conf['addresses'] = [fixups.addrconf_to_python(addr,socket.AF_INET) for addr in conf['addresses']]
-        conf['routes'] = [fixups.route_to_python(route,socket.AF_INET) for route in conf['routes']]
-        conf['dns'] = [fixups.addr_to_python(addr,socket.AF_INET) for addr in conf['dns']]
+        conf['addresses'] = [fixups.addrconf_to_python(addr, socket.AF_INET) for addr in conf['addresses']]
+        conf['routes'] = [fixups.route_to_python(route, socket.AF_INET) for route in conf['routes']]
+        conf['dns'] = [fixups.addr_to_python(addr, socket.AF_INET) for addr in conf['dns']]
         return args, kwargs
+
 
 class VPNPlugin(NMDbusInterface):
     interface_name = 'org.freedesktop.NetworkManager.VPN.Plugin'
+
 
 def const(prefix, val):
     prefix = 'NM_' + prefix.upper() + '_'
@@ -347,16 +381,18 @@ def const(prefix, val):
         if 'REASON' in key and 'REASON' not in prefix:
             continue
         if key.startswith(prefix) and val == vval:
-            return key.replace(prefix,'').lower()
+            return key.replace(prefix, '').lower()
     raise ValueError("No constant found for %s* with value %d", (prefix, val))
 
 # Several fixer methods to make the data easier to handle in python
 # - SSID sent/returned as bytes (only encoding tried is utf-8)
 # - IP, Mac address and route metric encoding/decoding
+
+
 class fixups(object):
     @staticmethod
     def ssid_to_python(ssid):
-        return bytes("",'ascii').join(ssid).decode('utf-8')
+        return bytes("", 'ascii').join(ssid).decode('utf-8')
 
     @staticmethod
     def ssid_to_dbus(ssid):
@@ -377,69 +413,70 @@ class fixups(object):
         return [dbus.Byte(int(x, 16)) for x in mac.split(':')]
 
     @staticmethod
-    def addrconf_to_python(addrconf,family):
+    def addrconf_to_python(addrconf, family):
         addr, netmask, gateway = addrconf
         return [
-            fixups.addr_to_python(addr,family),
+            fixups.addr_to_python(addr, family),
             netmask,
-            fixups.addr_to_python(gateway,family)
+            fixups.addr_to_python(gateway, family)
         ]
 
     @staticmethod
-    def addrconf_to_dbus(addrconf,family):
+    def addrconf_to_dbus(addrconf, family):
         addr, netmask, gateway = addrconf
         if (family == socket.AF_INET):
             return [
-                fixups.addr_to_dbus(addr,family),
+                fixups.addr_to_dbus(addr, family),
                 fixups.mask_to_dbus(netmask),
-                fixups.addr_to_dbus(gateway,family)
+                fixups.addr_to_dbus(gateway, family)
             ]
         else:
             return dbus.Struct(
                 (
-                    fixups.addr_to_dbus(addr,family),
+                    fixups.addr_to_dbus(addr, family),
                     fixups.mask_to_dbus(netmask),
-                    fixups.addr_to_dbus(gateway,family)
-                ), signature = 'ayuay'
+                    fixups.addr_to_dbus(gateway, family)
+                ), signature='ayuay'
             )
 
     @staticmethod
-    def addr_to_python(addr,family):
+    def addr_to_python(addr, family):
         if (family == socket.AF_INET):
-            return socket.inet_ntop(family,struct.pack('I', addr))
+            return socket.inet_ntop(family, struct.pack('I', addr))
         else:
-            return socket.inet_ntop(family,b''.join(addr))
+            return socket.inet_ntop(family, b''.join(addr))
 
     @staticmethod
-    def addr_to_dbus(addr,family):
+    def addr_to_dbus(addr, family):
         if (family == socket.AF_INET):
-            return dbus.UInt32(struct.unpack('I', socket.inet_pton(family,addr))[0])
+            return dbus.UInt32(struct.unpack('I', socket.inet_pton(family, addr))[0])
         else:
-            return dbus.ByteArray(socket.inet_pton(family,addr))
+            return dbus.ByteArray(socket.inet_pton(family, addr))
 
     @staticmethod
     def mask_to_dbus(mask):
         return dbus.UInt32(mask)
 
     @staticmethod
-    def route_to_python(route,family):
+    def route_to_python(route, family):
         addr, netmask, gateway, metric = route
         return [
-            fixups.addr_to_python(addr,family),
+            fixups.addr_to_python(addr, family),
             netmask,
-            fixups.addr_to_python(gateway,family),
+            fixups.addr_to_python(gateway, family),
             socket.ntohl(metric)
         ]
 
     @staticmethod
-    def route_to_dbus(route,family):
+    def route_to_dbus(route, family):
         addr, netmask, gateway, metric = route
         return [
-            fixups.addr_to_dbus(addr,family),
+            fixups.addr_to_dbus(addr, family),
             fixups.mask_to_dbus(netmask),
-            fixups.addr_to_dbus(gateway,family),
+            fixups.addr_to_dbus(gateway, family),
             socket.htonl(metric)
         ]
+
 
 # Constants below are generated with makeconstants.py. Do not edit manually.
 NM_STATE_UNKNOWN = 0

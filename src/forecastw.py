@@ -420,6 +420,7 @@ class FC(Gtk.Dialog):
                               xpadding=0,
                               ypadding=5)
 
+
 if __name__ == "__main__":
     cm = FC()
     exit(0)

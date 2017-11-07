@@ -69,6 +69,7 @@ class Base:
         self.__provincia = self.rss.find('provincia').text
 
     '''Interfaz publica'''
+
     def get_fecha_actualizacion(self):
         return self.__fecha_de_actualizacion
 
@@ -127,6 +128,7 @@ class Base:
 class Localidad(Base):
 
     '''Fecha en formato dd/mm/AAAA'''
+
     def __init__(self, codigo_postal, fecha):
         url = ('http://www.aemet.es/xml/municipios/localidad_' +
                codigo_postal + '.xml')
@@ -137,6 +139,7 @@ class Localidad(Base):
         self.__load_datos(self.fecha)
 
     '''Carga de los datos del XML para el dia seleccionado'''
+
     def __load_datos(self, fecha):
         nodo = self.rss.find("prediccion/dia[@fecha='" + fecha + "']")
         if nodo is not None:
@@ -201,6 +204,7 @@ def dist(lat1, lon1, lat2, lon2):
          math.pow(math.sin(delta_lon/2.0), 2.0))
     c = 2.0 * math.atan2(math.sqrt(a), math.sqrt(1-a))
     return R * c
+
 
 if __name__ == '__main__':
     print(AEMETDB)

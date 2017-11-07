@@ -95,13 +95,13 @@ CONDITION[906] = 'hail'
 
 
 def find_city(longitude, latitude):
-        url = URL_FIND_CITY % (latitude, longitude)
-        parsed_json = read_json_from_url(url)
-        if parsed_json:
-            elist = parsed_json['list']
-            if len(elist) > 0:
-                return elist[0]['id']
-        return None
+    url = URL_FIND_CITY % (latitude, longitude)
+    parsed_json = read_json_from_url(url)
+    if parsed_json:
+        elist = parsed_json['list']
+        if len(elist) > 0:
+            return elist[0]['id']
+    return None
 
 
 def fa2f(temperature):
@@ -315,6 +315,7 @@ class OWMWeatherService(WeatherService):
         # except Exception as e:
         # print(e)
         return weather_data
+
 
 if __name__ == "__main__":
     import pprint

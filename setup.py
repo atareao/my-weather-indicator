@@ -73,7 +73,7 @@ skins/simple', glob.glob('data/skins/simple/*')),
      ['data/my-weather-indicator-autostart.desktop']),
     ('/usr/share/applications',
      ['data/extras-my-weather-indicator.desktop']),
-    ]
+]
 
 MAIN_DIR = os.getcwd()
 DATA_DIR = os.path.join(MAIN_DIR, 'data')
@@ -399,15 +399,16 @@ class install_data(_install_data):
             self.data_files.append((lang_dir, [lang_file]))
         _install_data.run(self)
 
+
 setup(name=APP,
-    version=VERSION,
-    author=AUTHOR,
-    author_email=AUTHOR_EMAIL,
-    url=URL,
-    license=LICENSE,
-    data_files=DATA_FILES,
-    cmdclass={'build': build,
-              'translate': translate,
-              'clean_and_compile': clean_and_compile,
-              'build_trans': build_trans,
-              'install_data': install_data})
+      version=VERSION,
+      author=AUTHOR,
+      author_email=AUTHOR_EMAIL,
+      url=URL,
+      license=LICENSE,
+      data_files=DATA_FILES,
+      cmdclass={'build': build,
+                'translate': translate,
+                'clean_and_compile': clean_and_compile,
+                'build_trans': build_trans,
+                'install_data': install_data})

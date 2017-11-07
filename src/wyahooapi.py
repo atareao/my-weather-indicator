@@ -235,6 +235,7 @@ class YahooWeatherService(WeatherService):
             print(e)
         return weather_data
 
+
 if __name__ == "__main__":
     import pprint
     longitude = -0.418
