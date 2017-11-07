@@ -1,13 +1,12 @@
 #!/usr/bin/env python
-#
+
 '''
 from distutils.core import setup
 '''
 from distutils.core import setup
-from DistUtilsExtra.command import *
+from DistUtilsExtra.command import build_extra
 from distutils import cmd
 from distutils.command.install_data import install_data as _install_data
-from distutils.command.build import build as _build
 
 import msgfmt
 import os
@@ -100,7 +99,7 @@ COMPILED_LANGUAGE_FILE = '%s.mo' % APP
 def get_entry(filein, msgid):
     try:
         po = polib.pofile(filein)
-        print po.metadata['Content-Type']
+        print(po.metadata['Content-Type'])
         for entry in po:
             if entry.msgid == msgid:
                 return entry.msgstr
@@ -131,11 +130,11 @@ def list_src():
 def list_languages():
     lans = []
     file_txt = os.path.join(LANGUAGES_DIR, 'languages.txt')
-    if os.path.exists(file_txt) == True:
+    if os.path.exists(file_txt):
         f = open(file_txt, 'r')
         for linea in f.readlines():
             lan = linea[:-1]
-            print lan
+            print(lan)
             lans.append(lan)
         f.close()
     for file in glob.glob(os.path.join(LANGUAGES_DIR, '*.po')):
@@ -155,15 +154,15 @@ def update_translations():
     for file in f.readlines():
         lan = file[:-1]
         file = os.path.join(LANGUAGES_DIR, lan + '.po')
-        print '############################################################'
-        print lan
-        print '############################################################'
+        print('############################################################')
+        print(lan)
+        print('############################################################')
         if os.path.exists(file):
             command = 'msgmerge -U %s %s' % (file, TEMPLATE)
         else:
             command = 'msginit --output-file=%s --input=%s --locale=%s' % (
                 file, TEMPLATE, lan)
-        print ejecuta(command)
+        print(ejecuta(command))
         edit_language_file(file)
     f.close()
 
@@ -210,9 +209,9 @@ def update_desktop_file():
         lns.append(ln)
     for filedesktopin in glob.glob('*.desktop.in'):
         desktopfilename = os.path.splitext(os.path.split(filedesktopin)[1])[0]
-        print desktopfilename
+        print(desktopfilename)
         fileout = os.path.join(DATA_DIR, desktopfilename)
-        print fileout
+        print(fileout)
         if os.path.exists(fileout):
             os.remove(fileout)
         fileout = codecs.open('./data/%s' % desktopfilename,
@@ -237,11 +236,11 @@ def update_desktop_file():
                     for ln in lns:
                         filepo = os.path.join(LANGUAGES_DIR, '%s.po' % ln)
                         msgstr = get_entry(filepo, entry[1])
-                        print filepo
+                        print(filepo)
                         if not msgstr or msgstr == '':
                             msgstr = entry[1]
 
-                        print '%s[%s]=%s' % (entry[0][1:], ln, msgstr)
+                        print('%s[%s]=%s' % (entry[0][1:], ln, msgstr))
                         fileout.write('%s[%s] = %s\n' % (entry[0][1:],
                                                          ln, msgstr))
         fileout.close()
@@ -287,40 +286,40 @@ def remove_languages_saved_files(dir):
 
 
 def babilon():
-    print '############################################################'
-    print 'Parent dir -> %s' % MAIN_DIR
-    print 'Languages dir -> %s' % LANGUAGES_DIR
-    print 'Source dir -> %s' % SRC_DIR
-    print '############################################################'
-    print 'Updating Desktop File First Part'
-    print '############################################################'
+    print('############################################################')
+    print('Parent dir -> %s' % MAIN_DIR)
+    print('Languages dir -> %s' % LANGUAGES_DIR)
+    print('Source dir -> %s' % SRC_DIR)
+    print('############################################################')
+    print('Updating Desktop File First Part')
+    print('############################################################')
     update_desktop_file_fp()
-    print '############################################################'
-    print 'Updating template'
-    print '############################################################'
+    print('############################################################')
+    print('Updating template')
+    print('############################################################')
     files_file = list_src()
     command = 'xgettext --msgid-bugs-address=%s --language=Python\
  --keyword=_ --keyword=N_ --output=%s --files-from=%s' % (AUTHOR_EMAIL,
                                                           TEMPLATE, files_file)
-    print ejecuta(command)
+    print(ejecuta(command))
     delete_it(files_file)
-    print '############################################################'
-    print 'List languages'
-    print '############################################################'
+    print('############################################################')
+    print('List languages')
+    print('############################################################')
     #
     list_languages()
     #
-    print '############################################################'
-    print 'Updating translations'
-    print '############################################################'
+    print('############################################################')
+    print('Updating translations')
+    print('############################################################')
     update_translations()
-    print '############################################################'
-    print 'Updating Desktop File'
-    print '############################################################'
+    print('############################################################')
+    print('Updating Desktop File')
+    print('############################################################')
     update_desktop_file()
-    print '############################################################'
-    print 'Removing security copies'
-    print '############################################################'
+    print('############################################################')
+    print('Removing security copies')
+    print('############################################################')
     remove_security_copies()
 
 
@@ -369,13 +368,13 @@ class build_trans(cmd.Command):
                     if not os.path.exists(dest_path):
                         os.makedirs(dest_path)
                     if not os.path.exists(dest):
-                        print 'Compiling %s' % src
+                        print('Compiling %s' % src)
                         msgfmt.make(src, dest)
                     else:
                         src_mtime = os.stat(src)[8]
                         dest_mtime = os.stat(dest)[8]
                         if src_mtime > dest_mtime:
-                            print 'Compiling %s' % src
+                            print('Compiling %s' % src)
                             msgfmt.make(src, dest)
 
 
