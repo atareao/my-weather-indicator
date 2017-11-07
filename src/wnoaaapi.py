@@ -22,13 +22,10 @@
 #
 #
 
-import time
 from lxml import etree
 import weatherservice
 from weatherservice import WeatherService
 from comun import read_from_url
-
-from comun import _
 
 NOAA_WEATHER_URL = 'http://forecast.weather.gov/MapClick.php?lat=%s&lon=%s&FcstType=dwml'
 
@@ -132,7 +129,6 @@ class NOAAWeatherService(WeatherService):
                 weather_data['forecasts'][i]['condition_icon'] = weatherservice.get_condition(condition, 'icon-light')
             #
             root = etree.fromstring(xml_response).xpath('/xml_api_reply/weather/forecast_information')
-            forecast_information = {}
             weather_data['forecast_information']['city'] = get_data(root[0], 'city')
             weather_data['forecast_information']['postal_code'] = get_data(root[0], 'postal_code')
             weather_data['forecast_information']['latitude_e6'] = get_data(root[0], 'latitude_e6')
@@ -148,10 +144,8 @@ class NOAAWeatherService(WeatherService):
 
 if __name__ == "__main__":
     lat, lon = 33.766700, -118.191420
-    #lat,lon = 52.229958,21.013653
-    #lat,lon = 51.769191,19.434658
-    #lat = 49.9026653
-    #lon = 18.8278352
+    # lat,lon = 52.229958,21.013653
+    # lat,lon = 51.769191,19.434658
     ggw = NOAAWeatherService(longitude=lon, latitude=lat)
     print(ggw.get_weather())
     exit(0)

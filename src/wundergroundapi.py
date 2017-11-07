@@ -22,8 +22,6 @@
 #
 #
 
-import sys
-import json
 import time
 import weatherservice
 from weatherservice import WeatherService

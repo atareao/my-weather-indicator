@@ -21,12 +21,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #
-import json
+
 import weatherservice
 import time
 from datetime import datetime
 from weatherservice import WeatherService
-from comun import _
 from comun import read_json_from_url
 
 
@@ -148,6 +147,7 @@ class OWMWeatherService(WeatherService):
                 temp_min = str(t2)
                 temp_max = str(t1)
             wind_direction = weatherservice.degToCompass2(direction)
+
             wdd = {}
             wdd['datetime'] = datetime.fromtimestamp(data['dt'])
             wdd['condition'] = condition

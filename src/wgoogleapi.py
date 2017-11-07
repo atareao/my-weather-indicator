@@ -22,16 +22,13 @@
 #
 #
 
-import sys
 import time
 from lxml import etree
 import geocodeapi
 import weatherservice
 import htmlentitydefs
-from wyahooapi import get_search_string
 from weatherservice import WeatherService
-
-from comun import _
+from comun import read_from_url
 
 GOOGLE_WEATHER_URL = "http://www.google.com/ig/api?weather=%s&hl=en"
 GOOGLE_WEATHER_URL2 = 'http://www.google.com/ig/api?weather=,,,%s,%s&hl=en'
@@ -167,7 +164,6 @@ class GoogleWeatherService(WeatherService):
                     weather_data['forecasts'][i]['condition_icon'] = weatherservice.get_condition(condition, 'icon-light')
                 #
                 root = etree.fromstring(xml_response).xpath('/xml_api_reply/weather/forecast_information')
-                forecast_information = {}
                 weather_data['forecast_information']['city'] = get_data(root[0], 'city')
                 weather_data['forecast_information']['postal_code'] = get_data(root[0], 'postal_code')
                 weather_data['forecast_information']['latitude_e6'] = get_data(root[0], 'latitude_e6')
@@ -185,10 +181,8 @@ class GoogleWeatherService(WeatherService):
 
 if __name__ == "__main__":
     lat, lon = 33.766700, -118.191420
-    #lat,lon = 52.229958,21.013653
-    #lat,lon = 51.769191,19.434658
-    #lat = 49.9026653
-    #lon = 18.8278352
+    # lat,lon = 52.229958,21.013653
+    # lat,lon = 51.769191,19.434658
     ggw = GoogleWeatherService(longitude=lon, latitude=lat)
     print(ggw.get_weather())
     print(ggw.get_weather())

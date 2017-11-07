@@ -26,7 +26,6 @@ import weatherservice
 from weatherservice import WeatherService
 from weatherservice import change_temperature
 import geocodeapi
-from comun import _
 import requests
 from requests_oauthlib import OAuth1
 from requests.exceptions import SSLError
