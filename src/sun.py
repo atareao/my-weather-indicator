@@ -39,7 +39,7 @@ SUN_PY_VERSION = 1.5
 def s2f(cadena):
     try:
         value = float(cadena)
-    except:
+    except BaseException:
         value = 0.0
     return value
 
@@ -49,16 +49,16 @@ def from_utc_to_local(value, rawOffset=0):
     if value < 0:
         value = value + 24
     if value > 24:
-        value = value-24
+        value = value - 24
     hours = int(value)
-    minutes = int(round((value-int(value))*60, 0))
+    minutes = int(round((value - int(value)) * 60, 0))
     if minutes == 60:
         minutes = 0
         hours += 1
     hours = str(hours)
-    hours = '0'*(2-len(hours))+hours
+    hours = '0' * (2 - len(hours)) + hours
     minutes = str(minutes)
-    minutes = '0'*(2-len(minutes))+minutes
+    minutes = '0' * (2 - len(minutes)) + minutes
     return('%s:%s' % (hours, minutes))
 
 
@@ -74,7 +74,7 @@ class Sun:
     def daysSince2000Jan0(self, y, m, d):
         """A macro to compute the number of days elapsed since 2000 Jan 0.0
            (which is equal to 1999 Dec 31, 0h UT)"""
-        return (367*(y)-((7*((y)+(((m)+9)/12)))/4)+((275*(m))/9)+(d)-730530)
+        return (367 * (y) - ((7 * ((y) + (((m) + 9) / 12))) / 4) + ((275 * (m)) / 9) + (d) - 730530)
 
     # The trigonometric functions in degrees
     def sind(self, x):
@@ -117,7 +117,7 @@ class Sun:
         35 arc minutes below the horizon (this accounts for the refraction
         of the Earth's atmosphere).
         """
-        return self.__daylen__(year, month, day, lon, lat, -35.0/60.0, 1)
+        return self.__daylen__(year, month, day, lon, lat, -35.0 / 60.0, 1)
 
     def dayCivilTwilightLength(self, year, month, day, lon, lat):
         """
@@ -150,7 +150,7 @@ class Sun:
         35 arc minutes below the horizon (this accounts for the refraction
         of the Earth's atmosphere).
         """
-        return self.__sunriset__(year, month, day, lon, lat, -35.0/60.0, 1)
+        return self.__sunriset__(year, month, day, lon, lat, -35.0 / 60.0, 1)
 
     def sunRiseSetLocal(self, year, month, day, lon, lat, rawOffset):
         """
@@ -159,7 +159,7 @@ class Sun:
         35 arc minutes below the horizon (this accounts for the refraction
         of the Earth's atmosphere).
         """
-        sr, st = self.__sunriset__(year, month, day, lon, lat, -35.0/60.0, 1)
+        sr, st = self.__sunriset__(year, month, day, lon, lat, -35.0 / 60.0, 1)
         sr = from_utc_to_local(sr, rawOffset)
         st = from_utc_to_local(st, rawOffset)
         return sr, st
@@ -230,7 +230,7 @@ class Sun:
                     both set to the time when the sun is at south.
         """
         # Compute d of 12h local mean solar time
-        d = self.daysSince2000Jan0(year, month, day) + 0.5 - (lon/360.0)
+        d = self.daysSince2000Jan0(year, month, day) + 0.5 - (lon / 360.0)
 
         # Compute local sidereal time of this moment
         sidtime = self.revolution(self.GMST0(d) + 180.0 + lon)
@@ -242,7 +242,7 @@ class Sun:
         sr = res[2]
 
         # Compute time when Sun is at south - in hours UT
-        tsouth = 12.0 - self.rev180(sidtime - sRA)/15.0
+        tsouth = 12.0 - self.rev180(sidtime - sRA) / 15.0
 
         # Compute the Sun's apparent radius, degrees
         sradius = 0.2666 / sr
@@ -266,10 +266,10 @@ class Sun:
             t = 12.0         # Sun always above altit
 
         else:
-            t = self.acosd(cost)/15.0   # The diurnal arc, hours
+            t = self.acosd(cost) / 15.0   # The diurnal arc, hours
 
         # Store rise and set times - in hours UT
-        return (tsouth-t, tsouth+t)
+        return (tsouth - t, tsouth + t)
 
     def __daylen__(self, year, month, day, lon, lat, altit, upper_limb):
         """
@@ -291,7 +291,7 @@ class Sun:
 
         # Compute d of 12h local mean solar time
         lon = s2f(lon)
-        d = self.daysSince2000Jan0(year, month, day) + 0.5 - (lon/360.0)
+        d = self.daysSince2000Jan0(year, month, day) + 0.5 - (lon / 360.0)
 
         # Compute obliquity of ecliptic (inclination of Earth's axis)
         obl_ecl = 23.4393 - 3.563E-7 * d
@@ -321,7 +321,7 @@ class Sun:
             t = 24.0      # Sun always above altit
 
         else:
-            t = (2.0/15.0) * self.acosd(cost)
+            t = (2.0 / 15.0) * self.acosd(cost)
 
         return t
 
@@ -341,8 +341,8 @@ class Sun:
         # Compute true longitude and radius vector
         E = M + e * self.RADEG * self.sind(M) * (1.0 + e * self.cosd(M))
         x = self.cosd(E) - e
-        y = math.sqrt(1.0 - e*e) * self.sind(E)
-        r = math.sqrt(x*x + y*y)
+        y = math.sqrt(1.0 - e * e) * self.sind(E)
+        r = math.sqrt(x * x + y * y)
         v = self.atan2d(y, x)                 # True anomaly
         lon = v + w                        # True solar longitude
         if lon >= 360.0:
@@ -375,7 +375,7 @@ class Sun:
 
         # Convert to spherical coordinates
         RA = self.atan2d(y, x)
-        dec = self.atan2d(z, math.sqrt(x*x + y*y))
+        dec = self.atan2d(z, math.sqrt(x * x + y * y))
 
         return (RA, dec, r)
 
@@ -455,7 +455,7 @@ class Sun:
 
         # In the tropical and  in extreme latitude, values over 90 may occurs.
         if altitude > 90:
-            altitude = 90 - (altitude-90)
+            altitude = 90 - (altitude - 90)
 
         if altitude < 0:
             altitude = 0
@@ -473,14 +473,14 @@ class Sun:
 
         (fEot, fR0r, tDeclsc) = self.equation_of_time(
             year, month, day, latitude)
-        fSF = (tDeclsc[0]+tDeclsc[1])*fR0r
+        fSF = (tDeclsc[0] + tDeclsc[1]) * fR0r
 
         # In the case of a negative declinaison, solar flux is null
         if fSF < 0:
             fCoeff = 0
         else:
-            fCoeff = -1.56e-12*fSF**4 + 5.972e-9*fSF**3 -\
-                8.364e-6*fSF**2 + 5.183e-3*fSF - 0.435
+            fCoeff = -1.56e-12 * fSF**4 + 5.972e-9 * fSF**3 -\
+                8.364e-6 * fSF**2 + 5.183e-3 * fSF - 0.435
 
         fSFT = fSF * fCoeff
 
@@ -510,21 +510,21 @@ class Sun:
         else:
             fDivide = 365.0
         # Correction for "equation of time"
-        fA = nJulianDate/fDivide*2*pi
-        fR0r = self.__Solcons(fA)*0.1367e4
-        fRdecl = 0.412*math.cos((nJulianDate+10.0)*2.0*pi/fDivide-pi)
-        fDeclsc1 = self.sind(latitude)*math.sin(fRdecl)
-        fDeclsc2 = self.cosd(latitude)*math.cos(fRdecl)
+        fA = nJulianDate / fDivide * 2 * pi
+        fR0r = self.__Solcons(fA) * 0.1367e4
+        fRdecl = 0.412 * math.cos((nJulianDate + 10.0) * 2.0 * pi / fDivide - pi)
+        fDeclsc1 = self.sind(latitude) * math.sin(fRdecl)
+        fDeclsc2 = self.cosd(latitude) * math.cos(fRdecl)
         tDeclsc = (fDeclsc1, fDeclsc2)
         # in minutes
-        fEot = 0.002733 - 7.343*math.sin(fA) + .5519*math.cos(fA) \
-            - 9.47*math.sin(2.0*fA) - 3.02*math.cos(2.0*fA) \
-            - 0.3289*math.sin(3.*fA) - 0.07581*math.cos(3.0*fA) \
-            - 0.1935*math.sin(4.0*fA) - 0.1245*math.cos(4.0*fA)
+        fEot = 0.002733 - 7.343 * math.sin(fA) + .5519 * math.cos(fA) \
+            - 9.47 * math.sin(2.0 * fA) - 3.02 * math.cos(2.0 * fA) \
+            - 0.3289 * math.sin(3. * fA) - 0.07581 * math.cos(3.0 * fA) \
+            - 0.1935 * math.sin(4.0 * fA) - 0.1245 * math.cos(4.0 * fA)
         # Express in fraction of hour
-        fEot = fEot/60.0
+        fEot = fEot / 60.0
         # Express in radians
-        fEot = fEot*15*pi/180.0
+        fEot = fEot * 15 * pi / 180.0
 
         return (fEot, fR0r, tDeclsc)
 
@@ -548,9 +548,9 @@ class Sun:
         Miguel Tremblay      June 30th 2004
         """
 
-        dVar = 1.0/(1.0-9.464e-4*math.sin(dAlf)-0.01671*math.cos(dAlf) -
-                    1.489e-4*math.cos(2.0*dAlf)-2.917e-5*math.sin(3.0*dAlf) -
-                    3.438e-4*math.cos(4.0*dAlf))**2
+        dVar = 1.0 / (1.0 - 9.464e-4 * math.sin(dAlf) - 0.01671 * math.cos(dAlf) -
+                      1.489e-4 * math.cos(2.0 * dAlf) - 2.917e-5 * math.sin(3.0 * dAlf) -
+                      3.438e-4 * math.cos(4.0 * dAlf))**2
         return dVar
 
     def Julian(self, year, month, day):
@@ -564,7 +564,7 @@ class Sun:
             lMonth = [0, 31, 59, 90, 120, 151, 181, 212,
                       243, 273, 304, 334, 365]
 
-        nJulian = lMonth[month-1] + day
+        nJulian = lMonth[month - 1] + day
         return nJulian
 
 

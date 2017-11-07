@@ -66,7 +66,7 @@ def check_connectivity4():
     try:
         conn.request("HEAD", "/")
         return True
-    except:
+    except BaseException:
         return False
 
 

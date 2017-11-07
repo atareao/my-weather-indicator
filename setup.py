@@ -88,7 +88,7 @@ f.close()
 pos = line.find('(')
 posf = line.find('-', pos)
 APP = line[:pos].strip().lower()
-VERSION = line[pos+1:posf].strip()
+VERSION = line[pos + 1:posf].strip()
 APPNAME = APP.title()
 AUTHOR = 'Lorenzo Carbonell'
 AUTHOR_EMAIL = 'lorenzo.carbonell.cerezo@gmail.com'
@@ -154,7 +154,7 @@ def update_translations():
     f = open(file_txt, 'r')
     for file in f.readlines():
         lan = file[:-1]
-        file = os.path.join(LANGUAGES_DIR, lan+'.po')
+        file = os.path.join(LANGUAGES_DIR, lan + '.po')
         print '############################################################'
         print lan
         print '############################################################'

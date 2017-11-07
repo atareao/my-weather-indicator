@@ -80,7 +80,7 @@ class MoonDayWidget(Gtk.EventBox):
 class CalendarWindow(Gtk.Window):
 
     def __init__(self, adate=None):
-        title = comun.APPNAME + ' | '+_('Moon phases')
+        title = comun.APPNAME + ' | ' + _('Moon phases')
         '''
         Gtk.Dialog.__init__(self,
                             title,
@@ -194,16 +194,16 @@ class CalendarWindow(Gtk.Window):
                           xoptions=Gtk.AttachOptions.SHRINK,
                           yoptions=Gtk.AttachOptions.SHRINK)
         for column in range(1, 8):
-            table1.attach(Gtk.Label(DAY_OF_WEEK[column-1]),
+            table1.attach(Gtk.Label(DAY_OF_WEEK[column - 1]),
                           column,
-                          column+1, 0, 1,
+                          column + 1, 0, 1,
                           xoptions=Gtk.AttachOptions.SHRINK,
                           yoptions=Gtk.AttachOptions.SHRINK)
         for row in range(1, 7):
             for column in range(1, 8):
                 self.days[contador] = MoonDayWidget()
-                table1.attach(self.days[contador], column, column+1,
-                              row, row+1,
+                table1.attach(self.days[contador], column, column + 1,
+                              row, row + 1,
                               xoptions=Gtk.AttachOptions.EXPAND,
                               yoptions=Gtk.AttachOptions.EXPAND)
                 contador += 1
@@ -225,16 +225,16 @@ class CalendarWindow(Gtk.Window):
         fdom = first_day_of_month(self.adate)
         adate = self.adate.replace(day=1)
         for row in range(1, 7):
-            wd = adate + datetime.timedelta(days=7*(row-1))
+            wd = adate + datetime.timedelta(days=7 * (row - 1))
             self.week_days[row].set_text(str(wd.isocalendar()[1]))
         max = {'position': -1, 'value': 0}
         med = {'position': -1, 'value': 1}
         min = {'position': -1, 'value': 1}
         for contador in range(0, 42):
             if contador < fdom:
-                tadate = adate - datetime.timedelta(days=(fdom-contador))
+                tadate = adate - datetime.timedelta(days=(fdom - contador))
             else:
-                tadate = adate + datetime.timedelta(days=(contador-fdom))
+                tadate = adate + datetime.timedelta(days=(contador - fdom))
             self.days[contador].set_date(tadate)
             if tadate.month != adate.month:
                 self.days[contador].override_background_color(
@@ -270,10 +270,10 @@ class CalendarWindow(Gtk.Window):
         self.set_date()
 
     def on_button1_clicked(self, widget):
-        month = self.adate.month-1
+        month = self.adate.month - 1
         if month < 1:
             month = 12
-            year = self.adate.year-1
+            year = self.adate.year - 1
             if year < 1:
                 year = 1
             self.adate = self.adate.replace(month=month, year=year)
@@ -282,17 +282,17 @@ class CalendarWindow(Gtk.Window):
         self.set_date()
 
     def on_button2_clicked(self, widget):
-        month = self.adate.month+1
+        month = self.adate.month + 1
         if month > 12:
             month = 1
-            year = self.adate.year+1
+            year = self.adate.year + 1
             self.adate = self.adate.replace(month=month, year=year)
         else:
             self.adate = self.adate.replace(month=month)
         self.set_date()
 
     def on_button3_clicked(self, widget):
-        self.adate = self.adate.replace(year=(self.adate.year+1))
+        self.adate = self.adate.replace(year=(self.adate.year + 1))
         self.set_date()
 
     def on_button4_clicked(self, widget):

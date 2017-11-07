@@ -73,7 +73,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
     def __init__(self):
         # ***************************************************************
         Gtk.Dialog.__init__(self,
-                            'my-weather-indicator | '+_('Preferences'),
+                            'my-weather-indicator | ' + _('Preferences'),
                             None,
                             Gtk.DialogFlags.MODAL |
                             Gtk.DialogFlags.DESTROY_WITH_PARENT,
@@ -108,7 +108,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
-        label11 = Gtk.Label.new(_('Locality')+':')
+        label11 = Gtk.Label.new(_('Locality') + ':')
         label11.set_alignment(0, 0.5)
         table11.attach(label11, 0, 1, 2, 3,
                        xoptions=Gtk.AttachOptions.FILL,
@@ -197,7 +197,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
-        label21 = Gtk.Label.new(_('Locality')+':')
+        label21 = Gtk.Label.new(_('Locality') + ':')
         label21.set_alignment(0, 0.5)
         table21.attach(label21, 0, 1, 1, 2,
                        xoptions=Gtk.AttachOptions.FILL,
@@ -343,15 +343,15 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         notebook.append_page(vbox2, Gtk.Label.new(_('Units')))
         table2 = Gtk.Table(rows=6, columns=2)
         frame2.add(table2)
-        label3 = Gtk.Label.new(_('Temperature')+':')
+        label3 = Gtk.Label.new(_('Temperature') + ':')
         label3.set_alignment(0, 0.5)
         table2.attach(label3, 0, 1, 0, 1,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         self.liststore3 = Gtk.ListStore(str, str)
-        self.liststore3.append(['{0:c} '.format(176)+_('Celsius'), 'C'])
-        self.liststore3.append(['{0:c} '.format(176)+_('Fahrenheit'), 'F'])
+        self.liststore3.append(['{0:c} '.format(176) + _('Celsius'), 'C'])
+        self.liststore3.append(['{0:c} '.format(176) + _('Fahrenheit'), 'F'])
         self.liststore3.append([_('Kelvin'), 'K'])
         self.combobox3 = Gtk.ComboBox.new()
         self.combobox3.set_model(self.liststore3)
@@ -362,7 +362,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
-        label32 = Gtk.Label.new(_('Pressure')+':')
+        label32 = Gtk.Label.new(_('Pressure') + ':')
         label32.set_alignment(0, 0.5)
         table2.attach(label32, 0, 1, 1, 2,
                       xoptions=Gtk.AttachOptions.FILL,
@@ -381,7 +381,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
-        label33 = Gtk.Label.new(_('Visibility')+':')
+        label33 = Gtk.Label.new(_('Visibility') + ':')
         label33.set_alignment(0, 0.5)
         table2.attach(label33, 0, 1, 2, 3,
                       xoptions=Gtk.AttachOptions.FILL,
@@ -399,7 +399,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
-        label31 = Gtk.Label.new(_('Wind velocity')+':')
+        label31 = Gtk.Label.new(_('Wind velocity') + ':')
         label31.set_alignment(0, 0.5)
         table2.attach(label31, 0, 1, 3, 4,
                       xoptions=Gtk.AttachOptions.FILL,
@@ -421,7 +421,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
-        label34 = Gtk.Label.new(_('Rain Gauge')+':')
+        label34 = Gtk.Label.new(_('Rain Gauge') + ':')
         label34.set_alignment(0, 0.5)
         table2.attach(label34, 0, 1, 4, 5,
                       xoptions=Gtk.AttachOptions.FILL,
@@ -440,7 +440,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
-        label35 = Gtk.Label.new(_('Snow Gauge')+':')
+        label35 = Gtk.Label.new(_('Snow Gauge') + ':')
         label35.set_alignment(0, 0.5)
         table2.attach(label35, 0, 1, 5, 6,
                       xoptions=Gtk.AttachOptions.FILL,
@@ -459,7 +459,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
-        label36 = Gtk.Label.new(_('Time Format')+':')
+        label36 = Gtk.Label.new(_('Time Format') + ':')
         label36.set_alignment(0, 0.5)
         table2.attach(label36, 0, 1, 6, 7,
                       xoptions=Gtk.AttachOptions.FILL,
@@ -513,7 +513,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
-        label31 = Gtk.Label.new(_('Select icon theme')+':')
+        label31 = Gtk.Label.new(_('Select icon theme') + ':')
         label31.set_alignment(0, 0.5)
         table3.attach(label31, 0, 2, 2, 3,
                       xoptions=Gtk.AttachOptions.FILL,

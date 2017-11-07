@@ -193,16 +193,16 @@ class Localidad(Base):
 
 def dist(lat1, lon1, lat2, lon2):
     R = 6371.0
-    lat1_r = lat1 * math.pi/360.0
-    lat2_r = lat2 * math.pi/360.0
-    lon1_r = lon1 * math.pi/360.0
-    lon2_r = lon2 * math.pi/360.0
+    lat1_r = lat1 * math.pi / 360.0
+    lat2_r = lat2 * math.pi / 360.0
+    lon1_r = lon1 * math.pi / 360.0
+    lon2_r = lon2 * math.pi / 360.0
     delta_lat = (lat2_r - lat1_r)
     delta_lon = (lon2_r - lon1_r)
-    a = (math.pow(math.sin(delta_lat/2.0), 2.0) +
+    a = (math.pow(math.sin(delta_lat / 2.0), 2.0) +
          math.cos(lat1_r) * math.cos(lat2_r) *
-         math.pow(math.sin(delta_lon/2.0), 2.0))
-    c = 2.0 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+         math.pow(math.sin(delta_lon / 2.0), 2.0))
+    c = 2.0 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return R * c
 
 

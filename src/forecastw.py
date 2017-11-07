@@ -37,7 +37,7 @@ def load_image(filename, size=24):
 
 def redondea(valor):
     valor = valor * 10.0
-    return int(valor)/10.0
+    return int(valor) / 10.0
 
 
 def cambia(valor, a, SI=True):
@@ -45,11 +45,11 @@ def cambia(valor, a, SI=True):
         return ''
     valor = float(valor)
     if SI is False:
-        valor = redondea(5.0/9.0 * (valor-32.0))
+        valor = redondea(5.0 / 9.0 * (valor - 32.0))
     if a == 'F':
-        return str(redondea(valor*9.0/5.0 + 32.0))
+        return str(redondea(valor * 9.0 / 5.0 + 32.0))
     elif a == 'K':
-        return str(redondea(valor+273.15))
+        return str(redondea(valor + 273.15))
     return str(valor)
 
 
@@ -81,7 +81,7 @@ def get_image_with_text(text, image=None):
 
 class FC(Gtk.Dialog):
     def __init__(self, location, ws, weather):
-        Gtk.Dialog.__init__(self, 'my-weather-indicator | '+_('Forecast'),
+        Gtk.Dialog.__init__(self, 'my-weather-indicator | ' + _('Forecast'),
                             None, Gtk.DialogFlags.MODAL |
                             Gtk.DialogFlags.DESTROY_WITH_PARENT)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
@@ -91,8 +91,8 @@ class FC(Gtk.Dialog):
         vbox0 = Gtk.VBox(spacing=5)
         vbox0.set_border_width(5)
         self.get_content_area().add(vbox0)
-        label11 = Gtk.Label(label='<b>'+location+'</b>')
-        label11.set_markup('<b>'+location+'</b>')
+        label11 = Gtk.Label(label='<b>' + location + '</b>')
+        label11.set_markup('<b>' + location + '</b>')
         vbox0.pack_start(label11, True, True, 0)
         frame = Gtk.Frame()
         vbox0.add(frame)

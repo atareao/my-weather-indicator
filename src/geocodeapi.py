@@ -24,7 +24,7 @@
 import gi
 try:
     gi.require_version('GeocodeGlib', '1.0')
-except:
+except BaseException:
     print('Repository version required not present')
     exit(1)
 import sys
@@ -46,7 +46,7 @@ URLINV_YAHOO2 = 'http://gws2.maps.yahoo.com/findlocation?pf=1&locale=%s\
 def s2f(word):
     try:
         value = float(word)
-    except:
+    except BaseException:
         value = 0.0
     return value
 

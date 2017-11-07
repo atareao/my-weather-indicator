@@ -321,27 +321,27 @@ class WeatherWidget(Gtk.Window):
                                 s_width = surface.get_width()
                                 s_height = surface.get_height()
                                 if xpos == 'CENTER':
-                                    x = x-width/2.0
+                                    x = x - width / 2.0
                                 elif xpos == 'RIGHT':
-                                    x = x-width
+                                    x = x - width
                                 if ypos == 'CENTER':
-                                    y = y-height/2.0
+                                    y = y - height / 2.0
                                 elif ypos == 'BOTTOM':
-                                    y = y-height
+                                    y = y - height
                                 hours = float(self.weather_data['current_conditions']['rawOffset'])
                                 now = self.datetime +\
                                     datetime.timedelta(hours=hours)
-                                atime = float(now.hour) + float(now.minute)/60.0
+                                atime = float(now.hour) + float(now.minute) / 60.0
                                 hours = atime
                                 if not self.a24h and hours > 12:
                                     hours -= 12.0
-                                minutes = (atime - int(atime))*60.0
+                                minutes = (atime - int(atime)) * 60.0
                                 cr.translate(x, y)
-                                cr.scale(width/s_width, height/s_height)
+                                cr.scale(width / s_width, height / s_height)
                                 if minutesorhours == '$HOUR$':
-                                    cr.rotate(2.0*math.pi/12.0*hours-math.pi/2.0)
+                                    cr.rotate(2.0 * math.pi / 12.0 * hours - math.pi / 2.0)
                                 elif minutesorhours == '$MINUTES$':
-                                    cr.rotate(2.0*math.pi/60.0*minutes-math.pi/2.0)
+                                    cr.rotate(2.0 * math.pi / 60.0 * minutes - math.pi / 2.0)
                                 cr.set_source_surface(surface)
                                 cr.paint()
                         elif row[0] == 'IMAGE':
@@ -400,15 +400,15 @@ class WeatherWidget(Gtk.Window):
                                 s_width = surface.get_width()
                                 s_height = surface.get_height()
                                 if xpos == 'CENTER':
-                                    x = x-width/2.0
+                                    x = x - width / 2.0
                                 elif xpos == 'RIGHT':
-                                    x = x-width
+                                    x = x - width
                                 if ypos == 'CENTER':
-                                    y = y-height/2.0
+                                    y = y - height / 2.0
                                 elif ypos == 'BOTTOM':
-                                    y = y-height
+                                    y = y - height
                                 cr.translate(x, y)
-                                cr.scale(width/s_width, height/s_height)
+                                cr.scale(width / s_width, height / s_height)
                                 cr.set_source_surface(surface)
                                 cr.paint()
                         elif row[0] == 'TEXT':
@@ -430,9 +430,9 @@ class WeatherWidget(Gtk.Window):
                                     if hours < 1:
                                         hours += 12
                                 hours = str(hours)
-                                hours = '0'*(2-len(hours))+hours
+                                hours = '0' * (2 - len(hours)) + hours
                                 minutes = str(now.minute)
-                                minutes = '0'*(2-len(minutes))+minutes
+                                minutes = '0' * (2 - len(minutes)) + minutes
                                 if text.find('$HOUR$') > -1:
                                     text = text.replace('$HOUR$', hours)
                                 if text.find('$MINUTES$') > -1:
@@ -512,13 +512,13 @@ class WeatherWidget(Gtk.Window):
 
                             x_bearing, y_bearing, width, height, x_advance, y_advance = cr.text_extents(text)
                             if xpos == 'CENTER':
-                                x = x-width/2.0
+                                x = x - width / 2.0
                             elif xpos == 'RIGHT':
-                                x = x-width
+                                x = x - width
                             if ypos == 'CENTER':
-                                y = y+height/2.0
+                                y = y + height / 2.0
                             elif ypos == 'TOP':
-                                y = y+height
+                                y = y + height
                             cr.move_to(x, y)
                             cr.show_text(text)
                     cr.restore()

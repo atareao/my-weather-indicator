@@ -45,7 +45,7 @@ def unicode2html(str):
             try:
                 ret = ret + "&" +\
                     htmlentitydefs.codepoint2name[ord(char)] + ";"
-            except:
+            except BaseException:
                 ret = ret + '?'
         else:
             ret = ret + char
@@ -85,7 +85,7 @@ class GoogleWeatherService(WeatherService):
         self.latlontrouble = False
         self.url1 = GOOGLE_WEATHER_URL % (self.search_string)
         self.url2 = GOOGLE_WEATHER_URL2 % (
-            int(self.latitude*1000000), int(self.longitude*1000000))
+            int(self.latitude * 1000000), int(self.longitude * 1000000))
 
     def get_weather(self):
         weather_data = self.get_default_values()

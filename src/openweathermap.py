@@ -90,7 +90,7 @@ class ForecastMap(Gtk.Dialog):
             try:
                 msg = from_json(msg)
                 print('This is the message %s' % (msg))
-            except:
+            except BaseException:
                 msg = None
             again = True
         if msg == 'exit':

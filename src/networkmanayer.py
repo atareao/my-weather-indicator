@@ -22,8 +22,8 @@ try:
 
     def debug(msg, data):
         sys.stderr.write(msg + "\n")
-        sys.stderr.write(repr(data)+"\n")
-except:
+        sys.stderr.write(repr(data) + "\n")
+except BaseException:
     debug = lambda *args: None
 
 
@@ -187,7 +187,7 @@ class Connection(NMDbusInterface):
     has_secrets = ['802-1x', '802-11-wireless-security', 'cdma', 'gsm', 'pppoe', 'vpn']
 
     def GetSecrets(self, name=None):
-        if name == None:
+        if name is None:
             settings = self.GetSettings()
             for key in self.has_secrets:
                 if key in settings:
@@ -197,7 +197,7 @@ class Connection(NMDbusInterface):
                 return {}
         try:
             return self.make_proxy_call('GetSecrets')(name)
-        except:
+        except BaseException:
             return {}
 
     def postprocess(self, name, val):

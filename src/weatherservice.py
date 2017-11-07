@@ -465,11 +465,11 @@ WINDS2 = [['N', _('North'), 'mwi-wind00.png'],
 
 
 def f2c(temperature):
-    return (s2f(temperature)-32.0)*5.0/9.0
+    return (s2f(temperature) - 32.0) * 5.0 / 9.0
 
 
 def degToCompass(num):
-    val = int((s2f(num)/11.25)+0.25)
+    val = int((s2f(num) / 11.25) + 0.25)
     arr = ['n', 'nbe', 'nne', 'nebn', 'ne', 'nebe', 'ene', 'ebn', 'e', 'ebs',
            'ese', 'sebe', 'se', 'sebs', 'sse', 'sbe', 's', 'sbw', 'ssw',
            'swbs', 'sw', 'swbw', 'wsw', 'wbs', 'w', 'wbn', 'wnw', 'nwbw', 'nw',
@@ -523,10 +523,10 @@ def get_condition(condition, tipo):
     if condition is not None and len(condition) > 0:
         if condition.startswith('heavy'):
             condition = condition[6:]
-            text = _('Heavy')+' '
+            text = _('Heavy') + ' '
         elif condition.startswith('light'):
             condition = condition[6:]
-            text = _('Light')+' '
+            text = _('Light') + ' '
         if condition in CONDITIONS.keys():
             return CONDITIONS[condition][tipo]
         else:
@@ -585,7 +585,7 @@ def get_dayLength(day, longitude, latitude):
 def get_dayCivilTwilightLength(day, longitude, latitude):
     sun = Sun()
     return sun.dayCivilTwilightLength(
-        day.year, day.month, day.day,  s2f(longitude), s2f(latitude))
+        day.year, day.month, day.day, s2f(longitude), s2f(latitude))
 
 
 def get_dawn(day, longitude, latitude, rawOffset):
@@ -619,7 +619,7 @@ def get_sunset(day, longitude, latitude, rawOffset):
 def s2f(cadena):
     try:
         value = float(cadena)
-    except:
+    except BaseException:
         value = 0.0
     return value
 
@@ -634,9 +634,9 @@ def change_temperature(valor, a):
     valor = s2f(valor)
     # initial a in ºF
     if a == 'C':
-        valor = 5.0/9.0*(valor - 32.0)
+        valor = 5.0 / 9.0 * (valor - 32.0)
     elif a == 'K':
-        valor = 5.0/9.0*(valor - 32.0) + 273.15
+        valor = 5.0 / 9.0 * (valor - 32.0) + 273.15
     return str(redondea(valor))
 
 
@@ -644,13 +644,13 @@ def change_temperature2(valor, a):
     valor = s2f(valor)
     # initial a in ºF
     if a == 'C':
-        valor = 5.0/9.0*(valor - 32.0)
+        valor = 5.0 / 9.0 * (valor - 32.0)
     elif a == 'K':
-        valor = 5.0/9.0*(valor - 32.0) + 273.15
+        valor = 5.0 / 9.0 * (valor - 32.0) + 273.15
         return '{0} {1}'.format(redondea(valor), a)
     if sys.version_info[0] == 3:
         return '{0} {1:c}{2}'.format(redondea(valor), 176, a)
-    return str(redondea(valor))+unichr(176)
+    return str(redondea(valor)) + unichr(176)
 
 
 def get_wind_chill(temperature, wind_velocity):
@@ -681,9 +681,9 @@ def get_wind_condition(wind_velocity, wind_direction, wind_units):
         wind_direction = WINDS[wind_direction]
     wind_velocity = change_velocity(wind_velocity, wind_units)
     if wind_units == 'Beaufort':
-        return wind_velocity+' '+_('from')+' '+wind_direction
+        return wind_velocity + ' ' + _('from') + ' ' + wind_direction
     else:
-        return _('from')+' '+wind_direction+' '+_('at')+' '+wind_velocity
+        return _('from') + ' ' + wind_direction + ' ' + _('at') + ' ' + wind_velocity
     return _('n/a')
 
 
@@ -710,9 +710,9 @@ def get_dew_point(humidity, temperature, temperature_units):
     if humidity and temperature and humidity > 0.0:
         h = s2f(humidity)
         t = s2f(temperature)
-        t = 5.0/9.0*(t - 32.0)
-        dp = math.pow(h/100.0, 1.0/8.0)*(110.0+t) - 110.0
-        dp = redondea(9.0/5.0 * dp + 32)
+        t = 5.0 / 9.0 * (t - 32.0)
+        dp = math.pow(h / 100.0, 1.0 / 8.0) * (110.0 + t) - 110.0
+        dp = redondea(9.0 / 5.0 * dp + 32)
         return change_temperature(dp, temperature_units)
     return _('n/a')
 
@@ -752,7 +752,7 @@ def change_pressure(valor, a):
         else:
             digits = 0
         return '%s %s' % (
-            locale.str(redondea(valor*units_u[a], digits)), units_m[a])
+            locale.str(redondea(valor * units_u[a], digits)), units_m[a])
 
 
 def change_distance(valor, a):
@@ -760,7 +760,7 @@ def change_distance(valor, a):
     units_u = {'mi': 1, 'km': 1.609344}
     units_m = {'mi': _('mi'), 'km': _('km')}
     if a in units_u.keys():
-        return '%s %s' % (locale.str(redondea(valor*units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(redondea(valor * units_u[a])), units_m[a])
 
 
 def change_longitude(valor, a):
@@ -768,7 +768,7 @@ def change_longitude(valor, a):
     units_u = {'in': 1, 'cm': 2.54, 'mm': 25.4}
     units_m = {'in': _('in'), 'cm': _('cm'), 'mm': _('mm')}
     if a in units_u.keys():
-        return '%s %s' % (locale.str(redondea(valor*units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(redondea(valor * units_u[a])), units_m[a])
 
 
 def change_velocity(valor, a):
@@ -779,7 +779,7 @@ def change_velocity(valor, a):
     units_m = {'mph': _('mph'), 'km/h': _('km/h'), 'm/s': _('m/s'),
                'knots': _('knots'), 'ft/s': _('ft/s')}
     if a in units_u.keys():
-        return '%s %s' % (locale.str(redondea(valor*units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(redondea(valor * units_u[a])), units_m[a])
     if a == 'Beaufort':
         if valor <= 1:
             return _('Calm')
@@ -819,7 +819,7 @@ def timeformat(hhmm, AMPM=False):
 
     hh, mm = hhmm.split(":")
     if s2f(mm) == 60.0:
-        hh = str(int(s2f(hh)+1.0))
+        hh = str(int(s2f(hh) + 1.0))
         hhmm = hh + ':00'
     if AMPM:
         ampm = hhmm.split(":")
@@ -832,7 +832,7 @@ def timeformat(hhmm, AMPM=False):
         if isam:
             ampm[0] = ('12' if (hour == 0) else "%02d" % (hour))
         else:
-            ampm[0] = ('12' if (hour == 12) else "%02d" % (hour-12))
+            ampm[0] = ('12' if (hour == 12) else "%02d" % (hour - 12))
         return ': '.join(ampm) + (' AM' if isam else ' PM')
     else:
         return hhmm

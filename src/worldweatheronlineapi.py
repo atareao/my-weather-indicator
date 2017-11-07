@@ -218,7 +218,7 @@ class WorldWeatherOnlineService(WeatherService):
             weather_data['current_conditions']['precip_today'] =\
                 weatherservice.change_longitude(
                     weatherservice.s2f(
-                        gvfco('precipMM', parsed_json))/25.4,
+                        gvfco('precipMM', parsed_json)) / 25.4,
                     self.units.rain)
             for i in range(0, 5):
                 t1 = weatherservice.s2f(gvff('tempMinF', i, parsed_json))
@@ -239,7 +239,7 @@ class WorldWeatherOnlineService(WeatherService):
                 weather_data['forecasts'][i]['qpf_allday'] =\
                     weatherservice.change_longitude(
                         weatherservice.s2f(
-                            gvff('precipMM', i, parsed_json))/25.4,
+                            gvff('precipMM', i, parsed_json)) / 25.4,
                         self.units.rain)
                 weather_data['forecasts'][i]['qpf_day'] = None
                 weather_data['forecasts'][i]['qpf_night'] = None

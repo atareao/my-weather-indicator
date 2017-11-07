@@ -105,7 +105,7 @@ cloudiness);' % (self.title, self.subtitle, self.humidity, self.cloudiness,
                             self.temperature))
                     elif msg['status'] == 'exit':
                         self.close_application(None)
-                except:
+                except BaseException:
                     pass
 
     def web_recv(self):
