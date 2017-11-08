@@ -32,17 +32,12 @@ try:
     gi.require_version('Notify', '0.7')
     gi.require_version('GeocodeGlib', '1.0')
     gi.require_version('WebKit', '3.0')
-except:
-    print('Repository version required not present')
+except Exception as e:
+    print(e, 'Repository version required not present')
     exit(1)
 from gi.repository import Gtk
 from gi.repository import Notify
-import signal
 
-
-def handleSigTERM():
-    shutdown()
-signal.signal(signal.SIGTERM, handleSigTERM)
 
 if __name__ == '__main__':
     if __file__.startswith('/opt/extras.ubuntu.com/my-weather-indicator') or\
@@ -61,7 +56,6 @@ my-weather-indicator')
                         os.path.normpath(
                             os.path.join(os.path.dirname(__file__), '../src')))
     import machine_information
-    import comun
     from myweatherindicator import MWI
     print(machine_information.get_information())
     Notify.init('my-weather-indicator')

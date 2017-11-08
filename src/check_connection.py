@@ -21,11 +21,18 @@
 
 
 import requests
-import urllib.request
+# import urllib.request
 import urllib.parse
 import socket
 import time
-import http.client
+# import http
+# import http.client
+
+
+def check_connectivity():
+    if check_connectivity3() or check_connectivity2('https://www.google.com'):
+        return True
+    return False
 
 
 def check_connectivity1(reference):
@@ -66,7 +73,9 @@ def check_connectivity4():
     try:
         conn.request("HEAD", "/")
         return True
-    except:
+    except Exception as ex:
+        print('No internet connection available.')
+        print('^^^^^', ex, '^^^^^')
         return False
 
 
@@ -74,7 +83,9 @@ def check_connectivity5():
     conn_url = 'https://www.google.com/'
     try:
         data = urllib.request.urlopen(conn_url, timeout=5)
-    except Exception as e:
+    except Exception as ex:
+        print('No internet connection available.')
+        print('^^^^^', ex, '^^^^^')
         return False
     try:
         host = data.fp._sock.fp._sock.getpeername()
@@ -84,14 +95,16 @@ def check_connectivity5():
     # Ensure conn_url is an IPv4 address otherwise future queries will fail
     conn_url = 'http://' + (
         host[0] if len(host) == 2 else socket.gethostbyname(
-                urllib.parse.urlparse(data.geturl()).hostname))
+            urllib.parse.urlparse(data.geturl()).hostname))
     return True
 
 
 if __name__ == '__main__':
     TESTURL = 'https://www.google.com'
     atime = time.time()
-    #print(1, check_connectivity1(TESTURL), time.time() - atime)
+    print(1, check_connectivity(), time.time() - atime)
+    '''
+    print(1, check_connectivity1(TESTURL), time.time() - atime)
     atime = time.time()
     print(2, check_connectivity2(TESTURL), time.time() - atime)
     atime = time.time()
@@ -100,3 +113,4 @@ if __name__ == '__main__':
     print(4, check_connectivity4(), time.time() - atime)
     atime = time.time()
     print(5, check_connectivity5(), time.time() - atime)
+    '''
