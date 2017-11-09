@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# A library for access to geocode for address
-#
-# Copyright (C) 2011-2016 Lorenzo Carbonell
+# A library for access to check connectivity
+# Copyright (C) 2011-2017 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,96 +20,70 @@
 
 
 import requests
-# import urllib.request
-import urllib.parse
 import socket
 import time
-# import http
-# import http.client
 
 
 def check_connectivity():
-    if check_connectivity3() or check_connectivity2('https://www.google.com'):
-        return True
+    sockets = ['www.google.com',
+               '216.58.192.142',
+               'www.baidu.com']
+    for asocket in sockets:
+        if check_connectivity_with_socket(asocket):
+            return True
+    urls = ['https://www.google.com',
+            'http://www.google.com',
+            'http://216.58.192.142',
+            'http://www.baidu.com']
+    for url in urls:
+        if check_connectivity_with_reference(url):
+            return True
     return False
 
 
-def check_connectivity1(reference):
-    try:
-        urllib.request.urlopen(reference, timeout=1)
-        return True
-    except urllib.request.URLError:
-        return False
-
-
-def check_connectivity2(reference, timeout=5):
+def check_connectivity_with_reference(reference, timeout=2):
     try:
         requests.get(reference, timeout=timeout, verify=False)
+        print('OK. Internet connection. Url: {0}'.format(reference))
         return True
-    except requests.ConnectionError:
-        print("No internet connection available.")
+    except Exception as ex:
+        print('NO internet connection. Url: {0}'.format(reference))
+        print('Error:', ex)
+        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
     return False
 
 
-def check_connectivity3(host="8.8.8.8", port=53):
-    """
-    Host: 8.8.8.8 (google-public-dns-a.google.com)
-    OpenPort: 53/tcp
-    Service: domain (DNS/TCP)
-    """
+def check_connectivity_with_socket(reference, port=80):
     try:
-        socket.setdefaulttimeout(1)
-        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+        socket.create_connection((reference, port))
+        print('OK. Internet connection. Socket: {0}'.format(reference))
         return True
     except Exception as ex:
-        print('No internet connection available.')
-        print('^^^^^', ex, '^^^^^')
+        print('NO internet connection. Socket: {0}'.format(reference))
+        print('Error:', ex)
+        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
     return False
-
-
-def check_connectivity4():
-    conn = http.client.HTTPConnection("www.google.com")
-    try:
-        conn.request("HEAD", "/")
-        return True
-    except Exception as ex:
-        print('No internet connection available.')
-        print('^^^^^', ex, '^^^^^')
-        return False
-
-
-def check_connectivity5():
-    conn_url = 'https://www.google.com/'
-    try:
-        data = urllib.request.urlopen(conn_url, timeout=5)
-    except Exception as ex:
-        print('No internet connection available.')
-        print('^^^^^', ex, '^^^^^')
-        return False
-    try:
-        host = data.fp._sock.fp._sock.getpeername()
-    except AttributeError:  # Python 3
-        host = data.fp.raw._sock.getpeername()
-
-    # Ensure conn_url is an IPv4 address otherwise future queries will fail
-    conn_url = 'http://' + (
-        host[0] if len(host) == 2 else socket.gethostbyname(
-            urllib.parse.urlparse(data.geturl()).hostname))
-    return True
 
 
 if __name__ == '__main__':
-    TESTURL = 'https://www.google.com'
     atime = time.time()
-    print(1, check_connectivity(), time.time() - atime)
+    print(check_connectivity(), time.time() - atime)
     '''
-    print(1, check_connectivity1(TESTURL), time.time() - atime)
-    atime = time.time()
-    print(2, check_connectivity2(TESTURL), time.time() - atime)
-    atime = time.time()
-    print(3, check_connectivity3(), time.time() - atime)
-    atime = time.time()
-    print(4, check_connectivity4(), time.time() - atime)
-    atime = time.time()
-    print(5, check_connectivity5(), time.time() - atime)
+    urls = ['https://www.google.com',
+            'http://www.google.com',
+            'http://216.58.192.142',
+            'http://www.baidu.com']
+    sockets = ['www.google.com',
+               '216.58.192.142',
+               'www.baidu.com']
+    print('======== URLS ========')
+    for index, url in enumerate(urls):
+        atime = time.time()
+        print(index, check_connectivity_with_reference(url), url,
+              time.time() - atime)
+    print('======== SOCKET ========')
+    for index, asocket in enumerate(sockets):
+        atime = time.time()
+        print(index, check_connectivity_with_socket(asocket), asocket,
+              time.time() - atime)
     '''
