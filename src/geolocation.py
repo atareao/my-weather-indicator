@@ -50,7 +50,7 @@ def get_latitude_longitude_city(ip=None):
 if __name__ == '__main__':
     ip = get_external_ip()
     if ip is not None:
-        ll = get_latitude_longitude(ip)
+        ll = get_latitude_longitude_city(ip)
         if ll is not None:
             print(ll)
     exit(0)

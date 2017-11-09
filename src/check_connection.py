@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
+import http.client
 import requests
 import socket
 import time
@@ -28,6 +28,9 @@ def check_connectivity():
     sockets = ['www.google.com',
                '216.58.192.142',
                'www.baidu.com']
+    for asocket in sockets:
+        if check_connectivity_with_httpconnection(asocket):
+            return True
     for asocket in sockets:
         if check_connectivity_with_socket(asocket):
             return True
@@ -41,13 +44,14 @@ def check_connectivity():
     return False
 
 
-def check_connectivity_with_reference(reference, timeout=2):
+def check_connectivity_with_httpconnection(reference):
     try:
-        requests.get(reference, timeout=timeout, verify=False)
-        print('OK. Internet connection. Url: {0}'.format(reference))
+        conn = http.client.HTTPConnection(reference)
+        conn.close()
+        print('OK. Internet connection. HTTPConnection: {0}'.format(reference))
         return True
     except Exception as ex:
-        print('NO internet connection. Url: {0}'.format(reference))
+        print('NO internet connection. HTTPConnection: {0}'.format(reference))
         print('Error:', ex)
         print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
     return False
@@ -55,11 +59,24 @@ def check_connectivity_with_reference(reference, timeout=2):
 
 def check_connectivity_with_socket(reference, port=80):
     try:
-        socket.create_connection((reference, port))
+        conn = socket.create_connection((reference, port))
+        conn.close()
         print('OK. Internet connection. Socket: {0}'.format(reference))
         return True
     except Exception as ex:
         print('NO internet connection. Socket: {0}'.format(reference))
+        print('Error:', ex)
+        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+    return False
+
+
+def check_connectivity_with_reference(reference, timeout=2):
+    try:
+        requests.get(reference, timeout=timeout, verify=False)
+        print('OK. Internet connection. Url: {0}'.format(reference))
+        return True
+    except Exception as ex:
+        print('NO internet connection. Url: {0}'.format(reference))
         print('Error:', ex)
         print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
     return False
@@ -76,14 +93,19 @@ if __name__ == '__main__':
     sockets = ['www.google.com',
                '216.58.192.142',
                'www.baidu.com']
-    print('======== URLS ========')
-    for index, url in enumerate(urls):
+    print('======== SOCKET ========')
+    for index, asocket in enumerate(sockets):
         atime = time.time()
-        print(index, check_connectivity_with_reference(url), url,
+        print(index, check_connectivity_with_httpconnection(asocket), asocket,
               time.time() - atime)
     print('======== SOCKET ========')
     for index, asocket in enumerate(sockets):
         atime = time.time()
         print(index, check_connectivity_with_socket(asocket), asocket,
+              time.time() - atime)
+    print('======== URLS ========')
+    for index, url in enumerate(urls):
+        atime = time.time()
+        print(index, check_connectivity_with_reference(url), url,
               time.time() - atime)
     '''
