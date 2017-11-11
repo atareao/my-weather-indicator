@@ -1,21 +1,21 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-'''
-from distutils.core import setup
-'''
-from distutils.core import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 from DistUtilsExtra.command import build_extra
 from distutils import cmd
 from distutils.command.install_data import install_data as _install_data
 
-import msgfmt
+import fileinput
 import os
 import glob
 import shlex
 import subprocess
 import shutil
 import polib
-import ConfigParser
+import configparser
 import codecs
 
 DATA_FILES = [
@@ -184,7 +184,7 @@ def update_desktop_file_fp():
         ln = os.path.splitext(os.path.split(filein)[1])[0]
         lns.append(ln)
     for filedesktopin in glob.glob('*.desktop.in'):
-        desktopfile = ConfigParser.ConfigParser()
+        desktopfile = configparser.ConfigParser()
         desktopfile.optionxform = str
         desktopfile.readfp(
             codecs.open(filedesktopin, encoding='utf-8', mode='r'))
@@ -219,7 +219,7 @@ def update_desktop_file():
                               mode='w')
         fileout.write('[Desktop Entry]\n')
         #
-        desktopfile = ConfigParser.ConfigParser()
+        desktopfile = configparser.ConfigParser()
         desktopfile.optionxform = str
         desktopfile.readfp(codecs.open('./%s.in' % desktopfilename,
                                        encoding='utf-8',
@@ -249,7 +249,8 @@ def update_desktop_file():
 def remove_security_copies():
     for file in glob.glob(os.path.join(LANGUAGES_DIR, '*.po~')):
         os.remove(file)
-
+    for file in glob.glob(os.path.join(LANGUAGES_DIR, '*.pot.bak')):
+        os.remove(file)
 
 def delete_it(file):
     if os.path.exists(file):
@@ -299,9 +300,15 @@ def babilon():
     print('############################################################')
     files_file = list_src()
     command = 'xgettext --msgid-bugs-address=%s --language=Python\
- --keyword=_ --keyword=N_ --output=%s --files-from=%s' % (AUTHOR_EMAIL,
-                                                          TEMPLATE, files_file)
+    --keyword=_ --keyword=N_ --sort-by-file --output=%s --files-from=%s'\
+    % (AUTHOR_EMAIL, TEMPLATE, files_file)
     print(ejecuta(command))
+    print('Cleaning filepath in teplate')
+    print('############################################################')
+    with fileinput.FileInput(TEMPLATE, inplace=True, backup='.bak') as file:
+        for line in file:
+            print(line.replace("#: " + MAIN_DIR, "#: "), end='')
+    print('############################################################')
     delete_it(files_file)
     print('############################################################')
     print('List languages')
@@ -368,14 +375,16 @@ class build_trans(cmd.Command):
                     if not os.path.exists(dest_path):
                         os.makedirs(dest_path)
                     if not os.path.exists(dest):
-                        print('Compiling %s' % src)
-                        msgfmt.make(src, dest)
+                        print('Compiling %s -> %s' % (src, dest))
+                        msgfmt_cmd = 'msgfmt {} -o {}'.format(src, dest)
+                        subprocess.call(msgfmt_cmd, shell=True)
                     else:
                         src_mtime = os.stat(src)[8]
                         dest_mtime = os.stat(dest)[8]
                         if src_mtime > dest_mtime:
-                            print('Compiling %s' % src)
-                            msgfmt.make(src, dest)
+                            print('Compiling %s -> %s' % (src, dest))
+                            msgfmt_cmd = 'msgfmt {} -o {}'.format(src, dest)
+                            subprocess.call(msgfmt_cmd, shell=True)
 
 
 class build(build_extra.build_extra):
@@ -410,4 +419,6 @@ setup(name=APP,
                 'translate': translate,
                 'clean_and_compile': clean_and_compile,
                 'build_trans': build_trans,
-                'install_data': install_data})
+                'install_data': install_data
+                },
+      )
