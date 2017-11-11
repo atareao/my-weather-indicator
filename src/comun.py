@@ -27,7 +27,7 @@ import locale
 import gettext
 import sys
 import requests
-from check_connection import check_connectivity3
+from check_connection import check_connectivity
 import urllib
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
@@ -193,7 +193,7 @@ def read_json_from_url(url, timeout=0):
 
 
 def internet_on():
-    return check_connectivity3()
+    return check_connectivity()
 
 
 if __name__ == '__main__':
