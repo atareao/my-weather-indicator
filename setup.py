@@ -1,22 +1,21 @@
-#!/usr/bin/env python
-#
-'''
-from distutils.core import setup
-'''
-from distutils.core import setup
-from DistUtilsExtra.command import *
+#!/usr/bin/env python3
+
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+from DistUtilsExtra.command import build_extra
 from distutils import cmd
 from distutils.command.install_data import install_data as _install_data
-from distutils.command.build import build as _build
 
-import msgfmt
+import fileinput
 import os
 import glob
 import shlex
 import subprocess
 import shutil
 import polib
-import ConfigParser
+import configparser
 import codecs
 
 DATA_FILES = [
@@ -73,7 +72,7 @@ skins/simple', glob.glob('data/skins/simple/*')),
      ['data/my-weather-indicator-autostart.desktop']),
     ('/usr/share/applications',
      ['data/extras-my-weather-indicator.desktop']),
-    ]
+]
 
 MAIN_DIR = os.getcwd()
 DATA_DIR = os.path.join(MAIN_DIR, 'data')
@@ -88,7 +87,7 @@ f.close()
 pos = line.find('(')
 posf = line.find('-', pos)
 APP = line[:pos].strip().lower()
-VERSION = line[pos+1:posf].strip()
+VERSION = line[pos + 1:posf].strip()
 APPNAME = APP.title()
 AUTHOR = 'Lorenzo Carbonell'
 AUTHOR_EMAIL = 'lorenzo.carbonell.cerezo@gmail.com'
@@ -100,7 +99,7 @@ COMPILED_LANGUAGE_FILE = '%s.mo' % APP
 def get_entry(filein, msgid):
     try:
         po = polib.pofile(filein)
-        print po.metadata['Content-Type']
+        print(po.metadata['Content-Type'])
         for entry in po:
             if entry.msgid == msgid:
                 return entry.msgstr
@@ -131,11 +130,11 @@ def list_src():
 def list_languages():
     lans = []
     file_txt = os.path.join(LANGUAGES_DIR, 'languages.txt')
-    if os.path.exists(file_txt) == True:
+    if os.path.exists(file_txt):
         f = open(file_txt, 'r')
         for linea in f.readlines():
             lan = linea[:-1]
-            print lan
+            print(lan)
             lans.append(lan)
         f.close()
     for file in glob.glob(os.path.join(LANGUAGES_DIR, '*.po')):
@@ -154,16 +153,16 @@ def update_translations():
     f = open(file_txt, 'r')
     for file in f.readlines():
         lan = file[:-1]
-        file = os.path.join(LANGUAGES_DIR, lan+'.po')
-        print '############################################################'
-        print lan
-        print '############################################################'
+        file = os.path.join(LANGUAGES_DIR, lan + '.po')
+        print('############################################################')
+        print(lan)
+        print('############################################################')
         if os.path.exists(file):
             command = 'msgmerge -U %s %s' % (file, TEMPLATE)
         else:
             command = 'msginit --output-file=%s --input=%s --locale=%s' % (
                 file, TEMPLATE, lan)
-        print ejecuta(command)
+        print(ejecuta(command))
         edit_language_file(file)
     f.close()
 
@@ -185,7 +184,7 @@ def update_desktop_file_fp():
         ln = os.path.splitext(os.path.split(filein)[1])[0]
         lns.append(ln)
     for filedesktopin in glob.glob('*.desktop.in'):
-        desktopfile = ConfigParser.ConfigParser()
+        desktopfile = configparser.ConfigParser()
         desktopfile.optionxform = str
         desktopfile.readfp(
             codecs.open(filedesktopin, encoding='utf-8', mode='r'))
@@ -210,9 +209,9 @@ def update_desktop_file():
         lns.append(ln)
     for filedesktopin in glob.glob('*.desktop.in'):
         desktopfilename = os.path.splitext(os.path.split(filedesktopin)[1])[0]
-        print desktopfilename
+        print(desktopfilename)
         fileout = os.path.join(DATA_DIR, desktopfilename)
-        print fileout
+        print(fileout)
         if os.path.exists(fileout):
             os.remove(fileout)
         fileout = codecs.open('./data/%s' % desktopfilename,
@@ -220,7 +219,7 @@ def update_desktop_file():
                               mode='w')
         fileout.write('[Desktop Entry]\n')
         #
-        desktopfile = ConfigParser.ConfigParser()
+        desktopfile = configparser.ConfigParser()
         desktopfile.optionxform = str
         desktopfile.readfp(codecs.open('./%s.in' % desktopfilename,
                                        encoding='utf-8',
@@ -237,11 +236,11 @@ def update_desktop_file():
                     for ln in lns:
                         filepo = os.path.join(LANGUAGES_DIR, '%s.po' % ln)
                         msgstr = get_entry(filepo, entry[1])
-                        print filepo
+                        print(filepo)
                         if not msgstr or msgstr == '':
                             msgstr = entry[1]
 
-                        print '%s[%s]=%s' % (entry[0][1:], ln, msgstr)
+                        print('%s[%s]=%s' % (entry[0][1:], ln, msgstr))
                         fileout.write('%s[%s] = %s\n' % (entry[0][1:],
                                                          ln, msgstr))
         fileout.close()
@@ -250,7 +249,8 @@ def update_desktop_file():
 def remove_security_copies():
     for file in glob.glob(os.path.join(LANGUAGES_DIR, '*.po~')):
         os.remove(file)
-
+    for file in glob.glob(os.path.join(LANGUAGES_DIR, '*.pot.bak')):
+        os.remove(file)
 
 def delete_it(file):
     if os.path.exists(file):
@@ -287,40 +287,46 @@ def remove_languages_saved_files(dir):
 
 
 def babilon():
-    print '############################################################'
-    print 'Parent dir -> %s' % MAIN_DIR
-    print 'Languages dir -> %s' % LANGUAGES_DIR
-    print 'Source dir -> %s' % SRC_DIR
-    print '############################################################'
-    print 'Updating Desktop File First Part'
-    print '############################################################'
+    print('############################################################')
+    print('Parent dir -> %s' % MAIN_DIR)
+    print('Languages dir -> %s' % LANGUAGES_DIR)
+    print('Source dir -> %s' % SRC_DIR)
+    print('############################################################')
+    print('Updating Desktop File First Part')
+    print('############################################################')
     update_desktop_file_fp()
-    print '############################################################'
-    print 'Updating template'
-    print '############################################################'
+    print('############################################################')
+    print('Updating template')
+    print('############################################################')
     files_file = list_src()
     command = 'xgettext --msgid-bugs-address=%s --language=Python\
- --keyword=_ --keyword=N_ --output=%s --files-from=%s' % (AUTHOR_EMAIL,
-                                                          TEMPLATE, files_file)
-    print ejecuta(command)
+    --keyword=_ --keyword=N_ --sort-by-file --output=%s --files-from=%s'\
+    % (AUTHOR_EMAIL, TEMPLATE, files_file)
+    print(ejecuta(command))
+    print('Cleaning filepath in teplate')
+    print('############################################################')
+    with fileinput.FileInput(TEMPLATE, inplace=True, backup='.bak') as file:
+        for line in file:
+            print(line.replace("#: " + MAIN_DIR, "#: "), end='')
+    print('############################################################')
     delete_it(files_file)
-    print '############################################################'
-    print 'List languages'
-    print '############################################################'
+    print('############################################################')
+    print('List languages')
+    print('############################################################')
     #
     list_languages()
     #
-    print '############################################################'
-    print 'Updating translations'
-    print '############################################################'
+    print('############################################################')
+    print('Updating translations')
+    print('############################################################')
     update_translations()
-    print '############################################################'
-    print 'Updating Desktop File'
-    print '############################################################'
+    print('############################################################')
+    print('Updating Desktop File')
+    print('############################################################')
     update_desktop_file()
-    print '############################################################'
-    print 'Removing security copies'
-    print '############################################################'
+    print('############################################################')
+    print('Removing security copies')
+    print('############################################################')
     remove_security_copies()
 
 
@@ -369,14 +375,16 @@ class build_trans(cmd.Command):
                     if not os.path.exists(dest_path):
                         os.makedirs(dest_path)
                     if not os.path.exists(dest):
-                        print 'Compiling %s' % src
-                        msgfmt.make(src, dest)
+                        print('Compiling %s -> %s' % (src, dest))
+                        msgfmt_cmd = 'msgfmt {} -o {}'.format(src, dest)
+                        subprocess.call(msgfmt_cmd, shell=True)
                     else:
                         src_mtime = os.stat(src)[8]
                         dest_mtime = os.stat(dest)[8]
                         if src_mtime > dest_mtime:
-                            print 'Compiling %s' % src
-                            msgfmt.make(src, dest)
+                            print('Compiling %s -> %s' % (src, dest))
+                            msgfmt_cmd = 'msgfmt {} -o {}'.format(src, dest)
+                            subprocess.call(msgfmt_cmd, shell=True)
 
 
 class build(build_extra.build_extra):
@@ -399,15 +407,18 @@ class install_data(_install_data):
             self.data_files.append((lang_dir, [lang_file]))
         _install_data.run(self)
 
+
 setup(name=APP,
-    version=VERSION,
-    author=AUTHOR,
-    author_email=AUTHOR_EMAIL,
-    url=URL,
-    license=LICENSE,
-    data_files=DATA_FILES,
-    cmdclass={'build': build,
-              'translate': translate,
-              'clean_and_compile': clean_and_compile,
-              'build_trans': build_trans,
-              'install_data': install_data})
+      version=VERSION,
+      author=AUTHOR,
+      author_email=AUTHOR_EMAIL,
+      url=URL,
+      license=LICENSE,
+      data_files=DATA_FILES,
+      cmdclass={'build': build,
+                'translate': translate,
+                'clean_and_compile': clean_and_compile,
+                'build_trans': build_trans,
+                'install_data': install_data
+                },
+      )

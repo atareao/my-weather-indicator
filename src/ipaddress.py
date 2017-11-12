@@ -125,7 +125,7 @@ if __name__ == "__main__":
     import requests
     #r = requests.get("https://stackoverflow.com")
 
-    #print(get_ip())
+    # print(get_ip())
     print(get_current_location2())
-    #print(get_current_location())
+    # print(get_current_location())
     # print(get_address_from_ip())
