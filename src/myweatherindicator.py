@@ -359,9 +359,9 @@ class MWI(GObject.Object):
                 self.widgets[i].set_location(self.preferences[i]['location'])
                 self.widgets[i].connect('pinit', self.on_pinit, i)
             elif self.widgets[i] is not None:
-                    self.widgets[i].hide()
-                    self.widgets[i].destroy()
-                    self.widgets[i] = None
+                self.widgets[i].hide()
+                self.widgets[i].destroy()
+                self.widgets[i] = None
         print(1)
         self.update_weather()
         self.start_looking_for_internet()

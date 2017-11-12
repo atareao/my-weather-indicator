@@ -22,8 +22,6 @@
 #
 #
 
-import sys
-import json
 import time
 import weatherservice
 from weatherservice import WeatherService
@@ -126,7 +124,7 @@ class UndergroundWeatherService(WeatherService):
         humidity = weatherservice.s2f(
             gvfco('relative_humidity', parsed_json)[:-1])
         weather_data['current_conditions']['humidity'] = str(
-            int(humidity))+' %'
+            int(humidity)) + ' %'
         weather_data['current_conditions']['dew_point'] =\
             weatherservice.get_dew_point(
                 humidity, temperature, self.units.temperature)
@@ -231,6 +229,8 @@ class UndergroundWeatherService(WeatherService):
             print(e)
         return weather_data
         '''
+
+
 if __name__ == '__main__':
     import pprint
     uws = UndergroundWeatherService(longitude=-0.418, latitude=39.360)

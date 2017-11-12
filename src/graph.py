@@ -105,7 +105,7 @@ cloudiness);' % (self.title, self.subtitle, self.humidity, self.cloudiness,
                             self.temperature))
                     elif msg['status'] == 'exit':
                         self.close_application(None)
-                except:
+                except BaseException:
                     pass
 
     def web_recv(self):
@@ -125,6 +125,7 @@ cloudiness);' % (self.title, self.subtitle, self.humidity, self.cloudiness,
     # ###################################################################
     def close_application(self, widget):
         self.destroy()
+
 
 if __name__ == '__main__':
     title = 'Title'

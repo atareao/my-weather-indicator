@@ -26,7 +26,6 @@ import weatherservice
 from weatherservice import WeatherService
 from weatherservice import change_temperature
 import geocodeapi
-from comun import _
 import requests
 from requests_oauthlib import OAuth1
 from requests.exceptions import SSLError
@@ -234,6 +233,7 @@ class YahooWeatherService(WeatherService):
         except Exception as e:
             print(e)
         return weather_data
+
 
 if __name__ == "__main__":
     import pprint

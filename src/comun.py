@@ -41,6 +41,7 @@ __url__ = 'http://www.atareao.es'
 def is_package():
     return __file__.find('src') < 0
 
+
 ######################################
 PARAMS = {'first-time': True,
           'version': '',

@@ -21,26 +21,25 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #
-import json
+
 import weatherservice
 import time
 from datetime import datetime
 from weatherservice import WeatherService
-from comun import _
 from comun import read_json_from_url
 
 
 APPID = '4516154e5c8a6494e7e13b550408c863'
 
 OWMURL = 'http://api.openweathermap.org/data/2.5'
-URL_FIND_CITY = OWMURL + '/find?lat=%s&lon=%s&cnt=1&appid='+APPID
-URL_CURRENT_CITY_ID = OWMURL + '/weather?id=%s&appid='+APPID
+URL_FIND_CITY = OWMURL + '/find?lat=%s&lon=%s&cnt=1&appid=' + APPID
+URL_CURRENT_CITY_ID = OWMURL + '/weather?id=%s&appid=' + APPID
 URL_FORECAST_CITY_ID = OWMURL + '/forecast/daily?id=%s&cnt=7&\
-mode=json&appid='+APPID
-URL_HOURLY_CITY_ID = OWMURL + '/forecast?id=%s&appid='+APPID
-URL_CURRENT_CITY_LL = OWMURL + '/weather?lat=%s&lon=%s&appid='+APPID
-URL_FORECAST_CITY_LL = OWMURL + '/forecast/daily?lat=%s&lon=%s&appid='+APPID
-URL_HOURLY_CITY_LL = OWMURL + '/forecast?lat=%s&lon=%s&appid='+APPID
+mode=json&appid=' + APPID
+URL_HOURLY_CITY_ID = OWMURL + '/forecast?id=%s&appid=' + APPID
+URL_CURRENT_CITY_LL = OWMURL + '/weather?lat=%s&lon=%s&appid=' + APPID
+URL_FORECAST_CITY_LL = OWMURL + '/forecast/daily?lat=%s&lon=%s&appid=' + APPID
+URL_HOURLY_CITY_LL = OWMURL + '/forecast?lat=%s&lon=%s&appid=' + APPID
 
 
 CONDITION = {}
@@ -95,17 +94,17 @@ CONDITION[906] = 'hail'
 
 
 def find_city(longitude, latitude):
-        url = URL_FIND_CITY % (latitude, longitude)
-        parsed_json = read_json_from_url(url)
-        if parsed_json:
-            elist = parsed_json['list']
-            if len(elist) > 0:
-                return elist[0]['id']
-        return None
+    url = URL_FIND_CITY % (latitude, longitude)
+    parsed_json = read_json_from_url(url)
+    if parsed_json:
+        elist = parsed_json['list']
+        if len(elist) > 0:
+            return elist[0]['id']
+    return None
 
 
 def fa2f(temperature):
-    return (temperature - 273.15)*9.0/5.0+32.0
+    return (temperature - 273.15) * 9.0 / 5.0 + 32.0
 
 
 class OWMWeatherService(WeatherService):
@@ -148,6 +147,7 @@ class OWMWeatherService(WeatherService):
                 temp_min = str(t2)
                 temp_max = str(t1)
             wind_direction = weatherservice.degToCompass2(direction)
+
             wdd = {}
             wdd['datetime'] = datetime.fromtimestamp(data['dt'])
             wdd['condition'] = condition
@@ -315,6 +315,7 @@ class OWMWeatherService(WeatherService):
         # except Exception as e:
         # print(e)
         return weather_data
+
 
 if __name__ == "__main__":
     import pprint

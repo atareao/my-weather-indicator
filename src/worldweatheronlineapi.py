@@ -34,54 +34,54 @@ KEY = '5aa718e771170840121008'
 URL = 'http://api.worldweatheronline.com/free/v1/weather.ashx?q=%s,%s\
 &format=json&num_of_days=5&key=%s'  # (latitude,longitude)
 CODES = {
-         '395': 'moderate or heavy snow in area with thunder',
-         '392': 'patchy light snow in area with thunder',
-         '389': 'moderate or heavy rain in area with thunder',
-         '386': 'patchy light rain in area with thunder',
-         '377': 'moderate or heavy showers of ice pellets',
-         '374': 'light showers of ice pellets',
-         '371': 'moderate or heavy snow showers',
-         '368': 'light snow showers',
-         '365': 'moderate or heavy',
-         '362': 'light sleet showers',
-         '359': 'torrential rain shower',
-         '356': 'moderate or heavy rain shower',
-         '353': 'light rain shower',
-         '350': 'ice pellets',
-         '338': 'heavy snow',
-         '335': 'patchy heavy snow',
-         '332': 'moderate snow',
-         '329': 'patchy moderate snow',
-         '326': 'light snow',
-         '323': 'patchy light snow',
-         '320': 'moderate or heavy sleet',
-         '317': 'light sleet',
-         '314': 'moderate or heavy freezing rain',
-         '311': 'light freezing rain',
-         '308': 'heavy rain',
-         '305': 'heavy rain at times',
-         '302': 'moderate rain',
-         '299': 'moderate rain at times',
-         '296': 'light rain',
-         '293': 'patchy light rain',
-         '284': 'heavy freezing drizzle',
-         '281': 'freezing drizzle',
-         '266': 'light drizzle',
-         '263': 'patchy light drizzle',
-         '260': 'freezing fog',
-         '248': 'fog',
-         '230': 'blizzard',
-         '227': 'blowing snow',
-         '200': 'thundery outbreaks in nearby',
-         '185': 'patchy freezing drizzle nearby',
-         '182': 'patchy sleet nearby',
-         '179': 'patchy snow nearby',
-         '176': 'patchy rain nearby',
-         '143': 'mist',
-         '122': 'overcast',
-         '119': 'cloudy',
-         '116': 'partly cloudy',
-         '113': 'clear'}
+    '395': 'moderate or heavy snow in area with thunder',
+    '392': 'patchy light snow in area with thunder',
+    '389': 'moderate or heavy rain in area with thunder',
+    '386': 'patchy light rain in area with thunder',
+    '377': 'moderate or heavy showers of ice pellets',
+    '374': 'light showers of ice pellets',
+    '371': 'moderate or heavy snow showers',
+    '368': 'light snow showers',
+    '365': 'moderate or heavy',
+    '362': 'light sleet showers',
+    '359': 'torrential rain shower',
+    '356': 'moderate or heavy rain shower',
+    '353': 'light rain shower',
+    '350': 'ice pellets',
+    '338': 'heavy snow',
+    '335': 'patchy heavy snow',
+    '332': 'moderate snow',
+    '329': 'patchy moderate snow',
+    '326': 'light snow',
+    '323': 'patchy light snow',
+    '320': 'moderate or heavy sleet',
+    '317': 'light sleet',
+    '314': 'moderate or heavy freezing rain',
+    '311': 'light freezing rain',
+    '308': 'heavy rain',
+    '305': 'heavy rain at times',
+    '302': 'moderate rain',
+    '299': 'moderate rain at times',
+    '296': 'light rain',
+    '293': 'patchy light rain',
+    '284': 'heavy freezing drizzle',
+    '281': 'freezing drizzle',
+    '266': 'light drizzle',
+    '263': 'patchy light drizzle',
+    '260': 'freezing fog',
+    '248': 'fog',
+    '230': 'blizzard',
+    '227': 'blowing snow',
+    '200': 'thundery outbreaks in nearby',
+    '185': 'patchy freezing drizzle nearby',
+    '182': 'patchy sleet nearby',
+    '179': 'patchy snow nearby',
+    '176': 'patchy rain nearby',
+    '143': 'mist',
+    '122': 'overcast',
+    '119': 'cloudy',
+    '116': 'partly cloudy',
+    '113': 'clear'}
 
 
 def get_condition(code):
@@ -218,7 +218,7 @@ class WorldWeatherOnlineService(WeatherService):
             weather_data['current_conditions']['precip_today'] =\
                 weatherservice.change_longitude(
                     weatherservice.s2f(
-                        gvfco('precipMM', parsed_json))/25.4,
+                        gvfco('precipMM', parsed_json)) / 25.4,
                     self.units.rain)
             for i in range(0, 5):
                 t1 = weatherservice.s2f(gvff('tempMinF', i, parsed_json))
@@ -239,7 +239,7 @@ class WorldWeatherOnlineService(WeatherService):
                 weather_data['forecasts'][i]['qpf_allday'] =\
                     weatherservice.change_longitude(
                         weatherservice.s2f(
-                            gvff('precipMM', i, parsed_json))/25.4,
+                            gvff('precipMM', i, parsed_json)) / 25.4,
                         self.units.rain)
                 weather_data['forecasts'][i]['qpf_day'] = None
                 weather_data['forecasts'][i]['qpf_night'] = None
@@ -275,6 +275,7 @@ class WorldWeatherOnlineService(WeatherService):
             print(e)
             weather_data['ok'] = False
         return weather_data
+
 
 if __name__ == '__main__':
     import pprint
