@@ -91,7 +91,7 @@ def check_connectivity5():
 if __name__ == '__main__':
     TESTURL = 'https://www.google.com'
     atime = time.time()
-    #print(1, check_connectivity1(TESTURL), time.time() - atime)
+    # print(1, check_connectivity1(TESTURL), time.time() - atime)
     atime = time.time()
     print(2, check_connectivity2(TESTURL), time.time() - atime)
     atime = time.time()
