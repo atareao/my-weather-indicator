@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # Copyright (C) 2011-2016 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
@@ -17,14 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
-from gi.repository import Gtk, GdkPixbuf
+
+from gi.repository import Gtk
+from gi.repository import GdkPixbuf
 import os
 import comun
 import webbrowser
-from configurator import Configuration
 from comun import _
 
 

@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # ipaddress.py
 #
@@ -19,11 +18,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
+
 import dbus
-import sys
 import comun
 import re
 import json
@@ -68,7 +64,8 @@ def convert(dbus_obj):
 
 def get_current_location2():
     '''Gets the current location from geolocation via IP (only method
-       currently supported)'''
+       currently supported)
+    '''
     latitude = 0
     longitude = 0
     bus = dbus.SessionBus()
@@ -122,8 +119,8 @@ def get_address_from_ip():
 
 
 if __name__ == "__main__":
-    import requests
-    #r = requests.get("https://stackoverflow.com")
+    # import requests
+    # r = requests.get("https://stackoverflow.com")
 
     # print(get_ip())
     print(get_current_location2())

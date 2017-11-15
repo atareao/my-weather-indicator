@@ -1,9 +1,7 @@
-#! /usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-#
 # OpenWeatherMap
-#
 #
 # Copyright (C) 2012 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
@@ -20,18 +18,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
+
 from gi.repository import Gtk
 from gi.repository import WebKit
-from gi.repository import GObject
-from json import dumps as to_json
 from json import loads as from_json
-import sys
-import time
 import queue
 import comun
-from comun import _
 
 
 class Graph(Gtk.Dialog):
