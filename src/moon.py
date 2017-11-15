@@ -1,13 +1,13 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+#
 '''
 moonphase.py - Calculate Lunar Phase
 Author: Sean B. Palmer, inamidst.com
 Cf. http://en.wikipedia.org/wiki/Lunar_phase#Lunar_phase_calculation
 '''
+
 from comun import _
-
-
 import math
 import decimal
 import datetime

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # Copyright (C) 2011-2016 Lorenzo Carbonell
@@ -16,16 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
 
-from gi.repository import Gtk, Gdk, GObject
+from gi.repository import Gtk
+from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 import os
-import shutil
-import locale
-import gettext
 import datetime
 from moon import Moon
 import comun
@@ -59,9 +54,9 @@ class MoonDayWidget(Gtk.EventBox):
         self.adate = adate
         self.label.set_text(str(adate.day))
         self.moon = Moon(adate)
-        phasename = self.moon.phase()
-        i = adate.day
-        roundedpos = round(float(self.moon.position()), 3)
+        # phasename = self.moon.phase()
+        # i = adate.day
+        # roundedpos = round(float(self.moon.position()), 3)
         self.image.set_from_pixbuf(
             GdkPixbuf.Pixbuf.new_from_file_at_size(
                 os.path.join(
