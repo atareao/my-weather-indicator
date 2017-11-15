@@ -252,6 +252,7 @@ def remove_security_copies():
     for file in glob.glob(os.path.join(LANGUAGES_DIR, '*.pot.bak')):
         os.remove(file)
 
+
 def delete_it(file):
     if os.path.exists(file):
         if os.path.isdir(file):
@@ -307,7 +308,7 @@ def babilon():
     print('############################################################')
     with fileinput.FileInput(TEMPLATE, inplace=True, backup='.bak') as file:
         for line in file:
-            print(line.replace("#: " + MAIN_DIR, "#: "), end='')
+            print(line.replace("#: " + MAIN_DIR, "#: .."), end='')
     print('############################################################')
     delete_it(files_file)
     print('############################################################')
