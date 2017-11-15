@@ -1,7 +1,6 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-
 # Copyright (C) 2012 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
 #
@@ -17,14 +16,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
 
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GObject
-from gi.repository import GLib
 from gi.repository import GdkPixbuf
 from gi.repository import AppIndicator3 as appindicator
 import cairo
@@ -33,7 +28,6 @@ import os
 import math
 import comun
 from configurator import Configuration
-from comun import _
 
 
 class WeatherWidget(Gtk.Window):
@@ -564,7 +558,7 @@ def get_surface_from_file(filename):
 def transparent_expose(widget, event):
     cr = widget.cairo_create()
     cr.set_operator(cairo.OPERATOR_CLEAR)
-    region = gtk.gdk.region_rectangle(event.area)
+    region = Gtk.gdk.region_rectangle(event.area)
     cr.region(region)
     cr.fill()
     return False

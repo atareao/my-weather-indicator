@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # A library for accesssing to gunderground api
 #
@@ -19,8 +18,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
+
 import sys
 from sun import Sun
 from moon import Moon
@@ -519,14 +517,14 @@ def get_condition_wwa(condition, tipo):
 
 
 def get_condition(condition, tipo):
-    text = ''
+    # text = ''
     if condition is not None and len(condition) > 0:
         if condition.startswith('heavy'):
             condition = condition[6:]
-            text = _('Heavy') + ' '
+            # text = _('Heavy') + ' '
         elif condition.startswith('light'):
             condition = condition[6:]
-            text = _('Light') + ' '
+            # text = _('Light') + ' '
         if condition in CONDITIONS.keys():
             return CONDITIONS[condition][tipo]
         else:
@@ -650,7 +648,7 @@ def change_temperature2(valor, a):
         return '{0} {1}'.format(redondea(valor), a)
     if sys.version_info[0] == 3:
         return '{0} {1:c}{2}'.format(redondea(valor), 176, a)
-    return str(redondea(valor)) + unichr(176)
+    return str(redondea(valor)) + chr(176)
 
 
 def get_wind_chill(temperature, wind_velocity):
@@ -838,7 +836,7 @@ def timeformat(hhmm, AMPM=False):
         return hhmm
 
 
-class Units():
+class Units(object):
 
     def __init__(self, temperature='C', wind='km/h', pressure='mb',
                  visibility='km', snow='cm', rain='mm', ampm=False):
@@ -851,7 +849,7 @@ class Units():
         self.ampm = ampm
 
 
-class WeatherService():
+class WeatherService(object):
 
     def __init__(self, longitude=-0.418, latitude=39.360, units=Units(),
                  key=''):
