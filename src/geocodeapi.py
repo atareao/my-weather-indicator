@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # A library for access to geocode for address
@@ -18,17 +18,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
+
 import gi
 try:
     gi.require_version('GeocodeGlib', '1.0')
 except BaseException:
     print('Repository version required not present')
     exit(1)
-import sys
-import json
 from comun import read_json_from_url
 from comun import internet_on
 import locale

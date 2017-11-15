@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-#
 # A library for access to AEMET Weather Service
 #
 # Copyright (C) 2017 Lorenzo Carbonell
@@ -22,16 +21,14 @@
 
 from comun import AEMETDB
 import sqlite3
-# -*- coding: UTF-8-*-
 from xml.etree.ElementTree import parse
 from urllib.request import urlopen
 import datetime
 import math
 import time
-import ssl
 
 
-class Base:
+class Base(object):
     def __init__(self, url):
         self.rss = ''
         self.fecha = ''

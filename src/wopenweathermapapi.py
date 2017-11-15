@@ -132,7 +132,7 @@ class OWMWeatherService(WeatherService):
             condition = CONDITION[data['weather'][0]['id']]
             temperature = fa2f(data['main']['temp'])
             cloudiness = data['clouds']['all']
-            pressure = data['main']['pressure']
+            # pressure = data['main']['pressure']
             humidity = data['main']['humidity']
             velocity = data['wind']['speed'] if 'wind' in data.keys() and\
                 'speed' in data['wind'].keys() else 0.0
