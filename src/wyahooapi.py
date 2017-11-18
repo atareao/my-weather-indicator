@@ -88,7 +88,7 @@ def s2f(word):
     try:
         return float(word)
     except Exception as e:
-        print(e)
+        print('wyahooapi.py: error:', str(e))
     return 0
 
 
@@ -113,27 +113,42 @@ class YahooWeatherService(WeatherService):
             '''
             Bug #1568774
             '''
-            print('Bug #1568774', str(e))
+            print('wyahooapi.py: Bug #1568774', str(e))
+            print('wyahooapi.py: Unable to query https url, switch to http url')
             url = 'http://query.yahooapis.com/v1/yql?q=%s' % q
             ans = requests.get(url, auth=self.oauth, params=params)
+
         if ans.status_code == 200:
             return ans.json()
-        return None
+        else:
+            print('wyahooapi.py: Request status code not 200, status_code = ', str(ans.status_code))
+            return None
 
     def get_weather(self):
         weather_data = self.get_default_values()
         if self.woeid is None:
             self.woeid = geocodeapi.get_woeid(self.latitude, self.longitude)
             if self.woeid is None:
-                print('Yahoo Weather Service, not found woeid')
+                print('wyahooapi.py: Yahoo Weather Service, not found woeid')
                 return weather_data
         try:
             ans = self.run_query()
-            if ans is None or\
-                    'query' not in ans.keys() or\
-                    'results' not in ans['query'].keys() or\
-                    'channel' not in ans['query']['results'].keys():
+            if ans is None:
+                print('wyahooapi.py: Yahoo Weather Service, query answer is None')
                 return weather_data
+            if 'query' not in list(ans.keys()):
+                print('wyahooapi.py: Yahoo Weather Service, query answer has no element query')
+                return weather_data
+            if 'results' not in list(ans['query'].keys()):
+                print('wyahooapi.py: Yahoo Weather Service, query answer has no element query.results')
+                return weather_data
+            if ans['query']['results'] is None:
+                print('wyahooapi.py: Yahoo Weather Service, query answer query.results is None')
+                return weather_data
+            if 'channel' not in list(ans['query']['results'].keys()):
+                print('wyahooapi.py: Yahoo Weather Service, query answer has no element query.results.channel')
+                return weather_data
+
             weather_data['update_time'] = time.time()
             weather_data['ok'] = True
             data = ans['query']['results']['channel']
@@ -229,7 +244,7 @@ class YahooWeatherService(WeatherService):
                     weather_data['forecasts'][i]['condition_icon'] =\
                         weatherservice.get_condition(condition, 'icon-light')
         except Exception as e:
-            print(e)
+            print('wyahooapi.py: error:', str(e))
         return weather_data
 
 
