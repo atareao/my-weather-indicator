@@ -23,7 +23,7 @@ import time
 from lxml import etree
 import geocodeapi
 import weatherservice
-import htmlentitydefs
+import html.entities
 from weatherservice import WeatherService
 from comun import read_from_url
 
@@ -38,7 +38,7 @@ def unicode2html(str):
         if ord(char) > 127:
             try:
                 ret = ret + "&" +\
-                    htmlentitydefs.codepoint2name[ord(char)] + ";"
+                    html.entities.codepoint2name[ord(char)] + ";"
             except BaseException:
                 ret = ret + '?'
         else:

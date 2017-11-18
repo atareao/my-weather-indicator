@@ -25,7 +25,9 @@ import gettext
 import sys
 import requests
 from check_connection import check_connectivity3
-import urllib
+import urllib.request
+import urllib.parse
+import urllib.error
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
 __date__ = '$24/09/2011'

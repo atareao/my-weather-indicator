@@ -48,9 +48,9 @@ def convert(dbus_obj):
     pystr = ConvertType(str, types_str)
 
     pydict = ConvertType(
-        lambda _obj: dict(zip(map(convert, dbus_obj.keys()),
-                              map(convert, dbus_obj.values())
-                              )
+        lambda _obj: dict(list(zip(list(map(convert, dbus_obj.keys())),
+                                   list(map(convert, dbus_obj.values()))
+                                   ))
                           ),
         (dbus.Dictionary, )
     )
