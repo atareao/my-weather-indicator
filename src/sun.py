@@ -27,19 +27,12 @@ Solar flux, equation of time and import of python library
 2007-12-12 - v1.5 by Miguel Tremblay: bug fix to solar flux calculation
 """
 
+import common_functions as cf
 import math
 from math import pi
 import calendar
 
 SUN_PY_VERSION = 1.5
-
-
-def s2f(cadena):
-    try:
-        value = float(cadena)
-    except BaseException:
-        value = 0.0
-    return value
 
 
 def from_utc_to_local(value, rawOffset=0):
@@ -289,7 +282,7 @@ class Sun(object):
         """
 
         # Compute d of 12h local mean solar time
-        lon = s2f(lon)
+        lon = cf.s2f(lon)
         d = self.daysSince2000Jan0(year, month, day) + 0.5 - (lon / 360.0)
 
         # Compute obliquity of ecliptic (inclination of Earth's axis)

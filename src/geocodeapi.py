@@ -19,6 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import common_functions as cf
 import gi
 try:
     gi.require_version('GeocodeGlib', '1.0')
@@ -37,14 +38,6 @@ LANG = locale.getlocale(locale.LC_MESSAGES)[0].replace('_', '-')
 
 URLINV_YAHOO2 = 'http://gws2.maps.yahoo.com/findlocation?pf=1&locale=%s\
 &offset=15&flags=&q=%s,%s&gflags=R&start=0&count=10&format=json'
-
-
-def s2f(word):
-    try:
-        value = float(word)
-    except BaseException:
-        value = 0.0
-    return value
 
 
 def get_default_values():
@@ -134,7 +127,7 @@ def get_woeid(lat, lon):
 
 def get_inv_direction(lat, lon):
     print('******* Adquiring inv direction *******')
-    location = GeocodeGlib.Location.new(s2f(lat), s2f(lon), 1000)
+    location = GeocodeGlib.Location.new(cf.s2f(lat), cf.s2f(lon), 1000)
     reverse = GeocodeGlib.Reverse.new_for_location(location)
     aplace = reverse.resolve()
     direction = {}

@@ -70,22 +70,6 @@ INDICATORS = 2
 TIME_TO_CHECK = 15
 
 
-def redondea(valor):
-    valor = valor * 10.0
-    return int(valor) / 10.0
-
-
-def cambia(valor, a):
-    if len(valor) == 0:
-        return ''
-    valor = float(valor)
-    if a == 'F':
-        return str(redondea(valor * 9.0 / 5.0 + 32.0))
-    elif a == 'K':
-        return str(redondea(valor + 273.15))
-    return str(valor)
-
-
 class MWI(GObject.Object):
     __gsignals__ = {
         'internet-out': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),

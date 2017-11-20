@@ -19,10 +19,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import common_functions as cf
 import time
 import weatherservice
 from weatherservice import WeatherService
-from weatherservice import change_temperature
 import geocodeapi
 import requests
 from requests_oauthlib import OAuth1
@@ -82,14 +82,6 @@ CODE[45] = 'thundershowers'
 CODE[46] = 'snow showers'
 CODE[47] = 'isolated thundershowers'
 CODE[3200] = 'not available'
-
-
-def s2f(word):
-    try:
-        return float(word)
-    except Exception as e:
-        print('wyahooapi.py: error:', str(e))
-    return 0
 
 
 class YahooWeatherService(WeatherService):
@@ -152,12 +144,12 @@ class YahooWeatherService(WeatherService):
             weather_data['update_time'] = time.time()
             weather_data['ok'] = True
             data = ans['query']['results']['channel']
-            temperature = s2f(data['item']['condition']['temp'])
-            velocity = s2f(data['wind']['speed'])
-            direction = s2f(data['wind']['direction'])
-            pressure = s2f(data['atmosphere']['pressure'])
-            visibility = s2f(data['atmosphere']['visibility'])
-            humidity = s2f(data['atmosphere']['humidity'])
+            temperature = cf.f2c_print(data['item']['condition']['temp'])
+            velocity = cf.f2c_print(data['wind']['speed'])
+            direction = cf.f2c_print(data['wind']['direction'])
+            pressure = cf.f2c_print(data['atmosphere']['pressure'])
+            visibility = cf.f2c_print(data['atmosphere']['visibility'])
+            humidity = cf.f2c_print(data['atmosphere']['humidity'])
             condition = CODE[int(data['item']['condition']['code'])]
             weather_data['current_conditions']['condition'] = condition
             weather_data['current_conditions']['condition_text'] =\
@@ -177,8 +169,7 @@ class YahooWeatherService(WeatherService):
                 weather_data['current_conditions']['condition_icon_light'] =\
                     weatherservice.get_condition(condition, 'icon-night-light')
             weather_data['current_conditions']['temperature'] =\
-                weatherservice.change_temperature(temperature,
-                                                  self.units.temperature)
+                cf.change_temperature(temperature, self.units.temperature)
             weather_data['current_conditions']['pressure'] =\
                 weatherservice.change_pressure(pressure, self.units.pressure)
             weather_data['current_conditions']['humidity'] = '%s %%' %\
@@ -214,14 +205,12 @@ class YahooWeatherService(WeatherService):
             weather_data['current_conditions']['precip_today'] = None
             for i, forecast_condition in enumerate(data['item']['forecast']):
                 if i < 7:
-                    tlow = s2f(forecast_condition['low'])
-                    thight = s2f(forecast_condition['high'])
+                    tlow = cf.f2c_print(forecast_condition['low'])
+                    thight = cf.f2c_print(forecast_condition['high'])
                     weather_data['forecasts'][i]['low'] =\
-                        change_temperature(tlow,
-                                           self.units.temperature)
+                        cf.change_temperature(tlow, self.units.temperature)
                     weather_data['forecasts'][i]['high'] =\
-                        change_temperature(thight,
-                                           self.units.temperature)
+                        cf.change_temperature(thight, self.units.temperature)
                     #
                     weather_data['forecasts'][i]['qpf_allday'] = None
                     weather_data['forecasts'][i]['qpf_day'] = None

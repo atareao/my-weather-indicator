@@ -19,6 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import common_functions as cf
 import sys
 from sun import Sun
 from moon import Moon
@@ -462,12 +463,8 @@ WINDS2 = [['N', _('North'), 'mwi-wind00.png'],
           ['NBW', _('North by west'), 'mwi-wind31.png']]
 
 
-def f2c(temperature):
-    return (s2f(temperature) - 32.0) * 5.0 / 9.0
-
-
 def degToCompass(num):
-    val = int((s2f(num) / 11.25) + 0.25)
+    val = int((cf.s2f(num) / 11.25) + 0.25)
     arr = ['n', 'nbe', 'nne', 'nebn', 'ne', 'nebe', 'ene', 'ebn', 'e', 'ebs',
            'ese', 'sebe', 'se', 'sebs', 'sse', 'sbe', 's', 'sbw', 'ssw',
            'swbs', 'sw', 'swbw', 'wsw', 'wbs', 'w', 'wbn', 'wnw', 'nwbw', 'nw',
@@ -476,7 +473,7 @@ def degToCompass(num):
 
 
 def degToCompass2(num):
-    val = int((s2f(num) / 11.25) + 0.25)
+    val = int((cf.s2f(num) / 11.25) + 0.25)
     return WINDS2[(val % 32)]
 
 
@@ -577,83 +574,59 @@ def get_key(key, tree, default=None):
 def get_dayLength(day, longitude, latitude):
     sun = Sun()
     return sun.dayLength(
-        day.year, day.month, day.day, s2f(longitude), s2f(latitude))
+        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude))
 
 
 def get_dayCivilTwilightLength(day, longitude, latitude):
     sun = Sun()
     return sun.dayCivilTwilightLength(
-        day.year, day.month, day.day, s2f(longitude), s2f(latitude))
+        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude))
 
 
 def get_dawn(day, longitude, latitude, rawOffset):
     sun = Sun()
     ss = sun.civilTwilightLocal(
-        day.year, day.month, day.day, s2f(longitude), s2f(latitude), rawOffset)
+        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude), rawOffset)
     return '%s' % (ss[0])
 
 
 def get_dusk(day, longitude, latitude, rawOffset):
     sun = Sun()
     ss = sun.civilTwilightLocal(
-        day.year, day.month, day.day, s2f(longitude), s2f(latitude), rawOffset)
+        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude), rawOffset)
     return '%s' % (ss[1])
 
 
 def get_sunrise(day, longitude, latitude, rawOffset):
     sun = Sun()
     ss = sun.sunRiseSetLocal(
-        day.year, day.month, day.day, s2f(longitude), s2f(latitude), rawOffset)
+        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude), rawOffset)
     return '%s' % (ss[0])
 
 
 def get_sunset(day, longitude, latitude, rawOffset):
     sun = Sun()
     ss = sun.sunRiseSetLocal(
-        day.year, day.month, day.day, s2f(longitude), s2f(latitude), rawOffset)
+        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude), rawOffset)
     return '%s' % (ss[1])
 
 
-def s2f(cadena):
-    try:
-        value = float(cadena)
-    except BaseException:
-        value = 0.0
-    return value
-
-
-def redondea(valor, digits=0):
-    if digits == 0:
-        return int(round(valor, digits))
-    return round(valor, digits)
-
-
-def change_temperature(valor, a):
-    valor = s2f(valor)
-    # initial a in ºF
-    if a == 'C':
-        valor = 5.0 / 9.0 * (valor - 32.0)
-    elif a == 'K':
-        valor = 5.0 / 9.0 * (valor - 32.0) + 273.15
-    return str(redondea(valor))
-
-
 def change_temperature2(valor, a):
-    valor = s2f(valor)
+    valor = cf.s2f(valor)
     # initial a in ºF
     if a == 'C':
         valor = 5.0 / 9.0 * (valor - 32.0)
     elif a == 'K':
         valor = 5.0 / 9.0 * (valor - 32.0) + 273.15
-        return '{0} {1}'.format(redondea(valor), a)
+        return '{0} {1}'.format(cf.redondea_digits(valor), a)
     if sys.version_info[0] == 3:
-        return '{0} {1:c}{2}'.format(redondea(valor), 176, a)
-    return str(redondea(valor)) + chr(176)
+        return '{0} {1:c}{2}'.format(cf.redondea_digits(valor), 176, a)
+    return str(cf.redondea_digits(valor)) + chr(176)
 
 
 def get_wind_chill(temperature, wind_velocity):
-    wind_velocity = s2f(wind_velocity)
-    temperature = s2f(temperature)
+    wind_velocity = cf.s2f(wind_velocity)
+    temperature = cf.s2f(temperature)
     # temperature ºF
     # wind_velocity mph
     if temperature <= 50.0 and wind_velocity >= 3.0:
@@ -673,7 +646,7 @@ def get_wind_icon(wind_direction):
 
 
 def get_wind_condition(wind_velocity, wind_direction, wind_units):
-    wind_velocity = s2f(wind_velocity)
+    wind_velocity = cf.s2f(wind_velocity)
     wind_direction = wind_direction.lower()
     if wind_direction in WINDS.keys():
         wind_direction = WINDS[wind_direction]
@@ -686,38 +659,38 @@ def get_wind_condition(wind_velocity, wind_direction, wind_units):
 
 
 def get_wind_condition2(wind_velocity, wind_direction, wind_units):
-    wind_velocity = change_velocity(s2f(wind_velocity), wind_units)
+    wind_velocity = change_velocity(cf.s2f(wind_velocity), wind_units)
     return '%s (%s)' % (wind_velocity, wind_direction)
 
 
 def get_feels_like(temperature, humidity, wind_velocity, temperature_units):
     # temperature ºF
     # velocity mph
-    temperature = s2f(temperature)
-    humidity = s2f(humidity)
-    wind_velocity = s2f(wind_velocity)
+    temperature = cf.s2f(temperature)
+    humidity = cf.s2f(humidity)
+    wind_velocity = cf.s2f(wind_velocity)
     hi = get_heat_index(temperature, humidity)
     wc = get_wind_chill(temperature, wind_velocity)
     ta = temperature + hi + wc
-    return change_temperature(ta, temperature_units)
+    return cf.change_temperature(ta, temperature_units)
 
 
 def get_dew_point(humidity, temperature, temperature_units):
     # humidity (%)
     # temperature (ºF)
     if humidity and temperature and humidity > 0.0:
-        h = s2f(humidity)
-        t = s2f(temperature)
+        h = cf.s2f(humidity)
+        t = cf.s2f(temperature)
         t = 5.0 / 9.0 * (t - 32.0)
         dp = math.pow(h / 100.0, 1.0 / 8.0) * (110.0 + t) - 110.0
-        dp = redondea(9.0 / 5.0 * dp + 32)
-        return change_temperature(dp, temperature_units)
+        dp = cf.redondea_digits(9.0 / 5.0 * dp + 32)
+        return cf.change_temperature(dp, temperature_units)
     return _('n/a')
 
 
 def get_heat_index(temperature, humidity):
-    temperature = s2f(temperature)
-    humidity = s2f(humidity)
+    temperature = cf.s2f(temperature)
+    humidity = cf.s2f(humidity)
     if humidity > 0.0 and temperature >= 77.0:
         # temperature ºF
         # humidity over 100
@@ -740,7 +713,7 @@ def get_heat_index(temperature, humidity):
 
 
 def change_pressure(valor, a):
-    valor = s2f(valor)
+    valor = cf.s2f(valor)
     units_u = {'mb': 1, 'in': 0.0294985250737, 'mm': 0.751879699248}
     units_m = {'mb': _('millibar'), 'in': _('inches of mercury'),
                'mm': _('millimeters of mercury')}
@@ -750,34 +723,34 @@ def change_pressure(valor, a):
         else:
             digits = 0
         return '%s %s' % (
-            locale.str(redondea(valor * units_u[a], digits)), units_m[a])
+            locale.str(cf.redondea_digits(valor * units_u[a], digits)), units_m[a])
 
 
 def change_distance(valor, a):
-    valor = s2f(valor)
+    valor = cf.s2f(valor)
     units_u = {'mi': 1, 'km': 1.609344}
     units_m = {'mi': _('mi'), 'km': _('km')}
     if a in units_u.keys():
-        return '%s %s' % (locale.str(redondea(valor * units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(cf.redondea_digits(valor * units_u[a])), units_m[a])
 
 
 def change_longitude(valor, a):
-    valor = s2f(valor)
+    valor = cf.s2f(valor)
     units_u = {'in': 1, 'cm': 2.54, 'mm': 25.4}
     units_m = {'in': _('in'), 'cm': _('cm'), 'mm': _('mm')}
     if a in units_u.keys():
-        return '%s %s' % (locale.str(redondea(valor * units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(cf.redondea_digits(valor * units_u[a])), units_m[a])
 
 
 def change_velocity(valor, a):
-    valor = s2f(valor)
+    valor = cf.s2f(valor)
     # initial a in mph
     units_u = {'mph': 1, 'km/h': 1.609344, 'm/s': 0.44704,
                'knots': 0.868976, 'ft/s': 1.466667}
     units_m = {'mph': _('mph'), 'km/h': _('km/h'), 'm/s': _('m/s'),
                'knots': _('knots'), 'ft/s': _('ft/s')}
     if a in units_u.keys():
-        return '%s %s' % (locale.str(redondea(valor * units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(cf.redondea_digits(valor * units_u[a])), units_m[a])
     if a == 'Beaufort':
         if valor <= 1:
             return _('Calm')
@@ -816,8 +789,8 @@ def timeformat(hhmm, AMPM=False):
     """
 
     hh, mm = hhmm.split(":")
-    if s2f(mm) == 60.0:
-        hh = str(int(s2f(hh) + 1.0))
+    if cf.s2f(mm) == 60.0:
+        hh = str(int(cf.s2f(hh) + 1.0))
         hhmm = hh + ':00'
     if AMPM:
         ampm = hhmm.split(":")
@@ -1041,4 +1014,4 @@ if __name__ == '__main__':
     print(get_condition('light rain', 'image'))
     print(get_condition('heavy rain', 'text'))
     print(degToCompass(9))
-    print('Esta es la temperatura ' + change_temperature(20, 'C'))
+    print('Esta es la temperatura ' + cf.change_temperature(20, 'C'))

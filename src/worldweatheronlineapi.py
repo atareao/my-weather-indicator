@@ -19,6 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import common_functions as cf
 import time
 import weatherservice
 from weatherservice import WeatherService
@@ -172,20 +173,20 @@ class WorldWeatherOnlineService(WeatherService):
                 weather_data['current_conditions']['condition_icon_light'] =\
                     weatherservice.get_condition_wwa(
                         condition, 'icon-night-light')
-            temperature = weatherservice.s2f(gvfco('temp_F', parsed_json))
+            temperature = cf.s2f(gvfco('temp_F', parsed_json))
             weather_data['current_conditions']['temperature'] =\
-                weatherservice.change_temperature(
+                cf.change_temperature(
                     temperature, self.units.temperature)
-            pressure = weatherservice.s2f(gvfco('pressure', parsed_json))
+            pressure = cf.s2f(gvfco('pressure', parsed_json))
             weather_data['current_conditions']['pressure'] =\
                 weatherservice.change_pressure(pressure, self.units.pressure)
-            humidity = weatherservice.s2f(gvfco('humidity', parsed_json))
+            humidity = cf.s2f(gvfco('humidity', parsed_json))
             weather_data['current_conditions']['humidity'] = '%s %%' % (
                 int(humidity))
             weather_data['current_conditions']['dew_point'] =\
                 weatherservice.get_dew_point(
                     humidity, temperature, self.units.temperature)
-            wind_velocity = weatherservice.s2f(
+            wind_velocity = cf.s2f(
                 gvfco('windspeedMiles', parsed_json))
             wind_direction = weatherservice.degToCompass2(
                 gvfco('winddirDegree', parsed_json))
@@ -212,12 +213,12 @@ class WorldWeatherOnlineService(WeatherService):
             weather_data['current_conditions']['precip_1hr'] = None
             weather_data['current_conditions']['precip_today'] =\
                 weatherservice.change_longitude(
-                    weatherservice.s2f(
+                    cf.s2f(
                         gvfco('precipMM', parsed_json)) / 25.4,
                     self.units.rain)
             for i in range(0, 5):
-                t1 = weatherservice.s2f(gvff('tempMinF', i, parsed_json))
-                t2 = weatherservice.s2f(gvff('tempMaxF', i, parsed_json))
+                t1 = cf.s2f(gvff('tempMinF', i, parsed_json))
+                t2 = cf.s2f(gvff('tempMaxF', i, parsed_json))
                 if t1 < t2:
                     tmin = str(t1)
                     tmax = str(t2)
@@ -225,15 +226,15 @@ class WorldWeatherOnlineService(WeatherService):
                     tmin = str(t2)
                     tmax = str(t1)
                 weather_data['forecasts'][i]['low'] =\
-                    weatherservice.change_temperature(
+                    cf.change_temperature(
                         tmin, self.units.temperature)
                 weather_data['forecasts'][i]['high'] =\
-                    weatherservice.change_temperature(
+                    cf.change_temperature(
                         tmax, self.units.temperature)
                 #
                 weather_data['forecasts'][i]['qpf_allday'] =\
                     weatherservice.change_longitude(
-                        weatherservice.s2f(
+                        cf.s2f(
                             gvff('precipMM', i, parsed_json)) / 25.4,
                         self.units.rain)
                 weather_data['forecasts'][i]['qpf_day'] = None

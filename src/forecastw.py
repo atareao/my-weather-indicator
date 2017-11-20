@@ -32,24 +32,6 @@ def load_image(filename, size=24):
     return None
 
 
-def redondea(valor):
-    valor = valor * 10.0
-    return int(valor) / 10.0
-
-
-def cambia(valor, a, SI=True):
-    if len(valor) == 0:
-        return ''
-    valor = float(valor)
-    if SI is False:
-        valor = redondea(5.0 / 9.0 * (valor - 32.0))
-    if a == 'F':
-        return str(redondea(valor * 9.0 / 5.0 + 32.0))
-    elif a == 'K':
-        return str(redondea(valor + 273.15))
-    return str(valor)
-
-
 def get_image_with_text2(text, image=None):
     vbox = Gtk.VBox()
     if image:
