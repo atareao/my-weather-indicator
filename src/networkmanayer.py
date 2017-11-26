@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
 # NetworkManager - a library to make interacting with the NetworkManager daemon
 # easier.
 #

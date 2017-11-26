@@ -1,9 +1,7 @@
-#! /usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-#
 # OpenWeatherMap
-#
 #
 # Copyright (C) 2012 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
@@ -20,19 +18,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
+
 from gi.repository import Gtk
 from gi.repository import WebKit
-from gi.repository import GObject
-
-from json import dumps as to_json
 from json import loads as from_json
-import sys
 import queue
 import comun
-
-from comun import _
 
 
 class ForecastMap(Gtk.Dialog):
@@ -84,7 +75,7 @@ class ForecastMap(Gtk.Dialog):
     def work(self):
         while Gtk.events_pending():
             Gtk.main_iteration()
-        again = False
+        # again = False
         msg = self.web_recv()
         if msg:
             try:
@@ -92,7 +83,7 @@ class ForecastMap(Gtk.Dialog):
                 print('This is the message %s' % (msg))
             except BaseException:
                 msg = None
-            again = True
+            # again = True
         if msg == 'exit':
             self.close_application(None)
 

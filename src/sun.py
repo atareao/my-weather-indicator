@@ -1,5 +1,6 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+#
 """
 SUNRISET.C - computes Sun rise/set times, start/end of twilight, and
              the length of the day at any date and latitude
@@ -23,25 +24,15 @@ Solar Altitude added by Miguel Tremblay 2005-01-16
 Solar flux, equation of time and import of python library
   added by Miguel Tremblay 2007-11-22
 
-
 2007-12-12 - v1.5 by Miguel Tremblay: bug fix to solar flux calculation
 """
 
-
+import common_functions as cf
 import math
 from math import pi
-import datetime
-import time
+import calendar
 
 SUN_PY_VERSION = 1.5
-
-
-def s2f(cadena):
-    try:
-        value = float(cadena)
-    except BaseException:
-        value = 0.0
-    return value
 
 
 def from_utc_to_local(value, rawOffset=0):
@@ -62,7 +53,7 @@ def from_utc_to_local(value, rawOffset=0):
     return('%s:%s' % (hours, minutes))
 
 
-class Sun:
+class Sun(object):
 
     def __init__(self):
         """Init"""
@@ -73,7 +64,8 @@ class Sun:
 
     def daysSince2000Jan0(self, y, m, d):
         """A macro to compute the number of days elapsed since 2000 Jan 0.0
-           (which is equal to 1999 Dec 31, 0h UT)"""
+           (which is equal to 1999 Dec 31, 0h UT)
+        """
         return (367 * (y) - ((7 * ((y) + (((m) + 9) / 12))) / 4) + ((275 * (m)) / 9) + (d) - 730530)
 
     # The trigonometric functions in degrees
@@ -258,11 +250,11 @@ class Sun:
             (self.cosd(lat) * self.cosd(sdec))
 
         if cost >= 1.0:
-            rc = -1
-            t = 0.0           # Sun always below altit
+            # rc = -1
+            t = 0.0          # Sun always below altit
 
         elif cost <= -1.0:
-            rc = +1
+            # rc = +1
             t = 12.0         # Sun always above altit
 
         else:
@@ -290,7 +282,7 @@ class Sun:
         """
 
         # Compute d of 12h local mean solar time
-        lon = s2f(lon)
+        lon = cf.s2f(lon)
         d = self.daysSince2000Jan0(year, month, day) + 0.5 - (lon / 360.0)
 
         # Compute obliquity of ecliptic (inclination of Earth's axis)
@@ -448,7 +440,7 @@ class Sun:
         N = self.daysSince2000Jan0(year, month, day)
         res = self.sunRADec(N)
         declination = res[1]
-        sr = res[2]
+#       sr = res[2]
 
         # Compute the altitude
         altitude = 90.0 - latitude + declination

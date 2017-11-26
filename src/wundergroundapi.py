@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # A library for accessing to gunderground api
 #
@@ -19,9 +18,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
 
+import common_functions as cf
 import time
 import weatherservice
 from weatherservice import WeatherService
@@ -114,21 +112,21 @@ class UndergroundWeatherService(WeatherService):
                 weatherservice.get_condition(condition, 'icon-night-dark')
             weather_data['current_conditions']['condition_icon_light'] =\
                 weatherservice.get_condition(condition, 'icon-night-light')
-        temperature = weatherservice.s2f(gvfco('temp_f', parsed_json))
+        temperature = cf.s2f(gvfco('temp_f', parsed_json))
         weather_data['current_conditions']['temperature'] =\
-            weatherservice.change_temperature(
+            cf.change_temperature(
                 temperature, self.units.temperature)
-        pressure = weatherservice.s2f(gvfco('pressure_mb', parsed_json))
+        pressure = cf.s2f(gvfco('pressure_mb', parsed_json))
         weather_data['current_conditions']['pressure'] =\
             weatherservice.change_pressure(pressure, self.units.pressure)
-        humidity = weatherservice.s2f(
+        humidity = cf.s2f(
             gvfco('relative_humidity', parsed_json)[:-1])
         weather_data['current_conditions']['humidity'] = str(
             int(humidity)) + ' %'
         weather_data['current_conditions']['dew_point'] =\
             weatherservice.get_dew_point(
                 humidity, temperature, self.units.temperature)
-        wind_velocity = weatherservice.s2f(gvfco('wind_mph', parsed_json))
+        wind_velocity = cf.s2f(gvfco('wind_mph', parsed_json))
         wind_direction = gvfco('wind_dir', parsed_json)
         weather_data['current_conditions']['wind_condition'] =\
             weatherservice.get_wind_condition(
@@ -159,11 +157,11 @@ class UndergroundWeatherService(WeatherService):
                 gvfco('precip_today_in', parsed_json), self.units.rain)
         for i in range(0, 4):
             weather_data['forecasts'][i]['low'] =\
-                weatherservice.change_temperature(
+                cf.change_temperature(
                     gvff('low', i, parsed_json)['fahrenheit'],
                     self.units.temperature)
             weather_data['forecasts'][i]['high'] =\
-                weatherservice.change_temperature(
+                cf.change_temperature(
                     gvff('high', i, parsed_json)['fahrenheit'],
                     self.units.temperature)
             #

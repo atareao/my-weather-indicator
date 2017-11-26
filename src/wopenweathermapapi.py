@@ -19,9 +19,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
 
+import common_functions as cf
 import weatherservice
 import time
 from datetime import datetime
@@ -103,10 +102,6 @@ def find_city(longitude, latitude):
     return None
 
 
-def fa2f(temperature):
-    return (temperature - 273.15) * 9.0 / 5.0 + 32.0
-
-
 class OWMWeatherService(WeatherService):
 
     def __init__(self, longitude=-0.418, latitude=39.360,
@@ -130,14 +125,14 @@ class OWMWeatherService(WeatherService):
             return weatherdata
         for contador, data in enumerate(parsed_json['list']):
             condition = CONDITION[data['weather'][0]['id']]
-            temperature = fa2f(data['main']['temp'])
+            temperature = cf.fa2f(data['main']['temp'])
             cloudiness = data['clouds']['all']
-            pressure = data['main']['pressure']
+            # pressure = data['main']['pressure']
             humidity = data['main']['humidity']
             velocity = data['wind']['speed'] if 'wind' in data.keys() and\
                 'speed' in data['wind'].keys() else 0.0
-            t1 = fa2f(data['main']['temp_min'])
-            t2 = fa2f(data['main']['temp_max'])
+            t1 = cf.fa2f(data['main']['temp_min'])
+            t2 = cf.fa2f(data['main']['temp_max'])
             direction = data['wind']['deg'] if 'wind' in data.keys() and\
                 'deg' in data['wind'].keys() else 0.0
             if t1 < t2:
@@ -157,11 +152,11 @@ class OWMWeatherService(WeatherService):
                 condition, 'image')
             wdd['condition_icon'] = weatherservice.get_condition(
                 condition, 'icon-light')
-            wdd['temperature'] = weatherservice.change_temperature(
+            wdd['temperature'] = cf.change_temperature(
                 temperature, self.units.temperature).split(' ')[0]
-            wdd['low'] = weatherservice.change_temperature(
+            wdd['low'] = cf.change_temperature(
                 temp_min, self.units.temperature)
-            wdd['high'] = weatherservice.change_temperature(
+            wdd['high'] = cf.change_temperature(
                 temp_max, self.units.temperature)
             wdd['cloudiness'] = '%s' % (cloudiness)
             wdd['avehumidity'] = '%s' % (humidity)
@@ -196,7 +191,7 @@ class OWMWeatherService(WeatherService):
             condition = 'not available'
         else:
             condition = CONDITION[parsed_json['weather'][0]['id']]
-        temperature = fa2f(parsed_json['main']['temp'])
+        temperature = cf.fa2f(parsed_json['main']['temp'])
         pressure = parsed_json['main']['pressure'] if 'pressure' in\
             parsed_json['main'] else 0
         humidity = parsed_json['main']['humidity'] if 'humidity' in\
@@ -227,7 +222,7 @@ class OWMWeatherService(WeatherService):
             weather_data['current_conditions']['condition_icon_light'] =\
                 weatherservice.get_condition(condition, 'icon-night-light')
         weather_data['current_conditions']['temperature'] =\
-            weatherservice.change_temperature(
+            cf.change_temperature(
                 temperature, self.units.temperature)
         weather_data['current_conditions']['pressure'] =\
             weatherservice.change_pressure(
@@ -266,13 +261,13 @@ class OWMWeatherService(WeatherService):
             return weather_data
         for contador, data in enumerate(parsed_json['list']):
             condition = CONDITION[data['weather'][0]['id']]
-            temperature = fa2f(data['temp']['day'])
+            temperature = cf.fa2f(data['temp']['day'])
             cloudiness = data['clouds'] if 'clouds' in data.keys() else 0
             pressure = data['pressure'] if 'pressure' in data.keys() else 0
             humidity = data['humidity'] if 'humidity' in data.keys() else 0
             velocity = data['speed'] if 'speed' in data.keys() else 0
-            t1 = fa2f(data['temp']['min'])
-            t2 = fa2f(data['temp']['max'])
+            t1 = cf.fa2f(data['temp']['min'])
+            t2 = cf.fa2f(data['temp']['max'])
             direction = data['deg']
             if t1 < t2:
                 temp_min = str(t1)
@@ -289,10 +284,10 @@ class OWMWeatherService(WeatherService):
             weather_data['forecasts'][contador]['condition_icon'] =\
                 weatherservice.get_condition(condition, 'icon-light')
             weather_data['forecasts'][contador]['low'] =\
-                weatherservice.change_temperature(
+                cf.change_temperature(
                     temp_min, self.units.temperature)
             weather_data['forecasts'][contador]['high'] =\
-                weatherservice.change_temperature(
+                cf.change_temperature(
                     temp_max, self.units.temperature)
             weather_data['forecasts'][contador]['cloudiness'] =\
                 '%s %%' % (cloudiness)
