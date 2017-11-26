@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # A library for access to noaa weather api
 #
@@ -19,9 +18,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
 
+import common_functions as cf
 from lxml import etree
 import weatherservice
 from weatherservice import WeatherService
@@ -71,7 +69,7 @@ class NOAAWeatherService(WeatherService):
                 raise Exception('Root 0')
             temperature = get_data(root[0], 'temp_f')
             velocity = get_data(root[0], 'wind_condition')
-            velocity = weatherservice.s2f(velocity.split(' ')[3])
+            velocity = cf.s2f(velocity.split(' ')[3])
             humidity = weatherservice.get_humidity(get_data(root[0], 'humidity'))
             condition = get_data(root[0], 'condition').lower()
             weather_data['current_conditions']['condition'] = condition
@@ -84,7 +82,7 @@ class NOAAWeatherService(WeatherService):
                 weather_data['current_conditions']['condition_image'] = weatherservice.get_condition(condition, 'image-night')
                 weather_data['current_conditions']['condition_icon_dark'] = weatherservice.get_condition(condition, 'icon-night-dark')
                 weather_data['current_conditions']['condition_icon_light'] = weatherservice.get_condition(condition, 'icon-night-light')
-            weather_data['current_conditions']['temperature'] = weatherservice.change_temperature(temperature, self.units.temperature)
+            weather_data['current_conditions']['temperature'] = cf.change_temperature(temperature, self.units.temperature)
             weather_data['current_conditions']['pressure'] = None
             weather_data['current_conditions']['humidity'] = '%s %%' % (humidity)
             weather_data['current_conditions']['dew_point'] = weatherservice.get_dew_point(humidity, temperature, self.units.temperature)
@@ -107,8 +105,8 @@ class NOAAWeatherService(WeatherService):
             #
             root = etree.fromstring(xml_response).xpath('/xml_api_reply/weather/forecast_conditions')
             for i, el in enumerate(root):
-                weather_data['forecasts'][i]['low'] = weatherservice.change_temperature(get_data(el, 'low'), self.units.temperature)
-                weather_data['forecasts'][i]['high'] = weatherservice.change_temperature(get_data(el, 'high'), self.units.temperature)
+                weather_data['forecasts'][i]['low'] = cf.change_temperature(get_data(el, 'low'), self.units.temperature)
+                weather_data['forecasts'][i]['high'] = cf.change_temperature(get_data(el, 'high'), self.units.temperature)
                 #
                 weather_data['forecasts'][i]['qpf_allday'] = None
                 weather_data['forecasts'][i]['qpf_day'] = None

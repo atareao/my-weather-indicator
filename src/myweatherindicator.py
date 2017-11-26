@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 #
 #
@@ -22,9 +22,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
+
 import os
 import gi
 try:
@@ -70,22 +68,6 @@ from mooncalendarwindow import CalendarWindow
 
 INDICATORS = 2
 TIME_TO_CHECK = 15
-
-
-def redondea(valor):
-    valor = valor * 10.0
-    return int(valor) / 10.0
-
-
-def cambia(valor, a):
-    if len(valor) == 0:
-        return ''
-    valor = float(valor)
-    if a == 'F':
-        return str(redondea(valor * 9.0 / 5.0 + 32.0))
-    elif a == 'K':
-        return str(redondea(valor + 273.15))
-    return str(valor)
 
 
 class MWI(GObject.Object):
@@ -701,7 +683,7 @@ class MWI(GObject.Object):
             self.menus[index]['dew_point'].set_label(_('Dew Point') + ': \
 {0}{1:c}'.format(self.current_conditions[index]['dew_point'], 176))
             self.menus[index]['wind'].set_label(
-                _('Wind') + ':' +
+                _('Wind') + ': ' +
                 self.current_conditions[index]['wind_condition'])
             if self.current_conditions[index]['wind_icon']:
                 image = Gtk.Image.new_from_file(
@@ -740,8 +722,8 @@ class MWI(GObject.Object):
                 self.current_conditions[index]['visibility'] is not None)
             cloudiness = (
                 self.current_conditions[index]['cloudiness'] is not None)
-            solarradiation = (
-                self.current_conditions[index]['solarradiation'] is not None)
+            # solarradiation = (
+            #    self.current_conditions[index]['solarradiation'] is not None)
             UV = (
                 self.current_conditions[index]['UV'] is not None)
             precip_today = (

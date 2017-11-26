@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # Copyright (C) 2011 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
@@ -17,15 +16,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
+
 import os
-import sys
 import shutil
 from gi.repository import Gtk
-import locale
-import gettext
 import comun
 import geocodeapi
 import ipaddress
@@ -676,8 +670,8 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
 
     def load_preferences(self):
         configuration = Configuration()
-        first_time = configuration.get('first-time')
-        version = configuration.get('version')
+        # first_time = configuration.get('first-time')
+        # version = configuration.get('version')
         weatherservice = configuration.get('weather-service')
         if weatherservice == 'yahoo':
             self.radiobutton251.set_active(True)

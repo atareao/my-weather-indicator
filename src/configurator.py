@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # Copyright (C) 2010 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
@@ -17,9 +16,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
+
 import codecs
 import os
 import json

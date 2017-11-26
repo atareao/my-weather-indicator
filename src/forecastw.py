@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # Copyright (C) 2011-2016 Lorenzo Carbonell
 # lorenzo.carbonell.cerezo@gmail.com
@@ -17,14 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
-from gi.repository import Gtk, GdkPixbuf
+
+from gi.repository import Gtk
+from gi.repository import GdkPixbuf
 import os
 import comun
 import webbrowser
-from configurator import Configuration
 from comun import _
 
 
@@ -33,24 +30,6 @@ def load_image(filename, size=24):
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(filename, size, size)
         return Gtk.Image.new_from_pixbuf(pixbuf)
     return None
-
-
-def redondea(valor):
-    valor = valor * 10.0
-    return int(valor) / 10.0
-
-
-def cambia(valor, a, SI=True):
-    if len(valor) == 0:
-        return ''
-    valor = float(valor)
-    if SI is False:
-        valor = redondea(5.0 / 9.0 * (valor - 32.0))
-    if a == 'F':
-        return str(redondea(valor * 9.0 / 5.0 + 32.0))
-    elif a == 'K':
-        return str(redondea(valor + 273.15))
-    return str(valor)
 
 
 def get_image_with_text2(text, image=None):

@@ -1,6 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
 #
 # A library for access to google weather api
 #
@@ -19,12 +18,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
+
+import common_functions as cf
 import time
 import weatherservice
 from weatherservice import WeatherService
-from weatherservice import change_temperature
 import geocodeapi
 import requests
 from requests_oauthlib import OAuth1
@@ -86,14 +84,6 @@ CODE[47] = 'isolated thundershowers'
 CODE[3200] = 'not available'
 
 
-def s2f(word):
-    try:
-        return float(word)
-    except Exception as e:
-        print(e)
-    return 0
-
-
 class YahooWeatherService(WeatherService):
 
     def __init__(self,
@@ -115,36 +105,51 @@ class YahooWeatherService(WeatherService):
             '''
             Bug #1568774
             '''
-            print('Bug #1568774', str(e))
+            print('wyahooapi.py: Bug #1568774', str(e))
+            print('wyahooapi.py: Unable to query https url, switch to http url')
             url = 'http://query.yahooapis.com/v1/yql?q=%s' % q
             ans = requests.get(url, auth=self.oauth, params=params)
+
         if ans.status_code == 200:
             return ans.json()
-        return None
+        else:
+            print('wyahooapi.py: Request status code not 200, status_code = ', str(ans.status_code))
+            return None
 
     def get_weather(self):
         weather_data = self.get_default_values()
         if self.woeid is None:
             self.woeid = geocodeapi.get_woeid(self.latitude, self.longitude)
             if self.woeid is None:
-                print('Yahoo Weather Service, not found woeid')
+                print('wyahooapi.py: Yahoo Weather Service, not found woeid')
                 return weather_data
         try:
             ans = self.run_query()
-            if ans is None or\
-                    'query' not in ans.keys() or\
-                    'results' not in ans['query'].keys() or\
-                    'channel' not in ans['query']['results'].keys():
+            if ans is None:
+                print('wyahooapi.py: Yahoo Weather Service, query answer is None')
                 return weather_data
+            if 'query' not in list(ans.keys()):
+                print('wyahooapi.py: Yahoo Weather Service, query answer has no element query')
+                return weather_data
+            if 'results' not in list(ans['query'].keys()):
+                print('wyahooapi.py: Yahoo Weather Service, query answer has no element query.results')
+                return weather_data
+            if ans['query']['results'] is None:
+                print('wyahooapi.py: Yahoo Weather Service, query answer query.results is None')
+                return weather_data
+            if 'channel' not in list(ans['query']['results'].keys()):
+                print('wyahooapi.py: Yahoo Weather Service, query answer has no element query.results.channel')
+                return weather_data
+
             weather_data['update_time'] = time.time()
             weather_data['ok'] = True
             data = ans['query']['results']['channel']
-            temperature = s2f(data['item']['condition']['temp'])
-            velocity = s2f(data['wind']['speed'])
-            direction = s2f(data['wind']['direction'])
-            pressure = s2f(data['atmosphere']['pressure'])
-            visibility = s2f(data['atmosphere']['visibility'])
-            humidity = s2f(data['atmosphere']['humidity'])
+            temperature = cf.f2c_print(data['item']['condition']['temp'])
+            velocity = cf.f2c_print(data['wind']['speed'])
+            direction = cf.f2c_print(data['wind']['direction'])
+            pressure = cf.f2c_print(data['atmosphere']['pressure'])
+            visibility = cf.f2c_print(data['atmosphere']['visibility'])
+            humidity = cf.f2c_print(data['atmosphere']['humidity'])
             condition = CODE[int(data['item']['condition']['code'])]
             weather_data['current_conditions']['condition'] = condition
             weather_data['current_conditions']['condition_text'] =\
@@ -164,8 +169,7 @@ class YahooWeatherService(WeatherService):
                 weather_data['current_conditions']['condition_icon_light'] =\
                     weatherservice.get_condition(condition, 'icon-night-light')
             weather_data['current_conditions']['temperature'] =\
-                weatherservice.change_temperature(temperature,
-                                                  self.units.temperature)
+                cf.change_temperature(temperature, self.units.temperature)
             weather_data['current_conditions']['pressure'] =\
                 weatherservice.change_pressure(pressure, self.units.pressure)
             weather_data['current_conditions']['humidity'] = '%s %%' %\
@@ -201,14 +205,12 @@ class YahooWeatherService(WeatherService):
             weather_data['current_conditions']['precip_today'] = None
             for i, forecast_condition in enumerate(data['item']['forecast']):
                 if i < 7:
-                    tlow = s2f(forecast_condition['low'])
-                    thight = s2f(forecast_condition['high'])
+                    tlow = cf.f2c_print(forecast_condition['low'])
+                    thight = cf.f2c_print(forecast_condition['high'])
                     weather_data['forecasts'][i]['low'] =\
-                        change_temperature(tlow,
-                                           self.units.temperature)
+                        cf.change_temperature(tlow, self.units.temperature)
                     weather_data['forecasts'][i]['high'] =\
-                        change_temperature(thight,
-                                           self.units.temperature)
+                        cf.change_temperature(thight, self.units.temperature)
                     #
                     weather_data['forecasts'][i]['qpf_allday'] = None
                     weather_data['forecasts'][i]['qpf_day'] = None
@@ -231,7 +233,7 @@ class YahooWeatherService(WeatherService):
                     weather_data['forecasts'][i]['condition_icon'] =\
                         weatherservice.get_condition(condition, 'icon-light')
         except Exception as e:
-            print(e)
+            print('wyahooapi.py: error:', str(e))
         return weather_data
 
 

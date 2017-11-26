@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # comun.py
@@ -18,9 +18,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#
 
 import os
 import locale
@@ -28,7 +25,9 @@ import gettext
 import sys
 import requests
 from check_connection import check_connectivity
-import urllib
+import urllib.request
+import urllib.parse
+import urllib.error
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
 __date__ = '$24/09/2011'
