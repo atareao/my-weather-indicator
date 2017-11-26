@@ -1,13 +1,9 @@
-# Lithuanian translation for my-weather-indicator
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the my-weather-indicator package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: lorenzo.carbonell.cerezo@gmail.com\n"
-"POT-Creation-Date: 2017-11-06 18:07+0100\n"
+"POT-Creation-Date: 2017-11-26 20:29+0100\n"
 "PO-Revision-Date: 2014-05-01 08:06+0000\n"
 "Last-Translator: Gintaras <gintarinis@f-1.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
@@ -18,1696 +14,1571 @@ msgstr ""
 "X-Generator: Launchpad (build 17082)\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:50
-msgid "Where Am I"
-msgstr "Kur aš esu"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:76
-msgid "Search location"
-msgstr "Ieškoti vietovės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:78
-msgid "Clear location"
-msgstr "Išvalyti"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:79
-msgid "Input the name of your city"
-msgstr "Įvesti savo miesto pavadinimą"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:84
-msgid "Search"
-msgstr "Paieška"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:88
-msgid "Find me"
-msgstr "Rasti mane"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:91
-#, fuzzy
-msgid "Locations found"
-msgstr "Surastos vietovės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:110
-msgid "City"
-msgstr "Miestas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:114
-msgid "State"
-msgstr "Rajonas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/whereami.py:118
-msgid "Country"
-msgstr "Šalis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:76
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:590
-msgid "Preferences"
-msgstr "Nustatymai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:93
-msgid "Main Location"
-msgstr "Mano vietovė"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:94
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:190
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:484
-msgid "General options"
-msgstr "Pagrindiniai nustatymai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:98
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:194
-#, fuzzy
-msgid "Show"
-msgstr "Liūtys"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:105
-msgid "Auto Location"
-msgstr "Surasti mane"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:111
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:200
-msgid "Locality"
-msgstr "Vietovė"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:123
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:211
-msgid "Search Location"
-msgstr "Ieškoti vietovės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:130
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:218
-msgid "Show temperature"
-msgstr "Rodyti temperatūrą"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:136
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:224
-msgid "Show notifications"
-msgstr "Rodyti pranešimus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:141
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:229
-#, fuzzy
-msgid "Widget options"
-msgstr "Skydelis viršuje"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:145
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:233
-msgid "Show widget"
-msgstr "Rodyti skydelį"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:152
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:240
-msgid "Hide indicator when show widget"
-msgstr "Slėpti rodiklį, kai rodomas skydelis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:158
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:246
-msgid "Widget on top"
-msgstr "Skydelis viršuje"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:164
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:252
-msgid "Show in taskbar"
-msgstr "Rodyti užduočių juostoje"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:170
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:258
-msgid "On all desktops"
-msgstr ""
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:189
-msgid "Second Location"
-msgstr "Kita vietovė"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:277
-msgid "Weather Services"
-msgstr "Orų prognozės centrai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:306
-msgid "Input World Weather Online key"
-msgstr "Įvesti \"World Weather Online\" raktažodį"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:308
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:331
-msgid "Activate"
-msgstr "Aktyvinti"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:310
-msgid "Click to activate World Weather Online"
-msgstr "Spustelėkite, kad aktyvintumėte \"World Weather Online\""
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:329
-msgid "Input Weather Underground key"
-msgstr "Įvesti \"Weather Underground\" raktažodį"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:333
-msgid "Click to activate Weather Underground"
-msgstr "Spustelėkite, kad aktyvintumėte \"Weather Underground\""
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:343
-msgid "Units"
-msgstr "Matavimo vienetai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:346
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:474
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:694
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:798
-msgid "Temperature"
-msgstr "Temperatūra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:353
-msgid "Celsius"
-msgstr "Pagal Celsijų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:354
-msgid "Fahrenheit"
-msgstr "Pagal Farenheitą"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:355
-msgid "Kelvin"
-msgstr "Pagal Kelviną"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:365
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:479
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:756
-msgid "Pressure"
-msgstr "Slėgis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:372
-msgid "Millibar"
-msgstr "Milibarai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:373
-msgid "Inches of mercury"
-msgstr "Coliai gyvsidabrio stulpelyje"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:374
-msgid "Millimeters of mercury"
-msgstr "Milimetrai gyvsidabrio stulpelyje"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:384
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:505
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:761
-msgid "Visibility"
-msgstr "Matomumas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:391
-msgid "mile"
-msgstr "Mylia"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:392
-msgid "kilometer"
-msgstr "Kilometras"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:402
-msgid "Wind velocity"
-msgstr "Vėjo greitis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:409
-msgid "Beaufort"
-msgstr "Boforto"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:410
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:640
-msgid "ft/s"
-msgstr "ft/s"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:411
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:639
-msgid "km/h"
-msgstr "km/h"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:412
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:640
-msgid "knots"
-msgstr "mazgai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:413
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:639
-msgid "m/s"
-msgstr "m/sek."
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:414
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:639
-msgid "mph"
-msgstr "mph"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:424
-msgid "Rain Gauge"
-msgstr "Lietaus matuoklis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:431
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:450
-msgid "Inches"
-msgstr "Coliai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:432
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:451
-msgid "Centimeters"
-msgstr "Centimetrai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:433
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:452
-msgid "Millimeters"
-msgstr "Milimetrai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:443
-msgid "Snow Gauge"
-msgstr "Sniego matuoklis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:462
-msgid "Time Format"
-msgstr "Laiko formatas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:469
-msgid "24 h"
-msgstr "24 valandos"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:470
-msgid "AM/PM"
-msgstr "12 valandų (AM/PM)"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:487
-msgid "Autostart"
-msgstr "Automatinis pasileidimas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:492
-msgid "Refresh frequency"
-msgstr "Atnaujinimo dažnis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:499
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:500
-msgid "minutes"
-msgstr "min."
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:501
-msgid "hour"
-msgstr "val."
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:502
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:503
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:504
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:505
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:506
-msgid "hours"
-msgstr "val."
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/preferences.py:516
-msgid "Select icon theme"
-msgstr "Pasirinkite ikonėlių temą"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:34
+#: ../extras-my-weather-indicator.desktop.in:12
+#: ../extras-my-weather-indicator.desktop.in:13
+#: ../extras-my-weather-indicator.desktop.in:14
+#: ../extras-my-weather-indicator.desktop.in:15
+#: ../extras-my-weather-indicator.desktop.in:16
+#: ../extras-my-weather-indicator.desktop.in:17
+#: ../extras-my-weather-indicator.desktop.in:18
+#: ../extras-my-weather-indicator.desktop.in:19
+#: ../extras-my-weather-indicator.desktop.in:20
+#: ../extras-my-weather-indicator.desktop.in:21
+#: ../extras-my-weather-indicator.desktop.in:22
+#: ../extras-my-weather-indicator.desktop.in:23
+#: ../extras-my-weather-indicator.desktop.in:24
+#: ../extras-my-weather-indicator.desktop.in:25
+#: ../extras-my-weather-indicator.desktop.in:26
+#: ../extras-my-weather-indicator.desktop.in:27
+#: ../extras-my-weather-indicator.desktop.in:28
+#: ../extras-my-weather-indicator.desktop.in:29
+#: ../extras-my-weather-indicator.desktop.in:30
+#: ../extras-my-weather-indicator.desktop.in:31
+#: ../extras-my-weather-indicator.desktop.in:32
+#: ../extras-my-weather-indicator.desktop.in:33
+#: ../extras-my-weather-indicator.desktop.in:34
+#: ../extras-my-weather-indicator.desktop.in:35
+#: ../extras-my-weather-indicator.desktop.in:36
+#: ../extras-my-weather-indicator.desktop.in:37
+#: ../extras-my-weather-indicator.desktop.in:38
+#: ../extras-my-weather-indicator.desktop.in:39
+#: ../extras-my-weather-indicator.desktop.in:40
+#: ../extras-my-weather-indicator.desktop.in:41
+#: ../extras-my-weather-indicator.desktop.in:42
+#: ../extras-my-weather-indicator.desktop.in:43
+#: ../extras-my-weather-indicator.desktop.in:44
+#: ../extras-my-weather-indicator.desktop.in:45
+#: ../extras-my-weather-indicator.desktop.in:46
+#: ../extras-my-weather-indicator.desktop.in:47
+#: ../extras-my-weather-indicator.desktop.in:48
+#: ../extras-my-weather-indicator.desktop.in:49
+#: ../extras-my-weather-indicator.desktop.in:50
+#: ../extras-my-weather-indicator.desktop.in:51
+#: ../extras-my-weather-indicator.desktop.in:52
+#: ../extras-my-weather-indicator.desktop.in:53
+#: ../extras-my-weather-indicator.desktop.in:54
+#: ../extras-my-weather-indicator.desktop.in:55
+#: ../extras-my-weather-indicator.desktop.in:56
+#: ../extras-my-weather-indicator.desktop.in:57
+#: ../extras-my-weather-indicator.desktop.in:58
+#: ../extras-my-weather-indicator.desktop.in:59
+#: ../extras-my-weather-indicator.desktop.in:60
+#: ../extras-my-weather-indicator.desktop.in:61
+#: ../extras-my-weather-indicator.desktop.in:62
+#: ../extras-my-weather-indicator.desktop.in:63
+#: ../extras-my-weather-indicator.desktop.in:64
+#: ../extras-my-weather-indicator.desktop.in:65
+#: ../extras-my-weather-indicator.desktop.in:66
+#: ../extras-my-weather-indicator.desktop.in:67
+#: ../extras-my-weather-indicator.desktop.in:68
+#: ../extras-my-weather-indicator.desktop.in:69
+#: ../extras-my-weather-indicator.desktop.in:70
+#: ../extras-my-weather-indicator.desktop.in:71
+#: ../extras-my-weather-indicator.desktop.in:72
+#: ../extras-my-weather-indicator.desktop.in:73
+#: ../extras-my-weather-indicator.desktop.in:74
+#: ../extras-my-weather-indicator.desktop.in:75
+#: ../extras-my-weather-indicator.desktop.in:76
+#: ../extras-my-weather-indicator.desktop.in:77
+#: ../extras-my-weather-indicator.desktop.in:78
+#: ../extras-my-weather-indicator.desktop.in:79
+#: ../extras-my-weather-indicator.desktop.in:80
+#: ../extras-my-weather-indicator.desktop.in:81
+#: ../extras-my-weather-indicator.desktop.in:82
+#: ../extras-my-weather-indicator.desktop.in:83
+#: ../extras-my-weather-indicator.desktop.in:84
+#: ../extras-my-weather-indicator.desktop.in:85
+#: ../extras-my-weather-indicator.desktop.in:86
+#: ../extras-my-weather-indicator.desktop.in:87
+#: ../extras-my-weather-indicator.desktop.in:88
+#: ../extras-my-weather-indicator.desktop.in:89
+#: ../extras-my-weather-indicator.desktop.in:90
+#: ../extras-my-weather-indicator.desktop.in:91
+#: ../extras-my-weather-indicator.desktop.in:132
+#: ../extras-my-weather-indicator.desktop.in:133
+#: ../extras-my-weather-indicator.desktop.in:134
+#: ../extras-my-weather-indicator.desktop.in:135
+#: ../extras-my-weather-indicator.desktop.in:136
+#: ../extras-my-weather-indicator.desktop.in:137
+#: ../extras-my-weather-indicator.desktop.in:141
+#: ../extras-my-weather-indicator.desktop.in:142
+#: ../extras-my-weather-indicator.desktop.in:143
+#: ../extras-my-weather-indicator.desktop.in:144
+#: ../extras-my-weather-indicator.desktop.in:147
+#: ../extras-my-weather-indicator.desktop.in:148
+#: ../extras-my-weather-indicator.desktop.in:149
+#: ../extras-my-weather-indicator.desktop.in:150
+#: ../extras-my-weather-indicator.desktop.in:151
+#: ../extras-my-weather-indicator.desktop.in:152
+#: ../extras-my-weather-indicator.desktop.in:156
+#: ../extras-my-weather-indicator.desktop.in:157
+#: ../extras-my-weather-indicator.desktop.in:159
+#: ../extras-my-weather-indicator.desktop.in:160
+msgid "My-Weather-Indicator"
+msgstr "Orų informacija"
+
+#: ../extras-my-weather-indicator.desktop.in:92
+#: ../extras-my-weather-indicator.desktop.in:93
+#: ../extras-my-weather-indicator.desktop.in:94
+#: ../extras-my-weather-indicator.desktop.in:95
+#: ../extras-my-weather-indicator.desktop.in:96
+#: ../extras-my-weather-indicator.desktop.in:97
+#: ../extras-my-weather-indicator.desktop.in:98
+#: ../extras-my-weather-indicator.desktop.in:99
+#: ../extras-my-weather-indicator.desktop.in:100
+#: ../extras-my-weather-indicator.desktop.in:101
+#: ../extras-my-weather-indicator.desktop.in:102
+#: ../extras-my-weather-indicator.desktop.in:103
+#: ../extras-my-weather-indicator.desktop.in:104
+#: ../extras-my-weather-indicator.desktop.in:105
+#: ../extras-my-weather-indicator.desktop.in:106
+#: ../extras-my-weather-indicator.desktop.in:107
+#: ../extras-my-weather-indicator.desktop.in:108
+#: ../extras-my-weather-indicator.desktop.in:109
+#: ../extras-my-weather-indicator.desktop.in:110
+#: ../extras-my-weather-indicator.desktop.in:111
+#: ../extras-my-weather-indicator.desktop.in:112
+#: ../extras-my-weather-indicator.desktop.in:113
+#: ../extras-my-weather-indicator.desktop.in:114
+#: ../extras-my-weather-indicator.desktop.in:115
+#: ../extras-my-weather-indicator.desktop.in:116
+#: ../extras-my-weather-indicator.desktop.in:117
+#: ../extras-my-weather-indicator.desktop.in:118
+#: ../extras-my-weather-indicator.desktop.in:119
+#: ../extras-my-weather-indicator.desktop.in:120
+#: ../extras-my-weather-indicator.desktop.in:121
+#: ../extras-my-weather-indicator.desktop.in:122
+#: ../extras-my-weather-indicator.desktop.in:123
+#: ../extras-my-weather-indicator.desktop.in:124
+#: ../extras-my-weather-indicator.desktop.in:125
+#: ../extras-my-weather-indicator.desktop.in:126
+#: ../extras-my-weather-indicator.desktop.in:127
+#: ../extras-my-weather-indicator.desktop.in:128
+#: ../extras-my-weather-indicator.desktop.in:129
+#: ../extras-my-weather-indicator.desktop.in:130
+#: ../extras-my-weather-indicator.desktop.in:131
+#: ../extras-my-weather-indicator.desktop.in:138
+#: ../extras-my-weather-indicator.desktop.in:139
+#: ../extras-my-weather-indicator.desktop.in:140
+#: ../extras-my-weather-indicator.desktop.in:145
+#: ../extras-my-weather-indicator.desktop.in:146
+#: ../extras-my-weather-indicator.desktop.in:153
+#: ../extras-my-weather-indicator.desktop.in:154
+#: ../extras-my-weather-indicator.desktop.in:155
+#: ../extras-my-weather-indicator.desktop.in:158
+#: ../extras-my-weather-indicator.desktop.in:161
+#: ../src/myweatherindicator.py:869
+msgid "A weather indicator"
+msgstr "Orų indikatorius bei prognozė"
+
+#: ../src/forecastw.py:63 ../src/myweatherindicator.py:419
+msgid "Forecast"
+msgstr "Orų prognozė"
+
+#: ../src/forecastw.py:125
+msgid "Day of week"
+msgstr "Savaitės diena"
+
+#: ../src/forecastw.py:132 ../src/myweatherindicator.py:526
+#: ../src/myweatherindicator.py:706
+msgid "Sunrise"
+msgstr "Saulėtekis"
+
+#: ../src/forecastw.py:139 ../src/myweatherindicator.py:535
+#: ../src/myweatherindicator.py:709
+msgid "Sunset"
+msgstr "Saulėlydis"
+
+#: ../src/forecastw.py:146
+msgid "Moon Phase"
+msgstr "Mėnulio fazė"
+
+#: ../src/forecastw.py:153
+msgid "Condition"
+msgstr "Sąlygos"
+
+#: ../src/forecastw.py:160
+msgid "High temperature"
+msgstr "Aukščiausia temperatūra"
+
+#: ../src/forecastw.py:167
+msgid "Low temperature"
+msgstr "Žemiausia temperatūra"
+
+#: ../src/forecastw.py:175
+msgid "Maximum wind"
+msgstr "Didžiausias vėjo greitis"
+
+#: ../src/forecastw.py:182 ../src/forecastw.py:218 ../src/forecastw.py:233
+msgid "Average wind"
+msgstr "Vidutinis vėjas"
+
+#: ../src/forecastw.py:189
+msgid "Maximum humidity"
+msgstr "Didžiausias drėgnumas"
+
+#: ../src/forecastw.py:196
+msgid "Minumum humidity"
+msgstr "Vidutinis drėgnumas"
+
+#: ../src/forecastw.py:203 ../src/forecastw.py:225
+msgid "Rain measurement"
+msgstr "Kritulių kiekis"
+
+#: ../src/forecastw.py:210
+msgid "Snow measurement"
+msgstr "Kritulių kiekis"
+
+#: ../src/forecastw.py:240
+msgid "Average humidity"
+msgstr "Vidutinė drėgmė"
+
+#: ../src/forecastw.py:247 ../src/myweatherindicator.py:492
+#: ../src/myweatherindicator.py:747
+msgid "Cloudiness"
+msgstr "Debesuotumas"
+
+#: ../src/moon.py:33
+msgid "New Moon"
+msgstr "Jaunatis"
+
+#: ../src/moon.py:34
+msgid "Waxing Crescent"
+msgstr "Jaunatis (pilnėja)"
+
+#: ../src/moon.py:35
+msgid "First Quarter"
+msgstr "Priešpilnis"
+
+#: ../src/moon.py:36
+msgid "Waxing Gibbous"
+msgstr "Priešpilnis (pilnėja)"
+
+#: ../src/moon.py:37
+msgid "Full Moon"
+msgstr "Pilnatis"
+
+#: ../src/moon.py:38
+msgid "Waning Gibbous"
+msgstr "Pilnatis (dyla)"
+
+#: ../src/moon.py:39
+msgid "Last Quarter"
+msgstr "Delčia"
+
+#: ../src/moon.py:40
+msgid "Waning Crescent"
+msgstr "Delčia (dyla)"
+
+#: ../src/mooncalendarwindow.py:29
 msgid "Monday"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:34
-msgid "Tuesday"
-msgstr ""
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:34
-msgid "Wednesday"
-msgstr ""
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:34
+#: ../src/mooncalendarwindow.py:29
 msgid "Thursday"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:35
+#: ../src/mooncalendarwindow.py:29
+msgid "Tuesday"
+msgstr ""
+
+#: ../src/mooncalendarwindow.py:29
+msgid "Wednesday"
+msgstr ""
+
+#: ../src/mooncalendarwindow.py:30
 msgid "Friday"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:35
+#: ../src/mooncalendarwindow.py:30
 msgid "Saturday"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:35
+#: ../src/mooncalendarwindow.py:30
 msgid "Sunday"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:83
+#: ../src/mooncalendarwindow.py:78
 #, fuzzy
 msgid "Moon phases"
 msgstr "Mėnulio fazė"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:111
+#: ../src/mooncalendarwindow.py:106
 msgid "One year less"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:120
+#: ../src/mooncalendarwindow.py:115
 msgid "One month less"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:129
+#: ../src/mooncalendarwindow.py:124
 msgid "One year more"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:138
+#: ../src/mooncalendarwindow.py:133
 msgid "One month more"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:153
+#: ../src/mooncalendarwindow.py:148
 msgid "Today"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/mooncalendarwindow.py:167
+#: ../src/mooncalendarwindow.py:162
 msgid "Close"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/worldweatheronlineapi.py:99
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/worldweatheronlineapi.py:108
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/worldweatheronlineapi.py:117
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:736
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:737
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:738
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:739
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:740
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:743
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:744
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:746
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:748
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:749
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:750
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:751
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:752
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:753
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:840
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:841
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:842
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:844
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:845
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:846
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:847
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:848
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:849
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:850
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:851
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:853
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:854
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:855
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:857
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:858
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/wundergroundapi.py:47
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/wundergroundapi.py:55
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/wundergroundapi.py:66
-msgid "N/A"
-msgstr "Nežinoma"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:37
-msgid "Blowing sand"
-msgstr "Smėlio audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:45
-msgid "Blizzard"
-msgstr "Pūga"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:53
-msgid "Blowing snow"
-msgstr "Pustomas sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:61
-msgid "Blowing widespread dust"
-msgstr "Dulkių audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:66
-msgid "Blustery"
-msgstr ""
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:71
-msgid "Chance of a thunderstorm"
-msgstr "Žaibavimo tikimybė"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:79
-msgid "Chance of flurries"
-msgstr "Galimas snygis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:86
-msgid "Chance of rain"
-msgstr "Galimas lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:94
-msgid "Chance of showers"
-msgstr "Galimos liūtys"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:101
-msgid "Chance of snow"
-msgstr "Galimas sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:102
-msgid "Chance of storm"
-msgstr "Galima audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:103
-msgid "Chance of thunderstorms"
-msgstr "Galima perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:104
-msgid "Chance of tstorm"
-msgstr "Galima audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:105
-msgid "Clear"
-msgstr "Giedra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:106
-msgid "Cloudy"
-msgstr "Debesuota"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:107
-msgid "Cold"
-msgstr "Šaltis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:108
-msgid "Drizzle"
-msgstr "Dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:109
-msgid "Drizzle rain"
-msgstr "Smulkus lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:110
-msgid "Dust whirls"
-msgstr "Dulkių sūkuriai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:111
-msgid "Dust"
-msgstr "Dulkės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:112
-msgid "Extreme rain"
-msgstr "Labai stiprus lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:113
-msgid "Fair"
-msgstr "Gražus oras"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:114
-msgid "Flurries"
-msgstr "Sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:115
-msgid "Fog patches"
-msgstr "Vietomis rūkas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:116
-msgid "Fog"
-msgstr "Rūkas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:117
-msgid "Foggy"
-msgstr "Ūkanota"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:118
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:119
-msgid "Freezing drizzle"
-msgstr "Lijundra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:120
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:121
-msgid "Freezing fog"
-msgstr "Šaltas rūkas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:122
-msgid "Freezing rain"
-msgstr "Lijundra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:123
-msgid "Funnel cloud"
-msgstr "Lietingi debesys"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:124
-msgid "Hail showers"
-msgstr "Kruša"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:125
-msgid "Hail"
-msgstr "Kruša"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:126
-msgid "Haze"
-msgstr "Nedidelis rūkas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:127
-msgid "Heavy freezing drizzle"
-msgstr "Smarki lijundra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:128
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:143
-#, fuzzy
-msgid "Heavy drizzle"
-msgstr "Smarki lijundra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:129
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:144
-#, fuzzy
-msgid "Heavy drizzle rain"
-msgstr "Intensyvus smulkus lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:130
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:133
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:145
-msgid "Heavy rain"
-msgstr "Smarkus lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:131
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:146
-#, fuzzy
-msgid "Heavy shower rain"
-msgstr "Smarki liūtis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:132
-msgid "Heavy rain at times"
-msgstr "Kartais smarkus lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:134
-msgid "Heavy snow"
-msgstr "Smarkus sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:135
-msgid "Heavy thunderstorm"
-msgstr "Stipri audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:136
-msgid "Hot"
-msgstr "Karštis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:137
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:669
-msgid "Hurricane"
-msgstr "Uraganas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:138
-msgid "Ice crystals"
-msgstr "Ledo kristalai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:139
-msgid "Ice pellet showers"
-msgstr "Ledo gabalėlių liūtis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:140
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:141
-msgid "Ice pellets"
-msgstr "Ledo gabalėliai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:142
-msgid "Icy"
-msgstr "Ledinis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:147
-msgid "Isolated showers"
-msgstr "Trumpalaikės liūtys"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:148
-#, fuzzy
-msgid "Isolated thundershowers"
-msgstr "Trumpalaikė perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:149
-msgid "Isolated thunderstorms"
-msgstr "Trumpalaikė perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:150
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:152
-msgid "Light drizzle"
-msgstr "Silpna dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:151
-msgid "Light freezing rain"
-msgstr "Silpna lijundra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:153
-#, fuzzy
-msgid "Light drizzle rain"
-msgstr "Silpna dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:154
-#, fuzzy
-msgid "Light shower rain"
-msgstr "Mažo intensyvumo liūtis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:155
-msgid "Light rain shower"
-msgstr "Maža liūtis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:156
-msgid "Light rain"
-msgstr "Silpnas lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:157
-msgid "Light showers of ice pellets"
-msgstr "Lengva ledo gabalėlių liūtis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:158
-msgid "Light sleet showers"
-msgstr "Šlapdriba"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:159
-msgid "Light sleet"
-msgstr "Silpna šlapdriba"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:160
-msgid "Light snow showers"
-msgstr "Protarpiais pasnigs"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:161
-msgid "Light snow"
-msgstr "Nedidelis sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:162
-msgid "Light thunderstorm"
-msgstr "Nedidelė audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:163
-msgid "Low drifting sand"
-msgstr "Smėlio Pūga"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:164
-msgid "Low drifting snow"
-msgstr "Sniego pūga"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:165
-msgid "Low drifting widespread dust"
-msgstr "Dulkių pūga"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:166
-msgid "Mist"
-msgstr "Migla"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:167
-msgid "Mixed rain and snow"
-msgstr "Šlapdriba (lietus ir sniegas)"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:168
-msgid "Mixed rain and sleet"
-msgstr "Lietus bei šlapdriba"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:169
-msgid "Mixed snow and sleet"
-msgstr "Sniegas bei šlapdriba"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:170
-msgid "Moderate or heavy freezing rain"
-msgstr "Vidutinio stiprumo ar stipri lijundra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:171
-msgid "Moderate or heavy rain in area with thunder"
-msgstr "Vidutinio stiprumo ar stiprus lietus vietomis su perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:172
-msgid "Moderate or heavy rain shower"
-msgstr "Vidutinio stiprumo ar stipri liūtis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:173
-msgid "Moderate or heavy showers of ice pellets"
-msgstr "Vidutinio stiprumo ar stipri ledo liūtis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:174
-msgid "Moderate or heavy sleet showers"
-msgstr "Vidutinio stiprumo ar stiprios šlabdribos liūtys"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:175
-msgid "Moderate or heavy sleet"
-msgstr "Vidutinio stiprumo ar stipri šlapdriba"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:176
-msgid "Moderate or heavy snow in area with thunder"
-msgstr "Vidutinio stiprumo ar stiprus snygis vietomis su perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:177
-msgid "Moderate or heavy snow showers"
-msgstr "Vidutinio stiprumo ar stiprus snygis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:178
-msgid "Moderate rain at times"
-msgstr "Kartais vidutinio stiprumo lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:179
-msgid "Moderate rain"
-msgstr "Vidutinio stiprumo lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:180
-msgid "Moderate snow"
-msgstr "Vidutinio stiprumo snygis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:181
-msgid "Mostly cloudy"
-msgstr "Debesuota su pragiedruliais"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:182
-msgid "Mostly sunny"
-msgstr "Dažniausiai saulėta"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:183
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:732
-msgid "Not available"
-msgstr "Neprieinama"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:184
-msgid "Overcast"
-msgstr "Apsiniaukę"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:185
-msgid "Partial fog"
-msgstr "Vietomis rūkas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:186
-msgid "Partly cloudy"
-msgstr "Vietomis debesuota"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:187
-msgid "Partly sunny"
-msgstr "Vietomis saulėta"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:188
-msgid "Patches of fog"
-msgstr "Vietomis rūkas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:189
-msgid "Patchy freezing drizzle nearby"
-msgstr "Protarpiais lijundra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:190
-msgid "Patchy heavy snow"
-msgstr "Protarpiais daug sniego"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:191
-msgid "Patchy light drizzle"
-msgstr "Protarpiais lengva dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:192
-msgid "Patchy light rain in area with thunder"
-msgstr "Protarpiais silpnas lietus su perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:193
-msgid "Patchy light rain"
-msgstr "Protarpiais silpnas lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:194
-msgid "Patchy light snow in area with thunder"
-msgstr "Protarpiais silpnas snygis su perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:195
-msgid "Patchy light snow"
-msgstr "Protarpiais silpnas snygis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:196
-msgid "Patchy moderate snow"
-msgstr "Protarpiais vidutinio sunkumo snygis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:197
-msgid "Patchy rain nearby"
-msgstr "Protarpiais lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:198
-msgid "Patchy sleet nearby"
-msgstr "Protarpiais šlabdriba"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:199
-msgid "Patchy snow nearby"
-msgstr "Protarpiais sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:200
-msgid "Ragged thunderstorm"
-msgstr "Galima audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:201
-msgid "Rain and snow"
-msgstr "Lietus ir sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:202
-msgid "Rain mist"
-msgstr "Dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:203
-msgid "Rain showers"
-msgstr "Stiprus lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:204
-msgid "Rain"
-msgstr "Lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:205
-msgid "Sand"
-msgstr "Smėlis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:206
-msgid "Sandstorm"
-msgstr "Smėlio audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:207
-msgid "Scattered clouds"
-msgstr "Išsisklaidę debesys"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:208
-msgid "Scattered showers"
-msgstr "Vietomis liūtys"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:209
-msgid "Scattered thunderstorms"
-msgstr "Vietomis perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:210
-msgid "Shallow fog"
-msgstr "Paviršinis rūkas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:211
-msgid "Showers"
-msgstr "Liūtys"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:212
-msgid "Shower drizzle"
-msgstr "Dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:213
-msgid "Shower rain"
-msgstr "Gausūs lietūs"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:214
-msgid "Shower snow"
-msgstr "Gausus sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:215
-msgid "Sleet"
-msgstr "Šlapdriba"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:216
-msgid "Small hail showers"
-msgstr "Lietus su nežymia kruša"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:217
-msgid "Small hail"
-msgstr "Silpna kruša"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:218
-msgid "Smoke"
-msgstr "Dūmai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:219
-msgid "Snow blowing snow mist"
-msgstr "Pusto"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:220
-msgid "Snow flurries"
-msgstr "Sniego šuorai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:221
-msgid "Snow grains"
-msgstr "Pasnigs"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:222
-msgid "Snow showers"
-msgstr "Sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:223
-msgid "Snow"
-msgstr "Sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:224
-msgid "Spray"
-msgstr "Purškimas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:225
-msgid "Squalls"
-msgstr "Škvalas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:226
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:665
-msgid "Storm"
-msgstr "Audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:227
-msgid "Sunny"
-msgstr "Saulėta"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:228
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:229
-msgid "Thunderstorm"
-msgstr "Perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:230
-msgid "Thunderstorms and ice pellets"
-msgstr "Audra su perkūnija ir kruša"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:231
-msgid "Thunderstorms and rain"
-msgstr "Lietus su perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:232
-msgid "Thunderstorms and snow"
-msgstr "Audra su perkūnija ir sniegas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:233
-msgid "Thunderstorms with hail"
-msgstr "Perkūnija ir kruša"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:234
-msgid "Thunderstorms with small hail"
-msgstr "Silpna kruša ir perkūnija"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:235
-msgid "Thunderstorm with light rain"
-msgstr "Audra su lengvu lietumi"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:236
-msgid "Thunderstorm with rain"
-msgstr "Audra su lietumi"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:237
-msgid "Thunderstorm with heavy rain"
-msgstr "Audra su liūtimi"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:238
-msgid "Thunderstorm with light drizzle"
-msgstr "Audra su lengva dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:239
-msgid "Thunderstorm with drizzle"
-msgstr "Audra su dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:240
-msgid "Thunderstorm with heavy drizzle"
-msgstr "Audra su sunkia dulksna"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:241
-msgid "Thundery outbreaks in nearby"
-msgstr "Audros protrūkiai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:242
-msgid "Tornado"
-msgstr "Viesulas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:243
-msgid "Torrential rain shower"
-msgstr "Liūtis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:244
-msgid "Tropical storm"
-msgstr "Tropinė audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:245
-msgid "Unknown precipitation"
-msgstr "Nežinomi krituliai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:246
-msgid "Unknown"
-msgstr "Nežinoma"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:247
-msgid "Very heavy rain"
-msgstr "Labai stiprus lietus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:248
-msgid "Volcanic ash"
-msgstr "Vulkaniniai pelenai"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:249
-msgid "Widespread dust"
-msgstr "Dulkių audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:250
-msgid "Windy"
-msgstr "Vėjuota"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:255
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:256
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:293
-msgid "North"
-msgstr "Šiaurės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:257
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:294
-msgid "North by east"
-msgstr "Šiaurės - rytų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:258
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:295
-msgid "North-northeast"
-msgstr "Šiaurės - šiaurės rytų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:259
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:296
-msgid "Northeast by north"
-msgstr "Šiaurės rytų - Šiaurės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:260
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:297
-msgid "Northeast"
-msgstr "Šiaurės rytų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:261
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:298
-msgid "Northeast by east"
-msgstr "Šiaurės rytų - Rytų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:262
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:299
-msgid "East-northeast"
-msgstr "Rytų - šiaurės rytų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:263
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:300
-msgid "East by north"
-msgstr "Rytų - Šiaurės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:264
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:265
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:301
-msgid "East"
-msgstr "Rytų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:266
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:302
-msgid "East by south"
-msgstr "Rytų - Pietų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:267
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:303
-msgid "East-southeast"
-msgstr "Rytų - pietryčių"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:268
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:304
-msgid "Southeast by east"
-msgstr "Pietryčių - Rytų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:269
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:305
-msgid "Southeast"
-msgstr "Pietryčių"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:270
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:306
-msgid "Southeast by south"
-msgstr "Pietryčių - Pietų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:271
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:307
-msgid "South-southeast"
-msgstr "Pietų-pietryčių"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:272
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:308
-msgid "South by east"
-msgstr "Pietų - Rytų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:273
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:274
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:309
-msgid "South"
-msgstr "Pietų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:275
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:310
-msgid "South by west"
-msgstr "Pietų - Vakarų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:276
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:311
-msgid "South-southwest"
-msgstr "Pietų - pietvakarių"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:277
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:312
-msgid "Southwest by south"
-msgstr "Pietvakarių - Pietų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:278
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:313
-msgid "Southwest"
-msgstr "Pietvakarių"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:279
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:314
-msgid "Southwest by west"
-msgstr "Pietvakarių - Vakarų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:280
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:315
-msgid "West-southwest"
-msgstr "Vakarų - pietvakarių"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:281
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:316
-msgid "West by south"
-msgstr "Vakarų - Pietų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:282
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:283
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:317
-msgid "West"
-msgstr "Vakarų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:284
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:318
-msgid "West by north"
-msgstr "Vakarų - Šiaurės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:285
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:319
-msgid "West-northwest"
-msgstr "Vakarų - šiaurės vakarų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:286
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:320
-msgid "Northwest by west"
-msgstr "Šiaurės vakarų - Vakarų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:287
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:321
-msgid "Northwest"
-msgstr "Šiaurės vakarų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:288
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:322
-msgid "Northwest by north"
-msgstr "Šiaurės vakarų - Šiaurės"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:289
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:323
-msgid "North-northwest"
-msgstr "Šiaurės - šiaurės vakarų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:290
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:324
-msgid "North by west"
-msgstr "Šiaurės - Vakarų"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:291
-msgid "Variable"
-msgstr "Nepastovus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:386
-msgid "Heavy"
-msgstr "Sunkus"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:389
-msgid "Light"
-msgstr "Šviesi"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:544
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:546
-msgid "from"
-msgstr "nuo"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:546
-msgid "at"
-msgstr "apie"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:547
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:577
-msgid "n/a"
-msgstr "nežinoma"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:607
-msgid "millibar"
-msgstr "mBa"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:607
-msgid "inches of mercury"
-msgstr "inHg"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:608
-msgid "millimeters of mercury"
-msgstr "mmHg"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:621
-msgid "mi"
-msgstr "mi"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:621
-msgid "km"
-msgstr "km"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:629
-msgid "in"
-msgstr "in"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:629
-msgid "cm"
-msgstr "cm"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:629
-msgid "mm"
-msgstr "mm"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:645
-msgid "Calm"
-msgstr "Ramu"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:647
-msgid "Light air"
-msgstr "Ramus vėjas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:649
-msgid "Light breeze"
-msgstr "Lengvas vėjelis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:651
-msgid "Gentle breeze"
-msgstr "Švelnus vėjelis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:653
-msgid "Moderate breeze"
-msgstr "Vidutinis vėjelis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:655
-msgid "Fresh breeze"
-msgstr "Gaivus vėjelis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:657
-msgid "Strong breeze"
-msgstr "Stiprokas vėjelis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:659
-msgid "High wind"
-msgstr "Didelis vėjas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:661
-msgid "Gale"
-msgstr "Stiprus vėjas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:663
-msgid "Strong gale"
-msgstr "Labai stiprus vėjas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:667
-msgid "Violent storm"
-msgstr "Smarki audra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:760
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:761
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:762
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:763
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:791
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:792
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:793
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:794
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:823
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:824
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:830
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:831
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:864
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:865
-msgid "Down all day"
-msgstr ""
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:766
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:767
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:768
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:769
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:796
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:797
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:798
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:799
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:820
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:821
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:827
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:828
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:867
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/weatherservice.py:868
-msgid "Up all day"
-msgstr ""
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/moon.py:33
-msgid "New Moon"
-msgstr "Jaunatis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/moon.py:34
-msgid "Waxing Crescent"
-msgstr "Jaunatis (pilnėja)"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/moon.py:35
-msgid "First Quarter"
-msgstr "Priešpilnis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/moon.py:36
-msgid "Waxing Gibbous"
-msgstr "Priešpilnis (pilnėja)"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/moon.py:37
-msgid "Full Moon"
-msgstr "Pilnatis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/moon.py:38
-msgid "Waning Gibbous"
-msgstr "Pilnatis (dyla)"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/moon.py:39
-msgid "Last Quarter"
-msgstr "Delčia"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/moon.py:40
-msgid "Waning Crescent"
-msgstr "Delčia (dyla)"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:84
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:437
-msgid "Forecast"
-msgstr "Orų prognozė"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:146
-msgid "Day of week"
-msgstr "Savaitės diena"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:153
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:544
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:724
-msgid "Sunrise"
-msgstr "Saulėtekis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:160
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:553
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:727
-msgid "Sunset"
-msgstr "Saulėlydis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:167
-msgid "Moon Phase"
-msgstr "Mėnulio fazė"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:174
-msgid "Condition"
-msgstr "Sąlygos"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:181
-msgid "High temperature"
-msgstr "Aukščiausia temperatūra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:188
-msgid "Low temperature"
-msgstr "Žemiausia temperatūra"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:196
-msgid "Maximum wind"
-msgstr "Didžiausias vėjo greitis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:203
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:239
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:254
-msgid "Average wind"
-msgstr "Vidutinis vėjas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:210
-msgid "Maximum humidity"
-msgstr "Didžiausias drėgnumas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:217
-msgid "Minumum humidity"
-msgstr "Vidutinis drėgnumas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:224
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:246
-msgid "Rain measurement"
-msgstr "Kritulių kiekis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:231
-msgid "Snow measurement"
-msgstr "Kritulių kiekis"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:261
-msgid "Average humidity"
-msgstr "Vidutinė drėgmė"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/forecastw.py:268
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:510
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:765
-msgid "Cloudiness"
-msgstr "Debesuotumas"
-
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:168
+#: ../src/myweatherindicator.py:150
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:176
+#: ../src/myweatherindicator.py:158
 msgid "Get help online..."
 msgstr "Pagalba internete"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:184
+#: ../src/myweatherindicator.py:166
 msgid "Translate this application..."
 msgstr "Versti šią programą..."
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:192
+#: ../src/myweatherindicator.py:174
 msgid "Report a bug..."
 msgstr "Pranešti apie klaidą..."
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:204
+#: ../src/myweatherindicator.py:186
 #, fuzzy
 msgid "Follow me in Twitter"
 msgstr "Sekite mus Twitter"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:212
+#: ../src/myweatherindicator.py:194
 #, fuzzy
 msgid "Follow me in Google+"
 msgstr "Sekite mus Google+"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:221
+#: ../src/myweatherindicator.py:203
 #, fuzzy
 msgid "Follow me in Facebook"
 msgstr "Sekite mus Facebook"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:228
+#: ../src/myweatherindicator.py:210
 msgid "About"
 msgstr "Apie"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:444
+#: ../src/myweatherindicator.py:426
 msgid "Evolution"
 msgstr "Raida"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:451
+#: ../src/myweatherindicator.py:433
 msgid "Forecast Map"
 msgstr "Prognozės žemėlapis"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:458
+#: ../src/myweatherindicator.py:440
 #, fuzzy
 msgid "Update weather"
 msgstr "Ką tik atnaujinta"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:469
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:693
+#: ../src/myweatherindicator.py:451 ../src/myweatherindicator.py:675
 msgid "Location"
 msgstr "Vietovė"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:484
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:697
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:800
+#: ../src/myweatherindicator.py:456 ../src/myweatherindicator.py:676
+#: ../src/myweatherindicator.py:780 ../src/preferences.py:340
+msgid "Temperature"
+msgstr "Temperatūra"
+
+#: ../src/myweatherindicator.py:461 ../src/myweatherindicator.py:738
+#: ../src/preferences.py:359
+msgid "Pressure"
+msgstr "Slėgis"
+
+#: ../src/myweatherindicator.py:466 ../src/myweatherindicator.py:679
+#: ../src/myweatherindicator.py:782
 msgid "Humidity"
 msgstr "Drėgmė"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:489
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:699
+#: ../src/myweatherindicator.py:471 ../src/myweatherindicator.py:681
 msgid "Feels like"
 msgstr "Jaučiama kaip"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:494
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:701
+#: ../src/myweatherindicator.py:476 ../src/myweatherindicator.py:683
 msgid "Dew Point"
 msgstr "Rasos taškas"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:499
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:704
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:802
+#: ../src/myweatherindicator.py:481 ../src/myweatherindicator.py:686
+#: ../src/myweatherindicator.py:784
 msgid "Wind"
 msgstr "Vėjas"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:515
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:769
+#: ../src/myweatherindicator.py:487 ../src/myweatherindicator.py:743
+#: ../src/preferences.py:378
+msgid "Visibility"
+msgstr "Matomumas"
+
+#: ../src/myweatherindicator.py:497 ../src/myweatherindicator.py:751
 msgid "UV"
 msgstr "Ultravioletiniai spinduliai"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:520
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:773
+#: ../src/myweatherindicator.py:502 ../src/myweatherindicator.py:755
 msgid "Precipitation"
 msgstr "Krituliai"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:535
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:722
+#: ../src/myweatherindicator.py:517 ../src/myweatherindicator.py:704
 msgid "Dawn"
 msgstr "Švinta"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:562
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:729
+#: ../src/myweatherindicator.py:544 ../src/myweatherindicator.py:711
 msgid "Dusk"
 msgstr "Temsta"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:597
+#: ../src/myweatherindicator.py:572 ../src/preferences.py:70
+msgid "Preferences"
+msgstr "Nustatymai"
+
+#: ../src/myweatherindicator.py:579
 msgid "Help"
 msgstr "Pagalba"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:603
+#: ../src/myweatherindicator.py:585
 msgid "Exit"
 msgstr "Išeiti"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:626
+#: ../src/myweatherindicator.py:608
 msgid "Not Internet connection"
 msgstr ""
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:796
+#: ../src/myweatherindicator.py:778
 msgid "Conditions in"
 msgstr "Oro sąlygos:"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:849
+#: ../src/myweatherindicator.py:831
 msgid "Forecast for next hours"
 msgstr "Prognozė artimiausiomis valandomis"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:850
+#: ../src/myweatherindicator.py:832
 msgid "Weather service"
 msgstr "Orų tarnyba"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/src/myweatherindicator.py:887
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:92
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:93
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:94
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:95
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:96
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:97
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:98
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:99
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:100
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:101
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:102
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:103
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:104
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:105
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:106
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:107
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:108
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:109
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:110
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:111
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:112
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:113
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:114
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:115
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:116
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:117
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:118
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:119
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:120
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:121
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:122
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:123
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:124
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:125
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:126
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:127
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:128
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:129
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:130
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:131
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:138
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:139
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:140
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:145
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:146
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:153
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:154
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:155
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:158
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:161
-msgid "A weather indicator"
-msgstr "Orų indikatorius bei prognozė"
+#: ../src/preferences.py:87
+msgid "Main Location"
+msgstr "Mano vietovė"
 
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:12
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:13
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:14
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:15
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:16
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:17
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:18
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:19
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:20
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:21
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:22
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:23
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:24
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:25
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:26
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:27
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:28
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:29
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:30
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:31
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:32
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:33
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:34
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:35
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:36
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:37
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:38
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:39
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:40
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:41
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:42
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:43
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:44
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:45
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:46
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:47
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:48
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:49
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:50
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:51
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:52
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:53
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:54
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:55
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:56
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:57
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:58
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:59
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:60
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:61
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:62
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:63
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:64
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:65
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:66
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:67
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:68
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:69
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:70
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:71
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:72
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:73
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:74
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:75
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:76
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:77
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:78
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:79
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:80
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:81
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:82
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:83
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:84
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:85
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:86
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:87
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:88
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:89
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:90
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:91
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:132
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:133
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:134
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:135
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:136
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:137
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:141
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:142
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:143
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:144
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:147
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:148
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:149
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:150
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:151
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:152
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:156
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:157
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:159
-#: /datos/Sync/Programacion/Python/my-weather-indicator/extras-my-weather-indicator.desktop.in:160
-msgid "My-Weather-Indicator"
-msgstr "Orų informacija"
+#: ../src/preferences.py:88 ../src/preferences.py:184
+#: ../src/preferences.py:478
+msgid "General options"
+msgstr "Pagrindiniai nustatymai"
+
+#: ../src/preferences.py:92 ../src/preferences.py:188
+#, fuzzy
+msgid "Show"
+msgstr "Liūtys"
+
+#: ../src/preferences.py:99
+msgid "Auto Location"
+msgstr "Surasti mane"
+
+#: ../src/preferences.py:105 ../src/preferences.py:194
+msgid "Locality"
+msgstr "Vietovė"
+
+#: ../src/preferences.py:117 ../src/preferences.py:205
+msgid "Search Location"
+msgstr "Ieškoti vietovės"
+
+#: ../src/preferences.py:124 ../src/preferences.py:212
+msgid "Show temperature"
+msgstr "Rodyti temperatūrą"
+
+#: ../src/preferences.py:130 ../src/preferences.py:218
+msgid "Show notifications"
+msgstr "Rodyti pranešimus"
+
+#: ../src/preferences.py:135 ../src/preferences.py:223
+#, fuzzy
+msgid "Widget options"
+msgstr "Skydelis viršuje"
+
+#: ../src/preferences.py:139 ../src/preferences.py:227
+msgid "Show widget"
+msgstr "Rodyti skydelį"
+
+#: ../src/preferences.py:146 ../src/preferences.py:234
+msgid "Hide indicator when show widget"
+msgstr "Slėpti rodiklį, kai rodomas skydelis"
+
+#: ../src/preferences.py:152 ../src/preferences.py:240
+msgid "Widget on top"
+msgstr "Skydelis viršuje"
+
+#: ../src/preferences.py:158 ../src/preferences.py:246
+msgid "Show in taskbar"
+msgstr "Rodyti užduočių juostoje"
+
+#: ../src/preferences.py:164 ../src/preferences.py:252
+msgid "On all desktops"
+msgstr ""
+
+#: ../src/preferences.py:183
+msgid "Second Location"
+msgstr "Kita vietovė"
+
+#: ../src/preferences.py:271
+msgid "Weather Services"
+msgstr "Orų prognozės centrai"
+
+#: ../src/preferences.py:300
+msgid "Input World Weather Online key"
+msgstr "Įvesti \"World Weather Online\" raktažodį"
+
+#: ../src/preferences.py:302 ../src/preferences.py:325
+msgid "Activate"
+msgstr "Aktyvinti"
+
+#: ../src/preferences.py:304
+msgid "Click to activate World Weather Online"
+msgstr "Spustelėkite, kad aktyvintumėte \"World Weather Online\""
+
+#: ../src/preferences.py:323
+msgid "Input Weather Underground key"
+msgstr "Įvesti \"Weather Underground\" raktažodį"
+
+#: ../src/preferences.py:327
+msgid "Click to activate Weather Underground"
+msgstr "Spustelėkite, kad aktyvintumėte \"Weather Underground\""
+
+#: ../src/preferences.py:337
+msgid "Units"
+msgstr "Matavimo vienetai"
+
+#: ../src/preferences.py:347
+msgid "Celsius"
+msgstr "Pagal Celsijų"
+
+#: ../src/preferences.py:348
+msgid "Fahrenheit"
+msgstr "Pagal Farenheitą"
+
+#: ../src/preferences.py:349
+msgid "Kelvin"
+msgstr "Pagal Kelviną"
+
+#: ../src/preferences.py:366
+msgid "Millibar"
+msgstr "Milibarai"
+
+#: ../src/preferences.py:367
+msgid "Inches of mercury"
+msgstr "Coliai gyvsidabrio stulpelyje"
+
+#: ../src/preferences.py:368
+msgid "Millimeters of mercury"
+msgstr "Milimetrai gyvsidabrio stulpelyje"
+
+#: ../src/preferences.py:385
+msgid "mile"
+msgstr "Mylia"
+
+#: ../src/preferences.py:386
+msgid "kilometer"
+msgstr "Kilometras"
+
+#: ../src/preferences.py:396
+msgid "Wind velocity"
+msgstr "Vėjo greitis"
+
+#: ../src/preferences.py:403
+msgid "Beaufort"
+msgstr "Boforto"
+
+#: ../src/preferences.py:404 ../src/weatherservice.py:751
+msgid "ft/s"
+msgstr "ft/s"
+
+#: ../src/preferences.py:405 ../src/weatherservice.py:750
+msgid "km/h"
+msgstr "km/h"
+
+#: ../src/preferences.py:406 ../src/weatherservice.py:751
+msgid "knots"
+msgstr "mazgai"
+
+#: ../src/preferences.py:407 ../src/weatherservice.py:750
+msgid "m/s"
+msgstr "m/sek."
+
+#: ../src/preferences.py:408 ../src/weatherservice.py:750
+msgid "mph"
+msgstr "mph"
+
+#: ../src/preferences.py:418
+msgid "Rain Gauge"
+msgstr "Lietaus matuoklis"
+
+#: ../src/preferences.py:425 ../src/preferences.py:444
+msgid "Inches"
+msgstr "Coliai"
+
+#: ../src/preferences.py:426 ../src/preferences.py:445
+msgid "Centimeters"
+msgstr "Centimetrai"
+
+#: ../src/preferences.py:427 ../src/preferences.py:446
+msgid "Millimeters"
+msgstr "Milimetrai"
+
+#: ../src/preferences.py:437
+msgid "Snow Gauge"
+msgstr "Sniego matuoklis"
+
+#: ../src/preferences.py:456
+msgid "Time Format"
+msgstr "Laiko formatas"
+
+#: ../src/preferences.py:463
+msgid "24 h"
+msgstr "24 valandos"
+
+#: ../src/preferences.py:464
+msgid "AM/PM"
+msgstr "12 valandų (AM/PM)"
+
+#: ../src/preferences.py:481
+msgid "Autostart"
+msgstr "Automatinis pasileidimas"
+
+#: ../src/preferences.py:486
+msgid "Refresh frequency"
+msgstr "Atnaujinimo dažnis"
+
+#: ../src/preferences.py:493 ../src/preferences.py:494
+msgid "minutes"
+msgstr "min."
+
+#: ../src/preferences.py:495
+msgid "hour"
+msgstr "val."
+
+#: ../src/preferences.py:496 ../src/preferences.py:497
+#: ../src/preferences.py:498 ../src/preferences.py:499
+#: ../src/preferences.py:500
+msgid "hours"
+msgstr "val."
+
+#: ../src/preferences.py:510
+msgid "Select icon theme"
+msgstr "Pasirinkite ikonėlių temą"
+
+#: ../src/weatherservice.py:36
+msgid "Blowing sand"
+msgstr "Smėlio audra"
+
+#: ../src/weatherservice.py:44
+msgid "Blizzard"
+msgstr "Pūga"
+
+#: ../src/weatherservice.py:52
+msgid "Blowing snow"
+msgstr "Pustomas sniegas"
+
+#: ../src/weatherservice.py:60
+msgid "Blowing widespread dust"
+msgstr "Dulkių audra"
+
+#: ../src/weatherservice.py:65
+msgid "Blustery"
+msgstr ""
+
+#: ../src/weatherservice.py:70
+msgid "Chance of a thunderstorm"
+msgstr "Žaibavimo tikimybė"
+
+#: ../src/weatherservice.py:78
+msgid "Chance of flurries"
+msgstr "Galimas snygis"
+
+#: ../src/weatherservice.py:85
+msgid "Chance of rain"
+msgstr "Galimas lietus"
+
+#: ../src/weatherservice.py:93
+msgid "Chance of showers"
+msgstr "Galimos liūtys"
+
+#: ../src/weatherservice.py:100
+msgid "Chance of snow"
+msgstr "Galimas sniegas"
+
+#: ../src/weatherservice.py:102
+msgid "Chance of storm"
+msgstr "Galima audra"
+
+#: ../src/weatherservice.py:104
+msgid "Chance of thunderstorms"
+msgstr "Galima perkūnija"
+
+#: ../src/weatherservice.py:106
+msgid "Chance of tstorm"
+msgstr "Galima audra"
+
+#: ../src/weatherservice.py:108
+msgid "Clear"
+msgstr "Giedra"
+
+#: ../src/weatherservice.py:110
+msgid "Cloudy"
+msgstr "Debesuota"
+
+#: ../src/weatherservice.py:112
+msgid "Cold"
+msgstr "Šaltis"
+
+#: ../src/weatherservice.py:113
+msgid "Drizzle"
+msgstr "Dulksna"
+
+#: ../src/weatherservice.py:115
+msgid "Drizzle rain"
+msgstr "Smulkus lietus"
+
+#: ../src/weatherservice.py:117
+msgid "Dust whirls"
+msgstr "Dulkių sūkuriai"
+
+#: ../src/weatherservice.py:119
+msgid "Dust"
+msgstr "Dulkės"
+
+#: ../src/weatherservice.py:121
+msgid "Extreme rain"
+msgstr "Labai stiprus lietus"
+
+#: ../src/weatherservice.py:123
+msgid "Fair"
+msgstr "Gražus oras"
+
+#: ../src/weatherservice.py:125
+msgid "Flurries"
+msgstr "Sniegas"
+
+#: ../src/weatherservice.py:127
+msgid "Fog patches"
+msgstr "Vietomis rūkas"
+
+#: ../src/weatherservice.py:129
+msgid "Fog"
+msgstr "Rūkas"
+
+#: ../src/weatherservice.py:131
+msgid "Foggy"
+msgstr "Ūkanota"
+
+#: ../src/weatherservice.py:133 ../src/weatherservice.py:135
+msgid "Freezing drizzle"
+msgstr "Lijundra"
+
+#: ../src/weatherservice.py:137 ../src/weatherservice.py:139
+msgid "Freezing fog"
+msgstr "Šaltas rūkas"
+
+#: ../src/weatherservice.py:141
+msgid "Freezing rain"
+msgstr "Lijundra"
+
+#: ../src/weatherservice.py:143
+msgid "Funnel cloud"
+msgstr "Lietingi debesys"
+
+#: ../src/weatherservice.py:145
+msgid "Hail showers"
+msgstr "Kruša"
+
+#: ../src/weatherservice.py:147
+msgid "Hail"
+msgstr "Kruša"
+
+#: ../src/weatherservice.py:148
+msgid "Haze"
+msgstr "Nedidelis rūkas"
+
+#: ../src/weatherservice.py:150
+msgid "Heavy freezing drizzle"
+msgstr "Smarki lijundra"
+
+#: ../src/weatherservice.py:152 ../src/weatherservice.py:180
+#, fuzzy
+msgid "Heavy drizzle"
+msgstr "Smarki lijundra"
+
+#: ../src/weatherservice.py:154 ../src/weatherservice.py:182
+#, fuzzy
+msgid "Heavy drizzle rain"
+msgstr "Intensyvus smulkus lietus"
+
+#: ../src/weatherservice.py:156 ../src/weatherservice.py:162
+#: ../src/weatherservice.py:184
+msgid "Heavy rain"
+msgstr "Smarkus lietus"
+
+#: ../src/weatherservice.py:158 ../src/weatherservice.py:186
+#, fuzzy
+msgid "Heavy shower rain"
+msgstr "Smarki liūtis"
+
+#: ../src/weatherservice.py:160
+msgid "Heavy rain at times"
+msgstr "Kartais smarkus lietus"
+
+#: ../src/weatherservice.py:164
+msgid "Heavy snow"
+msgstr "Smarkus sniegas"
+
+#: ../src/weatherservice.py:166
+msgid "Heavy thunderstorm"
+msgstr "Stipri audra"
+
+#: ../src/weatherservice.py:168
+msgid "Hot"
+msgstr "Karštis"
+
+#: ../src/weatherservice.py:170 ../src/weatherservice.py:780
+msgid "Hurricane"
+msgstr "Uraganas"
+
+#: ../src/weatherservice.py:172
+msgid "Ice crystals"
+msgstr "Ledo kristalai"
+
+#: ../src/weatherservice.py:174
+msgid "Ice pellet showers"
+msgstr "Ledo gabalėlių liūtis"
+
+#: ../src/weatherservice.py:176 ../src/weatherservice.py:178
+msgid "Ice pellets"
+msgstr "Ledo gabalėliai"
+
+#: ../src/weatherservice.py:179
+msgid "Icy"
+msgstr "Ledinis"
+
+#: ../src/weatherservice.py:188
+msgid "Isolated showers"
+msgstr "Trumpalaikės liūtys"
+
+#: ../src/weatherservice.py:190
+#, fuzzy
+msgid "Isolated thundershowers"
+msgstr "Trumpalaikė perkūnija"
+
+#: ../src/weatherservice.py:192
+msgid "Isolated thunderstorms"
+msgstr "Trumpalaikė perkūnija"
+
+#: ../src/weatherservice.py:194 ../src/weatherservice.py:198
+msgid "Light drizzle"
+msgstr "Silpna dulksna"
+
+#: ../src/weatherservice.py:196
+msgid "Light freezing rain"
+msgstr "Silpna lijundra"
+
+#: ../src/weatherservice.py:200
+#, fuzzy
+msgid "Light drizzle rain"
+msgstr "Silpna dulksna"
+
+#: ../src/weatherservice.py:202
+#, fuzzy
+msgid "Light shower rain"
+msgstr "Mažo intensyvumo liūtis"
+
+#: ../src/weatherservice.py:204
+msgid "Light rain shower"
+msgstr "Maža liūtis"
+
+#: ../src/weatherservice.py:206
+msgid "Light rain"
+msgstr "Silpnas lietus"
+
+#: ../src/weatherservice.py:208
+msgid "Light showers of ice pellets"
+msgstr "Lengva ledo gabalėlių liūtis"
+
+#: ../src/weatherservice.py:210
+msgid "Light sleet showers"
+msgstr "Šlapdriba"
+
+#: ../src/weatherservice.py:212
+msgid "Light sleet"
+msgstr "Silpna šlapdriba"
+
+#: ../src/weatherservice.py:214
+msgid "Light snow showers"
+msgstr "Protarpiais pasnigs"
+
+#: ../src/weatherservice.py:216
+msgid "Light snow"
+msgstr "Nedidelis sniegas"
+
+#: ../src/weatherservice.py:218
+msgid "Light thunderstorm"
+msgstr "Nedidelė audra"
+
+#: ../src/weatherservice.py:220
+msgid "Low drifting sand"
+msgstr "Smėlio Pūga"
+
+#: ../src/weatherservice.py:222
+msgid "Low drifting snow"
+msgstr "Sniego pūga"
+
+#: ../src/weatherservice.py:224
+msgid "Low drifting widespread dust"
+msgstr "Dulkių pūga"
+
+#: ../src/weatherservice.py:226
+msgid "Mist"
+msgstr "Migla"
+
+#: ../src/weatherservice.py:228
+msgid "Mixed rain and snow"
+msgstr "Šlapdriba (lietus ir sniegas)"
+
+#: ../src/weatherservice.py:230
+msgid "Mixed rain and sleet"
+msgstr "Lietus bei šlapdriba"
+
+#: ../src/weatherservice.py:232
+msgid "Mixed snow and sleet"
+msgstr "Sniegas bei šlapdriba"
+
+#: ../src/weatherservice.py:234
+msgid "Moderate or heavy freezing rain"
+msgstr "Vidutinio stiprumo ar stipri lijundra"
+
+#: ../src/weatherservice.py:236
+msgid "Moderate or heavy rain in area with thunder"
+msgstr "Vidutinio stiprumo ar stiprus lietus vietomis su perkūnija"
+
+#: ../src/weatherservice.py:238
+msgid "Moderate or heavy rain shower"
+msgstr "Vidutinio stiprumo ar stipri liūtis"
+
+#: ../src/weatherservice.py:240
+msgid "Moderate or heavy showers of ice pellets"
+msgstr "Vidutinio stiprumo ar stipri ledo liūtis"
+
+#: ../src/weatherservice.py:242
+msgid "Moderate or heavy sleet showers"
+msgstr "Vidutinio stiprumo ar stiprios šlabdribos liūtys"
+
+#: ../src/weatherservice.py:244
+msgid "Moderate or heavy sleet"
+msgstr "Vidutinio stiprumo ar stipri šlapdriba"
+
+#: ../src/weatherservice.py:246
+msgid "Moderate or heavy snow in area with thunder"
+msgstr "Vidutinio stiprumo ar stiprus snygis vietomis su perkūnija"
+
+#: ../src/weatherservice.py:248
+msgid "Moderate or heavy snow showers"
+msgstr "Vidutinio stiprumo ar stiprus snygis"
+
+#: ../src/weatherservice.py:250
+msgid "Moderate rain at times"
+msgstr "Kartais vidutinio stiprumo lietus"
+
+#: ../src/weatherservice.py:252
+msgid "Moderate rain"
+msgstr "Vidutinio stiprumo lietus"
+
+#: ../src/weatherservice.py:254
+msgid "Moderate snow"
+msgstr "Vidutinio stiprumo snygis"
+
+#: ../src/weatherservice.py:256
+msgid "Mostly cloudy"
+msgstr "Debesuota su pragiedruliais"
+
+#: ../src/weatherservice.py:258
+msgid "Mostly sunny"
+msgstr "Dažniausiai saulėta"
+
+#: ../src/weatherservice.py:260 ../src/weatherservice.py:843
+msgid "Not available"
+msgstr "Neprieinama"
+
+#: ../src/weatherservice.py:262
+msgid "Overcast"
+msgstr "Apsiniaukę"
+
+#: ../src/weatherservice.py:264
+msgid "Partial fog"
+msgstr "Vietomis rūkas"
+
+#: ../src/weatherservice.py:266
+msgid "Partly cloudy"
+msgstr "Vietomis debesuota"
+
+#: ../src/weatherservice.py:268
+msgid "Partly sunny"
+msgstr "Vietomis saulėta"
+
+#: ../src/weatherservice.py:270
+msgid "Patches of fog"
+msgstr "Vietomis rūkas"
+
+#: ../src/weatherservice.py:272
+msgid "Patchy freezing drizzle nearby"
+msgstr "Protarpiais lijundra"
+
+#: ../src/weatherservice.py:274
+msgid "Patchy heavy snow"
+msgstr "Protarpiais daug sniego"
+
+#: ../src/weatherservice.py:276
+msgid "Patchy light drizzle"
+msgstr "Protarpiais lengva dulksna"
+
+#: ../src/weatherservice.py:278
+msgid "Patchy light rain in area with thunder"
+msgstr "Protarpiais silpnas lietus su perkūnija"
+
+#: ../src/weatherservice.py:280
+msgid "Patchy light rain"
+msgstr "Protarpiais silpnas lietus"
+
+#: ../src/weatherservice.py:282
+msgid "Patchy light snow in area with thunder"
+msgstr "Protarpiais silpnas snygis su perkūnija"
+
+#: ../src/weatherservice.py:284
+msgid "Patchy light snow"
+msgstr "Protarpiais silpnas snygis"
+
+#: ../src/weatherservice.py:286
+msgid "Patchy moderate snow"
+msgstr "Protarpiais vidutinio sunkumo snygis"
+
+#: ../src/weatherservice.py:288
+msgid "Patchy rain nearby"
+msgstr "Protarpiais lietus"
+
+#: ../src/weatherservice.py:290
+msgid "Patchy sleet nearby"
+msgstr "Protarpiais šlabdriba"
+
+#: ../src/weatherservice.py:292
+msgid "Patchy snow nearby"
+msgstr "Protarpiais sniegas"
+
+#: ../src/weatherservice.py:294
+msgid "Ragged thunderstorm"
+msgstr "Galima audra"
+
+#: ../src/weatherservice.py:296
+msgid "Rain and snow"
+msgstr "Lietus ir sniegas"
+
+#: ../src/weatherservice.py:298
+msgid "Rain mist"
+msgstr "Dulksna"
+
+#: ../src/weatherservice.py:300
+msgid "Rain showers"
+msgstr "Stiprus lietus"
+
+#: ../src/weatherservice.py:302
+msgid "Rain"
+msgstr "Lietus"
+
+#: ../src/weatherservice.py:303
+msgid "Sand"
+msgstr "Smėlis"
+
+#: ../src/weatherservice.py:305
+msgid "Sandstorm"
+msgstr "Smėlio audra"
+
+#: ../src/weatherservice.py:307
+msgid "Scattered clouds"
+msgstr "Išsisklaidę debesys"
+
+#: ../src/weatherservice.py:309
+msgid "Scattered showers"
+msgstr "Vietomis liūtys"
+
+#: ../src/weatherservice.py:311
+msgid "Scattered thunderstorms"
+msgstr "Vietomis perkūnija"
+
+#: ../src/weatherservice.py:313
+msgid "Shallow fog"
+msgstr "Paviršinis rūkas"
+
+#: ../src/weatherservice.py:315
+msgid "Showers"
+msgstr "Liūtys"
+
+#: ../src/weatherservice.py:316
+msgid "Shower drizzle"
+msgstr "Dulksna"
+
+#: ../src/weatherservice.py:318
+msgid "Shower rain"
+msgstr "Gausūs lietūs"
+
+#: ../src/weatherservice.py:320
+msgid "Shower snow"
+msgstr "Gausus sniegas"
+
+#: ../src/weatherservice.py:322
+msgid "Sleet"
+msgstr "Šlapdriba"
+
+#: ../src/weatherservice.py:324
+msgid "Small hail showers"
+msgstr "Lietus su nežymia kruša"
+
+#: ../src/weatherservice.py:326
+msgid "Small hail"
+msgstr "Silpna kruša"
+
+#: ../src/weatherservice.py:328
+msgid "Smoke"
+msgstr "Dūmai"
+
+#: ../src/weatherservice.py:330
+msgid "Snow blowing snow mist"
+msgstr "Pusto"
+
+#: ../src/weatherservice.py:332
+msgid "Snow flurries"
+msgstr "Sniego šuorai"
+
+#: ../src/weatherservice.py:334
+msgid "Snow grains"
+msgstr "Pasnigs"
+
+#: ../src/weatherservice.py:336
+msgid "Snow showers"
+msgstr "Sniegas"
+
+#: ../src/weatherservice.py:338
+msgid "Snow"
+msgstr "Sniegas"
+
+#: ../src/weatherservice.py:339
+msgid "Spray"
+msgstr "Purškimas"
+
+#: ../src/weatherservice.py:340
+msgid "Squalls"
+msgstr "Škvalas"
+
+#: ../src/weatherservice.py:342 ../src/weatherservice.py:776
+msgid "Storm"
+msgstr "Audra"
+
+#: ../src/weatherservice.py:343
+msgid "Sunny"
+msgstr "Saulėta"
+
+#: ../src/weatherservice.py:345 ../src/weatherservice.py:347
+msgid "Thunderstorm"
+msgstr "Perkūnija"
+
+#: ../src/weatherservice.py:349
+msgid "Thunderstorms and ice pellets"
+msgstr "Audra su perkūnija ir kruša"
+
+#: ../src/weatherservice.py:351
+msgid "Thunderstorms and rain"
+msgstr "Lietus su perkūnija"
+
+#: ../src/weatherservice.py:353
+msgid "Thunderstorms and snow"
+msgstr "Audra su perkūnija ir sniegas"
+
+#: ../src/weatherservice.py:355
+msgid "Thunderstorms with hail"
+msgstr "Perkūnija ir kruša"
+
+#: ../src/weatherservice.py:357
+msgid "Thunderstorms with small hail"
+msgstr "Silpna kruša ir perkūnija"
+
+#: ../src/weatherservice.py:359
+msgid "Thunderstorm with light rain"
+msgstr "Audra su lengvu lietumi"
+
+#: ../src/weatherservice.py:361
+msgid "Thunderstorm with rain"
+msgstr "Audra su lietumi"
+
+#: ../src/weatherservice.py:363
+msgid "Thunderstorm with heavy rain"
+msgstr "Audra su liūtimi"
+
+#: ../src/weatherservice.py:365
+msgid "Thunderstorm with light drizzle"
+msgstr "Audra su lengva dulksna"
+
+#: ../src/weatherservice.py:367
+msgid "Thunderstorm with drizzle"
+msgstr "Audra su dulksna"
+
+#: ../src/weatherservice.py:369
+msgid "Thunderstorm with heavy drizzle"
+msgstr "Audra su sunkia dulksna"
+
+#: ../src/weatherservice.py:371
+msgid "Thundery outbreaks in nearby"
+msgstr "Audros protrūkiai"
+
+#: ../src/weatherservice.py:373
+msgid "Tornado"
+msgstr "Viesulas"
+
+#: ../src/weatherservice.py:375
+msgid "Torrential rain shower"
+msgstr "Liūtis"
+
+#: ../src/weatherservice.py:377
+msgid "Tropical storm"
+msgstr "Tropinė audra"
+
+#: ../src/weatherservice.py:379
+msgid "Unknown precipitation"
+msgstr "Nežinomi krituliai"
+
+#: ../src/weatherservice.py:381
+msgid "Unknown"
+msgstr "Nežinoma"
+
+#: ../src/weatherservice.py:383
+msgid "Very heavy rain"
+msgstr "Labai stiprus lietus"
+
+#: ../src/weatherservice.py:385
+msgid "Volcanic ash"
+msgstr "Vulkaniniai pelenai"
+
+#: ../src/weatherservice.py:387
+msgid "Widespread dust"
+msgstr "Dulkių audra"
+
+#: ../src/weatherservice.py:389
+msgid "Windy"
+msgstr "Vėjuota"
+
+#: ../src/weatherservice.py:394 ../src/weatherservice.py:395
+#: ../src/weatherservice.py:432
+msgid "North"
+msgstr "Šiaurės"
+
+#: ../src/weatherservice.py:396 ../src/weatherservice.py:433
+msgid "North by east"
+msgstr "Šiaurės - rytų"
+
+#: ../src/weatherservice.py:397 ../src/weatherservice.py:434
+msgid "North-northeast"
+msgstr "Šiaurės - šiaurės rytų"
+
+#: ../src/weatherservice.py:398 ../src/weatherservice.py:435
+msgid "Northeast by north"
+msgstr "Šiaurės rytų - Šiaurės"
+
+#: ../src/weatherservice.py:399 ../src/weatherservice.py:436
+msgid "Northeast"
+msgstr "Šiaurės rytų"
+
+#: ../src/weatherservice.py:400 ../src/weatherservice.py:437
+msgid "Northeast by east"
+msgstr "Šiaurės rytų - Rytų"
+
+#: ../src/weatherservice.py:401 ../src/weatherservice.py:438
+msgid "East-northeast"
+msgstr "Rytų - šiaurės rytų"
+
+#: ../src/weatherservice.py:402 ../src/weatherservice.py:439
+msgid "East by north"
+msgstr "Rytų - Šiaurės"
+
+#: ../src/weatherservice.py:403 ../src/weatherservice.py:404
+#: ../src/weatherservice.py:440
+msgid "East"
+msgstr "Rytų"
+
+#: ../src/weatherservice.py:405 ../src/weatherservice.py:441
+msgid "East by south"
+msgstr "Rytų - Pietų"
+
+#: ../src/weatherservice.py:406 ../src/weatherservice.py:442
+msgid "East-southeast"
+msgstr "Rytų - pietryčių"
+
+#: ../src/weatherservice.py:407 ../src/weatherservice.py:443
+msgid "Southeast by east"
+msgstr "Pietryčių - Rytų"
+
+#: ../src/weatherservice.py:408 ../src/weatherservice.py:444
+msgid "Southeast"
+msgstr "Pietryčių"
+
+#: ../src/weatherservice.py:409 ../src/weatherservice.py:445
+msgid "Southeast by south"
+msgstr "Pietryčių - Pietų"
+
+#: ../src/weatherservice.py:410 ../src/weatherservice.py:446
+msgid "South-southeast"
+msgstr "Pietų-pietryčių"
+
+#: ../src/weatherservice.py:411 ../src/weatherservice.py:447
+msgid "South by east"
+msgstr "Pietų - Rytų"
+
+#: ../src/weatherservice.py:412 ../src/weatherservice.py:413
+#: ../src/weatherservice.py:448
+msgid "South"
+msgstr "Pietų"
+
+#: ../src/weatherservice.py:414 ../src/weatherservice.py:449
+msgid "South by west"
+msgstr "Pietų - Vakarų"
+
+#: ../src/weatherservice.py:415 ../src/weatherservice.py:450
+msgid "South-southwest"
+msgstr "Pietų - pietvakarių"
+
+#: ../src/weatherservice.py:416 ../src/weatherservice.py:451
+msgid "Southwest by south"
+msgstr "Pietvakarių - Pietų"
+
+#: ../src/weatherservice.py:417 ../src/weatherservice.py:452
+msgid "Southwest"
+msgstr "Pietvakarių"
+
+#: ../src/weatherservice.py:418 ../src/weatherservice.py:453
+msgid "Southwest by west"
+msgstr "Pietvakarių - Vakarų"
+
+#: ../src/weatherservice.py:419 ../src/weatherservice.py:454
+msgid "West-southwest"
+msgstr "Vakarų - pietvakarių"
+
+#: ../src/weatherservice.py:420 ../src/weatherservice.py:455
+msgid "West by south"
+msgstr "Vakarų - Pietų"
+
+#: ../src/weatherservice.py:421 ../src/weatherservice.py:422
+#: ../src/weatherservice.py:456
+msgid "West"
+msgstr "Vakarų"
+
+#: ../src/weatherservice.py:423 ../src/weatherservice.py:457
+msgid "West by north"
+msgstr "Vakarų - Šiaurės"
+
+#: ../src/weatherservice.py:424 ../src/weatherservice.py:458
+msgid "West-northwest"
+msgstr "Vakarų - šiaurės vakarų"
+
+#: ../src/weatherservice.py:425 ../src/weatherservice.py:459
+msgid "Northwest by west"
+msgstr "Šiaurės vakarų - Vakarų"
+
+#: ../src/weatherservice.py:426 ../src/weatherservice.py:460
+msgid "Northwest"
+msgstr "Šiaurės vakarų"
+
+#: ../src/weatherservice.py:427 ../src/weatherservice.py:461
+msgid "Northwest by north"
+msgstr "Šiaurės vakarų - Šiaurės"
+
+#: ../src/weatherservice.py:428 ../src/weatherservice.py:462
+msgid "North-northwest"
+msgstr "Šiaurės - šiaurės vakarų"
+
+#: ../src/weatherservice.py:429 ../src/weatherservice.py:463
+msgid "North by west"
+msgstr "Šiaurės - Vakarų"
+
+#: ../src/weatherservice.py:430
+msgid "Variable"
+msgstr "Nepastovus"
+
+#: ../src/weatherservice.py:655 ../src/weatherservice.py:657
+msgid "from"
+msgstr "nuo"
+
+#: ../src/weatherservice.py:657
+msgid "at"
+msgstr "apie"
+
+#: ../src/weatherservice.py:658 ../src/weatherservice.py:688
+msgid "n/a"
+msgstr "nežinoma"
+
+#: ../src/weatherservice.py:718
+msgid "inches of mercury"
+msgstr "inHg"
+
+#: ../src/weatherservice.py:718
+msgid "millibar"
+msgstr "mBa"
+
+#: ../src/weatherservice.py:719
+msgid "millimeters of mercury"
+msgstr "mmHg"
+
+#: ../src/weatherservice.py:732
+msgid "km"
+msgstr "km"
+
+#: ../src/weatherservice.py:732
+msgid "mi"
+msgstr "mi"
+
+#: ../src/weatherservice.py:740
+msgid "cm"
+msgstr "cm"
+
+#: ../src/weatherservice.py:740
+msgid "in"
+msgstr "in"
+
+#: ../src/weatherservice.py:740
+msgid "mm"
+msgstr "mm"
+
+#: ../src/weatherservice.py:756
+msgid "Calm"
+msgstr "Ramu"
+
+#: ../src/weatherservice.py:758
+msgid "Light air"
+msgstr "Ramus vėjas"
+
+#: ../src/weatherservice.py:760
+msgid "Light breeze"
+msgstr "Lengvas vėjelis"
+
+#: ../src/weatherservice.py:762
+msgid "Gentle breeze"
+msgstr "Švelnus vėjelis"
+
+#: ../src/weatherservice.py:764
+msgid "Moderate breeze"
+msgstr "Vidutinis vėjelis"
+
+#: ../src/weatherservice.py:766
+msgid "Fresh breeze"
+msgstr "Gaivus vėjelis"
+
+#: ../src/weatherservice.py:768
+msgid "Strong breeze"
+msgstr "Stiprokas vėjelis"
+
+#: ../src/weatherservice.py:770
+msgid "High wind"
+msgstr "Didelis vėjas"
+
+#: ../src/weatherservice.py:772
+msgid "Gale"
+msgstr "Stiprus vėjas"
+
+#: ../src/weatherservice.py:774
+msgid "Strong gale"
+msgstr "Labai stiprus vėjas"
+
+#: ../src/weatherservice.py:778
+msgid "Violent storm"
+msgstr "Smarki audra"
+
+#: ../src/weatherservice.py:847 ../src/weatherservice.py:848
+#: ../src/weatherservice.py:849 ../src/weatherservice.py:850
+#: ../src/weatherservice.py:851 ../src/weatherservice.py:854
+#: ../src/weatherservice.py:855 ../src/weatherservice.py:857
+#: ../src/weatherservice.py:859 ../src/weatherservice.py:860
+#: ../src/weatherservice.py:861 ../src/weatherservice.py:862
+#: ../src/weatherservice.py:863 ../src/weatherservice.py:864
+#: ../src/weatherservice.py:951 ../src/weatherservice.py:952
+#: ../src/weatherservice.py:953 ../src/weatherservice.py:955
+#: ../src/weatherservice.py:956 ../src/weatherservice.py:957
+#: ../src/weatherservice.py:958 ../src/weatherservice.py:959
+#: ../src/weatherservice.py:960 ../src/weatherservice.py:961
+#: ../src/weatherservice.py:962 ../src/weatherservice.py:964
+#: ../src/weatherservice.py:965 ../src/weatherservice.py:966
+#: ../src/weatherservice.py:968 ../src/weatherservice.py:969
+#: ../src/worldweatheronlineapi.py:95 ../src/worldweatheronlineapi.py:104
+#: ../src/worldweatheronlineapi.py:113 ../src/wundergroundapi.py:43
+#: ../src/wundergroundapi.py:51 ../src/wundergroundapi.py:62
+msgid "N/A"
+msgstr "Nežinoma"
+
+#: ../src/weatherservice.py:871 ../src/weatherservice.py:872
+#: ../src/weatherservice.py:873 ../src/weatherservice.py:874
+#: ../src/weatherservice.py:902 ../src/weatherservice.py:903
+#: ../src/weatherservice.py:904 ../src/weatherservice.py:905
+#: ../src/weatherservice.py:934 ../src/weatherservice.py:935
+#: ../src/weatherservice.py:941 ../src/weatherservice.py:942
+#: ../src/weatherservice.py:975 ../src/weatherservice.py:976
+msgid "Down all day"
+msgstr ""
+
+#: ../src/weatherservice.py:877 ../src/weatherservice.py:878
+#: ../src/weatherservice.py:879 ../src/weatherservice.py:880
+#: ../src/weatherservice.py:907 ../src/weatherservice.py:908
+#: ../src/weatherservice.py:909 ../src/weatherservice.py:910
+#: ../src/weatherservice.py:931 ../src/weatherservice.py:932
+#: ../src/weatherservice.py:938 ../src/weatherservice.py:939
+#: ../src/weatherservice.py:978 ../src/weatherservice.py:979
+msgid "Up all day"
+msgstr ""
+
+#: ../src/whereami.py:49
+msgid "Where Am I"
+msgstr "Kur aš esu"
+
+#: ../src/whereami.py:75
+msgid "Search location"
+msgstr "Ieškoti vietovės"
+
+#: ../src/whereami.py:77
+msgid "Clear location"
+msgstr "Išvalyti"
+
+#: ../src/whereami.py:78
+msgid "Input the name of your city"
+msgstr "Įvesti savo miesto pavadinimą"
+
+#: ../src/whereami.py:83
+msgid "Search"
+msgstr "Paieška"
+
+#: ../src/whereami.py:87
+msgid "Find me"
+msgstr "Rasti mane"
+
+#: ../src/whereami.py:90
+#, fuzzy
+msgid "Locations found"
+msgstr "Surastos vietovės"
+
+#: ../src/whereami.py:109
+msgid "City"
+msgstr "Miestas"
+
+#: ../src/whereami.py:113
+msgid "State"
+msgstr "Rajonas"
+
+#: ../src/whereami.py:117
+msgid "Country"
+msgstr "Šalis"
+
+#~ msgid "Heavy"
+#~ msgstr "Sunkus"
+
+#~ msgid "Light"
+#~ msgstr "Šviesi"
 
 #~ msgid "Heavy intensity drizzle"
 #~ msgstr "Intensyvi dulksna"

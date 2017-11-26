@@ -308,7 +308,7 @@ def babilon():
     print('############################################################')
     with fileinput.FileInput(TEMPLATE, inplace=True, backup='.bak') as file:
         for line in file:
-            print(line.replace("#: " + MAIN_DIR, "#: .."), end='')
+            print(line.replace("#: " + MAIN_DIR, "#: .."))
     print('############################################################')
     delete_it(files_file)
     print('############################################################')
