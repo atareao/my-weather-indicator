@@ -2,7 +2,7 @@ Source: my-weather-indicator
 Section: utils
 Priority: extra
 Maintainer: Lorenzo Carbonell Cerezo <lorenzo.carbonell.cerezo@gmail.com>
-Build-Depends: debhelper (>= 9), python, python-distutils-extra, python-polib
+Build-Depends: debhelper (>= 9), python, python-distutils-extra, python-polib, python-configparser
 Standards-Version: 3.9.5
 Homepage: http://www.atareao.es
 
