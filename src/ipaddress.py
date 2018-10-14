@@ -106,10 +106,11 @@ def get_ip():
 
 
 def get_current_location():
-    url = 'http://geoip.nekudo.com/api/'
+    url = 'http://ip-api.com/json'
     print(url)
     ans = json.loads(comun.read_from_url(url))
-    return ans['location']['latitude'], ans['location']['longitude']
+    print(ans)
+    return ans['lat'], ans['lon']
 
 
 def get_address_from_ip():
@@ -123,6 +124,6 @@ if __name__ == "__main__":
     # r = requests.get("https://stackoverflow.com")
 
     # print(get_ip())
-    print(get_current_location2())
-    # print(get_current_location())
+    # print(get_current_location2())º
+    print(get_current_location())
     # print(get_address_from_ip())
