@@ -106,7 +106,6 @@ def get_current_location_option1():
 
 
 def get_ip():
-    # url = 'http://checkip.dyndns.com/'
     url = 'http://whatismyip.org'
     ans = comun.read_from_url(url)
     # print(ans)
@@ -132,7 +131,7 @@ if __name__ == "__main__":
     # import requests
     # r = requests.get("https://stackoverflow.com")
 
-    # print(get_ip())
+    print(get_current_location_option2())
     print('======')
     print(get_current_location())
     # print(get_address_from_ip())
