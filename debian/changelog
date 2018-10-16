@@ -1,8 +1,8 @@
-my-weather-indicator (0.9.1-0extras18.04.0) bionic; urgency=medium
+my-weather-indicator (0.9.1-0extras18.04.1) bionic; urgency=medium
 
   * GeoClue 
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 16 Oct 2018 23:11:55 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 16 Oct 2018 23:31:20 +0200
 
 my-weather-indicator (0.9.0-0extras17.10.7) artful; urgency=medium
 
