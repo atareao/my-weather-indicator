@@ -62,7 +62,15 @@ def convert(dbus_obj):
         return dbus_obj
 
 
-def get_current_location2():
+def get_current_location():
+    latitude, longitude = get_current_location_option1()
+    if latitude == 0 and longitude == 0:
+        latitude, longitude = get_current_location_option2()
+    return latitude, longitude
+
+    
+
+def get_current_location_option1():
     '''Gets the current location from geolocation via IP (only method
        currently supported)
     '''
@@ -105,13 +113,14 @@ def get_ip():
     return re.compile(r'(\d+\.\d+\.\d+\.\d+)').search(ans).group(1)
 
 
-def get_current_location():
-    url = 'http://ip-api.com/json'
-    print(url)
-    ans = json.loads(comun.read_from_url(url))
-    print(ans)
-    return ans['lat'], ans['lon']
-
+def get_current_location_option2():
+    try:
+        url = 'http://ip-api.com/json'
+        ans = json.loads(comun.read_from_url(url))
+        return ans['lat'], ans['lon']
+    except Exception as e:
+        print(e)
+    return 0, 0
 
 def get_address_from_ip():
     lat, lon = get_current_location()
@@ -124,6 +133,6 @@ if __name__ == "__main__":
     # r = requests.get("https://stackoverflow.com")
 
     # print(get_ip())
-    # print(get_current_location2())º
+    print('======')
     print(get_current_location())
     # print(get_address_from_ip())
