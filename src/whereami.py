@@ -30,7 +30,7 @@ from gi.repository import Gdk
 from gi.repository import WebKit
 from gi.repository import OsmGpsMap
 from geolocation import get_latitude_longitude_city
-from async import async_function
+from asyncf import async_function
 import geocodeapi
 import comun
 from comun import _
