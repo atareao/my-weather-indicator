@@ -20,7 +20,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk
-from gi.repository import WebKit
+from gi.repository import WebKit2
 from json import loads as from_json
 import queue
 import comun
@@ -49,11 +49,11 @@ class Graph(Gtk.Dialog):
         self.scrolledwindow1.set_shadow_type(Gtk.ShadowType.IN)
         hbox1.pack_start(self.scrolledwindow1, True, True, 0)
         #
-        self.viewer = WebKit.WebView()
+        self.viewer = WebKit2.WebView()
         self.scrolledwindow1.add(self.viewer)
         self.scrolledwindow1.set_size_request(900, 600)
-        self.viewer.connect('title-changed', self.title_changed)
-        self.viewer.open('file://' + comun.HTML_GRAPH)
+        self.viewer.connect('load-changed', self.load_changed)
+        self.viewer.load_uri('file://' + comun.HTML_GRAPH)
         #
         self.title = title
         self.subtitle = subtitle
@@ -66,6 +66,7 @@ class Graph(Gtk.Dialog):
         while Gtk.events_pending():
             Gtk.main_iteration()
         self.show_all()
+        self.inicialize()
         self.run()
         self.destroy()
 
@@ -74,43 +75,25 @@ class Graph(Gtk.Dialog):
     # ###################################################################
 
     def inicialize(self):
-        # self.web_send('title="%s";subtitle="%s";humidity=%s;cloudiness=%s;temperature=%s;draw_graph(title,subtitle,humidity,cloudiness,temperature);'%(self.title,self.subtitle,self.humidity,self.cloudiness,self.temperature))
+        self.web_send('title="%s";subtitle="%s";humidity=%s;cloudiness=%s;temperature=%s;draw_graph(title,subtitle,humidity,cloudiness,temperature);'%(self.title,self.subtitle,self.humidity,self.cloudiness,self.temperature))
         pass
     # ###################################################################
     # ########################BROWSER####################################
     # ###################################################################
 
-    def title_changed(self, widget, frame, title):
-        if title != 'null':
-            self.message_queue.put(title)
-            while Gtk.events_pending():
-                Gtk.main_iteration()
-            msg = self.web_recv()
-            if msg:
-                try:
-                    msg = from_json(msg)
-                    print('This is the message %s' % (msg))
-                    if msg['status'] == 'ready':
-                        self.web_send('title="%s";subtitle="%s";humidity=%s;\
+    def load_changed(self, widget, load_event):
+        print(load_event)
+        if load_event == WebKit2.LoadEvent.FINISHED:
+            self.web_send('title="%s";subtitle="%s";humidity=%s;\
 cloudiness=%s;temperature=%s;draw_graph(title,subtitle,temperature,humidity,\
 cloudiness);' % (self.title, self.subtitle, self.humidity, self.cloudiness,
                             self.temperature))
-                    elif msg['status'] == 'exit':
-                        self.close_application(None)
-                except BaseException:
-                    pass
-
-    def web_recv(self):
-        if self.message_queue.empty():
-            return None
-        else:
-            msg = self.message_queue.get()
-            print('recivied: %s' % (msg))
-            return msg
+            while Gtk.events_pending():
+                Gtk.main_iteration()
 
     def web_send(self, msg):
         print('send: %s' % (msg))
-        self.viewer.execute_script(msg)
+        self.viewer.run_javascript(msg, None, None, None)
 
     # ###################################################################
     # ########################ACTIONS####################################
@@ -120,7 +103,7 @@ cloudiness);' % (self.title, self.subtitle, self.humidity, self.cloudiness,
 
 
 if __name__ == '__main__':
-    title = 'Title'
+    title = 'Titulo'
     subtitle = 'Subtitle'
     temperature = [[1376734856, 10], [1387534856, 12], [1398334856, 15],
                    [1409134856, 16], [1419934856, 20], [1430734856, 30],

@@ -35,14 +35,15 @@ def get_latitude_longitude_city(ip=None):
     print('ip', ip)
     if ip is not None:
         url = 'https://freegeoip.net/json/{0}'.format(ip)
+        url = 'http://ip-api.com/json/{0}'.format(ip)
         print(url)
         response = requests.get(url, verify=False)
         print(response)
         if response.status_code == 200:
             position = response.json()
             print(position)
-            return (position['latitude'],
-                    position['longitude'],
+            return (position['lat'],
+                    position['lon'],
                     position['city'])
     return None
 

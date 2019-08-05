@@ -20,14 +20,16 @@
 import gi
 try:
     gi.require_version('Gtk', '3.0')
+    gi.require_version('Gdk', '3.0')
     gi.require_version('OsmGpsMap', '1.0')
     gi.require_version('GLib', '2.0')
+    gi.require_version('WebKit2', '4.0')
 except Exception as e:
     print(e)
     exit(-1)
 from gi.repository import Gtk
 from gi.repository import Gdk
-from gi.repository import WebKit
+from gi.repository import WebKit2
 from gi.repository import OsmGpsMap
 from geolocation import get_latitude_longitude_city
 from asyncf import async_function
@@ -46,11 +48,11 @@ class WhereAmI(Gtk.Dialog):
     def __init__(self, parent=None, location=None, latitude=0,
                  longitude=0):
         # ***************************************************************
-        Gtk.Dialog.__init__(self, 'my-weather-indicator | ' + _('Where Am I'),
-                            parent, Gtk.DialogFlags.MODAL |
-                            Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                            (Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT,
-                             Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT))
+        Gtk.Dialog.__init__(self, 'my-weather-indicator | ' + _('Where Am I'))
+        self.set_modal(True)
+        self.set_destroy_with_parent(True)
+        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
+        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         # self.set_size_request(450, 350)
         self.connect('destroy', self.on_close_application)
@@ -60,10 +62,10 @@ class WhereAmI(Gtk.Dialog):
         self.lng = longitude
         self.locality = location
         #
-        vbox = Gtk.VBox()
+        vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 5)
         self.get_content_area().add(vbox)
         #
-        hbox = Gtk.HBox()
+        hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 5)
         vbox.pack_start(hbox, False, False, 0)
         #
         self.entry1 = Gtk.Entry()
@@ -80,11 +82,11 @@ class WhereAmI(Gtk.Dialog):
         self.entry1.connect('activate', self.on_button1_clicked)
         hbox.pack_start(self.entry1, True, True, 0)
         #
-        button1 = Gtk.Button(_('Search'))
+        button1 = Gtk.Button.new_with_label(_('Search'))
         button1.connect('clicked', self.on_button1_clicked)
         hbox.pack_start(button1, False, False, 0)
         #
-        button2 = Gtk.Button(_('Find me'))
+        button2 = Gtk.Button.new_with_label(_('Find me'))
         button2.connect('clicked', self.on_button2_clicked)
         hbox.pack_start(button2, False, False, 0)
         self.expander = Gtk.Expander(label=_('Locations found'))
@@ -92,7 +94,9 @@ class WhereAmI(Gtk.Dialog):
         vbox.pack_start(self.expander, False, False, 0)
         #
         frame = Gtk.Frame()
-        self.expander.add(frame)
+        framebox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 50)
+        framebox.add(frame)
+        self.expander.add(framebox)
         self.expander.connect("notify::expanded", self.on_expander_expanded)
         #
         scrolledwindow0 = Gtk.ScrolledWindow()
@@ -282,12 +286,12 @@ class WhereAmI(Gtk.Dialog):
         return self.lat, self.lng, self.locality
 
     def set_wait_cursor(self):
-        self.get_root_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+        Gdk.Screen.get_default().get_root_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
         while Gtk.events_pending():
             Gtk.main_iteration()
 
     def set_normal_cursor(self):
-        self.get_root_window().set_cursor(Gdk.Cursor(Gdk.CursorType.ARROW))
+        Gdk.Screen.get_default().get_root_window().set_cursor(Gdk.Cursor(Gdk.CursorType.ARROW))
         while Gtk.events_pending():
             Gtk.main_iteration()
 

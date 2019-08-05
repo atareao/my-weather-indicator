@@ -19,8 +19,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import gi
+try:
+    gi.require_version('Gtk', '3.0')
+    gi.require_version('WebKit2', '4.0')
+except Exception as e:
+    print(e)
+    exit(-1)
 from gi.repository import Gtk
-from gi.repository import WebKit
+from gi.repository import WebKit2
 from json import loads as from_json
 import queue
 import comun
@@ -46,11 +53,11 @@ class ForecastMap(Gtk.Dialog):
             Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         self.scrolledwindow1.set_shadow_type(Gtk.ShadowType.IN)
         hbox1.pack_start(self.scrolledwindow1, True, True, 0)
-        self.viewer = WebKit.WebView()
+        self.viewer = WebKit2.WebView()
         self.scrolledwindow1.add(self.viewer)
         self.scrolledwindow1.set_size_request(900, 600)
-        self.viewer.connect('title-changed', self.title_changed)
-        self.viewer.open('file://' + comun.HTML)
+        #self.viewer.connect('title-changed', self.title_changed)
+        self.viewer.load_uri('file://' + comun.HTML)
         self.lat = lat
         self.lon = lon
         self.units = units
@@ -62,12 +69,12 @@ class ForecastMap(Gtk.Dialog):
         self.show_all()
         self.inicialize()
         self.run()
-        self.destroy()
+        self.destroy() 
 
     # ###################################################################
     # #########################ENGINE####################################
     # ###################################################################
-    def inicialize(self):
+    def inicialize(self ):
         self.web_send('mlat=%s;' % (self.lat))
         self.web_send('mlon=%s;' % (self.lon))
         self.web_send('munits="%s";' % (self.units))
@@ -106,7 +113,7 @@ class ForecastMap(Gtk.Dialog):
 
     def web_send(self, msg):
         print('send: %s' % (msg))
-        self.viewer.execute_script(msg)
+        self.viewer.run_javascript(msg, None, None, None)
 
     # ###################################################################
     # ########################ACTIONS####################################
@@ -116,5 +123,5 @@ class ForecastMap(Gtk.Dialog):
         self.destroy()
 
 
-if __name__ == '__main__':
+if __name__ == ' __main__':
     forecastmap = ForecastMap(39.36873, -2.417274645879)

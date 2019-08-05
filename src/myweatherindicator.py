@@ -32,7 +32,6 @@ try:
     gi.require_version('GdkPixbuf', '2.0')
     gi.require_version('Notify', '0.7')
     gi.require_version('GeocodeGlib', '1.0')
-    gi.require_version('WebKit', '3.0')
 except Exception as e:
     print(e)
     print('Repository version required not present')
@@ -54,7 +53,6 @@ from configurator import Configuration
 import ipaddress
 import geocodeapi
 import comun
-import wyahooapi
 import weatherservice
 import worldweatheronlineapi
 import wopenweathermapapi
@@ -627,14 +625,7 @@ class MWI(GObject.Object):
                 self.preferences[index]['latitude'] = lat
                 self.preferences[index]['longitude'] = lon
                 self.preferences[index]['location'] = location
-                if self.ws == 'yahoo':
-                    self.weatherservices[index] =\
-                        wyahooapi.YahooWeatherService(
-                        longitude=self.preferences[index]['longitude'],
-                        latitude=self.preferences[index]['latitude'],
-                        units=self.units)
-                    self.menus[index]['evolution'].hide()
-                elif self.ws == 'worldweatheronline':
+                if self.ws == 'worldweatheronline':
                     self.weatherservices[index] =\
                         worldweatheronlineapi.WorldWeatherOnlineService(
                             longitude=self.preferences[index]['longitude'],
