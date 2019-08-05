@@ -1,3 +1,9 @@
+my-weather-indicator (0.9.2-0extras19.04.0) disco; urgency=medium
+
+  * Replace Webkit by Webkit2
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 05 Aug 2019 07:59:00 +0200
+
 my-weather-indicator (0.9.1-0extras19.04.0) disco; urgency=medium
 
   * Fixed #52 thanks to @palevell
