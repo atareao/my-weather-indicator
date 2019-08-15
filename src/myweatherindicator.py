@@ -32,6 +32,7 @@ try:
     gi.require_version('GdkPixbuf', '2.0')
     gi.require_version('Notify', '0.7')
     gi.require_version('GeocodeGlib', '1.0')
+    gi.require_version('WebKit2', '4.0')
 except Exception as e:
     print(e)
     print('Repository version required not present')
@@ -803,8 +804,7 @@ class MWI(GObject.Object):
     def menu_forecast_map_response(self, widget, index):
         self.menu_offon(False)
         ForecastMap(self.preferences[index]['latitude'],
-                    self.preferences[index]['longitude'],
-                    self.units.temperature)
+                    self.preferences[index]['longitude'])
         self.menu_offon(True)
 
     def menu_evolution_response(self, widget, index):
@@ -924,12 +924,15 @@ whochismo <https://launchpad.net/~whochismo>\n')
         widget.set_sensitive(True)
         self.menu_offon(True)
 
-
-if __name__ == "__main__":
+def main():
     print(machine_information.get_information())
     print('My-Weather-Indicator version: %s' % comun.VERSION)
     print('#####################################################')
     Notify.init("my-weather-indicator")
     mwi = MWI()
     Gtk.main()
+ 
+
+if __name__ == "__main__": 
+    main()
     exit(0)

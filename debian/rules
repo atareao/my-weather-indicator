@@ -1,9 +1,184 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file is public domain software, originally written by Joey Hess.
+#
+# This version is for packages that are architecture independent.
 
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
 
-%:
-	dh $@ --with python2
+build: build-stamp
+build-stamp:
+	dh_testdir
 
-override_dh_auto_install:
-	dh_auto_install -- --install-scripts=/opt/extras.ubuntu.com/my-weather-indicator/bin  --install-data=/opt/extras.ubuntu.com/my-weather-indicator --install-lib=/opt/extras.ubuntu.com/my-weather-indicator
+	# Add here commands to compile the package.
+	#$(MAKE)
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	# Add here commands to clean up after the build process.
+	#$(MAKE) clean
+	#$(MAKE) distclean
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	dh_install
+	# Create languages directories
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ar/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/be/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ber/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/bg/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ca/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ca@valencia/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/cs/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/de/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/el/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/en_AU/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/en_GB/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/en/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/eo/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/es/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/et/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/eu/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/fi/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/fr/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/gl/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/he/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/hi/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/hr/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/hu/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/is/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/it/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ja/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ko/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/lt/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/lv/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ml/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ms/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/nl/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/pl/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/pt_BR/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/pt/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ro/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ru/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/si/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sk/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sl/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sr@latin/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sr/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sv/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ta/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/te/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/tr/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/uk/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/vi/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/zh_CN/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/zh_TW/LC_MESSAGES
+	# End create languages directories
+	# Compile languages
+	msgfmt po/ar.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ar/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/be.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/be/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ber.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ber/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/bg.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/bg/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ca.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ca/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ca@valencia.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ca@valencia/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/cs.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/cs/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/de.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/de/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/el.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/el/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/en_AU.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/en_AU/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/en_GB.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/en_GB/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/en.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/en/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/eo.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/eo/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/es.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/es/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/et.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/et/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/eu.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/eu/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/fi.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/fi/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/fr.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/fr/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/gl.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/gl/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/he.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/he/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/hi.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/hi/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/hr.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/hr/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/hu.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/hu/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/is.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/is/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/it.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/it/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ja.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ja/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ko.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ko/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/lt.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/lt/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/lv.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/lv/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ml.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ml/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ms.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ms/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/nl.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/nl/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/pl.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/pl/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/pt_BR.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/pt_BR/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/pt.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/pt/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ro.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ro/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ru.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ru/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/si.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/si/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/sk.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sk/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/sl.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sl/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/sr@latin.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sr@latin/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/sr.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sr/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/sv.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/sv/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/ta.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ta/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/te.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/te/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/tr.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/tr/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/uk.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/uk/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/vi.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/vi/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/zh_CN.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/zh_CN/LC_MESSAGES/my-weather-indicator.mo
+	msgfmt po/zh_TW.po -o ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/zh_TW/LC_MESSAGES/my-weather-indicator.mo
+	# End comile languages
+	# Add here commands to install the package into debian/<packagename>.
+	#$(MAKE) prefix=`pwd`/debian/`dh_listpackages`/usr install
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+	# added gconf and icons
+	dh_gconf
+	dh_icons
+#	dh_installmenu
+#	dh_installdebconf
+#	dh_installlogrotate
+#	dh_installemacsen
+#	dh_installcatalogs
+#	dh_installpam
+#	dh_installmime
+#	dh_installinit
+#	dh_installcron
+#	dh_installinfo
+#	dh_installwm
+#	dh_installudev
+#	dh_lintian
+#	dh_bugfiles
+#	dh_undocumented
+	dh_installman
+	dh_link
+	dh_compress
+	dh_fixperms
+#	dh_perl
+#	dh_pysupport
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+# Build architecture-dependent files here.
+binary-arch: build install
+# We have nothing to do by default.
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

@@ -21,21 +21,6 @@
 
 import os
 import sys
-import gi
-try:
-    gi.require_version('GLib', '2.0')
-    gi.require_version('AppIndicator3', '0.1')
-    gi.require_version('Gtk', '3.0')
-    gi.require_version('GdkPixbuf', '2.0')
-    gi.require_version('Notify', '0.7')
-    gi.require_version('GeocodeGlib', '1.0')
-    gi.require_version('WebKit2', '4.0')
-except Exception as e:
-    print(e, 'Repository version required not present')
-    exit(1)
-from gi.repository import Gtk
-from gi.repository import Notify
-
 
 if __name__ == '__main__':
     if __file__.startswith('/opt/extras.ubuntu.com/my-weather-indicator') or\
@@ -45,18 +30,8 @@ if __name__ == '__main__':
                         '/opt/extras.ubuntu.com/my-weather-indicator/share/\
 my-weather-indicator')
     else:
-        filedir = os.path.dirname(__file__)
-        print(filedir)
-        print(os.getcwd())
-        print(os.path.normpath(os.path.join(os.path.dirname(__file__),
-                                            '../src')))
-        sys.path.insert(1,
-                        os.path.normpath(
-                            os.path.join(os.path.dirname(__file__), '../src')))
-    import machine_information
-    from myweatherindicator import MWI
-    print(machine_information.get_information())
-    Notify.init('my-weather-indicator')
-    mwi = MWI()
-    Gtk.main()
+        sys.path.insert(1, os.path.normpath(
+            os.path.join(os.path.dirname(__file__), '../src')))
+    from myweatherindicator import main
+    main()
 exit(0)

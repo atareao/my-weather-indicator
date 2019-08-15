@@ -1,9 +1,10 @@
 #
+#: src/myweatherindicator.py:506 src/myweatherindicator.py:556
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
-"Report-Msgid-Bugs-To: lorenzo.carbonell.cerezo@gmail.com\n"
-"POT-Creation-Date: 2017-11-26 20:29+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-12 19:17+0200\n"
 "PO-Revision-Date: 2014-03-01 21:57+0000\n"
 "Last-Translator: tuanpt <tuanpt216@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
@@ -14,1565 +15,1413 @@ msgstr ""
 "X-Generator: Launchpad (build 17082)\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
 
-#: ../extras-my-weather-indicator.desktop.in:12
-#: ../extras-my-weather-indicator.desktop.in:13
-#: ../extras-my-weather-indicator.desktop.in:14
-#: ../extras-my-weather-indicator.desktop.in:15
-#: ../extras-my-weather-indicator.desktop.in:16
-#: ../extras-my-weather-indicator.desktop.in:17
-#: ../extras-my-weather-indicator.desktop.in:18
-#: ../extras-my-weather-indicator.desktop.in:19
-#: ../extras-my-weather-indicator.desktop.in:20
-#: ../extras-my-weather-indicator.desktop.in:21
-#: ../extras-my-weather-indicator.desktop.in:22
-#: ../extras-my-weather-indicator.desktop.in:23
-#: ../extras-my-weather-indicator.desktop.in:24
-#: ../extras-my-weather-indicator.desktop.in:25
-#: ../extras-my-weather-indicator.desktop.in:26
-#: ../extras-my-weather-indicator.desktop.in:27
-#: ../extras-my-weather-indicator.desktop.in:28
-#: ../extras-my-weather-indicator.desktop.in:29
-#: ../extras-my-weather-indicator.desktop.in:30
-#: ../extras-my-weather-indicator.desktop.in:31
-#: ../extras-my-weather-indicator.desktop.in:32
-#: ../extras-my-weather-indicator.desktop.in:33
-#: ../extras-my-weather-indicator.desktop.in:34
-#: ../extras-my-weather-indicator.desktop.in:35
-#: ../extras-my-weather-indicator.desktop.in:36
-#: ../extras-my-weather-indicator.desktop.in:37
-#: ../extras-my-weather-indicator.desktop.in:38
-#: ../extras-my-weather-indicator.desktop.in:39
-#: ../extras-my-weather-indicator.desktop.in:40
-#: ../extras-my-weather-indicator.desktop.in:41
-#: ../extras-my-weather-indicator.desktop.in:42
-#: ../extras-my-weather-indicator.desktop.in:43
-#: ../extras-my-weather-indicator.desktop.in:44
-#: ../extras-my-weather-indicator.desktop.in:45
-#: ../extras-my-weather-indicator.desktop.in:46
-#: ../extras-my-weather-indicator.desktop.in:47
-#: ../extras-my-weather-indicator.desktop.in:48
-#: ../extras-my-weather-indicator.desktop.in:49
-#: ../extras-my-weather-indicator.desktop.in:50
-#: ../extras-my-weather-indicator.desktop.in:51
-#: ../extras-my-weather-indicator.desktop.in:52
-#: ../extras-my-weather-indicator.desktop.in:53
-#: ../extras-my-weather-indicator.desktop.in:54
-#: ../extras-my-weather-indicator.desktop.in:55
-#: ../extras-my-weather-indicator.desktop.in:56
-#: ../extras-my-weather-indicator.desktop.in:57
-#: ../extras-my-weather-indicator.desktop.in:58
-#: ../extras-my-weather-indicator.desktop.in:59
-#: ../extras-my-weather-indicator.desktop.in:60
-#: ../extras-my-weather-indicator.desktop.in:61
-#: ../extras-my-weather-indicator.desktop.in:62
-#: ../extras-my-weather-indicator.desktop.in:63
-#: ../extras-my-weather-indicator.desktop.in:64
-#: ../extras-my-weather-indicator.desktop.in:65
-#: ../extras-my-weather-indicator.desktop.in:66
-#: ../extras-my-weather-indicator.desktop.in:67
-#: ../extras-my-weather-indicator.desktop.in:68
-#: ../extras-my-weather-indicator.desktop.in:69
-#: ../extras-my-weather-indicator.desktop.in:70
-#: ../extras-my-weather-indicator.desktop.in:71
-#: ../extras-my-weather-indicator.desktop.in:72
-#: ../extras-my-weather-indicator.desktop.in:73
-#: ../extras-my-weather-indicator.desktop.in:74
-#: ../extras-my-weather-indicator.desktop.in:75
-#: ../extras-my-weather-indicator.desktop.in:76
-#: ../extras-my-weather-indicator.desktop.in:77
-#: ../extras-my-weather-indicator.desktop.in:78
-#: ../extras-my-weather-indicator.desktop.in:79
-#: ../extras-my-weather-indicator.desktop.in:80
-#: ../extras-my-weather-indicator.desktop.in:81
-#: ../extras-my-weather-indicator.desktop.in:82
-#: ../extras-my-weather-indicator.desktop.in:83
-#: ../extras-my-weather-indicator.desktop.in:84
-#: ../extras-my-weather-indicator.desktop.in:85
-#: ../extras-my-weather-indicator.desktop.in:86
-#: ../extras-my-weather-indicator.desktop.in:87
-#: ../extras-my-weather-indicator.desktop.in:88
-#: ../extras-my-weather-indicator.desktop.in:89
-#: ../extras-my-weather-indicator.desktop.in:90
-#: ../extras-my-weather-indicator.desktop.in:91
-#: ../extras-my-weather-indicator.desktop.in:132
-#: ../extras-my-weather-indicator.desktop.in:133
-#: ../extras-my-weather-indicator.desktop.in:134
-#: ../extras-my-weather-indicator.desktop.in:135
-#: ../extras-my-weather-indicator.desktop.in:136
-#: ../extras-my-weather-indicator.desktop.in:137
-#: ../extras-my-weather-indicator.desktop.in:141
-#: ../extras-my-weather-indicator.desktop.in:142
-#: ../extras-my-weather-indicator.desktop.in:143
-#: ../extras-my-weather-indicator.desktop.in:144
-#: ../extras-my-weather-indicator.desktop.in:147
-#: ../extras-my-weather-indicator.desktop.in:148
-#: ../extras-my-weather-indicator.desktop.in:149
-#: ../extras-my-weather-indicator.desktop.in:150
-#: ../extras-my-weather-indicator.desktop.in:151
-#: ../extras-my-weather-indicator.desktop.in:152
-#: ../extras-my-weather-indicator.desktop.in:156
-#: ../extras-my-weather-indicator.desktop.in:157
-#: ../extras-my-weather-indicator.desktop.in:159
-#: ../extras-my-weather-indicator.desktop.in:160
-msgid "My-Weather-Indicator"
-msgstr "Dự báo thời tiết"
-
-#: ../extras-my-weather-indicator.desktop.in:92
-#: ../extras-my-weather-indicator.desktop.in:93
-#: ../extras-my-weather-indicator.desktop.in:94
-#: ../extras-my-weather-indicator.desktop.in:95
-#: ../extras-my-weather-indicator.desktop.in:96
-#: ../extras-my-weather-indicator.desktop.in:97
-#: ../extras-my-weather-indicator.desktop.in:98
-#: ../extras-my-weather-indicator.desktop.in:99
-#: ../extras-my-weather-indicator.desktop.in:100
-#: ../extras-my-weather-indicator.desktop.in:101
-#: ../extras-my-weather-indicator.desktop.in:102
-#: ../extras-my-weather-indicator.desktop.in:103
-#: ../extras-my-weather-indicator.desktop.in:104
-#: ../extras-my-weather-indicator.desktop.in:105
-#: ../extras-my-weather-indicator.desktop.in:106
-#: ../extras-my-weather-indicator.desktop.in:107
-#: ../extras-my-weather-indicator.desktop.in:108
-#: ../extras-my-weather-indicator.desktop.in:109
-#: ../extras-my-weather-indicator.desktop.in:110
-#: ../extras-my-weather-indicator.desktop.in:111
-#: ../extras-my-weather-indicator.desktop.in:112
-#: ../extras-my-weather-indicator.desktop.in:113
-#: ../extras-my-weather-indicator.desktop.in:114
-#: ../extras-my-weather-indicator.desktop.in:115
-#: ../extras-my-weather-indicator.desktop.in:116
-#: ../extras-my-weather-indicator.desktop.in:117
-#: ../extras-my-weather-indicator.desktop.in:118
-#: ../extras-my-weather-indicator.desktop.in:119
-#: ../extras-my-weather-indicator.desktop.in:120
-#: ../extras-my-weather-indicator.desktop.in:121
-#: ../extras-my-weather-indicator.desktop.in:122
-#: ../extras-my-weather-indicator.desktop.in:123
-#: ../extras-my-weather-indicator.desktop.in:124
-#: ../extras-my-weather-indicator.desktop.in:125
-#: ../extras-my-weather-indicator.desktop.in:126
-#: ../extras-my-weather-indicator.desktop.in:127
-#: ../extras-my-weather-indicator.desktop.in:128
-#: ../extras-my-weather-indicator.desktop.in:129
-#: ../extras-my-weather-indicator.desktop.in:130
-#: ../extras-my-weather-indicator.desktop.in:131
-#: ../extras-my-weather-indicator.desktop.in:138
-#: ../extras-my-weather-indicator.desktop.in:139
-#: ../extras-my-weather-indicator.desktop.in:140
-#: ../extras-my-weather-indicator.desktop.in:145
-#: ../extras-my-weather-indicator.desktop.in:146
-#: ../extras-my-weather-indicator.desktop.in:153
-#: ../extras-my-weather-indicator.desktop.in:154
-#: ../extras-my-weather-indicator.desktop.in:155
-#: ../extras-my-weather-indicator.desktop.in:158
-#: ../extras-my-weather-indicator.desktop.in:161
-#: ../src/myweatherindicator.py:869
-msgid "A weather indicator"
-msgstr "Một chỉ báo thời tiết"
-
-#: ../src/forecastw.py:63 ../src/myweatherindicator.py:419
-msgid "Forecast"
-msgstr "Dự báo"
-
-#: ../src/forecastw.py:125
-msgid "Day of week"
-msgstr "Ngày trong tuần"
-
-#: ../src/forecastw.py:132 ../src/myweatherindicator.py:526
-#: ../src/myweatherindicator.py:706
-msgid "Sunrise"
-msgstr "Mặt trời mọc"
-
-#: ../src/forecastw.py:139 ../src/myweatherindicator.py:535
-#: ../src/myweatherindicator.py:709
-msgid "Sunset"
-msgstr "Mặt trời lặn"
-
-#: ../src/forecastw.py:146
-msgid "Moon Phase"
-msgstr "Pha Mặt Trăng"
-
-#: ../src/forecastw.py:153
-msgid "Condition"
-msgstr "Điều kiện"
-
-#: ../src/forecastw.py:160
-msgid "High temperature"
-msgstr "Nhiệt độ cao nhất"
-
-#: ../src/forecastw.py:167
-msgid "Low temperature"
-msgstr "Nhiệt độ thấp nhất"
-
-#: ../src/forecastw.py:175
-msgid "Maximum wind"
-msgstr "Tốc độ gió cực đại"
-
-#: ../src/forecastw.py:182 ../src/forecastw.py:218 ../src/forecastw.py:233
-msgid "Average wind"
-msgstr "Tốc độ gió trung bình"
-
-#: ../src/forecastw.py:189
-msgid "Maximum humidity"
-msgstr "Độ ẩm cực đại"
-
-#: ../src/forecastw.py:196
-msgid "Minumum humidity"
-msgstr "Độ ẩm nhỏ nhất"
-
-#: ../src/forecastw.py:203 ../src/forecastw.py:225
-msgid "Rain measurement"
-msgstr "Lượng mưa"
-
-#: ../src/forecastw.py:210
-msgid "Snow measurement"
-msgstr "Lượng tuyết"
-
-#: ../src/forecastw.py:240
-msgid "Average humidity"
-msgstr "Độ ẩm trung bình"
-
-#: ../src/forecastw.py:247 ../src/myweatherindicator.py:492
-#: ../src/myweatherindicator.py:747
-msgid "Cloudiness"
-msgstr "Mây mù"
-
-#: ../src/moon.py:33
-msgid "New Moon"
-msgstr "Trăng mới"
-
-#: ../src/moon.py:34
-msgid "Waxing Crescent"
-msgstr "Trăng non"
-
-#: ../src/moon.py:35
-msgid "First Quarter"
-msgstr "Trăng Thượng huyền"
-
-#: ../src/moon.py:36
-msgid "Waxing Gibbous"
-msgstr "Trăng khuyết đầu tháng"
-
-#: ../src/moon.py:37
-msgid "Full Moon"
-msgstr "Trăng tròn"
-
-#: ../src/moon.py:38
-msgid "Waning Gibbous"
-msgstr "Trăng khuyết cuối tháng"
-
-#: ../src/moon.py:39
-msgid "Last Quarter"
-msgstr "Trăng hạ huyền"
-
-#: ../src/moon.py:40
-msgid "Waning Crescent"
-msgstr "Trăng tàn"
-
-#: ../src/mooncalendarwindow.py:29
-msgid "Monday"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:29
-msgid "Thursday"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:29
-msgid "Tuesday"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:29
-msgid "Wednesday"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:30
-msgid "Friday"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:30
-msgid "Saturday"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:30
-msgid "Sunday"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:78
-#, fuzzy
-msgid "Moon phases"
-msgstr "Pha Mặt Trăng"
-
-#: ../src/mooncalendarwindow.py:106
-msgid "One year less"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:115
-msgid "One month less"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:124
-msgid "One year more"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:133
-msgid "One month more"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:148
-msgid "Today"
-msgstr ""
-
-#: ../src/mooncalendarwindow.py:162
-msgid "Close"
-msgstr ""
-
-#: ../src/myweatherindicator.py:150
-msgid "Homepage"
-msgstr "Trang chủ"
-
-#: ../src/myweatherindicator.py:158
-msgid "Get help online..."
-msgstr "Nhận trợ giúp trực tuyến..."
-
-#: ../src/myweatherindicator.py:166
-msgid "Translate this application..."
-msgstr "Dịch ứng dụng này..."
-
-#: ../src/myweatherindicator.py:174
-msgid "Report a bug..."
-msgstr "Báo cáo một lỗi..."
-
-#: ../src/myweatherindicator.py:186
-#, fuzzy
-msgid "Follow me in Twitter"
-msgstr "Theo dõi trên Twitter"
-
-#: ../src/myweatherindicator.py:194
-#, fuzzy
-msgid "Follow me in Google+"
-msgstr "Theo dõi trên Google+"
-
-#: ../src/myweatherindicator.py:203
-#, fuzzy
-msgid "Follow me in Facebook"
-msgstr "Theo dõi trên Facebook"
-
-#: ../src/myweatherindicator.py:210
-msgid "About"
-msgstr "Giới thiệu"
-
-#: ../src/myweatherindicator.py:426
-msgid "Evolution"
-msgstr "Evolution"
-
-#: ../src/myweatherindicator.py:433
-msgid "Forecast Map"
-msgstr "Bản đồ dự báo"
-
-#: ../src/myweatherindicator.py:440
-#, fuzzy
-msgid "Update weather"
-msgstr "Vừa cập nhật"
-
-#: ../src/myweatherindicator.py:451 ../src/myweatherindicator.py:675
-msgid "Location"
-msgstr "Vị trí"
-
-#: ../src/myweatherindicator.py:456 ../src/myweatherindicator.py:676
-#: ../src/myweatherindicator.py:780 ../src/preferences.py:340
-msgid "Temperature"
-msgstr "Nhiệt độ"
-
-#: ../src/myweatherindicator.py:461 ../src/myweatherindicator.py:738
-#: ../src/preferences.py:359
-msgid "Pressure"
-msgstr "Áp suất"
-
-#: ../src/myweatherindicator.py:466 ../src/myweatherindicator.py:679
-#: ../src/myweatherindicator.py:782
-msgid "Humidity"
-msgstr "Độ ẩm"
-
-#: ../src/myweatherindicator.py:471 ../src/myweatherindicator.py:681
-msgid "Feels like"
-msgstr "Cảm thấy như"
-
-#: ../src/myweatherindicator.py:476 ../src/myweatherindicator.py:683
-msgid "Dew Point"
-msgstr "Điểm sương"
-
-#: ../src/myweatherindicator.py:481 ../src/myweatherindicator.py:686
-#: ../src/myweatherindicator.py:784
-msgid "Wind"
-msgstr "Gió"
-
-#: ../src/myweatherindicator.py:487 ../src/myweatherindicator.py:743
-#: ../src/preferences.py:378
-msgid "Visibility"
-msgstr "Tầm nhìn"
-
-#: ../src/myweatherindicator.py:497 ../src/myweatherindicator.py:751
-msgid "UV"
-msgstr "Tia cực tím"
-
-#: ../src/myweatherindicator.py:502 ../src/myweatherindicator.py:755
-msgid "Precipitation"
-msgstr "Lượng mưa"
-
-#: ../src/myweatherindicator.py:517 ../src/myweatherindicator.py:704
-msgid "Dawn"
-msgstr "Bình minh"
-
-#: ../src/myweatherindicator.py:544 ../src/myweatherindicator.py:711
-msgid "Dusk"
-msgstr "Hoàng hôn"
-
-#: ../src/myweatherindicator.py:572 ../src/preferences.py:70
-msgid "Preferences"
-msgstr "Tùy chỉnh"
-
-#: ../src/myweatherindicator.py:579
-msgid "Help"
-msgstr "Trợ giúp"
-
-#: ../src/myweatherindicator.py:585
-msgid "Exit"
-msgstr "Thoát"
-
-#: ../src/myweatherindicator.py:608
-msgid "Not Internet connection"
-msgstr ""
-
-#: ../src/myweatherindicator.py:778
-msgid "Conditions in"
-msgstr "Điều kiện ở"
-
-#: ../src/myweatherindicator.py:831
-msgid "Forecast for next hours"
-msgstr "Dự báo cho các giờ tiếp theo"
-
-#: ../src/myweatherindicator.py:832
-msgid "Weather service"
-msgstr "Hệ thống thời tiết"
-
-#: ../src/preferences.py:87
-msgid "Main Location"
-msgstr "Vị trí Chính"
-
-#: ../src/preferences.py:88 ../src/preferences.py:184
-#: ../src/preferences.py:478
-msgid "General options"
-msgstr "Các tuỳ chọn chung"
-
-#: ../src/preferences.py:92 ../src/preferences.py:188
-#, fuzzy
-msgid "Show"
-msgstr "Mưa rào"
-
-#: ../src/preferences.py:99
-msgid "Auto Location"
-msgstr "Tự động Xác định Vị trí"
-
-#: ../src/preferences.py:105 ../src/preferences.py:194
-msgid "Locality"
-msgstr "Vùng"
-
-#: ../src/preferences.py:117 ../src/preferences.py:205
-msgid "Search Location"
-msgstr "Tìm kiếm Vị trí"
-
-#: ../src/preferences.py:124 ../src/preferences.py:212
-msgid "Show temperature"
-msgstr "Hiện nhiệt độ"
-
-#: ../src/preferences.py:130 ../src/preferences.py:218
-msgid "Show notifications"
-msgstr "Hiện các thông báo"
-
-#: ../src/preferences.py:135 ../src/preferences.py:223
-#, fuzzy
-msgid "Widget options"
-msgstr "Luôn nổi"
-
-#: ../src/preferences.py:139 ../src/preferences.py:227
-msgid "Show widget"
-msgstr "Hiển thị trên desktop"
-
-#: ../src/preferences.py:146 ../src/preferences.py:234
-msgid "Hide indicator when show widget"
-msgstr "Ần trên tab khi hiển thị ở desktop"
-
-#: ../src/preferences.py:152 ../src/preferences.py:240
-msgid "Widget on top"
-msgstr "Luôn nổi"
-
-#: ../src/preferences.py:158 ../src/preferences.py:246
-msgid "Show in taskbar"
-msgstr "Hiện thị trên thanh công cụ"
-
-#: ../src/preferences.py:164 ../src/preferences.py:252
-msgid "On all desktops"
-msgstr ""
-
-#: ../src/preferences.py:183
-msgid "Second Location"
-msgstr "Vị trí Phụ"
-
-#: ../src/preferences.py:271
-msgid "Weather Services"
-msgstr "Nguồn cấp tin"
-
-#: ../src/preferences.py:300
-msgid "Input World Weather Online key"
-msgstr "Nhập khóa cho World Weather Online"
-
-#: ../src/preferences.py:302 ../src/preferences.py:325
-msgid "Activate"
-msgstr "Kích hoạt"
-
-#: ../src/preferences.py:304
-msgid "Click to activate World Weather Online"
-msgstr "Click để kích hoạt"
-
-#: ../src/preferences.py:323
-msgid "Input Weather Underground key"
-msgstr "Nhập khóa cho Weather Underground"
-
-#: ../src/preferences.py:327
-msgid "Click to activate Weather Underground"
-msgstr "Click để kích hoạt"
-
-#: ../src/preferences.py:337
-msgid "Units"
-msgstr "Các đơn vị"
-
-#: ../src/preferences.py:347
-msgid "Celsius"
-msgstr "Độ C"
-
-#: ../src/preferences.py:348
-msgid "Fahrenheit"
-msgstr "Độ F"
-
-#: ../src/preferences.py:349
-msgid "Kelvin"
-msgstr "Độ K"
-
-#: ../src/preferences.py:366
-msgid "Millibar"
-msgstr "Millibar"
-
-#: ../src/preferences.py:367
-msgid "Inches of mercury"
-msgstr "Inch thủy ngân"
-
-#: ../src/preferences.py:368
-msgid "Millimeters of mercury"
-msgstr "Milimet thủy ngân"
-
-#: ../src/preferences.py:385
-msgid "mile"
-msgstr "dặm"
-
-#: ../src/preferences.py:386
-msgid "kilometer"
-msgstr "ki lô mét"
-
-#: ../src/preferences.py:396
-msgid "Wind velocity"
-msgstr "Vận tốc gió"
-
-#: ../src/preferences.py:403
-msgid "Beaufort"
-msgstr "Cấp gió"
-
-#: ../src/preferences.py:404 ../src/weatherservice.py:751
-msgid "ft/s"
-msgstr "ft/s"
-
-#: ../src/preferences.py:405 ../src/weatherservice.py:750
-msgid "km/h"
-msgstr "km/h"
-
-#: ../src/preferences.py:406 ../src/weatherservice.py:751
-msgid "knots"
-msgstr "knots"
-
-#: ../src/preferences.py:407 ../src/weatherservice.py:750
-msgid "m/s"
-msgstr "m/s"
-
-#: ../src/preferences.py:408 ../src/weatherservice.py:750
-msgid "mph"
-msgstr "mi/h"
-
-#: ../src/preferences.py:418
-msgid "Rain Gauge"
-msgstr "Lượng mưa"
-
-#: ../src/preferences.py:425 ../src/preferences.py:444
-msgid "Inches"
-msgstr "Inch"
-
-#: ../src/preferences.py:426 ../src/preferences.py:445
-msgid "Centimeters"
-msgstr "Centimet"
-
-#: ../src/preferences.py:427 ../src/preferences.py:446
-msgid "Millimeters"
-msgstr "Milimet"
-
-#: ../src/preferences.py:437
-msgid "Snow Gauge"
-msgstr "Tuyết rơi"
-
-#: ../src/preferences.py:456
-msgid "Time Format"
-msgstr "Định dạng Thời gian"
-
-#: ../src/preferences.py:463
-msgid "24 h"
-msgstr "24 h"
-
-#: ../src/preferences.py:464
-msgid "AM/PM"
-msgstr "SA/CH"
-
-#: ../src/preferences.py:481
-msgid "Autostart"
-msgstr "Tự khởi động"
-
-#: ../src/preferences.py:486
-msgid "Refresh frequency"
-msgstr "Tần suất làm mới"
-
-#: ../src/preferences.py:493 ../src/preferences.py:494
-msgid "minutes"
-msgstr "phút"
-
-#: ../src/preferences.py:495
-msgid "hour"
-msgstr "giờ"
-
-#: ../src/preferences.py:496 ../src/preferences.py:497
-#: ../src/preferences.py:498 ../src/preferences.py:499
-#: ../src/preferences.py:500
-msgid "hours"
-msgstr "giờ"
-
-#: ../src/preferences.py:510
-msgid "Select icon theme"
-msgstr "Chọn chủ đề biểu tượng"
-
-#: ../src/weatherservice.py:36
-msgid "Blowing sand"
-msgstr "Gió cát"
-
-#: ../src/weatherservice.py:44
-msgid "Blizzard"
-msgstr "Bão tuyết"
-
-#: ../src/weatherservice.py:52
-msgid "Blowing snow"
-msgstr "Gió tuyết"
-
-#: ../src/weatherservice.py:60
-msgid "Blowing widespread dust"
-msgstr "Có bụi trên diện rộng"
-
-#: ../src/weatherservice.py:65
-msgid "Blustery"
-msgstr ""
-
-#: ../src/weatherservice.py:70
-msgid "Chance of a thunderstorm"
-msgstr "Khả năng có bão"
-
-#: ../src/weatherservice.py:78
-msgid "Chance of flurries"
-msgstr "Có gió lớn"
-
-#: ../src/weatherservice.py:85
-msgid "Chance of rain"
-msgstr "Có khả năng mưa"
-
-#: ../src/weatherservice.py:93
-msgid "Chance of showers"
-msgstr "Có khả năng mưa rào"
-
-#: ../src/weatherservice.py:100
-msgid "Chance of snow"
-msgstr "Có khả năng tuyết rơi"
-
-#: ../src/weatherservice.py:102
-msgid "Chance of storm"
-msgstr "Có khả năng bão"
-
-#: ../src/weatherservice.py:104
-msgid "Chance of thunderstorms"
-msgstr "Có khả năng dông"
-
-#: ../src/weatherservice.py:106
-msgid "Chance of tstorm"
-msgstr "Có khả năng dông"
-
-#: ../src/weatherservice.py:108
-msgid "Clear"
-msgstr "Trong sáng"
-
-#: ../src/weatherservice.py:110
-msgid "Cloudy"
-msgstr "Đầy mây"
-
-#: ../src/weatherservice.py:112
-msgid "Cold"
-msgstr "Lạnh"
-
-#: ../src/weatherservice.py:113
-msgid "Drizzle"
-msgstr "Mưa phùn"
-
-#: ../src/weatherservice.py:115
-msgid "Drizzle rain"
-msgstr "Mưa bụi"
-
-#: ../src/weatherservice.py:117
-msgid "Dust whirls"
-msgstr "Làn bụi cuốn"
-
-#: ../src/weatherservice.py:119
-msgid "Dust"
-msgstr "Bụi"
-
-#: ../src/weatherservice.py:121
-msgid "Extreme rain"
-msgstr "Mưa nặng hạt"
-
-#: ../src/weatherservice.py:123
-msgid "Fair"
-msgstr "Thời tiết đẹp"
-
-#: ../src/weatherservice.py:125
-msgid "Flurries"
-msgstr "Mưa dông bất chợt"
-
-#: ../src/weatherservice.py:127
-msgid "Fog patches"
-msgstr "Có sương mù"
-
-#: ../src/weatherservice.py:129
-msgid "Fog"
-msgstr "Sương mù"
-
-#: ../src/weatherservice.py:131
-msgid "Foggy"
-msgstr "Sương mù"
-
-#: ../src/weatherservice.py:133 ../src/weatherservice.py:135
-msgid "Freezing drizzle"
-msgstr "Mưa phùn lạnh"
-
-#: ../src/weatherservice.py:137 ../src/weatherservice.py:139
-msgid "Freezing fog"
-msgstr "Sương mù kèm gió buốt"
-
-#: ../src/weatherservice.py:141
-msgid "Freezing rain"
-msgstr "Mưa rét"
-
-#: ../src/weatherservice.py:143
-msgid "Funnel cloud"
-msgstr "Mây ống"
-
-#: ../src/weatherservice.py:145
-msgid "Hail showers"
-msgstr "Mưa đá"
-
-#: ../src/weatherservice.py:147
-msgid "Hail"
-msgstr "Mưa đá"
-
-#: ../src/weatherservice.py:148
-msgid "Haze"
-msgstr "Khói mù"
-
-#: ../src/weatherservice.py:150
-msgid "Heavy freezing drizzle"
-msgstr "Mưa lạnh nặng hạt"
-
-#: ../src/weatherservice.py:152 ../src/weatherservice.py:180
-#, fuzzy
-msgid "Heavy drizzle"
-msgstr "Mưa lạnh nặng hạt"
-
-#: ../src/weatherservice.py:154 ../src/weatherservice.py:182
-#, fuzzy
-msgid "Heavy drizzle rain"
-msgstr "Mưa rất to"
-
-#: ../src/weatherservice.py:156 ../src/weatherservice.py:162
-#: ../src/weatherservice.py:184
-msgid "Heavy rain"
-msgstr "Mưa to"
-
-#: ../src/weatherservice.py:158 ../src/weatherservice.py:186
-#, fuzzy
-msgid "Heavy shower rain"
-msgstr "Mưa tuyết dày đặc"
-
-#: ../src/weatherservice.py:160
-msgid "Heavy rain at times"
-msgstr "Mưa lớn"
-
-#: ../src/weatherservice.py:164
-msgid "Heavy snow"
-msgstr "Tuyết nhiều"
-
-#: ../src/weatherservice.py:166
-msgid "Heavy thunderstorm"
-msgstr "Bão to"
-
-#: ../src/weatherservice.py:168
-msgid "Hot"
-msgstr "Nóng"
-
-#: ../src/weatherservice.py:170 ../src/weatherservice.py:780
-msgid "Hurricane"
-msgstr "Gió bão cực mạnh"
-
-#: ../src/weatherservice.py:172
-msgid "Ice crystals"
-msgstr "Hạt băng"
-
-#: ../src/weatherservice.py:174
-msgid "Ice pellet showers"
-msgstr "Mưa đá"
-
-#: ../src/weatherservice.py:176 ../src/weatherservice.py:178
-msgid "Ice pellets"
-msgstr "Mưa đá"
-
-#: ../src/weatherservice.py:179
-msgid "Icy"
-msgstr "Có băng"
-
-#: ../src/weatherservice.py:188
-msgid "Isolated showers"
-msgstr "Có mưa đơn độc"
-
-#: ../src/weatherservice.py:190
-#, fuzzy
-msgid "Isolated thundershowers"
-msgstr "Có dông đơn độc"
-
-#: ../src/weatherservice.py:192
-msgid "Isolated thunderstorms"
-msgstr "Có dông đơn độc"
-
-#: ../src/weatherservice.py:194 ../src/weatherservice.py:198
-msgid "Light drizzle"
-msgstr "Mưa phùn nhẹ"
-
-#: ../src/weatherservice.py:196
-msgid "Light freezing rain"
-msgstr "Mưa nhỏ, rét"
-
-#: ../src/weatherservice.py:200
-#, fuzzy
-msgid "Light drizzle rain"
-msgstr "Mưa phùn nhẹ"
-
-#: ../src/weatherservice.py:202
-#, fuzzy
-msgid "Light shower rain"
-msgstr "Mưa phùn cường độ nhẹ"
-
-#: ../src/weatherservice.py:204
-msgid "Light rain shower"
-msgstr "Mưa nhỏ"
-
-#: ../src/weatherservice.py:206
-msgid "Light rain"
-msgstr "Mưa nhẹ"
-
-#: ../src/weatherservice.py:208
-msgid "Light showers of ice pellets"
-msgstr "Mưa đá nhỏ"
-
-#: ../src/weatherservice.py:210
-msgid "Light sleet showers"
-msgstr "Tuyết rơi nhẹ"
-
-#: ../src/weatherservice.py:212
-msgid "Light sleet"
-msgstr "Có tuyết"
-
-#: ../src/weatherservice.py:214
-msgid "Light snow showers"
-msgstr "Tuyết rào nhẹ"
-
-#: ../src/weatherservice.py:216
-msgid "Light snow"
-msgstr "Tuyết nhẹ"
-
-#: ../src/weatherservice.py:218
-msgid "Light thunderstorm"
-msgstr "Bão nhỏ"
-
-#: ../src/weatherservice.py:220
-msgid "Low drifting sand"
-msgstr "Bão cát nhỏ"
-
-#: ../src/weatherservice.py:222
-msgid "Low drifting snow"
-msgstr "Bão tuyết nhỏ"
-
-#: ../src/weatherservice.py:224
-msgid "Low drifting widespread dust"
-msgstr "Bão bụi nhỏ trên diện rộng"
-
-#: ../src/weatherservice.py:226
-msgid "Mist"
-msgstr "Sương mù"
-
-#: ../src/weatherservice.py:228
-msgid "Mixed rain and snow"
-msgstr "Mưa và tuyết"
-
-#: ../src/weatherservice.py:230
-msgid "Mixed rain and sleet"
-msgstr "Mưa và mưa tuyết"
-
-#: ../src/weatherservice.py:232
-msgid "Mixed snow and sleet"
-msgstr "Tuyết và mưa tuyết"
-
-#: ../src/weatherservice.py:234
-msgid "Moderate or heavy freezing rain"
-msgstr "Mưa lạnh vừa và to"
-
-#: ../src/weatherservice.py:236
-msgid "Moderate or heavy rain in area with thunder"
-msgstr "Mưa vừa và to, kèm sấm chớp"
-
-#: ../src/weatherservice.py:238
-msgid "Moderate or heavy rain shower"
-msgstr "Mưa vừa, mưa to"
-
-#: ../src/weatherservice.py:240
-msgid "Moderate or heavy showers of ice pellets"
-msgstr "Mưa vừa, mưa to kèm theo đá"
-
-#: ../src/weatherservice.py:242
-msgid "Moderate or heavy sleet showers"
-msgstr "Mưa đá vừa và to"
-
-#: ../src/weatherservice.py:244
-msgid "Moderate or heavy sleet"
-msgstr "Mưa đá vừa và to"
-
-#: ../src/weatherservice.py:246
-msgid "Moderate or heavy snow in area with thunder"
-msgstr "Tuyết rơi vừa và nhiều, một vài nơi có sấm sét"
-
-#: ../src/weatherservice.py:248
-msgid "Moderate or heavy snow showers"
-msgstr "Mưa đá vừa và to"
-
-#: ../src/weatherservice.py:250
-msgid "Moderate rain at times"
-msgstr "Mưa vừa"
-
-#: ../src/weatherservice.py:252
-msgid "Moderate rain"
-msgstr "Mưa vừa"
-
-#: ../src/weatherservice.py:254
-msgid "Moderate snow"
-msgstr "Tuyết vừa"
-
-#: ../src/weatherservice.py:256
-msgid "Mostly cloudy"
-msgstr "Hầu như đầy mây"
-
-#: ../src/weatherservice.py:258
-msgid "Mostly sunny"
-msgstr "Hầu hết có nắng"
-
-#: ../src/weatherservice.py:260 ../src/weatherservice.py:843
-msgid "Not available"
-msgstr "Không sẵn dùng"
-
-#: ../src/weatherservice.py:262
-msgid "Overcast"
-msgstr "U ám"
-
-#: ../src/weatherservice.py:264
-msgid "Partial fog"
-msgstr "Sương mù rải rác"
-
-#: ../src/weatherservice.py:266
-msgid "Partly cloudy"
-msgstr "Một phần có mây"
-
-#: ../src/weatherservice.py:268
-msgid "Partly sunny"
-msgstr "Một phần có nắng"
-
-#: ../src/weatherservice.py:270
-msgid "Patches of fog"
-msgstr "Sương mù vài nơi"
-
-#: ../src/weatherservice.py:272
-msgid "Patchy freezing drizzle nearby"
-msgstr "Bụi tuyết gần kề"
-
-#: ../src/weatherservice.py:274
-msgid "Patchy heavy snow"
-msgstr "Tuyết rơi nặng"
-
-#: ../src/weatherservice.py:276
-msgid "Patchy light drizzle"
-msgstr "Tuyết rơi nhẹ"
-
-#: ../src/weatherservice.py:278
-msgid "Patchy light rain in area with thunder"
-msgstr "Mưa nhỏ kèm sấm chớp"
-
-#: ../src/weatherservice.py:280
-msgid "Patchy light rain"
-msgstr "Mưa nhỏ"
-
-#: ../src/weatherservice.py:282
-msgid "Patchy light snow in area with thunder"
-msgstr "Tuyết rơi nẹ kèm sấm chớp"
-
-#: ../src/weatherservice.py:284
-msgid "Patchy light snow"
-msgstr "Tuyết rơi nhẹ"
-
-#: ../src/weatherservice.py:286
-msgid "Patchy moderate snow"
-msgstr "Tuyết rơi vừa"
-
-#: ../src/weatherservice.py:288
-msgid "Patchy rain nearby"
-msgstr "Mưa gần kề"
-
-#: ../src/weatherservice.py:290
-msgid "Patchy sleet nearby"
-msgstr "Mưa đá gần kề"
-
-#: ../src/weatherservice.py:292
-msgid "Patchy snow nearby"
-msgstr "Tuyết rơi gần kề"
-
-#: ../src/weatherservice.py:294
-msgid "Ragged thunderstorm"
-msgstr "Bão lớn"
-
-#: ../src/weatherservice.py:296
-msgid "Rain and snow"
-msgstr "Có mưa và tuyết"
-
-#: ../src/weatherservice.py:298
-msgid "Rain mist"
-msgstr "Sương mù"
-
-#: ../src/weatherservice.py:300
-msgid "Rain showers"
-msgstr "Mưa rào"
-
-#: ../src/weatherservice.py:302
-msgid "Rain"
-msgstr "Mưa"
-
-#: ../src/weatherservice.py:303
-msgid "Sand"
-msgstr "Cát bay"
-
-#: ../src/weatherservice.py:305
-msgid "Sandstorm"
-msgstr "Bão cát"
-
-#: ../src/weatherservice.py:307
-msgid "Scattered clouds"
-msgstr "Nhiều mây rải rác"
-
-#: ../src/weatherservice.py:309
-msgid "Scattered showers"
-msgstr "Mưa rào rải rác"
-
-#: ../src/weatherservice.py:311
-msgid "Scattered thunderstorms"
-msgstr "Dông rải rác"
-
-#: ../src/weatherservice.py:313
-msgid "Shallow fog"
-msgstr "Sương mù loáng thoáng"
-
-#: ../src/weatherservice.py:315
-msgid "Showers"
-msgstr "Mưa rào"
-
-#: ../src/weatherservice.py:316
-msgid "Shower drizzle"
-msgstr "Mưa phùn"
-
-#: ../src/weatherservice.py:318
-msgid "Shower rain"
-msgstr "Mưa"
-
-#: ../src/weatherservice.py:320
-msgid "Shower snow"
-msgstr "Tuyết rơi"
-
-#: ../src/weatherservice.py:322
-msgid "Sleet"
-msgstr "Mưa tuyết"
-
-#: ../src/weatherservice.py:324
-msgid "Small hail showers"
-msgstr "Mưa đá nhỏ"
-
-#: ../src/weatherservice.py:326
-msgid "Small hail"
-msgstr "Mưa đá-nhỏ"
-
-#: ../src/weatherservice.py:328
-msgid "Smoke"
-msgstr "Sương khói"
-
-#: ../src/weatherservice.py:330
-msgid "Snow blowing snow mist"
-msgstr "Tuyết nhỏ kèm sương mù"
-
-#: ../src/weatherservice.py:332
-msgid "Snow flurries"
-msgstr "Tuyết bất chợt"
-
-#: ../src/weatherservice.py:334
-msgid "Snow grains"
-msgstr "Hoa tuyết"
-
-#: ../src/weatherservice.py:336
-msgid "Snow showers"
-msgstr "Mưa tuyết"
-
-#: ../src/weatherservice.py:338
-msgid "Snow"
-msgstr "Tuyết"
-
-#: ../src/weatherservice.py:339
-msgid "Spray"
-msgstr "Phun"
-
-#: ../src/weatherservice.py:340
-msgid "Squalls"
-msgstr "Squalls"
-
-#: ../src/weatherservice.py:342 ../src/weatherservice.py:776
-msgid "Storm"
-msgstr "Gió bão"
-
-#: ../src/weatherservice.py:343
-msgid "Sunny"
-msgstr "Nắng"
-
-#: ../src/weatherservice.py:345 ../src/weatherservice.py:347
-msgid "Thunderstorm"
-msgstr "Dông bão"
-
-#: ../src/weatherservice.py:349
-msgid "Thunderstorms and ice pellets"
-msgstr "Bão kèm mưa đá"
-
-#: ../src/weatherservice.py:351
-msgid "Thunderstorms and rain"
-msgstr "Mưa bão"
-
-#: ../src/weatherservice.py:353
-msgid "Thunderstorms and snow"
-msgstr "Dông và có tuyết"
-
-#: ../src/weatherservice.py:355
-msgid "Thunderstorms with hail"
-msgstr "Báo kèm mưa đá"
-
-#: ../src/weatherservice.py:357
-msgid "Thunderstorms with small hail"
-msgstr "Bão kèm mưa đá nhỏ"
-
-#: ../src/weatherservice.py:359
-msgid "Thunderstorm with light rain"
-msgstr "Dông kèm mưa nhỏ"
-
-#: ../src/weatherservice.py:361
-msgid "Thunderstorm with rain"
-msgstr "Dông và mưa"
-
-#: ../src/weatherservice.py:363
-msgid "Thunderstorm with heavy rain"
-msgstr "Dông và mưa to"
-
-#: ../src/weatherservice.py:365
-msgid "Thunderstorm with light drizzle"
-msgstr "Dông và mưa phùn"
-
-#: ../src/weatherservice.py:367
-msgid "Thunderstorm with drizzle"
-msgstr "Dông vơi mưa phùn"
-
-#: ../src/weatherservice.py:369
-msgid "Thunderstorm with heavy drizzle"
-msgstr "Dông vơi mưa lớn"
-
-#: ../src/weatherservice.py:371
-msgid "Thundery outbreaks in nearby"
-msgstr "Bão đến gần"
-
-#: ../src/weatherservice.py:373
-msgid "Tornado"
-msgstr "Bão táp"
-
-#: ../src/weatherservice.py:375
-msgid "Torrential rain shower"
-msgstr "Mưa xối xả"
-
-#: ../src/weatherservice.py:377
-msgid "Tropical storm"
-msgstr "Bão nhiệt đới"
-
-#: ../src/weatherservice.py:379
-msgid "Unknown precipitation"
-msgstr "Mưa rào không xác định"
-
-#: ../src/weatherservice.py:381
-msgid "Unknown"
-msgstr "Chưa xác định."
-
-#: ../src/weatherservice.py:383
-msgid "Very heavy rain"
-msgstr "Mưa rất lớn"
-
-#: ../src/weatherservice.py:385
-msgid "Volcanic ash"
-msgstr "Tro núi lửa"
-
-#: ../src/weatherservice.py:387
-msgid "Widespread dust"
-msgstr "Bụi trên diện rộng"
-
-#: ../src/weatherservice.py:389
-msgid "Windy"
-msgstr "Nhiều gió"
-
-#: ../src/weatherservice.py:394 ../src/weatherservice.py:395
-#: ../src/weatherservice.py:432
-msgid "North"
-msgstr "Bắc"
-
-#: ../src/weatherservice.py:396 ../src/weatherservice.py:433
-msgid "North by east"
-msgstr "Bắc - Bắc-Đông Bắc"
-
-#: ../src/weatherservice.py:397 ../src/weatherservice.py:434
-msgid "North-northeast"
-msgstr "Bắc-Đông Bắc"
-
-#: ../src/weatherservice.py:398 ../src/weatherservice.py:435
-msgid "Northeast by north"
-msgstr "Đông Bắc - Bắc-Đông Bắc"
-
-#: ../src/weatherservice.py:399 ../src/weatherservice.py:436
-msgid "Northeast"
-msgstr "Đông Bắc"
-
-#: ../src/weatherservice.py:400 ../src/weatherservice.py:437
-msgid "Northeast by east"
-msgstr "Đông Bắc - Đông-Đông Bắc"
-
-#: ../src/weatherservice.py:401 ../src/weatherservice.py:438
-msgid "East-northeast"
-msgstr "Đông-Đông Bắc"
-
-#: ../src/weatherservice.py:402 ../src/weatherservice.py:439
-msgid "East by north"
-msgstr "Đông - Đông-Đông Bắc"
-
-#: ../src/weatherservice.py:403 ../src/weatherservice.py:404
-#: ../src/weatherservice.py:440
-msgid "East"
-msgstr "Đông"
-
-#: ../src/weatherservice.py:405 ../src/weatherservice.py:441
-msgid "East by south"
-msgstr "Đông - Đông-Đông Nam"
-
-#: ../src/weatherservice.py:406 ../src/weatherservice.py:442
-msgid "East-southeast"
-msgstr "Đông-Đông Nam"
-
-#: ../src/weatherservice.py:407 ../src/weatherservice.py:443
-msgid "Southeast by east"
-msgstr "Đông Nam - Đông-Đông Nam"
-
-#: ../src/weatherservice.py:408 ../src/weatherservice.py:444
-msgid "Southeast"
-msgstr "Đông Nam"
-
-#: ../src/weatherservice.py:409 ../src/weatherservice.py:445
-msgid "Southeast by south"
-msgstr "Đông Nam - Nam-Đông Nam"
-
-#: ../src/weatherservice.py:410 ../src/weatherservice.py:446
-msgid "South-southeast"
-msgstr "Nam-Đông Nam"
-
-#: ../src/weatherservice.py:411 ../src/weatherservice.py:447
-msgid "South by east"
-msgstr "Nam - Nam-Đông Nam"
-
-#: ../src/weatherservice.py:412 ../src/weatherservice.py:413
-#: ../src/weatherservice.py:448
-msgid "South"
-msgstr "Nam"
-
-#: ../src/weatherservice.py:414 ../src/weatherservice.py:449
-msgid "South by west"
-msgstr "Nam - Nam-Tây Nam"
-
-#: ../src/weatherservice.py:415 ../src/weatherservice.py:450
-msgid "South-southwest"
-msgstr "Nam-Tây Nam"
-
-#: ../src/weatherservice.py:416 ../src/weatherservice.py:451
-msgid "Southwest by south"
-msgstr "Tây Nam - Nam-Tây Nam"
-
-#: ../src/weatherservice.py:417 ../src/weatherservice.py:452
-msgid "Southwest"
-msgstr "Tây Nam"
-
-#: ../src/weatherservice.py:418 ../src/weatherservice.py:453
-msgid "Southwest by west"
-msgstr "Tây Nam - Tây-Tây Nam"
-
-#: ../src/weatherservice.py:419 ../src/weatherservice.py:454
-msgid "West-southwest"
-msgstr "Tây-Tây Nam"
-
-#: ../src/weatherservice.py:420 ../src/weatherservice.py:455
-msgid "West by south"
-msgstr "Tây - Tây-Tây Nam"
-
-#: ../src/weatherservice.py:421 ../src/weatherservice.py:422
-#: ../src/weatherservice.py:456
-msgid "West"
-msgstr "Tây"
-
-#: ../src/weatherservice.py:423 ../src/weatherservice.py:457
-msgid "West by north"
-msgstr "Tây - Tây-Tây Bắc"
-
-#: ../src/weatherservice.py:424 ../src/weatherservice.py:458
-msgid "West-northwest"
-msgstr "Tây-Tây Bắc"
-
-#: ../src/weatherservice.py:425 ../src/weatherservice.py:459
-msgid "Northwest by west"
-msgstr "Tây Bắc - Tây-Tây Bắc"
-
-#: ../src/weatherservice.py:426 ../src/weatherservice.py:460
-msgid "Northwest"
-msgstr "Tây Bắc"
-
-#: ../src/weatherservice.py:427 ../src/weatherservice.py:461
-msgid "Northwest by north"
-msgstr "Tây Bắc - Bắc-Tây Bắc"
-
-#: ../src/weatherservice.py:428 ../src/weatherservice.py:462
-msgid "North-northwest"
-msgstr "Bắc-Tây Bắc"
-
-#: ../src/weatherservice.py:429 ../src/weatherservice.py:463
-msgid "North by west"
-msgstr "Bắc - Bắc-Tây Bắc"
-
-#: ../src/weatherservice.py:430
-msgid "Variable"
-msgstr "Biến"
-
-#: ../src/weatherservice.py:655 ../src/weatherservice.py:657
-msgid "from"
-msgstr "từ"
-
-#: ../src/weatherservice.py:657
-msgid "at"
-msgstr "tại"
-
-#: ../src/weatherservice.py:658 ../src/weatherservice.py:688
-msgid "n/a"
-msgstr "kxđ"
-
-#: ../src/weatherservice.py:718
-msgid "inches of mercury"
-msgstr "Inch thủy ngân"
-
-#: ../src/weatherservice.py:718
-msgid "millibar"
-msgstr "millibar"
-
-#: ../src/weatherservice.py:719
-msgid "millimeters of mercury"
-msgstr "Millimet thủy ngân"
-
-#: ../src/weatherservice.py:732
-msgid "km"
-msgstr "cây số"
-
-#: ../src/weatherservice.py:732
-msgid "mi"
-msgstr "dặm"
-
-#: ../src/weatherservice.py:740
-msgid "cm"
-msgstr "cm"
-
-#: ../src/weatherservice.py:740
-msgid "in"
-msgstr "inch"
-
-#: ../src/weatherservice.py:740
-msgid "mm"
-msgstr "mm"
-
-#: ../src/weatherservice.py:756
-msgid "Calm"
-msgstr "Lặng gió"
-
-#: ../src/weatherservice.py:758
-msgid "Light air"
-msgstr "Gió rất nhẹ"
-
-#: ../src/weatherservice.py:760
-msgid "Light breeze"
-msgstr "Gió thổi nhẹ vừa phải"
-
-#: ../src/weatherservice.py:762
-msgid "Gentle breeze"
-msgstr "Gió nhẹ nhàng"
-
-#: ../src/weatherservice.py:764
-msgid "Moderate breeze"
-msgstr "Gió vừa phải"
-
-#: ../src/weatherservice.py:766
-msgid "Fresh breeze"
-msgstr "Gió mạnh vừa phải"
-
-#: ../src/weatherservice.py:768
-msgid "Strong breeze"
-msgstr "Gió mạnh"
-
-#: ../src/weatherservice.py:770
-msgid "High wind"
-msgstr "Gió mạnh"
-
-#: ../src/weatherservice.py:772
-msgid "Gale"
-msgstr "Gió mạnh hơn"
-
-#: ../src/weatherservice.py:774
-msgid "Strong gale"
-msgstr "Gió rất mạnh"
-
-#: ../src/weatherservice.py:778
-msgid "Violent storm"
-msgstr "Gió bão dữ dội"
-
-#: ../src/weatherservice.py:847 ../src/weatherservice.py:848
-#: ../src/weatherservice.py:849 ../src/weatherservice.py:850
-#: ../src/weatherservice.py:851 ../src/weatherservice.py:854
-#: ../src/weatherservice.py:855 ../src/weatherservice.py:857
-#: ../src/weatherservice.py:859 ../src/weatherservice.py:860
-#: ../src/weatherservice.py:861 ../src/weatherservice.py:862
-#: ../src/weatherservice.py:863 ../src/weatherservice.py:864
-#: ../src/weatherservice.py:951 ../src/weatherservice.py:952
-#: ../src/weatherservice.py:953 ../src/weatherservice.py:955
-#: ../src/weatherservice.py:956 ../src/weatherservice.py:957
-#: ../src/weatherservice.py:958 ../src/weatherservice.py:959
-#: ../src/weatherservice.py:960 ../src/weatherservice.py:961
-#: ../src/weatherservice.py:962 ../src/weatherservice.py:964
-#: ../src/weatherservice.py:965 ../src/weatherservice.py:966
-#: ../src/weatherservice.py:968 ../src/weatherservice.py:969
-#: ../src/worldweatheronlineapi.py:95 ../src/worldweatheronlineapi.py:104
-#: ../src/worldweatheronlineapi.py:113 ../src/wundergroundapi.py:43
-#: ../src/wundergroundapi.py:51 ../src/wundergroundapi.py:62
-msgid "N/A"
-msgstr "KXĐ"
-
-#: ../src/weatherservice.py:871 ../src/weatherservice.py:872
-#: ../src/weatherservice.py:873 ../src/weatherservice.py:874
-#: ../src/weatherservice.py:902 ../src/weatherservice.py:903
-#: ../src/weatherservice.py:904 ../src/weatherservice.py:905
-#: ../src/weatherservice.py:934 ../src/weatherservice.py:935
-#: ../src/weatherservice.py:941 ../src/weatherservice.py:942
-#: ../src/weatherservice.py:975 ../src/weatherservice.py:976
-msgid "Down all day"
-msgstr ""
-
-#: ../src/weatherservice.py:877 ../src/weatherservice.py:878
-#: ../src/weatherservice.py:879 ../src/weatherservice.py:880
-#: ../src/weatherservice.py:907 ../src/weatherservice.py:908
-#: ../src/weatherservice.py:909 ../src/weatherservice.py:910
-#: ../src/weatherservice.py:931 ../src/weatherservice.py:932
-#: ../src/weatherservice.py:938 ../src/weatherservice.py:939
-#: ../src/weatherservice.py:978 ../src/weatherservice.py:979
-msgid "Up all day"
-msgstr ""
-
-#: ../src/whereami.py:49
+#: src/whereami.py:51
 msgid "Where Am I"
 msgstr "Vị trí của tôi"
 
-#: ../src/whereami.py:75
+#: src/whereami.py:77
 msgid "Search location"
 msgstr "Tìm kiếm địa điểm"
 
-#: ../src/whereami.py:77
+#: src/whereami.py:79
 msgid "Clear location"
 msgstr "Xóa vị trí"
 
-#: ../src/whereami.py:78
+#: src/whereami.py:80
 msgid "Input the name of your city"
 msgstr "Thành phố bạn đang sống"
 
-#: ../src/whereami.py:83
+#: src/whereami.py:85
 msgid "Search"
 msgstr "Tìm Kiếm"
 
-#: ../src/whereami.py:87
+#: src/whereami.py:89
 msgid "Find me"
 msgstr "Tìm vị trí của tôi"
 
-#: ../src/whereami.py:90
+#: src/whereami.py:92
 #, fuzzy
 msgid "Locations found"
 msgstr "Kết quả"
 
-#: ../src/whereami.py:109
+#: src/whereami.py:113
 msgid "City"
 msgstr "Thành phố"
 
-#: ../src/whereami.py:113
+#: src/whereami.py:117
 msgid "State"
 msgstr "Tiểu bang"
 
-#: ../src/whereami.py:117
+#: src/whereami.py:121
 msgid "Country"
 msgstr "Quốc gia"
+
+#: src/preferences.py:70 src/myweatherindicator.py:571
+msgid "Preferences"
+msgstr "Tùy chỉnh"
+
+#: src/preferences.py:87
+msgid "Main Location"
+msgstr "Vị trí Chính"
+
+#: src/preferences.py:88 src/preferences.py:184 src/preferences.py:478
+msgid "General options"
+msgstr "Các tuỳ chọn chung"
+
+#: src/preferences.py:92 src/preferences.py:188
+#, fuzzy
+msgid "Show"
+msgstr "Mưa rào"
+
+#: src/preferences.py:99
+msgid "Auto Location"
+msgstr "Tự động Xác định Vị trí"
+
+#: src/preferences.py:105 src/preferences.py:194
+msgid "Locality"
+msgstr "Vùng"
+
+#: src/preferences.py:117 src/preferences.py:205
+msgid "Search Location"
+msgstr "Tìm kiếm Vị trí"
+
+#: src/preferences.py:124 src/preferences.py:212
+msgid "Show temperature"
+msgstr "Hiện nhiệt độ"
+
+#: src/preferences.py:130 src/preferences.py:218
+msgid "Show notifications"
+msgstr "Hiện các thông báo"
+
+#: src/preferences.py:135 src/preferences.py:223
+#, fuzzy
+msgid "Widget options"
+msgstr "Luôn nổi"
+
+#: src/preferences.py:139 src/preferences.py:227
+msgid "Show widget"
+msgstr "Hiển thị trên desktop"
+
+#: src/preferences.py:146 src/preferences.py:234
+msgid "Hide indicator when show widget"
+msgstr "Ần trên tab khi hiển thị ở desktop"
+
+#: src/preferences.py:152 src/preferences.py:240
+msgid "Widget on top"
+msgstr "Luôn nổi"
+
+#: src/preferences.py:158 src/preferences.py:246
+msgid "Show in taskbar"
+msgstr "Hiện thị trên thanh công cụ"
+
+#: src/preferences.py:164 src/preferences.py:252
+msgid "On all desktops"
+msgstr ""
+
+#: src/preferences.py:183
+msgid "Second Location"
+msgstr "Vị trí Phụ"
+
+#: src/preferences.py:271
+msgid "Weather Services"
+msgstr "Nguồn cấp tin"
+
+#: src/preferences.py:300
+msgid "Input World Weather Online key"
+msgstr "Nhập khóa cho World Weather Online"
+
+#: src/preferences.py:302 src/preferences.py:325
+msgid "Activate"
+msgstr "Kích hoạt"
+
+#: src/preferences.py:304
+msgid "Click to activate World Weather Online"
+msgstr "Click để kích hoạt"
+
+#: src/preferences.py:323
+msgid "Input Weather Underground key"
+msgstr "Nhập khóa cho Weather Underground"
+
+#: src/preferences.py:327
+msgid "Click to activate Weather Underground"
+msgstr "Click để kích hoạt"
+
+#: src/preferences.py:337
+msgid "Units"
+msgstr "Các đơn vị"
+
+#: src/preferences.py:340 src/myweatherindicator.py:455
+#: src/myweatherindicator.py:668 src/myweatherindicator.py:772
+msgid "Temperature"
+msgstr "Nhiệt độ"
+
+#: src/preferences.py:347
+msgid "Celsius"
+msgstr "Độ C"
+
+#: src/preferences.py:348
+msgid "Fahrenheit"
+msgstr "Độ F"
+
+#: src/preferences.py:349
+msgid "Kelvin"
+msgstr "Độ K"
+
+#: src/preferences.py:359 src/myweatherindicator.py:460
+#: src/myweatherindicator.py:730
+msgid "Pressure"
+msgstr "Áp suất"
+
+#: src/preferences.py:366
+msgid "Millibar"
+msgstr "Millibar"
+
+#: src/preferences.py:367
+msgid "Inches of mercury"
+msgstr "Inch thủy ngân"
+
+#: src/preferences.py:368
+msgid "Millimeters of mercury"
+msgstr "Milimet thủy ngân"
+
+#: src/preferences.py:378 src/myweatherindicator.py:486
+#: src/myweatherindicator.py:735
+msgid "Visibility"
+msgstr "Tầm nhìn"
+
+#: src/preferences.py:385
+msgid "mile"
+msgstr "dặm"
+
+#: src/preferences.py:386
+msgid "kilometer"
+msgstr "ki lô mét"
+
+#: src/preferences.py:396
+msgid "Wind velocity"
+msgstr "Vận tốc gió"
+
+#: src/preferences.py:403
+msgid "Beaufort"
+msgstr "Cấp gió"
+
+#: src/preferences.py:404 src/weatherservice.py:751
+msgid "ft/s"
+msgstr "ft/s"
+
+#: src/preferences.py:405 src/weatherservice.py:750
+msgid "km/h"
+msgstr "km/h"
+
+#: src/preferences.py:406 src/weatherservice.py:751
+msgid "knots"
+msgstr "knots"
+
+#: src/preferences.py:407 src/weatherservice.py:750
+msgid "m/s"
+msgstr "m/s"
+
+#: src/preferences.py:408 src/weatherservice.py:750
+msgid "mph"
+msgstr "mi/h"
+
+#: src/preferences.py:418
+msgid "Rain Gauge"
+msgstr "Lượng mưa"
+
+#: src/preferences.py:425 src/preferences.py:444
+msgid "Inches"
+msgstr "Inch"
+
+#: src/preferences.py:426 src/preferences.py:445
+msgid "Centimeters"
+msgstr "Centimet"
+
+#: src/preferences.py:427 src/preferences.py:446
+msgid "Millimeters"
+msgstr "Milimet"
+
+#: src/preferences.py:437
+msgid "Snow Gauge"
+msgstr "Tuyết rơi"
+
+#: src/preferences.py:456
+msgid "Time Format"
+msgstr "Định dạng Thời gian"
+
+#: src/preferences.py:463
+msgid "24 h"
+msgstr "24 h"
+
+#: src/preferences.py:464
+msgid "AM/PM"
+msgstr "SA/CH"
+
+#: src/preferences.py:481
+msgid "Autostart"
+msgstr "Tự khởi động"
+
+#: src/preferences.py:486
+msgid "Refresh frequency"
+msgstr "Tần suất làm mới"
+
+#: src/preferences.py:493 src/preferences.py:494
+msgid "minutes"
+msgstr "phút"
+
+#: src/preferences.py:495
+msgid "hour"
+msgstr "giờ"
+
+#: src/preferences.py:496 src/preferences.py:497 src/preferences.py:498
+#: src/preferences.py:499 src/preferences.py:500
+msgid "hours"
+msgstr "giờ"
+
+#: src/preferences.py:510
+msgid "Select icon theme"
+msgstr "Chọn chủ đề biểu tượng"
+
+#: src/mooncalendarwindow.py:29
+msgid "Monday"
+msgstr ""
+
+#: src/mooncalendarwindow.py:29
+msgid "Tuesday"
+msgstr ""
+
+#: src/mooncalendarwindow.py:29
+msgid "Wednesday"
+msgstr ""
+
+#: src/mooncalendarwindow.py:29
+msgid "Thursday"
+msgstr ""
+
+#: src/mooncalendarwindow.py:30
+msgid "Friday"
+msgstr ""
+
+#: src/mooncalendarwindow.py:30
+msgid "Saturday"
+msgstr ""
+
+#: src/mooncalendarwindow.py:30
+msgid "Sunday"
+msgstr ""
+
+#: src/mooncalendarwindow.py:78
+#, fuzzy
+msgid "Moon phases"
+msgstr "Pha Mặt Trăng"
+
+#: src/mooncalendarwindow.py:106
+msgid "One year less"
+msgstr ""
+
+#: src/mooncalendarwindow.py:115
+msgid "One month less"
+msgstr ""
+
+#: src/mooncalendarwindow.py:124
+msgid "One year more"
+msgstr ""
+
+#: src/mooncalendarwindow.py:133
+msgid "One month more"
+msgstr ""
+
+#: src/mooncalendarwindow.py:148
+msgid "Today"
+msgstr ""
+
+#: src/mooncalendarwindow.py:162
+msgid "Close"
+msgstr ""
+
+#: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
+#: src/worldweatheronlineapi.py:113 src/weatherservice.py:847
+#: src/weatherservice.py:848 src/weatherservice.py:849
+#: src/weatherservice.py:850 src/weatherservice.py:851
+#: src/weatherservice.py:854 src/weatherservice.py:855
+#: src/weatherservice.py:857 src/weatherservice.py:859
+#: src/weatherservice.py:860 src/weatherservice.py:861
+#: src/weatherservice.py:862 src/weatherservice.py:863
+#: src/weatherservice.py:864 src/weatherservice.py:951
+#: src/weatherservice.py:952 src/weatherservice.py:953
+#: src/weatherservice.py:955 src/weatherservice.py:956
+#: src/weatherservice.py:957 src/weatherservice.py:958
+#: src/weatherservice.py:959 src/weatherservice.py:960
+#: src/weatherservice.py:961 src/weatherservice.py:962
+#: src/weatherservice.py:964 src/weatherservice.py:965
+#: src/weatherservice.py:966 src/weatherservice.py:968
+#: src/weatherservice.py:969 src/wundergroundapi.py:43
+#: src/wundergroundapi.py:51 src/wundergroundapi.py:62
+msgid "N/A"
+msgstr "KXĐ"
+
+#: src/weatherservice.py:36
+msgid "Blowing sand"
+msgstr "Gió cát"
+
+#: src/weatherservice.py:44
+msgid "Blizzard"
+msgstr "Bão tuyết"
+
+#: src/weatherservice.py:52
+msgid "Blowing snow"
+msgstr "Gió tuyết"
+
+#: src/weatherservice.py:60
+msgid "Blowing widespread dust"
+msgstr "Có bụi trên diện rộng"
+
+#: src/weatherservice.py:65
+msgid "Blustery"
+msgstr ""
+
+#: src/weatherservice.py:70
+msgid "Chance of a thunderstorm"
+msgstr "Khả năng có bão"
+
+#: src/weatherservice.py:78
+msgid "Chance of flurries"
+msgstr "Có gió lớn"
+
+#: src/weatherservice.py:85
+msgid "Chance of rain"
+msgstr "Có khả năng mưa"
+
+#: src/weatherservice.py:93
+msgid "Chance of showers"
+msgstr "Có khả năng mưa rào"
+
+#: src/weatherservice.py:100
+msgid "Chance of snow"
+msgstr "Có khả năng tuyết rơi"
+
+#: src/weatherservice.py:102
+msgid "Chance of storm"
+msgstr "Có khả năng bão"
+
+#: src/weatherservice.py:104
+msgid "Chance of thunderstorms"
+msgstr "Có khả năng dông"
+
+#: src/weatherservice.py:106
+msgid "Chance of tstorm"
+msgstr "Có khả năng dông"
+
+#: src/weatherservice.py:108
+msgid "Clear"
+msgstr "Trong sáng"
+
+#: src/weatherservice.py:110
+msgid "Cloudy"
+msgstr "Đầy mây"
+
+#: src/weatherservice.py:112
+msgid "Cold"
+msgstr "Lạnh"
+
+#: src/weatherservice.py:113
+msgid "Drizzle"
+msgstr "Mưa phùn"
+
+#: src/weatherservice.py:115
+msgid "Drizzle rain"
+msgstr "Mưa bụi"
+
+#: src/weatherservice.py:117
+msgid "Dust whirls"
+msgstr "Làn bụi cuốn"
+
+#: src/weatherservice.py:119
+msgid "Dust"
+msgstr "Bụi"
+
+#: src/weatherservice.py:121
+msgid "Extreme rain"
+msgstr "Mưa nặng hạt"
+
+#: src/weatherservice.py:123
+msgid "Fair"
+msgstr "Thời tiết đẹp"
+
+#: src/weatherservice.py:125
+msgid "Flurries"
+msgstr "Mưa dông bất chợt"
+
+#: src/weatherservice.py:127
+msgid "Fog patches"
+msgstr "Có sương mù"
+
+#: src/weatherservice.py:129
+msgid "Fog"
+msgstr "Sương mù"
+
+#: src/weatherservice.py:131
+msgid "Foggy"
+msgstr "Sương mù"
+
+#: src/weatherservice.py:133 src/weatherservice.py:135
+msgid "Freezing drizzle"
+msgstr "Mưa phùn lạnh"
+
+#: src/weatherservice.py:137 src/weatherservice.py:139
+msgid "Freezing fog"
+msgstr "Sương mù kèm gió buốt"
+
+#: src/weatherservice.py:141
+msgid "Freezing rain"
+msgstr "Mưa rét"
+
+#: src/weatherservice.py:143
+msgid "Funnel cloud"
+msgstr "Mây ống"
+
+#: src/weatherservice.py:145
+msgid "Hail showers"
+msgstr "Mưa đá"
+
+#: src/weatherservice.py:147
+msgid "Hail"
+msgstr "Mưa đá"
+
+#: src/weatherservice.py:148
+msgid "Haze"
+msgstr "Khói mù"
+
+#: src/weatherservice.py:150
+msgid "Heavy freezing drizzle"
+msgstr "Mưa lạnh nặng hạt"
+
+#: src/weatherservice.py:152 src/weatherservice.py:180
+#, fuzzy
+msgid "Heavy drizzle"
+msgstr "Mưa lạnh nặng hạt"
+
+#: src/weatherservice.py:154 src/weatherservice.py:182
+#, fuzzy
+msgid "Heavy drizzle rain"
+msgstr "Mưa rất to"
+
+#: src/weatherservice.py:156 src/weatherservice.py:162
+#: src/weatherservice.py:184
+msgid "Heavy rain"
+msgstr "Mưa to"
+
+#: src/weatherservice.py:158 src/weatherservice.py:186
+#, fuzzy
+msgid "Heavy shower rain"
+msgstr "Mưa tuyết dày đặc"
+
+#: src/weatherservice.py:160
+msgid "Heavy rain at times"
+msgstr "Mưa lớn"
+
+#: src/weatherservice.py:164
+msgid "Heavy snow"
+msgstr "Tuyết nhiều"
+
+#: src/weatherservice.py:166
+msgid "Heavy thunderstorm"
+msgstr "Bão to"
+
+#: src/weatherservice.py:168
+msgid "Hot"
+msgstr "Nóng"
+
+#: src/weatherservice.py:170 src/weatherservice.py:780
+msgid "Hurricane"
+msgstr "Gió bão cực mạnh"
+
+#: src/weatherservice.py:172
+msgid "Ice crystals"
+msgstr "Hạt băng"
+
+#: src/weatherservice.py:174
+msgid "Ice pellet showers"
+msgstr "Mưa đá"
+
+#: src/weatherservice.py:176 src/weatherservice.py:178
+msgid "Ice pellets"
+msgstr "Mưa đá"
+
+#: src/weatherservice.py:179
+msgid "Icy"
+msgstr "Có băng"
+
+#: src/weatherservice.py:188
+msgid "Isolated showers"
+msgstr "Có mưa đơn độc"
+
+#: src/weatherservice.py:190
+#, fuzzy
+msgid "Isolated thundershowers"
+msgstr "Có dông đơn độc"
+
+#: src/weatherservice.py:192
+msgid "Isolated thunderstorms"
+msgstr "Có dông đơn độc"
+
+#: src/weatherservice.py:194 src/weatherservice.py:198
+msgid "Light drizzle"
+msgstr "Mưa phùn nhẹ"
+
+#: src/weatherservice.py:196
+msgid "Light freezing rain"
+msgstr "Mưa nhỏ, rét"
+
+#: src/weatherservice.py:200
+#, fuzzy
+msgid "Light drizzle rain"
+msgstr "Mưa phùn nhẹ"
+
+#: src/weatherservice.py:202
+#, fuzzy
+msgid "Light shower rain"
+msgstr "Mưa phùn cường độ nhẹ"
+
+#: src/weatherservice.py:204
+msgid "Light rain shower"
+msgstr "Mưa nhỏ"
+
+#: src/weatherservice.py:206
+msgid "Light rain"
+msgstr "Mưa nhẹ"
+
+#: src/weatherservice.py:208
+msgid "Light showers of ice pellets"
+msgstr "Mưa đá nhỏ"
+
+#: src/weatherservice.py:210
+msgid "Light sleet showers"
+msgstr "Tuyết rơi nhẹ"
+
+#: src/weatherservice.py:212
+msgid "Light sleet"
+msgstr "Có tuyết"
+
+#: src/weatherservice.py:214
+msgid "Light snow showers"
+msgstr "Tuyết rào nhẹ"
+
+#: src/weatherservice.py:216
+msgid "Light snow"
+msgstr "Tuyết nhẹ"
+
+#: src/weatherservice.py:218
+msgid "Light thunderstorm"
+msgstr "Bão nhỏ"
+
+#: src/weatherservice.py:220
+msgid "Low drifting sand"
+msgstr "Bão cát nhỏ"
+
+#: src/weatherservice.py:222
+msgid "Low drifting snow"
+msgstr "Bão tuyết nhỏ"
+
+#: src/weatherservice.py:224
+msgid "Low drifting widespread dust"
+msgstr "Bão bụi nhỏ trên diện rộng"
+
+#: src/weatherservice.py:226
+msgid "Mist"
+msgstr "Sương mù"
+
+#: src/weatherservice.py:228
+msgid "Mixed rain and snow"
+msgstr "Mưa và tuyết"
+
+#: src/weatherservice.py:230
+msgid "Mixed rain and sleet"
+msgstr "Mưa và mưa tuyết"
+
+#: src/weatherservice.py:232
+msgid "Mixed snow and sleet"
+msgstr "Tuyết và mưa tuyết"
+
+#: src/weatherservice.py:234
+msgid "Moderate or heavy freezing rain"
+msgstr "Mưa lạnh vừa và to"
+
+#: src/weatherservice.py:236
+msgid "Moderate or heavy rain in area with thunder"
+msgstr "Mưa vừa và to, kèm sấm chớp"
+
+#: src/weatherservice.py:238
+msgid "Moderate or heavy rain shower"
+msgstr "Mưa vừa, mưa to"
+
+#: src/weatherservice.py:240
+msgid "Moderate or heavy showers of ice pellets"
+msgstr "Mưa vừa, mưa to kèm theo đá"
+
+#: src/weatherservice.py:242
+msgid "Moderate or heavy sleet showers"
+msgstr "Mưa đá vừa và to"
+
+#: src/weatherservice.py:244
+msgid "Moderate or heavy sleet"
+msgstr "Mưa đá vừa và to"
+
+#: src/weatherservice.py:246
+msgid "Moderate or heavy snow in area with thunder"
+msgstr "Tuyết rơi vừa và nhiều, một vài nơi có sấm sét"
+
+#: src/weatherservice.py:248
+msgid "Moderate or heavy snow showers"
+msgstr "Mưa đá vừa và to"
+
+#: src/weatherservice.py:250
+msgid "Moderate rain at times"
+msgstr "Mưa vừa"
+
+#: src/weatherservice.py:252
+msgid "Moderate rain"
+msgstr "Mưa vừa"
+
+#: src/weatherservice.py:254
+msgid "Moderate snow"
+msgstr "Tuyết vừa"
+
+#: src/weatherservice.py:256
+msgid "Mostly cloudy"
+msgstr "Hầu như đầy mây"
+
+#: src/weatherservice.py:258
+msgid "Mostly sunny"
+msgstr "Hầu hết có nắng"
+
+#: src/weatherservice.py:260 src/weatherservice.py:843
+msgid "Not available"
+msgstr "Không sẵn dùng"
+
+#: src/weatherservice.py:262
+msgid "Overcast"
+msgstr "U ám"
+
+#: src/weatherservice.py:264
+msgid "Partial fog"
+msgstr "Sương mù rải rác"
+
+#: src/weatherservice.py:266
+msgid "Partly cloudy"
+msgstr "Một phần có mây"
+
+#: src/weatherservice.py:268
+msgid "Partly sunny"
+msgstr "Một phần có nắng"
+
+#: src/weatherservice.py:270
+msgid "Patches of fog"
+msgstr "Sương mù vài nơi"
+
+#: src/weatherservice.py:272
+msgid "Patchy freezing drizzle nearby"
+msgstr "Bụi tuyết gần kề"
+
+#: src/weatherservice.py:274
+msgid "Patchy heavy snow"
+msgstr "Tuyết rơi nặng"
+
+#: src/weatherservice.py:276
+msgid "Patchy light drizzle"
+msgstr "Tuyết rơi nhẹ"
+
+#: src/weatherservice.py:278
+msgid "Patchy light rain in area with thunder"
+msgstr "Mưa nhỏ kèm sấm chớp"
+
+#: src/weatherservice.py:280
+msgid "Patchy light rain"
+msgstr "Mưa nhỏ"
+
+#: src/weatherservice.py:282
+msgid "Patchy light snow in area with thunder"
+msgstr "Tuyết rơi nẹ kèm sấm chớp"
+
+#: src/weatherservice.py:284
+msgid "Patchy light snow"
+msgstr "Tuyết rơi nhẹ"
+
+#: src/weatherservice.py:286
+msgid "Patchy moderate snow"
+msgstr "Tuyết rơi vừa"
+
+#: src/weatherservice.py:288
+msgid "Patchy rain nearby"
+msgstr "Mưa gần kề"
+
+#: src/weatherservice.py:290
+msgid "Patchy sleet nearby"
+msgstr "Mưa đá gần kề"
+
+#: src/weatherservice.py:292
+msgid "Patchy snow nearby"
+msgstr "Tuyết rơi gần kề"
+
+#: src/weatherservice.py:294
+msgid "Ragged thunderstorm"
+msgstr "Bão lớn"
+
+#: src/weatherservice.py:296
+msgid "Rain and snow"
+msgstr "Có mưa và tuyết"
+
+#: src/weatherservice.py:298
+msgid "Rain mist"
+msgstr "Sương mù"
+
+#: src/weatherservice.py:300
+msgid "Rain showers"
+msgstr "Mưa rào"
+
+#: src/weatherservice.py:302
+msgid "Rain"
+msgstr "Mưa"
+
+#: src/weatherservice.py:303
+msgid "Sand"
+msgstr "Cát bay"
+
+#: src/weatherservice.py:305
+msgid "Sandstorm"
+msgstr "Bão cát"
+
+#: src/weatherservice.py:307
+msgid "Scattered clouds"
+msgstr "Nhiều mây rải rác"
+
+#: src/weatherservice.py:309
+msgid "Scattered showers"
+msgstr "Mưa rào rải rác"
+
+#: src/weatherservice.py:311
+msgid "Scattered thunderstorms"
+msgstr "Dông rải rác"
+
+#: src/weatherservice.py:313
+msgid "Shallow fog"
+msgstr "Sương mù loáng thoáng"
+
+#: src/weatherservice.py:315
+msgid "Showers"
+msgstr "Mưa rào"
+
+#: src/weatherservice.py:316
+msgid "Shower drizzle"
+msgstr "Mưa phùn"
+
+#: src/weatherservice.py:318
+msgid "Shower rain"
+msgstr "Mưa"
+
+#: src/weatherservice.py:320
+msgid "Shower snow"
+msgstr "Tuyết rơi"
+
+#: src/weatherservice.py:322
+msgid "Sleet"
+msgstr "Mưa tuyết"
+
+#: src/weatherservice.py:324
+msgid "Small hail showers"
+msgstr "Mưa đá nhỏ"
+
+#: src/weatherservice.py:326
+msgid "Small hail"
+msgstr "Mưa đá-nhỏ"
+
+#: src/weatherservice.py:328
+msgid "Smoke"
+msgstr "Sương khói"
+
+#: src/weatherservice.py:330
+msgid "Snow blowing snow mist"
+msgstr "Tuyết nhỏ kèm sương mù"
+
+#: src/weatherservice.py:332
+msgid "Snow flurries"
+msgstr "Tuyết bất chợt"
+
+#: src/weatherservice.py:334
+msgid "Snow grains"
+msgstr "Hoa tuyết"
+
+#: src/weatherservice.py:336
+msgid "Snow showers"
+msgstr "Mưa tuyết"
+
+#: src/weatherservice.py:338
+msgid "Snow"
+msgstr "Tuyết"
+
+#: src/weatherservice.py:339
+msgid "Spray"
+msgstr "Phun"
+
+#: src/weatherservice.py:340
+msgid "Squalls"
+msgstr "Squalls"
+
+#: src/weatherservice.py:342 src/weatherservice.py:776
+msgid "Storm"
+msgstr "Gió bão"
+
+#: src/weatherservice.py:343
+msgid "Sunny"
+msgstr "Nắng"
+
+#: src/weatherservice.py:345 src/weatherservice.py:347
+msgid "Thunderstorm"
+msgstr "Dông bão"
+
+#: src/weatherservice.py:349
+msgid "Thunderstorms and ice pellets"
+msgstr "Bão kèm mưa đá"
+
+#: src/weatherservice.py:351
+msgid "Thunderstorms and rain"
+msgstr "Mưa bão"
+
+#: src/weatherservice.py:353
+msgid "Thunderstorms and snow"
+msgstr "Dông và có tuyết"
+
+#: src/weatherservice.py:355
+msgid "Thunderstorms with hail"
+msgstr "Báo kèm mưa đá"
+
+#: src/weatherservice.py:357
+msgid "Thunderstorms with small hail"
+msgstr "Bão kèm mưa đá nhỏ"
+
+#: src/weatherservice.py:359
+msgid "Thunderstorm with light rain"
+msgstr "Dông kèm mưa nhỏ"
+
+#: src/weatherservice.py:361
+msgid "Thunderstorm with rain"
+msgstr "Dông và mưa"
+
+#: src/weatherservice.py:363
+msgid "Thunderstorm with heavy rain"
+msgstr "Dông và mưa to"
+
+#: src/weatherservice.py:365
+msgid "Thunderstorm with light drizzle"
+msgstr "Dông và mưa phùn"
+
+#: src/weatherservice.py:367
+msgid "Thunderstorm with drizzle"
+msgstr "Dông vơi mưa phùn"
+
+#: src/weatherservice.py:369
+msgid "Thunderstorm with heavy drizzle"
+msgstr "Dông vơi mưa lớn"
+
+#: src/weatherservice.py:371
+msgid "Thundery outbreaks in nearby"
+msgstr "Bão đến gần"
+
+#: src/weatherservice.py:373
+msgid "Tornado"
+msgstr "Bão táp"
+
+#: src/weatherservice.py:375
+msgid "Torrential rain shower"
+msgstr "Mưa xối xả"
+
+#: src/weatherservice.py:377
+msgid "Tropical storm"
+msgstr "Bão nhiệt đới"
+
+#: src/weatherservice.py:379
+msgid "Unknown precipitation"
+msgstr "Mưa rào không xác định"
+
+#: src/weatherservice.py:381
+msgid "Unknown"
+msgstr "Chưa xác định."
+
+#: src/weatherservice.py:383
+msgid "Very heavy rain"
+msgstr "Mưa rất lớn"
+
+#: src/weatherservice.py:385
+msgid "Volcanic ash"
+msgstr "Tro núi lửa"
+
+#: src/weatherservice.py:387
+msgid "Widespread dust"
+msgstr "Bụi trên diện rộng"
+
+#: src/weatherservice.py:389
+msgid "Windy"
+msgstr "Nhiều gió"
+
+#: src/weatherservice.py:394 src/weatherservice.py:395
+#: src/weatherservice.py:432
+msgid "North"
+msgstr "Bắc"
+
+#: src/weatherservice.py:396 src/weatherservice.py:433
+msgid "North by east"
+msgstr "Bắc - Bắc-Đông Bắc"
+
+#: src/weatherservice.py:397 src/weatherservice.py:434
+msgid "North-northeast"
+msgstr "Bắc-Đông Bắc"
+
+#: src/weatherservice.py:398 src/weatherservice.py:435
+msgid "Northeast by north"
+msgstr "Đông Bắc - Bắc-Đông Bắc"
+
+#: src/weatherservice.py:399 src/weatherservice.py:436
+msgid "Northeast"
+msgstr "Đông Bắc"
+
+#: src/weatherservice.py:400 src/weatherservice.py:437
+msgid "Northeast by east"
+msgstr "Đông Bắc - Đông-Đông Bắc"
+
+#: src/weatherservice.py:401 src/weatherservice.py:438
+msgid "East-northeast"
+msgstr "Đông-Đông Bắc"
+
+#: src/weatherservice.py:402 src/weatherservice.py:439
+msgid "East by north"
+msgstr "Đông - Đông-Đông Bắc"
+
+#: src/weatherservice.py:403 src/weatherservice.py:404
+#: src/weatherservice.py:440
+msgid "East"
+msgstr "Đông"
+
+#: src/weatherservice.py:405 src/weatherservice.py:441
+msgid "East by south"
+msgstr "Đông - Đông-Đông Nam"
+
+#: src/weatherservice.py:406 src/weatherservice.py:442
+msgid "East-southeast"
+msgstr "Đông-Đông Nam"
+
+#: src/weatherservice.py:407 src/weatherservice.py:443
+msgid "Southeast by east"
+msgstr "Đông Nam - Đông-Đông Nam"
+
+#: src/weatherservice.py:408 src/weatherservice.py:444
+msgid "Southeast"
+msgstr "Đông Nam"
+
+#: src/weatherservice.py:409 src/weatherservice.py:445
+msgid "Southeast by south"
+msgstr "Đông Nam - Nam-Đông Nam"
+
+#: src/weatherservice.py:410 src/weatherservice.py:446
+msgid "South-southeast"
+msgstr "Nam-Đông Nam"
+
+#: src/weatherservice.py:411 src/weatherservice.py:447
+msgid "South by east"
+msgstr "Nam - Nam-Đông Nam"
+
+#: src/weatherservice.py:412 src/weatherservice.py:413
+#: src/weatherservice.py:448
+msgid "South"
+msgstr "Nam"
+
+#: src/weatherservice.py:414 src/weatherservice.py:449
+msgid "South by west"
+msgstr "Nam - Nam-Tây Nam"
+
+#: src/weatherservice.py:415 src/weatherservice.py:450
+msgid "South-southwest"
+msgstr "Nam-Tây Nam"
+
+#: src/weatherservice.py:416 src/weatherservice.py:451
+msgid "Southwest by south"
+msgstr "Tây Nam - Nam-Tây Nam"
+
+#: src/weatherservice.py:417 src/weatherservice.py:452
+msgid "Southwest"
+msgstr "Tây Nam"
+
+#: src/weatherservice.py:418 src/weatherservice.py:453
+msgid "Southwest by west"
+msgstr "Tây Nam - Tây-Tây Nam"
+
+#: src/weatherservice.py:419 src/weatherservice.py:454
+msgid "West-southwest"
+msgstr "Tây-Tây Nam"
+
+#: src/weatherservice.py:420 src/weatherservice.py:455
+msgid "West by south"
+msgstr "Tây - Tây-Tây Nam"
+
+#: src/weatherservice.py:421 src/weatherservice.py:422
+#: src/weatherservice.py:456
+msgid "West"
+msgstr "Tây"
+
+#: src/weatherservice.py:423 src/weatherservice.py:457
+msgid "West by north"
+msgstr "Tây - Tây-Tây Bắc"
+
+#: src/weatherservice.py:424 src/weatherservice.py:458
+msgid "West-northwest"
+msgstr "Tây-Tây Bắc"
+
+#: src/weatherservice.py:425 src/weatherservice.py:459
+msgid "Northwest by west"
+msgstr "Tây Bắc - Tây-Tây Bắc"
+
+#: src/weatherservice.py:426 src/weatherservice.py:460
+msgid "Northwest"
+msgstr "Tây Bắc"
+
+#: src/weatherservice.py:427 src/weatherservice.py:461
+msgid "Northwest by north"
+msgstr "Tây Bắc - Bắc-Tây Bắc"
+
+#: src/weatherservice.py:428 src/weatherservice.py:462
+msgid "North-northwest"
+msgstr "Bắc-Tây Bắc"
+
+#: src/weatherservice.py:429 src/weatherservice.py:463
+msgid "North by west"
+msgstr "Bắc - Bắc-Tây Bắc"
+
+#: src/weatherservice.py:430
+msgid "Variable"
+msgstr "Biến"
+
+#: src/weatherservice.py:655 src/weatherservice.py:657
+msgid "from"
+msgstr "từ"
+
+#: src/weatherservice.py:657
+msgid "at"
+msgstr "tại"
+
+#: src/weatherservice.py:658 src/weatherservice.py:688
+msgid "n/a"
+msgstr "kxđ"
+
+#: src/weatherservice.py:718
+msgid "millibar"
+msgstr "millibar"
+
+#: src/weatherservice.py:718
+msgid "inches of mercury"
+msgstr "Inch thủy ngân"
+
+#: src/weatherservice.py:719
+msgid "millimeters of mercury"
+msgstr "Millimet thủy ngân"
+
+#: src/weatherservice.py:732
+msgid "mi"
+msgstr "dặm"
+
+#: src/weatherservice.py:732
+msgid "km"
+msgstr "cây số"
+
+#: src/weatherservice.py:740
+msgid "in"
+msgstr "inch"
+
+#: src/weatherservice.py:740
+msgid "cm"
+msgstr "cm"
+
+#: src/weatherservice.py:740
+msgid "mm"
+msgstr "mm"
+
+#: src/weatherservice.py:756
+msgid "Calm"
+msgstr "Lặng gió"
+
+#: src/weatherservice.py:758
+msgid "Light air"
+msgstr "Gió rất nhẹ"
+
+#: src/weatherservice.py:760
+msgid "Light breeze"
+msgstr "Gió thổi nhẹ vừa phải"
+
+#: src/weatherservice.py:762
+msgid "Gentle breeze"
+msgstr "Gió nhẹ nhàng"
+
+#: src/weatherservice.py:764
+msgid "Moderate breeze"
+msgstr "Gió vừa phải"
+
+#: src/weatherservice.py:766
+msgid "Fresh breeze"
+msgstr "Gió mạnh vừa phải"
+
+#: src/weatherservice.py:768
+msgid "Strong breeze"
+msgstr "Gió mạnh"
+
+#: src/weatherservice.py:770
+msgid "High wind"
+msgstr "Gió mạnh"
+
+#: src/weatherservice.py:772
+msgid "Gale"
+msgstr "Gió mạnh hơn"
+
+#: src/weatherservice.py:774
+msgid "Strong gale"
+msgstr "Gió rất mạnh"
+
+#: src/weatherservice.py:778
+msgid "Violent storm"
+msgstr "Gió bão dữ dội"
+
+#: src/weatherservice.py:871 src/weatherservice.py:872
+#: src/weatherservice.py:873 src/weatherservice.py:874
+#: src/weatherservice.py:902 src/weatherservice.py:903
+#: src/weatherservice.py:904 src/weatherservice.py:905
+#: src/weatherservice.py:934 src/weatherservice.py:935
+#: src/weatherservice.py:941 src/weatherservice.py:942
+#: src/weatherservice.py:975 src/weatherservice.py:976
+msgid "Down all day"
+msgstr ""
+
+#: src/weatherservice.py:877 src/weatherservice.py:878
+#: src/weatherservice.py:879 src/weatherservice.py:880
+#: src/weatherservice.py:907 src/weatherservice.py:908
+#: src/weatherservice.py:909 src/weatherservice.py:910
+#: src/weatherservice.py:931 src/weatherservice.py:932
+#: src/weatherservice.py:938 src/weatherservice.py:939
+#: src/weatherservice.py:978 src/weatherservice.py:979
+msgid "Up all day"
+msgstr ""
+
+#: src/moon.py:33
+msgid "New Moon"
+msgstr "Trăng mới"
+
+#: src/moon.py:34
+msgid "Waxing Crescent"
+msgstr "Trăng non"
+
+#: src/moon.py:35
+msgid "First Quarter"
+msgstr "Trăng Thượng huyền"
+
+#: src/moon.py:36
+msgid "Waxing Gibbous"
+msgstr "Trăng khuyết đầu tháng"
+
+#: src/moon.py:37
+msgid "Full Moon"
+msgstr "Trăng tròn"
+
+#: src/moon.py:38
+msgid "Waning Gibbous"
+msgstr "Trăng khuyết cuối tháng"
+
+#: src/moon.py:39
+msgid "Last Quarter"
+msgstr "Trăng hạ huyền"
+
+#: src/moon.py:40
+msgid "Waning Crescent"
+msgstr "Trăng tàn"
+
+#: src/forecastw.py:63 src/myweatherindicator.py:418
+msgid "Forecast"
+msgstr "Dự báo"
+
+#: src/forecastw.py:125
+msgid "Day of week"
+msgstr "Ngày trong tuần"
+
+#: src/forecastw.py:132 src/myweatherindicator.py:525
+#: src/myweatherindicator.py:698
+msgid "Sunrise"
+msgstr "Mặt trời mọc"
+
+#: src/forecastw.py:139 src/myweatherindicator.py:534
+#: src/myweatherindicator.py:701
+msgid "Sunset"
+msgstr "Mặt trời lặn"
+
+#: src/forecastw.py:146
+msgid "Moon Phase"
+msgstr "Pha Mặt Trăng"
+
+#: src/forecastw.py:153
+msgid "Condition"
+msgstr "Điều kiện"
+
+#: src/forecastw.py:160
+msgid "High temperature"
+msgstr "Nhiệt độ cao nhất"
+
+#: src/forecastw.py:167
+msgid "Low temperature"
+msgstr "Nhiệt độ thấp nhất"
+
+#: src/forecastw.py:175
+msgid "Maximum wind"
+msgstr "Tốc độ gió cực đại"
+
+#: src/forecastw.py:182 src/forecastw.py:218 src/forecastw.py:233
+msgid "Average wind"
+msgstr "Tốc độ gió trung bình"
+
+#: src/forecastw.py:189
+msgid "Maximum humidity"
+msgstr "Độ ẩm cực đại"
+
+#: src/forecastw.py:196
+msgid "Minumum humidity"
+msgstr "Độ ẩm nhỏ nhất"
+
+#: src/forecastw.py:203 src/forecastw.py:225
+msgid "Rain measurement"
+msgstr "Lượng mưa"
+
+#: src/forecastw.py:210
+msgid "Snow measurement"
+msgstr "Lượng tuyết"
+
+#: src/forecastw.py:240
+msgid "Average humidity"
+msgstr "Độ ẩm trung bình"
+
+#: src/forecastw.py:247 src/myweatherindicator.py:491
+#: src/myweatherindicator.py:739
+msgid "Cloudiness"
+msgstr "Mây mù"
+
+#: src/myweatherindicator.py:149
+msgid "Homepage"
+msgstr "Trang chủ"
+
+#: src/myweatherindicator.py:157
+msgid "Get help online..."
+msgstr "Nhận trợ giúp trực tuyến..."
+
+#: src/myweatherindicator.py:165
+msgid "Translate this application..."
+msgstr "Dịch ứng dụng này..."
+
+#: src/myweatherindicator.py:173
+msgid "Report a bug..."
+msgstr "Báo cáo một lỗi..."
+
+#: src/myweatherindicator.py:185
+#, fuzzy
+msgid "Follow me in Twitter"
+msgstr "Theo dõi trên Twitter"
+
+#: src/myweatherindicator.py:193
+#, fuzzy
+msgid "Follow me in Google+"
+msgstr "Theo dõi trên Google+"
+
+#: src/myweatherindicator.py:202
+#, fuzzy
+msgid "Follow me in Facebook"
+msgstr "Theo dõi trên Facebook"
+
+#: src/myweatherindicator.py:209
+msgid "About"
+msgstr "Giới thiệu"
+
+#: src/myweatherindicator.py:425
+msgid "Evolution"
+msgstr "Evolution"
+
+#: src/myweatherindicator.py:432
+msgid "Forecast Map"
+msgstr "Bản đồ dự báo"
+
+#: src/myweatherindicator.py:439
+#, fuzzy
+msgid "Update weather"
+msgstr "Vừa cập nhật"
+
+#: src/myweatherindicator.py:450 src/myweatherindicator.py:667
+msgid "Location"
+msgstr "Vị trí"
+
+#: src/myweatherindicator.py:465 src/myweatherindicator.py:671
+#: src/myweatherindicator.py:774
+msgid "Humidity"
+msgstr "Độ ẩm"
+
+#: src/myweatherindicator.py:470 src/myweatherindicator.py:673
+msgid "Feels like"
+msgstr "Cảm thấy như"
+
+#: src/myweatherindicator.py:475 src/myweatherindicator.py:675
+msgid "Dew Point"
+msgstr "Điểm sương"
+
+#: src/myweatherindicator.py:480 src/myweatherindicator.py:678
+#: src/myweatherindicator.py:776
+msgid "Wind"
+msgstr "Gió"
+
+#: src/myweatherindicator.py:496 src/myweatherindicator.py:743
+msgid "UV"
+msgstr "Tia cực tím"
+
+#: src/myweatherindicator.py:501 src/myweatherindicator.py:747
+msgid "Precipitation"
+msgstr "Lượng mưa"
+
+#: src/myweatherindicator.py:516 src/myweatherindicator.py:696
+msgid "Dawn"
+msgstr "Bình minh"
+
+#: src/myweatherindicator.py:543 src/myweatherindicator.py:703
+msgid "Dusk"
+msgstr "Hoàng hôn"
+
+#: src/myweatherindicator.py:578
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: src/myweatherindicator.py:584
+msgid "Exit"
+msgstr "Thoát"
+
+#: src/myweatherindicator.py:607
+msgid "Not Internet connection"
+msgstr ""
+
+#: src/myweatherindicator.py:770
+msgid "Conditions in"
+msgstr "Điều kiện ở"
+
+#: src/myweatherindicator.py:822
+msgid "Forecast for next hours"
+msgstr "Dự báo cho các giờ tiếp theo"
+
+#: src/myweatherindicator.py:823
+msgid "Weather service"
+msgstr "Hệ thống thời tiết"
+
+#: src/myweatherindicator.py:860
+msgid "A weather indicator"
+msgstr "Một chỉ báo thời tiết"
+
+#~ msgid "My-Weather-Indicator"
+#~ msgstr "Dự báo thời tiết"
 
 #~ msgid "Heavy"
 #~ msgstr "Nặng"

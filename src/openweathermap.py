@@ -29,15 +29,14 @@ except Exception as e:
 from gi.repository import Gtk
 from gi.repository import WebKit2
 from json import loads as from_json
-import queue
 import comun
 
 
 class ForecastMap(Gtk.Dialog):
-    def __init__(self, lat=39.36873, lon=-2.417274645879, units='F'):
+    def __init__(self, lat=39.36873, lon=-2.417274645879):
         self.images = {}
         self.echo = True
-        Gtk.Window.__init__(self)
+        Gtk.Dialog.__init__(self)
         self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         self.set_title(comun.APP)
         self.set_default_size(900, 600)
@@ -56,72 +55,31 @@ class ForecastMap(Gtk.Dialog):
         self.viewer = WebKit2.WebView()
         self.scrolledwindow1.add(self.viewer)
         self.scrolledwindow1.set_size_request(900, 600)
-        #self.viewer.connect('title-changed', self.title_changed)
+        self.viewer.connect('load-changed', self.load_changed)
         self.viewer.load_uri('file://' + comun.HTML)
         self.lat = lat
         self.lon = lon
-        self.units = units
         self.set_focus(self.viewer)
         self.show_all()
-        self.message_queue = queue.Queue()
         while Gtk.events_pending():
             Gtk.main_iteration()
         self.show_all()
-        self.inicialize()
         self.run()
         self.destroy() 
 
-    # ###################################################################
-    # #########################ENGINE####################################
-    # ###################################################################
-    def inicialize(self ):
-        self.web_send('mlat=%s;' % (self.lat))
-        self.web_send('mlon=%s;' % (self.lon))
-        self.web_send('munits="%s";' % (self.units))
-
-    def work(self):
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-        # again = False
-        msg = self.web_recv()
-        if msg:
-            try:
-                msg = from_json(msg)
-                print('This is the message %s' % (msg))
-            except BaseException:
-                msg = None
-            # again = True
-        if msg == 'exit':
-            self.close_application(None)
-
-    # ###################################################################
-    # ########################BROWSER####################################
-    # ###################################################################
-
-    def title_changed(self, widget, frame, title):
-        if title != 'null':
-            self.message_queue.put(title)
-            self.work()
-
-    def web_recv(self):
-        if self.message_queue.empty():
-            return None
-        else:
-            msg = self.message_queue.get()
-            print('recivied: %s' % (msg))
-            return msg
+    def load_changed(self, widget, load_event):
+        if load_event == WebKit2.LoadEvent.FINISHED:
+            self.web_send('setPosition({}, {})'.format(self.lat, self.lon)) 
 
     def web_send(self, msg):
         print('send: %s' % (msg))
         self.viewer.run_javascript(msg, None, None, None)
-
-    # ###################################################################
-    # ########################ACTIONS####################################
-    # ###################################################################
-
+        while Gtk.events_pending():
+            Gtk.main_iteration()
+ 
     def close_application(self, widget):
         self.destroy()
 
 
-if __name__ == ' __main__':
+if __name__ == '__main__':
     forecastmap = ForecastMap(39.36873, -2.417274645879)

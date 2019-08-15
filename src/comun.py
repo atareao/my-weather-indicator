@@ -137,9 +137,9 @@ posf = line.find(')', pos)
 VERSION = line[pos + 1:posf].strip()
 if not is_package():
     VERSION = VERSION + '-src'
-HTML = os.path.join(APPDIR, 'openweathermap.html')
-HTML_WAI = os.path.join(APPDIR, 'whereami.html')
-HTML_GRAPH = os.path.join(APPDIR, 'graph.html')
+HTML = os.path.join(APPDIR, 'openweathermap', 'openweathermap.html')
+HTML_WAI = os.path.join(APPDIR, 'whereami', 'whereami.html')
+HTML_GRAPH = os.path.join(APPDIR, 'graph', 'graph.html')
 GOOGLELOGO = os.path.join(LOGOSDIR, 'wgooglelogo.png')
 UNDERGROUNDLOGO = os.path.join(LOGOSDIR, 'wundergroundlogo.png')
 UNDERGROUNDWEB = 'http://www.wunderground.com/?apiref=6563686488165a78'
