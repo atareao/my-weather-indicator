@@ -1,13 +1,11 @@
-<h1 align="center">Welcome to my-weather-indicator 👋</h1>
-<p>
-  <img src="https://img.shields.io/badge/version-0.9.1-blue.svg?cacheSeconds=2592000" />
-  <a href="https://www.atareao.es/aplicacion/my-weather-indicator-para-ubuntu/">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
-  </a>
-  <a href="https://twitter.com/atareao">
-    <img alt="Twitter: atareao" src="https://img.shields.io/twitter/follow/atareao.svg?style=social" target="_blank" />
-  </a>
-</p>
+# Welcome to my-weather-indicator 👋
+
+![Version](https://img.shields.io/badge/version-0.9.1-blue.svg?cacheSeconds=2592000)
+[![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://www.atareao.es/aplicacion/my-weather-indicator-para-ubuntu/)
+[![Twitter: atareao](https://img.shields.io/twitter/follow/atareao.svg?style=social)](https://twitter.com/atareao)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dfce16912d75471e87fe4de8d3012651)](https://www.codacy.com/manual/atareao/my-weather-indicator?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atareao/my-weather-indicator&amp;utm_campaign=Badge_Grade)
+[![CodeFactor](https://www.codefactor.io/repository/github/atareao/my-weather-indicator/badge)](https://www.codefactor.io/repository/github/atareao/my-weather-indicator)
 
 Get weather information for your town with My-Weather-Indicator
 
