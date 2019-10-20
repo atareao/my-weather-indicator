@@ -1,0 +1,56 @@
+body{
+    font-family: Ubuntu;
+    color: rgba(0,0,0,0.8);
+}
+.header{
+    font-weight: bold;
+    color: rgba(0,0,0,0.6);
+}
+.sunrise::before, .sunset::before{
+    content: " ";
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    vertical-align: -5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.sunrise::before{
+    background-image: url('/datos/Sync/Programacion/Python/my-weather-indicator/data/images/mwig-clear.png');
+}
+.sunset::before{
+    background-image: url('file:///datos/Sync/Programacion/Python/my-weather-indicator/data/images/mwi-moon00.svg');
+    height: 20px;
+    width: 20px;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-content: center;
+}
+.start, .col-1, .col-2, .col-3, .col-4, .col-5{
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    min-height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.start{
+    grid-column: 1;
+    text-align: left;
+}
+.col-1{
+    grid-column: 2;
+}
+.col-2{
+    grid-column: 3;
+}
+.col-3{
+    grid-column: 4;
+}
+.col-4{
+    grid-column: 5;
+}
+.col-5{
+    grid-column: 6;
+}

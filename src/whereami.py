@@ -201,7 +201,7 @@ class WhereAmI(Gtk.Dialog):
             self.entry1.set_text('')
 
     def on_permission_request(self, widget, frame, geolocationpolicydecision):
-        WebKit.geolocation_policy_allow(geolocationpolicydecision)
+        WebKit2.geolocation_policy_allow(geolocationpolicydecision)
         return True
 
     def on_button2_clicked(self, widget):
