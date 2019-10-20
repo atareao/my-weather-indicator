@@ -18,12 +18,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk
+from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 import os
 import comun
 import webbrowser
 from comun import _
-
+from utils import center
 
 def load_image(filename, size=24):
     if os.path.exists(filename):
@@ -60,11 +61,9 @@ def get_image_with_text(text, image=None):
 
 class FC(Gtk.Dialog):
     def __init__(self, location, ws, weather):
-        Gtk.Dialog.__init__(self, 'my-weather-indicator | ' + _('Forecast'),
-                            None, Gtk.DialogFlags.MODAL |
-                            Gtk.DialogFlags.DESTROY_WITH_PARENT)
-        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
-        self.set_size_request(200, 200)
+        Gtk.Dialog.__init__(self, 'my-weather-indicator | ' + _('Forecast'))
+        self.set_modal(True)
+        self.set_destroy_with_parent(True)
         self.connect('destroy', self.close_application)
         self.set_icon_from_file(comun.ICON)
         vbox0 = Gtk.VBox(spacing=5)
@@ -113,6 +112,8 @@ class FC(Gtk.Dialog):
         hbox1.pack_start(button, True, True, 0)
         #
         self.show_all()
+        center(self)
+
         while Gtk.events_pending():
             Gtk.main_iteration()
         self.run()
