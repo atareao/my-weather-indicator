@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2011-2016 Lorenzo Carbonell
-# lorenzo.carbonell.cerezo@gmail.com
+# This file is part of my-weather-indicator
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Copyright (c) 2012-2019 Lorenzo Carbonell Cerezo <a.k.a. atareao>
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 #
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
 import gi
 try:
@@ -30,10 +36,10 @@ from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 import os
 import datetime
-from moon import Moon
 import comun
 from comun import _
 from basedialog import BaseDialog
+from moondaywidget import MoonDayWidget
 
 DAY_OF_WEEK = [_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
                _('Friday'), _('Saturday'), _('Sunday')]
@@ -44,41 +50,7 @@ def first_day_of_month(adatetime):
     return adatetime.weekday()
 
 
-class MoonDayWidget(Gtk.EventBox):
 
-    def __init__(self, adate=None):
-        Gtk.EventBox.__init__(self)
-        self.set_size_request(100, 70)
-        self.box1 = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
-        self.add(self.box1)
-        self.label = Gtk.Label()
-        self.box1.pack_start(self.label, True, True, padding=1)
-        self.image = Gtk.Image()
-        self.box1.pack_start(self.image, True, True, padding=1)
-        if adate is not None:
-            self.set_date(adate)
-        self.image.show()
-
-    def set_style(self, box_name):
-        self.box1.set_name(box_name)
-
-    def set_date(self, adate):
-        self.adate = adate
-        self.label.set_text(str(adate.day))
-        self.moon = Moon(adate)
-        self.image.set_from_pixbuf(
-            GdkPixbuf.Pixbuf.new_from_file_at_size(
-                os.path.join(
-                    comun.IMAGESDIR, self.moon.image()), 60, 60))
-
-    def get_date(self):
-        return self.adate
-
-    def get_position(self):
-        return self.moon.position()
-
-    def get_phase(self):
-        return self.moon.phase_int()
 
 
 class CalendarWindow(BaseDialog):
@@ -115,6 +87,20 @@ class CalendarWindow(BaseDialog):
         button1.connect('clicked', self.on_button1_clicked)
         self.headerbar.pack_start(button1)
 
+        button4 = Gtk.Button()
+        button4.set_size_request(40, 40)
+        button4.set_tooltip_text(_('Today'))
+        image = Gtk.Image()
+        image.set_from_pixbuf(
+            GdkPixbuf.Pixbuf.new_from_file_at_size(
+                os.path.join(
+                    comun.IMAGESDIR,
+                    '%s-light-normal.svg' % (
+                        datetime.datetime.now().day)), 35, 35))
+        button4.set_image(image)
+        button4.connect('clicked', self.on_button4_clicked)
+        self.headerbar.pack_end(button4)
+
         button3 = Gtk.Button()
         button3.set_size_request(40, 40)
         button3.set_tooltip_text(_('One year more'))
@@ -133,18 +119,6 @@ class CalendarWindow(BaseDialog):
         button2.connect('clicked', self.on_button2_clicked)
         self.headerbar.pack_end(button2)
 
-        button4 = Gtk.Button()
-        button4.set_size_request(40, 40)
-        button4.set_tooltip_text(_('Today'))
-        image = Gtk.Image()
-        image.set_from_pixbuf(
-            GdkPixbuf.Pixbuf.new_from_file_at_size(
-                os.path.join(
-                    comun.IMAGESDIR,
-                    '%s-light-normal.svg' % (
-                        datetime.datetime.now().day)), 35, 35))
-        button4.set_image(image)
-        button4.connect('clicked', self.on_button4_clicked)
 
         scrolledwindow = Gtk.ScrolledWindow()
         scrolledwindow.set_policy(Gtk.PolicyType.AUTOMATIC,
@@ -260,10 +234,6 @@ class CalendarWindow(BaseDialog):
         today = datetime.datetime.today().date()
         self.adate = self.adate.replace(month=today.month, year=today.year)
         self.set_date()
-
-    def on_button5_clicked(self, widget):
-        self.hide()
-        self.destroy()
 
 
 if __name__ == "__main__":

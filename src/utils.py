@@ -21,11 +21,14 @@ import gi
 try:
     gi.require_version('Gtk', '3.0')
     gi.require_version('Gdk', '3.0')
+    gi.require_version('GdkPixbuf', '2.0')
 except ValueError as e:
     print(e)
     exit(1)
 from gi.repository import Gtk
 from gi.repository import Gdk
+from gi.repository import GdkPixbuf
+import os
 
 
 DEFAULT_CURSOR = Gdk.Cursor(Gdk.CursorType.ARROW)
@@ -40,3 +43,68 @@ def load_css(css_filename):
             Gdk.Screen.get_default(),
             style_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_USER)
+
+def load_image(filename, size=24):
+    if os.path.exists(filename):
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(filename, size, size)
+        return Gtk.Image.new_from_pixbuf(pixbuf)
+    return None
+
+
+
+def redondea(valor):
+    valor = valor * 10.0
+    return int(valor) / 10.0
+
+
+def redondea_digits(valor, digits=0):
+    if digits == 0:
+        return int(round(valor, digits))
+    return round(valor, digits)
+
+
+def s2f(cadena):
+    try:
+        value = float(cadena)
+    except BaseException:
+        value = 0.0
+    return value
+
+
+def s2f_print(word):
+    try:
+        return float(word)
+    except Exception as e:
+        print('error:', str(e))
+    return 0
+
+
+def cambia(valor, a, SI=True):
+    if len(valor) == 0:
+        return ''
+    valor = float(valor)
+    if SI is False:
+        valor = redondea(5.0 / 9.0 * (valor - 32.0))
+    if a == 'F':
+        return str(redondea(valor * 9.0 / 5.0 + 32.0))
+    elif a == 'K':
+        return str(redondea(valor + 273.15))
+    return str(valor)
+
+
+def change_temperature(valor, a):
+    valor = s2f(valor)
+    # initial a in ºF
+    if a == 'C':
+        valor = 5.0 / 9.0 * (valor - 32.0)
+    elif a == 'K':
+        valor = 5.0 / 9.0 * (valor - 32.0) + 273.15
+    return str(redondea_digits(valor))
+
+
+def fa2f(temperature):
+    return (temperature - 273.15) * 9.0 / 5.0 + 32.0
+
+
+def f2c(temperature):
+    return (s2f(temperature) - 32.0) * 5.0 / 9.0

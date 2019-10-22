@@ -1,30 +1,37 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012 Lorenzo Carbonell
-# lorenzo.carbonell.cerezo@gmail.com
+# This file is part of my-weather-indicator
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Copyright (c) 2012-2019 Lorenzo Carbonell Cerezo <a.k.a. atareao>
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 #
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
 import gi
 try:
+    gi.require_version('Gtk', '3.0')
     gi.require_version('Gtk', '3.0')
     gi.require_version('Gdk', '3.0')
     gi.require_version('OsmGpsMap', '1.0')
     gi.require_version('GLib', '2.0')
     gi.require_version('WebKit2', '4.0')
-except Exception as e:
+except ValueError as e:
     print(e)
     exit(-1)
 from gi.repository import Gtk
@@ -36,6 +43,7 @@ from asyncf import async_function
 import geocodeapi
 import comun
 from comun import _
+from basedialog import BaseDialog
 
 
 def match_anywhere(completion, entrystr, iter, data):
@@ -44,27 +52,33 @@ def match_anywhere(completion, entrystr, iter, data):
     return modelstr.startswith(entrystr.lower())
 
 
-class WhereAmI(Gtk.Dialog):
+class WhereAmI(BaseDialog):
     def __init__(self, parent=None, location=None, latitude=0,
                  longitude=0):
-        # ***************************************************************
-        Gtk.Dialog.__init__(self, 'my-weather-indicator | ' + _('Where Am I'))
-        self.set_modal(True)
-        self.set_destroy_with_parent(True)
-        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
-        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
-        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
-        # self.set_size_request(450, 350)
-        self.connect('destroy', self.on_close_application)
-        self.set_icon_from_file(comun.ICON)
-        #
-        self.lat = latitude
-        self.lng = longitude
-        self.locality = location
+        self.latitude = latitude
+        self.longitude = longitude
+        self.location = location
+        if latitude and longitude:
+            self.latitude = latitude
+            self.longitude = longitude
+            if location is not None and len(location) > 0:
+                self.localion = location
+                print(1)
+                self.entry1.set_text(location)
+            else:
+                print(2)
+                self.do_search_location(latitude, longitude)
+        else:
+            self.search_location2()
+        BaseDialog.__init__(self, 'my-weather-indicator | ' + _('Where Am I'),
+                            parent)
+
+    def init_ui(self):
+        BaseDialog.init_ui(self)
         #
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 5)
-        self.get_content_area().add(vbox)
-        #
+        self.grid.attach(vbox, 0,0,1,1)
+
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 5)
         vbox.pack_start(hbox, False, False, 0)
         #
@@ -154,29 +168,12 @@ class WhereAmI(Gtk.Dialog):
         scrolledwindow.add(self.viewer)
         scrolledwindow.set_size_request(550, 550)
 
-        #
-        self.show_all()
-        #
         self.set_wait_cursor()
         self.search_string = ''
-        self.locality = ''
         print('============================')
-        print(location, latitude, longitude)
+        print(self.location, self.latitude, self.longitude)
         print('============================')
-        if latitude and longitude:
-            self.latitude = latitude
-            self.longitude = longitude
-            self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
-            if location is not None and len(location) > 0:
-                self.locality = location
-                print(1)
-                self.entry1.set_text(location)
-            else:
-                print(2)
-                self.do_search_location(latitude, longitude)
-        else:
-            self.search_location2()
-        self.set_normal_cursor()
+
 
     def on_expander_expanded(self, widget, selected):
         print(widget, selected)
