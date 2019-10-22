@@ -821,8 +821,9 @@ class MWI(GObject.Object):
             cloudinesses.append([value, float(data['cloudiness'])])
         title = _('Forecast for next hours')
         subtitle = _('Weather service') + ': OpenWeatherMap'
-        Graph(title, subtitle, temperature=temperatures, humidity=humidities,
-              cloudiness=cloudinesses)
+        graph = Graph(title, subtitle, temperature=temperatures,
+                      humidity=humidities, cloudiness=cloudinesses)
+        graph.run()
         self.menu_offon(True)
 
     def menu_forecast_response(self, widget, index):

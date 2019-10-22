@@ -39,6 +39,11 @@ from basedialog import BaseDialog
 class Graph(BaseDialog):
     def __init__(self, title='', subtitle='', temperature='', humidity='',
                  cloudiness=''):
+        self.title = title
+        self.subtitle = subtitle
+        self.humidity = humidity
+        self.cloudiness = cloudiness
+        self.temperature = temperature
         BaseDialog.__init__(self, title, None, cancel_button=False)
 
     def init_ui(self):
@@ -52,14 +57,9 @@ class Graph(BaseDialog):
         self.viewer = WebKit2.WebView()
         self.scrolledwindow1.add(self.viewer)
         self.scrolledwindow1.set_size_request(900, 600)
-        self.viewer.connect('load-changed', self.load_changed)
+        print(comun.HTML_GRAPH)
         self.viewer.load_uri('file://' + comun.HTML_GRAPH)
-
-        self.title = title
-        self.subtitle = subtitle
-        self.humidity = humidity
-        self.cloudiness = cloudiness
-        self.temperature = temperature
+        self.viewer.connect('load-changed', self.load_changed)
         self.set_focus(self.viewer)
 
     def update(self):

@@ -115,7 +115,7 @@ if is_package():
     AUTOSTART = os.path.join(APPDIR, 'my-weather-indicator-autostart.desktop')
     AEMETDB = os.path.join(APPDIR, 'spain-data.db')
 else:
-    ROOTDIR = os.path.dirname(__file__)
+    ROOTDIR = os.path.abspath(os.path.dirname(__file__))
     LANGDIR = os.path.normpath(os.path.join(ROOTDIR, '../template1'))
     APPDIR = ROOTDIR
     DATADIR = os.path.normpath(os.path.join(ROOTDIR, '../data'))
