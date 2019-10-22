@@ -17,12 +17,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import gi
+try:
+    gi.require_version('Gtk', '3.0')
+    gi.require_version('Gdk', '3.0')
+except ValueError as e:
+    print(e)
+    exit(1)
+from gi.repository import Gtk
 from gi.repository import Gdk
 
-def center(dialog):
-    width, height = dialog.get_allocation().width, dialog.get_allocation().height
-    monitor = Gdk.Display.get_primary_monitor(Gdk.Display.get_default())
-    scale = monitor.get_scale_factor()
-    mwidth = monitor.get_geometry().width / scale
-    mheight = monitor.get_geometry().height / scale
-    dialog.move((mwidth - width)/2, (mheight - height)/2)
+
+DEFAULT_CURSOR = Gdk.Cursor(Gdk.CursorType.ARROW)
+WAIT_CURSOR = Gdk.Cursor(Gdk.CursorType.WATCH)
+
+def load_css(css_filename):
+    with open(css_filename, 'r') as css_file:
+        css_code = css_file.read()
+        style_provider = Gtk.CssProvider()
+        style_provider.load_from_data(css_code.encode())
+        Gtk.StyleContext.add_provider_for_screen(
+            Gdk.Screen.get_default(),
+            style_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_USER)
