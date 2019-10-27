@@ -434,7 +434,19 @@ class MWI(GObject.Object):
             'activate', self.menu_forecast_map_response, index)
         self.menus[index]['forecastmap'].show()
         main_menu.append(self.menus[index]['forecastmap'])
-        #
+
+        self.menus[index]['moon_calendar'] = Gtk.ImageMenuItem(
+            label=_('Moon Phase Calendar'))
+        self.menus[index]['moon_calendar'].set_image(
+            Gtk.Image.new_from_file(
+                os.path.join(comun.IMAGESDIR, 'mwig-clear-night.png')))
+        self.menus[index]['moon_calendar'].set_always_show_image(True)
+        self.menus[index]['moon_calendar'].connect(
+            'activate', self.on_moon_clicked)
+        self.menus[index]['moon_calendar'].show()
+        main_menu.append(self.menus[index]['moon_calendar'])
+
+
         self.menus[index]['update'] = Gtk.MenuItem(
             label=_('Update weather'))
         self.menus[index]['update'].connect(
@@ -707,6 +719,10 @@ class MWI(GObject.Object):
                 Gtk.Image.new_from_file(
                     os.path.join(comun.IMAGESDIR,
                                  self.current_conditions[index]['moon_icon'])))
+            self.menus[index]['moon_calendar'].set_image(
+                Gtk.Image.new_from_file(
+                    os.path.join(comun.IMAGESDIR,
+                                 self.current_conditions[index]['moon_icon'])))
             #
             pressure = (
                 self.current_conditions[index]['pressure'] is not None)
@@ -799,6 +815,7 @@ class MWI(GObject.Object):
             self.menus[i]['forecastmap'].set_sensitive(ison)
             self.menus[i]['evolution'].set_sensitive(ison)
             self.menus[i]['preferences'].set_sensitive(ison)
+            self.menus[i]['moon_calendar'].set_sensitive(ison)
             self.menus[i]['update'].set_sensitive(ison)
 
     def menu_forecast_map_response(self, widget, index):
