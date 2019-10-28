@@ -1,10 +1,10 @@
 #
-#: src/myweatherindicator.py:506 src/myweatherindicator.py:556
+#: src/myweatherindicator.py:520 src/myweatherindicator.py:570
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-12 19:17+0200\n"
+"POT-Creation-Date: 2019-10-28 07:11+0100\n"
 "PO-Revision-Date: 2013-12-05 05:55+0000\n"
 "Last-Translator: Dane Alexander Lopuson <bambinotenchie@gmail.com>\n"
 "Language-Team: Malay <ms@li.org>\n"
@@ -15,48 +15,48 @@ msgstr ""
 "X-Generator: Launchpad (build 17082)\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
 
-#: src/whereami.py:51
+#: src/whereami.py:73
 msgid "Where Am I"
 msgstr "Dimana saya"
 
-#: src/whereami.py:77
+#: src/whereami.py:91
 msgid "Search location"
 msgstr "Cari lokasi"
 
-#: src/whereami.py:79
+#: src/whereami.py:93
 msgid "Clear location"
 msgstr "Padam lokasi"
 
-#: src/whereami.py:80
+#: src/whereami.py:94
 msgid "Input the name of your city"
 msgstr "Masukkan nama bandar anda"
 
-#: src/whereami.py:85
+#: src/whereami.py:99
 msgid "Search"
 msgstr "Cari"
 
-#: src/whereami.py:89
+#: src/whereami.py:103
 msgid "Find me"
 msgstr "Cari saya"
 
-#: src/whereami.py:92
+#: src/whereami.py:106
 #, fuzzy
 msgid "Locations found"
 msgstr "Lokasi dijumpai"
 
-#: src/whereami.py:113
+#: src/whereami.py:127
 msgid "City"
 msgstr "Bandar"
 
-#: src/whereami.py:117
+#: src/whereami.py:131
 msgid "State"
 msgstr "Keadaan"
 
-#: src/whereami.py:121
+#: src/whereami.py:135
 msgid "Country"
 msgstr "Negeri"
 
-#: src/preferences.py:70 src/myweatherindicator.py:571
+#: src/preferences.py:70 src/myweatherindicator.py:585
 msgid "Preferences"
 msgstr "Pilihan"
 
@@ -150,8 +150,8 @@ msgstr "Klik untuk mengaktifkan Weather Underground"
 msgid "Units"
 msgstr "Unit"
 
-#: src/preferences.py:340 src/myweatherindicator.py:455
-#: src/myweatherindicator.py:668 src/myweatherindicator.py:772
+#: src/preferences.py:340 src/myweatherindicator.py:469
+#: src/myweatherindicator.py:682 src/myweatherindicator.py:790
 msgid "Temperature"
 msgstr "Suhu"
 
@@ -167,8 +167,8 @@ msgstr "Fahrenhait"
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: src/preferences.py:359 src/myweatherindicator.py:460
-#: src/myweatherindicator.py:730
+#: src/preferences.py:359 src/myweatherindicator.py:474
+#: src/myweatherindicator.py:748
 msgid "Pressure"
 msgstr "Tekanan"
 
@@ -184,8 +184,8 @@ msgstr "Takat raksa (Inci)"
 msgid "Millimeters of mercury"
 msgstr "Takat raksa (Milimeter)"
 
-#: src/preferences.py:378 src/myweatherindicator.py:486
-#: src/myweatherindicator.py:735
+#: src/preferences.py:378 src/myweatherindicator.py:500
+#: src/myweatherindicator.py:753
 msgid "Visibility"
 msgstr "Jarak penglihatan"
 
@@ -282,62 +282,68 @@ msgstr "jam"
 msgid "Select icon theme"
 msgstr "Pilih tema ikon"
 
-#: src/mooncalendarwindow.py:29
+#: src/mooncalendarwindow.py:44
 msgid "Monday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:29
+#: src/mooncalendarwindow.py:44
 msgid "Tuesday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:29
+#: src/mooncalendarwindow.py:44
 msgid "Wednesday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:29
+#: src/mooncalendarwindow.py:44
 msgid "Thursday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:30
+#: src/mooncalendarwindow.py:45
 msgid "Friday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:30
+#: src/mooncalendarwindow.py:45
 msgid "Saturday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:30
+#: src/mooncalendarwindow.py:45
 msgid "Sunday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:78
+#: src/mooncalendarwindow.py:59
 #, fuzzy
 msgid "Moon phases"
 msgstr "Fasa Bulan"
 
-#: src/mooncalendarwindow.py:106
+#: src/mooncalendarwindow.py:74
 msgid "One year less"
 msgstr ""
 
-#: src/mooncalendarwindow.py:115
+#: src/mooncalendarwindow.py:83
 msgid "One month less"
 msgstr ""
 
-#: src/mooncalendarwindow.py:124
-msgid "One year more"
-msgstr ""
-
-#: src/mooncalendarwindow.py:133
-msgid "One month more"
-msgstr ""
-
-#: src/mooncalendarwindow.py:148
+#: src/mooncalendarwindow.py:92 src/mooncalendarwindow.py:180
 msgid "Today"
 msgstr ""
 
-#: src/mooncalendarwindow.py:162
-msgid "Close"
+#: src/mooncalendarwindow.py:106
+msgid "One year more"
 msgstr ""
+
+#: src/mooncalendarwindow.py:115
+msgid "One month more"
+msgstr ""
+
+#: src/mooncalendarwindow.py:196
+#, fuzzy
+msgid "Full moon"
+msgstr "Bulan Penuh"
+
+#: src/mooncalendarwindow.py:198
+#, fuzzy
+msgid "New moon"
+msgstr "Bulan Baru"
 
 #: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
 #: src/worldweatheronlineapi.py:113 src/weatherservice.py:847
@@ -1239,184 +1245,189 @@ msgstr "Sukuan Terakhir"
 msgid "Waning Crescent"
 msgstr "Bulan Sabit Menyurut"
 
-#: src/forecastw.py:63 src/myweatherindicator.py:418
+#: src/forecastw.py:75 src/myweatherindicator.py:420 src/openweathermap.py:41
 msgid "Forecast"
 msgstr "Ramalan"
 
-#: src/forecastw.py:125
+#: src/forecastw.py:121
 msgid "Day of week"
 msgstr "Hari mingguan"
 
-#: src/forecastw.py:132 src/myweatherindicator.py:525
-#: src/myweatherindicator.py:698
+#: src/forecastw.py:121 src/myweatherindicator.py:539
+#: src/myweatherindicator.py:712
 msgid "Sunrise"
 msgstr "Matahari Terbit"
 
-#: src/forecastw.py:139 src/myweatherindicator.py:534
-#: src/myweatherindicator.py:701
+#: src/forecastw.py:121 src/myweatherindicator.py:548
+#: src/myweatherindicator.py:715
 msgid "Sunset"
 msgstr "Matahari Terbenam"
 
-#: src/forecastw.py:146
+#: src/forecastw.py:121
 msgid "Moon Phase"
 msgstr "Fasa Bulan"
 
-#: src/forecastw.py:153
+#: src/forecastw.py:122
 msgid "Condition"
 msgstr "Keadaan"
 
-#: src/forecastw.py:160
+#: src/forecastw.py:122
 msgid "High temperature"
 msgstr "Suhu tinggi"
 
-#: src/forecastw.py:167
+#: src/forecastw.py:122
 msgid "Low temperature"
 msgstr "Suhu rendah"
 
-#: src/forecastw.py:175
+#: src/forecastw.py:124
 msgid "Maximum wind"
 msgstr "Kelajuan angin maksimum"
 
-#: src/forecastw.py:182 src/forecastw.py:218 src/forecastw.py:233
+#: src/forecastw.py:124 src/forecastw.py:128 src/forecastw.py:130
 msgid "Average wind"
 msgstr "Kelajuan angin sederhana"
 
-#: src/forecastw.py:189
+#: src/forecastw.py:125
 msgid "Maximum humidity"
 msgstr "Kelembapan maksimum"
 
-#: src/forecastw.py:196
+#: src/forecastw.py:125
 msgid "Minumum humidity"
 msgstr "Kelembapan minimum"
 
-#: src/forecastw.py:203 src/forecastw.py:225
+#: src/forecastw.py:126 src/forecastw.py:128
 msgid "Rain measurement"
 msgstr "Tolok hujan"
 
-#: src/forecastw.py:210
+#: src/forecastw.py:126
 msgid "Snow measurement"
 msgstr "Tolok salji"
 
-#: src/forecastw.py:240
+#: src/forecastw.py:130
 msgid "Average humidity"
 msgstr "Kelembapan sederhana"
 
-#: src/forecastw.py:247 src/myweatherindicator.py:491
-#: src/myweatherindicator.py:739
+#: src/forecastw.py:131 src/myweatherindicator.py:505
+#: src/myweatherindicator.py:757
 msgid "Cloudiness"
 msgstr "Keadaan mendung"
 
-#: src/myweatherindicator.py:149
+#: src/myweatherindicator.py:151
 msgid "Homepage"
 msgstr "Laman utama"
 
-#: src/myweatherindicator.py:157
+#: src/myweatherindicator.py:159
 msgid "Get help online..."
 msgstr "Dapatkan bantuan atas talian..."
 
-#: src/myweatherindicator.py:165
+#: src/myweatherindicator.py:167
 msgid "Translate this application..."
 msgstr "Terjemah aplikasi ini..."
 
-#: src/myweatherindicator.py:173
+#: src/myweatherindicator.py:175
 msgid "Report a bug..."
 msgstr "Laporkan pepijat..."
 
-#: src/myweatherindicator.py:185
+#: src/myweatherindicator.py:187
 #, fuzzy
 msgid "Follow me in Twitter"
 msgstr "Ikuti kami di laman Twitter"
 
-#: src/myweatherindicator.py:193
+#: src/myweatherindicator.py:195
 #, fuzzy
 msgid "Follow me in Google+"
 msgstr "Ikuti kami di laman Facebook"
 
-#: src/myweatherindicator.py:202
+#: src/myweatherindicator.py:204
 #, fuzzy
 msgid "Follow me in Facebook"
 msgstr "Ikuti kami di laman Facebook"
 
-#: src/myweatherindicator.py:209
+#: src/myweatherindicator.py:211
 msgid "About"
 msgstr "Perihal"
 
-#: src/myweatherindicator.py:425
+#: src/myweatherindicator.py:427
 msgid "Evolution"
 msgstr "Perkembangan"
 
-#: src/myweatherindicator.py:432
+#: src/myweatherindicator.py:434
 msgid "Forecast Map"
 msgstr "Peta ramalan cuaca"
 
-#: src/myweatherindicator.py:439
+#: src/myweatherindicator.py:441
+#, fuzzy
+msgid "Moon Phase Calendar"
+msgstr "Fasa Bulan"
+
+#: src/myweatherindicator.py:453
 #, fuzzy
 msgid "Update weather"
 msgstr "Dikemaskini sekarang"
 
-#: src/myweatherindicator.py:450 src/myweatherindicator.py:667
+#: src/myweatherindicator.py:464 src/myweatherindicator.py:681
 msgid "Location"
 msgstr "Lokasi"
 
-#: src/myweatherindicator.py:465 src/myweatherindicator.py:671
-#: src/myweatherindicator.py:774
+#: src/myweatherindicator.py:479 src/myweatherindicator.py:685
+#: src/myweatherindicator.py:792
 msgid "Humidity"
 msgstr "Kelembapan"
 
-#: src/myweatherindicator.py:470 src/myweatherindicator.py:673
+#: src/myweatherindicator.py:484 src/myweatherindicator.py:687
 msgid "Feels like"
 msgstr "Terasa seperti"
 
-#: src/myweatherindicator.py:475 src/myweatherindicator.py:675
+#: src/myweatherindicator.py:489 src/myweatherindicator.py:689
 msgid "Dew Point"
 msgstr "Suhu mencair"
 
-#: src/myweatherindicator.py:480 src/myweatherindicator.py:678
-#: src/myweatherindicator.py:776
+#: src/myweatherindicator.py:494 src/myweatherindicator.py:692
+#: src/myweatherindicator.py:794
 msgid "Wind"
 msgstr "Angin"
 
-#: src/myweatherindicator.py:496 src/myweatherindicator.py:743
+#: src/myweatherindicator.py:510 src/myweatherindicator.py:761
 msgid "UV"
 msgstr "UV"
 
-#: src/myweatherindicator.py:501 src/myweatherindicator.py:747
+#: src/myweatherindicator.py:515 src/myweatherindicator.py:765
 msgid "Precipitation"
 msgstr ""
 
-#: src/myweatherindicator.py:516 src/myweatherindicator.py:696
+#: src/myweatherindicator.py:530 src/myweatherindicator.py:710
 msgid "Dawn"
 msgstr "Subuh"
 
-#: src/myweatherindicator.py:543 src/myweatherindicator.py:703
+#: src/myweatherindicator.py:557 src/myweatherindicator.py:717
 msgid "Dusk"
 msgstr "Senja"
 
-#: src/myweatherindicator.py:578
+#: src/myweatherindicator.py:592
 msgid "Help"
 msgstr "Bantuan"
 
-#: src/myweatherindicator.py:584
+#: src/myweatherindicator.py:598
 msgid "Exit"
 msgstr "Keluar"
 
-#: src/myweatherindicator.py:607
+#: src/myweatherindicator.py:621
 msgid "Not Internet connection"
 msgstr ""
 
-#: src/myweatherindicator.py:770
+#: src/myweatherindicator.py:788
 msgid "Conditions in"
 msgstr "Keadaan di"
 
-#: src/myweatherindicator.py:822
+#: src/myweatherindicator.py:841
 msgid "Forecast for next hours"
 msgstr "Ramalan cuaca untuk beberapa jam kemudian"
 
-#: src/myweatherindicator.py:823
+#: src/myweatherindicator.py:842
 msgid "Weather service"
 msgstr "Perkhidmatan ramalan cuaca"
 
-#: src/myweatherindicator.py:860
+#: src/myweatherindicator.py:880
 msgid "A weather indicator"
 msgstr "Petunjuk ramalan cuaca"
 
