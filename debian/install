@@ -26,11 +26,11 @@ data/skins/allinone/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weath
 data/skins/anotherone/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/skins/anotherone
 data/skins/super/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/skins/super
 data/skins/full/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/skins/full
-data/skins/medium/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/skins/medium
+data/skins/medium/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weatherg-indicator/skins/medium
 data/skins/little/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/skins/little
 data/skins/superclock/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/skins/superclock
 data/skins/simple/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/skins/simple
 data/images/my-weather-indicator.png /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
 data/my-weather-indicator.desktop /usr/share/applications
 data/images/my-weather-indicator.png /opt/extras.ubuntu.com/my-weather-indicator/share/pixmaps
-data/style.css /opt/extras.ubuntu.com/my-weather-indicator/share/style
+data/style.css /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/style
