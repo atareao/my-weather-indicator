@@ -1,12 +1,13 @@
-my-weather-indicator (0.9.4-0extras19.10.04) eoan; urgency=medium
+my-weather-indicator (0.9.4-0extras19.10.05) eoan; urgency=medium
 
   * Replace Webkit by Webkit2
   * Changed install
   * Changed forecast
   * Update translations
   * Change basic windows
+  * Add style
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 28 Oct 2019 07:12:09 +0100
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 28 Oct 2019 08:02:25 +0100
 
 my-weather-indicator (0.9.1-0extras19.04.0) disco; urgency=medium
 

@@ -33,3 +33,4 @@ data/skins/simple/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather
 data/images/my-weather-indicator.png /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
 data/my-weather-indicator.desktop /usr/share/applications
 data/images/my-weather-indicator.png /opt/extras.ubuntu.com/my-weather-indicator/share/pixmaps
+data/style.css /opt/extras.ubuntu.com/my-weather-indicator/share/style
