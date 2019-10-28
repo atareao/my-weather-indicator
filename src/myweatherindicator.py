@@ -64,6 +64,8 @@ from comun import _
 from comun import internet_on
 from weatherwidget import WeatherWidget
 from mooncalendarwindow import CalendarWindow
+from comun import CSS_FILE
+from utils import load_css
 
 INDICATORS = 2
 TIME_TO_CHECK = 15
@@ -946,6 +948,7 @@ def main():
     print(machine_information.get_information())
     print('My-Weather-Indicator version: %s' % comun.VERSION)
     print('#####################################################')
+    load_css(CSS_FILE)
     Notify.init("my-weather-indicator")
     mwi = MWI()
     Gtk.main()

@@ -38,7 +38,8 @@ class ForecastMap(BaseDialog):
     def __init__(self, lat=39.36873, lon=-2.417274645879):
         self.lat = lat
         self.lon = lon
-        BaseDialog.__init__(self, _('Forecast'), cancel_button=False)
+        BaseDialog.__init__(self, _('Forecast'), ok_button=False,
+                            cancel_button=False)
 
 
     def init_ui(self):

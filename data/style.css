@@ -1,5 +1,14 @@
+#forecasti,
+#forecast{
+    padding: 10px;
+}
+#forecasti,
+#forecast,
 #mcw_current_month{
     border: 1px solid #c3c9d0;
+}
+#forecasti{
+    background-color: #ddd;
 }
 #mcw_other_month{
     background-color: #ddd;

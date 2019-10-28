@@ -58,7 +58,7 @@ class CalendarWindow(BaseDialog):
     def __init__(self, adate=None):
         title = comun.APPNAME + ' | ' + _('Moon phases')
         self.adate = adate
-        BaseDialog.__init__(self, title, cancel_button=False)
+        BaseDialog.__init__(self, title, ok_button=False, cancel_button=False)
 
     def init_ui(self):
         BaseDialog.init_ui(self)

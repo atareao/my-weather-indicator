@@ -44,7 +44,8 @@ class Graph(BaseDialog):
         self.humidity = humidity
         self.cloudiness = cloudiness
         self.temperature = temperature
-        BaseDialog.__init__(self, title, None, cancel_button=False)
+        BaseDialog.__init__(self, title, None, ok_button=False,
+            cancel_button=False)
 
     def init_ui(self):
         BaseDialog.init_ui(self)
