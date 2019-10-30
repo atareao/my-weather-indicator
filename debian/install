@@ -16,6 +16,7 @@ src/openweathermap/*.gif /opt/extras.ubuntu.com/my-weather-indicator/share/my-we
 data/logos/*.png /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/logos
 data/social/*.svg /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/social
 data/images/*.png /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/images
+data/images/*.svg /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/images
 data/icons/*.png /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/icons
 data/wimages/*.png /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/wimages
 data/fonts/encode-sans/*.ttf /usr/share/fonts/truetype/encode-sans
