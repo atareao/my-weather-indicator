@@ -7,8 +7,9 @@ my-weather-indicator (0.9.4-0extras19.10.08) eoan; urgency=medium
   * Change basic windows
   * Add style
   * Move widgets all around the screen
+  * Fix a bug with evolution
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 03 Nov 2019 18:57:42 +0100
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 03 Nov 2019 19:08:59 +0100
 
 my-weather-indicator (0.9.1-0extras19.04.0) disco; urgency=medium
 

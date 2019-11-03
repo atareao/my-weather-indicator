@@ -65,8 +65,8 @@ class Graph(BaseDialog):
 
     def update(self):
         self.web_send('title="{}";subtitle="{}";humidity={};cloudiness={};\
-            temperature={};draw_graph(title,subtitle,humidity,cloudiness,\
-            temperature);'.format(self.title, self.subtitle, self.humidity,
+            temperature={};draw_graph(title,subtitle,temperature,humidity,\
+                cloudiness);'.format(self.title, self.subtitle, self.humidity,
                                   self.cloudiness, self.temperature))
 
     def load_changed(self, widget, load_event):
