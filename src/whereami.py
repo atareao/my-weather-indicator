@@ -58,18 +58,6 @@ class WhereAmI(BaseDialog):
         self.latitude = latitude
         self.longitude = longitude
         self.location = location
-        if latitude and longitude:
-            self.latitude = latitude
-            self.longitude = longitude
-            if location is not None and len(location) > 0:
-                self.localion = location
-                print(1)
-                self.entry1.set_text(location)
-            else:
-                print(2)
-                self.do_search_location(latitude, longitude)
-        else:
-            self.search_location2()
         BaseDialog.__init__(self, 'my-weather-indicator | ' + _('Where Am I'),
                             parent)
 
@@ -168,11 +156,20 @@ class WhereAmI(BaseDialog):
         scrolledwindow.add(self.viewer)
         scrolledwindow.set_size_request(550, 550)
 
+        if self.latitude and self.longitude:
+            if self.location is not None and len(self.location) > 0:
+                self.entry1.set_text(self.location)
+            else:
+                self.do_search_location(latitude, longitude)
+        else:
+            self.search_location2()
+
         self.set_wait_cursor()
         self.search_string = ''
         print('============================')
         print(self.location, self.latitude, self.longitude)
         print('============================')
+
 
 
     def on_expander_expanded(self, widget, selected):
