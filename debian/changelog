@@ -1,4 +1,4 @@
-my-weather-indicator (0.9.4-0extras19.10.09) eoan; urgency=medium
+my-weather-indicator (0.9.4-0extras19.10.10) eoan; urgency=medium
 
   * Replace Webkit by Webkit2
   * Changed install
@@ -8,8 +8,9 @@ my-weather-indicator (0.9.4-0extras19.10.09) eoan; urgency=medium
   * Add style
   * Move widgets all around the screen
   * Fix a bug with evolution
+  * Fix a bug with wind on widgets
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Thu, 07 Nov 2019 21:20:31 +0100
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 09 Nov 2019 11:48:00 +0100
 
 my-weather-indicator (0.9.1-0extras19.04.0) disco; urgency=medium
 

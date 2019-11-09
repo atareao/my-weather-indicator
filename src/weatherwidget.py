@@ -496,6 +496,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_01$', self.weather_data['forecasts'][0]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_01$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_01$', self.weather_data['forecasts'][0]['day_of_week'])
+                                    if text.find('$WIND_01$') > -1:
+                                        text = text.replace('$WIND_01$', self.weather_data['forecasts'][0]['avewind'])
                                 if len(self.weather_data['forecasts']) > 1:
                                     if text.find('$MAX_TEMPERATURE_02$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_02$', self.weather_data['forecasts'][1]['high'])
@@ -505,6 +507,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_02$', self.weather_data['forecasts'][1]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_02$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_02$', self.weather_data['forecasts'][1]['day_of_week'])
+                                    if text.find('$WIND_02$') > -1:
+                                        text = text.replace('$WIND_02$', self.weather_data['forecasts'][1]['avewind'])
                                 if len(self.weather_data['forecasts']) > 2:
                                     if text.find('$MAX_TEMPERATURE_03$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_03$', self.weather_data['forecasts'][2]['high'])
@@ -514,6 +518,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_03$', self.weather_data['forecasts'][2]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_03$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_03$', self.weather_data['forecasts'][2]['day_of_week'])
+                                    if text.find('$WIND_03$') > -1:
+                                        text = text.replace('$WIND_03$', self.weather_data['forecasts'][2]['avewind'])
                                 if len(self.weather_data['forecasts']) > 3:
                                     if text.find('$MAX_TEMPERATURE_04$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_04$', self.weather_data['forecasts'][3]['high'])
@@ -523,6 +529,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_04$', self.weather_data['forecasts'][3]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_04$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_04$', self.weather_data['forecasts'][3]['day_of_week'])
+                                    if text.find('$WIND_04$') > -1:
+                                        text = text.replace('$WIND_04$', self.weather_data['forecasts'][3]['avewind'])
                                 if len(self.weather_data['forecasts']) > 4:
                                     if text.find('$MAX_TEMPERATURE_05$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_05$', self.weather_data['forecasts'][4]['high'])
@@ -532,6 +540,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_05$', self.weather_data['forecasts'][4]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_05$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_05$', self.weather_data['forecasts'][4]['day_of_week'])
+                                    if text.find('$WIND_05$') > -1:
+                                        text = text.replace('$WIND_05$', self.weather_data['forecasts'][4]['avewind'])
 
                             x_bearing, y_bearing, width, height, x_advance, y_advance = cr.text_extents(text)
                             if xpos == 'CENTER':
