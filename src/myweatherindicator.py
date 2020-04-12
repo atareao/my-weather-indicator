@@ -58,6 +58,7 @@ import weatherservice
 import worldweatheronlineapi
 import wopenweathermapapi
 import wundergroundapi
+import wyahooapi
 import machine_information
 from graph import Graph
 from comun import _

@@ -22,6 +22,7 @@ Depends: ${misc:Depends}, ${python:Depends},
     python3-lxml,
     python3-dateutil,
     python3-requests,
+    python3-requests-oauthlib,
     geoclue-hostip,
     geoclue-ubuntu-geoip
 Description: Get weather information for your town with My-Weather-Indicator
