@@ -1,11 +1,11 @@
-my-weather-indicator (0.9.3-0extras19.04.25) disco; urgency=medium
+my-weather-indicator (0.9.3-0extras19.04.26) disco; urgency=medium
 
   * Replace Webkit by Webkit2
   * Changed install
   * Changed forecast
   * Fix a bug with autostart
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 24 Aug 2020 20:12:34 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 25 Aug 2020 00:36:16 +0200
 
 my-weather-indicator (0.9.1-0extras19.04.0) disco; urgency=medium
 
