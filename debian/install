@@ -32,4 +32,5 @@ data/skins/superclock/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-wea
 data/skins/simple/* /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator/skins/simple
 data/images/my-weather-indicator.png /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
 data/my-weather-indicator.desktop /usr/share/applications
+data/my-weather-indicator-autostart.desktop /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
 data/images/my-weather-indicator.png /opt/extras.ubuntu.com/my-weather-indicator/share/pixmaps
