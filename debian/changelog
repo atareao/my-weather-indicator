@@ -1,3 +1,9 @@
+my-weather-indicator (0.9.3-0extras19.04.28) focal; urgency=medium
+
+  * Incorrect information about sunrise and sunset #22  
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 30 Aug 2020 08:46:43 +0200
+
 my-weather-indicator (0.9.3-0extras19.04.27) focal; urgency=medium
 
   * Replace Webkit by Webkit2
