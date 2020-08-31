@@ -1,10 +1,10 @@
 #
-#: src/myweatherindicator.py:506 src/myweatherindicator.py:556
+#: src/myweatherindicator.py:520 src/myweatherindicator.py:570
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-12 19:17+0200\n"
+"POT-Creation-Date: 2020-08-31 10:13+0200\n"
 "PO-Revision-Date: 2013-06-21 20:00+0000\n"
 "Last-Translator: Nityanand (नित्या) <Unknown>\n"
 "Language-Team: Hindi <hi@li.org>\n"
@@ -15,48 +15,48 @@ msgstr ""
 "X-Generator: Launchpad (build 17082)\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
 
-#: src/whereami.py:51
+#: src/whereami.py:61
 msgid "Where Am I"
 msgstr "मैं कहाँ हूँ ?"
 
-#: src/whereami.py:77
+#: src/whereami.py:79
 msgid "Search location"
 msgstr "स्थान खोजें"
 
-#: src/whereami.py:79
+#: src/whereami.py:81
 msgid "Clear location"
 msgstr "स्थान मिटायें"
 
-#: src/whereami.py:80
+#: src/whereami.py:82
 msgid "Input the name of your city"
 msgstr "अपने शहर का नाम लिखें"
 
-#: src/whereami.py:85
+#: src/whereami.py:87
 msgid "Search"
 msgstr "खोजें"
 
-#: src/whereami.py:89
+#: src/whereami.py:91
 msgid "Find me"
 msgstr "मुझे खोजें"
 
-#: src/whereami.py:92
+#: src/whereami.py:94
 #, fuzzy
 msgid "Locations found"
 msgstr "स्थान खोज लिया"
 
-#: src/whereami.py:113
+#: src/whereami.py:115
 msgid "City"
 msgstr "शहर"
 
-#: src/whereami.py:117
+#: src/whereami.py:119
 msgid "State"
 msgstr "राज्य"
 
-#: src/whereami.py:121
+#: src/whereami.py:123
 msgid "Country"
 msgstr "देश"
 
-#: src/preferences.py:70 src/myweatherindicator.py:571
+#: src/preferences.py:70 src/myweatherindicator.py:585
 msgid "Preferences"
 msgstr "वरीयताएँ"
 
@@ -150,8 +150,8 @@ msgstr "भूमिगत मौसम को सक्रिय करने �
 msgid "Units"
 msgstr "इकाईयाँ"
 
-#: src/preferences.py:340 src/myweatherindicator.py:455
-#: src/myweatherindicator.py:668 src/myweatherindicator.py:772
+#: src/preferences.py:340 src/myweatherindicator.py:469
+#: src/myweatherindicator.py:682 src/myweatherindicator.py:790
 msgid "Temperature"
 msgstr "तापमान"
 
@@ -167,8 +167,8 @@ msgstr "फॉरेनहाइट"
 msgid "Kelvin"
 msgstr "केल्विन"
 
-#: src/preferences.py:359 src/myweatherindicator.py:460
-#: src/myweatherindicator.py:730
+#: src/preferences.py:359 src/myweatherindicator.py:474
+#: src/myweatherindicator.py:748
 msgid "Pressure"
 msgstr "दबाव"
 
@@ -184,8 +184,8 @@ msgstr "मरकरी के इंच"
 msgid "Millimeters of mercury"
 msgstr "मरकरी के मिलिमिटर"
 
-#: src/preferences.py:378 src/myweatherindicator.py:486
-#: src/myweatherindicator.py:735
+#: src/preferences.py:378 src/myweatherindicator.py:500
+#: src/myweatherindicator.py:753
 msgid "Visibility"
 msgstr "दृश्यता"
 
@@ -282,62 +282,68 @@ msgstr "घंटे"
 msgid "Select icon theme"
 msgstr "चिह्न प्रसंग चुनें"
 
-#: src/mooncalendarwindow.py:29
+#: src/mooncalendarwindow.py:44
 msgid "Monday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:29
+#: src/mooncalendarwindow.py:44
 msgid "Tuesday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:29
+#: src/mooncalendarwindow.py:44
 msgid "Wednesday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:29
+#: src/mooncalendarwindow.py:44
 msgid "Thursday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:30
+#: src/mooncalendarwindow.py:45
 msgid "Friday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:30
+#: src/mooncalendarwindow.py:45
 msgid "Saturday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:30
+#: src/mooncalendarwindow.py:45
 msgid "Sunday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:78
+#: src/mooncalendarwindow.py:59
 #, fuzzy
 msgid "Moon phases"
 msgstr "चन्द्रावस्था"
 
-#: src/mooncalendarwindow.py:106
+#: src/mooncalendarwindow.py:74
 msgid "One year less"
 msgstr ""
 
-#: src/mooncalendarwindow.py:115
+#: src/mooncalendarwindow.py:83
 msgid "One month less"
 msgstr ""
 
-#: src/mooncalendarwindow.py:124
-msgid "One year more"
-msgstr ""
-
-#: src/mooncalendarwindow.py:133
-msgid "One month more"
-msgstr ""
-
-#: src/mooncalendarwindow.py:148
+#: src/mooncalendarwindow.py:92 src/mooncalendarwindow.py:180
 msgid "Today"
 msgstr ""
 
-#: src/mooncalendarwindow.py:162
-msgid "Close"
+#: src/mooncalendarwindow.py:106
+msgid "One year more"
 msgstr ""
+
+#: src/mooncalendarwindow.py:115
+msgid "One month more"
+msgstr ""
+
+#: src/mooncalendarwindow.py:196
+#, fuzzy
+msgid "Full moon"
+msgstr "पूर्णिमा"
+
+#: src/mooncalendarwindow.py:198
+#, fuzzy
+msgid "New moon"
+msgstr "चन्द्रोदय"
 
 #: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
 #: src/worldweatheronlineapi.py:113 src/weatherservice.py:847
@@ -1239,184 +1245,189 @@ msgstr "पिछला पक्ष"
 msgid "Waning Crescent"
 msgstr "क्षयमान अर्धचन्द्र"
 
-#: src/forecastw.py:63 src/myweatherindicator.py:418
+#: src/forecastw.py:75 src/myweatherindicator.py:420 src/openweathermap.py:41
 msgid "Forecast"
 msgstr "पूर्वानुमान"
 
-#: src/forecastw.py:125
+#: src/forecastw.py:121
 msgid "Day of week"
 msgstr "सप्ताह के दिन"
 
-#: src/forecastw.py:132 src/myweatherindicator.py:525
-#: src/myweatherindicator.py:698
+#: src/forecastw.py:121 src/myweatherindicator.py:539
+#: src/myweatherindicator.py:712
 msgid "Sunrise"
 msgstr "सूर्योदय"
 
-#: src/forecastw.py:139 src/myweatherindicator.py:534
-#: src/myweatherindicator.py:701
+#: src/forecastw.py:121 src/myweatherindicator.py:548
+#: src/myweatherindicator.py:715
 msgid "Sunset"
 msgstr "सूर्यास्त"
 
-#: src/forecastw.py:146
+#: src/forecastw.py:121
 msgid "Moon Phase"
 msgstr "चन्द्रावस्था"
 
-#: src/forecastw.py:153
+#: src/forecastw.py:122
 msgid "Condition"
 msgstr "स्थिति"
 
-#: src/forecastw.py:160
+#: src/forecastw.py:122
 msgid "High temperature"
 msgstr "उच्च तापमान"
 
-#: src/forecastw.py:167
+#: src/forecastw.py:122
 msgid "Low temperature"
 msgstr "न्यून तापमान"
 
-#: src/forecastw.py:175
+#: src/forecastw.py:124
 msgid "Maximum wind"
 msgstr "अधिकतम हवा"
 
-#: src/forecastw.py:182 src/forecastw.py:218 src/forecastw.py:233
+#: src/forecastw.py:124 src/forecastw.py:128 src/forecastw.py:130
 msgid "Average wind"
 msgstr "औसत हवा"
 
-#: src/forecastw.py:189
+#: src/forecastw.py:125
 msgid "Maximum humidity"
 msgstr "अधिकतम सापेक्षिक आद्रता"
 
-#: src/forecastw.py:196
+#: src/forecastw.py:125
 msgid "Minumum humidity"
 msgstr "न्यूनतम सापेक्षिक आद्रता"
 
-#: src/forecastw.py:203 src/forecastw.py:225
+#: src/forecastw.py:126 src/forecastw.py:128
 msgid "Rain measurement"
 msgstr "बारिश मापन"
 
-#: src/forecastw.py:210
+#: src/forecastw.py:126
 msgid "Snow measurement"
 msgstr "माप दिखायें"
 
-#: src/forecastw.py:240
+#: src/forecastw.py:130
 msgid "Average humidity"
 msgstr "औसत सापेक्षिक आद्रता"
 
-#: src/forecastw.py:247 src/myweatherindicator.py:491
-#: src/myweatherindicator.py:739
+#: src/forecastw.py:131 src/myweatherindicator.py:505
+#: src/myweatherindicator.py:757
 msgid "Cloudiness"
 msgstr "बादल भरा मौसम"
 
-#: src/myweatherindicator.py:149
+#: src/myweatherindicator.py:151
 msgid "Homepage"
 msgstr "मुख्य पृष्ठ"
 
-#: src/myweatherindicator.py:157
+#: src/myweatherindicator.py:159
 msgid "Get help online..."
 msgstr "ऑनलाइन मदद पायें"
 
-#: src/myweatherindicator.py:165
+#: src/myweatherindicator.py:167
 msgid "Translate this application..."
 msgstr "इस अनुप्रयोग को अनुवादित करें"
 
-#: src/myweatherindicator.py:173
+#: src/myweatherindicator.py:175
 msgid "Report a bug..."
 msgstr "दोष दर्ज करें"
 
-#: src/myweatherindicator.py:185
+#: src/myweatherindicator.py:187
 #, fuzzy
 msgid "Follow me in Twitter"
 msgstr "टविट्टर में अनुसरण करें"
 
-#: src/myweatherindicator.py:193
+#: src/myweatherindicator.py:195
 #, fuzzy
 msgid "Follow me in Google+"
 msgstr "गूगल+ में अनुसरण करें"
 
-#: src/myweatherindicator.py:202
+#: src/myweatherindicator.py:204
 #, fuzzy
 msgid "Follow me in Facebook"
 msgstr "फेसबुक में अनुसरण करें"
 
-#: src/myweatherindicator.py:209
+#: src/myweatherindicator.py:211
 msgid "About"
 msgstr "जानकारी"
 
-#: src/myweatherindicator.py:425
+#: src/myweatherindicator.py:427
 msgid "Evolution"
 msgstr ""
 
-#: src/myweatherindicator.py:432
+#: src/myweatherindicator.py:434
 msgid "Forecast Map"
 msgstr "पूर्वानुमान मानचित्र"
 
-#: src/myweatherindicator.py:439
+#: src/myweatherindicator.py:441
+#, fuzzy
+msgid "Moon Phase Calendar"
+msgstr "चन्द्रावस्था"
+
+#: src/myweatherindicator.py:453
 #, fuzzy
 msgid "Update weather"
 msgstr "अब अद्यतन करें"
 
-#: src/myweatherindicator.py:450 src/myweatherindicator.py:667
+#: src/myweatherindicator.py:464 src/myweatherindicator.py:681
 msgid "Location"
 msgstr "स्थान"
 
-#: src/myweatherindicator.py:465 src/myweatherindicator.py:671
-#: src/myweatherindicator.py:774
+#: src/myweatherindicator.py:479 src/myweatherindicator.py:685
+#: src/myweatherindicator.py:792
 msgid "Humidity"
 msgstr "सापेक्षिक आद्रता"
 
-#: src/myweatherindicator.py:470 src/myweatherindicator.py:673
+#: src/myweatherindicator.py:484 src/myweatherindicator.py:687
 msgid "Feels like"
 msgstr "इस तरह का अनुभव"
 
-#: src/myweatherindicator.py:475 src/myweatherindicator.py:675
+#: src/myweatherindicator.py:489 src/myweatherindicator.py:689
 msgid "Dew Point"
 msgstr "तुषार बिंदु"
 
-#: src/myweatherindicator.py:480 src/myweatherindicator.py:678
-#: src/myweatherindicator.py:776
+#: src/myweatherindicator.py:494 src/myweatherindicator.py:692
+#: src/myweatherindicator.py:794
 msgid "Wind"
 msgstr "हवा"
 
-#: src/myweatherindicator.py:496 src/myweatherindicator.py:743
+#: src/myweatherindicator.py:510 src/myweatherindicator.py:761
 msgid "UV"
 msgstr "यूवी"
 
-#: src/myweatherindicator.py:501 src/myweatherindicator.py:747
+#: src/myweatherindicator.py:515 src/myweatherindicator.py:765
 msgid "Precipitation"
 msgstr "तलछट"
 
-#: src/myweatherindicator.py:516 src/myweatherindicator.py:696
+#: src/myweatherindicator.py:530 src/myweatherindicator.py:710
 msgid "Dawn"
 msgstr "प्रभात"
 
-#: src/myweatherindicator.py:543 src/myweatherindicator.py:703
+#: src/myweatherindicator.py:557 src/myweatherindicator.py:717
 msgid "Dusk"
 msgstr "संध्या"
 
-#: src/myweatherindicator.py:578
+#: src/myweatherindicator.py:592
 msgid "Help"
 msgstr "मदद"
 
-#: src/myweatherindicator.py:584
+#: src/myweatherindicator.py:598
 msgid "Exit"
 msgstr "बाहर निकलें"
 
-#: src/myweatherindicator.py:607
+#: src/myweatherindicator.py:621
 msgid "Not Internet connection"
 msgstr ""
 
-#: src/myweatherindicator.py:770
+#: src/myweatherindicator.py:788
 msgid "Conditions in"
 msgstr "स्थिति में"
 
-#: src/myweatherindicator.py:822
+#: src/myweatherindicator.py:841
 msgid "Forecast for next hours"
 msgstr ""
 
-#: src/myweatherindicator.py:823
+#: src/myweatherindicator.py:842
 msgid "Weather service"
 msgstr ""
 
-#: src/myweatherindicator.py:860
+#: src/myweatherindicator.py:880
 msgid "A weather indicator"
 msgstr "एक मौसम सूचक"
 
