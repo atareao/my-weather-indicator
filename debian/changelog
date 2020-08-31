@@ -1,17 +1,17 @@
-my-weather-indicator (0.9.3-0extras19.04.28) focal; urgency=medium
+my-weather-indicator (0.9.5-0extras20.04.01) focal; urgency=medium
 
-  * Incorrect information about sunrise and sunset #22  
+  * updated dialogs
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 30 Aug 2020 08:46:43 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 31 Aug 2020 07:49:08 +0200
 
-my-weather-indicator (0.9.3-0extras19.04.27) focal; urgency=medium
+my-weather-indicator (0.9.4-0extras19.10.10) eoan; urgency=medium
 
   * Replace Webkit by Webkit2
   * Changed install
   * Changed forecast
   * Fix a bug with autostart
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Thu, 27 Aug 2020 06:21:15 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 09 Nov 2019 11:48:00 +0100
 
 my-weather-indicator (0.9.1-0extras19.04.0) disco; urgency=medium
 

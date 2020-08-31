@@ -19,7 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import common_functions as cf
+import utils as cf
 import sys
 from sun import Sun
 from moon import Moon

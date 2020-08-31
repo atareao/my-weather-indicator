@@ -110,14 +110,16 @@ if is_package():
     SOCIALDIR = os.path.join(APPDIR, 'social')
     WIMAGESDIR = os.path.join(APPDIR, 'wimages')
     CHANGELOG = os.path.join(APPDIR, 'changelog')
+    STYLEDIR = os.path.join(APPDIR, 'style')
     ICON = os.path.join(ROOTDIR, 'pixmaps/my-weather-indicator.png')
     AUTOSTART = os.path.join(APPDIR, 'my-weather-indicator-autostart.desktop')
     AEMETDB = os.path.join(APPDIR, 'spain-data.db')
 else:
-    ROOTDIR = os.path.dirname(__file__)
+    ROOTDIR = os.path.abspath(os.path.dirname(__file__))
     LANGDIR = os.path.normpath(os.path.join(ROOTDIR, '../template1'))
     APPDIR = ROOTDIR
     DATADIR = os.path.normpath(os.path.join(ROOTDIR, '../data'))
+    STYLEDIR = DATADIR
     LOGOSDIR = os.path.normpath(os.path.join(ROOTDIR, '../data/logos'))
     ICONDIR = os.path.normpath(os.path.join(ROOTDIR, '../data/icons'))
     IMAGESDIR = os.path.normpath(os.path.join(ROOTDIR, '../data/images'))
@@ -137,6 +139,7 @@ posf = line.find(')', pos)
 VERSION = line[pos + 1:posf].strip()
 if not is_package():
     VERSION = VERSION + '-src'
+CSS_FILE = os.path.join(STYLEDIR, 'style.css')
 HTML = os.path.join(APPDIR, 'openweathermap', 'openweathermap.html')
 HTML_WAI = os.path.join(APPDIR, 'whereami', 'whereami.html')
 HTML_GRAPH = os.path.join(APPDIR, 'graph', 'graph.html')
@@ -193,7 +196,6 @@ def read_json_from_url(url, timeout=0):
 
 def internet_on():
     return check_connectivity()
-
 
 if __name__ == '__main__':
     print(' === ')

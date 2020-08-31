@@ -17,6 +17,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import gi
+try:
+    gi.require_version('AppIndicator3', '0.1')
+    gi.require_version('Gtk', '3.0')
+    gi.require_version('Gdk', '3.0')
+    gi.require_version('GdkPixbuf', '2.0')
+except Exception as e:
+    print(e)
+    print('Repository version required not present')
+    exit(1)
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GObject
@@ -32,7 +42,7 @@ from configurator import Configuration
 
 class WeatherWidget(Gtk.Window):
     __gsignals__ = {
-        'pinit': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, (bool,)),
+        'pinit': (GObject.SignalFlags.RUN_FIRST, GObject.TYPE_NONE, (bool,)),
     }
 
     def __init__(self, indicator=None, widgetnumber=1, weather=None):
@@ -53,12 +63,14 @@ class WeatherWidget(Gtk.Window):
         self.set_role('')
         screen = self.get_screen()
         visual = screen.get_rgba_visual()
-        if visual is not None and screen.is_composited():
+        if visual is not None and Gdk.Screen.get_default().is_composited():
             self.set_visual(visual)
         self.add_events(Gdk.EventMask.ALL_EVENTS_MASK)
         self.connect('draw', self.on_expose, None)
         self.connect('configure-event', self.configure_event)
-        self.connect('button-press-event', self.button_press)
+        self.connect('button-press-event', self.on_button_pressed)
+        self.connect('button-release-event', self.on_button_released)
+        self.connect('motion-notify-event', self.on_mouse_moved)
         self.connect('screen-changed', self.screen_changed)
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
         self.add(vbox)
@@ -70,6 +82,10 @@ class WeatherWidget(Gtk.Window):
         self.pin = Gtk.Image()
         button.add(self.pin)
         button.set_name('pin')
+
+        self.is_in_drag = False
+        self.x_in_drag = 0
+        self.y_in_drag = 0
         #
         self.datetime = datetime.datetime.utcnow()
         self.filename = None
@@ -94,6 +110,7 @@ class WeatherWidget(Gtk.Window):
                 background-image: none;
                 background-color: rgba(0, 0, 0, 0);
                 border-radius: 0px;
+                border-color: rgba(0, 0, 0, 0);
             }
             #pin:hover {
                 transition: 1000ms linear;
@@ -102,6 +119,7 @@ class WeatherWidget(Gtk.Window):
                 background-image: none;
                 background-color: rgba(0, 0, 0, 0);
                 border-radius: 0px;
+                border-color: rgba(0, 0, 0, 0);
             }
         """
         style_provider.load_from_data(css.encode('UTF-8'))
@@ -116,7 +134,6 @@ class WeatherWidget(Gtk.Window):
 
     def read_widgetfile(self):
         if os.path.exists(os.path.join(self.skin, 'skin')):
-            print(self.skin)
             f = open(os.path.join(self.skin, 'skin'))
             self.widgetdata = f.read()
             f.close()
@@ -186,7 +203,6 @@ class WeatherWidget(Gtk.Window):
             else:
                 self.unstick()
             self.skin = configuration.get('skin1')
-            print(self.skin)
         else:
             x = configuration.get('wp2-x')
             y = configuration.get('wp2-y')
@@ -202,7 +218,6 @@ class WeatherWidget(Gtk.Window):
             else:
                 self.unstick()
             self.skin = configuration.get('skin2')
-            print(self.skin)
         self.move(x, y)
 
     def show_in_taskbar(self, show_in_taskbar):
@@ -228,18 +243,33 @@ class WeatherWidget(Gtk.Window):
         # To check if the display supports alpha channels, get the colormap
         screen = widget.get_screen()
         visual = screen.get_rgba_visual()
-        if visual is None or not widget.is_composited():
-            print('Your screen does not support alpha channels!')
+        if visual is None or not Gdk.Screen.get_default().is_composited():
             self.supports_alpha = False
         else:
-            print('Your screen supports alpha channels!')
             self.supports_alpha = True
         return False
 
     def configure_event(self, widget, event):
         self.save_preferences()
 
-    def button_press(self, widget, event):
+    def on_mouse_moved(self, widget, event):
+        if self.is_in_drag:
+            xi, yi = self.get_position()
+            xf = int(xi + event.x_root - self.x_in_drag)
+            yf = int(yi + event.y_root - self.y_in_drag)
+            if math.sqrt(math.pow(xf-xi, 2) + math.pow(yf-yi, 2)) > 10:
+                self.x_in_drag = event.x_root
+                self.y_in_drag = event.y_root
+                self.move(xf, yf)
+
+    def on_button_released(self, widget, event):
+        if event.button == 1:
+            self.is_in_drag = False
+            self.x_in_drag = event.x_root
+            self.y_in_drag = event.y_root
+
+
+    def on_button_pressed(self, widget, event):
         if self.hideindicator:
             if self.indicator.get_status() ==\
                     appindicator.IndicatorStatus.PASSIVE:
@@ -247,9 +277,10 @@ class WeatherWidget(Gtk.Window):
             else:
                 self.indicator.set_status(appindicator.IndicatorStatus.PASSIVE)
         if event.button == 1:
-            print(int(event.x_root), int(event.y_root), event.time)
-            self.begin_move_drag(
-                1, int(event.x_root), int(event.y_root), event.time)
+            self.is_in_drag = True
+            self.x_in_drag, self.y_in_drag = self.get_position()
+            self.x_in_drag = event.x_root
+            self.y_in_drag = event.y_root
             return True
         return False
 
@@ -301,7 +332,6 @@ class WeatherWidget(Gtk.Window):
                     cr.save()
                     if row is not None and len(row) > 1:
                         if row[0] == 'CLOCK':
-                            print(row)
                             atype, minutesorhours, fileimage, x, y, width,\
                                 height, xpos, ypos = row
                             fileimage = os.path.join(maindir, fileimage)
@@ -310,7 +340,6 @@ class WeatherWidget(Gtk.Window):
                             width = float(width)
                             height = float(height)
                             surface = get_surface_from_file(fileimage)
-                            print(surface.get_width(), surface.get_height())
                             if surface is not None:
                                 s_width = surface.get_width()
                                 s_height = surface.get_height()
@@ -467,6 +496,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_01$', self.weather_data['forecasts'][0]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_01$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_01$', self.weather_data['forecasts'][0]['day_of_week'])
+                                    if text.find('$WIND_01$') > -1:
+                                        text = text.replace('$WIND_01$', self.weather_data['forecasts'][0]['avewind'])
                                 if len(self.weather_data['forecasts']) > 1:
                                     if text.find('$MAX_TEMPERATURE_02$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_02$', self.weather_data['forecasts'][1]['high'])
@@ -476,6 +507,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_02$', self.weather_data['forecasts'][1]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_02$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_02$', self.weather_data['forecasts'][1]['day_of_week'])
+                                    if text.find('$WIND_02$') > -1:
+                                        text = text.replace('$WIND_02$', self.weather_data['forecasts'][1]['avewind'])
                                 if len(self.weather_data['forecasts']) > 2:
                                     if text.find('$MAX_TEMPERATURE_03$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_03$', self.weather_data['forecasts'][2]['high'])
@@ -485,6 +518,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_03$', self.weather_data['forecasts'][2]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_03$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_03$', self.weather_data['forecasts'][2]['day_of_week'])
+                                    if text.find('$WIND_03$') > -1:
+                                        text = text.replace('$WIND_03$', self.weather_data['forecasts'][2]['avewind'])
                                 if len(self.weather_data['forecasts']) > 3:
                                     if text.find('$MAX_TEMPERATURE_04$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_04$', self.weather_data['forecasts'][3]['high'])
@@ -494,6 +529,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_04$', self.weather_data['forecasts'][3]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_04$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_04$', self.weather_data['forecasts'][3]['day_of_week'])
+                                    if text.find('$WIND_04$') > -1:
+                                        text = text.replace('$WIND_04$', self.weather_data['forecasts'][3]['avewind'])
                                 if len(self.weather_data['forecasts']) > 4:
                                     if text.find('$MAX_TEMPERATURE_05$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_05$', self.weather_data['forecasts'][4]['high'])
@@ -503,6 +540,8 @@ class WeatherWidget(Gtk.Window):
                                         text = text.replace('$CONDITION_05$', self.weather_data['forecasts'][4]['condition_text'])
                                     if text.find('$DAY_OF_WEEK_05$') > -1:
                                         text = text.replace('$DAY_OF_WEEK_05$', self.weather_data['forecasts'][4]['day_of_week'])
+                                    if text.find('$WIND_05$') > -1:
+                                        text = text.replace('$WIND_05$', self.weather_data['forecasts'][4]['avewind'])
 
                             x_bearing, y_bearing, width, height, x_advance, y_advance = cr.text_extents(text)
                             if xpos == 'CENTER':
@@ -518,8 +557,6 @@ class WeatherWidget(Gtk.Window):
                     cr.restore()
                 self.surface = mainsurface
                 return
-                # except Exception as e:
-                #   print('Parsing data error: %s'%e)
         self.surface = None
 
 

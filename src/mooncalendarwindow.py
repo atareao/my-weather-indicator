@@ -1,30 +1,45 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2011-2016 Lorenzo Carbonell
-# lorenzo.carbonell.cerezo@gmail.com
+# This file is part of my-weather-indicator
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Copyright (c) 2012-2019 Lorenzo Carbonell Cerezo <a.k.a. atareao>
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 #
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
+import gi
+try:
+    gi.require_version('Gtk', '3.0')
+    gi.require_version('Gdk', '3.0')
+    gi.require_version('GdkPixbuf', '2.0')
+except ValueError as e:
+    print(e)
+    exit(1)
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 import os
 import datetime
-from moon import Moon
 import comun
 from comun import _
+from basedialog import BaseDialog
+from moondaywidget import MoonDayWidget
 
 DAY_OF_WEEK = [_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
                _('Friday'), _('Saturday'), _('Sunday')]
@@ -35,114 +50,43 @@ def first_day_of_month(adatetime):
     return adatetime.weekday()
 
 
-class MoonDayWidget(Gtk.EventBox):
-
-    def __init__(self, adate=None):
-        Gtk.EventBox.__init__(self)
-        self.set_size_request(100, 70)
-        box1 = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
-        self.add(box1)
-        self.label = Gtk.Label()
-        box1.pack_start(self.label, True, True, padding=1)
-        self.image = Gtk.Image()
-        box1.pack_start(self.image, True, True, padding=1)
-        if adate is not None:
-            self.set_date(adate)
-        self.image.show()
-
-    def set_date(self, adate):
-        self.adate = adate
-        self.label.set_text(str(adate.day))
-        self.moon = Moon(adate)
-        # phasename = self.moon.phase()
-        # i = adate.day
-        # roundedpos = round(float(self.moon.position()), 3)
-        self.image.set_from_pixbuf(
-            GdkPixbuf.Pixbuf.new_from_file_at_size(
-                os.path.join(
-                    comun.IMAGESDIR, self.moon.image()), 60, 60))
-
-    def get_date(self):
-        return self.adate
-
-    def get_position(self):
-        return self.moon.position()
-
-    def get_phase(self):
-        return self.moon.phase_int()
 
 
-class CalendarWindow(Gtk.Window):
+
+class CalendarWindow(BaseDialog):
 
     def __init__(self, adate=None):
         title = comun.APPNAME + ' | ' + _('Moon phases')
-        '''
-        Gtk.Dialog.__init__(self,
-                            title,
-                            None,
-                            Gtk.DialogFlags.MODAL |
-                            Gtk.DialogFlags.DESTROY_WITH_PARENT)
-        '''
-        Gtk.Window.__init__(self)
-        self.set_size_request(750, 700)
-        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
-        self.set_icon_from_file(comun.ICON)
-        self.connect('destroy', self.close_application)
-        self.edited = False
-        #
-        #
+        self.adate = adate
+        BaseDialog.__init__(self, title, ok_button=False, cancel_button=False)
+
+    def init_ui(self):
+        BaseDialog.init_ui(self)
+
         self.headerbar = Gtk.HeaderBar.new()
-        self.headerbar.set_title(title)
+        self.headerbar.set_title(self.get_title())
         self.headerbar.set_subtitle('-')
         self.headerbar.set_show_close_button(True)
         self.set_titlebar(self.headerbar)
 
-        vbox0 = Gtk.VBox(spacing=5)
-        vbox0.set_border_width(5)
-        self.add(vbox0)
-        #
         button0 = Gtk.Button()
         button0.set_size_request(40, 40)
         button0.set_tooltip_text(_('One year less'))
         button0.set_image(
-            Gtk.Image.new_from_stock(Gtk.STOCK_GOTO_FIRST,
+            Gtk.Image.new_from_icon_name(Gtk.STOCK_GOTO_FIRST,
                                      Gtk.IconSize.BUTTON))
         button0.connect('clicked', self.on_button0_clicked)
         self.headerbar.pack_start(button0)
-        #
+
         button1 = Gtk.Button()
         button1.set_size_request(40, 40)
         button1.set_tooltip_text(_('One month less'))
         button1.set_image(
-            Gtk.Image.new_from_stock(Gtk.STOCK_GO_BACK,
+            Gtk.Image.new_from_icon_name(Gtk.STOCK_GO_BACK,
                                      Gtk.IconSize.BUTTON))
         button1.connect('clicked', self.on_button1_clicked)
         self.headerbar.pack_start(button1)
-        #
-        button3 = Gtk.Button()
-        button3.set_size_request(40, 40)
-        button3.set_tooltip_text(_('One year more'))
-        button3.set_image(
-            Gtk.Image.new_from_stock(Gtk.STOCK_GOTO_LAST,
-                                     Gtk.IconSize.BUTTON))
-        button3.connect('clicked', self.on_button3_clicked)
-        self.headerbar.pack_end(button3)
-        #
-        button2 = Gtk.Button()
-        button2.set_size_request(40, 40)
-        button2.set_tooltip_text(_('One month more'))
-        button2.set_image(
-            Gtk.Image.new_from_stock(Gtk.STOCK_GO_FORWARD,
-                                     Gtk.IconSize.BUTTON))
-        button2.connect('clicked', self.on_button2_clicked)
-        self.headerbar.pack_end(button2)
-        #
-        frame1 = Gtk.Frame()
-        vbox0.pack_start(frame1, True, True, 0)
-        #
-        hbox2 = Gtk.HBox()
-        vbox0.pack_start(hbox2, False, False, 0)
-        #
+
         button4 = Gtk.Button()
         button4.set_size_request(40, 40)
         button4.set_tooltip_text(_('Today'))
@@ -155,62 +99,60 @@ class CalendarWindow(Gtk.Window):
                         datetime.datetime.now().day)), 35, 35))
         button4.set_image(image)
         button4.connect('clicked', self.on_button4_clicked)
-        hbox2.pack_start(button4, False, False, 0)
-        #
-        button5 = Gtk.Button()
-        button5.set_size_request(40, 40)
-        button5.set_tooltip_text(_('Close'))
-        button5.set_image(
-            Gtk.Image.new_from_stock(Gtk.STOCK_OK,
+        self.headerbar.pack_end(button4)
+
+        button3 = Gtk.Button()
+        button3.set_size_request(40, 40)
+        button3.set_tooltip_text(_('One year more'))
+        button3.set_image(
+            Gtk.Image.new_from_icon_name(Gtk.STOCK_GOTO_LAST,
                                      Gtk.IconSize.BUTTON))
-        button5.connect('clicked', self.on_button5_clicked)
-        hbox2.pack_end(button5, False, False, 0)
-        #
+        button3.connect('clicked', self.on_button3_clicked)
+        self.headerbar.pack_end(button3)
+
+        button2 = Gtk.Button()
+        button2.set_size_request(40, 40)
+        button2.set_tooltip_text(_('One month more'))
+        button2.set_image(
+            Gtk.Image.new_from_icon_name(Gtk.STOCK_GO_FORWARD,
+                                     Gtk.IconSize.BUTTON))
+        button2.connect('clicked', self.on_button2_clicked)
+        self.headerbar.pack_end(button2)
+
+
         scrolledwindow = Gtk.ScrolledWindow()
         scrolledwindow.set_policy(Gtk.PolicyType.AUTOMATIC,
                                   Gtk.PolicyType.AUTOMATIC)
-        scrolledwindow.set_shadow_type(Gtk.ShadowType.ETCHED_OUT)
-        frame1.add(scrolledwindow)
-        #
-        table1 = Gtk.Table(rows=7, columns=8, homogeneous=False)
-        table1.override_background_color(
-            Gtk.StateFlags.NORMAL, Gdk.RGBA(1., 1., 1., 0))
+        scrolledwindow.set_size_request(850, 560)
+
+        self.grid.attach(scrolledwindow, 1, 1, 1, 1)
+
+        table1 = Gtk.Grid()
         table1.set_border_width(2)
-        table1.set_col_spacings(2)
-        table1.set_row_spacings(2)
         scrolledwindow.add(table1)
-        #
+
         self.days = {}
         self.week_days = {}
         contador = 0
         for row in range(1, 7):
-            self.week_days[row] = Gtk.Label(str(row))
-            table1.attach(self.week_days[row], 0, 0 + 1, row, row + 1,
-                          xoptions=Gtk.AttachOptions.SHRINK,
-                          yoptions=Gtk.AttachOptions.SHRINK)
+            label = Gtk.Label.new(str(row))
+            label.set_width_chars(6)
+            self.week_days[row] = label
+            table1.attach(self.week_days[row], 0, row, 1, 1)
         for column in range(1, 8):
-            table1.attach(Gtk.Label(DAY_OF_WEEK[column - 1]),
-                          column,
-                          column + 1, 0, 1,
-                          xoptions=Gtk.AttachOptions.SHRINK,
-                          yoptions=Gtk.AttachOptions.SHRINK)
+            label = Gtk.Label.new(DAY_OF_WEEK[column - 1])
+            label.set_width_chars(14)
+            label.set_size_request(0, 40)
+            table1.attach(label,
+                          column, 0, 1, 1)
         for row in range(1, 7):
             for column in range(1, 8):
                 self.days[contador] = MoonDayWidget()
-                table1.attach(self.days[contador], column, column + 1,
-                              row, row + 1,
-                              xoptions=Gtk.AttachOptions.EXPAND,
-                              yoptions=Gtk.AttachOptions.EXPAND)
+                table1.attach(self.days[contador], column, row, 1, 1)
                 contador += 1
-        #
-        if adate is None:
+        if self.adate is None:
             self.adate = datetime.datetime.now()
-        else:
-            self.adate = adate
-        #
         self.set_date()
-        #
-        self.show_all()
 
     def close_application(self, widget):
         self.ok = False
@@ -232,14 +174,12 @@ class CalendarWindow(Gtk.Window):
                 tadate = adate + datetime.timedelta(days=(contador - fdom))
             self.days[contador].set_date(tadate)
             if tadate.month != adate.month:
-                self.days[contador].override_background_color(
-                    Gtk.StateFlags.NORMAL, Gdk.RGBA(.5, .5, .5, 1))
+                self.days[contador].set_style('mcw_other_month')
             elif tadate.date() == datetime.datetime.today().date():
-                self.days[contador].override_background_color(
-                    Gtk.StateFlags.NORMAL, Gdk.RGBA(1.0, 0.0, 0.0, 1))
+                self.days[contador].set_style('mcw_today')
+                self.days[contador].set_tooltip_text(_('Today'))
             else:
-                self.days[contador].override_background_color(
-                    Gtk.StateFlags.NORMAL, Gdk.RGBA(1., 1., 1., 1))
+                self.days[contador].set_style('mcw_current_month')
             if tadate.month == adate.month:
                 if self.days[contador].get_position() >= max['value']:
                     max['position'] = contador
@@ -252,10 +192,10 @@ class CalendarWindow(Gtk.Window):
                     med['position'] = contador
                     med['value'] = abs(float(
                         self.days[contador].get_position()) - 0.5)
-        self.days[med['position']].override_background_color(
-            Gtk.StateFlags.NORMAL, Gdk.RGBA(0.0, 0.5, 0.0, 1))
-        self.days[min['position']].override_background_color(
-            Gtk.StateFlags.NORMAL, Gdk.RGBA(0.5, 0.0, 0.5, 1))
+        self.days[med['position']].set_style('mcw_full')
+        self.days[med['position']].set_tooltip_text(_('Full moon'))
+        self.days[min['position']].set_style('mcw_med')
+        self.days[min['position']].set_tooltip_text(_('New moon'))
 
     def on_button0_clicked(self, widget):
         year = self.adate.year - 1
@@ -295,13 +235,11 @@ class CalendarWindow(Gtk.Window):
         self.adate = self.adate.replace(month=today.month, year=today.year)
         self.set_date()
 
-    def on_button5_clicked(self, widget):
-        self.hide()
-        self.destroy()
-
 
 if __name__ == "__main__":
+    from comun import CSS_FILE
+    from utils import load_css
+    load_css(CSS_FILE)
     p = CalendarWindow()
-    p.show_all()
-    Gtk.main()
+    p.run()
     exit(0)

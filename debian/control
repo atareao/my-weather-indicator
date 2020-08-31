@@ -22,9 +22,7 @@ Depends: ${misc:Depends}, ${python:Depends},
     python3-cairo,
     python3-lxml,
     python3-dateutil,
-    python3-requests,
-    geoclue-hostip,
-    geoclue-ubuntu-geoip
+    python3-requests
 Description: Get weather information for your town with My-Weather-Indicator
  My-Weather-Indicator is an an application especially designed for Ubuntu,
  you will be informed of current weather and the weather forecast.

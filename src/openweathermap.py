@@ -28,51 +28,38 @@ except Exception as e:
     exit(-1)
 from gi.repository import Gtk
 from gi.repository import WebKit2
+from basedialog import BaseDialog
 from json import loads as from_json
+from comun import _
 import comun
 
 
-class ForecastMap(Gtk.Dialog):
+class ForecastMap(BaseDialog):
     def __init__(self, lat=39.36873, lon=-2.417274645879):
-        self.images = {}
-        self.echo = True
-        Gtk.Dialog.__init__(self)
-        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
-        self.set_title(comun.APP)
-        self.set_default_size(900, 600)
-        self.set_icon_from_file(comun.ICON)
-        self.connect('destroy', self.close_application)
-        #
-        vbox = Gtk.VBox(spacing=5)
-        self.get_content_area().add(vbox)
-        hbox1 = Gtk.HBox()
-        vbox.pack_start(hbox1, True, True, 0)
-        self.scrolledwindow1 = Gtk.ScrolledWindow()
-        self.scrolledwindow1.set_policy(
-            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        self.scrolledwindow1.set_shadow_type(Gtk.ShadowType.IN)
-        hbox1.pack_start(self.scrolledwindow1, True, True, 0)
-        self.viewer = WebKit2.WebView()
-        self.scrolledwindow1.add(self.viewer)
-        self.scrolledwindow1.set_size_request(900, 600)
-        self.viewer.connect('load-changed', self.load_changed)
-        self.viewer.load_uri('file://' + comun.HTML)
         self.lat = lat
         self.lon = lon
+        BaseDialog.__init__(self, _('Forecast'), ok_button=False,
+                            cancel_button=False)
+
+
+    def init_ui(self):
+        BaseDialog.init_ui(self)
+        scrolledwindow = Gtk.ScrolledWindow()
+        scrolledwindow.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        self.grid.attach(scrolledwindow, 0, 0, 1, 1)
+        self.viewer = WebKit2.WebView()
+        scrolledwindow.add(self.viewer)
+        scrolledwindow.set_size_request(900, 600)
+        self.viewer.connect('load-changed', self.load_changed)
+        self.viewer.load_uri('file://' + comun.HTML)
         self.set_focus(self.viewer)
-        self.show_all()
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-        self.show_all()
-        self.run()
-        self.destroy() 
 
     def load_changed(self, widget, load_event):
         if load_event == WebKit2.LoadEvent.FINISHED:
             self.web_send('setPosition({}, {})'.format(self.lat, self.lon)) 
 
     def web_send(self, msg):
-        print('send: %s' % (msg))
         self.viewer.run_javascript(msg, None, None, None)
         while Gtk.events_pending():
             Gtk.main_iteration()
@@ -83,3 +70,4 @@ class ForecastMap(Gtk.Dialog):
 
 if __name__ == '__main__':
     forecastmap = ForecastMap(39.36873, -2.417274645879)
+    forecastmap.run()

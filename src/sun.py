@@ -27,7 +27,7 @@ Solar flux, equation of time and import of python library
 2007-12-12 - v1.5 by Miguel Tremblay: bug fix to solar flux calculation
 """
 
-import common_functions as cf
+import utils as cf
 import math
 from math import pi
 import calendar
