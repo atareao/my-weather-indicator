@@ -34,8 +34,10 @@ except ValueError as e:
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
+from gi.repository import GLib
 import os
 import datetime
+import calendar
 import comun
 from comun import _
 from basedialog import BaseDialog
@@ -177,7 +179,7 @@ class CalendarWindow(BaseDialog):
                 self.days[contador].set_style('mcw_other_month')
             elif tadate.date() == datetime.datetime.today().date():
                 self.days[contador].set_style('mcw_today')
-                self.days[contador].set_tooltip_text(_('Today'))
+
             else:
                 self.days[contador].set_style('mcw_current_month')
             if tadate.month == adate.month:
@@ -198,36 +200,50 @@ class CalendarWindow(BaseDialog):
         self.days[min['position']].set_tooltip_text(_('New moon'))
 
     def on_button0_clicked(self, widget):
+        day = self.adate.day
+        month = self.adate.month
         year = self.adate.year - 1
         if year < 1:
             year = 1
-        self.adate = self.adate.replace(year=year)
-        self.set_date()
+        fd, ld = calendar.monthrange(year, month)
+        day = fg if day < fd else ld if day > ld else day
+        self.adate = self.adate.replace(day=day, month=month, year=year)
+        GLib.idle_add(self.set_date)
+        #self.set_date()
 
     def on_button1_clicked(self, widget):
+        day = self.adate.day
         month = self.adate.month - 1
+        year = self.adate.year
         if month < 1:
             month = 12
             year = self.adate.year - 1
             if year < 1:
                 year = 1
-            self.adate = self.adate.replace(month=month, year=year)
-        else:
-            self.adate = self.adate.replace(month=month)
+        fd, ld = calendar.monthrange(year, month)
+        day = fg if day < fd else ld if day > ld else day
+        self.adate = self.adate.replace(day=day, month=month, year=year)
         self.set_date()
 
     def on_button2_clicked(self, widget):
+        day = self.adate.day
         month = self.adate.month + 1
+        year = self.adate.year
         if month > 12:
             month = 1
             year = self.adate.year + 1
-            self.adate = self.adate.replace(month=month, year=year)
-        else:
-            self.adate = self.adate.replace(month=month)
+        fd, ld = calendar.monthrange(year, month)
+        day = fg if day < fd else ld if day > ld else day
+        self.adate = self.adate.replace(day=day, month=month, year=year)
         self.set_date()
 
     def on_button3_clicked(self, widget):
-        self.adate = self.adate.replace(year=(self.adate.year + 1))
+        day = self.adate.day
+        month = self.adate.month
+        year = self.adate.year + 1
+        fd, ld = calendar.monthrange(year, month)
+        day = fg if day < fd else ld if day > ld else day
+        self.adate = self.adate.replace(day=day, month=month, year=year)
         self.set_date()
 
     def on_button4_clicked(self, widget):
