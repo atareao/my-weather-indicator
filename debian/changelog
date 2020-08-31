@@ -1,8 +1,9 @@
 my-weather-indicator (0.9.5-0extras20.04.01) focal; urgency=medium
 
   * updated dialogs
+  * clean install file
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 31 Aug 2020 07:49:08 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 31 Aug 2020 10:12:29 +0200
 
 my-weather-indicator (0.9.4-0extras19.10.10) eoan; urgency=medium
 
