@@ -1,10 +1,10 @@
 #
-#: src/myweatherindicator.py:520 src/myweatherindicator.py:570
+#: src/myweatherindicator.py:522 src/myweatherindicator.py:572
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 10:13+0200\n"
+"POT-Creation-Date: 2020-09-01 13:58+0200\n"
 "PO-Revision-Date: 2013-10-28 19:51+0000\n"
 "Last-Translator: vincent descotes <vincenzo4024@gmail.com>\n"
 "Language-Team: French\n"
@@ -15,1201 +15,1201 @@ msgstr ""
 "X-Generator: Launchpad (build 17082)\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:00+0000\n"
 
-#: src/whereami.py:61
+#: src/whereami.py:60
 msgid "Where Am I"
 msgstr "Où suis-je ?"
 
-#: src/whereami.py:79
+#: src/whereami.py:78
 msgid "Search location"
 msgstr "Recherche de lieu"
 
-#: src/whereami.py:81
+#: src/whereami.py:80
 msgid "Clear location"
 msgstr "Effacer le lieu"
 
-#: src/whereami.py:82
+#: src/whereami.py:81
 msgid "Input the name of your city"
 msgstr "Saisir le nom de votre ville"
 
-#: src/whereami.py:87
+#: src/whereami.py:86
 msgid "Search"
 msgstr "Rechercher"
 
-#: src/whereami.py:91
+#: src/whereami.py:90
 msgid "Find me"
 msgstr "Trouvez-moi"
 
-#: src/whereami.py:94
+#: src/whereami.py:93
 #, fuzzy
 msgid "Locations found"
 msgstr "Lieux trouvés"
 
-#: src/whereami.py:115
+#: src/whereami.py:114
 msgid "City"
 msgstr "Ville"
 
-#: src/whereami.py:119
+#: src/whereami.py:118
 msgid "State"
 msgstr "État"
 
-#: src/whereami.py:123
+#: src/whereami.py:122
 msgid "Country"
 msgstr "Pays"
 
-#: src/preferences.py:70 src/myweatherindicator.py:585
+#: src/preferences.py:76 src/myweatherindicator.py:587
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/preferences.py:87
+#: src/preferences.py:93
 msgid "Main Location"
 msgstr "Emplacement principal"
 
-#: src/preferences.py:88 src/preferences.py:184 src/preferences.py:478
+#: src/preferences.py:94 src/preferences.py:190 src/preferences.py:484
 msgid "General options"
 msgstr "Options générales"
 
-#: src/preferences.py:92 src/preferences.py:188
+#: src/preferences.py:98 src/preferences.py:194
 #, fuzzy
 msgid "Show"
 msgstr "Averses"
 
-#: src/preferences.py:99
+#: src/preferences.py:105
 msgid "Auto Location"
 msgstr "Emplacement automatique"
 
-#: src/preferences.py:105 src/preferences.py:194
+#: src/preferences.py:111 src/preferences.py:200
 msgid "Locality"
 msgstr "Lieu"
 
-#: src/preferences.py:117 src/preferences.py:205
+#: src/preferences.py:123 src/preferences.py:211
 msgid "Search Location"
 msgstr "Rechercher un emplacement"
 
-#: src/preferences.py:124 src/preferences.py:212
+#: src/preferences.py:130 src/preferences.py:218
 msgid "Show temperature"
 msgstr "Afficher la température"
 
-#: src/preferences.py:130 src/preferences.py:218
+#: src/preferences.py:136 src/preferences.py:224
 msgid "Show notifications"
 msgstr "Afficher les notifications"
 
-#: src/preferences.py:135 src/preferences.py:223
+#: src/preferences.py:141 src/preferences.py:229
 #, fuzzy
 msgid "Widget options"
 msgstr "Widget au dessus"
 
-#: src/preferences.py:139 src/preferences.py:227
+#: src/preferences.py:145 src/preferences.py:233
 msgid "Show widget"
 msgstr "Afficher l'animation"
 
-#: src/preferences.py:146 src/preferences.py:234
+#: src/preferences.py:152 src/preferences.py:240
 msgid "Hide indicator when show widget"
 msgstr "Masquer l'indicateur si l'animation est affichée"
 
-#: src/preferences.py:152 src/preferences.py:240
+#: src/preferences.py:158 src/preferences.py:246
 msgid "Widget on top"
 msgstr "Widget au dessus"
 
-#: src/preferences.py:158 src/preferences.py:246
+#: src/preferences.py:164 src/preferences.py:252
 msgid "Show in taskbar"
 msgstr "Afficher dans la barre des tâches"
 
-#: src/preferences.py:164 src/preferences.py:252
+#: src/preferences.py:170 src/preferences.py:258
 msgid "On all desktops"
 msgstr ""
 
-#: src/preferences.py:183
+#: src/preferences.py:189
 msgid "Second Location"
 msgstr "Emplacement secondaire"
 
-#: src/preferences.py:271
+#: src/preferences.py:277
 msgid "Weather Services"
 msgstr "Services météorologiques"
 
-#: src/preferences.py:300
+#: src/preferences.py:306
 msgid "Input World Weather Online key"
 msgstr "Entrer la clé de World Weather Online"
 
-#: src/preferences.py:302 src/preferences.py:325
+#: src/preferences.py:308 src/preferences.py:331
 msgid "Activate"
 msgstr "Activer"
 
-#: src/preferences.py:304
+#: src/preferences.py:310
 msgid "Click to activate World Weather Online"
 msgstr "Cliquer pour activer World Weather Online"
 
-#: src/preferences.py:323
+#: src/preferences.py:329
 msgid "Input Weather Underground key"
 msgstr "Entrer la clé de Weather Underground"
 
-#: src/preferences.py:327
+#: src/preferences.py:333
 msgid "Click to activate Weather Underground"
 msgstr "Cliquer pour activer Weather Underground"
 
-#: src/preferences.py:337
+#: src/preferences.py:343
 msgid "Units"
 msgstr "Unités"
 
-#: src/preferences.py:340 src/myweatherindicator.py:469
-#: src/myweatherindicator.py:682 src/myweatherindicator.py:790
+#: src/preferences.py:346 src/myweatherindicator.py:471
+#: src/myweatherindicator.py:684 src/myweatherindicator.py:792
 msgid "Temperature"
 msgstr "Température"
 
-#: src/preferences.py:347
+#: src/preferences.py:353
 msgid "Celsius"
 msgstr "Celsius"
 
-#: src/preferences.py:348
+#: src/preferences.py:354
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: src/preferences.py:349
+#: src/preferences.py:355
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: src/preferences.py:359 src/myweatherindicator.py:474
-#: src/myweatherindicator.py:748
+#: src/preferences.py:365 src/myweatherindicator.py:476
+#: src/myweatherindicator.py:750
 msgid "Pressure"
 msgstr "Pression"
 
-#: src/preferences.py:366
+#: src/preferences.py:372
 msgid "Millibar"
 msgstr "Millibar"
 
-#: src/preferences.py:367
+#: src/preferences.py:373
 msgid "Inches of mercury"
 msgstr "Pouces de mercure"
 
-#: src/preferences.py:368
+#: src/preferences.py:374
 msgid "Millimeters of mercury"
 msgstr "Millimètres de mercure"
 
-#: src/preferences.py:378 src/myweatherindicator.py:500
-#: src/myweatherindicator.py:753
+#: src/preferences.py:384 src/myweatherindicator.py:502
+#: src/myweatherindicator.py:755
 msgid "Visibility"
 msgstr "Visibilité"
 
-#: src/preferences.py:385
+#: src/preferences.py:391
 msgid "mile"
 msgstr "mile"
 
-#: src/preferences.py:386
+#: src/preferences.py:392
 msgid "kilometer"
 msgstr "kilomètre"
 
-#: src/preferences.py:396
+#: src/preferences.py:402
 msgid "Wind velocity"
 msgstr "Vitesse du vent"
 
-#: src/preferences.py:403
+#: src/preferences.py:409
 msgid "Beaufort"
 msgstr "Beaufort"
 
-#: src/preferences.py:404 src/weatherservice.py:751
+#: src/preferences.py:410 src/weatherservice.py:755
 msgid "ft/s"
 msgstr "ft/s"
 
-#: src/preferences.py:405 src/weatherservice.py:750
+#: src/preferences.py:411 src/weatherservice.py:754
 msgid "km/h"
 msgstr "km/h"
 
-#: src/preferences.py:406 src/weatherservice.py:751
+#: src/preferences.py:412 src/weatherservice.py:755
 msgid "knots"
 msgstr "nœuds"
 
-#: src/preferences.py:407 src/weatherservice.py:750
+#: src/preferences.py:413 src/weatherservice.py:754
 msgid "m/s"
 msgstr "m/s"
 
-#: src/preferences.py:408 src/weatherservice.py:750
+#: src/preferences.py:414 src/weatherservice.py:754
 msgid "mph"
 msgstr "miles/h"
 
-#: src/preferences.py:418
+#: src/preferences.py:424
 msgid "Rain Gauge"
 msgstr "Pluviomètre"
 
-#: src/preferences.py:425 src/preferences.py:444
+#: src/preferences.py:431 src/preferences.py:450
 msgid "Inches"
 msgstr "Pouces"
 
-#: src/preferences.py:426 src/preferences.py:445
+#: src/preferences.py:432 src/preferences.py:451
 msgid "Centimeters"
 msgstr "Centimètres"
 
-#: src/preferences.py:427 src/preferences.py:446
+#: src/preferences.py:433 src/preferences.py:452
 msgid "Millimeters"
 msgstr "Millimètres"
 
-#: src/preferences.py:437
+#: src/preferences.py:443
 msgid "Snow Gauge"
 msgstr "Nivomètre"
 
-#: src/preferences.py:456
+#: src/preferences.py:462
 msgid "Time Format"
 msgstr "Format de l'heure"
 
-#: src/preferences.py:463
+#: src/preferences.py:469
 msgid "24 h"
 msgstr "24 h"
 
-#: src/preferences.py:464
+#: src/preferences.py:470
 msgid "AM/PM"
 msgstr "AM/PM"
 
-#: src/preferences.py:481
+#: src/preferences.py:487
 msgid "Autostart"
 msgstr "Démarrage automatique"
 
-#: src/preferences.py:486
+#: src/preferences.py:492
 msgid "Refresh frequency"
 msgstr "Fréquence d'actualisation"
 
-#: src/preferences.py:493 src/preferences.py:494
+#: src/preferences.py:499 src/preferences.py:500
 msgid "minutes"
 msgstr "minutes"
 
-#: src/preferences.py:495
+#: src/preferences.py:501
 msgid "hour"
 msgstr "heure"
 
-#: src/preferences.py:496 src/preferences.py:497 src/preferences.py:498
-#: src/preferences.py:499 src/preferences.py:500
+#: src/preferences.py:502 src/preferences.py:503 src/preferences.py:504
+#: src/preferences.py:505 src/preferences.py:506
 msgid "hours"
 msgstr "heures"
 
-#: src/preferences.py:510
+#: src/preferences.py:516
 msgid "Select icon theme"
 msgstr "Choisir un thème d'icônes"
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Monday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Tuesday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Wednesday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Thursday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Friday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Saturday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Sunday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:59
+#: src/mooncalendarwindow.py:57
 #, fuzzy
 msgid "Moon phases"
 msgstr "Phase lunaire"
 
-#: src/mooncalendarwindow.py:74
+#: src/mooncalendarwindow.py:72
 msgid "One year less"
 msgstr ""
 
-#: src/mooncalendarwindow.py:83
+#: src/mooncalendarwindow.py:81
 msgid "One month less"
 msgstr ""
 
-#: src/mooncalendarwindow.py:92 src/mooncalendarwindow.py:180
+#: src/mooncalendarwindow.py:90
 msgid "Today"
 msgstr ""
 
-#: src/mooncalendarwindow.py:106
+#: src/mooncalendarwindow.py:104
 msgid "One year more"
 msgstr ""
 
-#: src/mooncalendarwindow.py:115
+#: src/mooncalendarwindow.py:113
 msgid "One month more"
 msgstr ""
 
-#: src/mooncalendarwindow.py:196
+#: src/mooncalendarwindow.py:193
 #, fuzzy
 msgid "Full moon"
 msgstr "Pleine lune"
 
-#: src/mooncalendarwindow.py:198
+#: src/mooncalendarwindow.py:195
 #, fuzzy
 msgid "New moon"
 msgstr "Nouvelle lune"
 
 #: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
-#: src/worldweatheronlineapi.py:113 src/weatherservice.py:847
-#: src/weatherservice.py:848 src/weatherservice.py:849
-#: src/weatherservice.py:850 src/weatherservice.py:851
+#: src/worldweatheronlineapi.py:113 src/weatherservice.py:851
+#: src/weatherservice.py:852 src/weatherservice.py:853
 #: src/weatherservice.py:854 src/weatherservice.py:855
-#: src/weatherservice.py:857 src/weatherservice.py:859
-#: src/weatherservice.py:860 src/weatherservice.py:861
-#: src/weatherservice.py:862 src/weatherservice.py:863
-#: src/weatherservice.py:864 src/weatherservice.py:951
-#: src/weatherservice.py:952 src/weatherservice.py:953
-#: src/weatherservice.py:955 src/weatherservice.py:956
-#: src/weatherservice.py:957 src/weatherservice.py:958
+#: src/weatherservice.py:858 src/weatherservice.py:859
+#: src/weatherservice.py:861 src/weatherservice.py:863
+#: src/weatherservice.py:864 src/weatherservice.py:865
+#: src/weatherservice.py:866 src/weatherservice.py:867
+#: src/weatherservice.py:868 src/weatherservice.py:955
+#: src/weatherservice.py:956 src/weatherservice.py:957
 #: src/weatherservice.py:959 src/weatherservice.py:960
 #: src/weatherservice.py:961 src/weatherservice.py:962
-#: src/weatherservice.py:964 src/weatherservice.py:965
-#: src/weatherservice.py:966 src/weatherservice.py:968
-#: src/weatherservice.py:969 src/wundergroundapi.py:43
+#: src/weatherservice.py:963 src/weatherservice.py:964
+#: src/weatherservice.py:965 src/weatherservice.py:966
+#: src/weatherservice.py:968 src/weatherservice.py:969
+#: src/weatherservice.py:970 src/weatherservice.py:972
+#: src/weatherservice.py:973 src/wundergroundapi.py:43
 #: src/wundergroundapi.py:51 src/wundergroundapi.py:62
 msgid "N/A"
 msgstr "Indisponible"
 
-#: src/weatherservice.py:36
+#: src/weatherservice.py:40
 msgid "Blowing sand"
 msgstr "Vent de sable"
 
-#: src/weatherservice.py:44
+#: src/weatherservice.py:48
 msgid "Blizzard"
 msgstr "Blizzard"
 
-#: src/weatherservice.py:52
+#: src/weatherservice.py:56
 msgid "Blowing snow"
 msgstr "Poudrerie élevée"
 
-#: src/weatherservice.py:60
+#: src/weatherservice.py:64
 msgid "Blowing widespread dust"
 msgstr "Tempête de poussière"
 
-#: src/weatherservice.py:65
+#: src/weatherservice.py:69
 msgid "Blustery"
 msgstr ""
 
-#: src/weatherservice.py:70
+#: src/weatherservice.py:74
 msgid "Chance of a thunderstorm"
 msgstr "Risque d'orage"
 
-#: src/weatherservice.py:78
+#: src/weatherservice.py:82
 msgid "Chance of flurries"
 msgstr "Possibilité de faible neige"
 
-#: src/weatherservice.py:85
+#: src/weatherservice.py:89
 msgid "Chance of rain"
 msgstr "Possibilité de pluie"
 
-#: src/weatherservice.py:93
+#: src/weatherservice.py:97
 msgid "Chance of showers"
 msgstr "Possibilité d'averses"
 
-#: src/weatherservice.py:100
+#: src/weatherservice.py:104
 msgid "Chance of snow"
 msgstr "Possibilité de neige"
 
-#: src/weatherservice.py:102
+#: src/weatherservice.py:106
 msgid "Chance of storm"
 msgstr "Possibilité de tempête"
 
-#: src/weatherservice.py:104
+#: src/weatherservice.py:108
 msgid "Chance of thunderstorms"
 msgstr "Possibilité d'orages"
 
-#: src/weatherservice.py:106
+#: src/weatherservice.py:110
 msgid "Chance of tstorm"
 msgstr "Possibilité d'orages"
 
-#: src/weatherservice.py:108
+#: src/weatherservice.py:112
 msgid "Clear"
 msgstr "Dégagé"
 
-#: src/weatherservice.py:110
+#: src/weatherservice.py:114
 msgid "Cloudy"
 msgstr "Nuageux"
 
-#: src/weatherservice.py:112
+#: src/weatherservice.py:116
 msgid "Cold"
 msgstr "Froid"
 
-#: src/weatherservice.py:113
+#: src/weatherservice.py:117
 msgid "Drizzle"
 msgstr "Bruine"
 
-#: src/weatherservice.py:115
+#: src/weatherservice.py:119
 msgid "Drizzle rain"
 msgstr "Bruine"
 
-#: src/weatherservice.py:117
+#: src/weatherservice.py:121
 msgid "Dust whirls"
 msgstr "Tourbillons de poussière"
 
-#: src/weatherservice.py:119
+#: src/weatherservice.py:123
 msgid "Dust"
 msgstr "Poussière"
 
-#: src/weatherservice.py:121
+#: src/weatherservice.py:125
 msgid "Extreme rain"
 msgstr "Pluie torrentielle"
 
-#: src/weatherservice.py:123
+#: src/weatherservice.py:127
 msgid "Fair"
 msgstr "Beau"
 
-#: src/weatherservice.py:125
+#: src/weatherservice.py:129
 msgid "Flurries"
 msgstr "Flocons"
 
-#: src/weatherservice.py:127
+#: src/weatherservice.py:131
 msgid "Fog patches"
 msgstr "Bancs de brouillard"
 
-#: src/weatherservice.py:129
+#: src/weatherservice.py:133
 msgid "Fog"
 msgstr "Brouillard"
 
-#: src/weatherservice.py:131
+#: src/weatherservice.py:135
 msgid "Foggy"
 msgstr "Brumeux"
 
-#: src/weatherservice.py:133 src/weatherservice.py:135
+#: src/weatherservice.py:137 src/weatherservice.py:139
 msgid "Freezing drizzle"
 msgstr "Bruine verglaçante"
 
-#: src/weatherservice.py:137 src/weatherservice.py:139
+#: src/weatherservice.py:141 src/weatherservice.py:143
 msgid "Freezing fog"
 msgstr "Brouillard givrant"
 
-#: src/weatherservice.py:141
+#: src/weatherservice.py:145
 msgid "Freezing rain"
 msgstr "Pluie verglaçante"
 
-#: src/weatherservice.py:143
+#: src/weatherservice.py:147
 msgid "Funnel cloud"
 msgstr "Trombe"
 
-#: src/weatherservice.py:145
+#: src/weatherservice.py:149
 msgid "Hail showers"
 msgstr "Averses de grêle"
 
-#: src/weatherservice.py:147
+#: src/weatherservice.py:151
 msgid "Hail"
 msgstr "Grêle"
 
-#: src/weatherservice.py:148
+#: src/weatherservice.py:152
 msgid "Haze"
 msgstr "Brume sèche"
 
-#: src/weatherservice.py:150
+#: src/weatherservice.py:154
 msgid "Heavy freezing drizzle"
 msgstr "Forte bruine verglaçante"
 
-#: src/weatherservice.py:152 src/weatherservice.py:180
+#: src/weatherservice.py:156 src/weatherservice.py:184
 #, fuzzy
 msgid "Heavy drizzle"
 msgstr "Forte bruine verglaçante"
 
-#: src/weatherservice.py:154 src/weatherservice.py:182
+#: src/weatherservice.py:158 src/weatherservice.py:186
 #, fuzzy
 msgid "Heavy drizzle rain"
 msgstr "Bruine très dense"
 
-#: src/weatherservice.py:156 src/weatherservice.py:162
-#: src/weatherservice.py:184
+#: src/weatherservice.py:160 src/weatherservice.py:166
+#: src/weatherservice.py:188
 msgid "Heavy rain"
 msgstr "Fortes pluies"
 
-#: src/weatherservice.py:158 src/weatherservice.py:186
+#: src/weatherservice.py:162 src/weatherservice.py:190
 #, fuzzy
 msgid "Heavy shower rain"
 msgstr "Fortes averses"
 
-#: src/weatherservice.py:160
+#: src/weatherservice.py:164
 msgid "Heavy rain at times"
 msgstr "Fortes pluies intermitentes"
 
-#: src/weatherservice.py:164
+#: src/weatherservice.py:168
 msgid "Heavy snow"
 msgstr "Fortes chutes de neige"
 
-#: src/weatherservice.py:166
+#: src/weatherservice.py:170
 msgid "Heavy thunderstorm"
 msgstr "Forts orages"
 
-#: src/weatherservice.py:168
+#: src/weatherservice.py:172
 msgid "Hot"
 msgstr "Chaud"
 
-#: src/weatherservice.py:170 src/weatherservice.py:780
+#: src/weatherservice.py:174 src/weatherservice.py:784
 msgid "Hurricane"
 msgstr "Ouragan"
 
-#: src/weatherservice.py:172
+#: src/weatherservice.py:176
 msgid "Ice crystals"
 msgstr "Cristaux de glace"
 
-#: src/weatherservice.py:174
+#: src/weatherservice.py:178
 msgid "Ice pellet showers"
 msgstr "Averses de grésil"
 
-#: src/weatherservice.py:176 src/weatherservice.py:178
+#: src/weatherservice.py:180 src/weatherservice.py:182
 msgid "Ice pellets"
 msgstr "Grésil"
 
-#: src/weatherservice.py:179
+#: src/weatherservice.py:183
 msgid "Icy"
 msgstr "Glacial"
 
-#: src/weatherservice.py:188
+#: src/weatherservice.py:192
 msgid "Isolated showers"
 msgstr "Averses isolées"
 
-#: src/weatherservice.py:190
+#: src/weatherservice.py:194
 #, fuzzy
 msgid "Isolated thundershowers"
 msgstr "Orages isolés"
 
-#: src/weatherservice.py:192
+#: src/weatherservice.py:196
 msgid "Isolated thunderstorms"
 msgstr "Orages isolés"
 
-#: src/weatherservice.py:194 src/weatherservice.py:198
+#: src/weatherservice.py:198 src/weatherservice.py:202
 msgid "Light drizzle"
 msgstr "Bruine légère"
 
-#: src/weatherservice.py:196
+#: src/weatherservice.py:200
 msgid "Light freezing rain"
 msgstr "Légère pluie verglaçante"
 
-#: src/weatherservice.py:200
+#: src/weatherservice.py:204
 #, fuzzy
 msgid "Light drizzle rain"
 msgstr "Bruine légère"
 
-#: src/weatherservice.py:202
+#: src/weatherservice.py:206
 #, fuzzy
 msgid "Light shower rain"
 msgstr "Légères averses"
 
-#: src/weatherservice.py:204
+#: src/weatherservice.py:208
 msgid "Light rain shower"
 msgstr "Petites averses"
 
-#: src/weatherservice.py:206
+#: src/weatherservice.py:210
 msgid "Light rain"
 msgstr "Pluie légère"
 
-#: src/weatherservice.py:208
+#: src/weatherservice.py:212
 msgid "Light showers of ice pellets"
 msgstr "Légères averses de grêle"
 
-#: src/weatherservice.py:210
+#: src/weatherservice.py:214
 msgid "Light sleet showers"
 msgstr "Légères averses de grésil"
 
-#: src/weatherservice.py:212
+#: src/weatherservice.py:216
 msgid "Light sleet"
 msgstr "Légères chutes de grésil"
 
-#: src/weatherservice.py:214
+#: src/weatherservice.py:218
 msgid "Light snow showers"
 msgstr "Légères averses de neige"
 
-#: src/weatherservice.py:216
+#: src/weatherservice.py:220
 msgid "Light snow"
 msgstr "Légères chutes de neige"
 
-#: src/weatherservice.py:218
+#: src/weatherservice.py:222
 msgid "Light thunderstorm"
 msgstr "Léger orage"
 
-#: src/weatherservice.py:220
+#: src/weatherservice.py:224
 msgid "Low drifting sand"
 msgstr "Nuage de sable dérivant"
 
-#: src/weatherservice.py:222
+#: src/weatherservice.py:226
 msgid "Low drifting snow"
 msgstr "Nuage de neige dérivant"
 
-#: src/weatherservice.py:224
+#: src/weatherservice.py:228
 msgid "Low drifting widespread dust"
 msgstr "Nuage de poussière dérivant"
 
-#: src/weatherservice.py:226
+#: src/weatherservice.py:230
 msgid "Mist"
 msgstr "Brume"
 
-#: src/weatherservice.py:228
+#: src/weatherservice.py:232
 msgid "Mixed rain and snow"
 msgstr "Mélange de pluie et de neige"
 
-#: src/weatherservice.py:230
+#: src/weatherservice.py:234
 msgid "Mixed rain and sleet"
 msgstr "Pluie et neige fondante"
 
-#: src/weatherservice.py:232
+#: src/weatherservice.py:236
 msgid "Mixed snow and sleet"
 msgstr "Neige et neige fondante"
 
-#: src/weatherservice.py:234
+#: src/weatherservice.py:238
 msgid "Moderate or heavy freezing rain"
 msgstr "Pluie verglaçante, forte ou modérée"
 
-#: src/weatherservice.py:236
+#: src/weatherservice.py:240
 msgid "Moderate or heavy rain in area with thunder"
 msgstr "Pluie d'orage, forte ou modérée"
 
-#: src/weatherservice.py:238
+#: src/weatherservice.py:242
 msgid "Moderate or heavy rain shower"
 msgstr "Averses, fortes ou modérées"
 
-#: src/weatherservice.py:240
+#: src/weatherservice.py:244
 msgid "Moderate or heavy showers of ice pellets"
 msgstr "Averses de grêle, fortes ou modérées"
 
-#: src/weatherservice.py:242
+#: src/weatherservice.py:246
 msgid "Moderate or heavy sleet showers"
 msgstr "Averses de grésil, fortes ou modérées"
 
-#: src/weatherservice.py:244
+#: src/weatherservice.py:248
 msgid "Moderate or heavy sleet"
 msgstr "Grésil, fort ou modéré"
 
-#: src/weatherservice.py:246
+#: src/weatherservice.py:250
 msgid "Moderate or heavy snow in area with thunder"
 msgstr "Chutes de neige d'orage, fortes ou modérées"
 
-#: src/weatherservice.py:248
+#: src/weatherservice.py:252
 msgid "Moderate or heavy snow showers"
 msgstr "Averses de neige, fortes ou modérées"
 
-#: src/weatherservice.py:250
+#: src/weatherservice.py:254
 msgid "Moderate rain at times"
 msgstr "Pluies modérées éparses"
 
-#: src/weatherservice.py:252
+#: src/weatherservice.py:256
 msgid "Moderate rain"
 msgstr "Pluie modérée"
 
-#: src/weatherservice.py:254
+#: src/weatherservice.py:258
 msgid "Moderate snow"
 msgstr "Chutes de neige modérées"
 
-#: src/weatherservice.py:256
+#: src/weatherservice.py:260
 msgid "Mostly cloudy"
 msgstr "Très nuageux"
 
-#: src/weatherservice.py:258
+#: src/weatherservice.py:262
 msgid "Mostly sunny"
 msgstr "Très ensoleillé"
 
-#: src/weatherservice.py:260 src/weatherservice.py:843
+#: src/weatherservice.py:264 src/weatherservice.py:847
 msgid "Not available"
 msgstr "Indisponible"
 
-#: src/weatherservice.py:262
+#: src/weatherservice.py:266
 msgid "Overcast"
 msgstr "Couvert"
 
-#: src/weatherservice.py:264
+#: src/weatherservice.py:268
 msgid "Partial fog"
 msgstr "Brouillard intermittent"
 
-#: src/weatherservice.py:266
+#: src/weatherservice.py:270
 msgid "Partly cloudy"
 msgstr "Partiellement nuageux"
 
-#: src/weatherservice.py:268
+#: src/weatherservice.py:272
 msgid "Partly sunny"
 msgstr "Partiellement ensoleillé"
 
-#: src/weatherservice.py:270
+#: src/weatherservice.py:274
 msgid "Patches of fog"
 msgstr "Nappes de brouillard"
 
-#: src/weatherservice.py:272
+#: src/weatherservice.py:276
 msgid "Patchy freezing drizzle nearby"
 msgstr "Bruine givrante localisée à proximité"
 
-#: src/weatherservice.py:274
+#: src/weatherservice.py:278
 msgid "Patchy heavy snow"
 msgstr "Fortes chutes de neige localisées"
 
-#: src/weatherservice.py:276
+#: src/weatherservice.py:280
 msgid "Patchy light drizzle"
 msgstr "Légère bruine localisée"
 
-#: src/weatherservice.py:278
+#: src/weatherservice.py:282
 msgid "Patchy light rain in area with thunder"
 msgstr "Lègère pluie d'orage localisée"
 
-#: src/weatherservice.py:280
+#: src/weatherservice.py:284
 msgid "Patchy light rain"
 msgstr "Légère pluie localisée"
 
-#: src/weatherservice.py:282
+#: src/weatherservice.py:286
 msgid "Patchy light snow in area with thunder"
 msgstr "Faible chutes de neige localisées, accompagnées d'orage"
 
-#: src/weatherservice.py:284
+#: src/weatherservice.py:288
 msgid "Patchy light snow"
 msgstr "Faible chutes de neige localisées"
 
-#: src/weatherservice.py:286
+#: src/weatherservice.py:290
 msgid "Patchy moderate snow"
 msgstr "Chutes de neige localisées"
 
-#: src/weatherservice.py:288
+#: src/weatherservice.py:292
 msgid "Patchy rain nearby"
 msgstr "Pluie localisée à proximité"
 
-#: src/weatherservice.py:290
+#: src/weatherservice.py:294
 msgid "Patchy sleet nearby"
 msgstr "Chutes de grésil localisées à proximité"
 
-#: src/weatherservice.py:292
+#: src/weatherservice.py:296
 msgid "Patchy snow nearby"
 msgstr "Chutes de neige localisées à proximité"
 
-#: src/weatherservice.py:294
+#: src/weatherservice.py:298
 msgid "Ragged thunderstorm"
 msgstr "Orages éparts"
 
-#: src/weatherservice.py:296
+#: src/weatherservice.py:300
 msgid "Rain and snow"
 msgstr "Pluie et neige"
 
-#: src/weatherservice.py:298
+#: src/weatherservice.py:302
 msgid "Rain mist"
 msgstr "Brume"
 
-#: src/weatherservice.py:300
+#: src/weatherservice.py:304
 msgid "Rain showers"
 msgstr "Averses de pluie"
 
-#: src/weatherservice.py:302
+#: src/weatherservice.py:306
 msgid "Rain"
 msgstr "Pluie"
 
-#: src/weatherservice.py:303
+#: src/weatherservice.py:307
 msgid "Sand"
 msgstr "Sable"
 
-#: src/weatherservice.py:305
+#: src/weatherservice.py:309
 msgid "Sandstorm"
 msgstr "Tempête de sable"
 
-#: src/weatherservice.py:307
+#: src/weatherservice.py:311
 msgid "Scattered clouds"
 msgstr "Nuages épars"
 
-#: src/weatherservice.py:309
+#: src/weatherservice.py:313
 msgid "Scattered showers"
 msgstr "Averses éparses"
 
-#: src/weatherservice.py:311
+#: src/weatherservice.py:315
 msgid "Scattered thunderstorms"
 msgstr "Orages épars"
 
-#: src/weatherservice.py:313
+#: src/weatherservice.py:317
 msgid "Shallow fog"
 msgstr "Brouillard superficiel"
 
-#: src/weatherservice.py:315
+#: src/weatherservice.py:319
 msgid "Showers"
 msgstr "Averses"
 
-#: src/weatherservice.py:316
+#: src/weatherservice.py:320
 msgid "Shower drizzle"
 msgstr "Averse de bruine"
 
-#: src/weatherservice.py:318
+#: src/weatherservice.py:322
 msgid "Shower rain"
 msgstr "Averse"
 
-#: src/weatherservice.py:320
+#: src/weatherservice.py:324
 msgid "Shower snow"
 msgstr "Averse de neige"
 
-#: src/weatherservice.py:322
+#: src/weatherservice.py:326
 msgid "Sleet"
 msgstr "Neige fondue"
 
-#: src/weatherservice.py:324
+#: src/weatherservice.py:328
 msgid "Small hail showers"
 msgstr "Averses de grésil"
 
-#: src/weatherservice.py:326
+#: src/weatherservice.py:330
 msgid "Small hail"
 msgstr "Grésil"
 
-#: src/weatherservice.py:328
+#: src/weatherservice.py:332
 msgid "Smoke"
 msgstr "Fumée"
 
-#: src/weatherservice.py:330
+#: src/weatherservice.py:334
 msgid "Snow blowing snow mist"
 msgstr "Brume neigeuse avec vent"
 
-#: src/weatherservice.py:332
+#: src/weatherservice.py:336
 msgid "Snow flurries"
 msgstr "Rafales de neige"
 
-#: src/weatherservice.py:334
+#: src/weatherservice.py:338
 msgid "Snow grains"
 msgstr "Flocons de neige"
 
-#: src/weatherservice.py:336
+#: src/weatherservice.py:340
 msgid "Snow showers"
 msgstr "Averses de neige"
 
-#: src/weatherservice.py:338
+#: src/weatherservice.py:342
 msgid "Snow"
 msgstr "Neige"
 
-#: src/weatherservice.py:339
+#: src/weatherservice.py:343
 msgid "Spray"
 msgstr "Embruns"
 
-#: src/weatherservice.py:340
+#: src/weatherservice.py:344
 msgid "Squalls"
 msgstr "Bourrasques"
 
-#: src/weatherservice.py:342 src/weatherservice.py:776
+#: src/weatherservice.py:346 src/weatherservice.py:780
 msgid "Storm"
 msgstr "Tempête"
 
-#: src/weatherservice.py:343
+#: src/weatherservice.py:347
 msgid "Sunny"
 msgstr "Ensoleillé"
 
-#: src/weatherservice.py:345 src/weatherservice.py:347
+#: src/weatherservice.py:349 src/weatherservice.py:351
 msgid "Thunderstorm"
 msgstr "Orage"
 
-#: src/weatherservice.py:349
+#: src/weatherservice.py:353
 msgid "Thunderstorms and ice pellets"
 msgstr "Orages et grésil"
 
-#: src/weatherservice.py:351
+#: src/weatherservice.py:355
 msgid "Thunderstorms and rain"
 msgstr "Orages et pluie"
 
-#: src/weatherservice.py:353
+#: src/weatherservice.py:357
 msgid "Thunderstorms and snow"
 msgstr "Orages et neige"
 
-#: src/weatherservice.py:355
+#: src/weatherservice.py:359
 msgid "Thunderstorms with hail"
 msgstr "Orages avec grêle"
 
-#: src/weatherservice.py:357
+#: src/weatherservice.py:361
 msgid "Thunderstorms with small hail"
 msgstr "Orages avec grésil"
 
-#: src/weatherservice.py:359
+#: src/weatherservice.py:363
 msgid "Thunderstorm with light rain"
 msgstr "Orage avec faible pluie"
 
-#: src/weatherservice.py:361
+#: src/weatherservice.py:365
 msgid "Thunderstorm with rain"
 msgstr "Orage avec pluie"
 
-#: src/weatherservice.py:363
+#: src/weatherservice.py:367
 msgid "Thunderstorm with heavy rain"
 msgstr "Orage avec forte pluie"
 
-#: src/weatherservice.py:365
+#: src/weatherservice.py:369
 msgid "Thunderstorm with light drizzle"
 msgstr "Orage avec faible crachin"
 
-#: src/weatherservice.py:367
+#: src/weatherservice.py:371
 msgid "Thunderstorm with drizzle"
 msgstr "Orage avec crachin"
 
-#: src/weatherservice.py:369
+#: src/weatherservice.py:373
 msgid "Thunderstorm with heavy drizzle"
 msgstr "Orage avec forte bruine"
 
-#: src/weatherservice.py:371
+#: src/weatherservice.py:375
 msgid "Thundery outbreaks in nearby"
 msgstr "Orages à proximité"
 
-#: src/weatherservice.py:373
+#: src/weatherservice.py:377
 msgid "Tornado"
 msgstr "Tornade"
 
-#: src/weatherservice.py:375
+#: src/weatherservice.py:379
 msgid "Torrential rain shower"
 msgstr "Averses de pluies torrentielles"
 
-#: src/weatherservice.py:377
+#: src/weatherservice.py:381
 msgid "Tropical storm"
 msgstr "Tempête tropicale"
 
-#: src/weatherservice.py:379
+#: src/weatherservice.py:383
 msgid "Unknown precipitation"
 msgstr "Précipitation inconnue"
 
-#: src/weatherservice.py:381
+#: src/weatherservice.py:385
 msgid "Unknown"
 msgstr "Inconnu(e)(s)"
 
-#: src/weatherservice.py:383
+#: src/weatherservice.py:387
 msgid "Very heavy rain"
 msgstr "Très fortes pluies"
 
-#: src/weatherservice.py:385
+#: src/weatherservice.py:389
 msgid "Volcanic ash"
 msgstr "Cendres volcaniques"
 
-#: src/weatherservice.py:387
+#: src/weatherservice.py:391
 msgid "Widespread dust"
 msgstr "Nuage de poussière"
 
-#: src/weatherservice.py:389
+#: src/weatherservice.py:393
 msgid "Windy"
 msgstr "Venteux"
 
-#: src/weatherservice.py:394 src/weatherservice.py:395
-#: src/weatherservice.py:432
+#: src/weatherservice.py:398 src/weatherservice.py:399
+#: src/weatherservice.py:436
 msgid "North"
 msgstr "Nord"
 
-#: src/weatherservice.py:396 src/weatherservice.py:433
+#: src/weatherservice.py:400 src/weatherservice.py:437
 msgid "North by east"
 msgstr "Nord-quart-nord-est"
 
-#: src/weatherservice.py:397 src/weatherservice.py:434
+#: src/weatherservice.py:401 src/weatherservice.py:438
 msgid "North-northeast"
 msgstr "Nord-nord-est"
 
-#: src/weatherservice.py:398 src/weatherservice.py:435
+#: src/weatherservice.py:402 src/weatherservice.py:439
 msgid "Northeast by north"
 msgstr "Nord-est-quart-nord"
 
-#: src/weatherservice.py:399 src/weatherservice.py:436
+#: src/weatherservice.py:403 src/weatherservice.py:440
 msgid "Northeast"
 msgstr "Nord-est"
 
-#: src/weatherservice.py:400 src/weatherservice.py:437
+#: src/weatherservice.py:404 src/weatherservice.py:441
 msgid "Northeast by east"
 msgstr "Nord-est-quart-est"
 
-#: src/weatherservice.py:401 src/weatherservice.py:438
+#: src/weatherservice.py:405 src/weatherservice.py:442
 msgid "East-northeast"
 msgstr "Est-nord-est"
 
-#: src/weatherservice.py:402 src/weatherservice.py:439
+#: src/weatherservice.py:406 src/weatherservice.py:443
 msgid "East by north"
 msgstr "Est-quart-nord-est"
 
-#: src/weatherservice.py:403 src/weatherservice.py:404
-#: src/weatherservice.py:440
+#: src/weatherservice.py:407 src/weatherservice.py:408
+#: src/weatherservice.py:444
 msgid "East"
 msgstr "Est"
 
-#: src/weatherservice.py:405 src/weatherservice.py:441
+#: src/weatherservice.py:409 src/weatherservice.py:445
 msgid "East by south"
 msgstr "Est-quart-sud-est"
 
-#: src/weatherservice.py:406 src/weatherservice.py:442
+#: src/weatherservice.py:410 src/weatherservice.py:446
 msgid "East-southeast"
 msgstr "Est-sud-sst"
 
-#: src/weatherservice.py:407 src/weatherservice.py:443
+#: src/weatherservice.py:411 src/weatherservice.py:447
 msgid "Southeast by east"
 msgstr "Sud-est-quart-est"
 
-#: src/weatherservice.py:408 src/weatherservice.py:444
+#: src/weatherservice.py:412 src/weatherservice.py:448
 msgid "Southeast"
 msgstr "Sud-est"
 
-#: src/weatherservice.py:409 src/weatherservice.py:445
+#: src/weatherservice.py:413 src/weatherservice.py:449
 msgid "Southeast by south"
 msgstr "Sud-est-quart-sud"
 
-#: src/weatherservice.py:410 src/weatherservice.py:446
+#: src/weatherservice.py:414 src/weatherservice.py:450
 msgid "South-southeast"
 msgstr "Sud-sud-est"
 
-#: src/weatherservice.py:411 src/weatherservice.py:447
+#: src/weatherservice.py:415 src/weatherservice.py:451
 msgid "South by east"
 msgstr "Sud-quart-sud-est"
 
-#: src/weatherservice.py:412 src/weatherservice.py:413
-#: src/weatherservice.py:448
+#: src/weatherservice.py:416 src/weatherservice.py:417
+#: src/weatherservice.py:452
 msgid "South"
 msgstr "Sud"
 
-#: src/weatherservice.py:414 src/weatherservice.py:449
+#: src/weatherservice.py:418 src/weatherservice.py:453
 msgid "South by west"
 msgstr "Sud-quart-sud-ouest"
 
-#: src/weatherservice.py:415 src/weatherservice.py:450
+#: src/weatherservice.py:419 src/weatherservice.py:454
 msgid "South-southwest"
 msgstr "Sud-sud-ouest"
 
-#: src/weatherservice.py:416 src/weatherservice.py:451
+#: src/weatherservice.py:420 src/weatherservice.py:455
 msgid "Southwest by south"
 msgstr "Sud-ouest-quart-sud"
 
-#: src/weatherservice.py:417 src/weatherservice.py:452
+#: src/weatherservice.py:421 src/weatherservice.py:456
 msgid "Southwest"
 msgstr "Sud-ouest"
 
-#: src/weatherservice.py:418 src/weatherservice.py:453
+#: src/weatherservice.py:422 src/weatherservice.py:457
 msgid "Southwest by west"
 msgstr "Sud-ouest-quart-ouest"
 
-#: src/weatherservice.py:419 src/weatherservice.py:454
+#: src/weatherservice.py:423 src/weatherservice.py:458
 msgid "West-southwest"
 msgstr "Ouest-sud-ouest"
 
-#: src/weatherservice.py:420 src/weatherservice.py:455
+#: src/weatherservice.py:424 src/weatherservice.py:459
 msgid "West by south"
 msgstr "Ouest-quart-sud-ouest"
 
-#: src/weatherservice.py:421 src/weatherservice.py:422
-#: src/weatherservice.py:456
+#: src/weatherservice.py:425 src/weatherservice.py:426
+#: src/weatherservice.py:460
 msgid "West"
 msgstr "Ouest"
 
-#: src/weatherservice.py:423 src/weatherservice.py:457
+#: src/weatherservice.py:427 src/weatherservice.py:461
 msgid "West by north"
 msgstr "Ouest-quart-nord-ouest"
 
-#: src/weatherservice.py:424 src/weatherservice.py:458
+#: src/weatherservice.py:428 src/weatherservice.py:462
 msgid "West-northwest"
 msgstr "Ouest-nord-ouest"
 
-#: src/weatherservice.py:425 src/weatherservice.py:459
+#: src/weatherservice.py:429 src/weatherservice.py:463
 msgid "Northwest by west"
 msgstr "Nord-ouest-quart-ouest"
 
-#: src/weatherservice.py:426 src/weatherservice.py:460
+#: src/weatherservice.py:430 src/weatherservice.py:464
 msgid "Northwest"
 msgstr "Nord-ouest"
 
-#: src/weatherservice.py:427 src/weatherservice.py:461
+#: src/weatherservice.py:431 src/weatherservice.py:465
 msgid "Northwest by north"
 msgstr "Nord-ouest-quart-nord"
 
-#: src/weatherservice.py:428 src/weatherservice.py:462
+#: src/weatherservice.py:432 src/weatherservice.py:466
 msgid "North-northwest"
 msgstr "Nord-nord-ouest"
 
-#: src/weatherservice.py:429 src/weatherservice.py:463
+#: src/weatherservice.py:433 src/weatherservice.py:467
 msgid "North by west"
 msgstr "Nord-quart-nord-ouest"
 
-#: src/weatherservice.py:430
+#: src/weatherservice.py:434
 msgid "Variable"
 msgstr "Variable"
 
-#: src/weatherservice.py:655 src/weatherservice.py:657
+#: src/weatherservice.py:659 src/weatherservice.py:661
 msgid "from"
 msgstr "de"
 
-#: src/weatherservice.py:657
+#: src/weatherservice.py:661
 msgid "at"
 msgstr "à"
 
-#: src/weatherservice.py:658 src/weatherservice.py:688
+#: src/weatherservice.py:662 src/weatherservice.py:692
 msgid "n/a"
 msgstr "Pas d'informations"
 
-#: src/weatherservice.py:718
+#: src/weatherservice.py:722
 msgid "millibar"
 msgstr "millibar"
 
-#: src/weatherservice.py:718
+#: src/weatherservice.py:722
 msgid "inches of mercury"
 msgstr "pouces de mercure"
 
-#: src/weatherservice.py:719
+#: src/weatherservice.py:723
 msgid "millimeters of mercury"
 msgstr "millimètres de mercure"
 
-#: src/weatherservice.py:732
+#: src/weatherservice.py:736
 msgid "mi"
 msgstr "mi"
 
-#: src/weatherservice.py:732
+#: src/weatherservice.py:736
 msgid "km"
 msgstr "km"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "in"
 msgstr "in"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "cm"
 msgstr "cm"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "mm"
 msgstr "mm"
 
-#: src/weatherservice.py:756
+#: src/weatherservice.py:760
 msgid "Calm"
 msgstr "Calme"
 
-#: src/weatherservice.py:758
+#: src/weatherservice.py:762
 msgid "Light air"
 msgstr "Très légère brise"
 
-#: src/weatherservice.py:760
+#: src/weatherservice.py:764
 msgid "Light breeze"
 msgstr "Légère brise"
 
-#: src/weatherservice.py:762
+#: src/weatherservice.py:766
 msgid "Gentle breeze"
 msgstr "Petite brise"
 
-#: src/weatherservice.py:764
+#: src/weatherservice.py:768
 msgid "Moderate breeze"
 msgstr "Jolie brise"
 
-#: src/weatherservice.py:766
+#: src/weatherservice.py:770
 msgid "Fresh breeze"
 msgstr "Bonne brise"
 
-#: src/weatherservice.py:768
+#: src/weatherservice.py:772
 msgid "Strong breeze"
 msgstr "Vent frais"
 
-#: src/weatherservice.py:770
+#: src/weatherservice.py:774
 msgid "High wind"
 msgstr "Grand vent frais"
 
-#: src/weatherservice.py:772
+#: src/weatherservice.py:776
 msgid "Gale"
 msgstr "Coup de vent"
 
-#: src/weatherservice.py:774
+#: src/weatherservice.py:778
 msgid "Strong gale"
 msgstr "Fort coup de vent"
 
-#: src/weatherservice.py:778
+#: src/weatherservice.py:782
 msgid "Violent storm"
 msgstr "Violente tempête"
 
-#: src/weatherservice.py:871 src/weatherservice.py:872
-#: src/weatherservice.py:873 src/weatherservice.py:874
-#: src/weatherservice.py:902 src/weatherservice.py:903
-#: src/weatherservice.py:904 src/weatherservice.py:905
-#: src/weatherservice.py:934 src/weatherservice.py:935
-#: src/weatherservice.py:941 src/weatherservice.py:942
-#: src/weatherservice.py:975 src/weatherservice.py:976
+#: src/weatherservice.py:875 src/weatherservice.py:876
+#: src/weatherservice.py:877 src/weatherservice.py:878
+#: src/weatherservice.py:906 src/weatherservice.py:907
+#: src/weatherservice.py:908 src/weatherservice.py:909
+#: src/weatherservice.py:938 src/weatherservice.py:939
+#: src/weatherservice.py:945 src/weatherservice.py:946
+#: src/weatherservice.py:979 src/weatherservice.py:980
 msgid "Down all day"
 msgstr ""
 
-#: src/weatherservice.py:877 src/weatherservice.py:878
-#: src/weatherservice.py:879 src/weatherservice.py:880
-#: src/weatherservice.py:907 src/weatherservice.py:908
-#: src/weatherservice.py:909 src/weatherservice.py:910
-#: src/weatherservice.py:931 src/weatherservice.py:932
-#: src/weatherservice.py:938 src/weatherservice.py:939
-#: src/weatherservice.py:978 src/weatherservice.py:979
+#: src/weatherservice.py:881 src/weatherservice.py:882
+#: src/weatherservice.py:883 src/weatherservice.py:884
+#: src/weatherservice.py:911 src/weatherservice.py:912
+#: src/weatherservice.py:913 src/weatherservice.py:914
+#: src/weatherservice.py:935 src/weatherservice.py:936
+#: src/weatherservice.py:942 src/weatherservice.py:943
+#: src/weatherservice.py:982 src/weatherservice.py:983
 msgid "Up all day"
 msgstr ""
 
@@ -1245,189 +1245,189 @@ msgstr "Dernier quartier"
 msgid "Waning Crescent"
 msgstr "Dernier croissant"
 
-#: src/forecastw.py:75 src/myweatherindicator.py:420 src/openweathermap.py:41
+#: src/forecastw.py:72 src/myweatherindicator.py:423 src/openweathermap.py:44
 msgid "Forecast"
 msgstr "Prévisions"
 
-#: src/forecastw.py:121
+#: src/forecastw.py:118
 msgid "Day of week"
 msgstr "Jour de la semaine"
 
-#: src/forecastw.py:121 src/myweatherindicator.py:539
-#: src/myweatherindicator.py:712
+#: src/forecastw.py:118 src/myweatherindicator.py:541
+#: src/myweatherindicator.py:714
 msgid "Sunrise"
 msgstr "Lever du soleil"
 
-#: src/forecastw.py:121 src/myweatherindicator.py:548
-#: src/myweatherindicator.py:715
+#: src/forecastw.py:118 src/myweatherindicator.py:550
+#: src/myweatherindicator.py:717
 msgid "Sunset"
 msgstr "Coucher du soleil"
 
-#: src/forecastw.py:121
+#: src/forecastw.py:118
 msgid "Moon Phase"
 msgstr "Phase lunaire"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "Condition"
 msgstr "Situation"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "High temperature"
 msgstr "Température max"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "Low temperature"
 msgstr "Température min"
 
-#: src/forecastw.py:124
+#: src/forecastw.py:121
 msgid "Maximum wind"
 msgstr "Vent maximum"
 
-#: src/forecastw.py:124 src/forecastw.py:128 src/forecastw.py:130
+#: src/forecastw.py:121 src/forecastw.py:125 src/forecastw.py:127
 msgid "Average wind"
 msgstr "Vent moyen"
 
-#: src/forecastw.py:125
+#: src/forecastw.py:122
 msgid "Maximum humidity"
 msgstr "Humidité maximum"
 
-#: src/forecastw.py:125
+#: src/forecastw.py:122
 msgid "Minumum humidity"
 msgstr "Humidité minimum"
 
-#: src/forecastw.py:126 src/forecastw.py:128
+#: src/forecastw.py:123 src/forecastw.py:125
 msgid "Rain measurement"
 msgstr "Hauteur de pluie"
 
-#: src/forecastw.py:126
+#: src/forecastw.py:123
 msgid "Snow measurement"
 msgstr "Hauteur de neige"
 
-#: src/forecastw.py:130
+#: src/forecastw.py:127
 msgid "Average humidity"
 msgstr "Humidité moyenne"
 
-#: src/forecastw.py:131 src/myweatherindicator.py:505
-#: src/myweatherindicator.py:757
+#: src/forecastw.py:128 src/myweatherindicator.py:507
+#: src/myweatherindicator.py:759
 msgid "Cloudiness"
 msgstr "Nébulosité"
 
-#: src/myweatherindicator.py:151
+#: src/myweatherindicator.py:153
 msgid "Homepage"
 msgstr "Page d’accueil"
 
-#: src/myweatherindicator.py:159
+#: src/myweatherindicator.py:161
 msgid "Get help online..."
 msgstr "Obtenir de l'aide en ligne..."
 
-#: src/myweatherindicator.py:167
+#: src/myweatherindicator.py:169
 msgid "Translate this application..."
 msgstr "Traduire cette application..."
 
-#: src/myweatherindicator.py:175
+#: src/myweatherindicator.py:178
 msgid "Report a bug..."
 msgstr "Signaler un problème..."
 
-#: src/myweatherindicator.py:187
+#: src/myweatherindicator.py:190
 #, fuzzy
 msgid "Follow me in Twitter"
 msgstr "Suivez-nous sur Twitter"
 
-#: src/myweatherindicator.py:195
+#: src/myweatherindicator.py:198
 #, fuzzy
 msgid "Follow me in Google+"
 msgstr "Suivez-nous sur Google+"
 
-#: src/myweatherindicator.py:204
+#: src/myweatherindicator.py:207
 #, fuzzy
 msgid "Follow me in Facebook"
 msgstr "Suivez-nous sur Facebook"
 
-#: src/myweatherindicator.py:211
+#: src/myweatherindicator.py:214
 msgid "About"
 msgstr "À propos"
 
-#: src/myweatherindicator.py:427
+#: src/myweatherindicator.py:430
 msgid "Evolution"
 msgstr "Évolution"
 
-#: src/myweatherindicator.py:434
+#: src/myweatherindicator.py:437
 msgid "Forecast Map"
 msgstr "Carte des prévisions"
 
-#: src/myweatherindicator.py:441
+#: src/myweatherindicator.py:444
 #, fuzzy
 msgid "Moon Phase Calendar"
 msgstr "Phase lunaire"
 
-#: src/myweatherindicator.py:453
+#: src/myweatherindicator.py:455
 #, fuzzy
 msgid "Update weather"
 msgstr "Actualisé à l'instant"
 
-#: src/myweatherindicator.py:464 src/myweatherindicator.py:681
+#: src/myweatherindicator.py:466 src/myweatherindicator.py:683
 msgid "Location"
 msgstr "Emplacement"
 
-#: src/myweatherindicator.py:479 src/myweatherindicator.py:685
-#: src/myweatherindicator.py:792
+#: src/myweatherindicator.py:481 src/myweatherindicator.py:687
+#: src/myweatherindicator.py:794
 msgid "Humidity"
 msgstr "Humidité"
 
-#: src/myweatherindicator.py:484 src/myweatherindicator.py:687
+#: src/myweatherindicator.py:486 src/myweatherindicator.py:689
 msgid "Feels like"
 msgstr "Ressentie"
 
-#: src/myweatherindicator.py:489 src/myweatherindicator.py:689
+#: src/myweatherindicator.py:491 src/myweatherindicator.py:691
 msgid "Dew Point"
 msgstr "Point de rosée"
 
-#: src/myweatherindicator.py:494 src/myweatherindicator.py:692
-#: src/myweatherindicator.py:794
+#: src/myweatherindicator.py:496 src/myweatherindicator.py:694
+#: src/myweatherindicator.py:796
 msgid "Wind"
 msgstr "Vent"
 
-#: src/myweatherindicator.py:510 src/myweatherindicator.py:761
+#: src/myweatherindicator.py:512 src/myweatherindicator.py:763
 msgid "UV"
 msgstr "UV"
 
-#: src/myweatherindicator.py:515 src/myweatherindicator.py:765
+#: src/myweatherindicator.py:517 src/myweatherindicator.py:767
 msgid "Precipitation"
 msgstr "Précipitation"
 
-#: src/myweatherindicator.py:530 src/myweatherindicator.py:710
+#: src/myweatherindicator.py:532 src/myweatherindicator.py:712
 msgid "Dawn"
 msgstr "Aube"
 
-#: src/myweatherindicator.py:557 src/myweatherindicator.py:717
+#: src/myweatherindicator.py:559 src/myweatherindicator.py:719
 msgid "Dusk"
 msgstr "Crépuscule"
 
-#: src/myweatherindicator.py:592
+#: src/myweatherindicator.py:594
 msgid "Help"
 msgstr "Aide"
 
-#: src/myweatherindicator.py:598
+#: src/myweatherindicator.py:600
 msgid "Exit"
 msgstr "Quitter"
 
-#: src/myweatherindicator.py:621
+#: src/myweatherindicator.py:623
 msgid "Not Internet connection"
 msgstr ""
 
-#: src/myweatherindicator.py:788
+#: src/myweatherindicator.py:790
 msgid "Conditions in"
 msgstr "Conditions à"
 
-#: src/myweatherindicator.py:841
+#: src/myweatherindicator.py:843
 msgid "Forecast for next hours"
 msgstr "Prévisions pour les heures à venir"
 
-#: src/myweatherindicator.py:842
+#: src/myweatherindicator.py:844
 msgid "Weather service"
 msgstr "Service Météo"
 
-#: src/myweatherindicator.py:880
+#: src/myweatherindicator.py:882
 msgid "A weather indicator"
 msgstr "Un indicateur météo"
 

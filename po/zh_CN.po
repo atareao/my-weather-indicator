@@ -1,10 +1,10 @@
 #
-#: src/myweatherindicator.py:520 src/myweatherindicator.py:570
+#: src/myweatherindicator.py:522 src/myweatherindicator.py:572
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 10:13+0200\n"
+"POT-Creation-Date: 2020-09-01 13:58+0200\n"
 "PO-Revision-Date: 2013-06-15 16:24+0000\n"
 "Last-Translator: Xiaoxing Ye <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -15,1201 +15,1201 @@ msgstr ""
 "X-Generator: Launchpad (build 17082)\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
 
-#: src/whereami.py:61
+#: src/whereami.py:60
 msgid "Where Am I"
 msgstr "我在哪"
 
-#: src/whereami.py:79
+#: src/whereami.py:78
 msgid "Search location"
 msgstr "查找位置"
 
-#: src/whereami.py:81
+#: src/whereami.py:80
 msgid "Clear location"
 msgstr "清除位置"
 
-#: src/whereami.py:82
+#: src/whereami.py:81
 msgid "Input the name of your city"
 msgstr "输入你的城市名"
 
-#: src/whereami.py:87
+#: src/whereami.py:86
 msgid "Search"
 msgstr "搜索"
 
-#: src/whereami.py:91
+#: src/whereami.py:90
 msgid "Find me"
 msgstr "查找我"
 
-#: src/whereami.py:94
+#: src/whereami.py:93
 #, fuzzy
 msgid "Locations found"
 msgstr "位置创建"
 
-#: src/whereami.py:115
+#: src/whereami.py:114
 msgid "City"
 msgstr "城市"
 
-#: src/whereami.py:119
+#: src/whereami.py:118
 msgid "State"
 msgstr "省/ 州"
 
-#: src/whereami.py:123
+#: src/whereami.py:122
 msgid "Country"
 msgstr "国家"
 
-#: src/preferences.py:70 src/myweatherindicator.py:585
+#: src/preferences.py:76 src/myweatherindicator.py:587
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/preferences.py:87
+#: src/preferences.py:93
 msgid "Main Location"
 msgstr "主要位置"
 
-#: src/preferences.py:88 src/preferences.py:184 src/preferences.py:478
+#: src/preferences.py:94 src/preferences.py:190 src/preferences.py:484
 msgid "General options"
 msgstr "常规选项"
 
-#: src/preferences.py:92 src/preferences.py:188
+#: src/preferences.py:98 src/preferences.py:194
 #, fuzzy
 msgid "Show"
 msgstr "阵雨"
 
-#: src/preferences.py:99
+#: src/preferences.py:105
 msgid "Auto Location"
 msgstr "自动定位"
 
-#: src/preferences.py:105 src/preferences.py:194
+#: src/preferences.py:111 src/preferences.py:200
 msgid "Locality"
 msgstr "地区"
 
-#: src/preferences.py:117 src/preferences.py:205
+#: src/preferences.py:123 src/preferences.py:211
 msgid "Search Location"
 msgstr "查找地点"
 
-#: src/preferences.py:124 src/preferences.py:212
+#: src/preferences.py:130 src/preferences.py:218
 msgid "Show temperature"
 msgstr "显示温度"
 
-#: src/preferences.py:130 src/preferences.py:218
+#: src/preferences.py:136 src/preferences.py:224
 msgid "Show notifications"
 msgstr "显示通知"
 
-#: src/preferences.py:135 src/preferences.py:223
+#: src/preferences.py:141 src/preferences.py:229
 #, fuzzy
 msgid "Widget options"
 msgstr "窗口置顶"
 
-#: src/preferences.py:139 src/preferences.py:227
+#: src/preferences.py:145 src/preferences.py:233
 msgid "Show widget"
 msgstr "显示窗口"
 
-#: src/preferences.py:146 src/preferences.py:234
+#: src/preferences.py:152 src/preferences.py:240
 msgid "Hide indicator when show widget"
 msgstr "以桌面窗体显示时隐藏indicator图标"
 
-#: src/preferences.py:152 src/preferences.py:240
+#: src/preferences.py:158 src/preferences.py:246
 msgid "Widget on top"
 msgstr "窗口置顶"
 
-#: src/preferences.py:158 src/preferences.py:246
+#: src/preferences.py:164 src/preferences.py:252
 msgid "Show in taskbar"
 msgstr "在任务栏显示"
 
-#: src/preferences.py:164 src/preferences.py:252
+#: src/preferences.py:170 src/preferences.py:258
 msgid "On all desktops"
 msgstr ""
 
-#: src/preferences.py:183
+#: src/preferences.py:189
 msgid "Second Location"
 msgstr "次要位置"
 
-#: src/preferences.py:271
+#: src/preferences.py:277
 msgid "Weather Services"
 msgstr "天气服务"
 
-#: src/preferences.py:300
+#: src/preferences.py:306
 msgid "Input World Weather Online key"
 msgstr ""
 
-#: src/preferences.py:302 src/preferences.py:325
+#: src/preferences.py:308 src/preferences.py:331
 msgid "Activate"
 msgstr ""
 
-#: src/preferences.py:304
+#: src/preferences.py:310
 msgid "Click to activate World Weather Online"
 msgstr ""
 
-#: src/preferences.py:323
+#: src/preferences.py:329
 msgid "Input Weather Underground key"
 msgstr ""
 
-#: src/preferences.py:327
+#: src/preferences.py:333
 msgid "Click to activate Weather Underground"
 msgstr ""
 
-#: src/preferences.py:337
+#: src/preferences.py:343
 msgid "Units"
 msgstr "单位"
 
-#: src/preferences.py:340 src/myweatherindicator.py:469
-#: src/myweatherindicator.py:682 src/myweatherindicator.py:790
+#: src/preferences.py:346 src/myweatherindicator.py:471
+#: src/myweatherindicator.py:684 src/myweatherindicator.py:792
 msgid "Temperature"
 msgstr "温度"
 
-#: src/preferences.py:347
+#: src/preferences.py:353
 msgid "Celsius"
 msgstr "摄氏度"
 
-#: src/preferences.py:348
+#: src/preferences.py:354
 msgid "Fahrenheit"
 msgstr "华氏度"
 
-#: src/preferences.py:349
+#: src/preferences.py:355
 msgid "Kelvin"
 msgstr "绝对温度"
 
-#: src/preferences.py:359 src/myweatherindicator.py:474
-#: src/myweatherindicator.py:748
+#: src/preferences.py:365 src/myweatherindicator.py:476
+#: src/myweatherindicator.py:750
 msgid "Pressure"
 msgstr "气压"
 
-#: src/preferences.py:366
+#: src/preferences.py:372
 msgid "Millibar"
 msgstr "毫巴"
 
-#: src/preferences.py:367
+#: src/preferences.py:373
 msgid "Inches of mercury"
 msgstr "英吋汞柱"
 
-#: src/preferences.py:368
+#: src/preferences.py:374
 msgid "Millimeters of mercury"
 msgstr "毫米汞柱"
 
-#: src/preferences.py:378 src/myweatherindicator.py:500
-#: src/myweatherindicator.py:753
+#: src/preferences.py:384 src/myweatherindicator.py:502
+#: src/myweatherindicator.py:755
 msgid "Visibility"
 msgstr "可见度"
 
-#: src/preferences.py:385
+#: src/preferences.py:391
 msgid "mile"
 msgstr "英里"
 
-#: src/preferences.py:386
+#: src/preferences.py:392
 msgid "kilometer"
 msgstr "千米"
 
-#: src/preferences.py:396
+#: src/preferences.py:402
 msgid "Wind velocity"
 msgstr "风速"
 
-#: src/preferences.py:403
+#: src/preferences.py:409
 msgid "Beaufort"
 msgstr "蒲福风级"
 
-#: src/preferences.py:404 src/weatherservice.py:751
+#: src/preferences.py:410 src/weatherservice.py:755
 msgid "ft/s"
 msgstr "英尺/秒"
 
-#: src/preferences.py:405 src/weatherservice.py:750
+#: src/preferences.py:411 src/weatherservice.py:754
 msgid "km/h"
 msgstr "千米/时"
 
-#: src/preferences.py:406 src/weatherservice.py:751
+#: src/preferences.py:412 src/weatherservice.py:755
 msgid "knots"
 msgstr "海里/时"
 
-#: src/preferences.py:407 src/weatherservice.py:750
+#: src/preferences.py:413 src/weatherservice.py:754
 msgid "m/s"
 msgstr "米/秒"
 
-#: src/preferences.py:408 src/weatherservice.py:750
+#: src/preferences.py:414 src/weatherservice.py:754
 msgid "mph"
 msgstr "英里/时"
 
-#: src/preferences.py:418
+#: src/preferences.py:424
 msgid "Rain Gauge"
 msgstr "雨量计"
 
-#: src/preferences.py:425 src/preferences.py:444
+#: src/preferences.py:431 src/preferences.py:450
 msgid "Inches"
 msgstr "英寸"
 
-#: src/preferences.py:426 src/preferences.py:445
+#: src/preferences.py:432 src/preferences.py:451
 msgid "Centimeters"
 msgstr "厘米"
 
-#: src/preferences.py:427 src/preferences.py:446
+#: src/preferences.py:433 src/preferences.py:452
 msgid "Millimeters"
 msgstr "毫米"
 
-#: src/preferences.py:437
+#: src/preferences.py:443
 msgid "Snow Gauge"
 msgstr "雪量计"
 
-#: src/preferences.py:456
+#: src/preferences.py:462
 msgid "Time Format"
 msgstr "时间格式"
 
-#: src/preferences.py:463
+#: src/preferences.py:469
 msgid "24 h"
 msgstr "24 小时"
 
-#: src/preferences.py:464
+#: src/preferences.py:470
 msgid "AM/PM"
 msgstr "上午/下午"
 
-#: src/preferences.py:481
+#: src/preferences.py:487
 msgid "Autostart"
 msgstr "自动启动"
 
-#: src/preferences.py:486
+#: src/preferences.py:492
 msgid "Refresh frequency"
 msgstr "刷新频率"
 
-#: src/preferences.py:493 src/preferences.py:494
+#: src/preferences.py:499 src/preferences.py:500
 msgid "minutes"
 msgstr "分钟"
 
-#: src/preferences.py:495
+#: src/preferences.py:501
 msgid "hour"
 msgstr "小时"
 
-#: src/preferences.py:496 src/preferences.py:497 src/preferences.py:498
-#: src/preferences.py:499 src/preferences.py:500
+#: src/preferences.py:502 src/preferences.py:503 src/preferences.py:504
+#: src/preferences.py:505 src/preferences.py:506
 msgid "hours"
 msgstr "小时"
 
-#: src/preferences.py:510
+#: src/preferences.py:516
 msgid "Select icon theme"
 msgstr "选择托盘图标主题"
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Monday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Tuesday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Wednesday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Thursday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Friday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Saturday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Sunday"
 msgstr ""
 
-#: src/mooncalendarwindow.py:59
+#: src/mooncalendarwindow.py:57
 #, fuzzy
 msgid "Moon phases"
 msgstr "月相"
 
-#: src/mooncalendarwindow.py:74
+#: src/mooncalendarwindow.py:72
 msgid "One year less"
 msgstr ""
 
-#: src/mooncalendarwindow.py:83
+#: src/mooncalendarwindow.py:81
 msgid "One month less"
 msgstr ""
 
-#: src/mooncalendarwindow.py:92 src/mooncalendarwindow.py:180
+#: src/mooncalendarwindow.py:90
 msgid "Today"
 msgstr ""
 
-#: src/mooncalendarwindow.py:106
+#: src/mooncalendarwindow.py:104
 msgid "One year more"
 msgstr ""
 
-#: src/mooncalendarwindow.py:115
+#: src/mooncalendarwindow.py:113
 msgid "One month more"
 msgstr ""
 
-#: src/mooncalendarwindow.py:196
+#: src/mooncalendarwindow.py:193
 #, fuzzy
 msgid "Full moon"
 msgstr "满月"
 
-#: src/mooncalendarwindow.py:198
+#: src/mooncalendarwindow.py:195
 #, fuzzy
 msgid "New moon"
 msgstr "新月"
 
 #: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
-#: src/worldweatheronlineapi.py:113 src/weatherservice.py:847
-#: src/weatherservice.py:848 src/weatherservice.py:849
-#: src/weatherservice.py:850 src/weatherservice.py:851
+#: src/worldweatheronlineapi.py:113 src/weatherservice.py:851
+#: src/weatherservice.py:852 src/weatherservice.py:853
 #: src/weatherservice.py:854 src/weatherservice.py:855
-#: src/weatherservice.py:857 src/weatherservice.py:859
-#: src/weatherservice.py:860 src/weatherservice.py:861
-#: src/weatherservice.py:862 src/weatherservice.py:863
-#: src/weatherservice.py:864 src/weatherservice.py:951
-#: src/weatherservice.py:952 src/weatherservice.py:953
-#: src/weatherservice.py:955 src/weatherservice.py:956
-#: src/weatherservice.py:957 src/weatherservice.py:958
+#: src/weatherservice.py:858 src/weatherservice.py:859
+#: src/weatherservice.py:861 src/weatherservice.py:863
+#: src/weatherservice.py:864 src/weatherservice.py:865
+#: src/weatherservice.py:866 src/weatherservice.py:867
+#: src/weatherservice.py:868 src/weatherservice.py:955
+#: src/weatherservice.py:956 src/weatherservice.py:957
 #: src/weatherservice.py:959 src/weatherservice.py:960
 #: src/weatherservice.py:961 src/weatherservice.py:962
-#: src/weatherservice.py:964 src/weatherservice.py:965
-#: src/weatherservice.py:966 src/weatherservice.py:968
-#: src/weatherservice.py:969 src/wundergroundapi.py:43
+#: src/weatherservice.py:963 src/weatherservice.py:964
+#: src/weatherservice.py:965 src/weatherservice.py:966
+#: src/weatherservice.py:968 src/weatherservice.py:969
+#: src/weatherservice.py:970 src/weatherservice.py:972
+#: src/weatherservice.py:973 src/wundergroundapi.py:43
 #: src/wundergroundapi.py:51 src/wundergroundapi.py:62
 msgid "N/A"
 msgstr "不可用"
 
-#: src/weatherservice.py:36
+#: src/weatherservice.py:40
 msgid "Blowing sand"
 msgstr "扬沙"
 
-#: src/weatherservice.py:44
+#: src/weatherservice.py:48
 msgid "Blizzard"
 msgstr "暴风雪"
 
-#: src/weatherservice.py:52
+#: src/weatherservice.py:56
 msgid "Blowing snow"
 msgstr "飞雪"
 
-#: src/weatherservice.py:60
+#: src/weatherservice.py:64
 msgid "Blowing widespread dust"
 msgstr "吹尘"
 
-#: src/weatherservice.py:65
+#: src/weatherservice.py:69
 msgid "Blustery"
 msgstr ""
 
-#: src/weatherservice.py:70
+#: src/weatherservice.py:74
 msgid "Chance of a thunderstorm"
 msgstr "雷暴概率"
 
-#: src/weatherservice.py:78
+#: src/weatherservice.py:82
 msgid "Chance of flurries"
 msgstr "风雪概率"
 
-#: src/weatherservice.py:85
+#: src/weatherservice.py:89
 msgid "Chance of rain"
 msgstr "可能有雨"
 
-#: src/weatherservice.py:93
+#: src/weatherservice.py:97
 msgid "Chance of showers"
 msgstr "可能有阵雨"
 
-#: src/weatherservice.py:100
+#: src/weatherservice.py:104
 msgid "Chance of snow"
 msgstr "可能有雪"
 
-#: src/weatherservice.py:102
+#: src/weatherservice.py:106
 msgid "Chance of storm"
 msgstr "可能有暴风"
 
-#: src/weatherservice.py:104
+#: src/weatherservice.py:108
 msgid "Chance of thunderstorms"
 msgstr "可能有雷暴"
 
-#: src/weatherservice.py:106
+#: src/weatherservice.py:110
 msgid "Chance of tstorm"
 msgstr "可能有雷雨"
 
-#: src/weatherservice.py:108
+#: src/weatherservice.py:112
 msgid "Clear"
 msgstr "晴"
 
-#: src/weatherservice.py:110
+#: src/weatherservice.py:114
 msgid "Cloudy"
 msgstr "多云"
 
-#: src/weatherservice.py:112
+#: src/weatherservice.py:116
 msgid "Cold"
 msgstr "寒冷"
 
-#: src/weatherservice.py:113
+#: src/weatherservice.py:117
 msgid "Drizzle"
 msgstr "小雨"
 
-#: src/weatherservice.py:115
+#: src/weatherservice.py:119
 msgid "Drizzle rain"
 msgstr "小雨"
 
-#: src/weatherservice.py:117
+#: src/weatherservice.py:121
 msgid "Dust whirls"
 msgstr "尘卷风"
 
-#: src/weatherservice.py:119
+#: src/weatherservice.py:123
 msgid "Dust"
 msgstr "沙尘"
 
-#: src/weatherservice.py:121
+#: src/weatherservice.py:125
 msgid "Extreme rain"
 msgstr "暴雨"
 
-#: src/weatherservice.py:123
+#: src/weatherservice.py:127
 msgid "Fair"
 msgstr "Fair"
 
-#: src/weatherservice.py:125
+#: src/weatherservice.py:129
 msgid "Flurries"
 msgstr "小雪"
 
-#: src/weatherservice.py:127
+#: src/weatherservice.py:131
 msgid "Fog patches"
 msgstr "雾"
 
-#: src/weatherservice.py:129
+#: src/weatherservice.py:133
 msgid "Fog"
 msgstr "雾"
 
-#: src/weatherservice.py:131
+#: src/weatherservice.py:135
 msgid "Foggy"
 msgstr "雾"
 
-#: src/weatherservice.py:133 src/weatherservice.py:135
+#: src/weatherservice.py:137 src/weatherservice.py:139
 msgid "Freezing drizzle"
 msgstr "冻毛雨"
 
-#: src/weatherservice.py:137 src/weatherservice.py:139
+#: src/weatherservice.py:141 src/weatherservice.py:143
 msgid "Freezing fog"
 msgstr "冻雾"
 
-#: src/weatherservice.py:141
+#: src/weatherservice.py:145
 msgid "Freezing rain"
 msgstr "冻雨"
 
-#: src/weatherservice.py:143
+#: src/weatherservice.py:147
 msgid "Funnel cloud"
 msgstr "漏斗云"
 
-#: src/weatherservice.py:145
+#: src/weatherservice.py:149
 msgid "Hail showers"
 msgstr "阵雹"
 
-#: src/weatherservice.py:147
+#: src/weatherservice.py:151
 msgid "Hail"
 msgstr "冰雹"
 
-#: src/weatherservice.py:148
+#: src/weatherservice.py:152
 msgid "Haze"
 msgstr "霾"
 
-#: src/weatherservice.py:150
+#: src/weatherservice.py:154
 msgid "Heavy freezing drizzle"
 msgstr "大冻毛毛雨"
 
-#: src/weatherservice.py:152 src/weatherservice.py:180
+#: src/weatherservice.py:156 src/weatherservice.py:184
 #, fuzzy
 msgid "Heavy drizzle"
 msgstr "大冻毛毛雨"
 
-#: src/weatherservice.py:154 src/weatherservice.py:182
+#: src/weatherservice.py:158 src/weatherservice.py:186
 #, fuzzy
 msgid "Heavy drizzle rain"
 msgstr "大强度细雨"
 
-#: src/weatherservice.py:156 src/weatherservice.py:162
-#: src/weatherservice.py:184
+#: src/weatherservice.py:160 src/weatherservice.py:166
+#: src/weatherservice.py:188
 msgid "Heavy rain"
 msgstr "大雨"
 
-#: src/weatherservice.py:158 src/weatherservice.py:186
+#: src/weatherservice.py:162 src/weatherservice.py:190
 #, fuzzy
 msgid "Heavy shower rain"
 msgstr "大强度暴雨"
 
-#: src/weatherservice.py:160
+#: src/weatherservice.py:164
 msgid "Heavy rain at times"
 msgstr "实时大雨"
 
-#: src/weatherservice.py:164
+#: src/weatherservice.py:168
 msgid "Heavy snow"
 msgstr "大雪"
 
-#: src/weatherservice.py:166
+#: src/weatherservice.py:170
 msgid "Heavy thunderstorm"
 msgstr "大雷雨"
 
-#: src/weatherservice.py:168
+#: src/weatherservice.py:172
 msgid "Hot"
 msgstr "炎热"
 
-#: src/weatherservice.py:170 src/weatherservice.py:780
+#: src/weatherservice.py:174 src/weatherservice.py:784
 msgid "Hurricane"
 msgstr "飓风"
 
-#: src/weatherservice.py:172
+#: src/weatherservice.py:176
 msgid "Ice crystals"
 msgstr "冰晶"
 
-#: src/weatherservice.py:174
+#: src/weatherservice.py:178
 msgid "Ice pellet showers"
 msgstr "冰颗粒阵雨"
 
-#: src/weatherservice.py:176 src/weatherservice.py:178
+#: src/weatherservice.py:180 src/weatherservice.py:182
 msgid "Ice pellets"
 msgstr "冰丸"
 
-#: src/weatherservice.py:179
+#: src/weatherservice.py:183
 msgid "Icy"
 msgstr "冰冻"
 
-#: src/weatherservice.py:188
+#: src/weatherservice.py:192
 msgid "Isolated showers"
 msgstr "局部阵雨"
 
-#: src/weatherservice.py:190
+#: src/weatherservice.py:194
 #, fuzzy
 msgid "Isolated thundershowers"
 msgstr "局部雷暴"
 
-#: src/weatherservice.py:192
+#: src/weatherservice.py:196
 msgid "Isolated thunderstorms"
 msgstr "局部雷暴"
 
-#: src/weatherservice.py:194 src/weatherservice.py:198
+#: src/weatherservice.py:198 src/weatherservice.py:202
 msgid "Light drizzle"
 msgstr "小毛毛雨"
 
-#: src/weatherservice.py:196
+#: src/weatherservice.py:200
 msgid "Light freezing rain"
 msgstr "小冻雨"
 
-#: src/weatherservice.py:200
+#: src/weatherservice.py:204
 #, fuzzy
 msgid "Light drizzle rain"
 msgstr "小毛毛雨"
 
-#: src/weatherservice.py:202
+#: src/weatherservice.py:206
 #, fuzzy
 msgid "Light shower rain"
 msgstr "轻度暴雨"
 
-#: src/weatherservice.py:204
+#: src/weatherservice.py:208
 msgid "Light rain shower"
 msgstr "小阵雨"
 
-#: src/weatherservice.py:206
+#: src/weatherservice.py:210
 msgid "Light rain"
 msgstr "小雨"
 
-#: src/weatherservice.py:208
+#: src/weatherservice.py:212
 msgid "Light showers of ice pellets"
 msgstr "小阵冰雹"
 
-#: src/weatherservice.py:210
+#: src/weatherservice.py:214
 msgid "Light sleet showers"
 msgstr "小雨夹雪"
 
-#: src/weatherservice.py:212
+#: src/weatherservice.py:216
 msgid "Light sleet"
 msgstr "小雨夹雪"
 
-#: src/weatherservice.py:214
+#: src/weatherservice.py:218
 msgid "Light snow showers"
 msgstr "小阵雪"
 
-#: src/weatherservice.py:216
+#: src/weatherservice.py:220
 msgid "Light snow"
 msgstr "小雪"
 
-#: src/weatherservice.py:218
+#: src/weatherservice.py:222
 msgid "Light thunderstorm"
 msgstr "小雷阵雨"
 
-#: src/weatherservice.py:220
+#: src/weatherservice.py:224
 msgid "Low drifting sand"
 msgstr "低吹沙"
 
-#: src/weatherservice.py:222
+#: src/weatherservice.py:226
 msgid "Low drifting snow"
 msgstr "低吹雪"
 
-#: src/weatherservice.py:224
+#: src/weatherservice.py:228
 msgid "Low drifting widespread dust"
 msgstr "低漂移普遍灰尘"
 
-#: src/weatherservice.py:226
+#: src/weatherservice.py:230
 msgid "Mist"
 msgstr "薄雾"
 
-#: src/weatherservice.py:228
+#: src/weatherservice.py:232
 msgid "Mixed rain and snow"
 msgstr "雨夹雪"
 
-#: src/weatherservice.py:230
+#: src/weatherservice.py:234
 msgid "Mixed rain and sleet"
 msgstr "雨夹雪"
 
-#: src/weatherservice.py:232
+#: src/weatherservice.py:236
 msgid "Mixed snow and sleet"
 msgstr "雨夹雪"
 
-#: src/weatherservice.py:234
+#: src/weatherservice.py:238
 msgid "Moderate or heavy freezing rain"
 msgstr "中度或重度冻雨"
 
-#: src/weatherservice.py:236
+#: src/weatherservice.py:240
 msgid "Moderate or heavy rain in area with thunder"
 msgstr "中度或重度局部雷阵雨"
 
-#: src/weatherservice.py:238
+#: src/weatherservice.py:242
 msgid "Moderate or heavy rain shower"
 msgstr "中毒或者重度暴雨"
 
-#: src/weatherservice.py:240
+#: src/weatherservice.py:244
 msgid "Moderate or heavy showers of ice pellets"
 msgstr "中度或重度小暴冰雹"
 
-#: src/weatherservice.py:242
+#: src/weatherservice.py:246
 msgid "Moderate or heavy sleet showers"
 msgstr "中毒或重度暴雨夹雪"
 
-#: src/weatherservice.py:244
+#: src/weatherservice.py:248
 msgid "Moderate or heavy sleet"
 msgstr "中毒或重度雨夹雪"
 
-#: src/weatherservice.py:246
+#: src/weatherservice.py:250
 msgid "Moderate or heavy snow in area with thunder"
 msgstr "中度或重度局部阵雪"
 
-#: src/weatherservice.py:248
+#: src/weatherservice.py:252
 msgid "Moderate or heavy snow showers"
 msgstr "中度或重度局部暴雪"
 
-#: src/weatherservice.py:250
+#: src/weatherservice.py:254
 msgid "Moderate rain at times"
 msgstr "间歇性中雨"
 
-#: src/weatherservice.py:252
+#: src/weatherservice.py:256
 msgid "Moderate rain"
 msgstr "中雨"
 
-#: src/weatherservice.py:254
+#: src/weatherservice.py:258
 msgid "Moderate snow"
 msgstr "中雪"
 
-#: src/weatherservice.py:256
+#: src/weatherservice.py:260
 msgid "Mostly cloudy"
 msgstr "大部多云"
 
-#: src/weatherservice.py:258
+#: src/weatherservice.py:262
 msgid "Mostly sunny"
 msgstr "大部晴天"
 
-#: src/weatherservice.py:260 src/weatherservice.py:843
+#: src/weatherservice.py:264 src/weatherservice.py:847
 msgid "Not available"
 msgstr "不可用"
 
-#: src/weatherservice.py:262
+#: src/weatherservice.py:266
 msgid "Overcast"
 msgstr "阴"
 
-#: src/weatherservice.py:264
+#: src/weatherservice.py:268
 msgid "Partial fog"
 msgstr "部分有雾"
 
-#: src/weatherservice.py:266
+#: src/weatherservice.py:270
 msgid "Partly cloudy"
 msgstr "晴间多云"
 
-#: src/weatherservice.py:268
+#: src/weatherservice.py:272
 msgid "Partly sunny"
 msgstr "多云间晴"
 
-#: src/weatherservice.py:270
+#: src/weatherservice.py:274
 msgid "Patches of fog"
 msgstr "局部地区有雾"
 
-#: src/weatherservice.py:272
+#: src/weatherservice.py:276
 msgid "Patchy freezing drizzle nearby"
 msgstr "附近有分布不均的冻毛毛雨"
 
-#: src/weatherservice.py:274
+#: src/weatherservice.py:278
 msgid "Patchy heavy snow"
 msgstr "分布不均大雪"
 
-#: src/weatherservice.py:276
+#: src/weatherservice.py:280
 msgid "Patchy light drizzle"
 msgstr "分布不均的毛毛雨"
 
-#: src/weatherservice.py:278
+#: src/weatherservice.py:282
 msgid "Patchy light rain in area with thunder"
 msgstr "分布不均的伴有雷声的小雨"
 
-#: src/weatherservice.py:280
+#: src/weatherservice.py:284
 msgid "Patchy light rain"
 msgstr "分布不均的小雨"
 
-#: src/weatherservice.py:282
+#: src/weatherservice.py:286
 msgid "Patchy light snow in area with thunder"
 msgstr "分布不均的伴有雷声局部小雪"
 
-#: src/weatherservice.py:284
+#: src/weatherservice.py:288
 msgid "Patchy light snow"
 msgstr ""
 
-#: src/weatherservice.py:286
+#: src/weatherservice.py:290
 msgid "Patchy moderate snow"
 msgstr ""
 
-#: src/weatherservice.py:288
+#: src/weatherservice.py:292
 msgid "Patchy rain nearby"
 msgstr ""
 
-#: src/weatherservice.py:290
+#: src/weatherservice.py:294
 msgid "Patchy sleet nearby"
 msgstr ""
 
-#: src/weatherservice.py:292
+#: src/weatherservice.py:296
 msgid "Patchy snow nearby"
 msgstr "附近有分布不均的雪"
 
-#: src/weatherservice.py:294
+#: src/weatherservice.py:298
 msgid "Ragged thunderstorm"
 msgstr "刺耳的雷暴"
 
-#: src/weatherservice.py:296
+#: src/weatherservice.py:300
 msgid "Rain and snow"
 msgstr "雨夹雪"
 
-#: src/weatherservice.py:298
+#: src/weatherservice.py:302
 msgid "Rain mist"
 msgstr "雾雨"
 
-#: src/weatherservice.py:300
+#: src/weatherservice.py:304
 msgid "Rain showers"
 msgstr "阵雨"
 
-#: src/weatherservice.py:302
+#: src/weatherservice.py:306
 msgid "Rain"
 msgstr "雨"
 
-#: src/weatherservice.py:303
+#: src/weatherservice.py:307
 msgid "Sand"
 msgstr "沙尘"
 
-#: src/weatherservice.py:305
+#: src/weatherservice.py:309
 msgid "Sandstorm"
 msgstr "沙暴"
 
-#: src/weatherservice.py:307
+#: src/weatherservice.py:311
 msgid "Scattered clouds"
 msgstr "散云"
 
-#: src/weatherservice.py:309
+#: src/weatherservice.py:313
 msgid "Scattered showers"
 msgstr "零星阵雨"
 
-#: src/weatherservice.py:311
+#: src/weatherservice.py:315
 msgid "Scattered thunderstorms"
 msgstr "零星雷暴"
 
-#: src/weatherservice.py:313
+#: src/weatherservice.py:317
 msgid "Shallow fog"
 msgstr "浅雾"
 
-#: src/weatherservice.py:315
+#: src/weatherservice.py:319
 msgid "Showers"
 msgstr "阵雨"
 
-#: src/weatherservice.py:316
+#: src/weatherservice.py:320
 msgid "Shower drizzle"
 msgstr ""
 
-#: src/weatherservice.py:318
+#: src/weatherservice.py:322
 msgid "Shower rain"
 msgstr "暴雨"
 
-#: src/weatherservice.py:320
+#: src/weatherservice.py:324
 msgid "Shower snow"
 msgstr "暴雪"
 
-#: src/weatherservice.py:322
+#: src/weatherservice.py:326
 msgid "Sleet"
 msgstr "雨夹雪"
 
-#: src/weatherservice.py:324
+#: src/weatherservice.py:328
 msgid "Small hail showers"
 msgstr "小冰雹阵雨"
 
-#: src/weatherservice.py:326
+#: src/weatherservice.py:330
 msgid "Small hail"
 msgstr "小冰雹"
 
-#: src/weatherservice.py:328
+#: src/weatherservice.py:332
 msgid "Smoke"
 msgstr "烟雾"
 
-#: src/weatherservice.py:330
+#: src/weatherservice.py:334
 msgid "Snow blowing snow mist"
 msgstr "暴风雪和大雾"
 
-#: src/weatherservice.py:332
+#: src/weatherservice.py:336
 msgid "Snow flurries"
 msgstr ""
 
-#: src/weatherservice.py:334
+#: src/weatherservice.py:338
 msgid "Snow grains"
 msgstr "米雪"
 
-#: src/weatherservice.py:336
+#: src/weatherservice.py:340
 msgid "Snow showers"
 msgstr "阵雪"
 
-#: src/weatherservice.py:338
+#: src/weatherservice.py:342
 msgid "Snow"
 msgstr "雪"
 
-#: src/weatherservice.py:339
+#: src/weatherservice.py:343
 msgid "Spray"
 msgstr "大雾"
 
-#: src/weatherservice.py:340
+#: src/weatherservice.py:344
 msgid "Squalls"
 msgstr "暴风"
 
-#: src/weatherservice.py:342 src/weatherservice.py:776
+#: src/weatherservice.py:346 src/weatherservice.py:780
 msgid "Storm"
 msgstr "暴雨"
 
-#: src/weatherservice.py:343
+#: src/weatherservice.py:347
 msgid "Sunny"
 msgstr "晴"
 
-#: src/weatherservice.py:345 src/weatherservice.py:347
+#: src/weatherservice.py:349 src/weatherservice.py:351
 msgid "Thunderstorm"
 msgstr "雷暴"
 
-#: src/weatherservice.py:349
+#: src/weatherservice.py:353
 msgid "Thunderstorms and ice pellets"
 msgstr "雷暴雨有冰粒"
 
-#: src/weatherservice.py:351
+#: src/weatherservice.py:355
 msgid "Thunderstorms and rain"
 msgstr "雷雨"
 
-#: src/weatherservice.py:353
+#: src/weatherservice.py:357
 msgid "Thunderstorms and snow"
 msgstr "暴雨雪"
 
-#: src/weatherservice.py:355
+#: src/weatherservice.py:359
 msgid "Thunderstorms with hail"
 msgstr "雷暴夹冰雹"
 
-#: src/weatherservice.py:357
+#: src/weatherservice.py:361
 msgid "Thunderstorms with small hail"
 msgstr "雷暴夹小冰雹"
 
-#: src/weatherservice.py:359
+#: src/weatherservice.py:363
 msgid "Thunderstorm with light rain"
 msgstr "伴有小雨的雷暴"
 
-#: src/weatherservice.py:361
+#: src/weatherservice.py:365
 msgid "Thunderstorm with rain"
 msgstr "伴有雨的雷暴"
 
-#: src/weatherservice.py:363
+#: src/weatherservice.py:367
 msgid "Thunderstorm with heavy rain"
 msgstr "伴有大雨的雷暴"
 
-#: src/weatherservice.py:365
+#: src/weatherservice.py:369
 msgid "Thunderstorm with light drizzle"
 msgstr "伴有毛毛雨的雷暴"
 
-#: src/weatherservice.py:367
+#: src/weatherservice.py:371
 msgid "Thunderstorm with drizzle"
 msgstr "伴随者毛毛雨的雷暴"
 
-#: src/weatherservice.py:369
+#: src/weatherservice.py:373
 msgid "Thunderstorm with heavy drizzle"
 msgstr "伴随者中度毛毛雨的雷暴"
 
-#: src/weatherservice.py:371
+#: src/weatherservice.py:375
 msgid "Thundery outbreaks in nearby"
 msgstr "附近突然暴发"
 
-#: src/weatherservice.py:373
+#: src/weatherservice.py:377
 msgid "Tornado"
 msgstr "龙卷风"
 
-#: src/weatherservice.py:375
+#: src/weatherservice.py:379
 msgid "Torrential rain shower"
 msgstr "倾盆大雨"
 
-#: src/weatherservice.py:377
+#: src/weatherservice.py:381
 msgid "Tropical storm"
 msgstr "热带风暴"
 
-#: src/weatherservice.py:379
+#: src/weatherservice.py:383
 msgid "Unknown precipitation"
 msgstr "未知预测"
 
-#: src/weatherservice.py:381
+#: src/weatherservice.py:385
 msgid "Unknown"
 msgstr "未知"
 
-#: src/weatherservice.py:383
+#: src/weatherservice.py:387
 msgid "Very heavy rain"
 msgstr "非常大的雨"
 
-#: src/weatherservice.py:385
+#: src/weatherservice.py:389
 msgid "Volcanic ash"
 msgstr "火山灰"
 
-#: src/weatherservice.py:387
+#: src/weatherservice.py:391
 msgid "Widespread dust"
 msgstr "大范围尘埃"
 
-#: src/weatherservice.py:389
+#: src/weatherservice.py:393
 msgid "Windy"
 msgstr "有风"
 
-#: src/weatherservice.py:394 src/weatherservice.py:395
-#: src/weatherservice.py:432
+#: src/weatherservice.py:398 src/weatherservice.py:399
+#: src/weatherservice.py:436
 msgid "North"
 msgstr "北"
 
-#: src/weatherservice.py:396 src/weatherservice.py:433
+#: src/weatherservice.py:400 src/weatherservice.py:437
 msgid "North by east"
 msgstr "北偏东"
 
-#: src/weatherservice.py:397 src/weatherservice.py:434
+#: src/weatherservice.py:401 src/weatherservice.py:438
 msgid "North-northeast"
 msgstr "北偏东北"
 
-#: src/weatherservice.py:398 src/weatherservice.py:435
+#: src/weatherservice.py:402 src/weatherservice.py:439
 msgid "Northeast by north"
 msgstr "东北偏北"
 
-#: src/weatherservice.py:399 src/weatherservice.py:436
+#: src/weatherservice.py:403 src/weatherservice.py:440
 msgid "Northeast"
 msgstr "东北"
 
-#: src/weatherservice.py:400 src/weatherservice.py:437
+#: src/weatherservice.py:404 src/weatherservice.py:441
 msgid "Northeast by east"
 msgstr "东北偏东"
 
-#: src/weatherservice.py:401 src/weatherservice.py:438
+#: src/weatherservice.py:405 src/weatherservice.py:442
 msgid "East-northeast"
 msgstr "东偏东北"
 
-#: src/weatherservice.py:402 src/weatherservice.py:439
+#: src/weatherservice.py:406 src/weatherservice.py:443
 msgid "East by north"
 msgstr "东偏北"
 
-#: src/weatherservice.py:403 src/weatherservice.py:404
-#: src/weatherservice.py:440
+#: src/weatherservice.py:407 src/weatherservice.py:408
+#: src/weatherservice.py:444
 msgid "East"
 msgstr "东"
 
-#: src/weatherservice.py:405 src/weatherservice.py:441
+#: src/weatherservice.py:409 src/weatherservice.py:445
 msgid "East by south"
 msgstr "东偏南"
 
-#: src/weatherservice.py:406 src/weatherservice.py:442
+#: src/weatherservice.py:410 src/weatherservice.py:446
 msgid "East-southeast"
 msgstr "东偏东南"
 
-#: src/weatherservice.py:407 src/weatherservice.py:443
+#: src/weatherservice.py:411 src/weatherservice.py:447
 msgid "Southeast by east"
 msgstr "东南偏东"
 
-#: src/weatherservice.py:408 src/weatherservice.py:444
+#: src/weatherservice.py:412 src/weatherservice.py:448
 msgid "Southeast"
 msgstr "东南"
 
-#: src/weatherservice.py:409 src/weatherservice.py:445
+#: src/weatherservice.py:413 src/weatherservice.py:449
 msgid "Southeast by south"
 msgstr "东南偏南"
 
-#: src/weatherservice.py:410 src/weatherservice.py:446
+#: src/weatherservice.py:414 src/weatherservice.py:450
 msgid "South-southeast"
 msgstr "南偏东南"
 
-#: src/weatherservice.py:411 src/weatherservice.py:447
+#: src/weatherservice.py:415 src/weatherservice.py:451
 msgid "South by east"
 msgstr "南偏东"
 
-#: src/weatherservice.py:412 src/weatherservice.py:413
-#: src/weatherservice.py:448
+#: src/weatherservice.py:416 src/weatherservice.py:417
+#: src/weatherservice.py:452
 msgid "South"
 msgstr "南"
 
-#: src/weatherservice.py:414 src/weatherservice.py:449
+#: src/weatherservice.py:418 src/weatherservice.py:453
 msgid "South by west"
 msgstr "南偏西"
 
-#: src/weatherservice.py:415 src/weatherservice.py:450
+#: src/weatherservice.py:419 src/weatherservice.py:454
 msgid "South-southwest"
 msgstr "南偏西南"
 
-#: src/weatherservice.py:416 src/weatherservice.py:451
+#: src/weatherservice.py:420 src/weatherservice.py:455
 msgid "Southwest by south"
 msgstr "西南偏南"
 
-#: src/weatherservice.py:417 src/weatherservice.py:452
+#: src/weatherservice.py:421 src/weatherservice.py:456
 msgid "Southwest"
 msgstr "西南"
 
-#: src/weatherservice.py:418 src/weatherservice.py:453
+#: src/weatherservice.py:422 src/weatherservice.py:457
 msgid "Southwest by west"
 msgstr "西南偏西"
 
-#: src/weatherservice.py:419 src/weatherservice.py:454
+#: src/weatherservice.py:423 src/weatherservice.py:458
 msgid "West-southwest"
 msgstr "西偏西南"
 
-#: src/weatherservice.py:420 src/weatherservice.py:455
+#: src/weatherservice.py:424 src/weatherservice.py:459
 msgid "West by south"
 msgstr "西偏南"
 
-#: src/weatherservice.py:421 src/weatherservice.py:422
-#: src/weatherservice.py:456
+#: src/weatherservice.py:425 src/weatherservice.py:426
+#: src/weatherservice.py:460
 msgid "West"
 msgstr "西"
 
-#: src/weatherservice.py:423 src/weatherservice.py:457
+#: src/weatherservice.py:427 src/weatherservice.py:461
 msgid "West by north"
 msgstr "西偏北"
 
-#: src/weatherservice.py:424 src/weatherservice.py:458
+#: src/weatherservice.py:428 src/weatherservice.py:462
 msgid "West-northwest"
 msgstr "西偏西北"
 
-#: src/weatherservice.py:425 src/weatherservice.py:459
+#: src/weatherservice.py:429 src/weatherservice.py:463
 msgid "Northwest by west"
 msgstr "西北偏西"
 
-#: src/weatherservice.py:426 src/weatherservice.py:460
+#: src/weatherservice.py:430 src/weatherservice.py:464
 msgid "Northwest"
 msgstr "西北"
 
-#: src/weatherservice.py:427 src/weatherservice.py:461
+#: src/weatherservice.py:431 src/weatherservice.py:465
 msgid "Northwest by north"
 msgstr "西北偏北"
 
-#: src/weatherservice.py:428 src/weatherservice.py:462
+#: src/weatherservice.py:432 src/weatherservice.py:466
 msgid "North-northwest"
 msgstr "北偏西北"
 
-#: src/weatherservice.py:429 src/weatherservice.py:463
+#: src/weatherservice.py:433 src/weatherservice.py:467
 msgid "North by west"
 msgstr "北偏西"
 
-#: src/weatherservice.py:430
+#: src/weatherservice.py:434
 msgid "Variable"
 msgstr "可变的"
 
-#: src/weatherservice.py:655 src/weatherservice.py:657
+#: src/weatherservice.py:659 src/weatherservice.py:661
 msgid "from"
 msgstr "来自"
 
-#: src/weatherservice.py:657
+#: src/weatherservice.py:661
 msgid "at"
 msgstr "在"
 
-#: src/weatherservice.py:658 src/weatherservice.py:688
+#: src/weatherservice.py:662 src/weatherservice.py:692
 msgid "n/a"
 msgstr "不可用"
 
-#: src/weatherservice.py:718
+#: src/weatherservice.py:722
 msgid "millibar"
 msgstr "毫巴"
 
-#: src/weatherservice.py:718
+#: src/weatherservice.py:722
 msgid "inches of mercury"
 msgstr "英寸汞柱"
 
-#: src/weatherservice.py:719
+#: src/weatherservice.py:723
 msgid "millimeters of mercury"
 msgstr "毫米汞柱"
 
-#: src/weatherservice.py:732
+#: src/weatherservice.py:736
 msgid "mi"
 msgstr "靡"
 
-#: src/weatherservice.py:732
+#: src/weatherservice.py:736
 msgid "km"
 msgstr "千米"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "in"
 msgstr "位于"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "cm"
 msgstr "厘米"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "mm"
 msgstr "毫米"
 
-#: src/weatherservice.py:756
+#: src/weatherservice.py:760
 msgid "Calm"
 msgstr "无风"
 
-#: src/weatherservice.py:758
+#: src/weatherservice.py:762
 msgid "Light air"
 msgstr "一级风"
 
-#: src/weatherservice.py:760
+#: src/weatherservice.py:764
 msgid "Light breeze"
 msgstr "二级风"
 
-#: src/weatherservice.py:762
+#: src/weatherservice.py:766
 msgid "Gentle breeze"
 msgstr "三级风"
 
-#: src/weatherservice.py:764
+#: src/weatherservice.py:768
 msgid "Moderate breeze"
 msgstr "四级风"
 
-#: src/weatherservice.py:766
+#: src/weatherservice.py:770
 msgid "Fresh breeze"
 msgstr "五级风"
 
-#: src/weatherservice.py:768
+#: src/weatherservice.py:772
 msgid "Strong breeze"
 msgstr "六级强风"
 
-#: src/weatherservice.py:770
+#: src/weatherservice.py:774
 msgid "High wind"
 msgstr "疾风"
 
-#: src/weatherservice.py:772
+#: src/weatherservice.py:776
 msgid "Gale"
 msgstr "八级狂风"
 
-#: src/weatherservice.py:774
+#: src/weatherservice.py:778
 msgid "Strong gale"
 msgstr "九级烈风"
 
-#: src/weatherservice.py:778
+#: src/weatherservice.py:782
 msgid "Violent storm"
 msgstr "暴风"
 
-#: src/weatherservice.py:871 src/weatherservice.py:872
-#: src/weatherservice.py:873 src/weatherservice.py:874
-#: src/weatherservice.py:902 src/weatherservice.py:903
-#: src/weatherservice.py:904 src/weatherservice.py:905
-#: src/weatherservice.py:934 src/weatherservice.py:935
-#: src/weatherservice.py:941 src/weatherservice.py:942
-#: src/weatherservice.py:975 src/weatherservice.py:976
+#: src/weatherservice.py:875 src/weatherservice.py:876
+#: src/weatherservice.py:877 src/weatherservice.py:878
+#: src/weatherservice.py:906 src/weatherservice.py:907
+#: src/weatherservice.py:908 src/weatherservice.py:909
+#: src/weatherservice.py:938 src/weatherservice.py:939
+#: src/weatherservice.py:945 src/weatherservice.py:946
+#: src/weatherservice.py:979 src/weatherservice.py:980
 msgid "Down all day"
 msgstr ""
 
-#: src/weatherservice.py:877 src/weatherservice.py:878
-#: src/weatherservice.py:879 src/weatherservice.py:880
-#: src/weatherservice.py:907 src/weatherservice.py:908
-#: src/weatherservice.py:909 src/weatherservice.py:910
-#: src/weatherservice.py:931 src/weatherservice.py:932
-#: src/weatherservice.py:938 src/weatherservice.py:939
-#: src/weatherservice.py:978 src/weatherservice.py:979
+#: src/weatherservice.py:881 src/weatherservice.py:882
+#: src/weatherservice.py:883 src/weatherservice.py:884
+#: src/weatherservice.py:911 src/weatherservice.py:912
+#: src/weatherservice.py:913 src/weatherservice.py:914
+#: src/weatherservice.py:935 src/weatherservice.py:936
+#: src/weatherservice.py:942 src/weatherservice.py:943
+#: src/weatherservice.py:982 src/weatherservice.py:983
 msgid "Up all day"
 msgstr ""
 
@@ -1245,189 +1245,189 @@ msgstr "下弦月"
 msgid "Waning Crescent"
 msgstr "残月"
 
-#: src/forecastw.py:75 src/myweatherindicator.py:420 src/openweathermap.py:41
+#: src/forecastw.py:72 src/myweatherindicator.py:423 src/openweathermap.py:44
 msgid "Forecast"
 msgstr "预报"
 
-#: src/forecastw.py:121
+#: src/forecastw.py:118
 msgid "Day of week"
 msgstr "星期"
 
-#: src/forecastw.py:121 src/myweatherindicator.py:539
-#: src/myweatherindicator.py:712
+#: src/forecastw.py:118 src/myweatherindicator.py:541
+#: src/myweatherindicator.py:714
 msgid "Sunrise"
 msgstr "日出"
 
-#: src/forecastw.py:121 src/myweatherindicator.py:548
-#: src/myweatherindicator.py:715
+#: src/forecastw.py:118 src/myweatherindicator.py:550
+#: src/myweatherindicator.py:717
 msgid "Sunset"
 msgstr "日落"
 
-#: src/forecastw.py:121
+#: src/forecastw.py:118
 msgid "Moon Phase"
 msgstr "月相"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "Condition"
 msgstr "环境"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "High temperature"
 msgstr "高温"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "Low temperature"
 msgstr "低温"
 
-#: src/forecastw.py:124
+#: src/forecastw.py:121
 msgid "Maximum wind"
 msgstr "最大风力"
 
-#: src/forecastw.py:124 src/forecastw.py:128 src/forecastw.py:130
+#: src/forecastw.py:121 src/forecastw.py:125 src/forecastw.py:127
 msgid "Average wind"
 msgstr "平均风力"
 
-#: src/forecastw.py:125
+#: src/forecastw.py:122
 msgid "Maximum humidity"
 msgstr "最大湿度"
 
-#: src/forecastw.py:125
+#: src/forecastw.py:122
 msgid "Minumum humidity"
 msgstr "最小湿度"
 
-#: src/forecastw.py:126 src/forecastw.py:128
+#: src/forecastw.py:123 src/forecastw.py:125
 msgid "Rain measurement"
 msgstr "雨测量"
 
-#: src/forecastw.py:126
+#: src/forecastw.py:123
 msgid "Snow measurement"
 msgstr "雪测量"
 
-#: src/forecastw.py:130
+#: src/forecastw.py:127
 msgid "Average humidity"
 msgstr "平均湿度"
 
-#: src/forecastw.py:131 src/myweatherindicator.py:505
-#: src/myweatherindicator.py:757
+#: src/forecastw.py:128 src/myweatherindicator.py:507
+#: src/myweatherindicator.py:759
 msgid "Cloudiness"
 msgstr "阴暗"
 
-#: src/myweatherindicator.py:151
+#: src/myweatherindicator.py:153
 msgid "Homepage"
 msgstr "主页"
 
-#: src/myweatherindicator.py:159
+#: src/myweatherindicator.py:161
 msgid "Get help online..."
 msgstr "获得在线帮助..."
 
-#: src/myweatherindicator.py:167
+#: src/myweatherindicator.py:169
 msgid "Translate this application..."
 msgstr "翻译此程序..."
 
-#: src/myweatherindicator.py:175
+#: src/myweatherindicator.py:178
 msgid "Report a bug..."
 msgstr "报告 Bug..."
 
-#: src/myweatherindicator.py:187
+#: src/myweatherindicator.py:190
 #, fuzzy
 msgid "Follow me in Twitter"
 msgstr "在Twitter跟随我们"
 
-#: src/myweatherindicator.py:195
+#: src/myweatherindicator.py:198
 #, fuzzy
 msgid "Follow me in Google+"
 msgstr "在Google+跟随我们"
 
-#: src/myweatherindicator.py:204
+#: src/myweatherindicator.py:207
 #, fuzzy
 msgid "Follow me in Facebook"
 msgstr "在Google+跟随我们"
 
-#: src/myweatherindicator.py:211
+#: src/myweatherindicator.py:214
 msgid "About"
 msgstr "关于"
 
-#: src/myweatherindicator.py:427
+#: src/myweatherindicator.py:430
 msgid "Evolution"
 msgstr ""
 
-#: src/myweatherindicator.py:434
+#: src/myweatherindicator.py:437
 msgid "Forecast Map"
 msgstr "预报地图"
 
-#: src/myweatherindicator.py:441
+#: src/myweatherindicator.py:444
 #, fuzzy
 msgid "Moon Phase Calendar"
 msgstr "月相"
 
-#: src/myweatherindicator.py:453
+#: src/myweatherindicator.py:455
 #, fuzzy
 msgid "Update weather"
 msgstr "现在更新"
 
-#: src/myweatherindicator.py:464 src/myweatherindicator.py:681
+#: src/myweatherindicator.py:466 src/myweatherindicator.py:683
 msgid "Location"
 msgstr "位置"
 
-#: src/myweatherindicator.py:479 src/myweatherindicator.py:685
-#: src/myweatherindicator.py:792
+#: src/myweatherindicator.py:481 src/myweatherindicator.py:687
+#: src/myweatherindicator.py:794
 msgid "Humidity"
 msgstr "湿度"
 
-#: src/myweatherindicator.py:484 src/myweatherindicator.py:687
+#: src/myweatherindicator.py:486 src/myweatherindicator.py:689
 msgid "Feels like"
 msgstr "体感温度"
 
-#: src/myweatherindicator.py:489 src/myweatherindicator.py:689
+#: src/myweatherindicator.py:491 src/myweatherindicator.py:691
 msgid "Dew Point"
 msgstr "露点"
 
-#: src/myweatherindicator.py:494 src/myweatherindicator.py:692
-#: src/myweatherindicator.py:794
+#: src/myweatherindicator.py:496 src/myweatherindicator.py:694
+#: src/myweatherindicator.py:796
 msgid "Wind"
 msgstr "风况"
 
-#: src/myweatherindicator.py:510 src/myweatherindicator.py:761
+#: src/myweatherindicator.py:512 src/myweatherindicator.py:763
 msgid "UV"
 msgstr "紫外线"
 
-#: src/myweatherindicator.py:515 src/myweatherindicator.py:765
+#: src/myweatherindicator.py:517 src/myweatherindicator.py:767
 msgid "Precipitation"
 msgstr "降水量"
 
-#: src/myweatherindicator.py:530 src/myweatherindicator.py:710
+#: src/myweatherindicator.py:532 src/myweatherindicator.py:712
 msgid "Dawn"
 msgstr "破晓"
 
-#: src/myweatherindicator.py:557 src/myweatherindicator.py:717
+#: src/myweatherindicator.py:559 src/myweatherindicator.py:719
 msgid "Dusk"
 msgstr "黄昏"
 
-#: src/myweatherindicator.py:592
+#: src/myweatherindicator.py:594
 msgid "Help"
 msgstr "帮助"
 
-#: src/myweatherindicator.py:598
+#: src/myweatherindicator.py:600
 msgid "Exit"
 msgstr "退出"
 
-#: src/myweatherindicator.py:621
+#: src/myweatherindicator.py:623
 msgid "Not Internet connection"
 msgstr ""
 
-#: src/myweatherindicator.py:788
+#: src/myweatherindicator.py:790
 msgid "Conditions in"
 msgstr "天气情况："
 
-#: src/myweatherindicator.py:841
+#: src/myweatherindicator.py:843
 msgid "Forecast for next hours"
 msgstr ""
 
-#: src/myweatherindicator.py:842
+#: src/myweatherindicator.py:844
 msgid "Weather service"
 msgstr ""
 
-#: src/myweatherindicator.py:880
+#: src/myweatherindicator.py:882
 msgid "A weather indicator"
 msgstr "天气指示器"
 

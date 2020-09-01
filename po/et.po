@@ -1,10 +1,10 @@
 #
-#: src/myweatherindicator.py:520 src/myweatherindicator.py:570
+#: src/myweatherindicator.py:522 src/myweatherindicator.py:572
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 10:13+0200\n"
+"POT-Creation-Date: 2020-09-01 13:58+0200\n"
 "PO-Revision-Date: 2017-11-23 20:08+0200\n"
 "Last-Translator: Anari Jalakas <anari.jalakas@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -15,1191 +15,1191 @@ msgstr ""
 "X-Generator: Poedit 2.0.4\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
 
-#: src/whereami.py:61
+#: src/whereami.py:60
 msgid "Where Am I"
 msgstr "Minu asukoht"
 
-#: src/whereami.py:79
+#: src/whereami.py:78
 msgid "Search location"
 msgstr "Otsi asukohta"
 
-#: src/whereami.py:81
+#: src/whereami.py:80
 msgid "Clear location"
 msgstr "Kustuta asukoht"
 
-#: src/whereami.py:82
+#: src/whereami.py:81
 msgid "Input the name of your city"
 msgstr "Sisesta linna nimi"
 
-#: src/whereami.py:87
+#: src/whereami.py:86
 msgid "Search"
 msgstr "Otsing"
 
-#: src/whereami.py:91
+#: src/whereami.py:90
 msgid "Find me"
 msgstr "Leia mu asukoht"
 
-#: src/whereami.py:94
+#: src/whereami.py:93
 msgid "Locations found"
 msgstr "Leitud asukohad"
 
-#: src/whereami.py:115
+#: src/whereami.py:114
 msgid "City"
 msgstr "Linn"
 
-#: src/whereami.py:119
+#: src/whereami.py:118
 msgid "State"
 msgstr "Maakond/osariik"
 
-#: src/whereami.py:123
+#: src/whereami.py:122
 msgid "Country"
 msgstr "Riik"
 
-#: src/preferences.py:70 src/myweatherindicator.py:585
+#: src/preferences.py:76 src/myweatherindicator.py:587
 msgid "Preferences"
 msgstr "Eelistused"
 
-#: src/preferences.py:87
+#: src/preferences.py:93
 msgid "Main Location"
 msgstr "Põhiasukoht"
 
-#: src/preferences.py:88 src/preferences.py:184 src/preferences.py:478
+#: src/preferences.py:94 src/preferences.py:190 src/preferences.py:484
 msgid "General options"
 msgstr "Üldised valikud"
 
-#: src/preferences.py:92 src/preferences.py:188
+#: src/preferences.py:98 src/preferences.py:194
 msgid "Show"
 msgstr "Näita"
 
-#: src/preferences.py:99
+#: src/preferences.py:105
 msgid "Auto Location"
 msgstr "Automaatne asukoht"
 
-#: src/preferences.py:105 src/preferences.py:194
+#: src/preferences.py:111 src/preferences.py:200
 msgid "Locality"
 msgstr "Paikkond"
 
-#: src/preferences.py:117 src/preferences.py:205
+#: src/preferences.py:123 src/preferences.py:211
 msgid "Search Location"
 msgstr "Otsi asukohta"
 
-#: src/preferences.py:124 src/preferences.py:212
+#: src/preferences.py:130 src/preferences.py:218
 msgid "Show temperature"
 msgstr "Näita temperatuuri"
 
-#: src/preferences.py:130 src/preferences.py:218
+#: src/preferences.py:136 src/preferences.py:224
 msgid "Show notifications"
 msgstr "Näita teateid"
 
-#: src/preferences.py:135 src/preferences.py:223
+#: src/preferences.py:141 src/preferences.py:229
 msgid "Widget options"
 msgstr "Vidina valikud"
 
-#: src/preferences.py:139 src/preferences.py:227
+#: src/preferences.py:145 src/preferences.py:233
 msgid "Show widget"
 msgstr "Näita vidinat"
 
-#: src/preferences.py:146 src/preferences.py:234
+#: src/preferences.py:152 src/preferences.py:240
 msgid "Hide indicator when show widget"
 msgstr "Ära näita indikaatorit kui vidin on nähtaval"
 
-#: src/preferences.py:152 src/preferences.py:240
+#: src/preferences.py:158 src/preferences.py:246
 msgid "Widget on top"
 msgstr "Vidin kõige peal"
 
-#: src/preferences.py:158 src/preferences.py:246
+#: src/preferences.py:164 src/preferences.py:252
 msgid "Show in taskbar"
 msgstr "Näita tegumiribal"
 
-#: src/preferences.py:164 src/preferences.py:252
+#: src/preferences.py:170 src/preferences.py:258
 msgid "On all desktops"
 msgstr "Kõikidel töölaudadel"
 
-#: src/preferences.py:183
+#: src/preferences.py:189
 msgid "Second Location"
 msgstr "Teine asukoht"
 
-#: src/preferences.py:271
+#: src/preferences.py:277
 msgid "Weather Services"
 msgstr "Ilmateenused"
 
-#: src/preferences.py:300
+#: src/preferences.py:306
 msgid "Input World Weather Online key"
 msgstr "Sisesta World Weather Online võti"
 
-#: src/preferences.py:302 src/preferences.py:325
+#: src/preferences.py:308 src/preferences.py:331
 msgid "Activate"
 msgstr "Aktiveerimine"
 
-#: src/preferences.py:304
+#: src/preferences.py:310
 msgid "Click to activate World Weather Online"
 msgstr "Aktiveeri World Weather Online"
 
-#: src/preferences.py:323
+#: src/preferences.py:329
 msgid "Input Weather Underground key"
 msgstr "Sisesta Weather Underground võti"
 
-#: src/preferences.py:327
+#: src/preferences.py:333
 msgid "Click to activate Weather Underground"
 msgstr "Aktiveeri Weather Underground"
 
-#: src/preferences.py:337
+#: src/preferences.py:343
 msgid "Units"
 msgstr "Ühikud"
 
-#: src/preferences.py:340 src/myweatherindicator.py:469
-#: src/myweatherindicator.py:682 src/myweatherindicator.py:790
+#: src/preferences.py:346 src/myweatherindicator.py:471
+#: src/myweatherindicator.py:684 src/myweatherindicator.py:792
 msgid "Temperature"
 msgstr "Temperatuur"
 
-#: src/preferences.py:347
+#: src/preferences.py:353
 msgid "Celsius"
 msgstr "Celsius"
 
-#: src/preferences.py:348
+#: src/preferences.py:354
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: src/preferences.py:349
+#: src/preferences.py:355
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: src/preferences.py:359 src/myweatherindicator.py:474
-#: src/myweatherindicator.py:748
+#: src/preferences.py:365 src/myweatherindicator.py:476
+#: src/myweatherindicator.py:750
 msgid "Pressure"
 msgstr "Õhurõhk"
 
-#: src/preferences.py:366
+#: src/preferences.py:372
 msgid "Millibar"
 msgstr "Millibaar"
 
-#: src/preferences.py:367
+#: src/preferences.py:373
 msgid "Inches of mercury"
 msgstr "Elavhõbedasamba tollid"
 
-#: src/preferences.py:368
+#: src/preferences.py:374
 msgid "Millimeters of mercury"
 msgstr "Elavhõbedasamba millimeetrid"
 
-#: src/preferences.py:378 src/myweatherindicator.py:500
-#: src/myweatherindicator.py:753
+#: src/preferences.py:384 src/myweatherindicator.py:502
+#: src/myweatherindicator.py:755
 msgid "Visibility"
 msgstr "Nähtavus"
 
-#: src/preferences.py:385
+#: src/preferences.py:391
 msgid "mile"
 msgstr "miil"
 
-#: src/preferences.py:386
+#: src/preferences.py:392
 msgid "kilometer"
 msgstr "kilomeeter"
 
-#: src/preferences.py:396
+#: src/preferences.py:402
 msgid "Wind velocity"
 msgstr "Tuule kiirus"
 
-#: src/preferences.py:403
+#: src/preferences.py:409
 msgid "Beaufort"
 msgstr "Beaufort"
 
-#: src/preferences.py:404 src/weatherservice.py:751
+#: src/preferences.py:410 src/weatherservice.py:755
 msgid "ft/s"
 msgstr "jalga/s"
 
-#: src/preferences.py:405 src/weatherservice.py:750
+#: src/preferences.py:411 src/weatherservice.py:754
 msgid "km/h"
 msgstr "km/h"
 
-#: src/preferences.py:406 src/weatherservice.py:751
+#: src/preferences.py:412 src/weatherservice.py:755
 msgid "knots"
 msgstr "sõlmed"
 
-#: src/preferences.py:407 src/weatherservice.py:750
+#: src/preferences.py:413 src/weatherservice.py:754
 msgid "m/s"
 msgstr "m/s"
 
-#: src/preferences.py:408 src/weatherservice.py:750
+#: src/preferences.py:414 src/weatherservice.py:754
 msgid "mph"
 msgstr "miili tunnis"
 
-#: src/preferences.py:418
+#: src/preferences.py:424
 msgid "Rain Gauge"
 msgstr "Vihmamõõdik"
 
-#: src/preferences.py:425 src/preferences.py:444
+#: src/preferences.py:431 src/preferences.py:450
 msgid "Inches"
 msgstr "Tollid"
 
-#: src/preferences.py:426 src/preferences.py:445
+#: src/preferences.py:432 src/preferences.py:451
 msgid "Centimeters"
 msgstr "Sentimeetrid"
 
-#: src/preferences.py:427 src/preferences.py:446
+#: src/preferences.py:433 src/preferences.py:452
 msgid "Millimeters"
 msgstr "Millimeetrid"
 
-#: src/preferences.py:437
+#: src/preferences.py:443
 msgid "Snow Gauge"
 msgstr "Lumemõõdik"
 
-#: src/preferences.py:456
+#: src/preferences.py:462
 msgid "Time Format"
 msgstr "Kellaaja vorming"
 
-#: src/preferences.py:463
+#: src/preferences.py:469
 msgid "24 h"
 msgstr "24 h"
 
-#: src/preferences.py:464
+#: src/preferences.py:470
 msgid "AM/PM"
 msgstr "12 h"
 
-#: src/preferences.py:481
+#: src/preferences.py:487
 msgid "Autostart"
 msgstr "Automaatne käivitus"
 
-#: src/preferences.py:486
+#: src/preferences.py:492
 msgid "Refresh frequency"
 msgstr "Värskendamise sagedus"
 
-#: src/preferences.py:493 src/preferences.py:494
+#: src/preferences.py:499 src/preferences.py:500
 msgid "minutes"
 msgstr "minutit"
 
-#: src/preferences.py:495
+#: src/preferences.py:501
 msgid "hour"
 msgstr "tund"
 
-#: src/preferences.py:496 src/preferences.py:497 src/preferences.py:498
-#: src/preferences.py:499 src/preferences.py:500
+#: src/preferences.py:502 src/preferences.py:503 src/preferences.py:504
+#: src/preferences.py:505 src/preferences.py:506
 msgid "hours"
 msgstr "tundi"
 
-#: src/preferences.py:510
+#: src/preferences.py:516
 msgid "Select icon theme"
 msgstr "Vali ikooniteema"
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Monday"
 msgstr "Esmaspäev"
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Tuesday"
 msgstr "Teisipäev"
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Wednesday"
 msgstr "Kolmapäev"
 
-#: src/mooncalendarwindow.py:44
+#: src/mooncalendarwindow.py:45
 msgid "Thursday"
 msgstr "Neljapäev"
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Friday"
 msgstr "Reede"
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Saturday"
 msgstr "Laupäev"
 
-#: src/mooncalendarwindow.py:45
+#: src/mooncalendarwindow.py:46
 msgid "Sunday"
 msgstr "Pühapäev"
 
-#: src/mooncalendarwindow.py:59
+#: src/mooncalendarwindow.py:57
 msgid "Moon phases"
 msgstr "Kuu faasid"
 
-#: src/mooncalendarwindow.py:74
+#: src/mooncalendarwindow.py:72
 msgid "One year less"
 msgstr "Aasta tagasi"
 
-#: src/mooncalendarwindow.py:83
+#: src/mooncalendarwindow.py:81
 msgid "One month less"
 msgstr "Kuu tagasi"
 
-#: src/mooncalendarwindow.py:92 src/mooncalendarwindow.py:180
+#: src/mooncalendarwindow.py:90
 msgid "Today"
 msgstr "Täna"
 
-#: src/mooncalendarwindow.py:106
+#: src/mooncalendarwindow.py:104
 msgid "One year more"
 msgstr "Aasta edasi"
 
-#: src/mooncalendarwindow.py:115
+#: src/mooncalendarwindow.py:113
 msgid "One month more"
 msgstr "Kuu edasi"
 
-#: src/mooncalendarwindow.py:196
+#: src/mooncalendarwindow.py:193
 #, fuzzy
 msgid "Full moon"
 msgstr "Täiskuu"
 
-#: src/mooncalendarwindow.py:198
+#: src/mooncalendarwindow.py:195
 #, fuzzy
 msgid "New moon"
 msgstr "Noorkuu"
 
 #: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
-#: src/worldweatheronlineapi.py:113 src/weatherservice.py:847
-#: src/weatherservice.py:848 src/weatherservice.py:849
-#: src/weatherservice.py:850 src/weatherservice.py:851
+#: src/worldweatheronlineapi.py:113 src/weatherservice.py:851
+#: src/weatherservice.py:852 src/weatherservice.py:853
 #: src/weatherservice.py:854 src/weatherservice.py:855
-#: src/weatherservice.py:857 src/weatherservice.py:859
-#: src/weatherservice.py:860 src/weatherservice.py:861
-#: src/weatherservice.py:862 src/weatherservice.py:863
-#: src/weatherservice.py:864 src/weatherservice.py:951
-#: src/weatherservice.py:952 src/weatherservice.py:953
-#: src/weatherservice.py:955 src/weatherservice.py:956
-#: src/weatherservice.py:957 src/weatherservice.py:958
+#: src/weatherservice.py:858 src/weatherservice.py:859
+#: src/weatherservice.py:861 src/weatherservice.py:863
+#: src/weatherservice.py:864 src/weatherservice.py:865
+#: src/weatherservice.py:866 src/weatherservice.py:867
+#: src/weatherservice.py:868 src/weatherservice.py:955
+#: src/weatherservice.py:956 src/weatherservice.py:957
 #: src/weatherservice.py:959 src/weatherservice.py:960
 #: src/weatherservice.py:961 src/weatherservice.py:962
-#: src/weatherservice.py:964 src/weatherservice.py:965
-#: src/weatherservice.py:966 src/weatherservice.py:968
-#: src/weatherservice.py:969 src/wundergroundapi.py:43
+#: src/weatherservice.py:963 src/weatherservice.py:964
+#: src/weatherservice.py:965 src/weatherservice.py:966
+#: src/weatherservice.py:968 src/weatherservice.py:969
+#: src/weatherservice.py:970 src/weatherservice.py:972
+#: src/weatherservice.py:973 src/wundergroundapi.py:43
 #: src/wundergroundapi.py:51 src/wundergroundapi.py:62
 msgid "N/A"
 msgstr "Puudub"
 
-#: src/weatherservice.py:36
+#: src/weatherservice.py:40
 msgid "Blowing sand"
 msgstr "Liivatuisk"
 
-#: src/weatherservice.py:44
+#: src/weatherservice.py:48
 msgid "Blizzard"
 msgstr "Lumetorm"
 
-#: src/weatherservice.py:52
+#: src/weatherservice.py:56
 msgid "Blowing snow"
 msgstr "Lumetuisk"
 
-#: src/weatherservice.py:60
+#: src/weatherservice.py:64
 msgid "Blowing widespread dust"
 msgstr "Laiaulatuslikud tolmuiilid"
 
-#: src/weatherservice.py:65
+#: src/weatherservice.py:69
 msgid "Blustery"
 msgstr "Tuuline"
 
-#: src/weatherservice.py:70
+#: src/weatherservice.py:74
 msgid "Chance of a thunderstorm"
 msgstr "Äikesetormi võimalus"
 
-#: src/weatherservice.py:78
+#: src/weatherservice.py:82
 msgid "Chance of flurries"
 msgstr "Tuulepuhangute võimalus"
 
-#: src/weatherservice.py:85
+#: src/weatherservice.py:89
 msgid "Chance of rain"
 msgstr "Vihmasaju võimalus"
 
-#: src/weatherservice.py:93
+#: src/weatherservice.py:97
 msgid "Chance of showers"
 msgstr "Hoovihma võimalus"
 
-#: src/weatherservice.py:100
+#: src/weatherservice.py:104
 msgid "Chance of snow"
 msgstr "Lumesaju võimalus"
 
-#: src/weatherservice.py:102
+#: src/weatherservice.py:106
 msgid "Chance of storm"
 msgstr "Tormi võimalus"
 
-#: src/weatherservice.py:104
+#: src/weatherservice.py:108
 msgid "Chance of thunderstorms"
 msgstr "Äikesetormide võimalus"
 
-#: src/weatherservice.py:106
+#: src/weatherservice.py:110
 msgid "Chance of tstorm"
 msgstr "Äikesetormi võimalus"
 
-#: src/weatherservice.py:108
+#: src/weatherservice.py:112
 msgid "Clear"
 msgstr "Selge"
 
-#: src/weatherservice.py:110
+#: src/weatherservice.py:114
 msgid "Cloudy"
 msgstr "Pilvine"
 
-#: src/weatherservice.py:112
+#: src/weatherservice.py:116
 msgid "Cold"
 msgstr "Külm"
 
-#: src/weatherservice.py:113
+#: src/weatherservice.py:117
 msgid "Drizzle"
 msgstr "Uduvihm"
 
-#: src/weatherservice.py:115
+#: src/weatherservice.py:119
 msgid "Drizzle rain"
 msgstr "Uduvihma sadu"
 
-#: src/weatherservice.py:117
+#: src/weatherservice.py:121
 msgid "Dust whirls"
 msgstr "Tolmupöörised"
 
-#: src/weatherservice.py:119
+#: src/weatherservice.py:123
 msgid "Dust"
 msgstr "Tolmuvine"
 
-#: src/weatherservice.py:121
+#: src/weatherservice.py:125
 msgid "Extreme rain"
 msgstr "Äärmuslik vihm"
 
-#: src/weatherservice.py:123
+#: src/weatherservice.py:127
 msgid "Fair"
 msgstr "Selge"
 
-#: src/weatherservice.py:125
+#: src/weatherservice.py:129
 msgid "Flurries"
 msgstr "Tuulepuhangud"
 
-#: src/weatherservice.py:127
+#: src/weatherservice.py:131
 msgid "Fog patches"
 msgstr "Uduviirud"
 
-#: src/weatherservice.py:129
+#: src/weatherservice.py:133
 msgid "Fog"
 msgstr "Udu"
 
-#: src/weatherservice.py:131
+#: src/weatherservice.py:135
 msgid "Foggy"
 msgstr "Udune"
 
-#: src/weatherservice.py:133 src/weatherservice.py:135
+#: src/weatherservice.py:137 src/weatherservice.py:139
 msgid "Freezing drizzle"
 msgstr "Jäätuv uduvihm"
 
-#: src/weatherservice.py:137 src/weatherservice.py:139
+#: src/weatherservice.py:141 src/weatherservice.py:143
 msgid "Freezing fog"
 msgstr "Jäätuv udu"
 
-#: src/weatherservice.py:141
+#: src/weatherservice.py:145
 msgid "Freezing rain"
 msgstr "Jäätuv vihm"
 
-#: src/weatherservice.py:143
+#: src/weatherservice.py:147
 msgid "Funnel cloud"
 msgstr "Tuulispask"
 
-#: src/weatherservice.py:145
+#: src/weatherservice.py:149
 msgid "Hail showers"
 msgstr "Rahehood"
 
-#: src/weatherservice.py:147
+#: src/weatherservice.py:151
 msgid "Hail"
 msgstr "Rahe"
 
-#: src/weatherservice.py:148
+#: src/weatherservice.py:152
 msgid "Haze"
 msgstr "Hägune"
 
-#: src/weatherservice.py:150
+#: src/weatherservice.py:154
 msgid "Heavy freezing drizzle"
 msgstr "Tugev jäine uduvihm"
 
-#: src/weatherservice.py:152 src/weatherservice.py:180
+#: src/weatherservice.py:156 src/weatherservice.py:184
 msgid "Heavy drizzle"
 msgstr "Tugev uduvihm"
 
-#: src/weatherservice.py:154 src/weatherservice.py:182
+#: src/weatherservice.py:158 src/weatherservice.py:186
 msgid "Heavy drizzle rain"
 msgstr "Tugev uduvihm"
 
-#: src/weatherservice.py:156 src/weatherservice.py:162
-#: src/weatherservice.py:184
+#: src/weatherservice.py:160 src/weatherservice.py:166
+#: src/weatherservice.py:188
 msgid "Heavy rain"
 msgstr "Tugev vihm"
 
-#: src/weatherservice.py:158 src/weatherservice.py:186
+#: src/weatherservice.py:162 src/weatherservice.py:190
 msgid "Heavy shower rain"
 msgstr "Tugev hoogvihm"
 
-#: src/weatherservice.py:160
+#: src/weatherservice.py:164
 msgid "Heavy rain at times"
 msgstr "Tugev vihmahood"
 
-#: src/weatherservice.py:164
+#: src/weatherservice.py:168
 msgid "Heavy snow"
 msgstr "Tugev lumesadu"
 
-#: src/weatherservice.py:166
+#: src/weatherservice.py:170
 msgid "Heavy thunderstorm"
 msgstr "Tugev äikesetorm"
 
-#: src/weatherservice.py:168
+#: src/weatherservice.py:172
 msgid "Hot"
 msgstr "Palav"
 
-#: src/weatherservice.py:170 src/weatherservice.py:780
+#: src/weatherservice.py:174 src/weatherservice.py:784
 msgid "Hurricane"
 msgstr "Orkaan"
 
-#: src/weatherservice.py:172
+#: src/weatherservice.py:176
 msgid "Ice crystals"
 msgstr "Jääkristallid"
 
-#: src/weatherservice.py:174
+#: src/weatherservice.py:178
 msgid "Ice pellet showers"
 msgstr "Jääkruupide hood"
 
-#: src/weatherservice.py:176 src/weatherservice.py:178
+#: src/weatherservice.py:180 src/weatherservice.py:182
 msgid "Ice pellets"
 msgstr "Jääkruubid"
 
-#: src/weatherservice.py:179
+#: src/weatherservice.py:183
 msgid "Icy"
 msgstr "Jäine"
 
-#: src/weatherservice.py:188
+#: src/weatherservice.py:192
 msgid "Isolated showers"
 msgstr "Isoleeritud hoovihmad"
 
-#: src/weatherservice.py:190
+#: src/weatherservice.py:194
 msgid "Isolated thundershowers"
 msgstr "Isoleeritud äikesevihmad"
 
-#: src/weatherservice.py:192
+#: src/weatherservice.py:196
 msgid "Isolated thunderstorms"
 msgstr "Isoleeritud äikesetormid"
 
-#: src/weatherservice.py:194 src/weatherservice.py:198
+#: src/weatherservice.py:198 src/weatherservice.py:202
 msgid "Light drizzle"
 msgstr "Kerge uduvihma sabin"
 
-#: src/weatherservice.py:196
+#: src/weatherservice.py:200
 msgid "Light freezing rain"
 msgstr "Kerge jäätub vihm"
 
-#: src/weatherservice.py:200
+#: src/weatherservice.py:204
 msgid "Light drizzle rain"
 msgstr "Kerge uduvihm"
 
-#: src/weatherservice.py:202
+#: src/weatherservice.py:206
 msgid "Light shower rain"
 msgstr "Kerge vihmasabin"
 
-#: src/weatherservice.py:204
+#: src/weatherservice.py:208
 msgid "Light rain shower"
 msgstr "Kerge vihmahood"
 
-#: src/weatherservice.py:206
+#: src/weatherservice.py:210
 msgid "Light rain"
 msgstr "Kerge vihm"
 
-#: src/weatherservice.py:208
+#: src/weatherservice.py:212
 msgid "Light showers of ice pellets"
 msgstr "Kerge rahe"
 
-#: src/weatherservice.py:210
+#: src/weatherservice.py:214
 msgid "Light sleet showers"
 msgstr "Kerged lörtsihood"
 
-#: src/weatherservice.py:212
+#: src/weatherservice.py:216
 msgid "Light sleet"
 msgstr "Kerge lörts"
 
-#: src/weatherservice.py:214
+#: src/weatherservice.py:218
 msgid "Light snow showers"
 msgstr "Kerged lumehood"
 
-#: src/weatherservice.py:216
+#: src/weatherservice.py:220
 msgid "Light snow"
 msgstr "Kerge lumesadu"
 
-#: src/weatherservice.py:218
+#: src/weatherservice.py:222
 msgid "Light thunderstorm"
 msgstr "Kerge äikesetorm"
 
-#: src/weatherservice.py:220
+#: src/weatherservice.py:224
 msgid "Low drifting sand"
 msgstr "Madal liivatuisk"
 
-#: src/weatherservice.py:222
+#: src/weatherservice.py:226
 msgid "Low drifting snow"
 msgstr "Madal lumetuisk"
 
-#: src/weatherservice.py:224
+#: src/weatherservice.py:228
 msgid "Low drifting widespread dust"
 msgstr "Madal tolmune pinnatuisk"
 
-#: src/weatherservice.py:226
+#: src/weatherservice.py:230
 msgid "Mist"
 msgstr "Uduvine"
 
-#: src/weatherservice.py:228
+#: src/weatherservice.py:232
 msgid "Mixed rain and snow"
 msgstr "Vihm ja lumi"
 
-#: src/weatherservice.py:230
+#: src/weatherservice.py:234
 msgid "Mixed rain and sleet"
 msgstr "Vihm ja lörts"
 
-#: src/weatherservice.py:232
+#: src/weatherservice.py:236
 msgid "Mixed snow and sleet"
 msgstr "Lumi ja lörts"
 
-#: src/weatherservice.py:234
+#: src/weatherservice.py:238
 msgid "Moderate or heavy freezing rain"
 msgstr "Mõõdukas või tugev jäätuv vihmasadu"
 
-#: src/weatherservice.py:236
+#: src/weatherservice.py:240
 msgid "Moderate or heavy rain in area with thunder"
 msgstr "Mõõdukas või tugev vihmasadu koos äikesega"
 
-#: src/weatherservice.py:238
+#: src/weatherservice.py:242
 msgid "Moderate or heavy rain shower"
 msgstr "Mõõdukad või tugevad vihmahood"
 
-#: src/weatherservice.py:240
+#: src/weatherservice.py:244
 msgid "Moderate or heavy showers of ice pellets"
 msgstr "Mõõdukas või tugev rahe"
 
-#: src/weatherservice.py:242
+#: src/weatherservice.py:246
 msgid "Moderate or heavy sleet showers"
 msgstr "Mõõdukas või tugev lörtsihood"
 
-#: src/weatherservice.py:244
+#: src/weatherservice.py:248
 msgid "Moderate or heavy sleet"
 msgstr "Mõõdukas või tugev lörts"
 
-#: src/weatherservice.py:246
+#: src/weatherservice.py:250
 msgid "Moderate or heavy snow in area with thunder"
 msgstr "Mõõdukas või tugev lumesadu koos äikesega"
 
-#: src/weatherservice.py:248
+#: src/weatherservice.py:252
 msgid "Moderate or heavy snow showers"
 msgstr "Mõõdukad või tugevad lumehood"
 
-#: src/weatherservice.py:250
+#: src/weatherservice.py:254
 msgid "Moderate rain at times"
 msgstr "Mõõdukad vihmahood"
 
-#: src/weatherservice.py:252
+#: src/weatherservice.py:256
 msgid "Moderate rain"
 msgstr "Mõõdukas vihm"
 
-#: src/weatherservice.py:254
+#: src/weatherservice.py:258
 msgid "Moderate snow"
 msgstr "Mõõdukas lumesadu"
 
-#: src/weatherservice.py:256
+#: src/weatherservice.py:260
 msgid "Mostly cloudy"
 msgstr "Peamiselt pilves"
 
-#: src/weatherservice.py:258
+#: src/weatherservice.py:262
 msgid "Mostly sunny"
 msgstr "Peamiselt päikeseline"
 
-#: src/weatherservice.py:260 src/weatherservice.py:843
+#: src/weatherservice.py:264 src/weatherservice.py:847
 msgid "Not available"
 msgstr "Pole saadaval"
 
-#: src/weatherservice.py:262
+#: src/weatherservice.py:266
 msgid "Overcast"
 msgstr "Lauspilves"
 
-#: src/weatherservice.py:264
+#: src/weatherservice.py:268
 msgid "Partial fog"
 msgstr "Kohati udune"
 
-#: src/weatherservice.py:266
+#: src/weatherservice.py:270
 msgid "Partly cloudy"
 msgstr "Kohati pilves"
 
-#: src/weatherservice.py:268
+#: src/weatherservice.py:272
 msgid "Partly sunny"
 msgstr "Kohati päikeseline"
 
-#: src/weatherservice.py:270
+#: src/weatherservice.py:274
 msgid "Patches of fog"
 msgstr "Uduviirud"
 
-#: src/weatherservice.py:272
+#: src/weatherservice.py:276
 msgid "Patchy freezing drizzle nearby"
 msgstr "Kohatine jäätuv uduvihm lähedal"
 
-#: src/weatherservice.py:274
+#: src/weatherservice.py:278
 msgid "Patchy heavy snow"
 msgstr "Kohatine tugev lumesadu"
 
-#: src/weatherservice.py:276
+#: src/weatherservice.py:280
 msgid "Patchy light drizzle"
 msgstr "Kohatine kerge uduvihm"
 
-#: src/weatherservice.py:278
+#: src/weatherservice.py:282
 msgid "Patchy light rain in area with thunder"
 msgstr "Kohatine kerge vihmasadu koos äikesega"
 
-#: src/weatherservice.py:280
+#: src/weatherservice.py:284
 msgid "Patchy light rain"
 msgstr "Kohatine kerge vihmasadu"
 
-#: src/weatherservice.py:282
+#: src/weatherservice.py:286
 msgid "Patchy light snow in area with thunder"
 msgstr "Kohatine kerge lumesadu koos äikesega"
 
-#: src/weatherservice.py:284
+#: src/weatherservice.py:288
 msgid "Patchy light snow"
 msgstr "Kohatine kerge lumesadu"
 
-#: src/weatherservice.py:286
+#: src/weatherservice.py:290
 msgid "Patchy moderate snow"
 msgstr "Kohatine mõõdukas lumesadu"
 
-#: src/weatherservice.py:288
+#: src/weatherservice.py:292
 msgid "Patchy rain nearby"
 msgstr "Kohatine vihmasadu lähedal"
 
-#: src/weatherservice.py:290
+#: src/weatherservice.py:294
 msgid "Patchy sleet nearby"
 msgstr "Kohatine lörts lähedal"
 
-#: src/weatherservice.py:292
+#: src/weatherservice.py:296
 msgid "Patchy snow nearby"
 msgstr "Kohatine lumesadu lähedal"
 
-#: src/weatherservice.py:294
+#: src/weatherservice.py:298
 msgid "Ragged thunderstorm"
 msgstr "Karm äikesetorm"
 
-#: src/weatherservice.py:296
+#: src/weatherservice.py:300
 msgid "Rain and snow"
 msgstr "Vihm ja lumi"
 
-#: src/weatherservice.py:298
+#: src/weatherservice.py:302
 msgid "Rain mist"
 msgstr "Udune vihm"
 
-#: src/weatherservice.py:300
+#: src/weatherservice.py:304
 msgid "Rain showers"
 msgstr "Vihmahood"
 
-#: src/weatherservice.py:302
+#: src/weatherservice.py:306
 msgid "Rain"
 msgstr "Vihm"
 
-#: src/weatherservice.py:303
+#: src/weatherservice.py:307
 msgid "Sand"
 msgstr "Liiv"
 
-#: src/weatherservice.py:305
+#: src/weatherservice.py:309
 msgid "Sandstorm"
 msgstr "Liivatorm"
 
-#: src/weatherservice.py:307
+#: src/weatherservice.py:311
 msgid "Scattered clouds"
 msgstr "Hajali pilved"
 
-#: src/weatherservice.py:309
+#: src/weatherservice.py:313
 msgid "Scattered showers"
 msgstr "Hajali hoovihmad"
 
-#: src/weatherservice.py:311
+#: src/weatherservice.py:315
 msgid "Scattered thunderstorms"
 msgstr "Hajali äiksetormid"
 
-#: src/weatherservice.py:313
+#: src/weatherservice.py:317
 msgid "Shallow fog"
 msgstr "Madal udu"
 
-#: src/weatherservice.py:315
+#: src/weatherservice.py:319
 msgid "Showers"
 msgstr "Sajuhood"
 
-#: src/weatherservice.py:316
+#: src/weatherservice.py:320
 msgid "Shower drizzle"
 msgstr "Uduvihma hood"
 
-#: src/weatherservice.py:318
+#: src/weatherservice.py:322
 msgid "Shower rain"
 msgstr "Vihmahood"
 
-#: src/weatherservice.py:320
+#: src/weatherservice.py:324
 msgid "Shower snow"
 msgstr "Lumehood"
 
-#: src/weatherservice.py:322
+#: src/weatherservice.py:326
 msgid "Sleet"
 msgstr "Lörts"
 
-#: src/weatherservice.py:324
+#: src/weatherservice.py:328
 msgid "Small hail showers"
 msgstr "Peene rahe hood"
 
-#: src/weatherservice.py:326
+#: src/weatherservice.py:330
 msgid "Small hail"
 msgstr "Peen rahe"
 
-#: src/weatherservice.py:328
+#: src/weatherservice.py:332
 msgid "Smoke"
 msgstr "Suits"
 
-#: src/weatherservice.py:330
+#: src/weatherservice.py:334
 msgid "Snow blowing snow mist"
 msgstr "Lumepuhangud ja lumeudu"
 
-#: src/weatherservice.py:332
+#: src/weatherservice.py:336
 msgid "Snow flurries"
 msgstr "Kerge lumeudu"
 
-#: src/weatherservice.py:334
+#: src/weatherservice.py:338
 msgid "Snow grains"
 msgstr "Lumeterad"
 
-#: src/weatherservice.py:336
+#: src/weatherservice.py:340
 msgid "Snow showers"
 msgstr "Lumesaju hood"
 
-#: src/weatherservice.py:338
+#: src/weatherservice.py:342
 msgid "Snow"
 msgstr "Lumi"
 
-#: src/weatherservice.py:339
+#: src/weatherservice.py:343
 msgid "Spray"
 msgstr "Pritsmed"
 
-#: src/weatherservice.py:340
+#: src/weatherservice.py:344
 msgid "Squalls"
 msgstr "Äkilised tuuleiilid"
 
-#: src/weatherservice.py:342 src/weatherservice.py:776
+#: src/weatherservice.py:346 src/weatherservice.py:780
 msgid "Storm"
 msgstr "Torm"
 
-#: src/weatherservice.py:343
+#: src/weatherservice.py:347
 msgid "Sunny"
 msgstr "Päikseline"
 
-#: src/weatherservice.py:345 src/weatherservice.py:347
+#: src/weatherservice.py:349 src/weatherservice.py:351
 msgid "Thunderstorm"
 msgstr "Äikesetorm"
 
-#: src/weatherservice.py:349
+#: src/weatherservice.py:353
 msgid "Thunderstorms and ice pellets"
 msgstr "Äikesetormid ja jääkruubid"
 
-#: src/weatherservice.py:351
+#: src/weatherservice.py:355
 msgid "Thunderstorms and rain"
 msgstr "Äikesetormid ja vihmasadu"
 
-#: src/weatherservice.py:353
+#: src/weatherservice.py:357
 msgid "Thunderstorms and snow"
 msgstr "Äikesetormid ja lumesadu"
 
-#: src/weatherservice.py:355
+#: src/weatherservice.py:359
 msgid "Thunderstorms with hail"
 msgstr "Äikesetormid koos rahega"
 
-#: src/weatherservice.py:357
+#: src/weatherservice.py:361
 msgid "Thunderstorms with small hail"
 msgstr "Äikesetormid peene rahega"
 
-#: src/weatherservice.py:359
+#: src/weatherservice.py:363
 msgid "Thunderstorm with light rain"
 msgstr "Äikesetorm koos kerge vihmaga"
 
-#: src/weatherservice.py:361
+#: src/weatherservice.py:365
 msgid "Thunderstorm with rain"
 msgstr "Äikesetorm koos vihmaga"
 
-#: src/weatherservice.py:363
+#: src/weatherservice.py:367
 msgid "Thunderstorm with heavy rain"
 msgstr "Äikesetorm koos tugeva vihmaga"
 
-#: src/weatherservice.py:365
+#: src/weatherservice.py:369
 msgid "Thunderstorm with light drizzle"
 msgstr "Äikesetorm koos kerge uduvihmaga"
 
-#: src/weatherservice.py:367
+#: src/weatherservice.py:371
 msgid "Thunderstorm with drizzle"
 msgstr "Äikesetorm koos uduvihmaga"
 
-#: src/weatherservice.py:369
+#: src/weatherservice.py:373
 msgid "Thunderstorm with heavy drizzle"
 msgstr "Äikesetorm koos tiheda uduvihmaga"
 
-#: src/weatherservice.py:371
+#: src/weatherservice.py:375
 msgid "Thundery outbreaks in nearby"
 msgstr "Kohatine äikese oht"
 
-#: src/weatherservice.py:373
+#: src/weatherservice.py:377
 msgid "Tornado"
 msgstr "Tornaado"
 
-#: src/weatherservice.py:375
+#: src/weatherservice.py:379
 msgid "Torrential rain shower"
 msgstr "Vihmavalingud"
 
-#: src/weatherservice.py:377
+#: src/weatherservice.py:381
 msgid "Tropical storm"
 msgstr "Troopiline torm"
 
-#: src/weatherservice.py:379
+#: src/weatherservice.py:383
 msgid "Unknown precipitation"
 msgstr "Teadmata sademed"
 
-#: src/weatherservice.py:381
+#: src/weatherservice.py:385
 msgid "Unknown"
 msgstr "Teadmata"
 
-#: src/weatherservice.py:383
+#: src/weatherservice.py:387
 msgid "Very heavy rain"
 msgstr "Väga tugev vihm"
 
-#: src/weatherservice.py:385
+#: src/weatherservice.py:389
 msgid "Volcanic ash"
 msgstr "Vulkaaniline tuhk"
 
-#: src/weatherservice.py:387
+#: src/weatherservice.py:391
 msgid "Widespread dust"
 msgstr "Ulatuslik tolm"
 
-#: src/weatherservice.py:389
+#: src/weatherservice.py:393
 msgid "Windy"
 msgstr "Tuuline"
 
-#: src/weatherservice.py:394 src/weatherservice.py:395
-#: src/weatherservice.py:432
+#: src/weatherservice.py:398 src/weatherservice.py:399
+#: src/weatherservice.py:436
 msgid "North"
 msgstr "Põhjast"
 
-#: src/weatherservice.py:396 src/weatherservice.py:433
+#: src/weatherservice.py:400 src/weatherservice.py:437
 msgid "North by east"
 msgstr "Kirdest"
 
-#: src/weatherservice.py:397 src/weatherservice.py:434
+#: src/weatherservice.py:401 src/weatherservice.py:438
 msgid "North-northeast"
 msgstr "Põhjast - kirdest"
 
-#: src/weatherservice.py:398 src/weatherservice.py:435
+#: src/weatherservice.py:402 src/weatherservice.py:439
 msgid "Northeast by north"
 msgstr "Kirdest - põhjast"
 
-#: src/weatherservice.py:399 src/weatherservice.py:436
+#: src/weatherservice.py:403 src/weatherservice.py:440
 msgid "Northeast"
 msgstr "Kirdest"
 
-#: src/weatherservice.py:400 src/weatherservice.py:437
+#: src/weatherservice.py:404 src/weatherservice.py:441
 msgid "Northeast by east"
 msgstr "Kirdest - idast"
 
-#: src/weatherservice.py:401 src/weatherservice.py:438
+#: src/weatherservice.py:405 src/weatherservice.py:442
 msgid "East-northeast"
 msgstr "Idast - kirdest"
 
-#: src/weatherservice.py:402 src/weatherservice.py:439
+#: src/weatherservice.py:406 src/weatherservice.py:443
 msgid "East by north"
 msgstr "Kirdest"
 
-#: src/weatherservice.py:403 src/weatherservice.py:404
-#: src/weatherservice.py:440
+#: src/weatherservice.py:407 src/weatherservice.py:408
+#: src/weatherservice.py:444
 msgid "East"
 msgstr "Idast"
 
-#: src/weatherservice.py:405 src/weatherservice.py:441
+#: src/weatherservice.py:409 src/weatherservice.py:445
 msgid "East by south"
 msgstr "Kagust"
 
-#: src/weatherservice.py:406 src/weatherservice.py:442
+#: src/weatherservice.py:410 src/weatherservice.py:446
 msgid "East-southeast"
 msgstr "Idast - kagust"
 
-#: src/weatherservice.py:407 src/weatherservice.py:443
+#: src/weatherservice.py:411 src/weatherservice.py:447
 msgid "Southeast by east"
 msgstr "Kagust - idast"
 
-#: src/weatherservice.py:408 src/weatherservice.py:444
+#: src/weatherservice.py:412 src/weatherservice.py:448
 msgid "Southeast"
 msgstr "Kagust"
 
-#: src/weatherservice.py:409 src/weatherservice.py:445
+#: src/weatherservice.py:413 src/weatherservice.py:449
 msgid "Southeast by south"
 msgstr "Kagust - lõunast"
 
-#: src/weatherservice.py:410 src/weatherservice.py:446
+#: src/weatherservice.py:414 src/weatherservice.py:450
 msgid "South-southeast"
 msgstr "Lõunast - kagust"
 
-#: src/weatherservice.py:411 src/weatherservice.py:447
+#: src/weatherservice.py:415 src/weatherservice.py:451
 msgid "South by east"
 msgstr "Kagust"
 
-#: src/weatherservice.py:412 src/weatherservice.py:413
-#: src/weatherservice.py:448
+#: src/weatherservice.py:416 src/weatherservice.py:417
+#: src/weatherservice.py:452
 msgid "South"
 msgstr "Lõunast"
 
-#: src/weatherservice.py:414 src/weatherservice.py:449
+#: src/weatherservice.py:418 src/weatherservice.py:453
 msgid "South by west"
 msgstr "Edelast"
 
-#: src/weatherservice.py:415 src/weatherservice.py:450
+#: src/weatherservice.py:419 src/weatherservice.py:454
 msgid "South-southwest"
 msgstr "Lõunast - edelast"
 
-#: src/weatherservice.py:416 src/weatherservice.py:451
+#: src/weatherservice.py:420 src/weatherservice.py:455
 msgid "Southwest by south"
 msgstr "Edelast - lõunast"
 
-#: src/weatherservice.py:417 src/weatherservice.py:452
+#: src/weatherservice.py:421 src/weatherservice.py:456
 msgid "Southwest"
 msgstr "Edelast"
 
-#: src/weatherservice.py:418 src/weatherservice.py:453
+#: src/weatherservice.py:422 src/weatherservice.py:457
 msgid "Southwest by west"
 msgstr "Edelast - läänest"
 
-#: src/weatherservice.py:419 src/weatherservice.py:454
+#: src/weatherservice.py:423 src/weatherservice.py:458
 msgid "West-southwest"
 msgstr "Läänest - edelast"
 
-#: src/weatherservice.py:420 src/weatherservice.py:455
+#: src/weatherservice.py:424 src/weatherservice.py:459
 msgid "West by south"
 msgstr "Edelast"
 
-#: src/weatherservice.py:421 src/weatherservice.py:422
-#: src/weatherservice.py:456
+#: src/weatherservice.py:425 src/weatherservice.py:426
+#: src/weatherservice.py:460
 msgid "West"
 msgstr "Läänest"
 
-#: src/weatherservice.py:423 src/weatherservice.py:457
+#: src/weatherservice.py:427 src/weatherservice.py:461
 msgid "West by north"
 msgstr "Loodest"
 
-#: src/weatherservice.py:424 src/weatherservice.py:458
+#: src/weatherservice.py:428 src/weatherservice.py:462
 msgid "West-northwest"
 msgstr "Läänest - loodest"
 
-#: src/weatherservice.py:425 src/weatherservice.py:459
+#: src/weatherservice.py:429 src/weatherservice.py:463
 msgid "Northwest by west"
 msgstr "Loodest - läänest"
 
-#: src/weatherservice.py:426 src/weatherservice.py:460
+#: src/weatherservice.py:430 src/weatherservice.py:464
 msgid "Northwest"
 msgstr "Loodest"
 
-#: src/weatherservice.py:427 src/weatherservice.py:461
+#: src/weatherservice.py:431 src/weatherservice.py:465
 msgid "Northwest by north"
 msgstr "Loodest - põhjast"
 
-#: src/weatherservice.py:428 src/weatherservice.py:462
+#: src/weatherservice.py:432 src/weatherservice.py:466
 msgid "North-northwest"
 msgstr "Põhjast - loodest"
 
-#: src/weatherservice.py:429 src/weatherservice.py:463
+#: src/weatherservice.py:433 src/weatherservice.py:467
 msgid "North by west"
 msgstr "Loodest"
 
-#: src/weatherservice.py:430
+#: src/weatherservice.py:434
 msgid "Variable"
 msgstr "Muutlik"
 
-#: src/weatherservice.py:655 src/weatherservice.py:657
+#: src/weatherservice.py:659 src/weatherservice.py:661
 msgid "from"
 msgstr "suunast"
 
-#: src/weatherservice.py:657
+#: src/weatherservice.py:661
 msgid "at"
 msgstr "kell"
 
-#: src/weatherservice.py:658 src/weatherservice.py:688
+#: src/weatherservice.py:662 src/weatherservice.py:692
 msgid "n/a"
 msgstr "puudub"
 
-#: src/weatherservice.py:718
+#: src/weatherservice.py:722
 msgid "millibar"
 msgstr "millibaari"
 
-#: src/weatherservice.py:718
+#: src/weatherservice.py:722
 msgid "inches of mercury"
 msgstr "tolli elavhõbedasammast"
 
-#: src/weatherservice.py:719
+#: src/weatherservice.py:723
 msgid "millimeters of mercury"
 msgstr "millimeetrit elavhõbedasammast"
 
-#: src/weatherservice.py:732
+#: src/weatherservice.py:736
 msgid "mi"
 msgstr "miili"
 
-#: src/weatherservice.py:732
+#: src/weatherservice.py:736
 msgid "km"
 msgstr "km"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "in"
 msgstr "tolli"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "cm"
 msgstr "cm"
 
-#: src/weatherservice.py:740
+#: src/weatherservice.py:744
 msgid "mm"
 msgstr "mm"
 
-#: src/weatherservice.py:756
+#: src/weatherservice.py:760
 msgid "Calm"
 msgstr "Rahulik"
 
-#: src/weatherservice.py:758
+#: src/weatherservice.py:762
 msgid "Light air"
 msgstr "Kerge õhuliikumine"
 
-#: src/weatherservice.py:760
+#: src/weatherservice.py:764
 msgid "Light breeze"
 msgstr "Kerge tuul"
 
-#: src/weatherservice.py:762
+#: src/weatherservice.py:766
 msgid "Gentle breeze"
 msgstr "Kerge tuul"
 
-#: src/weatherservice.py:764
+#: src/weatherservice.py:768
 msgid "Moderate breeze"
 msgstr "Mõõdukas tuul"
 
-#: src/weatherservice.py:766
+#: src/weatherservice.py:770
 msgid "Fresh breeze"
 msgstr "Värskendavad tuuleiilid"
 
-#: src/weatherservice.py:768
+#: src/weatherservice.py:772
 msgid "Strong breeze"
 msgstr "Tugev tuul"
 
-#: src/weatherservice.py:770
+#: src/weatherservice.py:774
 msgid "High wind"
 msgstr "Tugev tuul"
 
-#: src/weatherservice.py:772
+#: src/weatherservice.py:776
 msgid "Gale"
 msgstr "Raju"
 
-#: src/weatherservice.py:774
+#: src/weatherservice.py:778
 msgid "Strong gale"
 msgstr "Tugev raju"
 
-#: src/weatherservice.py:778
+#: src/weatherservice.py:782
 msgid "Violent storm"
 msgstr "Võimas torm"
 
-#: src/weatherservice.py:871 src/weatherservice.py:872
-#: src/weatherservice.py:873 src/weatherservice.py:874
-#: src/weatherservice.py:902 src/weatherservice.py:903
-#: src/weatherservice.py:904 src/weatherservice.py:905
-#: src/weatherservice.py:934 src/weatherservice.py:935
-#: src/weatherservice.py:941 src/weatherservice.py:942
-#: src/weatherservice.py:975 src/weatherservice.py:976
+#: src/weatherservice.py:875 src/weatherservice.py:876
+#: src/weatherservice.py:877 src/weatherservice.py:878
+#: src/weatherservice.py:906 src/weatherservice.py:907
+#: src/weatherservice.py:908 src/weatherservice.py:909
+#: src/weatherservice.py:938 src/weatherservice.py:939
+#: src/weatherservice.py:945 src/weatherservice.py:946
+#: src/weatherservice.py:979 src/weatherservice.py:980
 msgid "Down all day"
 msgstr "Kogu päeva"
 
-#: src/weatherservice.py:877 src/weatherservice.py:878
-#: src/weatherservice.py:879 src/weatherservice.py:880
-#: src/weatherservice.py:907 src/weatherservice.py:908
-#: src/weatherservice.py:909 src/weatherservice.py:910
-#: src/weatherservice.py:931 src/weatherservice.py:932
-#: src/weatherservice.py:938 src/weatherservice.py:939
-#: src/weatherservice.py:978 src/weatherservice.py:979
+#: src/weatherservice.py:881 src/weatherservice.py:882
+#: src/weatherservice.py:883 src/weatherservice.py:884
+#: src/weatherservice.py:911 src/weatherservice.py:912
+#: src/weatherservice.py:913 src/weatherservice.py:914
+#: src/weatherservice.py:935 src/weatherservice.py:936
+#: src/weatherservice.py:942 src/weatherservice.py:943
+#: src/weatherservice.py:982 src/weatherservice.py:983
 msgid "Up all day"
 msgstr "Kogu päeva"
 
@@ -1235,185 +1235,185 @@ msgstr "Viimane veerand"
 msgid "Waning Crescent"
 msgstr "Kahanev kuu"
 
-#: src/forecastw.py:75 src/myweatherindicator.py:420 src/openweathermap.py:41
+#: src/forecastw.py:72 src/myweatherindicator.py:423 src/openweathermap.py:44
 msgid "Forecast"
 msgstr "Ilmaprognoos"
 
-#: src/forecastw.py:121
+#: src/forecastw.py:118
 msgid "Day of week"
 msgstr "Nädalapäev"
 
-#: src/forecastw.py:121 src/myweatherindicator.py:539
-#: src/myweatherindicator.py:712
+#: src/forecastw.py:118 src/myweatherindicator.py:541
+#: src/myweatherindicator.py:714
 msgid "Sunrise"
 msgstr "Päikesetõus"
 
-#: src/forecastw.py:121 src/myweatherindicator.py:548
-#: src/myweatherindicator.py:715
+#: src/forecastw.py:118 src/myweatherindicator.py:550
+#: src/myweatherindicator.py:717
 msgid "Sunset"
 msgstr "Päikeseloojang"
 
-#: src/forecastw.py:121
+#: src/forecastw.py:118
 msgid "Moon Phase"
 msgstr "Kuu faas"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "Condition"
 msgstr "Ilmaolud"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "High temperature"
 msgstr "Kõrgeim temperatuur"
 
-#: src/forecastw.py:122
+#: src/forecastw.py:119
 msgid "Low temperature"
 msgstr "Madalaim temperatuur"
 
-#: src/forecastw.py:124
+#: src/forecastw.py:121
 msgid "Maximum wind"
 msgstr "Maskimaalne tuulekiirus"
 
-#: src/forecastw.py:124 src/forecastw.py:128 src/forecastw.py:130
+#: src/forecastw.py:121 src/forecastw.py:125 src/forecastw.py:127
 msgid "Average wind"
 msgstr "Keskmine tuulekiirus"
 
-#: src/forecastw.py:125
+#: src/forecastw.py:122
 msgid "Maximum humidity"
 msgstr "Maksimaalne niiskus"
 
-#: src/forecastw.py:125
+#: src/forecastw.py:122
 msgid "Minumum humidity"
 msgstr "Minimaalne niiskus"
 
-#: src/forecastw.py:126 src/forecastw.py:128
+#: src/forecastw.py:123 src/forecastw.py:125
 msgid "Rain measurement"
 msgstr "Vihmasademed"
 
-#: src/forecastw.py:126
+#: src/forecastw.py:123
 msgid "Snow measurement"
 msgstr "Lumsademed"
 
-#: src/forecastw.py:130
+#: src/forecastw.py:127
 msgid "Average humidity"
 msgstr "Keskmine niiskus"
 
-#: src/forecastw.py:131 src/myweatherindicator.py:505
-#: src/myweatherindicator.py:757
+#: src/forecastw.py:128 src/myweatherindicator.py:507
+#: src/myweatherindicator.py:759
 msgid "Cloudiness"
 msgstr "Pilvisus"
 
-#: src/myweatherindicator.py:151
+#: src/myweatherindicator.py:153
 msgid "Homepage"
 msgstr "Kodulehekülg"
 
-#: src/myweatherindicator.py:159
+#: src/myweatherindicator.py:161
 msgid "Get help online..."
 msgstr "Online abi..."
 
-#: src/myweatherindicator.py:167
+#: src/myweatherindicator.py:169
 msgid "Translate this application..."
 msgstr "Aita tõlkida..."
 
-#: src/myweatherindicator.py:175
+#: src/myweatherindicator.py:178
 msgid "Report a bug..."
 msgstr "Teavita programmiveast..."
 
-#: src/myweatherindicator.py:187
+#: src/myweatherindicator.py:190
 msgid "Follow me in Twitter"
 msgstr "Jälgi meid Twitteris"
 
-#: src/myweatherindicator.py:195
+#: src/myweatherindicator.py:198
 msgid "Follow me in Google+"
 msgstr "Jälgi meid Google+"
 
-#: src/myweatherindicator.py:204
+#: src/myweatherindicator.py:207
 msgid "Follow me in Facebook"
 msgstr "Jälgi meid Facebookis"
 
-#: src/myweatherindicator.py:211
+#: src/myweatherindicator.py:214
 msgid "About"
 msgstr "Programmist"
 
-#: src/myweatherindicator.py:427
+#: src/myweatherindicator.py:430
 msgid "Evolution"
 msgstr "Detailne ilmaprognoos"
 
-#: src/myweatherindicator.py:434
+#: src/myweatherindicator.py:437
 msgid "Forecast Map"
 msgstr "Ilmaprognoosi kaart"
 
-#: src/myweatherindicator.py:441
+#: src/myweatherindicator.py:444
 #, fuzzy
 msgid "Moon Phase Calendar"
 msgstr "Kuu faas"
 
-#: src/myweatherindicator.py:453
+#: src/myweatherindicator.py:455
 msgid "Update weather"
 msgstr "Ilmainfo uuendamine"
 
-#: src/myweatherindicator.py:464 src/myweatherindicator.py:681
+#: src/myweatherindicator.py:466 src/myweatherindicator.py:683
 msgid "Location"
 msgstr "Asukoht"
 
-#: src/myweatherindicator.py:479 src/myweatherindicator.py:685
-#: src/myweatherindicator.py:792
+#: src/myweatherindicator.py:481 src/myweatherindicator.py:687
+#: src/myweatherindicator.py:794
 msgid "Humidity"
 msgstr "Niiskus"
 
-#: src/myweatherindicator.py:484 src/myweatherindicator.py:687
+#: src/myweatherindicator.py:486 src/myweatherindicator.py:689
 msgid "Feels like"
 msgstr "Tundub nagu"
 
-#: src/myweatherindicator.py:489 src/myweatherindicator.py:689
+#: src/myweatherindicator.py:491 src/myweatherindicator.py:691
 msgid "Dew Point"
 msgstr "Kastepunkt"
 
-#: src/myweatherindicator.py:494 src/myweatherindicator.py:692
-#: src/myweatherindicator.py:794
+#: src/myweatherindicator.py:496 src/myweatherindicator.py:694
+#: src/myweatherindicator.py:796
 msgid "Wind"
 msgstr "Tuul"
 
-#: src/myweatherindicator.py:510 src/myweatherindicator.py:761
+#: src/myweatherindicator.py:512 src/myweatherindicator.py:763
 msgid "UV"
 msgstr "UV"
 
-#: src/myweatherindicator.py:515 src/myweatherindicator.py:765
+#: src/myweatherindicator.py:517 src/myweatherindicator.py:767
 msgid "Precipitation"
 msgstr "Sademed"
 
-#: src/myweatherindicator.py:530 src/myweatherindicator.py:710
+#: src/myweatherindicator.py:532 src/myweatherindicator.py:712
 msgid "Dawn"
 msgstr "Koit"
 
-#: src/myweatherindicator.py:557 src/myweatherindicator.py:717
+#: src/myweatherindicator.py:559 src/myweatherindicator.py:719
 msgid "Dusk"
 msgstr "Videvik"
 
-#: src/myweatherindicator.py:592
+#: src/myweatherindicator.py:594
 msgid "Help"
 msgstr "Abiteave"
 
-#: src/myweatherindicator.py:598
+#: src/myweatherindicator.py:600
 msgid "Exit"
 msgstr "Välju"
 
-#: src/myweatherindicator.py:621
+#: src/myweatherindicator.py:623
 msgid "Not Internet connection"
 msgstr "Internetiühendus puudub"
 
-#: src/myweatherindicator.py:788
+#: src/myweatherindicator.py:790
 msgid "Conditions in"
 msgstr "Ilmaolud asukohas"
 
-#: src/myweatherindicator.py:841
+#: src/myweatherindicator.py:843
 msgid "Forecast for next hours"
 msgstr "Järgmiste tundide ilmaprognoos"
 
-#: src/myweatherindicator.py:842
+#: src/myweatherindicator.py:844
 msgid "Weather service"
 msgstr "Ilmateenus"
 
-#: src/myweatherindicator.py:880
+#: src/myweatherindicator.py:882
 msgid "A weather indicator"
 msgstr "Ilmaindikaator"
 
