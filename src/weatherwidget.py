@@ -56,10 +56,10 @@ class WeatherWidget(Gtk.Window):
         self.set_title('My-Weather-Indicator')
         self.set_default_size(5, 5)
         self.set_icon_from_file(comun.ICON)
-        if os.environ.get('DESKTOP_SESSION') == "ubuntu":
-            self.set_type_hint(Gdk.WindowTypeHint.DOCK)
-        else:
-            self.set_type_hint(Gdk.WindowTypeHint.UTILITY)
+        # if os.environ.get('DESKTOP_SESSION') == "ubuntu":
+        #     self.set_type_hint(Gdk.WindowTypeHint.DOCK)
+        # else:
+        #     self.set_type_hint(Gdk.WindowTypeHint.UTILITY)
         self.supports_alpha = False
         self.set_decorated(False)
         self.set_border_width(0)
@@ -74,10 +74,10 @@ class WeatherWidget(Gtk.Window):
         self.add_events(Gdk.EventMask.ALL_EVENTS_MASK)
         self.connect('draw', self.on_expose, None)
         self.connect('configure-event', self.configure_event)
-        self.connect('button-press-event', self.on_button_pressed)
-        self.connect('button-release-event', self.on_button_released)
-        self.connect('motion-notify-event', self.on_mouse_moved)
+        self.connect('enter-notify-event', self.on_enter)
+        self.connect('leave-notify-event', self.on_leave)
         self.connect('screen-changed', self.screen_changed)
+        self.set_tooltip_text(_('SUPER + Drag for Move Widget Position.'))
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 0)
         self.add(vbox)
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
@@ -137,6 +137,16 @@ class WeatherWidget(Gtk.Window):
         #
         self.screen_changed(self)
         self.show_all()
+
+    def on_enter(self, widget, args):
+        if self.is_above is False:
+            if self.get_type_hint() == Gdk.WindowTypeHint.DESKTOP:
+                self.set_type_hint(Gdk.WindowTypeHint.NORMAL)
+
+    def on_leave(self, widget, args):
+        if self.is_above is False:
+            if self.get_type_hint() == Gdk.WindowTypeHint.NORMAL:
+                self.set_type_hint(Gdk.WindowTypeHint.DESKTOP)
 
     def read_widgetfile(self):
         if os.path.exists(os.path.join(self.skin, 'skin')):
@@ -258,37 +268,6 @@ class WeatherWidget(Gtk.Window):
     def configure_event(self, widget, event):
         self.save_preferences()
 
-    def on_mouse_moved(self, widget, event):
-        if self.is_in_drag:
-            xi, yi = self.get_position()
-            xf = int(xi + event.x_root - self.x_in_drag)
-            yf = int(yi + event.y_root - self.y_in_drag)
-            if math.sqrt(math.pow(xf-xi, 2) + math.pow(yf-yi, 2)) > 10:
-                self.x_in_drag = event.x_root
-                self.y_in_drag = event.y_root
-                self.move(xf, yf)
-
-    def on_button_released(self, widget, event):
-        if event.button == 1:
-            self.is_in_drag = False
-            self.x_in_drag = event.x_root
-            self.y_in_drag = event.y_root
-
-    def on_button_pressed(self, widget, event):
-        if self.hideindicator:
-            if self.indicator.get_status() ==\
-                    appindicator.IndicatorStatus.PASSIVE:
-                self.indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
-            else:
-                self.indicator.set_status(appindicator.IndicatorStatus.PASSIVE)
-        if event.button == 1:
-            self.is_in_drag = True
-            self.x_in_drag, self.y_in_drag = self.get_position()
-            self.x_in_drag = event.x_root
-            self.y_in_drag = event.y_root
-            return True
-        return False
-
     def on_expose(self, widget, cr, data):
         if self.surface is not None:
             cr.save()
@@ -322,10 +301,365 @@ class WeatherWidget(Gtk.Window):
                 return width, height
         return None
 
+    def draw_image(self, cr, row):
+        maindir = self.skin
+        atype, fileimage, x, y, width, height, xpos, ypos = row
+        if self.weather_data is not None:
+            if fileimage == '$CONDITION$':
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['current_conditions'][
+                        'condition_image'])
+            elif fileimage == '$CONDITION_ICON_LIGHT$':
+                fileimage = os.path.join(
+                    comun.ICONDIR,
+                    self.weather_data['current_conditions'][
+                        'condition_icon_light'])
+            elif fileimage == '$CONDITION_ICON_DARK':
+                fileimage = os.path.join(
+                    comun.ICONDIR,
+                    self.weather_data['current_conditions'][
+                        'condition_icon_dark'])
+            elif fileimage == '$MOONPHASE$':
+                fileimage = os.path.join(
+                    comun.IMAGESDIR,
+                    self.weather_data['current_conditions']['moon_icon'])
+            elif fileimage == '$WIND$':
+                fileimage = os.path.join(
+                    comun.IMAGESDIR,
+                    self.weather_data['current_conditions']['wind_icon'])
+            elif fileimage == '$CONDITION_01$' and \
+                    len(self.weather_data['forecasts']) > 0:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][0]['condition_image'])
+            elif fileimage == '$CONDITION_02$' and \
+                    len(self.weather_data['forecasts']) > 1:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][1]['condition_image'])
+            elif fileimage == '$CONDITION_03$' and \
+                    len(self.weather_data['forecasts']) > 2:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][2]['condition_image'])
+            elif fileimage == '$CONDITION_04$' and \
+                    len(self.weather_data['forecasts']) > 3:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][3]['condition_image'])
+            elif fileimage == '$CONDITION_05$' and \
+                    len(self.weather_data['forecasts']) > 4:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][4]['condition_image'])
+            elif fileimage == '$MOONPHASE_01$' and \
+                    len(self.weather_data['forecasts']) > 0:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][0]['moon_phase'])
+            elif fileimage == '$MOONPHASE_02$' and \
+                    len(self.weather_data['forecasts']) > 1:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][1]['moon_phase'])
+            elif fileimage == '$MOONPHASE_03$' and \
+                    len(self.weather_data['forecasts']) > 2:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][2]['moon_phase'])
+            elif fileimage == '$MOONPHASE_04$' and \
+                    len(self.weather_data['forecasts']) > 3:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][3]['moon_phase'])
+            elif fileimage == '$MOONPHASE_05$' and \
+                    len(self.weather_data['forecasts']) > 4:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][4]['moon_phase'])
+            elif fileimage == '$WIND_01$' and \
+                    len(self.weather_data['forecasts']) > 0:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][0]['wind_icon'])
+            elif fileimage == '$WIND_02$' and \
+                    len(self.weather_data['forecasts']) > 1:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][1]['wind_icon'])
+            elif fileimage == '$WIND_03$' and \
+                    len(self.weather_data['forecasts']) > 2:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][2]['wind_icon'])
+            elif fileimage == '$WIND_04$' and \
+                    len(self.weather_data['forecasts']) > 3:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][3]['wind_icon'])
+            elif fileimage == '$WIND_05$' and \
+                    len(self.weather_data['forecasts']) > 4:
+                fileimage = os.path.join(
+                    comun.WIMAGESDIR,
+                    self.weather_data['forecasts'][4]['wind_icon'])
+            else:
+                fileimage = os.path.join(maindir, fileimage)
+        else:
+            fileimage = os.path.join(maindir, fileimage)
+        x = float(x)
+        y = float(y)
+        width = float(width)
+        height = float(height)
+        surface = get_surface_from_file(fileimage)
+        if surface is not None:
+            s_width = surface.get_width()
+            s_height = surface.get_height()
+            if xpos == 'CENTER':
+                x = x - width / 2.0
+            elif xpos == 'RIGHT':
+                x = x - width
+            if ypos == 'CENTER':
+                y = y - height / 2.0
+            elif ypos == 'BOTTOM':
+                y = y - height
+            cr.translate(x, y)
+            cr.scale(width / s_width, height / s_height)
+            cr.set_source_surface(surface)
+            cr.paint()
+
+    def draw_text(self, cr, row):
+        atype, text, x, y, font, size, color, xpos, ypos = row
+        x = float(x)
+        y = float(y)
+        size = int(size)
+        r, g, b, a = color.split(',')
+        cr.set_source_rgba(float(r), float(g), float(b), float(a))
+        cr.select_font_face(font)
+        cr.set_font_size(size)
+        now = self.datetime + datetime.timedelta(
+            hours=float(self.weather_data['current_conditions']['rawOffset']))
+        if self.parse_time:
+            now = self.datetime + datetime.timedelta(
+                hours=float(self.weather_data['current_conditions'][
+                    'rawOffset']))
+            hours = now.hour
+            if not self.a24h:
+                if hours > 12:
+                    hours -= 12
+                if hours < 1:
+                    hours += 12
+            hours = str(hours)
+            hours = '0' * (2 - len(hours)) + hours
+            minutes = str(now.minute)
+            minutes = '0' * (2 - len(minutes)) + minutes
+            if text.find('$HOUR$') > -1:
+                text = text.replace('$HOUR$', hours)
+            if text.find('$MINUTES$') > -1:
+                text = text.replace('$MINUTES$', minutes)
+        if text.find('$WEEKDAY$') > -1:
+            text = text.replace('$WEEKDAY$', now.strftime('%A'))
+        if text.find('$DAY$') > -1:
+            text = text.replace('$DAY$', now.strftime('%d'))
+        if text.find('$MONTH$') > -1:
+            text = text.replace('$MONTH$', now.strftime('%m'))
+        if text.find('$MONTHNAME$') > -1:
+            text = text.replace('$MONTHNAME$', now.strftime('%B'))
+        if text.find('$YEAR$') > -1:
+            text = text.replace('$YEAR$', now.strftime('%Y'))
+        if text.find('$LOCATION$') > -1 and self.location is not None:
+            text = text.replace('$LOCATION$', self.location)
+        if self.weather_data is not None:
+            if text.find('$TEMPERATURE$') > -1:
+                text = text.replace('$TEMPERATURE$', '{0}{1:c}'.format(
+                    self.weather_data['current_conditions']['temperature'],
+                    176))
+            if text.find('$MAX_TEMPERATURE$') > -1:
+                text = text.replace(
+                    '$MAX_TEMPERATURE$',
+                    '{0}{1:c}'.format(
+                        self.weather_data['forecasts'][0]['high'], 176))
+            if text.find('$MIN_TEMPERATURE$') > -1:
+                text = text.replace(
+                    '$MIN_TEMPERATURE$',
+                    '{0}{1:c}'.format(
+                        self.weather_data['forecasts'][0]['low'], 176))
+            if text.find('$HUMIDITY$') > -1:
+                text = text.replace(
+                    '$HUMIDITY$',
+                    self.weather_data['current_conditions']['humidity'])
+            if text.find('$PRESSURE$') > -1:
+                text = text.replace(
+                    '$PRESSURE$',
+                    self.weather_data['current_conditions']['pressure'])
+            if text.find('$WIND$') > -1:
+                text = text.replace(
+                    '$WIND$',
+                    self.weather_data['current_conditions']['wind_condition'])
+            if text.find('$CONDITION$') > -1:
+                text = text.replace(
+                    '$CONDITION$',
+                    self.weather_data['current_conditions']['condition_text'])
+            if len(self.weather_data['forecasts']) > 0:
+                if text.find('$MAX_TEMPERATURE_01$') > -1:
+                    text = text.replace(
+                        '$MAX_TEMPERATURE_01$',
+                        self.weather_data['forecasts'][0]['high'])
+                if text.find('$MIN_TEMPERATURE_01$') > -1:
+                    text = text.replace(
+                        '$MIN_TEMPERATURE_01$',
+                        self.weather_data['forecasts'][0]['low'])
+                if text.find('$CONDITION_01$') > -1:
+                    text = text.replace(
+                        '$CONDITION_01$',
+                        self.weather_data['forecasts'][0]['condition_text'])
+                if text.find('$DAY_OF_WEEK_01$') > -1:
+                    text = text.replace(
+                        '$DAY_OF_WEEK_01$',
+                        self.weather_data['forecasts'][0]['day_of_week'])
+                if text.find('$WIND_01$') > -1:
+                    text = text.replace(
+                        '$WIND_01$',
+                        self.weather_data['forecasts'][0]['avewind'])
+            if len(self.weather_data['forecasts']) > 1:
+                if text.find('$MAX_TEMPERATURE_02$') > -1:
+                    text = text.replace(
+                        '$MAX_TEMPERATURE_02$',
+                        self.weather_data['forecasts'][1]['high'])
+                if text.find('$MIN_TEMPERATURE_02$') > -1:
+                    text = text.replace(
+                        '$MIN_TEMPERATURE_02$',
+                        self.weather_data['forecasts'][1]['low'])
+                if text.find('$CONDITION_02$') > -1:
+                    text = text.replace(
+                        '$CONDITION_02$',
+                        self.weather_data['forecasts'][1]['condition_text'])
+                if text.find('$DAY_OF_WEEK_02$') > -1:
+                    text = text.replace(
+                        '$DAY_OF_WEEK_02$',
+                        self.weather_data['forecasts'][1]['day_of_week'])
+                if text.find('$WIND_02$') > -1:
+                    text = text.replace(
+                        '$WIND_02$',
+                        self.weather_data['forecasts'][1]['avewind'])
+            if len(self.weather_data['forecasts']) > 2:
+                if text.find('$MAX_TEMPERATURE_03$') > -1:
+                    text = text.replace(
+                        '$MAX_TEMPERATURE_03$',
+                        self.weather_data['forecasts'][2]['high'])
+                if text.find('$MIN_TEMPERATURE_03$') > -1:
+                    text = text.replace(
+                        '$MIN_TEMPERATURE_03$',
+                        self.weather_data['forecasts'][2]['low'])
+                if text.find('$CONDITION_03$') > -1:
+                    text = text.replace(
+                        '$CONDITION_03$',
+                        self.weather_data['forecasts'][2]['condition_text'])
+                if text.find('$DAY_OF_WEEK_03$') > -1:
+                    text = text.replace(
+                        '$DAY_OF_WEEK_03$',
+                        self.weather_data['forecasts'][2]['day_of_week'])
+                if text.find('$WIND_03$') > -1:
+                    text = text.replace(
+                        '$WIND_03$',
+                        self.weather_data['forecasts'][2]['avewind'])
+            if len(self.weather_data['forecasts']) > 3:
+                if text.find('$MAX_TEMPERATURE_04$') > -1:
+                    text = text.replace(
+                        '$MAX_TEMPERATURE_04$',
+                        self.weather_data['forecasts'][3]['high'])
+                if text.find('$MIN_TEMPERATURE_04$') > -1:
+                    text = text.replace(
+                        '$MIN_TEMPERATURE_04$',
+                        self.weather_data['forecasts'][3]['low'])
+                if text.find('$CONDITION_04$') > -1:
+                    text = text.replace(
+                        '$CONDITION_04$',
+                        self.weather_data['forecasts'][3]['condition_text'])
+                if text.find('$DAY_OF_WEEK_04$') > -1:
+                    text = text.replace(
+                        '$DAY_OF_WEEK_04$',
+                        self.weather_data['forecasts'][3]['day_of_week'])
+                if text.find('$WIND_04$') > -1:
+                    text = text.replace(
+                        '$WIND_04$',
+                        self.weather_data['forecasts'][3]['avewind'])
+            if len(self.weather_data['forecasts']) > 4:
+                if text.find('$MAX_TEMPERATURE_05$') > -1:
+                    text = text.replace(
+                        '$MAX_TEMPERATURE_05$',
+                        self.weather_data['forecasts'][4]['high'])
+                if text.find('$MIN_TEMPERATURE_05$') > -1:
+                    text = text.replace(
+                        '$MIN_TEMPERATURE_05$',
+                        self.weather_data['forecasts'][4]['low'])
+                if text.find('$CONDITION_05$') > -1:
+                    text = text.replace(
+                        '$CONDITION_05$',
+                        self.weather_data['forecasts'][4]['condition_text'])
+                if text.find('$DAY_OF_WEEK_05$') > -1:
+                    text = text.replace(
+                        '$DAY_OF_WEEK_05$',
+                        self.weather_data['forecasts'][4]['day_of_week'])
+                if text.find('$WIND_05$') > -1:
+                    text = text.replace(
+                        '$WIND_05$',
+                        self.weather_data['forecasts'][4]['avewind'])
+
+        (x_bearing, y_bearing, width, height,
+         x_advance, y_advance) = cr.text_extents(text)
+        if xpos == 'CENTER':
+            x = x - width / 2.0
+        elif xpos == 'RIGHT':
+            x = x - width
+        if ypos == 'CENTER':
+            y = y + height / 2.0
+        elif ypos == 'TOP':
+            y = y + height
+        cr.move_to(x, y)
+        cr.show_text(text)
+
+    def draw_clock(self, cr, row):
+        maindir = self.skin
+        atype, minutesorhours, fileimage, x, y, width,\
+            height, xpos, ypos = row
+        fileimage = os.path.join(maindir, fileimage)
+        x = float(x)
+        y = float(y)
+        width = float(width)
+        height = float(height)
+        surface = get_surface_from_file(fileimage)
+        if surface is not None:
+            s_width = surface.get_width()
+            s_height = surface.get_height()
+            if xpos == 'CENTER':
+                x = x - width / 2.0
+            elif xpos == 'RIGHT':
+                x = x - width
+            if ypos == 'CENTER':
+                y = y - height / 2.0
+            elif ypos == 'BOTTOM':
+                y = y - height
+            hours = float(self.weather_data['current_conditions']['rawOffset'])
+            now = self.datetime +\
+                datetime.timedelta(hours=hours)
+            atime = float(now.hour) + float(now.minute) / 60.0
+            hours = atime
+            if not self.a24h and hours > 12:
+                hours -= 12.0
+            minutes = (atime - int(atime)) * 60.0
+            cr.translate(x, y)
+            cr.scale(width / s_width, height / s_height)
+            if minutesorhours == '$HOUR$':
+                cr.rotate(2.0 * math.pi / 12.0 * hours - math.pi / 2.0)
+            elif minutesorhours == '$MINUTES$':
+                cr.rotate(2.0 * math.pi / 60.0 * minutes - math.pi / 2.0)
+            cr.set_source_surface(surface)
+            cr.paint()
+
     def parse_data(self):
         if self.skin is not None and\
                 os.path.exists(os.path.join(self.skin, 'skin')):
-            maindir = self.skin
             ans = self.read_main_data()
             if ans is not None and self.weather_data is not None:
                 mainsurface = cairo.ImageSurface(
@@ -337,228 +671,11 @@ class WeatherWidget(Gtk.Window):
                     cr.save()
                     if row is not None and len(row) > 1:
                         if row[0] == 'CLOCK':
-                            atype, minutesorhours, fileimage, x, y, width,\
-                                height, xpos, ypos = row
-                            fileimage = os.path.join(maindir, fileimage)
-                            x = float(x)
-                            y = float(y)
-                            width = float(width)
-                            height = float(height)
-                            surface = get_surface_from_file(fileimage)
-                            if surface is not None:
-                                s_width = surface.get_width()
-                                s_height = surface.get_height()
-                                if xpos == 'CENTER':
-                                    x = x - width / 2.0
-                                elif xpos == 'RIGHT':
-                                    x = x - width
-                                if ypos == 'CENTER':
-                                    y = y - height / 2.0
-                                elif ypos == 'BOTTOM':
-                                    y = y - height
-                                hours = float(self.weather_data['current_conditions']['rawOffset'])
-                                now = self.datetime +\
-                                    datetime.timedelta(hours=hours)
-                                atime = float(now.hour) + float(now.minute) / 60.0
-                                hours = atime
-                                if not self.a24h and hours > 12:
-                                    hours -= 12.0
-                                minutes = (atime - int(atime)) * 60.0
-                                cr.translate(x, y)
-                                cr.scale(width / s_width, height / s_height)
-                                if minutesorhours == '$HOUR$':
-                                    cr.rotate(2.0 * math.pi / 12.0 * hours - math.pi / 2.0)
-                                elif minutesorhours == '$MINUTES$':
-                                    cr.rotate(2.0 * math.pi / 60.0 * minutes - math.pi / 2.0)
-                                cr.set_source_surface(surface)
-                                cr.paint()
+                            self.draw_clock(cr, row)
                         elif row[0] == 'IMAGE':
-                            atype, fileimage, x, y, width, height, xpos, ypos = row
-                            if self.weather_data is not None:
-                                if fileimage == '$CONDITION$':
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['current_conditions']['condition_image'])
-                                elif fileimage == '$CONDITION_ICON_LIGHT$':
-                                    fileimage = os.path.join(comun.ICONDIR, self.weather_data['current_conditions']['condition_icon_light'])
-                                elif fileimage == '$CONDITION_ICON_DARK':
-                                    fileimage = os.path.join(comun.ICONDIR, self.weather_data['current_conditions']['condition_icon_dark'])
-                                elif fileimage == '$MOONPHASE$':
-                                    fileimage = os.path.join(comun.IMAGESDIR, self.weather_data['current_conditions']['moon_icon'])
-                                elif fileimage == '$WIND$':
-                                    fileimage = os.path.join(comun.IMAGESDIR, self.weather_data['current_conditions']['wind_icon'])
-                                elif fileimage == '$CONDITION_01$' and len(self.weather_data['forecasts']) > 0:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][0]['condition_image'])
-                                elif fileimage == '$CONDITION_02$' and len(self.weather_data['forecasts']) > 1:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][1]['condition_image'])
-                                elif fileimage == '$CONDITION_03$' and len(self.weather_data['forecasts']) > 2:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][2]['condition_image'])
-                                elif fileimage == '$CONDITION_04$' and len(self.weather_data['forecasts']) > 3:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][3]['condition_image'])
-                                elif fileimage == '$CONDITION_05$' and len(self.weather_data['forecasts']) > 4:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][4]['condition_image'])
-                                elif fileimage == '$MOONPHASE_01$' and len(self.weather_data['forecasts']) > 0:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][0]['moon_phase'])
-                                elif fileimage == '$MOONPHASE_02$' and len(self.weather_data['forecasts']) > 1:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][1]['moon_phase'])
-                                elif fileimage == '$MOONPHASE_03$' and len(self.weather_data['forecasts']) > 2:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][2]['moon_phase'])
-                                elif fileimage == '$MOONPHASE_04$' and len(self.weather_data['forecasts']) > 3:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][3]['moon_phase'])
-                                elif fileimage == '$MOONPHASE_05$' and len(self.weather_data['forecasts']) > 4:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][4]['moon_phase'])
-                                elif fileimage == '$WIND_01$' and len(self.weather_data['forecasts']) > 0:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][0]['wind_icon'])
-                                elif fileimage == '$WIND_02$' and len(self.weather_data['forecasts']) > 1:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][1]['wind_icon'])
-                                elif fileimage == '$WIND_03$' and len(self.weather_data['forecasts']) > 2:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][2]['wind_icon'])
-                                elif fileimage == '$WIND_04$' and len(self.weather_data['forecasts']) > 3:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][3]['wind_icon'])
-                                elif fileimage == '$WIND_05$' and len(self.weather_data['forecasts']) > 4:
-                                    fileimage = os.path.join(comun.WIMAGESDIR, self.weather_data['forecasts'][4]['wind_icon'])
-                                else:
-                                    fileimage = os.path.join(maindir, fileimage)
-                            else:
-                                fileimage = os.path.join(maindir, fileimage)
-                            x = float(x)
-                            y = float(y)
-                            width = float(width)
-                            height = float(height)
-                            surface = get_surface_from_file(fileimage)
-                            if surface is not None:
-                                s_width = surface.get_width()
-                                s_height = surface.get_height()
-                                if xpos == 'CENTER':
-                                    x = x - width / 2.0
-                                elif xpos == 'RIGHT':
-                                    x = x - width
-                                if ypos == 'CENTER':
-                                    y = y - height / 2.0
-                                elif ypos == 'BOTTOM':
-                                    y = y - height
-                                cr.translate(x, y)
-                                cr.scale(width / s_width, height / s_height)
-                                cr.set_source_surface(surface)
-                                cr.paint()
+                            self.draw_image(cr, row)
                         elif row[0] == 'TEXT':
-                            atype, text, x, y, font, size, color, xpos, ypos = row
-                            x = float(x)
-                            y = float(y)
-                            size = int(size)
-                            r, g, b, a = color.split(',')
-                            cr.set_source_rgba(float(r), float(g), float(b), float(a))
-                            cr.select_font_face(font)
-                            cr.set_font_size(size)
-                            now = self.datetime + datetime.timedelta(hours=float(self.weather_data['current_conditions']['rawOffset']))
-                            if self.parse_time:
-                                now = self.datetime + datetime.timedelta(hours=float(self.weather_data['current_conditions']['rawOffset']))
-                                hours = now.hour
-                                if not self.a24h:
-                                    if hours > 12:
-                                        hours -= 12
-                                    if hours < 1:
-                                        hours += 12
-                                hours = str(hours)
-                                hours = '0' * (2 - len(hours)) + hours
-                                minutes = str(now.minute)
-                                minutes = '0' * (2 - len(minutes)) + minutes
-                                if text.find('$HOUR$') > -1:
-                                    text = text.replace('$HOUR$', hours)
-                                if text.find('$MINUTES$') > -1:
-                                    text = text.replace('$MINUTES$', minutes)
-                            if text.find('$WEEKDAY$') > -1:
-                                text = text.replace('$WEEKDAY$', now.strftime('%A'))
-                            if text.find('$DAY$') > -1:
-                                text = text.replace('$DAY$', now.strftime('%d'))
-                            if text.find('$MONTH$') > -1:
-                                text = text.replace('$MONTH$', now.strftime('%m'))
-                            if text.find('$MONTHNAME$') > -1:
-                                text = text.replace('$MONTHNAME$', now.strftime('%B'))
-                            if text.find('$YEAR$') > -1:
-                                text = text.replace('$YEAR$', now.strftime('%Y'))
-                            if text.find('$LOCATION$') > -1 and self.location is not None:
-                                text = text.replace('$LOCATION$', self.location)
-                            if self.weather_data is not None:
-                                if text.find('$TEMPERATURE$') > -1:
-                                    text = text.replace('$TEMPERATURE$', '{0}{1:c}'.format(self.weather_data['current_conditions']['temperature'], 176))
-                                if text.find('$MAX_TEMPERATURE$') > -1:
-                                    text = text.replace('$MAX_TEMPERATURE$', '{0}{1:c}'.format(self.weather_data['forecasts'][0]['high'], 176))
-                                if text.find('$MIN_TEMPERATURE$') > -1:
-                                    text = text.replace('$MIN_TEMPERATURE$', '{0}{1:c}'.format(self.weather_data['forecasts'][0]['low'], 176))
-                                if text.find('$HUMIDITY$') > -1:
-                                    text = text.replace('$HUMIDITY$', self.weather_data['current_conditions']['humidity'])
-                                if text.find('$PRESSURE$') > -1:
-                                    text = text.replace('$PRESSURE$', self.weather_data['current_conditions']['pressure'])
-                                if text.find('$WIND$') > -1:
-                                    text = text.replace('$WIND$', self.weather_data['current_conditions']['wind_condition'])
-                                if text.find('$CONDITION$') > -1:
-                                    text = text.replace('$CONDITION$', self.weather_data['current_conditions']['condition_text'])
-                                if len(self.weather_data['forecasts']) > 0:
-                                    if text.find('$MAX_TEMPERATURE_01$') > -1:
-                                        text = text.replace('$MAX_TEMPERATURE_01$', self.weather_data['forecasts'][0]['high'])
-                                    if text.find('$MIN_TEMPERATURE_01$') > -1:
-                                        text = text.replace('$MIN_TEMPERATURE_01$', self.weather_data['forecasts'][0]['low'])
-                                    if text.find('$CONDITION_01$') > -1:
-                                        text = text.replace('$CONDITION_01$', self.weather_data['forecasts'][0]['condition_text'])
-                                    if text.find('$DAY_OF_WEEK_01$') > -1:
-                                        text = text.replace('$DAY_OF_WEEK_01$', self.weather_data['forecasts'][0]['day_of_week'])
-                                    if text.find('$WIND_01$') > -1:
-                                        text = text.replace('$WIND_01$', self.weather_data['forecasts'][0]['avewind'])
-                                if len(self.weather_data['forecasts']) > 1:
-                                    if text.find('$MAX_TEMPERATURE_02$') > -1:
-                                        text = text.replace('$MAX_TEMPERATURE_02$', self.weather_data['forecasts'][1]['high'])
-                                    if text.find('$MIN_TEMPERATURE_02$') > -1:
-                                        text = text.replace('$MIN_TEMPERATURE_02$', self.weather_data['forecasts'][1]['low'])
-                                    if text.find('$CONDITION_02$') > -1:
-                                        text = text.replace('$CONDITION_02$', self.weather_data['forecasts'][1]['condition_text'])
-                                    if text.find('$DAY_OF_WEEK_02$') > -1:
-                                        text = text.replace('$DAY_OF_WEEK_02$', self.weather_data['forecasts'][1]['day_of_week'])
-                                    if text.find('$WIND_02$') > -1:
-                                        text = text.replace('$WIND_02$', self.weather_data['forecasts'][1]['avewind'])
-                                if len(self.weather_data['forecasts']) > 2:
-                                    if text.find('$MAX_TEMPERATURE_03$') > -1:
-                                        text = text.replace('$MAX_TEMPERATURE_03$', self.weather_data['forecasts'][2]['high'])
-                                    if text.find('$MIN_TEMPERATURE_03$') > -1:
-                                        text = text.replace('$MIN_TEMPERATURE_03$', self.weather_data['forecasts'][2]['low'])
-                                    if text.find('$CONDITION_03$') > -1:
-                                        text = text.replace('$CONDITION_03$', self.weather_data['forecasts'][2]['condition_text'])
-                                    if text.find('$DAY_OF_WEEK_03$') > -1:
-                                        text = text.replace('$DAY_OF_WEEK_03$', self.weather_data['forecasts'][2]['day_of_week'])
-                                    if text.find('$WIND_03$') > -1:
-                                        text = text.replace('$WIND_03$', self.weather_data['forecasts'][2]['avewind'])
-                                if len(self.weather_data['forecasts']) > 3:
-                                    if text.find('$MAX_TEMPERATURE_04$') > -1:
-                                        text = text.replace('$MAX_TEMPERATURE_04$', self.weather_data['forecasts'][3]['high'])
-                                    if text.find('$MIN_TEMPERATURE_04$') > -1:
-                                        text = text.replace('$MIN_TEMPERATURE_04$', self.weather_data['forecasts'][3]['low'])
-                                    if text.find('$CONDITION_04$') > -1:
-                                        text = text.replace('$CONDITION_04$', self.weather_data['forecasts'][3]['condition_text'])
-                                    if text.find('$DAY_OF_WEEK_04$') > -1:
-                                        text = text.replace('$DAY_OF_WEEK_04$', self.weather_data['forecasts'][3]['day_of_week'])
-                                    if text.find('$WIND_04$') > -1:
-                                        text = text.replace('$WIND_04$', self.weather_data['forecasts'][3]['avewind'])
-                                if len(self.weather_data['forecasts']) > 4:
-                                    if text.find('$MAX_TEMPERATURE_05$') > -1:
-                                        text = text.replace('$MAX_TEMPERATURE_05$', self.weather_data['forecasts'][4]['high'])
-                                    if text.find('$MIN_TEMPERATURE_05$') > -1:
-                                        text = text.replace('$MIN_TEMPERATURE_05$', self.weather_data['forecasts'][4]['low'])
-                                    if text.find('$CONDITION_05$') > -1:
-                                        text = text.replace('$CONDITION_05$', self.weather_data['forecasts'][4]['condition_text'])
-                                    if text.find('$DAY_OF_WEEK_05$') > -1:
-                                        text = text.replace('$DAY_OF_WEEK_05$', self.weather_data['forecasts'][4]['day_of_week'])
-                                    if text.find('$WIND_05$') > -1:
-                                        text = text.replace('$WIND_05$', self.weather_data['forecasts'][4]['avewind'])
-
-                            x_bearing, y_bearing, width, height, x_advance, y_advance = cr.text_extents(text)
-                            if xpos == 'CENTER':
-                                x = x - width / 2.0
-                            elif xpos == 'RIGHT':
-                                x = x - width
-                            if ypos == 'CENTER':
-                                y = y + height / 2.0
-                            elif ypos == 'TOP':
-                                y = y + height
-                            cr.move_to(x, y)
-                            cr.show_text(text)
+                            self.draw_text(cr, row)
                     cr.restore()
                 self.surface = mainsurface
                 return
