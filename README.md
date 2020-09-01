@@ -26,11 +26,12 @@ codefactor-badge: True
 <h1 align="center">Welcome to <span id="project_title">My Weather Indicator</span> 👋</h1>
 <p>
 <a href="https://www.atareao.es/aplicacion/my-weather-indicator-para-ubuntu/" id="homepage" rel="nofollow">
-<img align="right" height="128" id="icon" src="../../../datos/Sync/Programacion/Python/my-weather-indicator/data/images/mwi_128.png" width="128"/>
+<img align="right" height="128" id="icon" src="data/images/mwi_128.png" width="128"/>
 </a>
 </p>
 <h2>🏠 <a href="https://www.atareao.es/aplicacion/my-weather-indicator-para-ubuntu/" id="homepage">Homepage</a></h2>
 <p><span id="project_title">My Weather Indicator</span> is an an application especially designed for Ubuntu you will be informed of current weather and the weather forecast. Integrated with the Ubuntu desktop via an indicator. With local maps showing the conditions in nearby towns. The weather forecast for the next few days in your city. You can have up to two indicators for two cities, and choose the best weather service information that you provide. You select customizable widgets to make your desktop more personalized.</p>
+
 <!-- end description -->
 
 <!-- start prerequisites -->
@@ -58,6 +59,7 @@ python3-dateutil
 python3-requests
 python3-requests-oauthlib
 ```
+
 <!-- end prerequisites -->
 
 <!-- start installing -->
@@ -72,6 +74,7 @@ sudo add-apt-repository ppa:atareao/atareao
 sudo apt update
 sudo apt install my-weather-indicator
 ```
+
 <!-- end installing -->
 
 <!-- start using -->
@@ -115,6 +118,7 @@ And a Moon calendar
 
 ![my-weather-indicator](./screenshots/screenshot_09.png)
 
+
 <!-- end using -->
 
 <!-- start contributing -->
@@ -130,12 +134,14 @@ To contribute to **<span id="project_title">My Weather Indicator</span>**, follo
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 </commit_message></branch_name>
+
 <!-- end contributing -->
 
 <!-- start contributors -->
 ## 👤 Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
 <!-- end contributors -->
 
 <!-- start table-contributors -->
