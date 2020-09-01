@@ -138,7 +138,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 <!-- end contributing -->
 
 <!-- start contributors -->
-## 👤 Contributors ✨
+## 👤 Contributors+ ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
