@@ -19,7 +19,7 @@ codefactor-badge: True
 ![License MIT](https://img.shields.io/badge/license-MIT-green)
 ![Contributors](https://img.shields.io/github/contributors-anon/atareao/my-weather-indicator)
 ![Last commit](https://img.shields.io/github/last-commit/atareao/my-weather-indicator)
-[![CodeFactor](https://www.codefactor.io/repository/github/atareao/my-weather-indicator//badge/master)](https://www.codefactor.io/repository/github/atareao/my-weather-indicator//overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/atareao/my-weather-indicator/badge)](https://www.codefactor.io/repository/github/atareao/my-weather-indicator)
 <!-- end badges -->
 
 <!-- start description -->
