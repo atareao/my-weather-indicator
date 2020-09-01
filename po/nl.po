@@ -1,48 +1,46 @@
 #
-#: src/myweatherindicator.py:520 src/myweatherindicator.py:570
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 10:13+0200\n"
-"PO-Revision-Date: 2013-10-26 18:08+0000\n"
+"POT-Creation-Date: 2019-08-12 19:17+0200\n"
+"PO-Revision-Date: 2020-02-11 20:42+0100\n"
 "Last-Translator: A.J. Baudrez <a.baudrez@gmail.com>\n"
-"Language-Team: Dutch <nl@li.org>\n"
+"Language-Team: Dutch <vistausss@outlook.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 17082)\n"
+"X-Generator: Poedit 2.3\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
 
 #: src/whereami.py:61
 msgid "Where Am I"
-msgstr "Waar ben ik"
+msgstr "Waar ben ik?"
 
 #: src/whereami.py:79
 msgid "Search location"
-msgstr "Zoek plaats"
+msgstr "Locatie zoeken"
 
 #: src/whereami.py:81
 msgid "Clear location"
-msgstr "Wis plaats"
+msgstr "Locatie wissen"
 
 #: src/whereami.py:82
 msgid "Input the name of your city"
-msgstr "Naam van je gemeente opgeven"
+msgstr "Voer de naam in van je woonplaats"
 
 #: src/whereami.py:87
 msgid "Search"
-msgstr "Zoek"
+msgstr "Zoeken"
 
 #: src/whereami.py:91
 msgid "Find me"
-msgstr "Vind me"
+msgstr "Automatisch"
 
-#: src/whereami.py:94
-#, fuzzy
+#: src/whereami.py:92
 msgid "Locations found"
-msgstr "Gevonden plaatsen"
+msgstr "Gevonden locaties"
 
 #: src/whereami.py:115
 msgid "City"
@@ -50,7 +48,7 @@ msgstr "Woonplaats"
 
 #: src/whereami.py:119
 msgid "State"
-msgstr "Staat"
+msgstr "Staat/Provincie"
 
 #: src/whereami.py:123
 msgid "Country"
@@ -62,20 +60,19 @@ msgstr "Voorkeuren"
 
 #: src/preferences.py:87
 msgid "Main Location"
-msgstr "Hoofd locatie"
+msgstr "Hoofdlocatie"
 
 #: src/preferences.py:88 src/preferences.py:184 src/preferences.py:478
 msgid "General options"
 msgstr "Algemene instellingen"
 
 #: src/preferences.py:92 src/preferences.py:188
-#, fuzzy
 msgid "Show"
-msgstr "Buien"
+msgstr "Tonen"
 
 #: src/preferences.py:99
 msgid "Auto Location"
-msgstr "Automatische plaatsbepaling"
+msgstr "Automatische locatiebepaling"
 
 #: src/preferences.py:105 src/preferences.py:194
 msgid "Locality"
@@ -83,40 +80,39 @@ msgstr "Gebied"
 
 #: src/preferences.py:117 src/preferences.py:205
 msgid "Search Location"
-msgstr "Vind locatie"
+msgstr "Locatie zoeken"
 
 #: src/preferences.py:124 src/preferences.py:212
 msgid "Show temperature"
-msgstr "Toon temperatuur"
+msgstr "Temperatuur tonen"
 
 #: src/preferences.py:130 src/preferences.py:218
 msgid "Show notifications"
-msgstr "Geef notificaties weer"
+msgstr "Meldingen tonen"
 
 #: src/preferences.py:135 src/preferences.py:223
-#, fuzzy
 msgid "Widget options"
-msgstr "Widget boven vensters"
+msgstr "Widgetinstellingen"
 
 #: src/preferences.py:139 src/preferences.py:227
 msgid "Show widget"
-msgstr "Toon widget"
+msgstr "Widget tonen"
 
 #: src/preferences.py:146 src/preferences.py:234
 msgid "Hide indicator when show widget"
-msgstr "Verberg aanduiding wanneer widget getoond wordt"
+msgstr "Indicator verbergen als widget actief is"
 
 #: src/preferences.py:152 src/preferences.py:240
 msgid "Widget on top"
-msgstr "Widget boven vensters"
+msgstr "Widget altijd bovenop"
 
 #: src/preferences.py:158 src/preferences.py:246
 msgid "Show in taskbar"
-msgstr "Weergeven in taakbalk"
+msgstr "Tonen op taakbalk"
 
 #: src/preferences.py:164 src/preferences.py:252
 msgid "On all desktops"
-msgstr ""
+msgstr "Op alle werkbladen"
 
 #: src/preferences.py:183
 msgid "Second Location"
@@ -124,11 +120,11 @@ msgstr "Tweede locatie"
 
 #: src/preferences.py:271
 msgid "Weather Services"
-msgstr "Meteodienst"
+msgstr "Weerdienst"
 
 #: src/preferences.py:300
 msgid "Input World Weather Online key"
-msgstr "Sleutel World Weather Online invoeren"
+msgstr "Voer je World Weather Online-sleutel in"
 
 #: src/preferences.py:302 src/preferences.py:325
 msgid "Activate"
@@ -140,7 +136,7 @@ msgstr "Klik om World Weather Online te activeren"
 
 #: src/preferences.py:323
 msgid "Input Weather Underground key"
-msgstr "Sleutel Weather Underground invoeren"
+msgstr "Voer je Weather Underground-sleutel in"
 
 #: src/preferences.py:327
 msgid "Click to activate Weather Underground"
@@ -178,11 +174,11 @@ msgstr "Millibar"
 
 #: src/preferences.py:367
 msgid "Inches of mercury"
-msgstr "Kwikhoogte in duimen"
+msgstr "Kwikhoogte in inches"
 
 #: src/preferences.py:368
 msgid "Millimeters of mercury"
-msgstr "Kwikhoogte in milimeter"
+msgstr "Kwikhoogte in millimeters"
 
 #: src/preferences.py:378 src/myweatherindicator.py:500
 #: src/myweatherindicator.py:753
@@ -231,7 +227,7 @@ msgstr "Regenmeter"
 
 #: src/preferences.py:425 src/preferences.py:444
 msgid "Inches"
-msgstr "Duimen"
+msgstr "Inches"
 
 #: src/preferences.py:426 src/preferences.py:445
 msgid "Centimeters"
@@ -251,7 +247,7 @@ msgstr "Tijdnotatie"
 
 #: src/preferences.py:463
 msgid "24 h"
-msgstr "24 h"
+msgstr "24u"
 
 #: src/preferences.py:464
 msgid "AM/PM"
@@ -259,11 +255,11 @@ msgstr "AM/PM"
 
 #: src/preferences.py:481
 msgid "Autostart"
-msgstr "Automatisch starten"
+msgstr "Automatisch opstarten"
 
 #: src/preferences.py:486
 msgid "Refresh frequency"
-msgstr "Vernieuwingsfrequentie"
+msgstr "Verversfrequentie"
 
 #: src/preferences.py:493 src/preferences.py:494
 msgid "minutes"
@@ -276,52 +272,51 @@ msgstr "uur"
 #: src/preferences.py:496 src/preferences.py:497 src/preferences.py:498
 #: src/preferences.py:499 src/preferences.py:500
 msgid "hours"
-msgstr "uren"
+msgstr "uur"
 
 #: src/preferences.py:510
 msgid "Select icon theme"
-msgstr "Kies icoon thema"
+msgstr "Kies een pictogramthema"
 
 #: src/mooncalendarwindow.py:44
 msgid "Monday"
-msgstr ""
+msgstr "maandag"
 
 #: src/mooncalendarwindow.py:44
 msgid "Tuesday"
-msgstr ""
+msgstr "dinsdag"
 
 #: src/mooncalendarwindow.py:44
 msgid "Wednesday"
-msgstr ""
+msgstr "woensdag"
 
 #: src/mooncalendarwindow.py:44
 msgid "Thursday"
-msgstr ""
+msgstr "donderdag"
 
 #: src/mooncalendarwindow.py:45
 msgid "Friday"
-msgstr ""
+msgstr "vrijdag"
 
 #: src/mooncalendarwindow.py:45
 msgid "Saturday"
-msgstr ""
+msgstr "zaterdag"
 
 #: src/mooncalendarwindow.py:45
 msgid "Sunday"
-msgstr ""
+msgstr "zondag"
 
-#: src/mooncalendarwindow.py:59
-#, fuzzy
+#: src/mooncalendarwindow.py:78
 msgid "Moon phases"
-msgstr "Maanstand"
+msgstr "Maanstanden"
 
 #: src/mooncalendarwindow.py:74
 msgid "One year less"
-msgstr ""
+msgstr "Eén jaar minder"
 
 #: src/mooncalendarwindow.py:83
 msgid "One month less"
-msgstr ""
+msgstr "Eén maand minder"
 
 #: src/mooncalendarwindow.py:92 src/mooncalendarwindow.py:180
 msgid "Today"
@@ -329,11 +324,11 @@ msgstr ""
 
 #: src/mooncalendarwindow.py:106
 msgid "One year more"
-msgstr ""
+msgstr "Eén jaar meer"
 
 #: src/mooncalendarwindow.py:115
 msgid "One month more"
-msgstr ""
+msgstr "Eén maand meer"
 
 #: src/mooncalendarwindow.py:196
 #, fuzzy
@@ -364,7 +359,7 @@ msgstr "Nieuwe maan"
 #: src/weatherservice.py:969 src/wundergroundapi.py:43
 #: src/wundergroundapi.py:51 src/wundergroundapi.py:62
 msgid "N/A"
-msgstr "Niet beschikbaar"
+msgstr "N/B"
 
 #: src/weatherservice.py:36
 msgid "Blowing sand"
@@ -384,11 +379,11 @@ msgstr "Stofwolken"
 
 #: src/weatherservice.py:65
 msgid "Blustery"
-msgstr ""
+msgstr "Stormachtig"
 
 #: src/weatherservice.py:70
 msgid "Chance of a thunderstorm"
-msgstr "Kans op een onweer"
+msgstr "Kans op onweer"
 
 #: src/weatherservice.py:78
 msgid "Chance of flurries"
@@ -444,7 +439,7 @@ msgstr "Stofwindhozen"
 
 #: src/weatherservice.py:119
 msgid "Dust"
-msgstr "Stof"
+msgstr "Stofwind"
 
 #: src/weatherservice.py:121
 msgid "Extreme rain"
@@ -480,7 +475,7 @@ msgstr "Aanvriezende mist"
 
 #: src/weatherservice.py:141
 msgid "Freezing rain"
-msgstr "Ijsregen"
+msgstr "IJsregen"
 
 #: src/weatherservice.py:143
 msgid "Funnel cloud"
@@ -503,14 +498,12 @@ msgid "Heavy freezing drizzle"
 msgstr "Zware bevroren motregen"
 
 #: src/weatherservice.py:152 src/weatherservice.py:180
-#, fuzzy
 msgid "Heavy drizzle"
-msgstr "Zware bevroren motregen"
+msgstr "Zware motregen"
 
 #: src/weatherservice.py:154 src/weatherservice.py:182
-#, fuzzy
 msgid "Heavy drizzle rain"
-msgstr "Hevige motregen"
+msgstr "Zware motregen"
 
 #: src/weatherservice.py:156 src/weatherservice.py:162
 #: src/weatherservice.py:184
@@ -518,21 +511,20 @@ msgid "Heavy rain"
 msgstr "Hevige regen"
 
 #: src/weatherservice.py:158 src/weatherservice.py:186
-#, fuzzy
 msgid "Heavy shower rain"
-msgstr "Hevige regenbuien"
+msgstr "Zware regenbuien"
 
 #: src/weatherservice.py:160
 msgid "Heavy rain at times"
-msgstr "Per periode hevige regen"
+msgstr "Bij vlagen zware regenbuien"
 
 #: src/weatherservice.py:164
 msgid "Heavy snow"
-msgstr "Hevige sneeuwval"
+msgstr "Zware sneeuwval"
 
 #: src/weatherservice.py:166
 msgid "Heavy thunderstorm"
-msgstr "Hevig onweer"
+msgstr "Zwaar onweer"
 
 #: src/weatherservice.py:168
 msgid "Hot"
@@ -548,28 +540,27 @@ msgstr "IJskristallen"
 
 #: src/weatherservice.py:174
 msgid "Ice pellet showers"
-msgstr "Stofhagelbuien"
+msgstr "IJshagelbuien"
 
 #: src/weatherservice.py:176 src/weatherservice.py:178
 msgid "Ice pellets"
-msgstr "Stofhagel"
+msgstr "IJshagel"
 
 #: src/weatherservice.py:179
 msgid "Icy"
-msgstr "Ijzel"
+msgstr "IJzel"
 
 #: src/weatherservice.py:188
 msgid "Isolated showers"
 msgstr "Plaatselijke buien"
 
 #: src/weatherservice.py:190
-#, fuzzy
 msgid "Isolated thundershowers"
 msgstr "Plaatselijke onweersbuien"
 
 #: src/weatherservice.py:192
 msgid "Isolated thunderstorms"
-msgstr "Plaatselijke onweersbuien"
+msgstr "Plaatselijke onweersstormen"
 
 #: src/weatherservice.py:194 src/weatherservice.py:198
 msgid "Light drizzle"
@@ -580,12 +571,10 @@ msgid "Light freezing rain"
 msgstr "Lichte bevroren regen"
 
 #: src/weatherservice.py:200
-#, fuzzy
 msgid "Light drizzle rain"
 msgstr "Lichte motregen"
 
 #: src/weatherservice.py:202
-#, fuzzy
 msgid "Light shower rain"
 msgstr "Lichte regenbuien"
 
@@ -631,7 +620,7 @@ msgstr "Laaghangend stofsneeuw"
 
 #: src/weatherservice.py:224
 msgid "Low drifting widespread dust"
-msgstr "Laaghangende verspreid stof"
+msgstr "Laaghangend verspreid stof"
 
 #: src/weatherservice.py:226
 msgid "Mist"
@@ -655,7 +644,7 @@ msgstr "Middelmatige tot zware aanvriezende regen"
 
 #: src/weatherservice.py:236
 msgid "Moderate or heavy rain in area with thunder"
-msgstr "Middelmatige tot zware lokale regen met donder"
+msgstr "Middelmatige tot zware lokale regen met onweer"
 
 #: src/weatherservice.py:238
 msgid "Moderate or heavy rain shower"
@@ -675,7 +664,7 @@ msgstr "Middelmatige tot zware smeltende sneeuw"
 
 #: src/weatherservice.py:246
 msgid "Moderate or heavy snow in area with thunder"
-msgstr "Lokaal middelmatige tot zware sneeuw met donder"
+msgstr "Lokaal middelmatige tot zware sneeuw met onweer"
 
 #: src/weatherservice.py:248
 msgid "Moderate or heavy snow showers"
@@ -683,7 +672,7 @@ msgstr "Middelmatige tot zware sneeuwbuien"
 
 #: src/weatherservice.py:250
 msgid "Moderate rain at times"
-msgstr "Per periodes matige regen"
+msgstr "Bij vlagen matige regen"
 
 #: src/weatherservice.py:252
 msgid "Moderate rain"
@@ -723,7 +712,7 @@ msgstr "Deels zonnig"
 
 #: src/weatherservice.py:270
 msgid "Patches of fog"
-msgstr "Verspreidde mist"
+msgstr "Verspreide mist"
 
 #: src/weatherservice.py:272
 msgid "Patchy freezing drizzle nearby"
@@ -747,7 +736,7 @@ msgstr "Lokaal lichte regen"
 
 #: src/weatherservice.py:282
 msgid "Patchy light snow in area with thunder"
-msgstr "Lokaal lichte sneeuwval in de omgeving met donder"
+msgstr "Lokaal lichte sneeuwval in de omgeving met onweer"
 
 #: src/weatherservice.py:284
 msgid "Patchy light snow"
@@ -915,7 +904,7 @@ msgstr "Onweer met regen"
 
 #: src/weatherservice.py:363
 msgid "Thunderstorm with heavy rain"
-msgstr "Onweer met hevige regen"
+msgstr "Onweer met zware regenbuien"
 
 #: src/weatherservice.py:365
 msgid "Thunderstorm with light drizzle"
@@ -931,7 +920,7 @@ msgstr "Onweer met zware motregen"
 
 #: src/weatherservice.py:371
 msgid "Thundery outbreaks in nearby"
-msgstr "Nu en dan donderachtig in de omgeving"
+msgstr "Bij vlagen onweer in de omgeving"
 
 #: src/weatherservice.py:373
 msgid "Tornado"
@@ -1115,7 +1104,7 @@ msgstr "bij"
 
 #: src/weatherservice.py:658 src/weatherservice.py:688
 msgid "n/a"
-msgstr "n.v.t."
+msgstr "n/b"
 
 #: src/weatherservice.py:718
 msgid "millibar"
@@ -1123,11 +1112,11 @@ msgstr "millibar"
 
 #: src/weatherservice.py:718
 msgid "inches of mercury"
-msgstr "duimen kwikdruk"
+msgstr "inches kwikdruk"
 
 #: src/weatherservice.py:719
 msgid "millimeters of mercury"
-msgstr "millimeters kwikdruk"
+msgstr "millimeter kwikdruk"
 
 #: src/weatherservice.py:732
 msgid "mi"
@@ -1201,7 +1190,7 @@ msgstr "Zeer zware storm"
 #: src/weatherservice.py:941 src/weatherservice.py:942
 #: src/weatherservice.py:975 src/weatherservice.py:976
 msgid "Down all day"
-msgstr ""
+msgstr "Vandaag niet zichtbaar"
 
 #: src/weatherservice.py:877 src/weatherservice.py:878
 #: src/weatherservice.py:879 src/weatherservice.py:880
@@ -1211,7 +1200,7 @@ msgstr ""
 #: src/weatherservice.py:938 src/weatherservice.py:939
 #: src/weatherservice.py:978 src/weatherservice.py:979
 msgid "Up all day"
-msgstr ""
+msgstr "De hele dag zichtbaar"
 
 #: src/moon.py:33
 msgid "New Moon"
@@ -1235,7 +1224,7 @@ msgstr "Volle maan"
 
 #: src/moon.py:38
 msgid "Waning Gibbous"
-msgstr "Afnemende Maan"
+msgstr "Afnemende maan"
 
 #: src/moon.py:39
 msgid "Last Quarter"
@@ -1273,11 +1262,11 @@ msgstr "Weerbeeld"
 
 #: src/forecastw.py:122
 msgid "High temperature"
-msgstr "Maximale temperatuur"
+msgstr "Maximumtemperatuur"
 
 #: src/forecastw.py:122
 msgid "Low temperature"
-msgstr "Minimale temperatuur"
+msgstr "Minimumtemperatuur"
 
 #: src/forecastw.py:124
 msgid "Maximum wind"
@@ -1285,7 +1274,7 @@ msgstr "Hoogste windsnelheid"
 
 #: src/forecastw.py:124 src/forecastw.py:128 src/forecastw.py:130
 msgid "Average wind"
-msgstr "Gemiddelde wind"
+msgstr "Gemiddelde windsnelheid"
 
 #: src/forecastw.py:125
 msgid "Maximum humidity"
@@ -1297,7 +1286,7 @@ msgstr "Minimale vochtigheid"
 
 #: src/forecastw.py:126 src/forecastw.py:128
 msgid "Rain measurement"
-msgstr "Regenhoeveelheid"
+msgstr "Hoeveelheid regen"
 
 #: src/forecastw.py:126
 msgid "Snow measurement"
@@ -1314,34 +1303,46 @@ msgstr "Bewolking"
 
 #: src/myweatherindicator.py:151
 msgid "Homepage"
-msgstr "Startpagina"
+msgstr "Website"
 
 #: src/myweatherindicator.py:159
 msgid "Get help online..."
-msgstr "Online hulp zoeken"
+msgstr "Online-hulp..."
 
 #: src/myweatherindicator.py:167
 msgid "Translate this application..."
-msgstr "Vertaal deze applicatie"
+msgstr "Vertaal deze toepassing..."
 
 #: src/myweatherindicator.py:175
 msgid "Report a bug..."
 msgstr "Meld een bug..."
 
+<<<<<<< HEAD
 #: src/myweatherindicator.py:187
 #, fuzzy
+=======
+#: src/myweatherindicator.py:185
+>>>>>>> 32aaa77a14cf2f85edbfb72c45d154e1676abe83
 msgid "Follow me in Twitter"
-msgstr "Volg ons op Twitter"
+msgstr "Volg me op Twitter"
 
+<<<<<<< HEAD
 #: src/myweatherindicator.py:195
 #, fuzzy
+=======
+#: src/myweatherindicator.py:193
+>>>>>>> 32aaa77a14cf2f85edbfb72c45d154e1676abe83
 msgid "Follow me in Google+"
-msgstr "Volg ons op  Google+"
+msgstr "Volg me op Google+"
 
+<<<<<<< HEAD
 #: src/myweatherindicator.py:204
 #, fuzzy
+=======
+#: src/myweatherindicator.py:202
+>>>>>>> 32aaa77a14cf2f85edbfb72c45d154e1676abe83
 msgid "Follow me in Facebook"
-msgstr "Volg ons op Facebook"
+msgstr "Volg me op Facebook"
 
 #: src/myweatherindicator.py:211
 msgid "About"
@@ -1353,8 +1354,9 @@ msgstr "Evolution"
 
 #: src/myweatherindicator.py:434
 msgid "Forecast Map"
-msgstr "Kaart vooruitzichten"
+msgstr "Weerkaart"
 
+<<<<<<< HEAD
 #: src/myweatherindicator.py:441
 #, fuzzy
 msgid "Moon Phase Calendar"
@@ -1362,8 +1364,11 @@ msgstr "Maanstand"
 
 #: src/myweatherindicator.py:453
 #, fuzzy
+=======
+#: src/myweatherindicator.py:439
+>>>>>>> 32aaa77a14cf2f85edbfb72c45d154e1676abe83
 msgid "Update weather"
-msgstr "Voer nu een update uit"
+msgstr "Weersverwachting verversen"
 
 #: src/myweatherindicator.py:464 src/myweatherindicator.py:681
 msgid "Location"
@@ -1405,7 +1410,7 @@ msgstr "Donker"
 
 #: src/myweatherindicator.py:592
 msgid "Help"
-msgstr "Help"
+msgstr "Hulp"
 
 #: src/myweatherindicator.py:598
 msgid "Exit"
@@ -1413,7 +1418,7 @@ msgstr "Afsluiten"
 
 #: src/myweatherindicator.py:621
 msgid "Not Internet connection"
-msgstr ""
+msgstr "Geen internetverbinding"
 
 #: src/myweatherindicator.py:788
 msgid "Conditions in"
@@ -1421,11 +1426,11 @@ msgstr "Omstandigheden in"
 
 #: src/myweatherindicator.py:841
 msgid "Forecast for next hours"
-msgstr "Vooruitzichten voor volgende uren"
+msgstr "Vooruitzichten voor de komende uren"
 
 #: src/myweatherindicator.py:842
 msgid "Weather service"
-msgstr "Meteo dienst"
+msgstr "Weerdienst"
 
 #: src/myweatherindicator.py:880
 msgid "A weather indicator"
