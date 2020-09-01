@@ -3,7 +3,7 @@
 #
 # This file is part of my-weather-indicator
 #
-# Copyright (c) 2012-2019 Lorenzo Carbonell Cerezo <a.k.a. atareao>
+# Copyright (c) 2012 Lorenzo Carbonell Cerezo <a.k.a. atareao>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -45,7 +45,7 @@ class Graph(BaseDialog):
         self.cloudiness = cloudiness
         self.temperature = temperature
         BaseDialog.__init__(self, title, None, ok_button=False,
-            cancel_button=False)
+                            cancel_button=False)
 
     def init_ui(self):
         BaseDialog.init_ui(self)
@@ -67,7 +67,7 @@ class Graph(BaseDialog):
         self.web_send('title="{}";subtitle="{}";humidity={};cloudiness={};\
             temperature={};draw_graph(title,subtitle,temperature,humidity,\
                 cloudiness);'.format(self.title, self.subtitle, self.humidity,
-                                  self.cloudiness, self.temperature))
+                                     self.cloudiness, self.temperature))
 
     def load_changed(self, widget, load_event):
         if load_event == WebKit2.LoadEvent.FINISHED:

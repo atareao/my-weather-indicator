@@ -3,7 +3,7 @@
 #
 # This file is part of my-weather-indicator
 #
-# Copyright (c) 2012-2019 Lorenzo Carbonell Cerezo <a.k.a. atareao>
+# Copyright (c) 2012 Lorenzo Carbonell Cerezo <a.k.a. atareao>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -41,7 +41,6 @@ from gi.repository import OsmGpsMap
 from geolocation import get_latitude_longitude_city
 from asyncf import async_function
 import geocodeapi
-import comun
 from comun import _
 from basedialog import BaseDialog
 
@@ -65,7 +64,7 @@ class WhereAmI(BaseDialog):
         BaseDialog.init_ui(self)
         #
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 5)
-        self.grid.attach(vbox, 0,0,1,1)
+        self.grid.attach(vbox, 0, 0, 1, 1)
 
         hbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 5)
         vbox.pack_start(hbox, False, False, 0)
@@ -160,7 +159,7 @@ class WhereAmI(BaseDialog):
             if self.location is not None and len(self.location) > 0:
                 self.entry1.set_text(self.location)
             else:
-                self.do_search_location(latitude, longitude)
+                self.do_search_location(self.latitude, self.longitude)
         else:
             self.search_location2()
 
@@ -169,8 +168,6 @@ class WhereAmI(BaseDialog):
         print('============================')
         print(self.location, self.latitude, self.longitude)
         print('============================')
-
-
 
     def on_expander_expanded(self, widget, selected):
         print(widget, selected)
@@ -280,12 +277,14 @@ class WhereAmI(BaseDialog):
         return self.lat, self.lng, self.locality
 
     def set_wait_cursor(self):
-        Gdk.Screen.get_default().get_root_window().set_cursor(Gdk.Cursor(Gdk.CursorType.WATCH))
+        Gdk.Screen.get_default().get_root_window().set_cursor(
+            Gdk.Cursor(Gdk.CursorType.WATCH))
         while Gtk.events_pending():
             Gtk.main_iteration()
 
     def set_normal_cursor(self):
-        Gdk.Screen.get_default().get_root_window().set_cursor(Gdk.Cursor(Gdk.CursorType.ARROW))
+        Gdk.Screen.get_default().get_root_window().set_cursor(
+            Gdk.Cursor(Gdk.CursorType.ARROW))
         while Gtk.events_pending():
             Gtk.main_iteration()
 

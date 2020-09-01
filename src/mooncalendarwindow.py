@@ -3,7 +3,7 @@
 #
 # This file is part of my-weather-indicator
 #
-# Copyright (c) 2012-2019 Lorenzo Carbonell Cerezo <a.k.a. atareao>
+# Copyright (c) 2012 Lorenzo Carbonell Cerezo <a.k.a. atareao>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -26,13 +26,12 @@
 import gi
 try:
     gi.require_version('Gtk', '3.0')
-    gi.require_version('Gdk', '3.0')
     gi.require_version('GdkPixbuf', '2.0')
+    gi.require_version('GLib', '2.0')
 except ValueError as e:
     print(e)
     exit(1)
 from gi.repository import Gtk
-from gi.repository import Gdk
 from gi.repository import GdkPixbuf
 from gi.repository import GLib
 import os
@@ -50,9 +49,6 @@ DAY_OF_WEEK = [_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
 def first_day_of_month(adatetime):
     adatetime = adatetime.replace(day=1)
     return adatetime.weekday()
-
-
-
 
 
 class CalendarWindow(BaseDialog):
@@ -76,7 +72,7 @@ class CalendarWindow(BaseDialog):
         button0.set_tooltip_text(_('One year less'))
         button0.set_image(
             Gtk.Image.new_from_icon_name(Gtk.STOCK_GOTO_FIRST,
-                                     Gtk.IconSize.BUTTON))
+                                         Gtk.IconSize.BUTTON))
         button0.connect('clicked', self.on_button0_clicked)
         self.headerbar.pack_start(button0)
 
@@ -85,7 +81,7 @@ class CalendarWindow(BaseDialog):
         button1.set_tooltip_text(_('One month less'))
         button1.set_image(
             Gtk.Image.new_from_icon_name(Gtk.STOCK_GO_BACK,
-                                     Gtk.IconSize.BUTTON))
+                                         Gtk.IconSize.BUTTON))
         button1.connect('clicked', self.on_button1_clicked)
         self.headerbar.pack_start(button1)
 
@@ -108,7 +104,7 @@ class CalendarWindow(BaseDialog):
         button3.set_tooltip_text(_('One year more'))
         button3.set_image(
             Gtk.Image.new_from_icon_name(Gtk.STOCK_GOTO_LAST,
-                                     Gtk.IconSize.BUTTON))
+                                         Gtk.IconSize.BUTTON))
         button3.connect('clicked', self.on_button3_clicked)
         self.headerbar.pack_end(button3)
 
@@ -117,10 +113,9 @@ class CalendarWindow(BaseDialog):
         button2.set_tooltip_text(_('One month more'))
         button2.set_image(
             Gtk.Image.new_from_icon_name(Gtk.STOCK_GO_FORWARD,
-                                     Gtk.IconSize.BUTTON))
+                                         Gtk.IconSize.BUTTON))
         button2.connect('clicked', self.on_button2_clicked)
         self.headerbar.pack_end(button2)
-
 
         scrolledwindow = Gtk.ScrolledWindow()
         scrolledwindow.set_policy(Gtk.PolicyType.AUTOMATIC,
@@ -206,10 +201,9 @@ class CalendarWindow(BaseDialog):
         if year < 1:
             year = 1
         fd, ld = calendar.monthrange(year, month)
-        day = fg if day < fd else ld if day > ld else day
+        day = fd if day < fd else ld if day > ld else day
         self.adate = self.adate.replace(day=day, month=month, year=year)
         GLib.idle_add(self.set_date)
-        #self.set_date()
 
     def on_button1_clicked(self, widget):
         day = self.adate.day
@@ -221,9 +215,9 @@ class CalendarWindow(BaseDialog):
             if year < 1:
                 year = 1
         fd, ld = calendar.monthrange(year, month)
-        day = fg if day < fd else ld if day > ld else day
+        day = fd if day < fd else ld if day > ld else day
         self.adate = self.adate.replace(day=day, month=month, year=year)
-        self.set_date()
+        GLib.idle_add(self.set_date)
 
     def on_button2_clicked(self, widget):
         day = self.adate.day
@@ -233,23 +227,23 @@ class CalendarWindow(BaseDialog):
             month = 1
             year = self.adate.year + 1
         fd, ld = calendar.monthrange(year, month)
-        day = fg if day < fd else ld if day > ld else day
+        day = fd if day < fd else ld if day > ld else day
         self.adate = self.adate.replace(day=day, month=month, year=year)
-        self.set_date()
+        GLib.idle_add(self.set_date)
 
     def on_button3_clicked(self, widget):
         day = self.adate.day
         month = self.adate.month
         year = self.adate.year + 1
         fd, ld = calendar.monthrange(year, month)
-        day = fg if day < fd else ld if day > ld else day
+        day = fd if day < fd else ld if day > ld else day
         self.adate = self.adate.replace(day=day, month=month, year=year)
-        self.set_date()
+        GLib.idle_add(self.set_date)
 
     def on_button4_clicked(self, widget):
         today = datetime.datetime.today().date()
         self.adate = self.adate.replace(month=today.month, year=today.year)
-        self.set_date()
+        GLib.idle_add(self.set_date)
 
 
 if __name__ == "__main__":

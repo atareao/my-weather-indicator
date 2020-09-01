@@ -1,23 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# OpenWeatherMap
+# This file is part of my-weather-indicator
 #
-# Copyright (C) 2012 Lorenzo Carbonell
-# lorenzo.carbonell.cerezo@gmail.com
+# Copyright (c) 2012 Lorenzo Carbonell Cerezo <a.k.a. atareao>
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
 import gi
 try:
@@ -29,7 +33,6 @@ except Exception as e:
 from gi.repository import Gtk
 from gi.repository import WebKit2
 from basedialog import BaseDialog
-from json import loads as from_json
 from comun import _
 import comun
 
@@ -40,7 +43,6 @@ class ForecastMap(BaseDialog):
         self.lon = lon
         BaseDialog.__init__(self, _('Forecast'), ok_button=False,
                             cancel_button=False)
-
 
     def init_ui(self):
         BaseDialog.init_ui(self)
@@ -57,13 +59,13 @@ class ForecastMap(BaseDialog):
 
     def load_changed(self, widget, load_event):
         if load_event == WebKit2.LoadEvent.FINISHED:
-            self.web_send('setPosition({}, {})'.format(self.lat, self.lon)) 
+            self.web_send('setPosition({}, {})'.format(self.lat, self.lon))
 
     def web_send(self, msg):
         self.viewer.run_javascript(msg, None, None, None)
         while Gtk.events_pending():
             Gtk.main_iteration()
- 
+
     def close_application(self, widget):
         self.destroy()
 

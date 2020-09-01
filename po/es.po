@@ -1227,7 +1227,7 @@ msgstr "Cuarto creciente"
 
 #: src/moon.py:36
 msgid "Waxing Gibbous"
-msgstr "Cuarto creciente (Luna llena cerca)"
+msgstr "Cuarto creciente"
 
 #: src/moon.py:37
 msgid "Full Moon"
@@ -1235,7 +1235,7 @@ msgstr "Luna llena"
 
 #: src/moon.py:38
 msgid "Waning Gibbous"
-msgstr "Cuarto Menguante (la Luna llena fue ayer)"
+msgstr "Cuarto Menguante"
 
 #: src/moon.py:39
 msgid "Last Quarter"

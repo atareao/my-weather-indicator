@@ -1,27 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 #
+# This file is part of my-weather-indicator
 #
-# My-Weather-Indicator
-# An indicator to show the weather
+# Copyright (c) 2012 Lorenzo Carbonell Cerezo <a.k.a. atareao>
 #
-# Adding keybiding
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 #
-# Copyright (C) 2010 -2016 Lorenzo Carbonell
-# lorenzo.carbonell.cerezo@gmail.com
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
 import os
 import gi
@@ -57,6 +57,7 @@ import comun
 import weatherservice
 import worldweatheronlineapi
 import wopenweathermapapi
+import wyahooapi
 import wundergroundapi
 import machine_information
 from graph import Graph
@@ -165,9 +166,10 @@ class MWI(GObject.Object):
         #
         translate_item = Gtk.MenuItem(label=_(
             'Translate this application...'))
-        translate_item.connect('activate',
-                               lambda x: webbrowser.open('http://www.atareao.es\
-/apps/my-weather-indicator-para-ubuntu/'))
+        translate_item.connect(
+            'activate',
+            lambda x: webbrowser.open('http://www.atareao.es/apps/\
+my-weather-indicator-para-ubuntu/'))
         translate_item.show()
         help_menu.append(translate_item)
         #
@@ -447,7 +449,6 @@ class MWI(GObject.Object):
             'activate', self.on_moon_clicked)
         self.menus[index]['moon_calendar'].show()
         main_menu.append(self.menus[index]['moon_calendar'])
-
 
         self.menus[index]['update'] = Gtk.MenuItem(
             label=_('Update weather'))
@@ -944,16 +945,17 @@ whochismo <https://launchpad.net/~whochismo>\n')
         widget.set_sensitive(True)
         self.menu_offon(True)
 
+
 def main():
     print(machine_information.get_information())
     print('My-Weather-Indicator version: %s' % comun.VERSION)
     print('#####################################################')
     load_css(CSS_FILE)
     Notify.init("my-weather-indicator")
-    mwi = MWI()
+    MWI()
     Gtk.main()
- 
 
-if __name__ == "__main__": 
+
+if __name__ == "__main__":
     main()
     exit(0)

@@ -8,7 +8,12 @@
     border: 1px solid #c3c9d0;
 }
 #forecasti{
-    background-color: #ddd;
+    color: #333;
+    background-color: #F1E9CB;
+}
+#forecast{
+    color: #333;
+    background-color: #E1C6AC;
 }
 #mcw_other_month{
     background-color: #ddd;
@@ -35,7 +40,7 @@ window hdycolumn box list row combobox{
     padding: 10px;
 }
 window hdycolumn box list row{
-    background-color: #ffffff;
+    background-color: #f0f;
     padding: 2px 8px;
     margin: 0;
     border: 1px solid #c3c9d0;
