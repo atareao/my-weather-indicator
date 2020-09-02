@@ -46,6 +46,11 @@ class Graph(BaseDialog):
         self.temperature = temperature
         BaseDialog.__init__(self, title, None, ok_button=False,
                             cancel_button=False)
+        self.connect('delete-event', self.on_delete)
+
+    def on_delete(self, widget, arg):
+        self.hide()
+        self.destroy()
 
     def init_ui(self):
         BaseDialog.init_ui(self)
@@ -72,8 +77,6 @@ class Graph(BaseDialog):
     def load_changed(self, widget, load_event):
         if load_event == WebKit2.LoadEvent.FINISHED:
             self.update()
-            while Gtk.events_pending():
-                Gtk.main_iteration()
 
     def web_send(self, msg):
         self.viewer.run_javascript(msg, None, None, None)

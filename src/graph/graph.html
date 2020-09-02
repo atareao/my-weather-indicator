@@ -3,10 +3,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>My-Weather-Indicator (Evolution)</title>
-		<script type="text/javascript" src="jquery.min.js"></script>
 		<script type="text/javascript">
 			function draw_graph(atitle,asubtitle,temperaturedata,humiditydata,cloudinessdata){		
-				jQuery('#container').highcharts({
+                Highcharts.chart('container', {
 					chart: {
 						zoomType: 'xy'
 					},
@@ -119,6 +118,7 @@
 					}
 					]
 				});
+				send('{"status":"ready"}');
 			};
 			function send(msg) {
 				document.title = "null";
@@ -131,17 +131,9 @@
 		<script src="exporting.js"></script>
 		<div id="container" style="min-width: 850px; min-height: 550px;"></div>
 		<script type="text/javascript">
-			jQuery(document).ready(function() {
-				<!--
-				atitle='title';
-				asubtitle='subtitle';
-				temperaturedata=[[0, 1.11], [2, 4.51], [5,3.22],[14,6]];
-				humiditydata=[[0, 10], [2, 20], [5,30],[14,40]];
-				cloudinessdata=[[0, 0], [2, 20], [5,20],[14,100]];
-				draw_graph(atitle,asubtitle,temperaturedata,humiditydata,cloudinessdata);
-				//-->
+            window.addEventListener('load', function () {
 				send('{"status":"ready"}');
-			});
+            });
 		</script>
 	</body>
 </html>
