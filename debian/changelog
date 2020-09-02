@@ -1,4 +1,4 @@
-my-weather-indicator (0.9.5-0extras20.04.08) focal; urgency=medium
+my-weather-indicator (0.9.5-0extras20.04.09) focal; urgency=medium
 
   * updated dialogs
   * clean install file
@@ -8,7 +8,7 @@ my-weather-indicator (0.9.5-0extras20.04.08) focal; urgency=medium
   * Remove jquery
   * Change web.svg
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Wed, 02 Sep 2020 08:21:55 +0200
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Wed, 02 Sep 2020 08:43:55 +0200
 
 my-weather-indicator (0.9.4-0extras19.10.10) eoan; urgency=medium
 

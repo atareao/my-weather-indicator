@@ -1,10 +1,9 @@
 #
-#: src/myweatherindicator.py:522 src/myweatherindicator.py:572
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-01 13:58+0200\n"
+"POT-Creation-Date: 2020-09-02 08:39+0200\n"
 "PO-Revision-Date: 2012-08-05 23:32+0000\n"
 "Last-Translator: Lorenzo Carbonell <Unknown>\n"
 "Language-Team: Tamil <ta@li.org>\n"
@@ -340,6 +339,10 @@ msgstr "பௌர்ணமி"
 #, fuzzy
 msgid "New moon"
 msgstr "புதிய நிலவு"
+
+#: src/weatherwidget.py:80
+msgid "SUPER + Drag for Move Widget Position."
+msgstr ""
 
 #: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
 #: src/worldweatheronlineapi.py:113 src/weatherservice.py:851

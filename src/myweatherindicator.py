@@ -519,7 +519,7 @@ my-weather-indicator-para-ubuntu/'))
         main_menu.append(self.menus[index]['precipitation'])
         #
         self.menus[index]['condition'] = Gtk.ImageMenuItem(
-            label=_(''))
+            label='')
         self.menus[index]['condition'].set_always_show_image(True)
         self.menus[index]['condition'].show()
         main_menu.append(self.menus[index]['condition'])
@@ -569,7 +569,7 @@ my-weather-indicator-para-ubuntu/'))
         main_menu.append(separator)
         #
         self.menus[index]['moon_phase'] = Gtk.ImageMenuItem(
-            label=_(''))
+            label='')
         self.menus[index]['moon_phase'].set_image(
             Gtk.Image.new_from_file(
                 os.path.join(comun.IMAGESDIR, 'mwig-clear-night.png')))

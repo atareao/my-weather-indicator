@@ -1,10 +1,9 @@
 #
-#: src/myweatherindicator.py:522 src/myweatherindicator.py:572
 msgid ""
 msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-01 13:58+0200\n"
+"POT-Creation-Date: 2020-09-02 08:39+0200\n"
 "PO-Revision-Date: 2013-05-16 12:18+0000\n"
 "Last-Translator: Nithin C <nithin_aneesh@aol.in>\n"
 "Language-Team: Malayalam <ml@li.org>\n"
@@ -339,6 +338,10 @@ msgstr ""
 
 #: src/mooncalendarwindow.py:195
 msgid "New moon"
+msgstr ""
+
+#: src/weatherwidget.py:80
+msgid "SUPER + Drag for Move Widget Position."
 msgstr ""
 
 #: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
