@@ -58,6 +58,8 @@ CONDITION[302] = 'heavy intensity drizzle'
 CONDITION[310] = 'light intensity drizzle rain'
 CONDITION[311] = 'drizzle rain'
 CONDITION[312] = 'heavy intensity drizzle rain'
+CONDITION[313] = 'shower rain and drizzle'
+CONDITION[314] = 'heavy shower rain and drizzle'
 CONDITION[321] = 'shower drizzle'
 CONDITION[500] = 'light rain'
 CONDITION[501] = 'moderate rain'
@@ -68,16 +70,28 @@ CONDITION[511] = 'freezing rain'
 CONDITION[520] = 'light intensity shower rain'
 CONDITION[521] = 'shower rain'
 CONDITION[522] = 'heavy intensity shower rain'
+CONDITION[531] = 'ragged shower rain'
 CONDITION[600] = 'light snow'
 CONDITION[601] = 'snow'
 CONDITION[602] = 'heavy snow'
 CONDITION[611] = 'sleet'
+CONDITION[612] = 'light shower sleet'
+CONDITION[613] = 'shower sleet'
+CONDITION[615] = 'light rain and snow'
+CONDITION[616] = 'rain and snow'
+CONDITION[620] = 'light shower snow'
 CONDITION[621] = 'shower snow'
+CONDITION[622] = 'heavy shower snow'
 CONDITION[701] = 'mist'
 CONDITION[711] = 'smoke'
 CONDITION[721] = 'haze'
-CONDITION[731] = 'sand'
+CONDITION[731] = 'sand / dust whirls'
 CONDITION[741] = 'fog'
+CONDITION[751] = 'sand'
+CONDITION[761] = 'dust'
+CONDITION[762] = 'volcanic ash'
+CONDITION[771] = 'squalls'
+CONDITION[781] = 'tornado'
 CONDITION[800] = 'clear'  # sky is clear
 CONDITION[801] = 'partly sunny'  # few clouds
 CONDITION[802] = 'partly cloudy'  # scattered clouds
@@ -260,7 +274,10 @@ class OWMWeatherService(WeatherService):
         if parsed_json is None:
             return weather_data
         for contador, data in enumerate(parsed_json['list']):
-            condition = CONDITION[data['weather'][0]['id']]
+            if data['weather'][0]['id'] in CONDITION:
+                condition = CONDITION[data['weather'][0]['id']]
+            else:
+                data = data['weather'][0]['description']
             temperature = cf.fa2f(data['temp']['day'])
             cloudiness = data['clouds'] if 'clouds' in data.keys() else 0
             pressure = data['pressure'] if 'pressure' in data.keys() else 0
