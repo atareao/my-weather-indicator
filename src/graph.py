@@ -38,12 +38,13 @@ from basedialog import BaseDialog
 
 class Graph(BaseDialog):
     def __init__(self, title='', subtitle='', temperature='', humidity='',
-                 cloudiness=''):
+                 cloudiness='', temperature_unit=''):
         self.title = title
         self.subtitle = subtitle
         self.humidity = humidity
         self.cloudiness = cloudiness
         self.temperature = temperature
+        self.temperature_unit = temperature_unit
         BaseDialog.__init__(self, title, None, ok_button=False,
                             cancel_button=False)
         self.connect('delete-event', self.on_delete)
@@ -70,9 +71,10 @@ class Graph(BaseDialog):
 
     def update(self):
         self.web_send('title="{}";subtitle="{}";humidity={};cloudiness={};\
-            temperature={};draw_graph(title,subtitle,temperature,humidity,\
-                cloudiness);'.format(self.title, self.subtitle, self.humidity,
-                                     self.cloudiness, self.temperature))
+            temperature={};temperature_unit="{}";draw_graph(title,subtitle,\
+            temperature,humidity,cloudiness,temperature_unit);'.format(
+                self.title, self.subtitle, self.humidity, self.cloudiness,
+                self.temperature, self.temperature_unit))
 
     def load_changed(self, widget, load_event):
         if load_event == WebKit2.LoadEvent.FINISHED:

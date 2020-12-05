@@ -829,6 +829,8 @@ my-weather-indicator-para-ubuntu/'))
         self.menu_offon(True)
 
     def menu_evolution_response(self, widget, index):
+        configuration = Configuration()
+        temperature_unit = configuration.get('temperature')
         self.menu_offon(False)
         temperatures = []
         humidities = []
@@ -843,7 +845,8 @@ my-weather-indicator-para-ubuntu/'))
         title = _('Forecast for next hours')
         subtitle = _('Weather service') + ': OpenWeatherMap'
         graph = Graph(title, subtitle, temperature=temperatures,
-                      humidity=humidities, cloudiness=cloudinesses)
+                      humidity=humidities, cloudiness=cloudinesses,
+                      temperature_unit=temperature_unit)
         graph.run()
         self.menu_offon(True)
 

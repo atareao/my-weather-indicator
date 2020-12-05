@@ -1,9 +1,10 @@
-my-weather-indicator (0.9.5-0extras20.04.10) focal; urgency=medium
+my-weather-indicator (0.9.5-0extras20.04.11) focal; urgency=medium
 
   * changed widget
   * fixed bug # 81
+  * fixed but #76, #78
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:09:16 +0100
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:37:44 +0100
 
 my-weather-indicator (0.9.5-0extras20.04.09) focal; urgency=medium
 

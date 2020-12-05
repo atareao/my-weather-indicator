@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>My-Weather-Indicator (Evolution)</title>
 		<script type="text/javascript">
-			function draw_graph(atitle,asubtitle,temperaturedata,humiditydata,cloudinessdata){		
+			function draw_graph(atitle,asubtitle,temperaturedata,humiditydata,cloudinessdata,temperature_unit){		
                 Highcharts.chart('container', {
 					chart: {
 						zoomType: 'xy'
@@ -35,7 +35,7 @@
 								}
 							},
 							labels: {
-								format: '{value}°C',
+								format: '{value}°'.concat(temperature_unit),
 								style: {
 									color: '#AA4643'
 								}
@@ -88,7 +88,7 @@
 							radius: 4
 						},
 						tooltip: {
-							valueSuffix: ' º'
+							valueSuffix: ' º'.concat(temperature_unit)
 						}
 					},{
 						type: 'areaspline',
