@@ -495,6 +495,10 @@ class WeatherWidget(Gtk.Window):
                                 if len(self.weather_data['forecasts']) > 0:
                                     if text.find('$MAX_TEMPERATURE_01$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_01$', self.weather_data['forecasts'][0]['high'])
+                                    if text.find('$MIDDLE_TEMPERATURE_01$') > -1:
+                                        text = text.replace(
+                                            '$MIDDLE_TEMPERATURE_01$',
+                                            str((int(self.weather_data['forecasts'][0]['high']) + int(self.weather_data['forecasts'][0]['low']))/2))
                                     if text.find('$MIN_TEMPERATURE_01$') > -1:
                                         text = text.replace('$MIN_TEMPERATURE_01$', self.weather_data['forecasts'][0]['low'])
                                     if text.find('$CONDITION_01$') > -1:
@@ -506,6 +510,10 @@ class WeatherWidget(Gtk.Window):
                                 if len(self.weather_data['forecasts']) > 1:
                                     if text.find('$MAX_TEMPERATURE_02$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_02$', self.weather_data['forecasts'][1]['high'])
+                                    if text.find('$MIDDLE_TEMPERATURE_02$') > -1:
+                                        text = text.replace(
+                                            '$MIDDLE_TEMPERATURE_02$',
+                                            str((int(self.weather_data['forecasts'][1]['high']) + int(self.weather_data['forecasts'][1]['low']))/2))
                                     if text.find('$MIN_TEMPERATURE_02$') > -1:
                                         text = text.replace('$MIN_TEMPERATURE_02$', self.weather_data['forecasts'][1]['low'])
                                     if text.find('$CONDITION_02$') > -1:
@@ -517,6 +525,10 @@ class WeatherWidget(Gtk.Window):
                                 if len(self.weather_data['forecasts']) > 2:
                                     if text.find('$MAX_TEMPERATURE_03$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_03$', self.weather_data['forecasts'][2]['high'])
+                                    if text.find('$MIDDLE_TEMPERATURE_03$') > -1:
+                                        text = text.replace(
+                                            '$MIDDLE_TEMPERATURE_03$',
+                                            str((int(self.weather_data['forecasts'][2]['high']) + int(self.weather_data['forecasts'][2]['low']))/2))
                                     if text.find('$MIN_TEMPERATURE_03$') > -1:
                                         text = text.replace('$MIN_TEMPERATURE_03$', self.weather_data['forecasts'][2]['low'])
                                     if text.find('$CONDITION_03$') > -1:
@@ -528,6 +540,10 @@ class WeatherWidget(Gtk.Window):
                                 if len(self.weather_data['forecasts']) > 3:
                                     if text.find('$MAX_TEMPERATURE_04$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_04$', self.weather_data['forecasts'][3]['high'])
+                                    if text.find('$MIDDLE_TEMPERATURE_04$') > -1:
+                                        text = text.replace(
+                                            '$MIDDLE_TEMPERATURE_04$',
+                                            str((int(self.weather_data['forecasts'][3]['high']) + int(self.weather_data['forecasts'][3]['low']))/2))
                                     if text.find('$MIN_TEMPERATURE_04$') > -1:
                                         text = text.replace('$MIN_TEMPERATURE_04$', self.weather_data['forecasts'][3]['low'])
                                     if text.find('$CONDITION_04$') > -1:
@@ -539,6 +555,10 @@ class WeatherWidget(Gtk.Window):
                                 if len(self.weather_data['forecasts']) > 4:
                                     if text.find('$MAX_TEMPERATURE_05$') > -1:
                                         text = text.replace('$MAX_TEMPERATURE_05$', self.weather_data['forecasts'][4]['high'])
+                                    if text.find('$MIDDLE_TEMPERATURE_05$') > -1:
+                                        text = text.replace(
+                                            '$MIDDLE_TEMPERATURE_05$',
+                                            str((int(self.weather_data['forecasts'][4]['high']) + int(self.weather_data['forecasts'][4]['low']))/2))
                                     if text.find('$MIN_TEMPERATURE_05$') > -1:
                                         text = text.replace('$MIN_TEMPERATURE_05$', self.weather_data['forecasts'][4]['low'])
                                     if text.find('$CONDITION_05$') > -1:
