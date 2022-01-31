@@ -82,7 +82,7 @@ msgstr "Lieu"
 
 #: src/preferences.py:123 src/preferences.py:211
 msgid "Search Location"
-msgstr "Rechercher un emplacement"
+msgstr "Rechercher un lieu"
 
 #: src/preferences.py:130 src/preferences.py:218
 msgid "Show temperature"
@@ -95,7 +95,7 @@ msgstr "Afficher les notifications"
 #: src/preferences.py:141 src/preferences.py:229
 #, fuzzy
 msgid "Widget options"
-msgstr "Widget au dessus"
+msgstr "Préférences du Widget"
 
 #: src/preferences.py:145 src/preferences.py:233
 msgid "Show widget"
@@ -115,11 +115,11 @@ msgstr "Afficher dans la barre des tâches"
 
 #: src/preferences.py:170 src/preferences.py:258
 msgid "On all desktops"
-msgstr ""
+msgstr "Sur tous les bureaux"
 
 #: src/preferences.py:189
 msgid "Second Location"
-msgstr "Emplacement secondaire"
+msgstr "Lieu secondaire"
 
 #: src/preferences.py:277
 msgid "Weather Services"
@@ -283,56 +283,56 @@ msgstr "Choisir un thème d'icônes"
 
 #: src/mooncalendarwindow.py:45
 msgid "Monday"
-msgstr ""
+msgstr "Lundi"
 
 #: src/mooncalendarwindow.py:45
 msgid "Tuesday"
-msgstr ""
+msgstr "Mardi"
 
 #: src/mooncalendarwindow.py:45
 msgid "Wednesday"
-msgstr ""
+msgstr "Mercredi"
 
 #: src/mooncalendarwindow.py:45
 msgid "Thursday"
-msgstr ""
+msgstr "Jeudi"
 
 #: src/mooncalendarwindow.py:46
 msgid "Friday"
-msgstr ""
+msgstr "Vendredi"
 
 #: src/mooncalendarwindow.py:46
 msgid "Saturday"
-msgstr ""
+msgstr "Samedi"
 
 #: src/mooncalendarwindow.py:46
 msgid "Sunday"
-msgstr ""
+msgstr "Dimanche"
 
 #: src/mooncalendarwindow.py:57
 #, fuzzy
 msgid "Moon phases"
-msgstr "Phase lunaire"
+msgstr "Phases lunaires"
 
 #: src/mooncalendarwindow.py:72
 msgid "One year less"
-msgstr ""
+msgstr "Une année de moins"
 
 #: src/mooncalendarwindow.py:81
 msgid "One month less"
-msgstr ""
+msgstr "Un mois de moins"
 
 #: src/mooncalendarwindow.py:90
 msgid "Today"
-msgstr ""
+msgstr "Aujourd’hui"
 
 #: src/mooncalendarwindow.py:104
 msgid "One year more"
-msgstr ""
+msgstr "Une année de plus"
 
 #: src/mooncalendarwindow.py:113
 msgid "One month more"
-msgstr ""
+msgstr "Un mois de plus"
 
 #: src/mooncalendarwindow.py:193
 #, fuzzy
@@ -346,7 +346,7 @@ msgstr "Nouvelle lune"
 
 #: src/weatherwidget.py:80
 msgid "SUPER + Drag for Move Widget Position."
-msgstr ""
+msgstr "SUPER + Glisser pour positionner le Widget"
 
 #: src/worldweatheronlineapi.py:95 src/worldweatheronlineapi.py:104
 #: src/worldweatheronlineapi.py:113 src/weatherservice.py:851
@@ -379,7 +379,7 @@ msgstr "Blizzard"
 
 #: src/weatherservice.py:56
 msgid "Blowing snow"
-msgstr "Poudrerie élevée"
+msgstr "Vent neigeux"
 
 #: src/weatherservice.py:64
 msgid "Blowing widespread dust"
@@ -387,7 +387,7 @@ msgstr "Tempête de poussière"
 
 #: src/weatherservice.py:69
 msgid "Blustery"
-msgstr ""
+msgstr "Coup de vent"
 
 #: src/weatherservice.py:74
 msgid "Chance of a thunderstorm"
@@ -419,7 +419,7 @@ msgstr "Possibilité d'orages"
 
 #: src/weatherservice.py:110
 msgid "Chance of tstorm"
-msgstr "Possibilité d'orages"
+msgstr "Possibilité de tempête de neige"
 
 #: src/weatherservice.py:112
 msgid "Clear"
@@ -435,7 +435,7 @@ msgstr "Froid"
 
 #: src/weatherservice.py:117
 msgid "Drizzle"
-msgstr "Bruine"
+msgstr "Crachin"
 
 #: src/weatherservice.py:119
 msgid "Drizzle rain"
@@ -463,7 +463,7 @@ msgstr "Flocons"
 
 #: src/weatherservice.py:131
 msgid "Fog patches"
-msgstr "Bancs de brouillard"
+msgstr "Nappes de brouillard"
 
 #: src/weatherservice.py:133
 msgid "Fog"
@@ -487,7 +487,7 @@ msgstr "Pluie verglaçante"
 
 #: src/weatherservice.py:147
 msgid "Funnel cloud"
-msgstr "Trombe"
+msgstr "Tornade"
 
 #: src/weatherservice.py:149
 msgid "Hail showers"
@@ -499,7 +499,7 @@ msgstr "Grêle"
 
 #: src/weatherservice.py:152
 msgid "Haze"
-msgstr "Brume sèche"
+msgstr "Brume"
 
 #: src/weatherservice.py:154
 msgid "Heavy freezing drizzle"
@@ -508,7 +508,7 @@ msgstr "Forte bruine verglaçante"
 #: src/weatherservice.py:156 src/weatherservice.py:184
 #, fuzzy
 msgid "Heavy drizzle"
-msgstr "Forte bruine verglaçante"
+msgstr "Forte bruine"
 
 #: src/weatherservice.py:158 src/weatherservice.py:186
 #, fuzzy
@@ -1204,7 +1204,7 @@ msgstr "Violente tempête"
 #: src/weatherservice.py:945 src/weatherservice.py:946
 #: src/weatherservice.py:979 src/weatherservice.py:980
 msgid "Down all day"
-msgstr ""
+msgstr "Hors service pour la journée"
 
 #: src/weatherservice.py:881 src/weatherservice.py:882
 #: src/weatherservice.py:883 src/weatherservice.py:884
@@ -1214,7 +1214,7 @@ msgstr ""
 #: src/weatherservice.py:942 src/weatherservice.py:943
 #: src/weatherservice.py:982 src/weatherservice.py:983
 msgid "Up all day"
-msgstr ""
+msgstr "En service pour la journée"
 
 #: src/moon.py:33
 msgid "New Moon"
@@ -1361,16 +1361,16 @@ msgstr "Carte des prévisions"
 #: src/myweatherindicator.py:444
 #, fuzzy
 msgid "Moon Phase Calendar"
-msgstr "Phase lunaire"
+msgstr "Calendrier lunaire"
 
 #: src/myweatherindicator.py:455
 #, fuzzy
 msgid "Update weather"
-msgstr "Actualisé à l'instant"
+msgstr "Actualiser"
 
 #: src/myweatherindicator.py:466 src/myweatherindicator.py:683
 msgid "Location"
-msgstr "Emplacement"
+msgstr "Localisation"
 
 #: src/myweatherindicator.py:481 src/myweatherindicator.py:687
 #: src/myweatherindicator.py:794
@@ -1416,7 +1416,7 @@ msgstr "Quitter"
 
 #: src/myweatherindicator.py:623
 msgid "Not Internet connection"
-msgstr ""
+msgstr "Site injoignable"
 
 #: src/myweatherindicator.py:790
 msgid "Conditions in"
