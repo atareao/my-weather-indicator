@@ -35,403 +35,1481 @@ import math
 
 from comun import _
 
-CONDITIONS = {}
-CONDITIONS['blowing sand'] = {
-    'text': _('Blowing sand'),
-    'image': 'mwig-windy.png',
-    'image-night': 'mwig-windy.png',
-    'icon-dark': 'mwid-windy.png',
-    'icon-night-dark': 'mwid-windy.png',
-    'icon-light': 'mwil-windy.png',
-    'icon-night-light': 'mwil-windy.png'}
-CONDITIONS['blizzard'] = {
-    'text': _('Blizzard'),
-    'image': 'mwig-windy.png',
-    'image-night': 'mwig-windy.png',
-    'icon-dark': 'mwid-windy.png',
-    'icon-night-dark': 'mwid-windy.png',
-    'icon-light': 'mwil-windy.png',
-    'icon-night-light': 'mwil-windy.png'}
-CONDITIONS['blowing snow'] = {
-    'text': _('Blowing snow'),
-    'image': 'mwig-snow.png',
-    'image-night': 'mwig-snow.png',
-    'icon-dark': 'mwid-snow.png',
-    'icon-night-dark': 'mwid-snow.png',
-    'icon-light': 'mwil-snow.png',
-    'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['blowing widespread dust'] = {
-    'text': _('Blowing widespread dust'),
-    'image': 'mwig-windy.png', 'image-night': 'mwig-windy.png',
-    'icon-dark': 'mwid-windy.png', 'icon-night-dark': 'mwid-windy.png',
-    'icon-light': 'mwil-windy.png', 'icon-night-light': 'mwil-windy.png'}
-CONDITIONS['blustery'] = {
-    'text': _('Blustery'), 'image': 'mwig-storm.png',
-    'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-    'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png',
-    'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['chance of a thunderstorm'] = {
-    'text': _('Chance of a thunderstorm'),
-    'image': 'mwig-chance-of-thunderstorms.png',
-    'image-night': 'mwig-chance-of-thunderstorms-night.png',
-    'icon-dark': 'mwid-chance-of-thunderstorms.png',
-    'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png',
-    'icon-light': 'mwil-chance-of-thunderstorms.png',
-    'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'}
-CONDITIONS['chance of flurries'] = {
-    'text': _('Chance of flurries'), 'image': 'mwig-chance-of-snow.png',
-    'image-night': 'mwig-chance-of-snow-night.png',
-    'icon-dark': 'mwid-chance-of-snow.png',
-    'icon-night-dark': 'mwid-chance-of-snow-night.png',
-    'icon-light': 'mwil-chance-of-snow.png',
-    'icon-night-light': 'mwil-chance-of-snow-night.png'}
-CONDITIONS['chance of rain'] = {
-    'text': _('Chance of rain'),
-    'image': 'mwig-chance-of-rain.png',
-    'image-night': 'mwig-chance-of-rain-night.png',
-    'icon-dark': 'mwid-chance-of-rain.png',
-    'icon-night-dark': 'mwid-chance-of-rain-night.png',
-    'icon-light': 'mwil-chance-of-rain.png',
-    'icon-night-light': 'mwil-chance-of-rain-night.png'}
-CONDITIONS['chance of showers'] = {
-    'text': _('Chance of showers'),
-    'image': 'mwig-chance-of-rain.png',
-    'image-night': 'mwig-chance-of-rain-night.png',
-    'icon-dark': 'mwid-chance-of-rain.png',
-    'icon-night-dark': 'mwid-chance-of-rain-night.png',
-    'icon-light': 'mwil-chance-of-rain.png',
-    'icon-night-light': 'mwil-chance-of-rain-night.png'}
-CONDITIONS['chance of snow'] = {'text': _('Chance of snow'), 'image': 'mwig-chance-of-snow.png', 'image-night': 'mwig-chance-of-snow-night.png', 'icon-dark': 'mwid-chance-of-snow.png',
-                                'icon-night-dark': 'mwid-chance-of-snow-night.png', 'icon-light': 'mwil-chance-of-snow.png', 'icon-night-light': 'mwil-chance-of-snow-night.png'}
-CONDITIONS['chance of storm'] = {'text': _('Chance of storm'), 'image': 'mwig-chance-of-thunderstorms.png', 'image-night': 'mwig-chance-of-thunderstorms-night.png', 'icon-dark': 'mwid-chance-of-thunderstorms.png',
-                                 'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png', 'icon-light': 'mwil-chance-of-thunderstorms.png', 'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'}
-CONDITIONS['chance of thunderstorms'] = {'text': _('Chance of thunderstorms'), 'image': 'mwig-chance-of-thunderstorms.png', 'image-night': 'mwig-chance-of-thunderstorms-night.png', 'icon-dark': 'mwid-chance-of-thunderstorms.png',
-                                         'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png', 'icon-light': 'mwil-chance-of-thunderstorms.png', 'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'}
-CONDITIONS['chance of tstorm'] = {'text': _('Chance of tstorm'), 'image': 'mwig-chance-of-thunderstorms.png', 'image-night': 'mwig-chance-of-thunderstorms-night.png', 'icon-dark': 'mwid-chance-of-thunderstorms.png',
-                                  'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png', 'icon-light': 'mwil-chance-of-thunderstorms.png', 'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'}
-CONDITIONS['clear'] = {'text': _('Clear'), 'image': 'mwig-clear.png', 'image-night': 'mwig-clear-night.png', 'icon-dark': 'mwid-clear.png',
-                       'icon-night-dark': 'mwid-clear-night.png', 'icon-light': 'mwil-clear.png', 'icon-night-light': 'mwil-clear-night.png'}
-CONDITIONS['cloudy'] = {'text': _('Cloudy'), 'image': 'mwig-cloudy.png', 'image-night': 'mwig-cloudy.png', 'icon-dark': 'mwid-cloudy.png',
-                        'icon-night-dark': 'mwid-cloudy.png', 'icon-light': 'mwil-cloudy.png', 'icon-night-light': 'mwil-cloudy.png'}
-CONDITIONS['cold'] = {'text': _('Cold'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png', 'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['drizzle'] = {'text': _('Drizzle'), 'image': 'mwig-light-rain.png', 'image-night': 'mwig-light-rain.png', 'icon-dark': 'mwid-light-rain.png',
-                         'icon-night-dark': 'mwid-light-rain.png', 'icon-light': 'mwil-light-rain.png', 'icon-night-light': 'mwil-light-rain.png'}
-CONDITIONS['drizzle rain'] = {'text': _('Drizzle rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                              'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['dust whirls'] = {'text': _('Dust whirls'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                             'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['dust'] = {'text': _('Dust'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                      'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['extreme rain'] = {'text': _('Extreme rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                              'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['fair'] = {'text': _('Fair'), 'image': 'mwig-clear.png', 'image-night': 'mwig-clear-night.png', 'icon-dark': 'mwid-clear.png',
-                      'icon-night-dark': 'mwid-clear-night.png', 'icon-light': 'mwil-clear.png', 'icon-night-light': 'mwil-clear-night.png'}
-CONDITIONS['flurries'] = {'text': _('Flurries'), 'image': 'mwig-flurries.png', 'image-night': 'mwig-flurries.png', 'icon-dark': 'mwid-flurries.png',
-                          'icon-night-dark': 'mwid-flurries.png', 'icon-light': 'mwil-flurries.png', 'icon-night-light': 'mwil-flurries.png'}
-CONDITIONS['fog patches'] = {'text': _('Fog patches'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                             'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['fog'] = {'text': _('Fog'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                     'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['foggy'] = {'text': _('Foggy'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                       'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['freezing drizzle'] = {'text': _('Freezing drizzle'), 'image': 'mwig-freezing-drizzle.png', 'image-night': 'mwig-freezing-drizzle.png', 'icon-dark': 'mwid-freezing-drizzle.png',
-                                  'icon-night-dark': 'mwid-freezing-drizzle.png', 'icon-light': 'mwil-freezing-drizzle.png', 'icon-night-light': 'mwil-freezing-drizzle.png'}
-CONDITIONS['freezing drizzle'] = {'text': _('Freezing drizzle'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                  'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['freezing fog.png', ] = {'text': _('Freezing fog'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                                    'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['freezing fog'] = {'text': _('Freezing fog'), 'image': 'mwig-freezing-drizzle.png', 'image-night': 'mwig-freezing-drizzle.png', 'icon-dark': 'mwid-freezing-drizzle.png',
-                              'icon-night-dark': 'mwid-freezing-drizzle.png', 'icon-light': 'mwil-freezing-drizzle.png', 'icon-night-light': 'mwil-freezing-drizzle.png'}
-CONDITIONS['freezing rain'] = {'text': _('Freezing rain'), 'image': 'mwig-freezing-drizzle.png', 'image-night': 'mwig-freezing-drizzle.png', 'icon-dark': 'mwid-freezing-drizzle.png',
-                               'icon-night-dark': 'mwid-freezing-drizzle.png', 'icon-light': 'mwil-freezing-drizzle.png', 'icon-night-light': 'mwil-freezing-drizzle.png'}
-CONDITIONS['funnel cloud'] = {'text': _('Funnel cloud'), 'image': 'mwig-cloudy.png', 'image-night': 'mwig-cloudy.png', 'icon-dark': 'mwid-cloudy.png',
-                              'icon-night-dark': 'mwid-cloudy.png', 'icon-light': 'mwil-cloudy.png', 'icon-night-light': 'mwil-cloudy.png'}
-CONDITIONS['hail showers'] = {'text': _('Hail showers'), 'image': 'mwig-hail.png', 'image-night': 'mwig-hail.png', 'icon-dark': 'mwid-hail.png',
-                              'icon-night-dark': 'mwid-hail.png', 'icon-light': 'mwil-hail.png', 'icon-night-light': 'mwil-hail.png'}
-CONDITIONS['hail'] = {'text': _('Hail'), 'image': 'mwig-hail.png', 'image-night': 'mwig-hail.png', 'icon-dark': 'mwid-hail.png', 'icon-night-dark': 'mwid-hail.png', 'icon-light': 'mwil-hail.png', 'icon-night-light': 'mwil-hail.png'}
-CONDITIONS['haze'] = {'text': _('Haze'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                      'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['heavy freezing drizzle'] = {'text': _('Heavy freezing drizzle'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                        'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['heavy intensity drizzle'] = {'text': _('Heavy drizzle'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                         'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['heavy intensity drizzle rain'] = {'text': _('Heavy drizzle rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                              'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['heavy intensity rain'] = {'text': _('Heavy rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                      'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['heavy intensity shower rain'] = {'text': _('Heavy shower rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                             'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['heavy rain at times'] = {'text': _('Heavy rain at times'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                     'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['heavy rain'] = {'text': _('Heavy rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                            'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['heavy snow'] = {'text': _('Heavy snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                            'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['heavy thunderstorm'] = {'text': _('Heavy thunderstorm'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                    'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['hot'] = {'text': _('Hot'), 'image': 'mwig-clear.png', 'image-night': 'mwig-clear-night.png', 'icon-dark': 'mwid-clear.png',
-                     'icon-night-dark': 'mwid-clear-night.png', 'icon-light': 'mwil-clear.png', 'icon-night-light': 'mwil-clear-night.png'}
-CONDITIONS['hurricane'] = {'text': _('Hurricane'), 'image': 'mwig-windy.png', 'image-night': 'mwig-windy.png', 'icon-dark': 'mwid-windy.png',
-                           'icon-night-dark': 'mwid-windy.png', 'icon-light': 'mwil-windy.png', 'icon-night-light': 'mwil-windy.png'}
-CONDITIONS['ice crystals'] = {'text': _('Ice crystals'), 'image': 'mwig-icy.png', 'image-night': 'mwig-icy.png', 'icon-dark': 'mwid-icy.png',
-                              'icon-night-dark': 'mwid-icy.png', 'icon-light': 'mwil-icy.png', 'icon-night-light': 'mwil-icy.png'}
-CONDITIONS['ice pellet showers'] = {'text': _('Ice pellet showers'), 'image': 'mwig-icy.png', 'image-night': 'mwig-icy.png', 'icon-dark': 'mwid-icy.png',
-                                    'icon-night-dark': 'mwid-icy.png', 'icon-light': 'mwil-icy.png', 'icon-night-light': 'mwil-icy.png'}
-CONDITIONS['ice pellets.png', ] = {'text': _('Ice pellets'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                   'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['ice pellets'] = {'text': _('Ice pellets'), 'image': 'mwig-icy.png', 'image-night': 'mwig-icy.png', 'icon-dark': 'mwid-icy.png', 'icon-night-dark': 'mwid-icy.png', 'icon-light': 'mwil-icy.png', 'icon-night-light': 'mwil-icy.png'}
-CONDITIONS['icy'] = {'text': _('Icy'), 'image': 'mwig-icy.png', 'image-night': 'mwig-icy.png', 'icon-dark': 'mwid-icy.png', 'icon-night-dark': 'mwid-icy.png', 'icon-light': 'mwil-icy.png', 'icon-night-light': 'mwil-icy.png'}
-CONDITIONS['intensity drizzle'] = {'text': _('Heavy drizzle'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                   'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['intensity drizzle rain'] = {'text': _('Heavy drizzle rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                        'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['intensity rain'] = {'text': _('Heavy rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['intensity shower rain'] = {'text': _('Heavy shower rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                       'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['isolated showers'] = {'text': _('Isolated showers'), 'image': 'mwig-chance-of-rain.png', 'image-night': 'mwig-chance-of-rain-night.png', 'icon-dark': 'mwid-chance-of-rain.png',
-                                  'icon-night-dark': 'mwid-chance-of-rain-night.png', 'icon-light': 'mwil-chance-of-rain.png', 'icon-night-light': 'mwil-chance-of-rain-night.png'}
-CONDITIONS['isolated thundershowers'] = {'text': _('Isolated thundershowers'), 'image': 'mwig-chance-of-thunderstorms.png', 'image-night': 'mwig-chance-of-thunderstorms-night.png', 'icon-dark': 'mwid-chance-of-thunderstorms.png',
-                                         'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png', 'icon-light': 'mwil-chance-of-thunderstorms.png', 'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'}
-CONDITIONS['isolated thunderstorms'] = {'text': _('Isolated thunderstorms'), 'image': 'mwig-chance-of-thunderstorms.png', 'image-night': 'mwig-chance-of-thunderstorms-night.png', 'icon-dark': 'mwid-chance-of-thunderstorms.png',
-                                        'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png', 'icon-light': 'mwil-chance-of-thunderstorms.png', 'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'}
-CONDITIONS['light drizzle'] = {'text': _('Light drizzle'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                               'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light freezing rain'] = {'text': _('Light freezing rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                     'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light intensity drizzle'] = {'text': _('Light drizzle'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                         'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light intensity drizzle rain'] = {'text': _('Light drizzle rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                              'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light intensity shower rain'] = {'text': _('Light shower rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                             'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light rain shower'] = {'text': _('Light rain shower'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                   'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light rain'] = {'text': _('Light rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                            'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light showers of ice pellets.png', ] = {'text': _('Light showers of ice pellets'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                                    'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light sleet showers.png', ] = {'text': _('Light sleet showers'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                           'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light sleet'] = {'text': _('Light sleet'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                             'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['light snow showers.png', ] = {'text': _('Light snow showers'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                          'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['light snow'] = {'text': _('Light snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                            'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['light thunderstorm'] = {'text': _('Light thunderstorm'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                    'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['low drifting sand'] = {'text': _('Low drifting sand'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                                   'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['low drifting snow'] = {'text': _('Low drifting snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                   'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['low drifting widespread dust'] = {'text': _('Low drifting widespread dust'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                                              'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['mist'] = {'text': _('Mist'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                      'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['mixed rain and snow'] = {'text': _('Mixed rain and snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                     'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['mixed rain and sleet'] = {'text': _('Mixed rain and sleet'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                      'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['mixed snow and sleet'] = {'text': _('Mixed snow and sleet'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                      'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['moderate or heavy freezing rain'] = {'text': _('Moderate or heavy freezing rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                                 'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['moderate or heavy rain in area with thunder'] = {'text': _('Moderate or heavy rain in area with thunder'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png',
-                                                             'icon-dark': 'mwid-storm.png', 'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['moderate or heavy rain shower'] = {'text': _('Moderate or heavy rain shower'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                               'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['moderate or heavy showers of ice pellets'] = {'text': _('Moderate or heavy showers of ice pellets'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png',
-                                                          'icon-dark': 'mwid-rain.png', 'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['moderate or heavy sleet showers.png', ] = {'text': _('Moderate or heavy sleet showers'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png',
-                                                       'icon-dark': 'mwid-rain.png', 'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['moderate or heavy sleet'] = {'text': _('Moderate or heavy sleet'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                         'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['moderate or heavy snow in area with thunder'] = {'text': _('Moderate or heavy snow in area with thunder'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png',
-                                                             'icon-dark': 'mwid-storm.png', 'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['moderate or heavy snow showers'] = {'text': _('Moderate or heavy snow showers'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                                'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['moderate rain at times'] = {'text': _('Moderate rain at times'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                        'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['moderate rain'] = {'text': _('Moderate rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                               'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['moderate snow'] = {'text': _('Moderate snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                               'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['mostly cloudy'] = {'text': _('Mostly cloudy'), 'image': 'mwig-mostly-cloudy.png', 'image-night': 'mwig-mostly-cloudy-night.png', 'icon-dark': 'mwid-mostly-cloudy.png',
-                               'icon-night-dark': 'mwid-mostly-cloudy-night.png', 'icon-light': 'mwil-mostly-cloudy.png', 'icon-night-light': 'mwil-mostly-cloudy-night.png'}
-CONDITIONS['mostly sunny'] = {'text': _('Mostly sunny'), 'image': 'mwig-mostly-sunny.png', 'image-night': 'mwig-mostly-sunny-night.png', 'icon-dark': 'mwid-mostly-sunny.png',
-                              'icon-night-dark': 'mwid-mostly-sunny-night.png', 'icon-light': 'mwil-mostly-sunny.png', 'icon-night-light': 'mwil-mostly-sunny-night.png'}
-CONDITIONS['not available'] = {'text': _('Not available'), 'image': 'mwig-not-available.png', 'image-night': 'mwig-not-available-night.png', 'icon-dark': 'mwid-not-available.png',
-                               'icon-night-dark': 'mwid-not-available.png', 'icon-light': 'mwil-not-available.png', 'icon-night-light': 'mwil-not-available.png'}
-CONDITIONS['overcast'] = {'text': _('Overcast'), 'image': 'mwig-cloudy.png', 'image-night': 'mwig-cloudy.png', 'icon-dark': 'mwid-cloudy.png',
-                          'icon-night-dark': 'mwid-cloudy.png', 'icon-light': 'mwil-cloudy.png', 'icon-night-light': 'mwil-cloudy.png'}
-CONDITIONS['partial fog'] = {'text': _('Partial fog'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                             'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['partly cloudy'] = {'text': _('Partly cloudy'), 'image': 'mwig-partly-cloudy.png', 'image-night': 'mwig-partly-cloudy-night.png', 'icon-dark': 'mwid-partly-cloudy.png',
-                               'icon-night-dark': 'mwid-partly-cloudy-night.png', 'icon-light': 'mwil-partly-cloudy.png', 'icon-night-light': 'mwil-partly-cloudy-night.png'}
-CONDITIONS['partly sunny'] = {'text': _('Partly sunny'), 'image': 'mwig-partly-cloudy.png', 'image-night': 'mwig-partly-cloudy-night.png', 'icon-dark': 'mwid-partly-cloudy.png',
-                              'icon-night-dark': 'mwid-partly-cloudy-night.png', 'icon-light': 'mwil-partly-cloudy.png', 'icon-night-light': 'mwil-partly-cloudy-night.png'}
-CONDITIONS['patches of fog'] = {'text': _('Patches of fog'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                                'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['patchy freezing drizzle nearby'] = {'text': _('Patchy freezing drizzle nearby'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                                'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['patchy heavy snow'] = {'text': _('Patchy heavy snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                   'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['patchy light drizzle'] = {'text': _('Patchy light drizzle'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                      'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['patchy light rain in area with thunder'] = {'text': _('Patchy light rain in area with thunder'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png',
-                                                        'icon-dark': 'mwid-storm.png', 'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['patchy light rain'] = {'text': _('Patchy light rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                   'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['patchy light snow in area with thunder'] = {'text': _('Patchy light snow in area with thunder'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png',
-                                                        'icon-dark': 'mwid-storm.png', 'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['patchy light snow'] = {'text': _('Patchy light snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                   'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['patchy moderate snow'] = {'text': _('Patchy moderate snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                      'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['patchy rain nearby'] = {'text': _('Patchy rain nearby'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                    'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['patchy sleet nearby'] = {'text': _('Patchy sleet nearby'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                     'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['patchy snow nearby'] = {'text': _('Patchy snow nearby'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                    'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['ragged thunderstorm'] = {'text': _('Ragged thunderstorm'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                     'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['rain and snow'] = {'text': _('Rain and snow'), 'image': 'mwig-rain-and-snow.png', 'image-night': 'mwig-rain-and-snow.png', 'icon-dark': 'mwid-rain-and-snow.png',
-                               'icon-night-dark': 'mwid-rain-and-snow.png', 'icon-light': 'mwil-rain-and-snow.png', 'icon-night-light': 'mwil-rain-and-snow.png'}
-CONDITIONS['rain mist'] = {'text': _('Rain mist'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                           'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['rain showers'] = {'text': _('Rain showers'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                              'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['rain'] = {'text': _('Rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png', 'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['sand'] = {'text': _('Sand'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                      'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['sandstorm'] = {'text': _('Sandstorm'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                           'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['scattered clouds'] = {'text': _('Scattered clouds'), 'image': 'mwig-partly-cloudy.png', 'image-night': 'mwig-partly-cloudy-night.png', 'icon-dark': 'mwid-partly-cloudy.png',
-                                  'icon-night-dark': 'mwid-partly-cloudy-night.png', 'icon-light': 'mwil-partly-cloudy.png', 'icon-night-light': 'mwil-partly-cloudy-night.png'}
-CONDITIONS['scattered showers'] = {'text': _('Scattered showers'), 'image': 'mwig-chance-of-rain.png', 'image-night': 'mwig-chance-of-rain-night.png', 'icon-dark': 'mwid-chance-of-rain.png',
-                                   'icon-night-dark': 'mwid-chance-of-rain-night.png', 'icon-light': 'mwil-chance-of-rain.png', 'icon-night-light': 'mwil-chance-of-rain-night.png'}
-CONDITIONS['scattered thunderstorms'] = {'text': _('Scattered thunderstorms'), 'image': 'mwig-chance-of-thunderstorms.png', 'image-night': 'mwig-chance-of-thunderstorms-night.png', 'icon-dark': 'mwid-chance-of-thunderstorms.png',
-                                         'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png', 'icon-light': 'mwil-chance-of-thunderstorms.png', 'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'}
-CONDITIONS['shallow fog'] = {'text': _('Shallow fog'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                             'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['showers'] = {'text': _('Showers'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png', 'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['shower drizzle'] = {'text': _('Shower drizzle'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['shower rain'] = {'text': _('Shower rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                             'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['shower snow'] = {'text': _('Shower snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                             'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['sleet'] = {'text': _('Sleet'), 'image': 'mwig-rain-and-snow.png', 'image-night': 'mwig-rain-and-snow.png', 'icon-dark': 'mwid-rain-and-snow.png',
-                       'icon-night-dark': 'mwid-rain-and-snow.png', 'icon-light': 'mwil-rain-and-snow.png', 'icon-night-light': 'mwil-rain-and-snow.png'}
-CONDITIONS['small hail showers'] = {'text': _('Small hail showers'), 'image': 'mwig-hail.png', 'image-night': 'mwig-hail.png', 'icon-dark': 'mwid-hail.png',
-                                    'icon-night-dark': 'mwid-hail.png', 'icon-light': 'mwil-hail.png', 'icon-night-light': 'mwil-hail.png'}
-CONDITIONS['small hail'] = {'text': _('Small hail'), 'image': 'mwig-hail.png', 'image-night': 'mwig-hail.png', 'icon-dark': 'mwid-hail.png',
-                            'icon-night-dark': 'mwid-hail.png', 'icon-light': 'mwil-hail.png', 'icon-night-light': 'mwil-hail.png'}
-CONDITIONS['smoke'] = {'text': _('Smoke'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                       'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['snow blowing snow mist'] = {'text': _('Snow blowing snow mist'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                                        'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['snow flurries'] = {'text': _('Snow flurries'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                               'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['snow grains'] = {'text': _('Snow grains'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png',
-                             'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['snow showers'] = {'text': _('Snow showers'), 'image': 'mwig-rain-and-snow.png', 'image-night': 'mwig-rain-and-snow.png', 'icon-dark': 'mwid-rain-and-snow.png',
-                              'icon-night-dark': 'mwid-rain-and-snow.png', 'icon-light': 'mwil-rain-and-snow.png', 'icon-night-light': 'mwil-rain-and-snow.png'}
-CONDITIONS['snow'] = {'text': _('Snow'), 'image': 'mwig-snow.png', 'image-night': 'mwig-snow.png', 'icon-dark': 'mwid-snow.png', 'icon-night-dark': 'mwid-snow.png', 'icon-light': 'mwil-snow.png', 'icon-night-light': 'mwil-snow.png'}
-CONDITIONS['spray'] = {'text': _('Spray'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png', 'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['squalls'] = {'text': _('Squalls'), 'image': 'mwig-windy.png', 'image-night': 'mwig-windy.png', 'icon-dark': 'mwid-windy.png',
-                         'icon-night-dark': 'mwid-windy.png', 'icon-light': 'mwil-windy.png', 'icon-night-light': 'mwil-windy.png'}
-CONDITIONS['storm'] = {'text': _('Storm'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png', 'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['sunny'] = {'text': _('Sunny'), 'image': 'mwig-clear.png', 'image-night': 'mwig-clear-night.png', 'icon-dark': 'mwid-clear.png',
-                       'icon-night-dark': 'mwid-clear-night.png', 'icon-light': 'mwil-clear.png', 'icon-night-light': 'mwil-clear-night.png'}
-CONDITIONS['thunderstorm'] = {'text': _('Thunderstorm'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                              'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorms'] = {'text': _('Thunderstorm'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                               'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorms and ice pellets'] = {'text': _('Thunderstorms and ice pellets'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                               'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorms and rain'] = {'text': _('Thunderstorms and rain'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                        'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorms and snow'] = {'text': _('Thunderstorms and snow'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                        'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorms with hail'] = {'text': _('Thunderstorms with hail'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                         'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorms with small hail'] = {'text': _('Thunderstorms with small hail'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                               'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorm with light rain'] = {'text': _('Thunderstorm with light rain'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                              'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorm with rain'] = {'text': _('Thunderstorm with rain'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                        'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorm with heavy rain'] = {'text': _('Thunderstorm with heavy rain'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                              'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorm with light drizzle'] = {'text': _('Thunderstorm with light drizzle'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                                 'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorm with drizzle'] = {'text': _('Thunderstorm with drizzle'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                           'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thunderstorm with heavy drizzle'] = {'text': _('Thunderstorm with heavy drizzle'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                                 'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['thundery outbreaks in nearby'] = {'text': _('Thundery outbreaks in nearby'), 'image': 'mwig-storm.png', 'image-night': 'mwig-storm.png', 'icon-dark': 'mwid-storm.png',
-                                              'icon-night-dark': 'mwid-storm.png', 'icon-light': 'mwil-storm.png', 'icon-night-light': 'mwil-storm.png'}
-CONDITIONS['tornado'] = {'text': _('Tornado'), 'image': 'mwig-windy.png', 'image-night': 'mwig-windy.png', 'icon-dark': 'mwid-windy.png',
-                         'icon-night-dark': 'mwid-windy.png', 'icon-light': 'mwil-windy.png', 'icon-night-light': 'mwil-windy.png'}
-CONDITIONS['torrential rain shower.png', ] = {'text': _('Torrential rain shower'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                              'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['tropical storm'] = {'text': _('Tropical storm'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['unknown precipitation'] = {'text': _('Unknown precipitation'), 'image': 'mwig-not-available.png', 'image-night': 'mwig-not-available-night.png', 'icon-dark': 'mwid-not-available.png',
-                                       'icon-night-dark': 'mwid-not-available.png', 'icon-light': 'mwil-not-available.png', 'icon-night-light': 'mwil-not-available.png'}
-CONDITIONS['unknown'] = {'text': _('Unknown'), 'image': 'mwig-not-available.png', 'image-night': 'mwig-not-available-night.png', 'icon-dark': 'mwid-not-available.png',
-                         'icon-night-dark': 'mwid-not-available.png', 'icon-light': 'mwil-not-available.png', 'icon-night-light': 'mwil-not-available.png'}
-CONDITIONS['very heavy rain'] = {'text': _('Very heavy rain'), 'image': 'mwig-rain.png', 'image-night': 'mwig-rain.png', 'icon-dark': 'mwid-rain.png',
-                                 'icon-night-dark': 'mwid-rain.png', 'icon-light': 'mwil-rain.png', 'icon-night-light': 'mwil-rain.png'}
-CONDITIONS['volcanic ash'] = {'text': _('Volcanic ash'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                              'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['widespread dust'] = {'text': _('Widespread dust'), 'image': 'mwig-fog.png', 'image-night': 'mwig-fog-night.png', 'icon-dark': 'mwid-fog.png',
-                                 'icon-night-dark': 'mwid-fog-night.png', 'icon-light': 'mwil-fog.png', 'icon-night-light': 'mwil-fog-night.png'}
-CONDITIONS['windy'] = {'text': _('Windy'), 'image': 'mwig-windy.png', 'image-night': 'mwig-windy.png', 'icon-dark': 'mwid-windy.png', 'icon-night-dark': 'mwid-windy.png', 'icon-light': 'mwil-windy.png', 'icon-night-light': 'mwil-windy.png'}
-
+CONDITIONS = {
+    'blowing sand': {
+        'text': _('Blowing sand'),
+        'image': 'mwig-windy.png',
+        'image-night': 'mwig-windy.png',
+        'icon-dark': 'mwid-windy.png',
+        'icon-night-dark': 'mwid-windy.png',
+        'icon-light': 'mwil-windy.png',
+        'icon-night-light': 'mwil-windy.png'
+    },
+    'blizzard': {
+        'text': _('Blizzard'),
+        'image': 'mwig-windy.png',
+        'image-night': 'mwig-windy.png',
+        'icon-dark': 'mwid-windy.png',
+        'icon-night-dark': 'mwid-windy.png',
+        'icon-light': 'mwil-windy.png',
+        'icon-night-light': 'mwil-windy.png'
+    },
+    'blowing snow': {
+        'text': _('Blowing snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'blowing widespread dust': {
+        'text': _('Blowing widespread dust'),
+        'image': 'mwig-windy.png',
+        'image-night': 'mwig-windy.png',
+        'icon-dark': 'mwid-windy.png',
+        'icon-night-dark': 'mwid-windy.png',
+        'icon-light': 'mwil-windy.png',
+        'icon-night-light': 'mwil-windy.png'
+    },
+    'blustery': {
+        'text': _('Blustery'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'chance of a thunderstorm': {
+        'text': _('Chance of a thunderstorm'),
+        'image': 'mwig-chance-of-thunderstorms.png',
+        'image-night': 'mwig-chance-of-thunderstorms-night.png',
+        'icon-dark': 'mwid-chance-of-thunderstorms.png',
+        'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png',
+        'icon-light': 'mwil-chance-of-thunderstorms.png',
+        'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'
+    },
+    'chance of flurries': {
+        'text': _('Chance of flurries'),
+        'image': 'mwig-chance-of-snow.png',
+        'image-night': 'mwig-chance-of-snow-night.png',
+        'icon-dark': 'mwid-chance-of-snow.png',
+        'icon-night-dark': 'mwid-chance-of-snow-night.png',
+        'icon-light': 'mwil-chance-of-snow.png',
+        'icon-night-light': 'mwil-chance-of-snow-night.png'
+    },
+    'chance of rain': {
+        'text': _('Chance of rain'),
+        'image': 'mwig-chance-of-rain.png',
+        'image-night': 'mwig-chance-of-rain-night.png',
+        'icon-dark': 'mwid-chance-of-rain.png',
+        'icon-night-dark': 'mwid-chance-of-rain-night.png',
+        'icon-light': 'mwil-chance-of-rain.png',
+        'icon-night-light': 'mwil-chance-of-rain-night.png'
+    },
+    'chance of showers': {
+        'text': _('Chance of showers'),
+        'image': 'mwig-chance-of-rain.png',
+        'image-night': 'mwig-chance-of-rain-night.png',
+        'icon-dark': 'mwid-chance-of-rain.png',
+        'icon-night-dark': 'mwid-chance-of-rain-night.png',
+        'icon-light': 'mwil-chance-of-rain.png',
+        'icon-night-light': 'mwil-chance-of-rain-night.png'
+    },
+    'chance of snow': {
+        'text': _('Chance of snow'),
+        'image': 'mwig-chance-of-snow.png',
+        'image-night': 'mwig-chance-of-snow-night.png',
+        'icon-dark': 'mwid-chance-of-snow.png',
+        'icon-night-dark': 'mwid-chance-of-snow-night.png',
+        'icon-light': 'mwil-chance-of-snow.png',
+        'icon-night-light': 'mwil-chance-of-snow-night.png'
+    },
+    'chance of storm': {
+        'text': _('Chance of storm'),
+        'image': 'mwig-chance-of-thunderstorms.png',
+        'image-night': 'mwig-chance-of-thunderstorms-night.png',
+        'icon-dark': 'mwid-chance-of-thunderstorms.png',
+        'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png',
+        'icon-light': 'mwil-chance-of-thunderstorms.png',
+        'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'
+    },
+    'chance of thunderstorms': {
+        'text': _('Chance of thunderstorms'),
+        'image': 'mwig-chance-of-thunderstorms.png',
+        'image-night': 'mwig-chance-of-thunderstorms-night.png',
+        'icon-dark': 'mwid-chance-of-thunderstorms.png',
+        'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png',
+        'icon-light': 'mwil-chance-of-thunderstorms.png',
+        'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'
+    },
+    'chance of tstorm': {
+        'text': _('Chance of tstorm'),
+        'image': 'mwig-chance-of-thunderstorms.png',
+        'image-night': 'mwig-chance-of-thunderstorms-night.png',
+        'icon-dark': 'mwid-chance-of-thunderstorms.png',
+        'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png',
+        'icon-light': 'mwil-chance-of-thunderstorms.png',
+        'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'
+    },
+    'clear': {
+        'text': _('Clear'),
+        'image': 'mwig-clear.png',
+        'image-night': 'mwig-clear-night.png',
+        'icon-dark': 'mwid-clear.png',
+        'icon-night-dark': 'mwid-clear-night.png',
+        'icon-light': 'mwil-clear.png',
+        'icon-night-light': 'mwil-clear-night.png'
+    },
+    'cloudy': {
+        'text': _('Cloudy'),
+        'image': 'mwig-cloudy.png',
+        'image-night': 'mwig-cloudy.png',
+        'icon-dark': 'mwid-cloudy.png',
+        'icon-night-dark': 'mwid-cloudy.png',
+        'icon-light': 'mwil-cloudy.png',
+        'icon-night-light': 'mwil-cloudy.png'
+    },
+    'cold': {
+        'text': _('Cold'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'drizzle': {
+        'text': _('Drizzle'),
+        'image': 'mwig-light-rain.png',
+        'image-night': 'mwig-light-rain.png',
+        'icon-dark': 'mwid-light-rain.png',
+        'icon-night-dark': 'mwid-light-rain.png',
+        'icon-light': 'mwil-light-rain.png',
+        'icon-night-light': 'mwil-light-rain.png'
+    },
+    'drizzle rain': {
+        'text': _('Drizzle rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'dust whirls': {
+        'text': _('Dust whirls'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'dust': {
+        'text': _('Dust'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'extreme rain': {
+        'text': _('Extreme rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'fair': {
+        'text': _('Fair'),
+        'image': 'mwig-clear.png',
+        'image-night': 'mwig-clear-night.png',
+        'icon-dark': 'mwid-clear.png',
+        'icon-night-dark': 'mwid-clear-night.png',
+        'icon-light': 'mwil-clear.png',
+        'icon-night-light': 'mwil-clear-night.png'
+    },
+    'flurries': {
+        'text': _('Flurries'),
+        'image': 'mwig-flurries.png',
+        'image-night': 'mwig-flurries.png',
+        'icon-dark': 'mwid-flurries.png',
+        'icon-night-dark': 'mwid-flurries.png',
+        'icon-light': 'mwil-flurries.png',
+        'icon-night-light': 'mwil-flurries.png'
+    },
+    'fog patches': {
+        'text': _('Fog patches'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'depositing rime fog': {
+        'text': _('Depositing rime fog'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'fog': {
+        'text': _('Fog'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'foggy': {
+        'text': _('Foggy'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'freezing drizzle': {
+        'text': _('Freezing drizzle'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'freezing fog.png': {
+        'text': _('Freezing fog'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'freezing fog': {
+        'text': _('Freezing fog'),
+        'image': 'mwig-freezing-drizzle.png',
+        'image-night': 'mwig-freezing-drizzle.png',
+        'icon-dark': 'mwid-freezing-drizzle.png',
+        'icon-night-dark': 'mwid-freezing-drizzle.png',
+        'icon-light': 'mwil-freezing-drizzle.png',
+        'icon-night-light': 'mwil-freezing-drizzle.png'
+    },
+    'freezing rain': {
+        'text': _('Freezing rain'),
+        'image': 'mwig-freezing-drizzle.png',
+        'image-night': 'mwig-freezing-drizzle.png',
+        'icon-dark': 'mwid-freezing-drizzle.png',
+        'icon-night-dark': 'mwid-freezing-drizzle.png',
+        'icon-light': 'mwil-freezing-drizzle.png',
+        'icon-night-light': 'mwil-freezing-drizzle.png'
+    },
+    'funnel cloud': {
+        'text': _('Funnel cloud'),
+        'image': 'mwig-cloudy.png',
+        'image-night': 'mwig-cloudy.png',
+        'icon-dark': 'mwid-cloudy.png',
+        'icon-night-dark': 'mwid-cloudy.png',
+        'icon-light': 'mwil-cloudy.png',
+        'icon-night-light': 'mwil-cloudy.png'
+    },
+    'hail showers': {
+        'text': _('Hail showers'),
+        'image': 'mwig-hail.png',
+        'image-night': 'mwig-hail.png',
+        'icon-dark': 'mwid-hail.png',
+        'icon-night-dark': 'mwid-hail.png',
+        'icon-light': 'mwil-hail.png',
+        'icon-night-light': 'mwil-hail.png'
+    },
+    'hail': {
+        'text': _('Hail'),
+        'image': 'mwig-hail.png',
+        'image-night': 'mwig-hail.png',
+        'icon-dark': 'mwid-hail.png',
+        'icon-night-dark': 'mwid-hail.png',
+        'icon-light': 'mwil-hail.png',
+        'icon-night-light': 'mwil-hail.png'
+    },
+    'haze': {
+        'text': _('Haze'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'heavy freezing drizzle': {
+        'text': _('Heavy freezing drizzle'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'heavy intensity drizzle': {
+        'text': _('Heavy drizzle'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'heavy intensity drizzle rain': {
+        'text': _('Heavy drizzle rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'heavy intensity rain': {
+        'text': _('Heavy rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'heavy intensity shower rain': {
+        'text': _('Heavy shower rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'heavy rain at times': {
+        'text': _('Heavy rain at times'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'heavy rain': {
+        'text': _('Heavy rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'heavy snow': {
+        'text': _('Heavy snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'heavy thunderstorm': {
+        'text': _('Heavy thunderstorm'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'hot': {
+        'text': _('Hot'),
+        'image': 'mwig-clear.png',
+        'image-night': 'mwig-clear-night.png',
+        'icon-dark': 'mwid-clear.png',
+        'icon-night-dark': 'mwid-clear-night.png',
+        'icon-light': 'mwil-clear.png',
+        'icon-night-light': 'mwil-clear-night.png'
+    },
+    'hurricane': {
+        'text': _('Hurricane'),
+        'image': 'mwig-windy.png',
+        'image-night': 'mwig-windy.png',
+        'icon-dark': 'mwid-windy.png',
+        'icon-night-dark': 'mwid-windy.png',
+        'icon-light': 'mwil-windy.png',
+        'icon-night-light': 'mwil-windy.png'
+    },
+    'ice crystals': {
+        'text': _('Ice crystals'),
+        'image': 'mwig-icy.png',
+        'image-night': 'mwig-icy.png',
+        'icon-dark': 'mwid-icy.png',
+        'icon-night-dark': 'mwid-icy.png',
+        'icon-light': 'mwil-icy.png',
+        'icon-night-light': 'mwil-icy.png'
+    },
+    'ice pellet showers': {
+        'text': _('Ice pellet showers'),
+        'image': 'mwig-icy.png',
+        'image-night': 'mwig-icy.png',
+        'icon-dark': 'mwid-icy.png',
+        'icon-night-dark': 'mwid-icy.png',
+        'icon-light': 'mwil-icy.png',
+        'icon-night-light': 'mwil-icy.png'
+    },
+    'ice pellets.png': {
+        'text': _('Ice pellets'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'ice pellets': {
+        'text': _('Ice pellets'),
+        'image': 'mwig-icy.png',
+        'image-night': 'mwig-icy.png',
+        'icon-dark': 'mwid-icy.png',
+        'icon-night-dark': 'mwid-icy.png',
+        'icon-light': 'mwil-icy.png',
+        'icon-night-light': 'mwil-icy.png'
+    },
+    'icy': {
+        'text': _('Icy'),
+        'image': 'mwig-icy.png',
+        'image-night': 'mwig-icy.png',
+        'icon-dark': 'mwid-icy.png',
+        'icon-night-dark': 'mwid-icy.png',
+        'icon-light': 'mwil-icy.png',
+        'icon-night-light': 'mwil-icy.png'
+    },
+    'intensity drizzle': {
+        'text': _('Heavy drizzle'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'intensity drizzle rain': {
+        'text': _('Heavy drizzle rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'intensity rain': {
+        'text': _('Heavy rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'intensity shower rain': {
+        'text': _('Heavy shower rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'isolated showers': {
+        'text': _('Isolated showers'),
+        'image': 'mwig-chance-of-rain.png',
+        'image-night': 'mwig-chance-of-rain-night.png',
+        'icon-dark': 'mwid-chance-of-rain.png',
+        'icon-night-dark': 'mwid-chance-of-rain-night.png',
+        'icon-light': 'mwil-chance-of-rain.png',
+        'icon-night-light': 'mwil-chance-of-rain-night.png'
+    },
+    'isolated thundershowers': {
+        'text': _('Isolated thundershowers'),
+        'image': 'mwig-chance-of-thunderstorms.png',
+        'image-night': 'mwig-chance-of-thunderstorms-night.png',
+        'icon-dark': 'mwid-chance-of-thunderstorms.png',
+        'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png',
+        'icon-light': 'mwil-chance-of-thunderstorms.png',
+        'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'
+    },
+    'isolated thunderstorms': {
+        'text': _('Isolated thunderstorms'),
+        'image': 'mwig-chance-of-thunderstorms.png',
+        'image-night': 'mwig-chance-of-thunderstorms-night.png',
+        'icon-dark': 'mwid-chance-of-thunderstorms.png',
+        'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png',
+        'icon-light': 'mwil-chance-of-thunderstorms.png',
+        'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'
+    },
+    'light drizzle': {
+        'text': _('Light drizzle'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light freezing rain': {
+        'text': _('Light freezing rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light intensity drizzle': {
+        'text': _('Light drizzle'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light intensity drizzle rain': {
+        'text': _('Light drizzle rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light intensity shower rain': {
+        'text': _('Light shower rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light rain shower': {
+        'text': _('Light rain shower'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light rain': {
+        'text': _('Light rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light showers of ice pellets.png': {
+        'text': _('Light showers of ice pellets'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light sleet showers.png': {
+        'text': _('Light sleet showers'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light sleet': {
+        'text': _('Light sleet'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'light snow showers.png': {
+        'text': _('Light snow showers'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'light snow': {
+        'text': _('Light snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'light thunderstorm': {
+        'text': _('Light thunderstorm'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'low drifting sand': {
+        'text': _('Low drifting sand'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'low drifting snow': {
+        'text': _('Low drifting snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'low drifting widespread dust': {
+        'text': _('Low drifting widespread dust'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'mist': {
+        'text': _('Mist'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'mixed rain and snow': {
+        'text': _('Mixed rain and snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'mixed rain and sleet': {
+        'text': _('Mixed rain and sleet'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'mixed snow and sleet': {
+        'text': _('Mixed snow and sleet'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'moderate or heavy freezing rain': {
+        'text': _('Moderate or heavy freezing rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'moderate or heavy rain in area with thunder': {
+        'text': _('Moderate or heavy rain in area with thunder'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'moderate or heavy rain shower': {
+        'text': _('Moderate or heavy rain shower'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'moderate or heavy showers of ice pellets': {
+        'text': _('Moderate or heavy showers of ice pellets'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'moderate or heavy sleet showers.png': {
+        'text': _('Moderate or heavy sleet showers'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'moderate or heavy sleet': {
+        'text': _('Moderate or heavy sleet'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'moderate or heavy snow in area with thunder': {
+        'text': _('Moderate or heavy snow in area with thunder'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'moderate or heavy snow showers': {
+        'text': _('Moderate or heavy snow showers'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'moderate rain at times': {
+        'text': _('Moderate rain at times'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'moderate rain': {
+        'text': _('Moderate rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'moderate snow': {
+        'text': _('Moderate snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'mostly cloudy': {
+        'text': _('Mostly cloudy'),
+        'image': 'mwig-mostly-cloudy.png',
+        'image-night': 'mwig-mostly-cloudy-night.png',
+        'icon-dark': 'mwid-mostly-cloudy.png',
+        'icon-night-dark': 'mwid-mostly-cloudy-night.png',
+        'icon-light': 'mwil-mostly-cloudy.png',
+        'icon-night-light': 'mwil-mostly-cloudy-night.png'
+    },
+    'mostly sunny': {
+        'text': _('Mostly sunny'),
+        'image': 'mwig-mostly-sunny.png',
+        'image-night': 'mwig-mostly-sunny-night.png',
+        'icon-dark': 'mwid-mostly-sunny.png',
+        'icon-night-dark': 'mwid-mostly-sunny-night.png',
+        'icon-light': 'mwil-mostly-sunny.png',
+        'icon-night-light': 'mwil-mostly-sunny-night.png'
+    },
+    'not available': {
+        'text': _('Not available'),
+        'image': 'mwig-not-available.png',
+        'image-night': 'mwig-not-available-night.png',
+        'icon-dark': 'mwid-not-available.png',
+        'icon-night-dark': 'mwid-not-available.png',
+        'icon-light': 'mwil-not-available.png',
+        'icon-night-light': 'mwil-not-available.png'
+    },
+    'overcast': {
+        'text': _('Overcast'),
+        'image': 'mwig-cloudy.png',
+        'image-night': 'mwig-cloudy.png',
+        'icon-dark': 'mwid-cloudy.png',
+        'icon-night-dark': 'mwid-cloudy.png',
+        'icon-light': 'mwil-cloudy.png',
+        'icon-night-light': 'mwil-cloudy.png'
+    },
+    'partial fog': {
+        'text': _('Partial fog'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'partly cloudy': {
+        'text': _('Partly cloudy'),
+        'image': 'mwig-partly-cloudy.png',
+        'image-night': 'mwig-partly-cloudy-night.png',
+        'icon-dark': 'mwid-partly-cloudy.png',
+        'icon-night-dark': 'mwid-partly-cloudy-night.png',
+        'icon-light': 'mwil-partly-cloudy.png',
+        'icon-night-light': 'mwil-partly-cloudy-night.png'
+    },
+    'partly sunny': {
+        'text': _('Partly sunny'),
+        'image': 'mwig-partly-cloudy.png',
+        'image-night': 'mwig-partly-cloudy-night.png',
+        'icon-dark': 'mwid-partly-cloudy.png',
+        'icon-night-dark': 'mwid-partly-cloudy-night.png',
+        'icon-light': 'mwil-partly-cloudy.png',
+        'icon-night-light': 'mwil-partly-cloudy-night.png'
+    },
+    'patches of fog': {
+        'text': _('Patches of fog'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'patchy freezing drizzle nearby': {
+        'text': _('Patchy freezing drizzle nearby'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'patchy heavy snow': {
+        'text': _('Patchy heavy snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'patchy light drizzle': {
+        'text': _('Patchy light drizzle'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'patchy light rain in area with thunder': {
+        'text': _('Patchy light rain in area with thunder'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'patchy light rain': {
+        'text': _('Patchy light rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'patchy light snow in area with thunder': {
+        'text': _('Patchy light snow in area with thunder'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'patchy light snow': {
+        'text': _('Patchy light snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'patchy moderate snow': {
+        'text': _('Patchy moderate snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'patchy rain nearby': {
+        'text': _('Patchy rain nearby'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'patchy sleet nearby': {
+        'text': _('Patchy sleet nearby'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'patchy snow nearby': {
+        'text': _('Patchy snow nearby'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'ragged thunderstorm': {
+        'text': _('Ragged thunderstorm'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'rain and snow': {
+        'text': _('Rain and snow'),
+        'image': 'mwig-rain-and-snow.png',
+        'image-night': 'mwig-rain-and-snow.png',
+        'icon-dark': 'mwid-rain-and-snow.png',
+        'icon-night-dark': 'mwid-rain-and-snow.png',
+        'icon-light': 'mwil-rain-and-snow.png',
+        'icon-night-light': 'mwil-rain-and-snow.png'
+    },
+    'rain mist': {
+        'text': _('Rain mist'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'rain showers': {
+        'text': _('Rain showers'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'rain': {
+        'text': _('Rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'sand': {
+        'text': _('Sand'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'sandstorm': {
+        'text': _('Sandstorm'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'scattered clouds': {
+        'text': _('Scattered clouds'),
+        'image': 'mwig-partly-cloudy.png',
+        'image-night': 'mwig-partly-cloudy-night.png',
+        'icon-dark': 'mwid-partly-cloudy.png',
+        'icon-night-dark': 'mwid-partly-cloudy-night.png',
+        'icon-light': 'mwil-partly-cloudy.png',
+        'icon-night-light': 'mwil-partly-cloudy-night.png'
+    },
+    'scattered showers': {
+        'text': _('Scattered showers'),
+        'image': 'mwig-chance-of-rain.png',
+        'image-night': 'mwig-chance-of-rain-night.png',
+        'icon-dark': 'mwid-chance-of-rain.png',
+        'icon-night-dark': 'mwid-chance-of-rain-night.png',
+        'icon-light': 'mwil-chance-of-rain.png',
+        'icon-night-light': 'mwil-chance-of-rain-night.png'
+    },
+    'scattered thunderstorms': {
+        'text': _('Scattered thunderstorms'),
+        'image': 'mwig-chance-of-thunderstorms.png',
+        'image-night': 'mwig-chance-of-thunderstorms-night.png',
+        'icon-dark': 'mwid-chance-of-thunderstorms.png',
+        'icon-night-dark': 'mwid-chance-of-thunderstorms-night.png',
+        'icon-light': 'mwil-chance-of-thunderstorms.png',
+        'icon-night-light': 'mwil-chance-of-thunderstorms-night.png'
+    },
+    'shallow fog': {
+        'text': _('Shallow fog'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'showers': {
+        'text': _('Showers'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'shower drizzle': {
+        'text': _('Shower drizzle'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'shower rain': {
+        'text': _('Shower rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'shower snow': {
+        'text': _('Shower snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'sleet': {
+        'text': _('Sleet'),
+        'image': 'mwig-rain-and-snow.png',
+        'image-night': 'mwig-rain-and-snow.png',
+        'icon-dark': 'mwid-rain-and-snow.png',
+        'icon-night-dark': 'mwid-rain-and-snow.png',
+        'icon-light': 'mwil-rain-and-snow.png',
+        'icon-night-light': 'mwil-rain-and-snow.png'
+    },
+    'small hail showers': {
+        'text': _('Small hail showers'),
+        'image': 'mwig-hail.png',
+        'image-night': 'mwig-hail.png',
+        'icon-dark': 'mwid-hail.png',
+        'icon-night-dark': 'mwid-hail.png',
+        'icon-light': 'mwil-hail.png',
+        'icon-night-light': 'mwil-hail.png'
+    },
+    'small hail': {
+        'text': _('Small hail'),
+        'image': 'mwig-hail.png',
+        'image-night': 'mwig-hail.png',
+        'icon-dark': 'mwid-hail.png',
+        'icon-night-dark': 'mwid-hail.png',
+        'icon-light': 'mwil-hail.png',
+        'icon-night-light': 'mwil-hail.png'
+    },
+    'smoke': {
+        'text': _('Smoke'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'snow blowing snow mist': {
+        'text': _('Snow blowing snow mist'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'snow flurries': {
+        'text': _('Snow flurries'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'snow grains': {
+        'text': _('Snow grains'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'snow showers': {
+        'text': _('Snow showers'),
+        'image': 'mwig-rain-and-snow.png',
+        'image-night': 'mwig-rain-and-snow.png',
+        'icon-dark': 'mwid-rain-and-snow.png',
+        'icon-night-dark': 'mwid-rain-and-snow.png',
+        'icon-light': 'mwil-rain-and-snow.png',
+        'icon-night-light': 'mwil-rain-and-snow.png'
+    },
+    'snow': {
+        'text': _('Snow'),
+        'image': 'mwig-snow.png',
+        'image-night': 'mwig-snow.png',
+        'icon-dark': 'mwid-snow.png',
+        'icon-night-dark': 'mwid-snow.png',
+        'icon-light': 'mwil-snow.png',
+        'icon-night-light': 'mwil-snow.png'
+    },
+    'spray': {
+        'text': _('Spray'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'squalls': {
+        'text': _('Squalls'),
+        'image': 'mwig-windy.png',
+        'image-night': 'mwig-windy.png',
+        'icon-dark': 'mwid-windy.png',
+        'icon-night-dark': 'mwid-windy.png',
+        'icon-light': 'mwil-windy.png',
+        'icon-night-light': 'mwil-windy.png'
+    },
+    'storm': {
+        'text': _('Storm'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'sunny': {
+        'text': _('Sunny'),
+        'image': 'mwig-clear.png',
+        'image-night': 'mwig-clear-night.png',
+        'icon-dark': 'mwid-clear.png',
+        'icon-night-dark': 'mwid-clear-night.png',
+        'icon-light': 'mwil-clear.png',
+        'icon-night-light': 'mwil-clear-night.png'
+    },
+    'thunderstorm': {
+        'text': _('Thunderstorm'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorms': {
+        'text': _('Thunderstorm'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorms and ice pellets': {
+        'text': _('Thunderstorms and ice pellets'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorms and rain': {
+        'text': _('Thunderstorms and rain'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorms and snow': {
+        'text': _('Thunderstorms and snow'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorms with hail': {
+        'text': _('Thunderstorms with hail'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorms with small hail': {
+        'text': _('Thunderstorms with small hail'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorm with light rain': {
+        'text': _('Thunderstorm with light rain'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorm with rain': {
+        'text': _('Thunderstorm with rain'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorm with heavy rain': {
+        'text': _('Thunderstorm with heavy rain'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorm with light drizzle': {
+        'text': _('Thunderstorm with light drizzle'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorm with drizzle': {
+        'text': _('Thunderstorm with drizzle'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorm with heavy drizzle': {
+        'text': _('Thunderstorm with heavy drizzle'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thundery outbreaks in nearby': {
+        'text': _('Thundery outbreaks in nearby'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'tornado': {
+        'text': _('Tornado'),
+        'image': 'mwig-windy.png',
+        'image-night': 'mwig-windy.png',
+        'icon-dark': 'mwid-windy.png',
+        'icon-night-dark': 'mwid-windy.png',
+        'icon-light': 'mwil-windy.png',
+        'icon-night-light': 'mwil-windy.png'
+    },
+    'torrential rain shower.png': {
+        'text': _('Torrential rain shower'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'tropical storm': {
+        'text': _('Tropical storm'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'unknown precipitation': {
+        'text': _('Unknown precipitation'),
+        'image': 'mwig-not-available.png',
+        'image-night': 'mwig-not-available-night.png',
+        'icon-dark': 'mwid-not-available.png',
+        'icon-night-dark': 'mwid-not-available.png',
+        'icon-light': 'mwil-not-available.png',
+        'icon-night-light': 'mwil-not-available.png'
+    },
+    'unknown': {
+        'text': _('Unknown'),
+        'image': 'mwig-not-available.png',
+        'image-night': 'mwig-not-available-night.png',
+        'icon-dark': 'mwid-not-available.png',
+        'icon-night-dark': 'mwid-not-available.png',
+        'icon-light': 'mwil-not-available.png',
+        'icon-night-light': 'mwil-not-available.png'
+    },
+    'very heavy rain': {
+        'text': _('Very heavy rain'),
+        'image': 'mwig-rain.png',
+        'image-night': 'mwig-rain.png',
+        'icon-dark': 'mwid-rain.png',
+        'icon-night-dark': 'mwid-rain.png',
+        'icon-light': 'mwil-rain.png',
+        'icon-night-light': 'mwil-rain.png'
+    },
+    'volcanic ash': {
+        'text': _('Volcanic ash'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'widespread dust': {
+        'text': _('Widespread dust'),
+        'image': 'mwig-fog.png',
+        'image-night': 'mwig-fog-night.png',
+        'icon-dark': 'mwid-fog.png',
+        'icon-night-dark': 'mwid-fog-night.png',
+        'icon-light': 'mwil-fog.png',
+        'icon-night-light': 'mwil-fog-night.png'
+    },
+    'windy': {
+        'text': _('Windy'),
+        'image': 'mwig-windy.png',
+        'image-night': 'mwig-windy.png',
+        'icon-dark': 'mwid-windy.png',
+        'icon-night-dark': 'mwid-windy.png',
+        'icon-light': 'mwil-windy.png',
+        'icon-night-light': 'mwil-windy.png'
+    }
+}
 #
 # http://en.wikipedia.org/wiki/Boxing_the_compass
 #
-WINDS = {'n': _('North'),
-         'north': _('North'),
-         'nbe': _('North by east'),
-         'nne': _('North-northeast'),
-         'nebn': _('Northeast by north'),
-         'ne': _('Northeast'),
-         'nebe': _('Northeast by east'),
-         'ene': _('East-northeast'),
-         'ebn': _('East by north'),
-         'e': _('East'),
-         'east': _('East'),
-         'ebs': _('East by south'),
-         'ese': _('East-southeast'),
-         'sebe': _('Southeast by east'),
-         'se': _('Southeast'),
-         'sebs': _('Southeast by south'),
-         'sse': _('South-southeast'),
-         'sbe': _('South by east'),
-         's': _('South'),
-         'south': _('South'),
-         'sbw': _('South by west'),
-         'ssw': _('South-southwest'),
-         'swbs': _('Southwest by south'),
-         'sw': _('Southwest'),
-         'swbw': _('Southwest by west'),
-         'wsw': _('West-southwest'),
-         'wbs': _('West by south'),
-         'w': _('West'),
-         'west': _('West'),
-         'wbn': _('West by north'),
-         'wnw': _('West-northwest'),
-         'nwbw': _('Northwest by west'),
-         'nw': _('Northwest'),
-         'nwbn': _('Northwest by north'),
-         'nnw': _('North-northwest'),
-         'nbw': _('North by west'),
-         'variable': _('Variable')}
+WINDS = {
+    'n': _('North'),
+    'north': _('North'),
+    'nbe': _('North by east'),
+    'nne': _('North-northeast'),
+    'nebn': _('Northeast by north'),
+    'ne': _('Northeast'),
+    'nebe': _('Northeast by east'),
+    'ene': _('East-northeast'),
+    'ebn': _('East by north'),
+    'e': _('East'),
+    'east': _('East'),
+    'ebs': _('East by south'),
+    'ese': _('East-southeast'),
+    'sebe': _('Southeast by east'),
+    'se': _('Southeast'),
+    'sebs': _('Southeast by south'),
+    'sse': _('South-southeast'),
+    'sbe': _('South by east'),
+    's': _('South'),
+    'south': _('South'),
+    'sbw': _('South by west'),
+    'ssw': _('South-southwest'),
+    'swbs': _('Southwest by south'),
+    'sw': _('Southwest'),
+    'swbw': _('Southwest by west'),
+    'wsw': _('West-southwest'),
+    'wbs': _('West by south'),
+    'w': _('West'),
+    'west': _('West'),
+    'wbn': _('West by north'),
+    'wnw': _('West-northwest'),
+    'nwbw': _('Northwest by west'),
+    'nw': _('Northwest'),
+    'nwbn': _('Northwest by north'),
+    'nnw': _('North-northwest'),
+    'nbw': _('North by west'),
+    'variable': _('Variable')
+}
 
 WINDS2 = [['N', _('North'), 'mwi-wind00.png'],
           ['NBE', _('North by east'), 'mwi-wind01.png'],
@@ -469,10 +1547,12 @@ WINDS2 = [['N', _('North'), 'mwi-wind00.png'],
 
 def degToCompass(num):
     val = int((cf.s2f(num) / 11.25) + 0.25)
-    arr = ['n', 'nbe', 'nne', 'nebn', 'ne', 'nebe', 'ene', 'ebn', 'e', 'ebs',
-           'ese', 'sebe', 'se', 'sebs', 'sse', 'sbe', 's', 'sbw', 'ssw',
-           'swbs', 'sw', 'swbw', 'wsw', 'wbs', 'w', 'wbn', 'wnw', 'nwbw', 'nw',
-           'nwbn', 'nnw', 'nbw']
+    arr = [
+        'n', 'nbe', 'nne', 'nebn', 'ne', 'nebe', 'ene', 'ebn', 'e', 'ebs',
+        'ese', 'sebe', 'se', 'sebs', 'sse', 'sbe', 's', 'sbw', 'ssw', 'swbs',
+        'sw', 'swbw', 'wsw', 'wbs', 'w', 'wbn', 'wnw', 'nwbw', 'nw', 'nwbn',
+        'nnw', 'nbw'
+    ]
     return WINDS[arr[(val % 32)]]
 
 
@@ -577,41 +1657,41 @@ def get_key(key, tree, default=None):
 
 def get_dayLength(day, longitude, latitude):
     sun = Sun()
-    return sun.dayLength(
-        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude))
+    return sun.dayLength(day.year, day.month, day.day, cf.s2f(longitude),
+                         cf.s2f(latitude))
 
 
 def get_dayCivilTwilightLength(day, longitude, latitude):
     sun = Sun()
-    return sun.dayCivilTwilightLength(
-        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude))
+    return sun.dayCivilTwilightLength(day.year, day.month, day.day,
+                                      cf.s2f(longitude), cf.s2f(latitude))
 
 
 def get_dawn(day, longitude, latitude, rawOffset):
     sun = Sun()
-    ss = sun.civilTwilightLocal(
-        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude), rawOffset)
+    ss = sun.civilTwilightLocal(day.year, day.month, day.day,
+                                cf.s2f(longitude), cf.s2f(latitude), rawOffset)
     return '%s' % (ss[0])
 
 
 def get_dusk(day, longitude, latitude, rawOffset):
     sun = Sun()
-    ss = sun.civilTwilightLocal(
-        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude), rawOffset)
+    ss = sun.civilTwilightLocal(day.year, day.month, day.day,
+                                cf.s2f(longitude), cf.s2f(latitude), rawOffset)
     return '%s' % (ss[1])
 
 
 def get_sunrise(day, longitude, latitude, rawOffset):
     sun = Sun()
-    ss = sun.sunRiseSetLocal(
-        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude), rawOffset)
+    ss = sun.sunRiseSetLocal(day.year, day.month, day.day, cf.s2f(longitude),
+                             cf.s2f(latitude), rawOffset)
     return '%s' % (ss[0])
 
 
 def get_sunset(day, longitude, latitude, rawOffset):
     sun = Sun()
-    ss = sun.sunRiseSetLocal(
-        day.year, day.month, day.day, cf.s2f(longitude), cf.s2f(latitude), rawOffset)
+    ss = sun.sunRiseSetLocal(day.year, day.month, day.day, cf.s2f(longitude),
+                             cf.s2f(latitude), rawOffset)
     return '%s' % (ss[1])
 
 
@@ -658,7 +1738,8 @@ def get_wind_condition(wind_velocity, wind_direction, wind_units):
     if wind_units == 'Beaufort':
         return wind_velocity + ' ' + _('from') + ' ' + wind_direction
     else:
-        return _('from') + ' ' + wind_direction + ' ' + _('at') + ' ' + wind_velocity
+        return _('from') + ' ' + wind_direction + ' ' + _(
+            'at') + ' ' + wind_velocity
     return _('n/a')
 
 
@@ -719,15 +1800,18 @@ def get_heat_index(temperature, humidity):
 def change_pressure(valor, a):
     valor = cf.s2f(valor)
     units_u = {'mb': 1, 'in': 0.0294985250737, 'mm': 0.751879699248}
-    units_m = {'mb': _('millibar'), 'in': _('inches of mercury'),
-               'mm': _('millimeters of mercury')}
+    units_m = {
+        'mb': _('millibar'),
+        'in': _('inches of mercury'),
+        'mm': _('millimeters of mercury')
+    }
     if a in units_u.keys():
         if a == 'in':
             digits = 1
         else:
             digits = 0
-        return '%s %s' % (
-            locale.str(cf.redondea_digits(valor * units_u[a], digits)), units_m[a])
+        return '%s %s' % (locale.str(
+            cf.redondea_digits(valor * units_u[a], digits)), units_m[a])
 
 
 def change_distance(valor, a):
@@ -735,7 +1819,8 @@ def change_distance(valor, a):
     units_u = {'mi': 1, 'km': 1.609344}
     units_m = {'mi': _('mi'), 'km': _('km')}
     if a in units_u.keys():
-        return '%s %s' % (locale.str(cf.redondea_digits(valor * units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(cf.redondea_digits(
+            valor * units_u[a])), units_m[a])
 
 
 def change_longitude(valor, a):
@@ -743,18 +1828,30 @@ def change_longitude(valor, a):
     units_u = {'in': 1, 'cm': 2.54, 'mm': 25.4}
     units_m = {'in': _('in'), 'cm': _('cm'), 'mm': _('mm')}
     if a in units_u.keys():
-        return '%s %s' % (locale.str(cf.redondea_digits(valor * units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(cf.redondea_digits(
+            valor * units_u[a])), units_m[a])
 
 
 def change_velocity(valor, a):
     valor = cf.s2f(valor)
     # initial a in mph
-    units_u = {'mph': 1, 'km/h': 1.609344, 'm/s': 0.44704,
-               'knots': 0.868976, 'ft/s': 1.466667}
-    units_m = {'mph': _('mph'), 'km/h': _('km/h'), 'm/s': _('m/s'),
-               'knots': _('knots'), 'ft/s': _('ft/s')}
+    units_u = {
+        'mph': 1,
+        'km/h': 1.609344,
+        'm/s': 0.44704,
+        'knots': 0.868976,
+        'ft/s': 1.466667
+    }
+    units_m = {
+        'mph': _('mph'),
+        'km/h': _('km/h'),
+        'm/s': _('m/s'),
+        'knots': _('knots'),
+        'ft/s': _('ft/s')
+    }
     if a in units_u.keys():
-        return '%s %s' % (locale.str(cf.redondea_digits(valor * units_u[a])), units_m[a])
+        return '%s %s' % (locale.str(cf.redondea_digits(
+            valor * units_u[a])), units_m[a])
     if a == 'Beaufort':
         if valor <= 1:
             return _('Calm')
@@ -815,8 +1912,14 @@ def timeformat(hhmm, AMPM=False):
 
 class Units(object):
 
-    def __init__(self, temperature='C', wind='km/h', pressure='mb',
-                 visibility='km', snow='cm', rain='mm', ampm=False):
+    def __init__(self,
+                 temperature='C',
+                 wind='km/h',
+                 pressure='mb',
+                 visibility='km',
+                 snow='cm',
+                 rain='mm',
+                 ampm=False):
         self.temperature = temperature
         self.wind = wind
         self.pressure = pressure
@@ -828,7 +1931,10 @@ class Units(object):
 
 class WeatherService(object):
 
-    def __init__(self, longitude=-0.418, latitude=39.360, units=Units(),
+    def __init__(self,
+                 longitude=-0.418,
+                 latitude=39.360,
+                 units=Units(),
                  key=''):
         if not longitude:
             longitude = 0
@@ -867,8 +1973,8 @@ class WeatherService(object):
         current_conditions['precip_1hr'] = _('N/A')
         current_conditions['precip_today'] = _('N/A')
         #
-        dayLength = get_dayLength(
-            datetime.today(), self.longitude, self.latitude)
+        dayLength = get_dayLength(datetime.today(), self.longitude,
+                                  self.latitude)
         dayCivilTwilightLength = get_dayCivilTwilightLength(
             datetime.today(), self.longitude, self.latitude)
         if dayLength == 0.0:
@@ -925,8 +2031,8 @@ class WeatherService(object):
                 current_conditions['dusk_time'], self.units.ampm)
         current_conditions['moon_icon'] = get_moon_icon(datetime.today())
         current_conditions['moon_phase'] = get_moon_phase(datetime.today())
-        dayLength = get_dayLength(
-            datetime.today(), self.longitude, self.latitude)
+        dayLength = get_dayLength(datetime.today(), self.longitude,
+                                  self.latitude)
         dayCivilTwilightLength = get_dayCivilTwilightLength(
             datetime.today(), self.longitude, self.latitude)
         if current_conditions['sunrise_time'] ==\
@@ -973,8 +2079,8 @@ class WeatherService(object):
             fc['condition_text'] = _('N/A')
             fc['condition_image'] = 'mwig-not-available.png'
             fc['condition_icon'] = 'mwil-not-available.png'
-            dayLength = get_dayLength(
-                datetime.today(), self.longitude, self.latitude)
+            dayLength = get_dayLength(datetime.today(), self.longitude,
+                                      self.latitude)
             if dayLength == 0.0:
                 fc['sunrise'] = _('Down all day')
                 fc['sunset'] = _('Down all day')
@@ -982,12 +2088,14 @@ class WeatherService(object):
                 fc['sunrise'] = _('Up all day')
                 fc['sunset'] = _('Up all day')
             else:
-                fc['sunrise'] = timeformat(get_sunrise(
-                    dia, self.longitude, self.latitude,
-                    current_conditions['rawOffset']), self.units.ampm)
-                fc['sunset'] = timeformat(get_sunset(
-                    dia, self.longitude, self.latitude,
-                    current_conditions['rawOffset']), self.units.ampm)
+                fc['sunrise'] = timeformat(
+                    get_sunrise(dia, self.longitude, self.latitude,
+                                current_conditions['rawOffset']),
+                    self.units.ampm)
+                fc['sunset'] = timeformat(
+                    get_sunset(dia, self.longitude, self.latitude,
+                               current_conditions['rawOffset']),
+                    self.units.ampm)
             fc['moon_icon'] = get_moon_icon(dia)
             fc['moon_phase'] = get_moon_phase(dia)
             forecast_conditions.append(fc)
