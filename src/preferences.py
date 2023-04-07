@@ -727,31 +727,6 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
             configuration.set('skin2',
                               get_selected_value_in_combo(self.comboboxskin2))
         #
-        if self.radiobutton251.get_active():
-            configuration.set('weather-service', 'yahoo')
-        elif self.radiobutton253.get_active():
-            configuration.set('weather-service', 'openweathermap')
-        #
-        wwokey = self.wwokey.get_text()
-        if len(wwokey) > 0:
-            wwo = WorldWeatherOnlineService(key=wwokey)
-            if wwo.test_connection():
-                configuration.set('wwo-key', wwokey)
-                if self.radiobutton252.get_active():
-                    configuration.set('weather-service', 'worldweatheronline')
-            else:
-                if self.radiobutton252.get_active():
-                    configuration.set('weather-service', 'openweathermap')
-        wukey = self.wukey.get_text()
-        if len(wukey) > 0:
-            wu = UndergroundWeatherService(key=wukey)
-            if wu.test_connection():
-                configuration.set('wu-key', wukey)
-                if self.radiobutton254.get_active():
-                    configuration.set('weather-service', 'wunderground')
-            else:
-                if self.radiobutton254.get_active():
-                    configuration.set('weather-service', 'openweathermap')
         configuration.set(
             'temperature', get_selected_value_in_combo(self.combobox3))
         configuration.set(
