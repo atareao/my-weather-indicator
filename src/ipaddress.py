@@ -32,6 +32,10 @@ from collections import namedtuple
 from geocodeapi import get_inv_direction
 
 
+def ip_address(data):
+    print(data)
+
+
 def convert(dbus_obj):
     """Converts dbus_obj from dbus type to python type.
     :param dbus_obj: dbus object.
