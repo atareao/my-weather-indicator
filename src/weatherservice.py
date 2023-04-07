@@ -1940,16 +1940,17 @@ class WeatherService(object):
             longitude = 0
         if not latitude:
             latitude = 0
-        self.key = key
-        self.longitude = longitude
-        self.latitude = latitude
-        self.timezoneId = geocodeapi.get_timezoneId(latitude, longitude)
-        self.units = units
+        self._key = key
+        self._longitude = longitude
+        self._latitude = latitude
+        self._timezone = geocodeapi.get_timezoneId(latitude, longitude)
+        print(f"Timezone: {self._timezone}")
+        self._units = units
 
     def get_default_values(self):
         current_conditions = {}
         current_conditions['rawOffset'] =\
-            geocodeapi.get_rawOffset(self.timezoneId)
+            geocodeapi.get_rawOffset(self._timezone)
         current_conditions['condition_text'] = _('Not available')
         current_conditions['condition_image'] = 'mwig-not-available.png'
         current_conditions['condition_icon_dark'] = 'mwid-not-available.png'
@@ -1973,10 +1974,10 @@ class WeatherService(object):
         current_conditions['precip_1hr'] = _('N/A')
         current_conditions['precip_today'] = _('N/A')
         #
-        dayLength = get_dayLength(datetime.today(), self.longitude,
-                                  self.latitude)
+        dayLength = get_dayLength(datetime.today(), self._longitude,
+                                  self._latitude)
         dayCivilTwilightLength = get_dayCivilTwilightLength(
-            datetime.today(), self.longitude, self.latitude)
+            datetime.today(), self._longitude, self._latitude)
         if dayLength == 0.0:
             current_conditions['sunrise_time'] = _('Down all day')
             current_conditions['sunset_time'] = _('Down all day')
@@ -1991,23 +1992,23 @@ class WeatherService(object):
             current_conditions['isday'] = True
         else:
             current_conditions['sunrise_time'] = get_sunrise(
-                datetime.today(), self.longitude, self.latitude,
+                datetime.today(), self._longitude, self._latitude,
                 current_conditions['rawOffset'])
             current_conditions['sunset_time'] = get_sunset(
-                datetime.today(), self.longitude, self.latitude,
+                datetime.today(), self._longitude, self._latitude,
                 current_conditions['rawOffset'])
             current_conditions['isday'] = is_day_now(
                 current_conditions['sunrise_time'],
                 current_conditions['sunset_time'],
                 current_conditions['rawOffset'])
             current_conditions['sunrise'] = timeformat(
-                current_conditions['sunrise_time'], self.units.ampm)
+                current_conditions['sunrise_time'], self._units.ampm)
             current_conditions['sunset'] = timeformat(
-                current_conditions['sunset_time'], self.units.ampm)
+                current_conditions['sunset_time'], self._units.ampm)
         current_conditions['sunrise_time_utc'] = get_sunrise(
-            datetime.today(), self.longitude, self.latitude, 0)
+            datetime.today(), self._longitude, self._latitude, 0)
         current_conditions['sunset_time_utc'] = get_sunset(
-            datetime.today(), self.longitude, self.latitude, 0)
+            datetime.today(), self._longitude, self._latitude, 0)
         if dayCivilTwilightLength == 0.0:
             current_conditions['dawn_time'] = _('Down all day')
             current_conditions['dusk_time'] = _('Down all day')
@@ -2020,21 +2021,21 @@ class WeatherService(object):
             current_conditions['dusk'] = _('Up all day')
         else:
             current_conditions['dawn_time'] = get_dawn(
-                datetime.today(), self.longitude, self.latitude,
+                datetime.today(), self._longitude, self._latitude,
                 current_conditions['rawOffset'])
             current_conditions['dusk_time'] = get_dusk(
-                datetime.today(), self.longitude, self.latitude,
+                datetime.today(), self._longitude, self._latitude,
                 current_conditions['rawOffset'])
             current_conditions['dawn'] = timeformat(
-                current_conditions['dawn_time'], self.units.ampm)
+                current_conditions['dawn_time'], self._units.ampm)
             current_conditions['dusk'] = timeformat(
-                current_conditions['dusk_time'], self.units.ampm)
+                current_conditions['dusk_time'], self._units.ampm)
         current_conditions['moon_icon'] = get_moon_icon(datetime.today())
         current_conditions['moon_phase'] = get_moon_phase(datetime.today())
-        dayLength = get_dayLength(datetime.today(), self.longitude,
-                                  self.latitude)
+        dayLength = get_dayLength(datetime.today(), self._longitude,
+                                  self._latitude)
         dayCivilTwilightLength = get_dayCivilTwilightLength(
-            datetime.today(), self.longitude, self.latitude)
+            datetime.today(), self._longitude, self._latitude)
         if current_conditions['sunrise_time'] ==\
                 current_conditions['sunset_time']:
             if dayLength > 0:
@@ -2079,8 +2080,8 @@ class WeatherService(object):
             fc['condition_text'] = _('N/A')
             fc['condition_image'] = 'mwig-not-available.png'
             fc['condition_icon'] = 'mwil-not-available.png'
-            dayLength = get_dayLength(datetime.today(), self.longitude,
-                                      self.latitude)
+            dayLength = get_dayLength(datetime.today(), self._longitude,
+                                      self._latitude)
             if dayLength == 0.0:
                 fc['sunrise'] = _('Down all day')
                 fc['sunset'] = _('Down all day')
@@ -2089,13 +2090,13 @@ class WeatherService(object):
                 fc['sunset'] = _('Up all day')
             else:
                 fc['sunrise'] = timeformat(
-                    get_sunrise(dia, self.longitude, self.latitude,
+                    get_sunrise(dia, self._longitude, self._latitude,
                                 current_conditions['rawOffset']),
-                    self.units.ampm)
+                    self._units.ampm)
                 fc['sunset'] = timeformat(
-                    get_sunset(dia, self.longitude, self.latitude,
+                    get_sunset(dia, self._longitude, self._latitude,
                                current_conditions['rawOffset']),
-                    self.units.ampm)
+                    self._units.ampm)
             fc['moon_icon'] = get_moon_icon(dia)
             fc['moon_phase'] = get_moon_phase(dia)
             forecast_conditions.append(fc)
