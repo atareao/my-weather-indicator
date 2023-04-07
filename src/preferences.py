@@ -272,70 +272,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
-        vbox25 = Gtk.VBox(spacing=5)
-        vbox25.set_border_width(5)
-        notebook.append_page(vbox25, Gtk.Label.new(_('Weather Services')))
-        table25 = Gtk.Table(2, 2, True)
-        vbox25.pack_start(table25, True, True, 0)
-        owmframe = Gtk.Frame()
-        self.radiobutton253 = Gtk.RadioButton(group=None)
-        image_wowm = Gtk.Image()
-        image_wowm.set_from_file(comun.OPENWEATHERMAPLOGO)
-        self.radiobutton253.add(image_wowm)
-        owmframe.add(self.radiobutton253)
-        table25.attach(owmframe, 0, 1, 0, 1, xpadding=5, ypadding=5)
-        yahooframe = Gtk.Frame()
-        self.radiobutton251 = Gtk.RadioButton(group=self.radiobutton253)
-        image_wyahoo = Gtk.Image()
-        image_wyahoo.set_from_file(comun.YAHOOLOGO)
-        self.radiobutton251.add(image_wyahoo)
-        yahooframe.add(self.radiobutton251)
-        table25.attach(yahooframe, 0, 1, 1, 2, xpadding=5, ypadding=5)
-        wwoframe = Gtk.Frame()
-        table25.attach(wwoframe, 1, 2, 1, 2, xpadding=5, ypadding=5)
-        wwobox = Gtk.Table(1, 3)
-        wwoframe.add(wwobox)
-        self.radiobutton252 = Gtk.RadioButton(group=self.radiobutton253)
-        self.radiobutton252.set_sensitive(False)
-        image_wworldonline = Gtk.Image()
-        image_wworldonline.set_from_file(comun.WOLRDWEATHERONLINE)
-        self.radiobutton252.add(image_wworldonline)
-        wwobox.attach(self.radiobutton252, 0, 1, 0, 1,
-                      xpadding=5, ypadding=5)
-        self.wwokey = Gtk.Entry()
-        self.wwokey.set_tooltip_text(_('Input World Weather Online key'))
-        wwobox.attach(self.wwokey, 1, 2, 0, 1, xpadding=5, ypadding=5)
-        buttonwwokey = Gtk.Button(_('Activate'))
-        buttonwwokey.set_tooltip_text(
-            _('Click to activate World Weather Online'))
-        buttonwwokey.connect('clicked', self.on_buttonwwokey_clicked)
-        wwobox.attach(buttonwwokey, 2, 3, 0, 1,
-                      xoptions=Gtk.AttachOptions.SHRINK,
-                      yoptions=Gtk.AttachOptions.SHRINK,
-                      xpadding=5, ypadding=5)
-        wuframe = Gtk.Frame()
-        table25.attach(wuframe, 1, 2, 0, 1, xpadding=5, ypadding=5)
-        wubox = Gtk.Table(1, 3)
-        wuframe.add(wubox)
-        self.radiobutton254 = Gtk.RadioButton(group=self.radiobutton253)
-        self.radiobutton254.set_sensitive(False)
-        image_wunderground = Gtk.Image()
-        image_wunderground.set_from_file(comun.UNDERGROUNDLOGO)
-        image_wunderground.connect(
-            'button-release-event', self.on_image_wunderground_clicked)
-        self.radiobutton254.add(image_wunderground)
-        wubox.attach(self.radiobutton254, 0, 1, 0, 1, xpadding=5, ypadding=5)
-        self.wukey = Gtk.Entry()
-        self.wukey.set_tooltip_text(_('Input Weather Underground key'))
-        wubox.attach(self.wukey, 1, 2, 0, 1, xpadding=5, ypadding=5)
-        buttonwukey = Gtk.Button(_('Activate'))
-        buttonwukey.set_tooltip_text(
-            _('Click to activate Weather Underground'))
-        buttonwukey.connect('clicked', self.on_buttonwukey_clicked)
-        wubox.attach(buttonwukey, 2, 3, 0, 1,
-                     xoptions=Gtk.AttachOptions.SHRINK,
-                     yoptions=Gtk.AttachOptions.SHRINK,
-                     xpadding=5, ypadding=5)
+
         vbox2 = Gtk.VBox(spacing=5)
         vbox2.set_border_width(5)
         frame2 = Gtk.Frame()
@@ -678,34 +615,6 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         configuration = Configuration()
         # first_time = configuration.get('first-time')
         # version = configuration.get('version')
-        weatherservice = configuration.get('weather-service')
-        if weatherservice == 'yahoo':
-            self.radiobutton251.set_active(True)
-        elif weatherservice == 'worldweatheronline':
-            self.radiobutton252.set_active(True)
-        elif weatherservice == 'openweathermap':
-            self.radiobutton253.set_active(True)
-        elif weatherservice == 'wunderground':
-            self.radiobutton254.set_active(True)
-        wwokey = configuration.get('wwo-key')
-        if len(wwokey) > 0:
-            self.wwokey.set_text(wwokey)
-            wwo = WorldWeatherOnlineService(key=wwokey)
-            if wwo.test_connection():
-                self.radiobutton252.set_sensitive(True)
-            else:
-                if weatherservice == 'worldweatheronline':
-                    self.radiobutton253.set_active(True)
-        wukey = configuration.get('wu-key')
-        if len(wukey) > 0:
-            self.wukey.set_text(wukey)
-            uws = UndergroundWeatherService(key=self.wukey.get_text())
-            if uws.test_connection():
-                self.radiobutton254.set_sensitive(True)
-            else:
-                if weatherservice == 'wunderground':
-                    self.radiobutton253.set_active(True)
-        #
         self.checkbutton11.set_active(configuration.get('main-location'))
         self.checkbutton10.set_active(configuration.get('autolocation'))
         self.location = configuration.get('location')
