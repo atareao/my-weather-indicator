@@ -55,11 +55,7 @@ import ipaddress
 import geocodeapi
 import comun
 import weatherservice
-import worldweatheronlineapi
-import wopenweathermapapi
-import wyahooapi
-import wundergroundapi
-import wyahooapi
+import wopenmeteoapi
 import machine_information
 from graph import Graph
 from comun import _
@@ -287,48 +283,14 @@ my-weather-indicator-para-ubuntu/'))
                                           rain=rain,
                                           ampm=ampm)
         self.ws = configuration.get('weather-service')
-        if self.ws == 'yahoo':
-            self.key = ''
-            for i in range(INDICATORS):
-                if self.preferences[i]['show']:
-                    self.weatherservices[i] = wyahooapi.YahooWeatherService(
+        for i in range(INDICATORS):
+            if self.preferences[i]['show']:
+                self.weatherservices[i] =\
+                    wopenmeteoapi.OpenMeteoWeatherService(
                         longitude=self.preferences[i]['longitude'],
                         latitude=self.preferences[i]['latitude'],
                         units=self.units)
-                self.menus[i]['evolution'].hide()
-        elif self.ws == 'worldweatheronline':
-            self.key = configuration.get('wwo-key')
-            for i in range(INDICATORS):
-                if self.preferences[i]['show']:
-                    self.weatherservices[i] =\
-                        worldweatheronlineapi.WorldWeatherOnlineService(
-                            longitude=self.preferences[i]['longitude'],
-                            latitude=self.preferences[i]['latitude'],
-                            units=self.units,
-                            key=self.key)
-                self.menus[i]['evolution'].hide()
-        elif self.ws == 'openweathermap':
-            self.key = ''
-            for i in range(INDICATORS):
-                if self.preferences[i]['show']:
-                    self.weatherservices[i] =\
-                        wopenweathermapapi.OWMWeatherService(
-                            longitude=self.preferences[i]['longitude'],
-                            latitude=self.preferences[i]['latitude'],
-                            units=self.units)
-                self.menus[i]['evolution'].show()
-        elif self.ws == 'wunderground':
-            self.key = configuration.get('wu-key')
-            for i in range(INDICATORS):
-                if self.preferences[i]['show']:
-                    self.weatherservices[i] =\
-                        wundergroundapi.UndergroundWeatherService(
-                            longitude=self.preferences[i]['longitude'],
-                            latitude=self.preferences[i]['latitude'],
-                            units=self.units,
-                            key=self.key)
-                self.menus[i]['evolution'].hide()
-
+            self.menus[i]['evolution'].show()
         #
         self.icon_light = configuration.get('icon-light')
         #
@@ -642,29 +604,12 @@ my-weather-indicator-para-ubuntu/'))
                 self.preferences[index]['latitude'] = lat
                 self.preferences[index]['longitude'] = lon
                 self.preferences[index]['location'] = location
-                if self.ws == 'worldweatheronline':
-                    self.weatherservices[index] =\
-                        worldweatheronlineapi.WorldWeatherOnlineService(
-                            longitude=self.preferences[index]['longitude'],
-                            latitude=self.preferences[index]['latitude'],
-                            units=self.units,
-                            key=self.key)
-                    self.menus[index]['evolution'].hide()
-                elif self.ws == 'openweathermap':
-                    self.weatherservices[index] =\
-                        wopenweathermapapi.OWMWeatherService(
-                            longitude=self.preferences[index]['longitude'],
-                            latitude=self.preferences[index]['latitude'],
-                            units=self.units)
-                    self.menus[index]['evolution'].show()
-                elif self.ws == 'wunderground':
-                    self.weatherservices[index] =\
-                        wundergroundapi.UndergroundWeatherService(
-                            longitude=self.preferences[index]['longitude'],
-                            latitude=self.preferences[index]['latitude'],
-                            units=self.units,
-                            key=self.key)
-                    self.menus[index]['evolution'].hide()
+                self.weatherservices[index] = \
+                    wopenmeteoapi.OpenMeteoWeatherService(
+                        longitude=self.preferences[index]['longitude'],
+                        latitude=self.preferences[index]['latitude'],
+                        units=self.units)
+                self.menus[index]['evolution'].show()
         print('****** Updating weather')
         weather = self.weatherservices[index].get_weather()
         print('****** Updated weather')
