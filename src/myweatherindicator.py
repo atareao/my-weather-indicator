@@ -630,7 +630,7 @@ my-weather-indicator-para-ubuntu/'))
 {0}{1:c}'.format(self.current_conditions[index]['temperature'], 176))
             self.menus[index]['humidity'].set_label(
                 _('Humidity') + ': ' +
-                self.current_conditions[index]['humidity'])
+                str(self.current_conditions[index]['humidity']))
             self.menus[index]['feels_like'].set_label(_('Feels like') + ': \
 {0}{1:c}'.format(self.current_conditions[index]['feels_like'], 176))
             self.menus[index]['dew_point'].set_label(_('Dew Point') + ': \
@@ -737,7 +737,7 @@ my-weather-indicator-para-ubuntu/'))
                 msg += _('Temperature') + ': ' +\
                     self.current_conditions[index]['temperature'] + '\n'
                 msg += _('Humidity') + ': ' + \
-                    self.current_conditions[index]['humidity'] + '\n'
+                    str(self.current_conditions[index]['humidity']) + '\n'
                 msg += _('Wind') + ': ' +\
                     self.current_conditions[index]['wind_condition'] + '\n'
                 msg += self.current_conditions[index]['condition_text']
