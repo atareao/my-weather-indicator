@@ -61,6 +61,13 @@ OMCONDITION = {
 }
 
 
+def get_value_for_time(hourly, timestamp, key):
+    for i, value in enumerate(hourly["time"]):
+        if value == timestamp:
+            return hourly[key][i]
+    return None
+
+
 class OpenMeteoWeatherService(weatherservice.WeatherService):
 
     def __init__(self, longitude, latitude, units=weatherservice.Units()):
@@ -96,18 +103,25 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                "precipitation_probability_min,precipitation_probability_mean,"
                "weathercode,sunrise,sunset,windspeed_10m_max,"
                "winddirection_10m_dominant,shortwave_radiation_sum,"
-               "uv_index_max,uv_index_clear_sky_max")
+               "uv_index_max,uv_index_clear_sky_max"
+               "&hourly=relativehumidity_2m,apparent_temperature,"
+               "pressure_msl,dewpoint_2m,cloudcover,visibility,uv_index")
         print(url)
         logging.info(url)
         data = self._do_get(url)
         if data:
             current_weather = data["current_weather"]
+            daily = data["daily"]
+            hourly = data["hourly"]
+            timestamp = current_weather["time"]
             weather_data["update_time"] = time.time()
             weather_data["ok"] = True
             condition = OMCONDITION[current_weather["weathercode"]]
             temperature = current_weather["temperature"]
             velocity = current_weather["windspeed"]
             direction = current_weather["winddirection"]
+            humidity = \
+                get_value_for_time(hourly, timestamp, "relativehumidity_2m")
             wind_direction = weatherservice.degToCompass2(direction)
             if weather_data['current_conditions']['isday']:
                 weather_data['current_conditions']['condition_image'] =\
@@ -125,11 +139,27 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                     weatherservice.get_condition(condition, 'icon-night-light')
             weather_data['current_conditions']['temperature'] =\
                 utils.change_temperature(temperature, self._units.temperature)
+            weather_data["current_conditions"]["pressure"] = \
+                get_value_for_time(hourly, timestamp, "pressure_msl")
+            weather_data["current_conditions"]["humidity"] = f"{humidity} %"
+            weather_data['current_conditions']['heat_index'] =\
+                weatherservice.get_heat_index(temperature, humidity)
+            weather_data['current_conditions']['windchill'] =\
+                weatherservice.get_wind_chill(temperature, velocity)
+            weather_data["current_conditions"]["dew_point"] = \
+                get_value_for_time(hourly, timestamp, "dewpoint_2m")
+            weather_data["current_conditions"]["feels_like"] = \
+                get_value_for_time(hourly, timestamp, "apparent_temperature")
+            weather_data["current_conditions"]["cloudiness"] = \
+                get_value_for_time(hourly, timestamp, "cloudcover")
+            weather_data["current_conditions"]["visibility"] = \
+                get_value_for_time(hourly, timestamp, "visibility")
+            weather_data["current_conditions"]["UV"] = \
+                get_value_for_time(hourly, timestamp, "uv_index")
             weather_data['current_conditions']['wind_condition'] =\
                 weatherservice.get_wind_condition2(
                     velocity, wind_direction[0], self._units.wind)
             weather_data['current_conditions']['wind_icon'] = wind_direction[2]
-            daily = data["daily"]
             for i in range(0, len(daily["time"])):
                 condition = OMCONDITION[daily["weathercode"][i]]
                 temp_max = daily["temperature_2m_max"][i]
