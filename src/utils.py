@@ -101,11 +101,11 @@ def cambia(valor, a, SI=True):
 
 def change_temperature(valor, a):
     valor = s2f(valor)
-    # initial a in ºF
-    if a == 'C':
-        valor = 5.0 / 9.0 * (valor - 32.0)
+    # initial a in ºC
+    if a == 'F':
+        valor = 32.0 + 9.0 / 5.0 * valor
     elif a == 'K':
-        valor = 5.0 / 9.0 * (valor - 32.0) + 273.15
+        valor = valor + 273.15
     return str(redondea_digits(valor))
 
 
