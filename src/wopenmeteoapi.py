@@ -23,6 +23,8 @@
 import datetime
 import logging
 import requests
+import time
+import utils
 import weatherservice
 
 BASE_URL = "https://api.open-meteo.com"
@@ -62,9 +64,7 @@ OMCONDITION = {
 class OpenMeteoWeatherService(weatherservice.WeatherService):
 
     def __init__(self, longitude, latitude, units=weatherservice.Units()):
-        self.latitude = latitude
-        self.longitude = longitude
-        self.units = units
+        super().__init__(longitude, latitude, units)
 
     def _do_get(self, url):
         try:
@@ -85,17 +85,97 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             logging.error(exception)
         return None
 
-    def get_hourly_weather(self):
-        weatherdata = []
-        url = (f"{BASE_URL}/v1/forecast?latitude={self.latitude}"
-               f"&longitude={self.longitude}&hourly=weathercode,"
-               "temperature_2m,relativehumidity_2m,apparent_temperature,"
-               "cloudcover,windspeed_10m,winddirection_10m,"
-               "precipitation_probability,visibility")
+    def get_weather(self):
+        weather_data = self.get_default_values()
+        url = (f"{BASE_URL}/v1/forecast?latitude={self._latitude}"
+               f"&longitude={self._longitude}&current_weather=true&timezone="
+               f"{self._timezone}&daily=temperature_2m_max,temperature_2m_min,"
+               "apparent_temperature_max,apparent_temperature_min,"
+               "precipitation_sum,rain_sum,showers_sum,snowfall_sum,"
+               "precipitation_hours,precipitation_probability_max,"
+               "precipitation_probability_min,precipitation_probability_mean,"
+               "weathercode,sunrise,sunset,windspeed_10m_max,"
+               "winddirection_10m_dominant,shortwave_radiation_sum,"
+               "uv_index_max,uv_index_clear_sky_max")
         print(url)
         logging.info(url)
         data = self._do_get(url)
-        pprint.pprint(data)
+        if data:
+            current_weather = data["current_weather"]
+            weather_data["update_time"] = time.time()
+            weather_data["ok"] = True
+            condition = OMCONDITION[current_weather["weathercode"]]
+            temperature = current_weather["temperature"]
+            velocity = current_weather["windspeed"]
+            direction = current_weather["winddirection"]
+            wind_direction = weatherservice.degToCompass2(direction)
+            if weather_data['current_conditions']['isday']:
+                weather_data['current_conditions']['condition_image'] =\
+                    weatherservice.get_condition(condition, 'image')
+                weather_data['current_conditions']['condition_icon_dark'] =\
+                    weatherservice.get_condition(condition, 'icon-dark')
+                weather_data['current_conditions']['condition_icon_light'] =\
+                    weatherservice.get_condition(condition, 'icon-light')
+            else:
+                weather_data['current_conditions']['condition_image'] =\
+                    weatherservice.get_condition(condition, 'image-night')
+                weather_data['current_conditions']['condition_icon_dark'] =\
+                    weatherservice.get_condition(condition, 'icon-night-dark')
+                weather_data['current_conditions']['condition_icon_light'] =\
+                    weatherservice.get_condition(condition, 'icon-night-light')
+            weather_data['current_conditions']['temperature'] =\
+                utils.change_temperature(temperature, self._units.temperature)
+            weather_data['current_conditions']['wind_condition'] =\
+                weatherservice.get_wind_condition2(
+                    velocity, wind_direction[0], self._units.wind)
+            weather_data['current_conditions']['wind_icon'] = wind_direction[2]
+            daily = data["daily"]
+            for i in range(0, len(daily["time"])):
+                condition = OMCONDITION[daily["weathercode"][i]]
+                temp_max = daily["temperature_2m_max"][i]
+                temp_min = daily["temperature_2m_min"][i]
+                velocity = daily["windspeed_10m_max"][i]
+                direction = daily["winddirection_10m_dominant"][i]
+                wind_direction = weatherservice.degToCompass2(direction)
+                weather_data['forecasts'][i]["condition"] = condition
+                weather_data['forecasts'][i]["condition_text"] =\
+                    weatherservice.get_condition(condition, 'text')
+                weather_data['forecasts'][i]["condition_image"] =\
+                    weatherservice.get_condition(condition, 'image')
+                weather_data['forecasts'][i]["condition_icon"] =\
+                    weatherservice.get_condition(condition, 'icon-light')
+                weather_data['forecasts'][i]["low"] =\
+                    utils.change_temperature(temp_min, self._units.temperature)
+                weather_data['forecasts'][i]["high"] =\
+                    utils.change_temperature(temp_max, self._units.temperature)
+                weather_data['forecasts'][i]["cloudiness"] = None
+                weather_data['forecasts'][i]["avehumidity"] = None
+                weather_data['forecasts'][i]["avewind"] =\
+                    weatherservice.get_wind_condition2(
+                        velocity, wind_direction[0], self._units.wind)
+                weather_data['forecasts'][i]["wind_icon"] = wind_direction[2]
+                weather_data['forecasts'][i]["qpf_allday"] = \
+                    daily["rain_sum"][i]
+                weather_data['forecasts'][i]["qpf_day"] = None
+                weather_data['forecasts'][i]["qpf_night"] = None
+                weather_data['forecasts'][i]["snow_allday"] = None
+                weather_data['forecasts'][i]["snow_day"] = \
+                    daily["snowfall_sum"][i]
+                weather_data['forecasts'][i]["snow_night"] = None
+                weather_data['forecasts'][i]["maxwind"] = None
+                weather_data['forecasts'][i]["maxhumidity"] = None
+                weather_data['forecasts'][i]['minhumidity'] = None
+            return weather_data
+
+    def get_hourly_weather(self):
+        weatherdata = []
+        url = (f"{BASE_URL}/v1/forecast?latitude={self._latitude}"
+               f"&longitude={self._longitude}&hourly=weathercode,"
+               "temperature_2m,relativehumidity_2m,apparent_temperature,"
+               "cloudcover,windspeed_10m,winddirection_10m,"
+               "precipitation_probability,visibility")
+        logging.info(url)
+        data = self._do_get(url)
         if data:
             hourly = data["hourly"]
             for i in range(0, len(hourly["time"])):
@@ -104,7 +184,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                         hourly["winddirection_10m"][i])
                 velocity = hourly["windspeed_10m"][i]
                 avewind = weatherservice.get_wind_condition2(
-                        velocity, wind_direction[0], self.units.wind)
+                        velocity, wind_direction[0], self._units.wind)
                 wdd = {
                     "datetime": datetime.datetime.strptime(
                         hourly["time"][i],
@@ -134,4 +214,4 @@ if __name__ == "__main__":
     latitude = 39.3527902
     print(longitude)
     omws = OpenMeteoWeatherService(longitude, latitude)
-    pprint.pprint(omws.get_hourly_weather())
+    pprint.pprint(omws.get_weather())
