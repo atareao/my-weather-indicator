@@ -149,7 +149,9 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             weather_data["current_conditions"]["dew_point"] = \
                 get_value_for_time(hourly, timestamp, "dewpoint_2m")
             weather_data["current_conditions"]["feels_like"] = \
-                get_value_for_time(hourly, timestamp, "apparent_temperature")
+                utils.change_temperature(get_value_for_time(
+                    hourly, timestamp, "apparent_temperature"),
+                                         self._units.temperature)
             weather_data["current_conditions"]["cloudiness"] = \
                 get_value_for_time(hourly, timestamp, "cloudcover")
             weather_data["current_conditions"]["visibility"] = \
