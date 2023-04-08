@@ -36,10 +36,21 @@ import os
 import shutil
 import geocodeapi
 import mipaddress
+import logging
+import sys
 from gi.repository import Gtk  # pyright: ignore
 from whereami import WhereAmI
 from configurator import Configuration
 from comun import _
+from basedialog import BaseDialog
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 APPDIR = comun.APPDIR
 AUTOSTART_FILE = 'my-weather-indicator-autostart.desktop'
@@ -75,31 +86,24 @@ def get_selected_value_in_combo(combo):
     return model.get_value(combo.get_active_iter(), 1)
 
 
-class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
+class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
     def __init__(self):
-        # ***************************************************************
-        Gtk.Dialog.__init__(self,
-                            'my-weather-indicator | ' + _('Preferences'),
-                            None,
-                            Gtk.DialogFlags.MODAL |
-                            Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                            (Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT,
-                             Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT))
-        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
+        title = _("Preferences")
+        BaseDialog.__init__(self, title, None, True, True)
+
+    def init_ui(self):
+        BaseDialog.init_ui(self)
         self.set_size_request(850, 410)
         self.connect('destroy', self.close_application)
         self.set_icon_from_file(comun.ICON)
-        vbox = Gtk.VBox(spacing=5)
-        vbox.set_border_width(5)
-        self.get_content_area().add(vbox)
         notebook = Gtk.Notebook.new()
-        vbox.add(notebook)
-        vbox1 = Gtk.VBox(spacing=5)
-        vbox1.set_border_width(5)
+        self.set_content(notebook)
+        vbox1 = Gtk.VBox(spacing=0)
+        vbox1.set_border_width(0)
         notebook.append_page(vbox1, Gtk.Label.new(_('Main Location')))
         frame11 = Gtk.Frame.new(_('General options'))
         vbox1.pack_start(frame11, True, True, 0)
-        table11 = Gtk.Table(rows=4, columns=3)
+        table11 = Gtk.Table(n_rows=4, n_columns=3)
         frame11.add(table11)
         self.checkbutton11 = Gtk.CheckButton.new_with_label(_('Show'))
         self.checkbutton11.connect('toggled', self.on_checkbutton11_toggled)
@@ -146,7 +150,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        xpadding=5, ypadding=5)
         frame12 = Gtk.Frame.new(_('Widget options'))
         vbox1.pack_start(frame12, True, True, 0)
-        table12 = Gtk.Table(rows=3, columns=2)
+        table12 = Gtk.Table(n_rows=3, n_columns=2)
         frame12.add(table12)
         self.checkbutton14 = Gtk.CheckButton.new_with_label(_('Show widget'))
         self.checkbutton14.connect('toggled', self.on_checkbutton14_toggled)
@@ -195,7 +199,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         notebook.append_page(vbox2, Gtk.Label.new(_('Second Location')))
         self.frame21 = Gtk.Frame.new(_('General options'))
         vbox2.pack_start(self.frame21, False, False, 0)
-        table21 = Gtk.Table(rows=4, columns=3)
+        table21 = Gtk.Table(n_rows=4, n_columns=3)
         self.frame21.add(table21)
         self.checkbutton21 = Gtk.CheckButton.new_with_label(_('Show'))
         self.checkbutton21.connect('toggled', self.on_checkbutton21_toggled)
@@ -234,7 +238,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        xpadding=5, ypadding=5)
         frame22 = Gtk.Frame.new(_('Widget options'))
         vbox2.pack_start(frame22, False, False, 0)
-        table22 = Gtk.Table(rows=3, columns=2)
+        table22 = Gtk.Table(n_rows=3, n_columns=2)
         frame22.add(table22)
         self.checkbutton24 = Gtk.CheckButton.new_with_label(_('Show widget'))
         self.checkbutton24.connect('toggled', self.on_checkbutton24_toggled)
@@ -284,7 +288,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         frame2 = Gtk.Frame()
         vbox2.pack_start(frame2, True, True, 0)
         notebook.append_page(vbox2, Gtk.Label.new(_('Units')))
-        table2 = Gtk.Table(rows=6, columns=2)
+        table2 = Gtk.Table(n_rows=6, n_columns=2)
         frame2.add(table2)
         label3 = Gtk.Label.new(_('Temperature') + ':')
         label3.set_alignment(0, 0.5)
@@ -425,7 +429,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         frame3 = Gtk.Frame()
         vbox3.pack_start(frame3, True, True, 0)
         notebook.append_page(vbox3, Gtk.Label.new(_('General options')))
-        table3 = Gtk.Table(rows=4, columns=2)
+        table3 = Gtk.Table(n_rows=4, n_columns=2)
         frame3.add(table3)
         self.checkbutton1 = Gtk.CheckButton(_('Autostart'))
         table3.attach(self.checkbutton1, 0, 2, 0, 1,
@@ -570,27 +574,22 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
 
     def search_location(self, widget):  # pyright: ignore
         cm1 = WhereAmI(self, location=self.entry11.get_text(),
-                       latitude=self.latitude, longitude=self.longitude)
+                       latitude=self._latitude, longitude=self._longitude,
+                       timezone=self._timezone)
         if cm1.run() == Gtk.ResponseType.ACCEPT:
-            lat, lon, loc = cm1.get_lat_lon_loc()
-            print(lat, lon, loc)
-            self.latitude = lat
-            self.longitude = lon
-            self.location = loc
-            if self.location is not None:
-                self.entry11.set_text(self.location)
+            self._latitude, self._longitude, self._location, self._timezone = \
+                    cm1.get_data()
+            self.entry11.set_text(self._location)
         cm1.destroy()
 
     def search_location2(self, widget):  # pyright: ignore
         cm2 = WhereAmI(self, location=self.entry21.get_text(),
-                       latitude=self.latitude2, longitude=self.longitude2)
+                       latitude=self._latitude2, longitude=self._longitude2,
+                       timezone=self._timezone2)
         if cm2.run() == Gtk.ResponseType.ACCEPT:
-            lat, lon, loc = cm2.get_lat_lon_loc()
-            self.latitude2 = lat
-            self.longitude2 = lon
-            self.location2 = loc
-            if self.location2:
-                self.entry21.set_text(self.location2)
+            self._latitude2, self._longitude2, self._location2, \
+                    self._timezone2 = cm2.get_data()
+            self.entry21.set_text(self._location2)
         cm2.destroy()
 
     def load_preferences(self):
@@ -599,11 +598,12 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         # version = configuration.get('version')
         self.checkbutton11.set_active(configuration.get('main-location'))
         self.checkbutton10.set_active(configuration.get('autolocation'))
-        self.location = configuration.get('location')
-        self.latitude = configuration.get('latitude')
-        self.longitude = configuration.get('longitude')
-        if self.location:
-            self.entry11.set_text(self.location)
+        self._location = configuration.get('location')
+        self._latitude = configuration.get('latitude')
+        self._longitude = configuration.get('longitude')
+        self._timezone = configuration.get("timezone")
+        if self._location:
+            self.entry11.set_text(self._location)
         self.checkbutton12.set_active(configuration.get('show-temperature'))
         self.checkbutton13.set_active(configuration.get('show-notifications'))
         self.checkbutton14.set_active(configuration.get('widget1'))
@@ -619,11 +619,12 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         self.comboboxskin1.set_sensitive(self.checkbutton14.get_active())
         #
         self.checkbutton21.set_active(configuration.get('second-location'))
-        self.location2 = configuration.get('location2')
-        self.latitude2 = configuration.get('latitude2')
-        self.longitude2 = configuration.get('longitude2')
-        if self.location2:
-            self.entry21.set_text(self.location2)
+        self._location2 = configuration.get('location2')
+        self._latitude2 = configuration.get('latitude2')
+        self._longitude2 = configuration.get('longitude2')
+        self._timezone2 = configuration.get("timezone2")
+        if self._location2:
+            self.entry21.set_text(self._location2)
         self.checkbutton22.set_active(configuration.get('show-temperature2'))
         self.checkbutton23.set_active(configuration.get('show-notifications2'))
         self.checkbutton24.set_active(configuration.get('widget2'))
@@ -653,32 +654,37 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
     def save_preferences(self):
         configuration = Configuration()
         if self.checkbutton11.get_active() and\
-                (len(self.entry11.get_text()) == 0 or self.latitude is None or
-                 self.latitude == 0 or self.longitude is None or
-                 self.longitude == 0):
-            self.latitude, self.longitude = mipaddress.get_current_location()
-            ans = geocodeapi.get_inv_direction(self.latitude, self.longitude)
-            if ans is not None and 'locality' in ans.keys():
-                self.location = ans['locality']
+                (not self.entry11.get_text() or self._latitude is None or
+                 self._latitude == 0 or self._longitude is None or
+                 self._longitude == 0 or not self._timezone):
+            data = geocodeapi.get_latitude_longitude_city()
+            if data:
+                self._location = data["city"]
+                self._latitude = data["lat"]
+                self._longitude = data["lon"]
+                self._timezone = data["timezone"]
         if self.checkbutton21.get_active() and\
-                (len(self.entry21.get_text()) == 0 or
-                 self.latitude2 is None or self.latitude2 == 0 or
-                 self.longitude2 is None or self.longitude2 == 0):
-            self.latitude2, self.longitude2 = mipaddress.get_current_location()
-            ans = geocodeapi.get_inv_direction(self.latitude2, self.longitude2)
-            if ans is not None and 'locality' in ans.keys():
-                self.location2 = ans['locality']
-        if len(self.entry11.get_text()) > 0:
-            self.location = self.entry11.get_text()
-        if len(self.entry21.get_text()) > 0:
-            self.location2 = self.entry21.get_text()
+                (not self.entry21.get_text() or self._latitude2 is None or
+                 self._latitude2 == 0 or self._longitude2 is None or
+                 self._longitude2 == 0 or not self._timezone2):
+            data = geocodeapi.get_latitude_longitude_city()
+            if data:
+                self._location2 = data["city"]
+                self._latitude2 = data["lat"]
+                self._longitude2 = data["lon"]
+                self._timezone2 = data["timezone"]
+        if self.entry11.get_text():
+            self._location = self.entry11.get_text()
+        if self.entry21.get_text():
+            self._location2 = self.entry21.get_text()
         configuration.set('first-time', False)
         configuration.set('version', comun.VERSION)
         configuration.set('main-location', self.checkbutton11.get_active())
         configuration.set('autolocation', self.checkbutton10.get_active())
-        configuration.set('location', self.location)
-        configuration.set('latitude', self.latitude)
-        configuration.set('longitude', self.longitude)
+        configuration.set('location', self._location)
+        configuration.set('latitude', self._latitude)
+        configuration.set('longitude', self._longitude)
+        configuration.set('timezone', self._timezone)
         configuration.set('show-temperature', self.checkbutton12.get_active())
         configuration.set('show-notifications',
                           self.checkbutton13.get_active())
@@ -693,9 +699,10 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                               get_selected_value_in_combo(self.comboboxskin1))
         #
         configuration.set('second-location', self.checkbutton21.get_active())
-        configuration.set('location2', self.location2)
-        configuration.set('latitude2', self.latitude2)
-        configuration.set('longitude2', self.longitude2)
+        configuration.set('location2', self._location2)
+        configuration.set('latitude2', self._latitude2)
+        configuration.set('longitude2', self._longitude2)
+        configuration.set('timezone2', self._timezone)
         configuration.set('show-temperature2', self.checkbutton22.get_active())
         configuration.set('show-notifications2',
                           self.checkbutton23.get_active())

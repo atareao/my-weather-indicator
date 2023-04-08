@@ -26,6 +26,8 @@ import requests
 import time
 import utils
 import weatherservice
+import os
+import sys
 
 BASE_URL = "https://api.open-meteo.com"
 
@@ -60,6 +62,14 @@ OMCONDITION = {
     99: "thunderstorm with heavy hail"
 }
 
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
 
 def get_value_for_time(hourly, timestamp, key):
     for i, value in enumerate(hourly["time"]):
@@ -70,8 +80,9 @@ def get_value_for_time(hourly, timestamp, key):
 
 class OpenMeteoWeatherService(weatherservice.WeatherService):
 
-    def __init__(self, longitude, latitude, units=weatherservice.Units()):
-        super().__init__(longitude, latitude, units)
+    def __init__(self, longitude, latitude, location, timezone,
+                 units=weatherservice.Units()):
+        super().__init__(longitude, latitude, location, timezone, units)
 
     def _do_get(self, url):
         try:
@@ -89,7 +100,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             raise Exception(msg)
         except Exception as exception:
             print(exception)
-            logging.error(exception)
+            logger.error(exception)
         return None
 
     def get_weather(self):
@@ -107,7 +118,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                "&hourly=relativehumidity_2m,apparent_temperature,"
                "pressure_msl,dewpoint_2m,cloudcover,visibility,uv_index")
         print(url)
-        logging.info(url)
+        logger.info(url)
         data = self._do_get(url)
         if data:
             current_weather = data["current_weather"]
@@ -206,7 +217,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                "temperature_2m,relativehumidity_2m,apparent_temperature,"
                "cloudcover,windspeed_10m,winddirection_10m,"
                "precipitation_probability,visibility")
-        logging.info(url)
+        logger.info(url)
         data = self._do_get(url)
         if data:
             hourly = data["hourly"]

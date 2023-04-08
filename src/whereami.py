@@ -40,28 +40,45 @@ from asyncf import async_function
 import json
 import comun
 import geocodeapi
-from comun import _, logger
+from comun import _
 from basedialog import BaseDialog
+import logging
+import sys
+import os
 
-
-def match_anywhere(completion, entrystr, iter, data):  # pyright: ignore
-    modelstr = completion.get_model()[iter][2]['city'].lower()
-    print(entrystr, modelstr)
-    return modelstr.startswith(entrystr.lower())
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 class WhereAmI(BaseDialog):
-    def __init__(self, parent=None, location=None, latitude=39.36667,
-                 longitude=-0.41667):
-        self._latitude = latitude
-        self._longitude = longitude
-        self._location = location
+    def __init__(self, parent=None, location="Silla", latitude=39.36667,
+                 longitude=-0.41667, timezone="Europe/Madrid"):
         BaseDialog.__init__(self, 'my-weather-indicator | ' + _('Where Am I'),
                             parent)
+        self.set_location(location)
+        self.set_timezone(timezone)
+        self.set_position(latitude, longitude)
+
+        self.set_wait_cursor()
+        if latitude and longitude and (location is None or location == ""):
+            self.do_search_location(latitude, longitude)
+        else:
+            self.do_center()
+
+        logger.info(f"location: {self._location}, latitude: {self._latitude}"
+                    ", longitude={self._longitude}")
+        self.set_normal_cursor()
 
     def init_ui(self):
         BaseDialog.init_ui(self)
         #
+        self.grid = Gtk.Grid()
+        self.set_content(self.grid)
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 5)
         self.grid.attach(vbox, 0, 0, 1, 1)
 
@@ -105,8 +122,8 @@ class WhereAmI(BaseDialog):
         scrolledwindow0.set_shadow_type(Gtk.ShadowType.ETCHED_OUT)
         scrolledwindow0.set_size_request(450, 100)
         frame.add(scrolledwindow0)
-        # city, county, country, latitude, longitude
-        store = Gtk.ListStore(str, str, str, float, float)
+        # city, county, country, latitude, longitude, timezone
+        store = Gtk.ListStore(str, str, str, float, float, str)
         store.set_sort_column_id(2, Gtk.SortType.ASCENDING)
         self.treeview = Gtk.TreeView(model=store)
         self.treeview.set_reorderable(True)
@@ -145,22 +162,8 @@ class WhereAmI(BaseDialog):
         self.viewer.load_uri('file://' + comun.HTML_WAI)
         self.set_focus(self.viewer)
 
-        if self._latitude and self._longitude:
-            if self._location:
-                self.entry1.set_text(self.location)
-            else:
-                self.do_search_location(self._latitude, self._longitude)
-        else:
-            self.search_location2()
-
-        self.set_wait_cursor()
-        self.search_string = ''
-        print('============================')
-        print(self._location, self._latitude, self._longitude)
-        print('============================')
-
     def on_expander_expanded(self, widget, selected):
-        print(widget, selected)
+        logger.info(f"{widget}, {selected}")
         if not self.expander.get_expanded():
             self.resize(450, 350)
 
@@ -175,15 +178,14 @@ class WhereAmI(BaseDialog):
             self.do_search_location(latitude, longitude)
 
     def ontreeviewcursorchanged(self, treeview):
+        logger.info("ontreeviewcursorchanged")
         selection = treeview.get_selection()
         if selection is not None:
             model, aiter = treeview.get_selection().get_selected()
             if model is not None and aiter is not None:
-                self.entry1.set_text(model[aiter][0])
-                self.locality = model[aiter][0]
-                self.lat = model[aiter][3]
-                self.lng = model[aiter][4]
-                # self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
+                self.set_location(model[aiter][0])
+                self.set_position(model[aiter][3], model[aiter][4])
+                self.set_timezone(model[aiter][5])
 
     def on_icon_press(self, widget, icon_pos, event):  # pyright: ignore
         if icon_pos == Gtk.EntryIconPosition.PRIMARY:
@@ -201,13 +203,22 @@ class WhereAmI(BaseDialog):
 
     def do_center(self):
         def on_center_done(result, error):  # pyright: ignore
-            print(result)
+            logger.info(result)
             if result is not None:
-                latitude, longitude, city = result
-                self._location = city
-                self.entry1.set_text(city)
-                self.set_position(latitude, longitude)
-            self.set_normal_cursor()
+                model = self.treeview.get_model()
+                model.clear()
+                self.expander.set_expanded(True)
+                self.entry1.set_text("")
+                model.append([result['city'], result['regionName'],
+                              result['country'], result['lat'],
+                              result['lon'], result["timezone"]])
+                self.set_location(result["city"])
+                self.set_position(result["lat"], result["lon"])
+                self.set_timezone(result["timezone"])
+
+                if len(model) > 0:
+                    self.treeview.set_cursor(0)
+                self.set_normal_cursor()
 
         @async_function(on_done=on_center_done)
         def do_center_in_thread():
@@ -224,25 +235,25 @@ class WhereAmI(BaseDialog):
         self.expander.set_expanded(True)
         self.entry1.set_text("")
         for direction in geocodeapi.get_directions(search_string):
+            logger.debug(direction)
             if 'name' in direction.keys() and direction['name']:
                 model.append([direction['name'], direction['admin1'],
                               direction['country'], direction['latitude'],
-                              direction['longitude']])
+                              direction['longitude'], direction["timezone"]])
                 if self.entry1.get_text() == "":
-                    self.entry1.set_text(direction["name"])
+                    self.set_location(direction["name"])
                     self.set_position(direction["latitude"],
                                       direction["longitude"])
+                    self.set_timezone(direction["timezone"])
 
         if len(model) > 0:
             self.treeview.set_cursor(0)
-            logger.debug(model[1])
-        self.set_normal_cursor()
 
-    def search_location2(self):
-        self.do_center()
+        self.set_normal_cursor()
 
     def do_search_location(self, latitude, longitude):
         def on_search_location_done(result, error):  # pyright: ignore
+            logger.debug("on_search_location_done")
             logger.debug(result)
             if result is not None:
                 if result['city'] is None:
@@ -252,8 +263,7 @@ class WhereAmI(BaseDialog):
                         city = result['country']
                 else:
                     city = result['city']
-                self.locality = city
-                self.entry1.set_text(city)
+                self.set_location(city)
                 self.set_position(latitude, longitude)
                 self.web_send(
                         f"setPosition({self._latitude}, {self._longitude});")
@@ -261,19 +271,25 @@ class WhereAmI(BaseDialog):
 
         @async_function(on_done=on_search_location_done)
         def do_search_location_in_thread(latitude, longitude):
-            print(5)
             return geocodeapi.get_inv_direction(latitude, longitude)
-        print(3)
         self.set_wait_cursor()
-        print(4)
         do_search_location_in_thread(latitude, longitude)
 
     def on_close_application(self, widget):  # pyright: ignore
         self.set_normal_cursor()
         self.hide()
 
-    def get_lat_lon_loc(self):
-        return self._latitude, self._longitude, self._location
+    def get_data(self):
+        return self._latitude, self._longitude, self._location, self._timezone
+
+    def set_timezone(self, timezone):
+        logger.debug(f"Set timezone: {timezone}")
+        self._timezone = timezone
+
+    def set_location(self, location):
+        logger.debug(f"Set location: {location}")
+        self._location = location
+        self.entry1.set_text(location)
 
     def set_position(self, latitude, longitude):
         logger.debug(f"Set position: {latitude}, {longitude}")
@@ -308,7 +324,7 @@ class WhereAmI(BaseDialog):
 if __name__ == '__main__':
     cm = WhereAmI()
     if cm.run() == Gtk.ResponseType.ACCEPT:
-        print(cm.get_lat_lon_loc())
+        logger.info(cm.get_data())
     cm.hide()
     cm.destroy()
     exit(0)
