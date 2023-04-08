@@ -23,35 +23,41 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+
+import gi
+try:
+    gi.require_version('Gtk', '3.0')
+except Exception as e:
+    print(e)
+    print('Repository version required not present')
+    exit(1)
+import comun
 import os
 import shutil
-from gi.repository import Gtk
-import comun
 import geocodeapi
-import ipaddress
-import webbrowser
+import mipaddress
+from gi.repository import Gtk  # pyright: ignore
 from whereami import WhereAmI
-from wundergroundapi import UndergroundWeatherService
-from worldweatheronlineapi import WorldWeatherOnlineService
 from configurator import Configuration
 from comun import _
 
 APPDIR = comun.APPDIR
+AUTOSTART_FILE = 'my-weather-indicator-autostart.desktop'
 
 
 def get_skins():
     skins = []
     personal_dir = os.path.expanduser('~/.config/my-weather-indicator/skins')
     if os.path.exists(personal_dir):
-        for dirname, dirnames, filenames in os.walk(personal_dir):
-            for subdirname in dirnames:
-                skins.append([subdirname, os.path.join(dirname, subdirname)])
+        for dn, dns, filenames in os.walk(personal_dir):  # pyright: ignore
+            for sdn in dns:
+                skins.append([sdn, os.path.join(dn, sdn)])
     installation_dir = '/opt/extras.ubuntu.com/my-weather-indicator/share/\
 my-weather-indicator/skins'
     if os.path.exists(installation_dir):
-        for dirname, dirnames, filenames in os.walk(installation_dir):
-            for subdirname in dirnames:
-                skins.append([subdirname, os.path.join(dirname, subdirname)])
+        for dn, dns, filenames in os.walk(installation_dir):  # pyright: ignore
+            for sdn in dns:
+                skins.append([sdn, os.path.join(dn, sdn)])
     return skins
 
 
@@ -476,37 +482,13 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xpadding=5, ypadding=5)
         self.checkbutton11.set_active(True)
         self.checkbutton21.set_active(True)
-        autostart_file = 'my-weather-indicator-autostart.desktop'
-        if os.path.exists(os.path.join(
-                os.getenv('HOME'), '.config/autostart', autostart_file)):
+        if os.path.exists(
+                os.path.expanduser(f"~/.config/autostart/{AUTOSTART_FILE}")):
             self.checkbutton1.set_active(True)
         #
         self.show_all()
         #
         self.load_preferences()
-
-    def on_buttonwukey_clicked(self, widget):
-        if len(self.wukey.get_text()) > 0:
-            uws = UndergroundWeatherService(key=self.wukey.get_text())
-            if uws.test_connection():
-                self.radiobutton254.set_sensitive(True)
-            else:
-                self.radiobutton254.set_sensitive(False)
-        else:
-            self.radiobutton254.set_sensitive(False)
-
-    def on_buttonwwokey_clicked(self, widget):
-        if len(self.wwokey.get_text()) > 0:
-            wwo = WorldWeatherOnlineService(key=self.wwokey.get_text())
-            if wwo.test_connection():
-                self.radiobutton252.set_sensitive(True)
-            else:
-                self.radiobutton252.set_sensitive(False)
-        else:
-            self.radiobutton252.set_sensitive(False)
-
-    def on_image_wunderground_clicked(self, widget):
-        webbrowser.open('http://www.wunderground.com/?apiref=6563686488165a78')
 
     def set_sensitive_frame1(self, sensitive):
         self.checkbutton10.set_sensitive(sensitive)
@@ -535,13 +517,13 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
             self.checkbutton25.set_active(False)
             self.comboboxskin2.set_active(False)
 
-    def on_checkbutton10_toggled(self, widget):
+    def on_checkbutton10_toggled(self, widget):  # pyright: ignore
         self.entry11.set_sensitive(not self.checkbutton10.get_active())
         self.button10.set_sensitive(not self.checkbutton10.get_active())
         self.checkbutton12.set_sensitive(not self.checkbutton10.get_active())
         self.checkbutton13.set_sensitive(not self.checkbutton10.get_active())
 
-    def on_checkbutton11_toggled(self, widget):
+    def on_checkbutton11_toggled(self, widget):  # pyright: ignore
         self.set_sensitive_frame1(self.checkbutton11.get_active())
         if self.checkbutton11.get_active() is False:
             self.checkbutton21.set_sensitive(False)
@@ -551,14 +533,14 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         elif self.checkbutton21.get_sensitive() is False:
             self.checkbutton21.set_sensitive(True)
 
-    def on_checkbutton14_toggled(self, widget):
+    def on_checkbutton14_toggled(self, widget):  # pyright: ignore
         self.checkbutton15.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton16.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton17.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton18.set_sensitive(self.checkbutton14.get_active())
         self.comboboxskin1.set_sensitive(self.checkbutton14.get_active())
 
-    def on_checkbutton21_toggled(self, widget):
+    def on_checkbutton21_toggled(self, widget):  # pyright: ignore
         self.set_sensitive_frame2(self.checkbutton21.get_active())
         (self.checkbutton21.get_active())
         if self.checkbutton21.get_active() is False:
@@ -569,7 +551,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         elif self.checkbutton11.get_sensitive() is False:
             self.checkbutton11.set_sensitive(True)
 
-    def on_checkbutton24_toggled(self, widget):
+    def on_checkbutton24_toggled(self, widget):  # pyright: ignore
         self.checkbutton25.set_sensitive(self.checkbutton24.get_active())
         self.checkbutton26.set_sensitive(self.checkbutton24.get_active())
         self.checkbutton27.set_sensitive(self.checkbutton24.get_active())
@@ -582,11 +564,11 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
     def on_optionbutton42_toggled(self, widget):
         self.frame42.set_sensitive(widget.get_active())
 
-    def close_application(self, widget):
+    def close_application(self, widget):  # pyright: ignore
         self.ok = False
         self.destroy()
 
-    def search_location(self, widget):
+    def search_location(self, widget):  # pyright: ignore
         cm1 = WhereAmI(self, location=self.entry11.get_text(),
                        latitude=self.latitude, longitude=self.longitude)
         if cm1.run() == Gtk.ResponseType.ACCEPT:
@@ -599,7 +581,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                 self.entry11.set_text(self.location)
         cm1.destroy()
 
-    def search_location2(self, widget):
+    def search_location2(self, widget):  # pyright: ignore
         cm2 = WhereAmI(self, location=self.entry21.get_text(),
                        latitude=self.latitude2, longitude=self.longitude2)
         if cm2.run() == Gtk.ResponseType.ACCEPT:
@@ -674,7 +656,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                 (len(self.entry11.get_text()) == 0 or self.latitude is None or
                  self.latitude == 0 or self.longitude is None or
                  self.longitude == 0):
-            self.latitude, self.longitude = ipaddress.get_current_location()
+            self.latitude, self.longitude = mipaddress.get_current_location()
             ans = geocodeapi.get_inv_direction(self.latitude, self.longitude)
             if ans is not None and 'locality' in ans.keys():
                 self.location = ans['locality']
@@ -682,7 +664,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                 (len(self.entry21.get_text()) == 0 or
                  self.latitude2 is None or self.latitude2 == 0 or
                  self.longitude2 is None or self.longitude2 == 0):
-            self.latitude2, self.longitude2 = ipaddress.get_current_location()
+            self.latitude2, self.longitude2 = mipaddress.get_current_location()
             ans = geocodeapi.get_inv_direction(self.latitude2, self.longitude2)
             if ans is not None and 'locality' in ans.keys():
                 self.location2 = ans['locality']
@@ -747,9 +729,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         print('Saving...')
         configuration.save()
         #
-        filestart = os.path.join(
-            os.getenv("HOME"),
-            ".config/autostart/my-weather-indicator-autostart.desktop")
+        filestart = os.path.expanduser(f"~/.config/autostart/{AUTOSTART_FILE}")
         if self.checkbutton1.get_active():
             if not os.path.exists(os.path.dirname(filestart)):
                 os.makedirs(os.path.dirname(filestart))
