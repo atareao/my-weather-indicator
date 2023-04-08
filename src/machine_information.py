@@ -25,21 +25,33 @@
 
 import platform
 import comun
+import logging
+import sys
+import os
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def get_information():
-    information = '#####################################################\n'
-    information += ('System: %s\n') % (platform.system())
-    information += ('Machine: %s\n') % (platform.machine())
-    information += ('Node: %s\n') % (platform.node())
-    information += ('Release: %s\n') % (platform.release())
-    information += ('Version: %s\n') % (platform.version())
-    information += ('Platform: %s\n') % (platform.platform())
-    information += ('%s version: %s\n') % (comun.APPNAME, comun.VERSION)
-    information += '#####################################################\n'
+    information = ("\n#####################################################\n"
+                   f"System: {platform.system()}\n"
+                   f"Machine: {platform.machine()}\n"
+                   f"Node: {platform.node()}\n"
+                   f"Release: {platform.release()}\n"
+                   f"Version: {platform.version()}\n"
+                   f"Platform: {platform.platform()}\n"
+                   f"App: {comun.APPNAME}\n"
+                   f"App version: {comun.VERSION}\n"
+                   "#####################################################\n")
     return information
 
 
 if __name__ == '__main__':
-    print(get_information())
+    logger.info(get_information())
     exit(0)

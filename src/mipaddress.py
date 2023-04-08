@@ -30,7 +30,17 @@ import json
 from functools import partial
 from collections import namedtuple
 from geocodeapi import get_inv_direction
-from comun import logger
+import logging
+import os
+import sys
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def ip_address(data):
@@ -71,13 +81,6 @@ def convert(dbus_obj):
         return dbus_obj
 
 
-def get_current_location():
-    latitude, longitude = get_current_location_option1()
-    if latitude == 0 and longitude == 0:
-        latitude, longitude = get_current_location_option2()
-    return latitude, longitude
-
-
 def get_ip():
     url = 'http://whatismyip.org'
     ans = comun.read_from_url(url)
@@ -86,7 +89,7 @@ def get_ip():
     return None
 
 
-def get_current_location_option2():
+def get_current_location():
     try:
         url = 'http://ip-api.com/json'
         if (response := comun.read_from_url(url)) and \
@@ -104,10 +107,4 @@ def get_address_from_ip():
 
 
 if __name__ == "__main__":
-    # import requests
-    # r = requests.get("https://stackoverflow.com")
-
-    logger.info(get_current_location_option2())
-    logger.info('======')
     logger.info(get_current_location())
-    # logger.info(get_address_from_ip())

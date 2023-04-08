@@ -30,8 +30,8 @@ try:
 except ValueError as e:
     print(e)
     exit(1)
-from gi.repository import Gtk
-from gi.repository import GdkPixbuf
+from gi.repository import Gtk  # pyright: ignore
+from gi.repository import GdkPixbuf  # pyright: ignore
 import os
 import comun
 from moon import Moon

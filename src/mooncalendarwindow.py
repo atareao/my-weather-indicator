@@ -38,12 +38,22 @@ import os
 import datetime
 import calendar
 import comun
-from comun import _, logger
+from comun import _
 from basedialog import BaseDialog
 from moondaywidget import MoonDayWidget
+import logging
+import sys
 
 DAY_OF_WEEK = [_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
                _('Friday'), _('Saturday'), _('Sunday')]
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def first_day_of_month(adatetime):
@@ -122,7 +132,7 @@ class CalendarWindow(BaseDialog):
                                   Gtk.PolicyType.AUTOMATIC)
         scrolledwindow.set_size_request(850, 560)
 
-        self.grid.attach(scrolledwindow, 1, 1, 1, 1)
+        self.set_content(scrolledwindow)
 
         table1 = Gtk.Grid()
         table1.set_border_width(2)
@@ -255,6 +265,9 @@ class CalendarWindow(BaseDialog):
         GLib.idle_add(self.set_date)
 
     def on_button4_clicked(self, widget):  # pyright: ignore
+        logger.info("on_button4_clicked")
+        if self.adate is None:
+            return
         today = datetime.datetime.today().date()
         self.adate = self.adate.replace(month=today.month, year=today.year)
         GLib.idle_add(self.set_date)
