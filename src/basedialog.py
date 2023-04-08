@@ -30,7 +30,7 @@ try:
 except ValueError as e:
     print(e)
     exit(1)
-from gi.repository import Gdk, Gtk
+from gi.repository import Gdk, Gtk  # type: ignore
 import comun
 
 
