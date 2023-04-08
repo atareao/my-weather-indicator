@@ -7,10 +7,10 @@ Author: Sean B. Palmer, inamidst.com
 Cf. http://en.wikipedia.org/wiki/Lunar_phase#Lunar_phase_calculation
 '''
 
-from comun import _
 import math
 import decimal
 import datetime
+from comun import _, logger
 
 dec = decimal.Decimal
 
@@ -73,6 +73,6 @@ if __name__ == '__main__':
         moon = Moon(datetime.datetime(y, m, i))
         phasename = moon.phase()
         roundedpos = round(float(moon.position()), 3)
-        print('dia %s -> %s (%s): %s' % (i, phasename,
-                                         roundedpos, moon.icon()))
+        icon = moon.icon()
+        logger.info(f"dia {i} -> {phasename} ({roudedpos}): {icon}")
     exit(0)
