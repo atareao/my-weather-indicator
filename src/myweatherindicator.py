@@ -23,7 +23,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
 import gi
 try:
     gi.require_version('GLib', '2.0')
@@ -37,32 +36,34 @@ except Exception as e:
     print(e)
     print('Repository version required not present')
     exit(1)
-from gi.repository import GLib
-from gi.repository import AppIndicator3 as appindicator
-from gi.repository import Gtk
-from gi.repository import GdkPixbuf
-from gi.repository import Notify
-from gi.repository import GObject
-import time
-import preferences
-import dbus
-import webbrowser
-from datetime import datetime
-from forecastw import FC
-from openweathermap import ForecastMap
-from configurator import Configuration
-import ipaddress
-import geocodeapi
+from gi.repository import GLib  # pyright: ignore
+from gi.repository import AppIndicator3 as appindicator  # pyright: ignore
+from gi.repository import Gtk  # pyright: ignore
+from gi.repository import GdkPixbuf  # pyright: ignore
+from gi.repository import Notify  # pyright: ignore
+from gi.repository import GObject  # pyright: ignore
+
 import comun
+import fcntl
+import geocodeapi
+import machine_information
+import mipaddress
+import os
+import preferences
+import time
+import webbrowser
 import weatherservice
 import wopenmeteoapi
-import machine_information
-from graph import Graph
-from comun import _
+from comun import _, logger
 from comun import internet_on
+from comun import CSS_FILE
+from configurator import Configuration
+from datetime import datetime
+from forecastw import FC
+from graph import Graph
+from openweathermap import ForecastMap
 from weatherwidget import WeatherWidget
 from mooncalendarwindow import CalendarWindow
-from comun import CSS_FILE
 from utils import load_css
 
 INDICATORS = 2
@@ -71,19 +72,27 @@ TIME_TO_CHECK = 15
 
 class MWI(GObject.Object):
     __gsignals__ = {
-        'internet-out': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
-        'internet-in': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
-        'update-weather': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
-        'update-widgets': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
+        'internet-out': (GObject.SignalFlags.RUN_FIRST,
+                         GObject.TYPE_NONE, ()),
+        'internet-in': (GObject.SignalFlags.RUN_FIRST,
+                        GObject.TYPE_NONE, ()),
+        'update-weather': (GObject.SignalFlags.RUN_FIRST,
+                           GObject.TYPE_NONE, ()),
+        'update-widgets': (GObject.SignalFlags.RUN_FIRST,
+                           GObject.TYPE_NONE, ()),
     }
 
     def __init__(self):
         GObject.Object.__init__(self)
-        if dbus.SessionBus().request_name('es.atareao.MyWeatherIndicator') !=\
-                dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
-            print("application already running")
-            exit(0)
-        #
+        lock_file_pointer = os.open(
+                "/tmp/instance_my_weather_indicator.lock",
+                os.O_WRONLY | os.O_CREAT)
+        try:
+            fcntl.lockf(lock_file_pointer, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except IOError as exception:
+            logger.error(exception)
+            logger.info("Application already running")
+            exit(1)
         self.weather_updater = 0
         self.widgets_updater = 0
         self.internet_updater = 0
@@ -131,7 +140,7 @@ class MWI(GObject.Object):
         return update
 
     def update_weather(self):
-        print('***** refreshing weather *****')
+        logger.info('***** refreshing weather *****')
         for i in range(INDICATORS):
             if self.preferences[i]['show']:
                 self.update_menu(i)
@@ -147,17 +156,21 @@ class MWI(GObject.Object):
         #
         homepage_item = Gtk.MenuItem(label=_(
             'Homepage'))
-        homepage_item.connect('activate',
-                              lambda x: webbrowser.open('http://www.atareao.es\
-/apps/my-weather-indicator-para-ubuntu/'))
+        homepage_item.connect(
+            'activate',
+            lambda x: webbrowser.open(  # pyright: ignore
+                'http://www.atareao.es/apps/my-weather-indicator-para-ubuntu/'
+                ))
         homepage_item.show()
         help_menu.append(homepage_item)
         #
         help_item = Gtk.MenuItem(label=_(
             'Get help online...'))
-        help_item.connect('activate',
-                          lambda x: webbrowser.open('http://www.atareao.es\
-/apps/my-weather-indicator-para-ubuntu/'))
+        help_item.connect(
+            'activate',
+            lambda x: webbrowser.open(  # pyright: ignore
+                'http://www.atareao.es/apps/my-weather-indicator-para-ubuntu/'
+                ))
         help_item.show()
         help_menu.append(help_item)
         #
@@ -165,15 +178,18 @@ class MWI(GObject.Object):
             'Translate this application...'))
         translate_item.connect(
             'activate',
-            lambda x: webbrowser.open('http://www.atareao.es/apps/\
+            lambda x: webbrowser.open(  # pyright: ignore
+                'http://www.atareao.es/apps/\
 my-weather-indicator-para-ubuntu/'))
         translate_item.show()
         help_menu.append(translate_item)
         #
         bug_item = Gtk.MenuItem(label=_(
             'Report a bug...'))
-        bug_item.connect('activate',
-                         lambda x: webbrowser.open('https://github.com/atareao\
+        bug_item.connect(
+            'activate',
+            lambda x: webbrowser.open(  # pyright: ignore
+                'https://github.com/atareao\
 /my-weather-indicator/issues'))
         bug_item.show()
         help_menu.append(bug_item)
@@ -186,16 +202,17 @@ my-weather-indicator-para-ubuntu/'))
             'Follow me in Twitter'))
         twitter_item.connect(
             'activate',
-            lambda x: webbrowser.open('https://twitter.com/atareao'))
+            lambda x: webbrowser.open(  # pyright: ignore
+                'https://twitter.com/atareao'))
         twitter_item.show()
         help_menu.append(twitter_item)
         #
         googleplus_item = Gtk.MenuItem(label=_(
             'Follow me in Google+'))
-        googleplus_item.connect('activate',
-                                lambda x: webbrowser.open(
-                                    'https://plus.google.com/\
-118214486317320563625/posts'))
+        googleplus_item.connect(
+            'activate',
+            lambda x: webbrowser.open(  # pyright: ignore
+                'https://plus.google.com/118214486317320563625/posts'))
         googleplus_item.show()
         help_menu.append(googleplus_item)
         #
@@ -223,7 +240,7 @@ my-weather-indicator-para-ubuntu/'))
             if internet_on():
                 configuration = Configuration()
                 configuration.reset()
-                latitude, longitude = ipaddress.get_current_location()
+                latitude, longitude = mipaddress.get_current_location()
                 city = geocodeapi.get_inv_direction(
                     latitude, longitude)['city']
                 if city is None:
@@ -310,7 +327,6 @@ my-weather-indicator-para-ubuntu/'))
                 self.widgets[i].hide()
                 self.widgets[i].destroy()
                 self.widgets[i] = None
-        print(1)
         self.update_weather()
         self.start_looking_for_internet()
 
@@ -351,19 +367,19 @@ my-weather-indicator-para-ubuntu/'))
             self.internet_updater = 0
 
     def looking_for_internet(self):
-        print('*** Looking For Internet ***')
+        logger.info('*** Looking For Internet ***')
         if internet_on():
-            print('*** Internet Found ***')
+            logger.info('*** Internet Found ***')
             self.stop_looking_for_internet()
             self.start_weather_updater()
             self.start_widgets_updater()
             return False
-        print('*** Internet Not Found ***')
+        logger.info('*** Internet Not Found ***')
         self.stop_weather_updater()
         self.stop_widgets_updater()
         return True
 
-    def on_pinit(self, widget, data, index):
+    def on_pinit(self, widget, data, index):  # pyright: ignore
         utcnow = datetime.utcnow()
         self.widgets[index].is_above = not self.widgets[index].is_above
         weather = self.widgets[index].weather_data
@@ -570,7 +586,8 @@ my-weather-indicator-para-ubuntu/'))
 
     def update_menu(self, index):
         if not internet_on():
-            print('--- Not internet connection ---')
+            logger.info('--- Not internet connection ---')
+            logger.error('--- Not internet connection ---')
             if self.icon_light:
                 icon = os.path.join(
                     comun.ICONDIR,
@@ -592,28 +609,28 @@ my-weather-indicator-para-ubuntu/'))
                 image)
             self.notifications[index].show()
             return
-        print('--- Updating data in location %s ---' % (index))
+        logger.info('--- Updating data in location %s ---' % (index))
         if self.preferences[index]['autolocation']:
-            lat, lon = ipaddress.get_current_location()
-            location = geocodeapi.get_inv_direction(lat, lon)['city']
-            if location is None:
-                location = ''
-            print(lat, lon, location)
+            lat, lon = mipaddress.get_current_location()
+            loc = geocodeapi.get_inv_direction(lat, lon)['city']
+            if loc is None:
+                loc = ''
+            logger.info(f"latitude={lat}, longitude={lon}, location={loc}")
             if self.preferences[index]['latitude'] != lat and\
                     self.preferences[index]['longitude'] != lon:
                 self.preferences[index]['latitude'] = lat
                 self.preferences[index]['longitude'] = lon
-                self.preferences[index]['location'] = location
+                self.preferences[index]['location'] = loc
                 self.weatherservices[index] = \
                     wopenmeteoapi.OpenMeteoWeatherService(
                         longitude=self.preferences[index]['longitude'],
                         latitude=self.preferences[index]['latitude'],
                         units=self.units)
                 self.menus[index]['evolution'].show()
-        print('****** Updating weather')
+        logger.info('****** Updating weather')
         weather = self.weatherservices[index].get_weather()
-        print('****** Updated weather')
-        print(self.weathers[index])
+        logger.info('****** Updated weather')
+        logger.info(self.weathers[index])
         if weather is None or (weather['ok'] is False and (
                 self.weathers[index] is not None and
                 self.weathers[index]['ok'] is True)):
@@ -744,17 +761,20 @@ my-weather-indicator-para-ubuntu/'))
                 image = os.path.join(
                     comun.IMAGESDIR,
                     self.current_conditions[index]['condition_image'])
-                self.notifications[index].update(
-                    'My-Weather-Indicator',
-                    msg,
-                    image)
-                self.notifications[index].show()
+                try:
+                    self.notifications[index].update(
+                        'My-Weather-Indicator',
+                        msg,
+                        image)
+                    self.notifications[index].show()
+                except Exception as exception:
+                    logger.error(exception)
             while Gtk.events_pending():
                 Gtk.main_iteration()
-        print('--- End of updating data in location %s ---' % (index))
+        logger.info('--- End of updating data in location %s ---' % (index))
         self.last_update_time = time.time()
 
-    def on_moon_clicked(self, widget):
+    def on_moon_clicked(self, widget):  # pyright: ignore
         p = CalendarWindow()
         p.show_all()
 
@@ -767,13 +787,13 @@ my-weather-indicator-para-ubuntu/'))
             self.menus[i]['moon_calendar'].set_sensitive(ison)
             self.menus[i]['update'].set_sensitive(ison)
 
-    def menu_forecast_map_response(self, widget, index):
+    def menu_forecast_map_response(self, widget, index):  # pyright: ignore
         self.menu_offon(False)
         ForecastMap(self.preferences[index]['latitude'],
                     self.preferences[index]['longitude'])
         self.menu_offon(True)
 
-    def menu_evolution_response(self, widget, index):
+    def menu_evolution_response(self, widget, index):  # pyright: ignore
         configuration = Configuration()
         temperature_unit = configuration.get('temperature')
         self.menu_offon(False)
@@ -795,13 +815,13 @@ my-weather-indicator-para-ubuntu/'))
         graph.run()
         self.menu_offon(True)
 
-    def menu_forecast_response(self, widget, index):
+    def menu_forecast_response(self, widget, index):  # pyright: ignore
         self.menu_offon(False)
         self.preferences[index]['location']
         FC(self.preferences[index]['location'], self.ws, self.weathers[index])
         self.menu_offon(True)
 
-    def menu_set_preferences_response(self, widget):
+    def menu_set_preferences_response(self, widget):  # pyright: ignore
         self.menu_offon(False)
         cm = preferences.CM()
         if cm.run() == Gtk.ResponseType.ACCEPT:
@@ -813,11 +833,11 @@ my-weather-indicator-para-ubuntu/'))
         cm.destroy()
         self.menu_offon(True)
 
-    def menu_refresh_weather_response(self, widget, index):
+    def menu_refresh_weather_response(self, widget, index):  # pyright: ignore
         if self.last_update_time + 600 < time.time():
             self.start_weather_updater()
 
-    def menu_exit_response(self, widget):
+    def menu_exit_response(self, widget):  # pyright: ignore
         exit(0)
 
     def menu_about_response(self, widget):
@@ -896,9 +916,9 @@ whochismo <https://launchpad.net/~whochismo>\n')
 
 
 def main():
-    print(machine_information.get_information())
-    print('My-Weather-Indicator version: %s' % comun.VERSION)
-    print('#####################################################')
+    logger.info(machine_information.get_information())
+    logger.info('My-Weather-Indicator version: %s' % comun.VERSION)
+    logger.info('#####################################################')
     load_css(CSS_FILE)
     Notify.init("my-weather-indicator")
     MWI()
