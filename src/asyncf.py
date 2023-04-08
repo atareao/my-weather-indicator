@@ -29,7 +29,7 @@ try:
 except Exception as e:
     print(e)
     exit(1)
-from gi.repository import GLib
+from gi.repository import GLib  # type: ignore
 import threading
 import traceback
 
@@ -44,8 +44,8 @@ def _async_call(f, args, kwargs, on_done):
         try:
             result = f(*args, **kwargs)
         except Exception as e:
-            e.traceback = traceback.format_exc()
-            error = 'Unhandled exception in asyn call:\n{}'.format(e.traceback)
+            traces = traceback.format_exc()
+            error = f"Unhandled exception in asyn call: {e}\n{traces}"
         GLib.idle_add(lambda: on_done(result, error))
 
     data = f, args, kwargs, on_done
