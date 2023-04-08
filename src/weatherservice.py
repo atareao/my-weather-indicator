@@ -24,7 +24,6 @@
 # SOFTWARE.
 
 import utils as cf
-import sys
 from sun import Sun
 from moon import Moon
 from datetime import datetime
@@ -1703,9 +1702,7 @@ def change_temperature2(valor, a):
     elif a == 'K':
         valor = 5.0 / 9.0 * (valor - 32.0) + 273.15
         return '{0} {1}'.format(cf.redondea_digits(valor), a)
-    if sys.version_info[0] == 3:
-        return '{0} {1:c}{2}'.format(cf.redondea_digits(valor), 176, a)
-    return str(cf.redondea_digits(valor)) + chr(176)
+    return '{0} {1:c}{2}'.format(cf.redondea_digits(valor), 176, a)
 
 
 def get_wind_chill(temperature, wind_velocity):
@@ -1740,7 +1737,6 @@ def get_wind_condition(wind_velocity, wind_direction, wind_units):
     else:
         return _('from') + ' ' + wind_direction + ' ' + _(
             'at') + ' ' + wind_velocity
-    return _('n/a')
 
 
 def get_wind_condition2(wind_velocity, wind_direction, wind_units):
@@ -1944,7 +1940,6 @@ class WeatherService(object):
         self._longitude = longitude
         self._latitude = latitude
         self._timezone = geocodeapi.get_timezoneId(latitude, longitude)
-        print(f"Timezone: {self._timezone}")
         self._units = units
 
     def get_default_values(self):
@@ -2056,7 +2051,8 @@ class WeatherService(object):
         forecast_conditions = []
         dia = datetime.today()
         undia = timedelta(days=1)
-        for i in range(0, 7):
+        while((i := 0) < 7):
+            i += 1
             fc = {}
             fc['day_of_week'] = dia.strftime('%A').capitalize()
             fc['low'] = _('N/A')
