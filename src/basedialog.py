@@ -50,22 +50,15 @@ class BaseDialog(Gtk.Dialog):
         self.init_ui()
         self.show_all()
 
+    def set_content(self, widget):
+        self.get_content_area().add(widget)
+
     def init_ui(self):
-        vbox0 = Gtk.VBox(spacing=5)
-        vbox0.set_border_width(5)
-        self.get_content_area().add(vbox0)
-
-        frame1 = Gtk.Frame()
-        vbox0.add(frame1)
-
-        self.grid = Gtk.Grid()
-        self.grid.set_row_spacing(10)
-        self.grid.set_column_spacing(10)
-        self.grid.set_margin_bottom(10)
-        self.grid.set_margin_start(10)
-        self.grid.set_margin_end(10)
-        self.grid.set_margin_top(10)
-        frame1.add(self.grid)
+        self.headerbar = Gtk.HeaderBar.new()
+        self.headerbar.set_title(self.get_title())
+        self.headerbar.set_subtitle('-')
+        self.headerbar.set_show_close_button(True)
+        self.set_titlebar(self.headerbar)
 
     def on_realize(self, *_):
         monitor = Gdk.Display.get_primary_monitor(Gdk.Display.get_default())
