@@ -1,8 +1,14 @@
+# BAZI AÇIKLAYICI BAŞLIK.
+# Telif Hakkı (C) 2022 PAKETİN TELİF HAKKI SAHİBİ
+# Bu dosya, my-weather-indicator paketi ile aynı lisans altında dağıtılmaktadır.
+# Arda Ünlü <aarda.uunlu@gmail.com>, 2013.
+# Serkan ÖNDER <serkanonder@outlook.com>, 2022.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: my-weather-indicator 0.9.0\n"
+"Project-Id-Version: my-weather-indicator 0.9.5\n"
 "Report-Msgid-Bugs-To: \n"
+
 "POT-Creation-Date: 2023-04-09 06:16+0000\n"
 "PO-Revision-Date: 2013-06-23 22:45+0000\n"
 "Last-Translator: Arda Ünlü <aarda.uunlu@gmail.com>\n"
@@ -11,8 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 17082)\n"
-"X-Launchpad-Export-Date: 2014-07-01 19:01+0000\n"
+"X-Generator: Poedit 2.3\n"
 
 #: src/forecastw.py:71 src/myweatherindicator.py:410
 msgid "Forecast"
@@ -79,7 +84,7 @@ msgstr "Toz fırtınası"
 
 #: src/conditions.py:65
 msgid "Blustery"
-msgstr ""
+msgstr "Fırtınalı"
 
 #: src/conditions.py:74
 msgid "Chance of a thunderstorm"
@@ -202,23 +207,20 @@ msgid "Heavy freezing drizzle"
 msgstr "Ağır buzlu çiseleme"
 
 #: src/conditions.py:353 src/conditions.py:488
-#, fuzzy
 msgid "Heavy drizzle"
-msgstr "Ağır buzlu çiseleme"
+msgstr "Yoğun çiseleme"
 
 #: src/conditions.py:362 src/conditions.py:497
-#, fuzzy
 msgid "Heavy drizzle rain"
-msgstr "Ypüğun çisenti yağmur"
+msgstr "Şiddetli çiseleyen yağmur"
 
 #: src/conditions.py:371 src/conditions.py:398 src/conditions.py:506
 msgid "Heavy rain"
 msgstr "Ağır yağmur"
 
 #: src/conditions.py:380 src/conditions.py:515
-#, fuzzy
 msgid "Heavy shower rain"
-msgstr "Yoğun sağanak"
+msgstr "Şiddetli sağanak yağmur"
 
 #: src/conditions.py:389
 msgid "Heavy rain at times"
@@ -246,7 +248,7 @@ msgstr "Buzlu"
 
 #: src/conditions.py:452
 msgid "Ice pellet showers"
-msgstr "karlı"
+msgstr "Buz parçalı sağanak"
 
 #: src/conditions.py:461 src/conditions.py:470
 msgid "Ice pellets"
@@ -261,9 +263,8 @@ msgid "Isolated showers"
 msgstr "Sağanak yağmurlu"
 
 #: src/conditions.py:533
-#, fuzzy
 msgid "Isolated thundershowers"
-msgstr "Gökgürültülü sağanak yağışlı"
+msgstr "Izole gök gürültüsü"
 
 #: src/conditions.py:542
 msgid "Isolated thunderstorms"
@@ -278,14 +279,12 @@ msgid "Light freezing rain"
 msgstr "Karla karışık yağmur"
 
 #: src/conditions.py:578
-#, fuzzy
 msgid "Light drizzle rain"
-msgstr "Hafif yağmur"
+msgstr "Hafif çiseleyen yağmur"
 
 #: src/conditions.py:587
-#, fuzzy
 msgid "Light shower rain"
-msgstr "Yoğun sağanak yağmur"
+msgstr "Hafif yağmur"
 
 #: src/conditions.py:596
 msgid "Light rain shower"
@@ -381,7 +380,7 @@ msgstr "Orta veya ağır kar geçişleri"
 
 #: src/conditions.py:803
 msgid "Moderate rain at times"
-msgstr "zaman zaman yağmurlu"
+msgstr "Zaman zaman orta şiddette yağmur"
 
 #: src/conditions.py:812
 msgid "Moderate rain"
@@ -553,11 +552,11 @@ msgstr "Tipi"
 
 #: src/conditions.py:1190
 msgid "Snow grains"
-msgstr "Karlı"
+msgstr "Kar taneleri"
 
 #: src/conditions.py:1199
 msgid "Snow showers"
-msgstr "Kısa yoğun karlı"
+msgstr "Kar yağışı"
 
 #: src/conditions.py:1208
 msgid "Snow"
@@ -657,7 +656,7 @@ msgstr "Çok yoğun yağmur"
 
 #: src/conditions.py:1433
 msgid "Volcanic ash"
-msgstr "Volkanik aktivite"
+msgstr "Volkanik kül"
 
 #: src/conditions.py:1442
 msgid "Widespread dust"
@@ -745,7 +744,7 @@ msgstr "Güney - güneybatı"
 
 #: src/conditions.py:1486 src/conditions.py:1522
 msgid "Southwest by south"
-msgstr "güneybatı ile güney - güneybatı arası"
+msgstr "Güneybatıdan güneye"
 
 #: src/conditions.py:1487 src/conditions.py:1523
 msgid "Southwest"
@@ -761,7 +760,7 @@ msgstr "Batı - güneybatı"
 
 #: src/conditions.py:1490 src/conditions.py:1526
 msgid "West by south"
-msgstr "Batı ile batı - güneybatı arası"
+msgstr "Güneyden batıya"
 
 #: src/conditions.py:1491 src/conditions.py:1492 src/conditions.py:1527
 msgid "West"
@@ -769,7 +768,7 @@ msgstr "Batı"
 
 #: src/conditions.py:1493 src/conditions.py:1528
 msgid "West by north"
-msgstr "Batı ile batı - kuzeybatı arası"
+msgstr "Kuzeyden batıya"
 
 #: src/conditions.py:1494 src/conditions.py:1529
 msgid "West-northwest"
@@ -777,7 +776,7 @@ msgstr "Batı - kuzeybatı"
 
 #: src/conditions.py:1495 src/conditions.py:1530
 msgid "Northwest by west"
-msgstr "Kuzeybatı ile batı - kuzeybatı arası"
+msgstr "Batıdan kuzeybatıya"
 
 #: src/conditions.py:1496 src/conditions.py:1531
 msgid "Northwest"
@@ -785,7 +784,7 @@ msgstr "Kuzeybatı"
 
 #: src/conditions.py:1497 src/conditions.py:1532
 msgid "Northwest by north"
-msgstr "Kuzeybatı ile kuzey - kuzeybatı arası"
+msgstr "Kuzeybatıdan kuzeye"
 
 #: src/conditions.py:1498 src/conditions.py:1533
 msgid "North-northwest"
@@ -793,7 +792,7 @@ msgstr "Kuzey - kuzeybatı"
 
 #: src/conditions.py:1499 src/conditions.py:1534
 msgid "North by west"
-msgstr "Kuzey ile kuzey - kuzeybatı arası"
+msgstr "Batıdan kuzeye"
 
 #: src/conditions.py:1500
 msgid "Variable"
@@ -1147,11 +1146,11 @@ msgstr "mi"
 
 #: src/weatherservice.py:323
 msgid "km"
-msgstr "Km"
+msgstr "km"
 
 #: src/weatherservice.py:332
 msgid "in"
-msgstr "İçinde"
+msgstr "de"
 
 #: src/weatherservice.py:332
 msgid "cm"
@@ -1167,7 +1166,7 @@ msgstr "Sakin"
 
 #: src/weatherservice.py:361
 msgid "Light air"
-msgstr "Hafif"
+msgstr "Hafif hava"
 
 #: src/weatherservice.py:363
 msgid "Light breeze"
@@ -1179,7 +1178,7 @@ msgstr "Hafif esintili"
 
 #: src/weatherservice.py:367
 msgid "Moderate breeze"
-msgstr "Orta esintili"
+msgstr "Ilımlı esintili"
 
 #: src/weatherservice.py:369
 msgid "Fresh breeze"
@@ -1191,7 +1190,7 @@ msgstr "Güçlü esintili"
 
 #: src/weatherservice.py:373
 msgid "High wind"
-msgstr "Güçlü rüzgarlı"
+msgstr "Sert rüzgarlı"
 
 #: src/weatherservice.py:375
 msgid "Gale"
@@ -1213,7 +1212,7 @@ msgstr "Şiddetli fırtınalı"
 #: src/weatherservice.py:586 src/weatherservice.py:587
 #: src/weatherservice.py:623 src/weatherservice.py:624
 msgid "Down all day"
-msgstr ""
+msgstr "Tüm gün aşağı"
 
 #: src/weatherservice.py:522 src/weatherservice.py:523
 #: src/weatherservice.py:524 src/weatherservice.py:525
@@ -1223,7 +1222,7 @@ msgstr ""
 #: src/weatherservice.py:583 src/weatherservice.py:584
 #: src/weatherservice.py:626 src/weatherservice.py:627
 msgid "Up all day"
-msgstr ""
+msgstr "Tüm gün yukarı"
 
 #: src/whereami.py:61
 msgid "Where Am I"
@@ -1280,7 +1279,7 @@ msgstr "Bu uygulamanın çevirisini yapın..."
 
 #: src/myweatherindicator.py:196
 msgid "Report a bug..."
-msgstr "Bir hata bildir...."
+msgstr "Bir hata bildir..."
 
 #: src/myweatherindicator.py:209
 #, fuzzy
@@ -1301,17 +1300,19 @@ msgstr "Hakkında"
 
 #: src/myweatherindicator.py:417
 msgid "Evolution"
-msgstr ""
+msgstr "Gelişme"
+
 
 #: src/myweatherindicator.py:424
 #, fuzzy
 msgid "Moon Phase Calendar"
-msgstr "Ay'ın fazı"
+msgstr "Ay Evresi Takvimi"
+
 
 #: src/myweatherindicator.py:435
 #, fuzzy
 msgid "Update weather"
-msgstr "Şimdi güncellendi"
+msgstr "Hava durumunu güncelle"
 
 #: src/myweatherindicator.py:446 src/myweatherindicator.py:645
 msgid "Location"
@@ -1328,7 +1329,7 @@ msgstr "Hissedilen"
 
 #: src/myweatherindicator.py:471 src/myweatherindicator.py:653
 msgid "Dew Point"
-msgstr "Çiy noktası"
+msgstr "Çiy Noktası"
 
 #: src/myweatherindicator.py:476 src/myweatherindicator.py:656
 #: src/myweatherindicator.py:758
@@ -1345,11 +1346,11 @@ msgstr "Yağış"
 
 #: src/myweatherindicator.py:512 src/myweatherindicator.py:674
 msgid "Dawn"
-msgstr "Şafak vakti"
+msgstr "Şafak"
 
 #: src/myweatherindicator.py:539 src/myweatherindicator.py:681
 msgid "Dusk"
-msgstr "Alacakaranlık vakti"
+msgstr "Alacakaranlık"
 
 #: src/myweatherindicator.py:574
 msgid "Help"
@@ -1361,19 +1362,19 @@ msgstr "Çıkış"
 
 #: src/myweatherindicator.py:604
 msgid "Not Internet connection"
-msgstr ""
+msgstr "İnternet bağlantısı yok"
 
 #: src/myweatherindicator.py:752
 msgid "Conditions in"
-msgstr "Şu konumdaki hava durumu:"
+msgstr "Koşullar"
 
 #: src/myweatherindicator.py:803
 msgid "Forecast for next hours"
-msgstr ""
+msgstr "Önümüzdeki saatler için tahmin"
 
 #: src/myweatherindicator.py:804
 msgid "Weather service"
-msgstr ""
+msgstr "Hava durumu servisi"
 
 #: src/myweatherindicator.py:843
 msgid "A weather indicator"
