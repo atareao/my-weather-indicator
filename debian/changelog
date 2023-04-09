@@ -1,4 +1,17 @@
-my-weather-indicator (0.9.5-0extras20.04.11) focal; urgency=medium
+my-weather-indicator (0.10.0-0extras23.04.00) jammy; urgency=medium
+
+  * fixed bug #60, removed OpenWeatherMap as Service
+  * fixed bug #7,#20,#71,#92, removed old weather services
+  * fixed bug #8, added icon for "intensity shower rain"
+  * fixed bug #9,#11,#14,#45,#68,#88,#21 new version for locations
+  * fixed bug #81
+  * fixed bug #76,#78
+  * fixed bug #86, removed G+
+  * fixed bug #53, time not depends on internet
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:37:44 +0100
+
+my-weather-indicator (0.9.5-0extras20.04.16) jammy; urgency=medium
 
   * changed widget
   * fixed bug # 81

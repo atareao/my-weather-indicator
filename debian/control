@@ -2,7 +2,7 @@ Source: my-weather-indicator
 Section: utils
 Priority: extra
 Maintainer: Lorenzo Carbonell Cerezo <lorenzo.carbonell.cerezo@gmail.com>
-Build-Depends: debhelper (>= 13)
+Build-Depends: debhelper (>= 11)
 Standards-Version: 4.6.1
 Homepage: http://www.atareao.es
 

@@ -9,30 +9,30 @@
 
 build: build-stamp
 build-stamp:
-dh_testdir
+	dh_testdir
 
-# Add here commands to compile the package.
-# MAKE
+	# Add here commands to compile the package.
+	# MAKE
 
-touch build-stamp
+	touch build-stamp
 
 clean:
-dh_testdir
-dh_testroot
-rm -f build-stamp
-
-# Add here commands to clean up after the build process.
-# MAKE clean
-# MAKE distclean
-
-dh_clean
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+	
+	# Add here commands to clean up after the build process.
+	# MAKE clean
+	# MAKE distclean
+	
+	dh_clean
 
 install: build
-dh_testdir
-dh_testroot
-dh_prep
-dh_installdirs
-dh_install
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	dh_install
 
 	# Create languages directories
 	mkdir -p ${CURDIR}/debian/my-weather-indicator/usr/share/locale-langpack/ar/LC_MESSAGES
@@ -144,39 +144,39 @@ dh_install
 
 # Build architecture-independent files here.
 binary-indep: build install
-dh_testdir
-dh_testroot
-dh_installchangelogs
-dh_installdocs
-dh_installexamples
-# added gconf and icons
-#	dh_gconf
-dh_icons
-#	dh_installmenu
-#	dh_installdebconf
-#	dh_installlogrotate
-#	dh_installemacsen
-#	dh_installcatalogs
-#	dh_installpam
-#	dh_installmime
-#	dh_installinit
-#	dh_installcron
-#	dh_installinfo
-#	dh_installwm
-#	dh_installudev
-#	dh_lintian
-#	dh_bugfiles
-#	dh_undocumented
-dh_installman
-dh_link
-dh_compress
-dh_fixperms
-#	dh_perl
-#	dh_pysupport
-dh_installdeb
-dh_gencontrol
-dh_md5sums
-dh_builddeb
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+	# added gconf and icons
+	#	dh_gconf
+	dh_icons
+	#	dh_installmenu
+	#	dh_installdebconf
+	#	dh_installlogrotate
+	#	dh_installemacsen
+	#	dh_installcatalogs
+	#	dh_installpam
+	#	dh_installmime
+	#	dh_installinit
+	#	dh_installcron
+	#	dh_installinfo
+	#	dh_installwm
+	#	dh_installudev
+	#	dh_lintian
+	#	dh_bugfiles
+	#	dh_undocumented
+	dh_installman
+	dh_link
+	dh_compress
+	dh_fixperms
+	#	dh_perl
+	#	dh_pysupport
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
 
 # Build architecture-dependent files here.
 binary-arch: build install
