@@ -174,11 +174,11 @@ try:
         language.install()
         _ = language.gettext
     else:
+        LANG = "en"
         raise Exception("No current locale")
 except Exception as e:
     logger.error(e)
     _ = str
-    LANG = "en"
 APPNAME = _(APPNAME)
 
 
