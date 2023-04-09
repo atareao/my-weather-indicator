@@ -168,13 +168,18 @@ class WhereAmI(BaseDialog):
             self.resize(450, 350)
 
     def on_title_changed(self, widget, data):
-        logger.debug(widget)
+        logger.debug("on_title_changed")
         logger.debug(data)
         logger.debug(self.viewer.get_title())
+        self.expander.set_expanded(False)
+        model = self.treeview.get_model()
+        model.clear()
         data = json.loads(self.viewer.get_title())
-        latitude = data["latitude"] if "latitude" in data.keys() else -1
-        longitude = data["longitude"] if "longitude" in data.keys() else -1
-        if latitude > -1 and longitude > -1:
+        latitude = data["latitude"] if "latitude" in data.keys() else None
+        longitude = data["longitude"] if "longitude" in data.keys() else None
+        logger.debug(f"{latitude},{longitude}")
+        if latitude and longitude:
+            logger.debug(f"{latitude},{longitude}")
             self.do_search_location(latitude, longitude)
 
     def ontreeviewcursorchanged(self, treeview):
@@ -228,16 +233,22 @@ class WhereAmI(BaseDialog):
         do_center_in_thread()
 
     def on_button1_clicked(self, widget):  # pyright: ignore
+        logger.debug("on_button1_clicked")
         self.set_wait_cursor()
         search_string = self.entry1.get_text()
         model = self.treeview.get_model()
         model.clear()
         self.expander.set_expanded(True)
         self.entry1.set_text("")
+        logger.debug(f"Search for {search_string}")
         for direction in geocodeapi.get_directions(search_string):
             logger.debug(direction)
             if 'name' in direction.keys() and direction['name']:
-                model.append([direction['name'], direction['admin1'],
+                if "admin1" in direction.keys():
+                    admin1 = direction["admin1"]
+                else:
+                    admin1 = ""
+                model.append([direction['name'], admin1,
                               direction['country'], direction['latitude'],
                               direction['longitude'], direction["timezone"]])
                 if self.entry1.get_text() == "":
@@ -252,21 +263,15 @@ class WhereAmI(BaseDialog):
         self.set_normal_cursor()
 
     def do_search_location(self, latitude, longitude):
+        logger.debug("do_search_location")
+
         def on_search_location_done(result, error):  # pyright: ignore
             logger.debug("on_search_location_done")
             logger.debug(result)
             if result is not None:
-                if result['city'] is None:
-                    if result['state'] is not None:
-                        city = result['state']
-                    else:
-                        city = result['country']
-                else:
-                    city = result['city']
+                city = result["city"] if result["city"] else result["locality"]
                 self.set_location(city)
-                self.set_position(latitude, longitude)
-                self.web_send(
-                        f"setPosition({self._latitude}, {self._longitude});")
+                self.set_position(result["latitude"], result["longitude"])
             self.set_normal_cursor()
 
         @async_function(on_done=on_search_location_done)
