@@ -94,10 +94,6 @@ As for the second location,
 
 ![my-weather-indicator](./screenshots/screenshot_02.png)
 
-You can choose your weather service, although, only can asegurate the funtionability of OpenWeather Map.
-
-![my-weather-indicator](./screenshots/screenshot_03.png)
-
 It's possible to choose the unit for temperature, pressure, and so on.
 
 ![my-weather-indicator](./screenshots/screenshot_04.png)
@@ -109,10 +105,6 @@ You can see forecast,
 The evolution of the temperature and pressure
 
 ![my-weather-indicator](./screenshots/screenshot_07.png)
-
-A weather  map,
-
-![my-weather-indicator](./screenshots/screenshot_08.png)
 
 And a Moon calendar
 
