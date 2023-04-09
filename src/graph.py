@@ -30,15 +30,27 @@ try:
 except ValueError as e:
     print(e)
     exit(1)
-from gi.repository import Gtk
-from gi.repository import WebKit2
+from gi.repository import Gtk  # pyright: ignore
+from gi.repository import WebKit2  # pyright: ignore
 import comun
 from basedialog import BaseDialog
+import logging
+import sys
+import os
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 class Graph(BaseDialog):
-    def __init__(self, title='', subtitle='', temperature='', humidity='',
-                 cloudiness='', temperature_unit=''):
+    def __init__(self, title='', subtitle='', temperature=[], humidity=[],
+                 cloudiness=[], temperature_unit=''):
         self.title = title
         self.subtitle = subtitle
         self.humidity = humidity
@@ -49,7 +61,7 @@ class Graph(BaseDialog):
                             cancel_button=False)
         self.connect('delete-event', self.on_delete)
 
-    def on_delete(self, widget, arg):
+    def on_delete(self, widget, arg):  # pyright: ignore
         self.hide()
         self.destroy()
 
@@ -59,12 +71,12 @@ class Graph(BaseDialog):
         self.scrolledwindow1 = Gtk.ScrolledWindow()
         self.scrolledwindow1.set_policy(Gtk.PolicyType.AUTOMATIC,
                                         Gtk.PolicyType.AUTOMATIC)
-        self.grid.attach(self.scrolledwindow1, 0, 0, 1, 1)
+        self.set_content(self.scrolledwindow1)
 
         self.viewer = WebKit2.WebView()
         self.scrolledwindow1.add(self.viewer)
         self.scrolledwindow1.set_size_request(900, 600)
-        print(comun.HTML_GRAPH)
+        logger.info(comun.HTML_GRAPH)
         self.viewer.load_uri('file://' + comun.HTML_GRAPH)
         self.viewer.connect('load-changed', self.load_changed)
         self.set_focus(self.viewer)
@@ -76,7 +88,7 @@ class Graph(BaseDialog):
                 self.title, self.subtitle, self.humidity, self.cloudiness,
                 self.temperature, self.temperature_unit))
 
-    def load_changed(self, widget, load_event):
+    def load_changed(self, widget, load_event):  # pyright: ignore
         if load_event == WebKit2.LoadEvent.FINISHED:
             self.update()
 

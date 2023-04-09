@@ -23,7 +23,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
 import gi
 try:
     gi.require_version('GLib', '2.0')
@@ -37,57 +36,71 @@ except Exception as e:
     print(e)
     print('Repository version required not present')
     exit(1)
-from gi.repository import GLib
-from gi.repository import AppIndicator3 as appindicator
-from gi.repository import Gtk
-from gi.repository import GdkPixbuf
-from gi.repository import Notify
-from gi.repository import GObject
-import time
-import preferences
-import dbus
-import webbrowser
-from datetime import datetime
-from forecastw import FC
-from openweathermap import ForecastMap
-from configurator import Configuration
-import ipaddress
-import geocodeapi
+from gi.repository import GLib  # pyright: ignore
+from gi.repository import AppIndicator3 as appindicator  # pyright: ignore
+from gi.repository import Gtk  # pyright: ignore
+from gi.repository import GdkPixbuf  # pyright: ignore
+from gi.repository import Notify  # pyright: ignore
+from gi.repository import GObject  # pyright: ignore
+
 import comun
-import weatherservice
-import worldweatheronlineapi
-import wopenweathermapapi
-import wyahooapi
-import wundergroundapi
-import wyahooapi
+import fcntl
+import geocodeapi
 import machine_information
-from graph import Graph
+import os
+import preferences
+import time
+import webbrowser
+import weatherservice
+import wopenmeteoapi
 from comun import _
 from comun import internet_on
+from comun import CSS_FILE
+from configurator import Configuration
+from datetime import datetime
+from forecastw import FC
+from graph import Graph
 from weatherwidget import WeatherWidget
 from mooncalendarwindow import CalendarWindow
-from comun import CSS_FILE
 from utils import load_css
+import logging
+import sys
 
 INDICATORS = 2
 TIME_TO_CHECK = 15
 
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
 
 class MWI(GObject.Object):
     __gsignals__ = {
-        'internet-out': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
-        'internet-in': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
-        'update-weather': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
-        'update-widgets': (GObject.SIGNAL_RUN_FIRST, GObject.TYPE_NONE, ()),
+        'internet-out': (GObject.SignalFlags.RUN_FIRST,
+                         GObject.TYPE_NONE, ()),
+        'internet-in': (GObject.SignalFlags.RUN_FIRST,
+                        GObject.TYPE_NONE, ()),
+        'update-weather': (GObject.SignalFlags.RUN_FIRST,
+                           GObject.TYPE_NONE, ()),
+        'update-widgets': (GObject.SignalFlags.RUN_FIRST,
+                           GObject.TYPE_NONE, ()),
     }
 
     def __init__(self):
         GObject.Object.__init__(self)
-        if dbus.SessionBus().request_name('es.atareao.MyWeatherIndicator') !=\
-                dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
-            print("application already running")
-            exit(0)
-        #
+        lock_file_pointer = os.open(
+                "/tmp/instance_my_weather_indicator.lock",
+                os.O_WRONLY | os.O_CREAT)
+        try:
+            fcntl.lockf(lock_file_pointer, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except IOError as exception:
+            logger.error(exception)
+            logger.info("Application already running")
+            exit(1)
         self.weather_updater = 0
         self.widgets_updater = 0
         self.internet_updater = 0
@@ -135,7 +148,7 @@ class MWI(GObject.Object):
         return update
 
     def update_weather(self):
-        print('***** refreshing weather *****')
+        logger.info('***** refreshing weather *****')
         for i in range(INDICATORS):
             if self.preferences[i]['show']:
                 self.update_menu(i)
@@ -146,22 +159,27 @@ class MWI(GObject.Object):
                     appindicator.IndicatorStatus.PASSIVE)
         return True
 
+    def open_in_browser(self, widget, url):  # pyright: ignore
+        webbrowser.open(url)
+
     def get_help_menu(self):
         help_menu = Gtk.Menu()
         #
         homepage_item = Gtk.MenuItem(label=_(
             'Homepage'))
-        homepage_item.connect('activate',
-                              lambda x: webbrowser.open('http://www.atareao.es\
-/apps/my-weather-indicator-para-ubuntu/'))
+        homepage_item.connect(
+            'activate',
+            self.open_in_browser,
+            'http://www.atareao.es/apps/my-weather-indicator-para-ubuntu/')
         homepage_item.show()
         help_menu.append(homepage_item)
         #
         help_item = Gtk.MenuItem(label=_(
             'Get help online...'))
-        help_item.connect('activate',
-                          lambda x: webbrowser.open('http://www.atareao.es\
-/apps/my-weather-indicator-para-ubuntu/'))
+        help_item.connect(
+            'activate',
+            self.open_in_browser,
+            'http://www.atareao.es/apps/my-weather-indicator-para-ubuntu/')
         help_item.show()
         help_menu.append(help_item)
         #
@@ -169,16 +187,17 @@ class MWI(GObject.Object):
             'Translate this application...'))
         translate_item.connect(
             'activate',
-            lambda x: webbrowser.open('http://www.atareao.es/apps/\
-my-weather-indicator-para-ubuntu/'))
+            self.open_in_browser,
+            'http://www.atareao.es/apps/my-weather-indicator-para-ubuntu/')
         translate_item.show()
         help_menu.append(translate_item)
         #
         bug_item = Gtk.MenuItem(label=_(
             'Report a bug...'))
-        bug_item.connect('activate',
-                         lambda x: webbrowser.open('https://github.com/atareao\
-/my-weather-indicator/issues'))
+        bug_item.connect(
+            'activate',
+            self.open_in_browser,
+            'https://github.com/atareao/my-weather-indicator/issues')
         bug_item.show()
         help_menu.append(bug_item)
         #
@@ -187,29 +206,31 @@ my-weather-indicator-para-ubuntu/'))
         help_menu.append(separator)
         #
         twitter_item = Gtk.MenuItem(label=_(
-            'Follow me in Twitter'))
+            'Contact me at Twitter'))
         twitter_item.connect(
             'activate',
-            lambda x: webbrowser.open('https://twitter.com/atareao'))
+            self.open_in_browser,
+            'https://twitter.com/atareao')
         twitter_item.show()
         help_menu.append(twitter_item)
         #
-        googleplus_item = Gtk.MenuItem(label=_(
-            'Follow me in Google+'))
-        googleplus_item.connect('activate',
-                                lambda x: webbrowser.open(
-                                    'https://plus.google.com/\
-118214486317320563625/posts'))
-        googleplus_item.show()
-        help_menu.append(googleplus_item)
-        #
-        facebook_item = Gtk.MenuItem(label=_(
-            'Follow me in Facebook'))
-        facebook_item.connect(
+        mastodon_item = Gtk.MenuItem(label=_(
+            'Contact me at Mastodon'))
+        mastodon_item.connect(
             'activate',
-            lambda x: webbrowser.open('http://www.facebook.com/elatareao'))
-        facebook_item.show()
-        help_menu.append(facebook_item)
+            self.open_in_browser,
+            'https://mastodon.social/@atareao')
+        mastodon_item.show()
+        help_menu.append(mastodon_item)
+        #
+        telegram_item = Gtk.MenuItem(label=_(
+            'Contact me at Telegram'))
+        telegram_item.connect(
+            'activate',
+            self.open_in_browser,
+            'https://t.me/atareao')
+        telegram_item.show()
+        help_menu.append(telegram_item)
         #
         about_item = Gtk.MenuItem.new_with_label(_('About'))
         about_item.connect('activate', self.menu_about_response)
@@ -227,15 +248,13 @@ my-weather-indicator-para-ubuntu/'))
             if internet_on():
                 configuration = Configuration()
                 configuration.reset()
-                latitude, longitude = ipaddress.get_current_location()
-                city = geocodeapi.get_inv_direction(
-                    latitude, longitude)['city']
-                if city is None:
-                    city = ''
-                configuration.set('latitude', latitude)
-                configuration.set('longitude', longitude)
-                configuration.set('location', city)
-                configuration.save()
+                data = geocodeapi.get_latitude_longitude_city()
+                if data:
+                    configuration.set("latitude", data["lat"])
+                    configuration.set("longitude", data["lon"])
+                    configuration.set("location", data["city"])
+                    configuration.set("timezone", data["timezone"])
+                    configuration.save()
             cm = preferences.CM()
             if cm.run() == Gtk.ResponseType.ACCEPT:
                 cm.save_preferences()
@@ -249,36 +268,38 @@ my-weather-indicator-para-ubuntu/'))
         self.version = configuration.get('version')
         #
         self.preferences[0] = {}
-        self.preferences[0]['show'] = configuration.get('main-location')
-        self.preferences[0]['autolocation'] = configuration.get('autolocation')
-        self.preferences[0]['location'] = configuration.get('location')
-        self.preferences[0]['latitude'] = configuration.get('latitude')
-        self.preferences[0]['longitude'] = configuration.get('longitude')
-        self.preferences[0]['show-temperature'] =\
-            configuration.get('show-temperature')
-        self.preferences[0]['show-notifications'] =\
-            configuration.get('show-notifications')
-        self.preferences[0]['widget'] = configuration.get('widget1')
+        self.preferences[0]["show"] = configuration.get("main-location")
+        self.preferences[0]["autolocation"] = configuration.get("autolocation")
+        self.preferences[0]["location"] = configuration.get("location")
+        self.preferences[0]["latitude"] = configuration.get("latitude")
+        self.preferences[0]["longitude"] = configuration.get("longitude")
+        self.preferences[0]["timezone"] = configuration.get("timezone")
+        self.preferences[0]["show-temperature"] =\
+            configuration.get("show-temperature")
+        self.preferences[0]["show-notifications"] =\
+            configuration.get("show-notifications")
+        self.preferences[0]["widget"] = configuration.get("widget1")
         #
         self.preferences[1] = {}
-        self.preferences[1]['show'] = configuration.get('second-location')
-        self.preferences[1]['autolocation'] = False
-        self.preferences[1]['location'] = configuration.get('location2')
-        self.preferences[1]['latitude'] = configuration.get('latitude2')
-        self.preferences[1]['longitude'] = configuration.get('longitude2')
-        self.preferences[1]['show-temperature'] =\
-            configuration.get('show-temperature2')
-        self.preferences[1]['show-notifications'] =\
-            configuration.get('show-notifications2')
-        self.preferences[1]['widget'] = configuration.get('widget2')
+        self.preferences[1]["show"] = configuration.get("second-location")
+        self.preferences[1]["autolocation"] = False
+        self.preferences[1]["location"] = configuration.get("location2")
+        self.preferences[1]["latitude"] = configuration.get("latitude2")
+        self.preferences[1]["longitude"] = configuration.get("longitude2")
+        self.preferences[1]["timezone"] = configuration.get("timezone")
+        self.preferences[1]["show-temperature"] =\
+            configuration.get("show-temperature2")
+        self.preferences[1]["show-notifications"] =\
+            configuration.get("show-notifications2")
+        self.preferences[1]["widget"] = configuration.get("widget2")
         #
-        temperature = configuration.get('temperature')
-        pressure = configuration.get('pressure')
-        visibility = configuration.get('visibility')
-        wind = configuration.get('wind')
-        snow = configuration.get('snow')
-        rain = configuration.get('rain')
-        ampm = not configuration.get('24h')
+        temperature = configuration.get("temperature")
+        pressure = configuration.get("pressure")
+        visibility = configuration.get("visibility")
+        wind = configuration.get("wind")
+        snow = configuration.get("snow")
+        rain = configuration.get("rain")
+        ampm = not configuration.get("24h")
         self.units = weatherservice.Units(temperature=temperature,
                                           wind=wind,
                                           pressure=pressure,
@@ -286,49 +307,16 @@ my-weather-indicator-para-ubuntu/'))
                                           snow=snow,
                                           rain=rain,
                                           ampm=ampm)
-        self.ws = configuration.get('weather-service')
-        if self.ws == 'yahoo':
-            self.key = ''
-            for i in range(INDICATORS):
-                if self.preferences[i]['show']:
-                    self.weatherservices[i] = wyahooapi.YahooWeatherService(
-                        longitude=self.preferences[i]['longitude'],
-                        latitude=self.preferences[i]['latitude'],
+        for i in range(INDICATORS):
+            if self.preferences[i]['show']:
+                self.weatherservices[i] =\
+                    wopenmeteoapi.OpenMeteoWeatherService(
+                        longitude=self.preferences[i]["longitude"],
+                        latitude=self.preferences[i]["latitude"],
+                        timezone=self.preferences[i]["timezone"],
+                        location=self.preferences[i]["location"],
                         units=self.units)
-                self.menus[i]['evolution'].hide()
-        elif self.ws == 'worldweatheronline':
-            self.key = configuration.get('wwo-key')
-            for i in range(INDICATORS):
-                if self.preferences[i]['show']:
-                    self.weatherservices[i] =\
-                        worldweatheronlineapi.WorldWeatherOnlineService(
-                            longitude=self.preferences[i]['longitude'],
-                            latitude=self.preferences[i]['latitude'],
-                            units=self.units,
-                            key=self.key)
-                self.menus[i]['evolution'].hide()
-        elif self.ws == 'openweathermap':
-            self.key = ''
-            for i in range(INDICATORS):
-                if self.preferences[i]['show']:
-                    self.weatherservices[i] =\
-                        wopenweathermapapi.OWMWeatherService(
-                            longitude=self.preferences[i]['longitude'],
-                            latitude=self.preferences[i]['latitude'],
-                            units=self.units)
-                self.menus[i]['evolution'].show()
-        elif self.ws == 'wunderground':
-            self.key = configuration.get('wu-key')
-            for i in range(INDICATORS):
-                if self.preferences[i]['show']:
-                    self.weatherservices[i] =\
-                        wundergroundapi.UndergroundWeatherService(
-                            longitude=self.preferences[i]['longitude'],
-                            latitude=self.preferences[i]['latitude'],
-                            units=self.units,
-                            key=self.key)
-                self.menus[i]['evolution'].hide()
-
+            self.menus[i]['evolution'].show()
         #
         self.icon_light = configuration.get('icon-light')
         #
@@ -348,7 +336,6 @@ my-weather-indicator-para-ubuntu/'))
                 self.widgets[i].hide()
                 self.widgets[i].destroy()
                 self.widgets[i] = None
-        print(1)
         self.update_weather()
         self.start_looking_for_internet()
 
@@ -389,19 +376,19 @@ my-weather-indicator-para-ubuntu/'))
             self.internet_updater = 0
 
     def looking_for_internet(self):
-        print('*** Looking For Internet ***')
+        logger.info('*** Looking For Internet ***')
         if internet_on():
-            print('*** Internet Found ***')
+            logger.info('*** Internet Found ***')
             self.stop_looking_for_internet()
             self.start_weather_updater()
             self.start_widgets_updater()
             return False
-        print('*** Internet Not Found ***')
+        logger.info('*** Internet Not Found ***')
         self.stop_weather_updater()
         self.stop_widgets_updater()
         return True
 
-    def on_pinit(self, widget, data, index):
+    def on_pinit(self, widget, data, index):  # pyright: ignore
         utcnow = datetime.utcnow()
         self.widgets[index].is_above = not self.widgets[index].is_above
         weather = self.widgets[index].weather_data
@@ -433,13 +420,6 @@ my-weather-indicator-para-ubuntu/'))
         self.menus[index]['evolution'].show()
         main_menu.append(self.menus[index]['evolution'])
         #
-        self.menus[index]['forecastmap'] = Gtk.MenuItem(
-            label=_('Forecast Map'))
-        self.menus[index]['forecastmap'].connect(
-            'activate', self.menu_forecast_map_response, index)
-        self.menus[index]['forecastmap'].show()
-        main_menu.append(self.menus[index]['forecastmap'])
-
         self.menus[index]['moon_calendar'] = Gtk.ImageMenuItem(
             label=_('Moon Phase Calendar'))
         self.menus[index]['moon_calendar'].set_image(
@@ -608,7 +588,8 @@ my-weather-indicator-para-ubuntu/'))
 
     def update_menu(self, index):
         if not internet_on():
-            print('--- Not internet connection ---')
+            logger.info('--- Not internet connection ---')
+            logger.error('--- Not internet connection ---')
             if self.icon_light:
                 icon = os.path.join(
                     comun.ICONDIR,
@@ -630,45 +611,26 @@ my-weather-indicator-para-ubuntu/'))
                 image)
             self.notifications[index].show()
             return
-        print('--- Updating data in location %s ---' % (index))
+        logger.info('--- Updating data in location %s ---' % (index))
         if self.preferences[index]['autolocation']:
-            lat, lon = ipaddress.get_current_location()
-            location = geocodeapi.get_inv_direction(lat, lon)['city']
-            if location is None:
-                location = ''
-            print(lat, lon, location)
-            if self.preferences[index]['latitude'] != lat and\
-                    self.preferences[index]['longitude'] != lon:
-                self.preferences[index]['latitude'] = lat
-                self.preferences[index]['longitude'] = lon
-                self.preferences[index]['location'] = location
-                if self.ws == 'worldweatheronline':
-                    self.weatherservices[index] =\
-                        worldweatheronlineapi.WorldWeatherOnlineService(
-                            longitude=self.preferences[index]['longitude'],
-                            latitude=self.preferences[index]['latitude'],
-                            units=self.units,
-                            key=self.key)
-                    self.menus[index]['evolution'].hide()
-                elif self.ws == 'openweathermap':
-                    self.weatherservices[index] =\
-                        wopenweathermapapi.OWMWeatherService(
-                            longitude=self.preferences[index]['longitude'],
-                            latitude=self.preferences[index]['latitude'],
-                            units=self.units)
-                    self.menus[index]['evolution'].show()
-                elif self.ws == 'wunderground':
-                    self.weatherservices[index] =\
-                        wundergroundapi.UndergroundWeatherService(
-                            longitude=self.preferences[index]['longitude'],
-                            latitude=self.preferences[index]['latitude'],
-                            units=self.units,
-                            key=self.key)
-                    self.menus[index]['evolution'].hide()
-        print('****** Updating weather')
+            data = geocodeapi.get_latitude_longitude_city()
+            if data:
+                self.preferences[index]["latitude"] = data["lat"]
+                self.preferences[index]["longitude"] = data["lon"]
+                self.preferences[index]["location"] = data["city"]
+                self.preferences[index]["timezone"] = data["timezone"]
+                self.weatherservices[index] = \
+                    wopenmeteoapi.OpenMeteoWeatherService(
+                        longitude=self.preferences[index]["longitude"],
+                        latitude=self.preferences[index]["latitude"],
+                        location=self.preferences[index]["location"],
+                        timezone=self.preferences[index]["timezone"],
+                        units=self.units)
+                self.menus[index]['evolution'].show()
+        logger.info('****** Updating weather')
         weather = self.weatherservices[index].get_weather()
-        print('****** Updated weather')
-        print(self.weathers[index])
+        logger.info('****** Updated weather')
+        logger.info(self.weathers[index])
         if weather is None or (weather['ok'] is False and (
                 self.weathers[index] is not None and
                 self.weathers[index]['ok'] is True)):
@@ -685,7 +647,7 @@ my-weather-indicator-para-ubuntu/'))
 {0}{1:c}'.format(self.current_conditions[index]['temperature'], 176))
             self.menus[index]['humidity'].set_label(
                 _('Humidity') + ': ' +
-                self.current_conditions[index]['humidity'])
+                str(self.current_conditions[index]['humidity']))
             self.menus[index]['feels_like'].set_label(_('Feels like') + ': \
 {0}{1:c}'.format(self.current_conditions[index]['feels_like'], 176))
             self.menus[index]['dew_point'].set_label(_('Dew Point') + ': \
@@ -792,43 +754,39 @@ my-weather-indicator-para-ubuntu/'))
                 msg += _('Temperature') + ': ' +\
                     self.current_conditions[index]['temperature'] + '\n'
                 msg += _('Humidity') + ': ' + \
-                    self.current_conditions[index]['humidity'] + '\n'
+                    str(self.current_conditions[index]['humidity']) + '\n'
                 msg += _('Wind') + ': ' +\
                     self.current_conditions[index]['wind_condition'] + '\n'
                 msg += self.current_conditions[index]['condition_text']
                 image = os.path.join(
                     comun.IMAGESDIR,
                     self.current_conditions[index]['condition_image'])
-                self.notifications[index].update(
-                    'My-Weather-Indicator',
-                    msg,
-                    image)
-                self.notifications[index].show()
+                try:
+                    self.notifications[index].update(
+                        'My-Weather-Indicator',
+                        msg,
+                        image)
+                    self.notifications[index].show()
+                except Exception as exception:
+                    logger.error(exception)
             while Gtk.events_pending():
                 Gtk.main_iteration()
-        print('--- End of updating data in location %s ---' % (index))
+        logger.info('--- End of updating data in location %s ---' % (index))
         self.last_update_time = time.time()
 
-    def on_moon_clicked(self, widget):
+    def on_moon_clicked(self, widget):  # pyright: ignore
         p = CalendarWindow()
         p.show_all()
 
     def menu_offon(self, ison):
         for i in range(INDICATORS):
             self.menus[i]['forecast'].set_sensitive(ison)
-            self.menus[i]['forecastmap'].set_sensitive(ison)
             self.menus[i]['evolution'].set_sensitive(ison)
             self.menus[i]['preferences'].set_sensitive(ison)
             self.menus[i]['moon_calendar'].set_sensitive(ison)
             self.menus[i]['update'].set_sensitive(ison)
 
-    def menu_forecast_map_response(self, widget, index):
-        self.menu_offon(False)
-        ForecastMap(self.preferences[index]['latitude'],
-                    self.preferences[index]['longitude'])
-        self.menu_offon(True)
-
-    def menu_evolution_response(self, widget, index):
+    def menu_evolution_response(self, widget, index):  # pyright: ignore
         configuration = Configuration()
         temperature_unit = configuration.get('temperature')
         self.menu_offon(False)
@@ -850,13 +808,13 @@ my-weather-indicator-para-ubuntu/'))
         graph.run()
         self.menu_offon(True)
 
-    def menu_forecast_response(self, widget, index):
+    def menu_forecast_response(self, widget, index):  # pyright: ignore
         self.menu_offon(False)
         self.preferences[index]['location']
-        FC(self.preferences[index]['location'], self.ws, self.weathers[index])
+        FC(self.preferences[index]['location'], self.weathers[index])
         self.menu_offon(True)
 
-    def menu_set_preferences_response(self, widget):
+    def menu_set_preferences_response(self, widget):  # pyright: ignore
         self.menu_offon(False)
         cm = preferences.CM()
         if cm.run() == Gtk.ResponseType.ACCEPT:
@@ -868,11 +826,11 @@ my-weather-indicator-para-ubuntu/'))
         cm.destroy()
         self.menu_offon(True)
 
-    def menu_refresh_weather_response(self, widget, index):
+    def menu_refresh_weather_response(self, widget, index):  # pyright: ignore
         if self.last_update_time + 600 < time.time():
             self.start_weather_updater()
 
-    def menu_exit_response(self, widget):
+    def menu_exit_response(self, widget):  # pyright: ignore
         exit(0)
 
     def menu_about_response(self, widget):
@@ -951,9 +909,9 @@ whochismo <https://launchpad.net/~whochismo>\n')
 
 
 def main():
-    print(machine_information.get_information())
-    print('My-Weather-Indicator version: %s' % comun.VERSION)
-    print('#####################################################')
+    logger.info(machine_information.get_information())
+    logger.info('My-Weather-Indicator version: %s' % comun.VERSION)
+    logger.info('#####################################################')
     load_css(CSS_FILE)
     Notify.init("my-weather-indicator")
     MWI()

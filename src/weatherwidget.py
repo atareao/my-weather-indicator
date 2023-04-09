@@ -33,11 +33,11 @@ except Exception as e:
     print(e)
     print('Repository version required not present')
     exit(1)
-from gi.repository import Gtk
-from gi.repository import Gdk
-from gi.repository import GObject
-from gi.repository import GdkPixbuf
-from gi.repository import AppIndicator3 as appindicator
+from gi.repository import Gtk  # pyright: ignore
+from gi.repository import Gdk  # pyright: ignore
+from gi.repository import GObject  # pyright: ignore
+from gi.repository import GdkPixbuf  # pyright: ignore
+from gi.repository import AppIndicator3 as appindicator  # pyright: ignore
 import cairo
 import datetime
 import os

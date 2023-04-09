@@ -25,8 +25,18 @@
 
 import codecs
 import os
+import sys
 import json
 import comun
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 class Configuration(object):
@@ -39,7 +49,7 @@ class Configuration(object):
         try:
             return self.params[key]
         except KeyError as e:
-            print(e)
+            logger.error(e)
             self.params[key] = comun.PARAMS[key]
             return self.params[key]
 
@@ -60,13 +70,13 @@ class Configuration(object):
         try:
             f = codecs.open(comun.CONFIG_FILE, 'r', 'utf-8')
         except IOError as e:
-            print(e)
+            logger.error(e)
             self.save()
             f = codecs.open(comun.CONFIG_FILE, 'r', 'utf-8')
         try:
             self.params = json.loads(f.read())
         except ValueError as e:
-            print(e)
+            logger.error(e)
             self.save()
         f.close()
 

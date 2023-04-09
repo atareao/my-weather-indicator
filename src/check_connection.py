@@ -27,6 +27,17 @@ import http.client
 import requests
 import socket
 import time
+import logging
+import sys
+import os
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def check_connectivity():
@@ -53,12 +64,11 @@ def check_connectivity_with_httpconnection(reference):
     try:
         conn = http.client.HTTPConnection(reference)
         conn.close()
-        print('OK. Internet connection. HTTPConnection: {0}'.format(reference))
+        logger.info(f"OK. Internet connection. HTTPConnection: {reference}")
         return True
     except Exception as ex:
-        print('NO internet connection. HTTPConnection: {0}'.format(reference))
-        print('Error:', ex)
-        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        logger.error(f"No internet connection. HTTPConnection: {reference}")
+        logger.error(ex)
     return False
 
 
@@ -66,51 +76,25 @@ def check_connectivity_with_socket(reference, port=80):
     try:
         conn = socket.create_connection((reference, port))
         conn.close()
-        print('OK. Internet connection. Socket: {0}'.format(reference))
+        logger.info(f"OK. Internet connection. Socket: {reference}")
         return True
     except Exception as ex:
-        print('NO internet connection. Socket: {0}'.format(reference))
-        print('Error:', ex)
-        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        logger.error(f"No internet connection. Socket: {reference}")
+        logger.error(ex)
     return False
 
 
 def check_connectivity_with_reference(reference, timeout=2):
     try:
         requests.get(reference, timeout=timeout, verify=False)
-        print('OK. Internet connection. Url: {0}'.format(reference))
+        logger.info(f"OK. Internet connection. Url: {reference}")
         return True
     except Exception as ex:
-        print('NO internet connection. Url: {0}'.format(reference))
-        print('Error:', ex)
-        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        logger.error(f"No internet connection. Url: {reference}")
+        logger.error(ex)
     return False
 
 
 if __name__ == '__main__':
     atime = time.time()
-    print(check_connectivity(), time.time() - atime)
-    '''
-    urls = ['https://www.google.com',
-            'http://www.google.com',
-            'http://216.58.192.142',
-            'http://www.baidu.com']
-    sockets = ['www.google.com',
-               '216.58.192.142',
-               'www.baidu.com']
-    print('======== SOCKET ========')
-    for index, asocket in enumerate(sockets):
-        atime = time.time()
-        print(index, check_connectivity_with_httpconnection(asocket), asocket,
-              time.time() - atime)
-    print('======== SOCKET ========')
-    for index, asocket in enumerate(sockets):
-        atime = time.time()
-        print(index, check_connectivity_with_socket(asocket), asocket,
-              time.time() - atime)
-    print('======== URLS ========')
-    for index, url in enumerate(urls):
-        atime = time.time()
-        print(index, check_connectivity_with_reference(url), url,
-              time.time() - atime)
-    '''
+    logger.info(check_connectivity(), time.time() - atime)

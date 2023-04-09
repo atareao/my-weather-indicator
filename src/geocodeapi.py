@@ -23,37 +23,27 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import utils as cf
-import gi
-try:
-    gi.require_version('GeocodeGlib', '1.0')
-except BaseException:
-    print('Repository version required not present')
-    exit(1)
-from comun import read_json_from_url
-from comun import internet_on
-import locale
+import requests
 import datetime
 import pytz
-from gi.repository import GeocodeGlib
-
-locale.setlocale(locale.LC_MESSAGES, '')
-LANG = locale.getlocale(locale.LC_MESSAGES)[0].replace('_', '-')
-
-URLINV_YAHOO2 = 'http://gws2.maps.yahoo.com/findlocation?pf=1&locale=%s\
-&offset=15&flags=&q=%s,%s&gflags=R&start=0&count=10&format=json'
+from comun import LANG
+import logging
+import sys
+import os
+from urllib.parse import quote
 
 
-def get_default_values():
-    direction = {}
-    direction['city'] = ''
-    direction['state'] = ''
-    direction['country'] = ''
-    direction['lat'] = 0.0
-    direction['lng'] = 0.0
-    direction['woeid'] = ''
-    direction['search_string'] = ''
-    return direction
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+BASE_URI = "https://geocoding-api.open-meteo.com"
+TZ_BASE_URI = "https://api.wheretheiss.at"
+GEO_BASE_URI = "https://api.bigdatacloud.net"
 
 
 def is_direction_in_directions(direction, directions):
@@ -63,6 +53,13 @@ def is_direction_in_directions(direction, directions):
     return False
 
 
+def get_external_ip():
+    response = requests.get('https://api.ipify.org', verify=False)
+    if response.status_code == 200:
+        return response.text
+    return None
+
+
 def get_direction(search_string):
     directions = get_directions(search_string)
     if len(directions) > 0:
@@ -70,126 +67,89 @@ def get_direction(search_string):
     return None
 
 
-def get_timezoneId(latitude, longitude):
-    print('****** Requesting timezone identificacion')
+def get_latitude_longitude_city(ip=None):
+    if ip is None:
+        ip = get_external_ip()
+    if ip is not None:
+        url = f"http://ip-api.com/json/{ip}?lang={LANG}"
+        response = requests.get(url, verify=False)
+        if response.status_code == 200:
+            position = response.json()
+            logger.debug(position)
+            return position
+    return None
+
+
+def get_inv_direction(latitude, longitude):
+    url = (f"{GEO_BASE_URI}/data/reverse-geocode-client?latitude={latitude}"
+           f"&longitude={longitude}&localityLanguage={LANG}")
     try:
-        json_response = read_json_from_url(
-            'http://api.geonames.org/timezoneJSON?lat=%s&lng=%s&\
-username=atareao' % (latitude, longitude))
-        if json_response and 'timezoneId' in json_response.keys():
-            return json_response['timezoneId']
-        raise Exception
-    except Exception as e:
-        print('Error requesting timezone identification: %s' % (str(e)))
-        try:
-            json_response = read_json_from_url(
-                'http://api.timezonedb.com/v2/get-time-zone?\
-key=02SRH5M6VFLC&format=json&by=position&lat=%s&lng=%s' % (latitude,
-                                                           longitude))
-            if json_response is not None and\
-                    'status' in json_response.keys() and\
-                    json_response['status'] == 'OK':
-                return json_response['zoneName']
-            raise Exception
-        except Exception as e:
-            print('Error requesting timezone identification: %s' % (str(e)))
+        response = requests.get(url)
+        data = response.json()
+        if response.status_code == 200:
+            return data
+    except Exception as exception:
+        logger.error(exception)
+    return None
+
+
+def get_timezoneId(latitude, longitude):
+    url = f"{TZ_BASE_URI}/v1/coordinates/{latitude},{longitude}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        if response.status_code == 200:
+            return data["timezone_id"]
+        elif "error" in data.keys():
+            raise Exception(f"Error: {data['error']}")
+        raise Exception("Cant")
+    except Exception as exception:
+        logger.error(exception)
     return None
 
 
 def get_rawOffset(timezoneId):
-    print('****** Calculating rawOffset')
+    logger.info('****** Calculating rawOffset')
+    logger.info(f"Timezone: {timezoneId}")
     if timezoneId is not None:
         try:
             timezone = pytz.timezone(timezoneId)
+            logger.debug(f"Timezone: {timezone}")
             timeinzone = timezone.localize(datetime.datetime.now())
+            logger.debug(f"Time in zone: {timeinzone}")
             nowdelta = timeinzone.utcoffset()
-            h = nowdelta.total_seconds() / 3600
-            return h
+            logger.debug(f"Delta: {nowdelta}")
+            if nowdelta:
+                return nowdelta.total_seconds() / 3600
         except Exception as e:
-            print('Error calculating rawOffset: %s' % (str(e)))
+            logger.error('Error calculating rawOffset: %s' % (str(e)))
+            logger.error(e)
     return 0.0
 
 
-def get_woeid(lat, lon):
-    print('******* Adquiring woeids *******')
-    tries = 3
-    while(tries > 0 and internet_on()):
-        try:
-            url = URLINV_YAHOO2 % (LANG, lat, lon)
-            jsonResponse = read_json_from_url(url)
-            if int(jsonResponse['Found']) > 1:
-                woeid = jsonResponse['Result'][0]['woeid']
-            else:
-                woeid = jsonResponse['Result']['woeid']
-            return woeid
-        except Exception as e:
-            print('******* Error adquiring inv directions *******')
-            print('Error:', e)
-        tries -= 1
-    return None
-
-
-def get_inv_direction(lat, lon):
-    print('******* Adquiring inv direction *******')
-    location = GeocodeGlib.Location.new(cf.s2f(lat), cf.s2f(lon), 1000)
-    reverse = GeocodeGlib.Reverse.new_for_location(location)
-    aplace = reverse.resolve()
-    direction = {}
-    direction['city'] = aplace.get_town()
-    direction['state'] = aplace.get_state()
-    direction['country'] = aplace.get_country()
-    direction['lat'] = aplace.get_location().get_latitude()
-    direction['lng'] = aplace.get_location().get_longitude()
-    direction['woeid'] = None
-    direction['search_string'] = aplace.get_name()
-    return direction
-
-
-def get_directions(search_string):
-    forward = GeocodeGlib.Forward.new_for_string(search_string)
-    places = forward.search()
-    directions = []
-    for aplace in places:
-        direction = {}
-        direction['city'] = aplace.get_town()
-        direction['state'] = aplace.get_state()
-        direction['country'] = aplace.get_country()
-        direction['lat'] = aplace.get_location().get_latitude()
-        direction['lng'] = aplace.get_location().get_longitude()
-        direction['woeid'] = None
-        direction['search_string'] = aplace.get_name()
-        directions.append(direction)
-    return directions
-
-
-def get_inv_directions(lat, lon):
-    print('******* Adquiring inv directions *******')
-    location = GeocodeGlib.Location.new(lat, lon, 2000)
-    reverse = GeocodeGlib.Reverse.new_for_location(location)
-    aplace = reverse.resolve()
-    directions = []
-    direction = {}
-    direction['city'] = aplace.get_town()
-    direction['state'] = aplace.get_state()
-    direction['country'] = aplace.get_country()
-    direction['lat'] = aplace.get_location().get_latitude()
-    direction['lng'] = aplace.get_location().get_longitude()
-    direction['woeid'] = None
-    direction['search_string'] = aplace.get_name()
-    directions.append(direction)
-    directions = get_directions(aplace.get_name())
-    return directions
+def get_directions(name):
+    logger.debug("get_directions")
+    search_string = quote(name)
+    url = f"{BASE_URI}/v1/search?name={search_string}&language={LANG}"
+    logger.debug(url)
+    response = requests.get(url)
+    try:
+        if response.status_code == 200:
+            data = response.json()
+            logger.debug(data)
+            if "results" in data.keys():
+                return data["results"]
+        raise Exception("Cant find")
+    except Exception as exception:
+        logger.error(exception)
+    return []
 
 
 if __name__ == "__main__":
-    '''
-    print(get_inv_direction(40, 0))
-    print('************************************************')
-    print(get_direction('Silla'))
-    print('************************************************')
-    print(get_woeid(40, 0))
-    print(get_inv_direction(39.3667, -0.4167))
-    print(get_inv_direction(39.4, -0.4))
-    '''
-    print(get_timezoneId(40, 0))
-    print(get_directions('Silla'))
+    data = get_inv_direction(40, 0)
+    from pprint import pprint
+    pprint(data)
+    # logger.info(get_timezoneId(40, 0))
+    # latitude, longitude, city = get_directions('Silla')
+    # logger.info(f"{latitude}, {longitude}, {city}")
+    # logger.info(get_timezoneId(40.0, 0.0))

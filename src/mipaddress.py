@@ -30,6 +30,21 @@ import json
 from functools import partial
 from collections import namedtuple
 from geocodeapi import get_inv_direction
+import logging
+import os
+import sys
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+
+def ip_address(data):
+    logger.info(data)
 
 
 def convert(dbus_obj):
@@ -66,62 +81,22 @@ def convert(dbus_obj):
         return dbus_obj
 
 
-def get_current_location():
-    latitude, longitude = get_current_location_option1()
-    if latitude == 0 and longitude == 0:
-        latitude, longitude = get_current_location_option2()
-    return latitude, longitude
-
-
-def get_current_location_option1():
-    '''Gets the current location from geolocation via IP (only method
-       currently supported)
-    '''
-    latitude = 0
-    longitude = 0
-    bus = dbus.SessionBus()
-
-    # For now we default to the UbuntuGeoIP provider and we fall back to
-    # Hostip. We should probably be cleverer about provider detection, but
-    # this solution works for now and does not rely solely on UbuntuGeoIP,
-    # which means qreator can run on other distros
-    try:
-        geoclue = bus.get_object(
-            'org.freedesktop.Geoclue.Providers.UbuntuGeoIP',
-            '/org/freedesktop/Geoclue/Providers/UbuntuGeoIP')
-        position_info = geoclue.GetPosition(
-            dbus_interface='org.freedesktop.Geoclue.Position')
-        latitude = convert(position_info[2])
-        longitude = convert(position_info[3])
-    except dbus.exceptions.DBusException as e:
-        print('Error 1', e)
-        try:
-            geoclue = bus.get_object(
-                'org.freedesktop.Geoclue.Providers.Hostip',
-                '/org/freedesktop/Geoclue/Providers/Hostip')
-            position_info = geoclue.GetPosition(
-                dbus_interface='org.freedesktop.Geoclue.Position')
-            latitude = convert(position_info[2])
-            longitude = convert(position_info[3])
-        except dbus.exceptions.DBusException as e:
-            print('Error 2', e)
-    return latitude, longitude
-
-
 def get_ip():
     url = 'http://whatismyip.org'
     ans = comun.read_from_url(url)
-    # print(ans)
-    return re.compile(r'(\d+\.\d+\.\d+\.\d+)').search(ans).group(1)
+    if ans and (data := re.compile(r'(\d+\.\d+\.\d+\.\d+)').search(ans)):
+        return data.group(1)
+    return None
 
 
-def get_current_location_option2():
+def get_current_location():
     try:
         url = 'http://ip-api.com/json'
-        ans = json.loads(comun.read_from_url(url))
-        return ans['lat'], ans['lon']
+        if (response := comun.read_from_url(url)) and \
+                (ans := json.loads(response)):
+            return ans['lat'], ans['lon']
     except Exception as e:
-        print(e)
+        logger.error(e)
     return 0, 0
 
 
@@ -132,10 +107,4 @@ def get_address_from_ip():
 
 
 if __name__ == "__main__":
-    # import requests
-    # r = requests.get("https://stackoverflow.com")
-
-    print(get_current_location_option2())
-    print('======')
-    print(get_current_location())
-    # print(get_address_from_ip())
+    logger.info(get_current_location())

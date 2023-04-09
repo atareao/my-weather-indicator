@@ -1,152 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="pragma" content="no-cache" />
-		<meta http-equiv="Expires" content="-1" />
-		<script src="http://code.jquery.com/jquery-1.7.min.js" ></script>
-		<script src="http://openlayers.org/api/OpenLayers.js"></script>
-		<script src="http://openweathermap.org/js/OWM.OpenLayers.1.3.4.js" ></script>
-		<style type="text/css">
-			#basicMap {
-				width: 98%;
-				height: 95%;
-				padding: 10px;
-				position: absolute;
-			}
-		</style>
-		<script>
-			var map;
-			var vector;
-			var markers;
-			var marker;
-			var mlat;
-			var mlon;
-			var munits;
-			var geolocate;
-			var firstGeolocation = true;
-			function send(msg) {
-				document.title = "null";
-				document.title = msg;
-			}
-		</script>
-	</head>
-	<body>
-		<div id="basicMap"></div>
-	</body>
-	<script type="text/javascript">
-		var geographic = new OpenLayers.Projection("EPSG:4326");
-		var mercator = new OpenLayers.Projection("EPSG:900913");
-		OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
-                defaultHandlerOptions: {
-                    'single': true,
-                    'double': false,
-                    'pixelTolerance': 0,
-                    'stopSingle': false,
-                    'stopDouble': false
-                },
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="-1" />
+        <link rel="stylesheet" type="text/css" href="leaflet/leaflet.css" />
+        <link rel="stylesheet" type="text/css" href="leaflet-openweathermap.css" />
+        <style type="text/css">
+            #map {
+                width: 98%;
+                height: 95%;
+                padding: 10px;
+                position: absolute;
+            }
+        </style>
+        <script src="leaflet/leaflet.js"></script>
+    </head>
+    <body>
+        <div id="map"></div>
+    </body>
+    <script type="text/javascript">
+        console.log("Init");
+        const map = L.map("map");
+        map.setView([51.505, -0.09], 13);
 
-                initialize: function(options) {
-                    this.handlerOptions = OpenLayers.Util.extend(
-                        {}, this.defaultHandlerOptions
-                    );
-                    OpenLayers.Control.prototype.initialize.apply(
-                        this, arguments
-                    );
-                    this.handler = new OpenLayers.Handler.Click(
-                        this, {
-                            'click': this.trigger
-                        }, this.handlerOptions
-                    );
-                },
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
 
-                trigger: function(e) {
-					var lonlat = map.getLonLatFromPixel(e.xy);
-					lonlat.transform(mercator,geographic);
-					console.log(lonlat);
-					send(lonlat);
-                }
+        var marker = null;
 
-            });
+        function setPosition(latitude, longitude){
+            console.log(`setPosition: ${latitude}, ${longitude}`);
+            map.setView([latitude, longitude], 13);
+            if(marker != null) {
+                marker.setLatLng([latitude, longitude]);
+            }else{
+                marker = L.marker([latitude, longitude]).addTo(map);
+            }
+        };
 
-		function loadmap(mlat,mlon){
-			var world = new OpenLayers.Bounds(-180, -89, 180, 89).transform(geographic, mercator);
-			map = new OpenLayers.Map({
-				div: "basicMap",
-				projection: mercator,
-				displayProjection: geographic,
-				units: 'm',
-			});
-			var mapnik = new OpenLayers.Layer.OSM();
-			var opencyclemap = new OpenLayers.Layer.XYZ(
-					"OpenCycleMap",
-					"http://a.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png",
-					{
-						numZoomLevels: 18,
-						sphericalMercator: true
-					}
-			);
-			markers = new OpenLayers.Layer.Markers("Markers");
-			vector = new OpenLayers.Layer.Vector('vector');
-			map.addLayers([mapnik,opencyclemap,markers]);
-			// Layers switcher
-			var ls = new OpenLayers.Control.LayerSwitcher({'ascending':false});
-			map.addControl(ls);
-			//ls.maximizeControl();
-			//map.addControl(new OpenLayers.Control.Permalink('permalink'));
-			var ctrl = new OpenLayers.Control.MousePosition()
-			map.addControl(ctrl);
-			//
-			var click = new OpenLayers.Control.Click();
-			map.addControl(click);
-			click.activate();
-		};
-		function center(mlat,mlon){
-			var centre = new OpenLayers.LonLat(mlon, mlat);
-			centre.transform(geographic, mercator);
-			map.setCenter( centre, 13);
-			var size = new OpenLayers.Size(48,48);
-			var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-			var icon = new OpenLayers.Icon(
-		   "marker.svg",
-			size,offset);
-			markers.clearMarkers();
-			markers.addMarker(new OpenLayers.Marker(centre, icon));
-		};
-		function geolocFail(){
-		};
-		function firstload(){
-			if (navigator.geolocation){
-				var location_timeout = setTimeout("geolocFail()", 10000);
-				console.log('esta esta');
-				navigator.geolocation.getCurrentPosition(
-					function (position){
-						clearTimeout(location_timeout);
-						console.log(position.coords.longitude);
-						console.log(position.coords.latitude);
-						loadmap(position.coords.longitude, position.coords.latitude);
-						center(position.coords.latitude, position.coords.longitude);
-						send('lon='+position.coords.longitude+',lat='+position.coords.latitude);
-					}, function(error) {
-						clearTimeout(location_timeout);
-						geolocFail();
-					});
-			}
-		};
-		function findme(){
-			if (navigator.geolocation){
-				console.log('esta');
-				navigator.geolocation.getCurrentPosition(
-					function (position){
-						console.log(position.coords.longitude);
-						console.log(position.coords.latitude);
-						center(position.coords.latitude, position.coords.longitude);
-						send('lon='+position.coords.longitude+',lat='+position.coords.latitude);
-					});
-			}
-		};
-		jQuery(document).ready(function() {
-			firstload();
-		});
-	</script>
+        function sendPosition(latitude, longitude){
+            document.title = "null";
+            document.title = `{"latitude": ${latitude}, "longitude": ${longitude}}`;
+
+        };
+
+        function onMapClick(e){
+            console.log(e.latlng);
+            const latitude = e.latlng.lat;
+            const longitude = e.latlng.lng;
+            setPosition(latitude, longitude);
+            sendPosition(latitude, longitude);
+        };
+        map.on("click", onMapClick);
+
+
+        function findme(){
+            if (navigator.geolocation){
+                console.log('esta');
+                navigator.geolocation.getCurrentPosition(
+                    function (position){
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        setPosition(latitude, longitude);
+                        sendPosition(latitude, longitude);
+                    });
+            }
+        };
+    </script>
 </html>

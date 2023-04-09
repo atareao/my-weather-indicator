@@ -29,10 +29,9 @@ try:
 except ValueError as e:
     print(e)
     exit(1)
-from gi.repository import Gtk
+from gi.repository import Gtk  # pyright: ignore
 import os
 import comun
-import webbrowser
 from comun import _
 from utils import load_image
 from basedialog import BaseDialog
@@ -54,11 +53,11 @@ def get_image_with_text2(text, image=None, impar=False):
     return vbox
 
 
-def get_image_with_text(text, image=None, impar=False):
+def get_image_with_text(text, image_name="", impar=False):
     hbox = Gtk.HBox()
     hbox.set_name('forecast' if impar is not False else 'forecasti')
-    if image:
-        image = load_image(os.path.join(comun.IMAGESDIR, image))
+    image_file = os.path.join(comun.IMAGESDIR, image_name)
+    if image_name and (image := load_image(image_file)):
         image.set_alignment(1, 0.5)
         hbox.pack_start(image, True, True, 0)
     label = Gtk.Label.new(text)
@@ -68,64 +67,33 @@ def get_image_with_text(text, image=None, impar=False):
 
 
 class FC(BaseDialog):
-    def __init__(self, location, ws, weather):
+    def __init__(self, location, weather):
         title = comun.APPNAME + ' | ' + _('Forecast')
         self.location = location
-        self.ws = ws
         self.weather = weather
         BaseDialog.__init__(self, title, ok_button=False, cancel_button=False)
 
     def init_ui(self):
         BaseDialog.init_ui(self)
+        self.grid = Gtk.Grid()
         self.grid.set_row_spacing(0)
         self.grid.set_column_spacing(0)
+        self.set_content(self.grid)
         forecast = self.weather['forecasts']
         self.table = Gtk.Table(rows=9, columns=5, homogeneous=False)
         self.table.set_col_spacings(10)
         self.create_labels()
-        if self.ws == 'yahoo':
-            total = 2
-        if self.ws == 'wunderground':
-            total = 4
-        else:
-            total = 5
-        for i in range(0, total):
+        for i in range(0, 5):
             self.create_forecast_dor_day(forecast, i)
 
-        if self.ws == 'yahoo':
-            filename = comun.YAHOOLOGO
-            web = comun.YAHOOWEB
-        elif self.ws == 'worldweatheronline':
-            filename = comun.WOLRDWEATHERONLINE
-            web = comun.WOLRDWEATHERONLINEWEB
-        elif self.ws == 'openweathermap':
-            filename = comun.OPENWEATHERMAPLOGO
-            web = comun.OPENWEATHERMAPWEB
-        elif self.ws == 'wunderground':
-            filename = comun.UNDERGROUNDLOGO
-            web = comun.UNDERGROUNDWEB
-        image = load_image(filename, size=64)
-        image.set_alignment(0.5, 0.5)
-        button = Gtk.Button()
-        button.set_image(image)
-        button.connect('clicked', (lambda x: webbrowser.open(web)))
-        # hbox1.pack_start(button, True, True, 0)
-
-    def close_application(self, widget):
+    def close_application(self, widget):  # pyright: ignore
         self.destroy()
 
     def create_labels(self):
         labels = [_('Day of week'), _('Sunrise'), _('Sunset'), _('Moon Phase'),
                   _('Condition'), _('High temperature'), _('Low temperature')]
-        if self.ws == 'wunderground':
-            labels.extend([_('Maximum wind'), _('Average wind'),
-                           _('Maximum humidity'), _('Minumum humidity'),
-                           _('Rain measurement'), _('Snow measurement')])
-        elif self.ws == 'worldweatheronline':
-            labels.extend([_('Average wind'), _('Rain measurement')])
-        elif self.ws == 'openweathermap':
-            labels.extend([_('Average wind'), _('Average humidity'),
-                           _('Cloudiness')])
+        labels.extend([_('Average wind'), _('Average humidity'),
+                       _('Cloudiness')])
         for index, name in enumerate(labels):
             label = Gtk.Label.new(name)
             label.set_name('forecasti')
@@ -168,49 +136,14 @@ class FC(BaseDialog):
             '{0}{1:c}'.format(forecast[day]['low'], 176),
             os.path.join(comun.IMAGESDIR, 'mwi-arrow-cold.png'), fr % 2 == 1)
         self.grid.attach(label, fr, 6, 1, 1)
-        if self.ws == 'wunderground':
-            label = Gtk.Label.new(forecast[day]['maxwind'])
-            label.set_name('forecast' if fr % 2 == 1 else 'forecasti')
-            self.grid.attach(label, fr, 7, 1, 1)
-            label = Gtk.Label.new(forecast[day]['avewind'])
-            label.set_name('forecast' if fr % 2 == 1 else 'forecasti')
-            self.grid.attach(label, fr, 8, 1, 1)
-            label = get_image_with_text(
-                forecast[day]['maxhumidity'],
-                os.path.join(comun.IMAGESDIR, 'mwi-arrow-hot.png'))
-            self.grid.attach(label, fr, 9, 1, 1)
-            label = get_image_with_text(
-                forecast[day]['minhumidity'],
-                os.path.join(comun.IMAGESDIR, 'mwi-arrow-cold.png'))
-            self.grid.attach(label, fr, 10, 1, 1)
-            label = Gtk.Label.new(forecast[day]['qpf_allday'])
-            label.set_name('forecast' if fr % 2 == 1 else 'forecasti')
-            self.grid.attach(label, fr, 11, 1, 1)
-            label = Gtk.Label.new(forecast[day]['snow_allday'])
-            label.set_name('forecast' if fr % 2 == 1 else 'forecasti')
-            self.grid.attach(label, fr, 12, 1, 1)
-        elif self.ws == 'worldweatheronline':
-            label = get_image_with_text2(forecast[day]['avewind'],
-                                         forecast[day]['wind_icon'],
-                                         fr % 2 == 1)
-            self.grid.attach(label, fr, 7, 1, 1)
-            label = Gtk.Label.new(forecast[day]['qpf_allday'])
-            label.set_name('forecast' if fr % 2 == 1 else 'forecasti')
-            self.grid.attach(label, fr, 8, 1, 1)
-        elif self.ws == 'openweathermap':
-            label = get_image_with_text2(forecast[day]['avewind'],
-                                         forecast[day]['wind_icon'],
-                                         fr % 2 == 1)
-            self.grid.attach(label, fr, 7, 1, 1)
-            label = Gtk.Label.new(forecast[day]['avehumidity'])
-            label.set_name('forecast' if fr % 2 == 1 else 'forecasti')
-            self.grid.attach(label, fr, 8, 1, 1)
-            label = get_image_with_text(
-                forecast[day]['cloudiness'],
-                os.path.join(comun.IMAGESDIR, 'mwig-cloudy.png'), fr % 2 == 1)
-            self.grid.attach(label, fr, 9, 1, 1)
-
-
-if __name__ == "__main__":
-    cm = FC()
-    exit(0)
+        label = get_image_with_text2(forecast[day]['avewind'],
+                                     forecast[day]['wind_icon'],
+                                     fr % 2 == 1)
+        self.grid.attach(label, fr, 7, 1, 1)
+        label = Gtk.Label.new(forecast[day]['avehumidity'])
+        label.set_name('forecast' if fr % 2 == 1 else 'forecasti')
+        self.grid.attach(label, fr, 8, 1, 1)
+        label = get_image_with_text(
+            forecast[day]['cloudiness'],
+            os.path.join(comun.IMAGESDIR, 'mwig-cloudy.png'), fr % 2 == 1)
+        self.grid.attach(label, fr, 9, 1, 1)

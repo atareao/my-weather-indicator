@@ -31,9 +31,9 @@ try:
 except ValueError as e:
     print(e)
     exit(1)
-from gi.repository import Gtk
-from gi.repository import GdkPixbuf
-from gi.repository import GLib
+from gi.repository import Gtk  # pyright: ignore
+from gi.repository import GdkPixbuf  # pyright: ignore
+from gi.repository import GLib  # pyright: ignore
 import os
 import datetime
 import calendar
@@ -41,9 +41,19 @@ import comun
 from comun import _
 from basedialog import BaseDialog
 from moondaywidget import MoonDayWidget
+import logging
+import sys
 
 DAY_OF_WEEK = [_('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'),
                _('Friday'), _('Saturday'), _('Sunday')]
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def first_day_of_month(adatetime):
@@ -122,7 +132,7 @@ class CalendarWindow(BaseDialog):
                                   Gtk.PolicyType.AUTOMATIC)
         scrolledwindow.set_size_request(850, 560)
 
-        self.grid.attach(scrolledwindow, 1, 1, 1, 1)
+        self.set_content(scrolledwindow)
 
         table1 = Gtk.Grid()
         table1.set_border_width(2)
@@ -151,10 +161,12 @@ class CalendarWindow(BaseDialog):
             self.adate = datetime.datetime.now()
         self.set_date()
 
-    def close_application(self, widget):
+    def close_application(self, widget):  # pyright: ignore
         self.ok = False
 
     def set_date(self):
+        if self.adate is None:
+            return
         self.headerbar.set_subtitle(self.adate.strftime('%B - %Y'))
         fdom = first_day_of_month(self.adate)
         adate = self.adate.replace(day=1)
@@ -194,7 +206,10 @@ class CalendarWindow(BaseDialog):
         self.days[min['position']].set_style('mcw_med')
         self.days[min['position']].set_tooltip_text(_('New moon'))
 
-    def on_button0_clicked(self, widget):
+    def on_button0_clicked(self, widget):  # pyright: ignore
+        logger.info("on_button0_clicked")
+        if self.adate is None:
+            return
         day = self.adate.day
         month = self.adate.month
         year = self.adate.year - 1
@@ -205,7 +220,10 @@ class CalendarWindow(BaseDialog):
         self.adate = self.adate.replace(day=day, month=month, year=year)
         GLib.idle_add(self.set_date)
 
-    def on_button1_clicked(self, widget):
+    def on_button1_clicked(self, widget):  # pyright: ignore
+        logger.info("on_button1_clicked")
+        if self.adate is None:
+            return
         day = self.adate.day
         month = self.adate.month - 1
         year = self.adate.year
@@ -219,7 +237,10 @@ class CalendarWindow(BaseDialog):
         self.adate = self.adate.replace(day=day, month=month, year=year)
         GLib.idle_add(self.set_date)
 
-    def on_button2_clicked(self, widget):
+    def on_button2_clicked(self, widget):  # pyright: ignore
+        logger.info("on_button2_clicked")
+        if self.adate is None:
+            return
         day = self.adate.day
         month = self.adate.month + 1
         year = self.adate.year
@@ -231,7 +252,10 @@ class CalendarWindow(BaseDialog):
         self.adate = self.adate.replace(day=day, month=month, year=year)
         GLib.idle_add(self.set_date)
 
-    def on_button3_clicked(self, widget):
+    def on_button3_clicked(self, widget):  # pyright: ignore
+        logger.info("on_button3_clicked")
+        if self.adate is None:
+            return
         day = self.adate.day
         month = self.adate.month
         year = self.adate.year + 1
@@ -240,7 +264,10 @@ class CalendarWindow(BaseDialog):
         self.adate = self.adate.replace(day=day, month=month, year=year)
         GLib.idle_add(self.set_date)
 
-    def on_button4_clicked(self, widget):
+    def on_button4_clicked(self, widget):  # pyright: ignore
+        logger.info("on_button4_clicked")
+        if self.adate is None:
+            return
         today = datetime.datetime.today().date()
         self.adate = self.adate.replace(month=today.month, year=today.year)
         GLib.idle_add(self.set_date)

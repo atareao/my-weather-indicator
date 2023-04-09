@@ -23,35 +23,52 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+
+import gi
+try:
+    gi.require_version('Gtk', '3.0')
+except Exception as e:
+    print(e)
+    print('Repository version required not present')
+    exit(1)
+import comun
 import os
 import shutil
-from gi.repository import Gtk
-import comun
 import geocodeapi
-import ipaddress
-import webbrowser
+import mipaddress
+import logging
+import sys
+from gi.repository import Gtk  # pyright: ignore
 from whereami import WhereAmI
-from wundergroundapi import UndergroundWeatherService
-from worldweatheronlineapi import WorldWeatherOnlineService
 from configurator import Configuration
 from comun import _
+from basedialog import BaseDialog
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 APPDIR = comun.APPDIR
+AUTOSTART_FILE = 'my-weather-indicator-autostart.desktop'
 
 
 def get_skins():
     skins = []
     personal_dir = os.path.expanduser('~/.config/my-weather-indicator/skins')
     if os.path.exists(personal_dir):
-        for dirname, dirnames, filenames in os.walk(personal_dir):
-            for subdirname in dirnames:
-                skins.append([subdirname, os.path.join(dirname, subdirname)])
+        for dn, dns, filenames in os.walk(personal_dir):  # pyright: ignore
+            for sdn in dns:
+                skins.append([sdn, os.path.join(dn, sdn)])
     installation_dir = '/opt/extras.ubuntu.com/my-weather-indicator/share/\
 my-weather-indicator/skins'
     if os.path.exists(installation_dir):
-        for dirname, dirnames, filenames in os.walk(installation_dir):
-            for subdirname in dirnames:
-                skins.append([subdirname, os.path.join(dirname, subdirname)])
+        for dn, dns, filenames in os.walk(installation_dir):  # pyright: ignore
+            for sdn in dns:
+                skins.append([sdn, os.path.join(dn, sdn)])
     return skins
 
 
@@ -69,31 +86,24 @@ def get_selected_value_in_combo(combo):
     return model.get_value(combo.get_active_iter(), 1)
 
 
-class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
+class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
     def __init__(self):
-        # ***************************************************************
-        Gtk.Dialog.__init__(self,
-                            'my-weather-indicator | ' + _('Preferences'),
-                            None,
-                            Gtk.DialogFlags.MODAL |
-                            Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                            (Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT,
-                             Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT))
-        self.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
+        title = _("Preferences")
+        BaseDialog.__init__(self, title, None, True, True)
+
+    def init_ui(self):
+        BaseDialog.init_ui(self)
         self.set_size_request(850, 410)
         self.connect('destroy', self.close_application)
         self.set_icon_from_file(comun.ICON)
-        vbox = Gtk.VBox(spacing=5)
-        vbox.set_border_width(5)
-        self.get_content_area().add(vbox)
         notebook = Gtk.Notebook.new()
-        vbox.add(notebook)
-        vbox1 = Gtk.VBox(spacing=5)
-        vbox1.set_border_width(5)
+        self.set_content(notebook)
+        vbox1 = Gtk.VBox(spacing=0)
+        vbox1.set_border_width(0)
         notebook.append_page(vbox1, Gtk.Label.new(_('Main Location')))
         frame11 = Gtk.Frame.new(_('General options'))
         vbox1.pack_start(frame11, True, True, 0)
-        table11 = Gtk.Table(rows=4, columns=3)
+        table11 = Gtk.Table(n_rows=4, n_columns=3)
         frame11.add(table11)
         self.checkbutton11 = Gtk.CheckButton.new_with_label(_('Show'))
         self.checkbutton11.connect('toggled', self.on_checkbutton11_toggled)
@@ -140,7 +150,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        xpadding=5, ypadding=5)
         frame12 = Gtk.Frame.new(_('Widget options'))
         vbox1.pack_start(frame12, True, True, 0)
-        table12 = Gtk.Table(rows=3, columns=2)
+        table12 = Gtk.Table(n_rows=3, n_columns=2)
         frame12.add(table12)
         self.checkbutton14 = Gtk.CheckButton.new_with_label(_('Show widget'))
         self.checkbutton14.connect('toggled', self.on_checkbutton14_toggled)
@@ -189,7 +199,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         notebook.append_page(vbox2, Gtk.Label.new(_('Second Location')))
         self.frame21 = Gtk.Frame.new(_('General options'))
         vbox2.pack_start(self.frame21, False, False, 0)
-        table21 = Gtk.Table(rows=4, columns=3)
+        table21 = Gtk.Table(n_rows=4, n_columns=3)
         self.frame21.add(table21)
         self.checkbutton21 = Gtk.CheckButton.new_with_label(_('Show'))
         self.checkbutton21.connect('toggled', self.on_checkbutton21_toggled)
@@ -228,7 +238,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        xpadding=5, ypadding=5)
         frame22 = Gtk.Frame.new(_('Widget options'))
         vbox2.pack_start(frame22, False, False, 0)
-        table22 = Gtk.Table(rows=3, columns=2)
+        table22 = Gtk.Table(n_rows=3, n_columns=2)
         frame22.add(table22)
         self.checkbutton24 = Gtk.CheckButton.new_with_label(_('Show widget'))
         self.checkbutton24.connect('toggled', self.on_checkbutton24_toggled)
@@ -272,76 +282,13 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
-        vbox25 = Gtk.VBox(spacing=5)
-        vbox25.set_border_width(5)
-        notebook.append_page(vbox25, Gtk.Label.new(_('Weather Services')))
-        table25 = Gtk.Table(2, 2, True)
-        vbox25.pack_start(table25, True, True, 0)
-        owmframe = Gtk.Frame()
-        self.radiobutton253 = Gtk.RadioButton(group=None)
-        image_wowm = Gtk.Image()
-        image_wowm.set_from_file(comun.OPENWEATHERMAPLOGO)
-        self.radiobutton253.add(image_wowm)
-        owmframe.add(self.radiobutton253)
-        table25.attach(owmframe, 0, 1, 0, 1, xpadding=5, ypadding=5)
-        yahooframe = Gtk.Frame()
-        self.radiobutton251 = Gtk.RadioButton(group=self.radiobutton253)
-        image_wyahoo = Gtk.Image()
-        image_wyahoo.set_from_file(comun.YAHOOLOGO)
-        self.radiobutton251.add(image_wyahoo)
-        yahooframe.add(self.radiobutton251)
-        table25.attach(yahooframe, 0, 1, 1, 2, xpadding=5, ypadding=5)
-        wwoframe = Gtk.Frame()
-        table25.attach(wwoframe, 1, 2, 1, 2, xpadding=5, ypadding=5)
-        wwobox = Gtk.Table(1, 3)
-        wwoframe.add(wwobox)
-        self.radiobutton252 = Gtk.RadioButton(group=self.radiobutton253)
-        self.radiobutton252.set_sensitive(False)
-        image_wworldonline = Gtk.Image()
-        image_wworldonline.set_from_file(comun.WOLRDWEATHERONLINE)
-        self.radiobutton252.add(image_wworldonline)
-        wwobox.attach(self.radiobutton252, 0, 1, 0, 1,
-                      xpadding=5, ypadding=5)
-        self.wwokey = Gtk.Entry()
-        self.wwokey.set_tooltip_text(_('Input World Weather Online key'))
-        wwobox.attach(self.wwokey, 1, 2, 0, 1, xpadding=5, ypadding=5)
-        buttonwwokey = Gtk.Button(_('Activate'))
-        buttonwwokey.set_tooltip_text(
-            _('Click to activate World Weather Online'))
-        buttonwwokey.connect('clicked', self.on_buttonwwokey_clicked)
-        wwobox.attach(buttonwwokey, 2, 3, 0, 1,
-                      xoptions=Gtk.AttachOptions.SHRINK,
-                      yoptions=Gtk.AttachOptions.SHRINK,
-                      xpadding=5, ypadding=5)
-        wuframe = Gtk.Frame()
-        table25.attach(wuframe, 1, 2, 0, 1, xpadding=5, ypadding=5)
-        wubox = Gtk.Table(1, 3)
-        wuframe.add(wubox)
-        self.radiobutton254 = Gtk.RadioButton(group=self.radiobutton253)
-        self.radiobutton254.set_sensitive(False)
-        image_wunderground = Gtk.Image()
-        image_wunderground.set_from_file(comun.UNDERGROUNDLOGO)
-        image_wunderground.connect(
-            'button-release-event', self.on_image_wunderground_clicked)
-        self.radiobutton254.add(image_wunderground)
-        wubox.attach(self.radiobutton254, 0, 1, 0, 1, xpadding=5, ypadding=5)
-        self.wukey = Gtk.Entry()
-        self.wukey.set_tooltip_text(_('Input Weather Underground key'))
-        wubox.attach(self.wukey, 1, 2, 0, 1, xpadding=5, ypadding=5)
-        buttonwukey = Gtk.Button(_('Activate'))
-        buttonwukey.set_tooltip_text(
-            _('Click to activate Weather Underground'))
-        buttonwukey.connect('clicked', self.on_buttonwukey_clicked)
-        wubox.attach(buttonwukey, 2, 3, 0, 1,
-                     xoptions=Gtk.AttachOptions.SHRINK,
-                     yoptions=Gtk.AttachOptions.SHRINK,
-                     xpadding=5, ypadding=5)
+
         vbox2 = Gtk.VBox(spacing=5)
         vbox2.set_border_width(5)
         frame2 = Gtk.Frame()
         vbox2.pack_start(frame2, True, True, 0)
         notebook.append_page(vbox2, Gtk.Label.new(_('Units')))
-        table2 = Gtk.Table(rows=6, columns=2)
+        table2 = Gtk.Table(n_rows=6, n_columns=2)
         frame2.add(table2)
         label3 = Gtk.Label.new(_('Temperature') + ':')
         label3.set_alignment(0, 0.5)
@@ -482,7 +429,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         frame3 = Gtk.Frame()
         vbox3.pack_start(frame3, True, True, 0)
         notebook.append_page(vbox3, Gtk.Label.new(_('General options')))
-        table3 = Gtk.Table(rows=4, columns=2)
+        table3 = Gtk.Table(n_rows=4, n_columns=2)
         frame3.add(table3)
         self.checkbutton1 = Gtk.CheckButton(_('Autostart'))
         table3.attach(self.checkbutton1, 0, 2, 0, 1,
@@ -539,37 +486,13 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                       xpadding=5, ypadding=5)
         self.checkbutton11.set_active(True)
         self.checkbutton21.set_active(True)
-        autostart_file = 'my-weather-indicator-autostart.desktop'
-        if os.path.exists(os.path.join(
-                os.getenv('HOME'), '.config/autostart', autostart_file)):
+        if os.path.exists(
+                os.path.expanduser(f"~/.config/autostart/{AUTOSTART_FILE}")):
             self.checkbutton1.set_active(True)
         #
         self.show_all()
         #
         self.load_preferences()
-
-    def on_buttonwukey_clicked(self, widget):
-        if len(self.wukey.get_text()) > 0:
-            uws = UndergroundWeatherService(key=self.wukey.get_text())
-            if uws.test_connection():
-                self.radiobutton254.set_sensitive(True)
-            else:
-                self.radiobutton254.set_sensitive(False)
-        else:
-            self.radiobutton254.set_sensitive(False)
-
-    def on_buttonwwokey_clicked(self, widget):
-        if len(self.wwokey.get_text()) > 0:
-            wwo = WorldWeatherOnlineService(key=self.wwokey.get_text())
-            if wwo.test_connection():
-                self.radiobutton252.set_sensitive(True)
-            else:
-                self.radiobutton252.set_sensitive(False)
-        else:
-            self.radiobutton252.set_sensitive(False)
-
-    def on_image_wunderground_clicked(self, widget):
-        webbrowser.open('http://www.wunderground.com/?apiref=6563686488165a78')
 
     def set_sensitive_frame1(self, sensitive):
         self.checkbutton10.set_sensitive(sensitive)
@@ -598,13 +521,13 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
             self.checkbutton25.set_active(False)
             self.comboboxskin2.set_active(False)
 
-    def on_checkbutton10_toggled(self, widget):
+    def on_checkbutton10_toggled(self, widget):  # pyright: ignore
         self.entry11.set_sensitive(not self.checkbutton10.get_active())
         self.button10.set_sensitive(not self.checkbutton10.get_active())
         self.checkbutton12.set_sensitive(not self.checkbutton10.get_active())
         self.checkbutton13.set_sensitive(not self.checkbutton10.get_active())
 
-    def on_checkbutton11_toggled(self, widget):
+    def on_checkbutton11_toggled(self, widget):  # pyright: ignore
         self.set_sensitive_frame1(self.checkbutton11.get_active())
         if self.checkbutton11.get_active() is False:
             self.checkbutton21.set_sensitive(False)
@@ -614,14 +537,14 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         elif self.checkbutton21.get_sensitive() is False:
             self.checkbutton21.set_sensitive(True)
 
-    def on_checkbutton14_toggled(self, widget):
+    def on_checkbutton14_toggled(self, widget):  # pyright: ignore
         self.checkbutton15.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton16.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton17.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton18.set_sensitive(self.checkbutton14.get_active())
         self.comboboxskin1.set_sensitive(self.checkbutton14.get_active())
 
-    def on_checkbutton21_toggled(self, widget):
+    def on_checkbutton21_toggled(self, widget):  # pyright: ignore
         self.set_sensitive_frame2(self.checkbutton21.get_active())
         (self.checkbutton21.get_active())
         if self.checkbutton21.get_active() is False:
@@ -632,7 +555,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         elif self.checkbutton11.get_sensitive() is False:
             self.checkbutton11.set_sensitive(True)
 
-    def on_checkbutton24_toggled(self, widget):
+    def on_checkbutton24_toggled(self, widget):  # pyright: ignore
         self.checkbutton25.set_sensitive(self.checkbutton24.get_active())
         self.checkbutton26.set_sensitive(self.checkbutton24.get_active())
         self.checkbutton27.set_sensitive(self.checkbutton24.get_active())
@@ -645,74 +568,42 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
     def on_optionbutton42_toggled(self, widget):
         self.frame42.set_sensitive(widget.get_active())
 
-    def close_application(self, widget):
+    def close_application(self, widget):  # pyright: ignore
         self.ok = False
         self.destroy()
 
-    def search_location(self, widget):
+    def search_location(self, widget):  # pyright: ignore
         cm1 = WhereAmI(self, location=self.entry11.get_text(),
-                       latitude=self.latitude, longitude=self.longitude)
+                       latitude=self._latitude, longitude=self._longitude,
+                       timezone=self._timezone)
         if cm1.run() == Gtk.ResponseType.ACCEPT:
-            lat, lon, loc = cm1.get_lat_lon_loc()
-            print(lat, lon, loc)
-            self.latitude = lat
-            self.longitude = lon
-            self.location = loc
-            if self.location is not None:
-                self.entry11.set_text(self.location)
+            self._latitude, self._longitude, self._location, self._timezone = \
+                    cm1.get_data()
+            self.entry11.set_text(self._location)
         cm1.destroy()
 
-    def search_location2(self, widget):
+    def search_location2(self, widget):  # pyright: ignore
         cm2 = WhereAmI(self, location=self.entry21.get_text(),
-                       latitude=self.latitude2, longitude=self.longitude2)
+                       latitude=self._latitude2, longitude=self._longitude2,
+                       timezone=self._timezone2)
         if cm2.run() == Gtk.ResponseType.ACCEPT:
-            lat, lon, loc = cm2.get_lat_lon_loc()
-            self.latitude2 = lat
-            self.longitude2 = lon
-            self.location2 = loc
-            if self.location2:
-                self.entry21.set_text(self.location2)
+            self._latitude2, self._longitude2, self._location2, \
+                    self._timezone2 = cm2.get_data()
+            self.entry21.set_text(self._location2)
         cm2.destroy()
 
     def load_preferences(self):
         configuration = Configuration()
         # first_time = configuration.get('first-time')
         # version = configuration.get('version')
-        weatherservice = configuration.get('weather-service')
-        if weatherservice == 'yahoo':
-            self.radiobutton251.set_active(True)
-        elif weatherservice == 'worldweatheronline':
-            self.radiobutton252.set_active(True)
-        elif weatherservice == 'openweathermap':
-            self.radiobutton253.set_active(True)
-        elif weatherservice == 'wunderground':
-            self.radiobutton254.set_active(True)
-        wwokey = configuration.get('wwo-key')
-        if len(wwokey) > 0:
-            self.wwokey.set_text(wwokey)
-            wwo = WorldWeatherOnlineService(key=wwokey)
-            if wwo.test_connection():
-                self.radiobutton252.set_sensitive(True)
-            else:
-                if weatherservice == 'worldweatheronline':
-                    self.radiobutton253.set_active(True)
-        wukey = configuration.get('wu-key')
-        if len(wukey) > 0:
-            self.wukey.set_text(wukey)
-            uws = UndergroundWeatherService(key=self.wukey.get_text())
-            if uws.test_connection():
-                self.radiobutton254.set_sensitive(True)
-            else:
-                if weatherservice == 'wunderground':
-                    self.radiobutton253.set_active(True)
-        #
         self.checkbutton11.set_active(configuration.get('main-location'))
         self.checkbutton10.set_active(configuration.get('autolocation'))
-        self.location = configuration.get('location')
-        self.latitude = configuration.get('latitude')
-        self.longitude = configuration.get('longitude')
-        if self.location:
-            self.entry11.set_text(self.location)
+        self._location = configuration.get('location')
+        self._latitude = configuration.get('latitude')
+        self._longitude = configuration.get('longitude')
+        self._timezone = configuration.get("timezone")
+        if self._location:
+            self.entry11.set_text(self._location)
         self.checkbutton12.set_active(configuration.get('show-temperature'))
         self.checkbutton13.set_active(configuration.get('show-notifications'))
         self.checkbutton14.set_active(configuration.get('widget1'))
@@ -728,11 +619,12 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         self.comboboxskin1.set_sensitive(self.checkbutton14.get_active())
         #
         self.checkbutton21.set_active(configuration.get('second-location'))
-        self.location2 = configuration.get('location2')
-        self.latitude2 = configuration.get('latitude2')
-        self.longitude2 = configuration.get('longitude2')
-        if self.location2:
-            self.entry21.set_text(self.location2)
+        self._location2 = configuration.get('location2')
+        self._latitude2 = configuration.get('latitude2')
+        self._longitude2 = configuration.get('longitude2')
+        self._timezone2 = configuration.get("timezone2")
+        if self._location2:
+            self.entry21.set_text(self._location2)
         self.checkbutton22.set_active(configuration.get('show-temperature2'))
         self.checkbutton23.set_active(configuration.get('show-notifications2'))
         self.checkbutton24.set_active(configuration.get('widget2'))
@@ -762,32 +654,37 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
     def save_preferences(self):
         configuration = Configuration()
         if self.checkbutton11.get_active() and\
-                (len(self.entry11.get_text()) == 0 or self.latitude is None or
-                 self.latitude == 0 or self.longitude is None or
-                 self.longitude == 0):
-            self.latitude, self.longitude = ipaddress.get_current_location()
-            ans = geocodeapi.get_inv_direction(self.latitude, self.longitude)
-            if ans is not None and 'locality' in ans.keys():
-                self.location = ans['locality']
+                (not self.entry11.get_text() or self._latitude is None or
+                 self._latitude == 0 or self._longitude is None or
+                 self._longitude == 0 or not self._timezone):
+            data = geocodeapi.get_latitude_longitude_city()
+            if data:
+                self._location = data["city"]
+                self._latitude = data["lat"]
+                self._longitude = data["lon"]
+                self._timezone = data["timezone"]
         if self.checkbutton21.get_active() and\
-                (len(self.entry21.get_text()) == 0 or
-                 self.latitude2 is None or self.latitude2 == 0 or
-                 self.longitude2 is None or self.longitude2 == 0):
-            self.latitude2, self.longitude2 = ipaddress.get_current_location()
-            ans = geocodeapi.get_inv_direction(self.latitude2, self.longitude2)
-            if ans is not None and 'locality' in ans.keys():
-                self.location2 = ans['locality']
-        if len(self.entry11.get_text()) > 0:
-            self.location = self.entry11.get_text()
-        if len(self.entry21.get_text()) > 0:
-            self.location2 = self.entry21.get_text()
+                (not self.entry21.get_text() or self._latitude2 is None or
+                 self._latitude2 == 0 or self._longitude2 is None or
+                 self._longitude2 == 0 or not self._timezone2):
+            data = geocodeapi.get_latitude_longitude_city()
+            if data:
+                self._location2 = data["city"]
+                self._latitude2 = data["lat"]
+                self._longitude2 = data["lon"]
+                self._timezone2 = data["timezone"]
+        if self.entry11.get_text():
+            self._location = self.entry11.get_text()
+        if self.entry21.get_text():
+            self._location2 = self.entry21.get_text()
         configuration.set('first-time', False)
         configuration.set('version', comun.VERSION)
         configuration.set('main-location', self.checkbutton11.get_active())
         configuration.set('autolocation', self.checkbutton10.get_active())
-        configuration.set('location', self.location)
-        configuration.set('latitude', self.latitude)
-        configuration.set('longitude', self.longitude)
+        configuration.set('location', self._location)
+        configuration.set('latitude', self._latitude)
+        configuration.set('longitude', self._longitude)
+        configuration.set('timezone', self._timezone)
         configuration.set('show-temperature', self.checkbutton12.get_active())
         configuration.set('show-notifications',
                           self.checkbutton13.get_active())
@@ -802,9 +699,10 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
                               get_selected_value_in_combo(self.comboboxskin1))
         #
         configuration.set('second-location', self.checkbutton21.get_active())
-        configuration.set('location2', self.location2)
-        configuration.set('latitude2', self.latitude2)
-        configuration.set('longitude2', self.longitude2)
+        configuration.set('location2', self._location2)
+        configuration.set('latitude2', self._latitude2)
+        configuration.set('longitude2', self._longitude2)
+        configuration.set('timezone2', self._timezone)
         configuration.set('show-temperature2', self.checkbutton22.get_active())
         configuration.set('show-notifications2',
                           self.checkbutton23.get_active())
@@ -818,31 +716,6 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
             configuration.set('skin2',
                               get_selected_value_in_combo(self.comboboxskin2))
         #
-        if self.radiobutton251.get_active():
-            configuration.set('weather-service', 'yahoo')
-        elif self.radiobutton253.get_active():
-            configuration.set('weather-service', 'openweathermap')
-        #
-        wwokey = self.wwokey.get_text()
-        if len(wwokey) > 0:
-            wwo = WorldWeatherOnlineService(key=wwokey)
-            if wwo.test_connection():
-                configuration.set('wwo-key', wwokey)
-                if self.radiobutton252.get_active():
-                    configuration.set('weather-service', 'worldweatheronline')
-            else:
-                if self.radiobutton252.get_active():
-                    configuration.set('weather-service', 'openweathermap')
-        wukey = self.wukey.get_text()
-        if len(wukey) > 0:
-            wu = UndergroundWeatherService(key=wukey)
-            if wu.test_connection():
-                configuration.set('wu-key', wukey)
-                if self.radiobutton254.get_active():
-                    configuration.set('weather-service', 'wunderground')
-            else:
-                if self.radiobutton254.get_active():
-                    configuration.set('weather-service', 'openweathermap')
         configuration.set(
             'temperature', get_selected_value_in_combo(self.combobox3))
         configuration.set(
@@ -863,9 +736,7 @@ class CM(Gtk.Dialog):  # needs GTK, Python, Webkit-GTK
         print('Saving...')
         configuration.save()
         #
-        filestart = os.path.join(
-            os.getenv("HOME"),
-            ".config/autostart/my-weather-indicator-autostart.desktop")
+        filestart = os.path.expanduser(f"~/.config/autostart/{AUTOSTART_FILE}")
         if self.checkbutton1.get_active():
             if not os.path.exists(os.path.dirname(filestart)):
                 os.makedirs(os.path.dirname(filestart))

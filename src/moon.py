@@ -7,21 +7,38 @@ Author: Sean B. Palmer, inamidst.com
 Cf. http://en.wikipedia.org/wiki/Lunar_phase#Lunar_phase_calculation
 '''
 
-from comun import _
 import math
 import decimal
 import datetime
+from comun import _
+import logging
+import os
+import sys
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
 
 dec = decimal.Decimal
 
 
 class Moon(object):
     def __init__(self, date):
-        self.date = date
+        logger.info("__init__")
+        logger.debug(date)
+        self._date = date
 
     def position(self):
-        diff = self.date - datetime.datetime(2001, 1, 1)
+        logger.info("position")
+        diff = self._date - datetime.datetime(2001, 1, 1)
+        logger.debug(f"Dif: {diff}")
         days = dec(diff.days) + (dec(diff.seconds) / dec(86400))
+        logger.debug(f"Days: {days}")
         lunations = dec('0.20439731') + (days * dec('0.03386319269'))
         return lunations % dec(1)
 
@@ -73,6 +90,6 @@ if __name__ == '__main__':
         moon = Moon(datetime.datetime(y, m, i))
         phasename = moon.phase()
         roundedpos = round(float(moon.position()), 3)
-        print('dia %s -> %s (%s): %s' % (i, phasename,
-                                         roundedpos, moon.icon()))
+        icon = moon.icon()
+        logger.info(f"dia {i} -> {phasename} ({roundedpos}): {icon}")
     exit(0)

@@ -25,9 +25,11 @@
 
 import os
 import locale
+import logging
 import gettext
 import sys
 import requests
+import fcntl
 from check_connection import check_connectivity
 import urllib.request
 import urllib.parse
@@ -38,28 +40,35 @@ __date__ = '$24/09/2011'
 __copyright__ = 'Copyright (c) 2011 Lorenzo Carbonell'
 __license__ = 'GPLV3'
 __url__ = 'http://www.atareao.es'
-######################################
+
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def is_package():
     return __file__.find('src') < 0
 
 
-######################################
 PARAMS = {'first-time': True,
           'version': '',
-          'weather-service': 'openweathermap',
           'main-location': True,
           'autolocation': False,
           'location': '',
           'latitude': 0,
           'longitude': 0,
+          'timezone': '',
           'show-temperature': True,
           'show-notifications': True,
           'second-location': False,
           'location2': '',
           'latitude2': 0,
           'longitude2': 0,
+          'timezone2': '',
           'show-temperature2': True,
           'show-notifications2': True,
           'temperature': 'C',
@@ -159,42 +168,42 @@ OPENWEATHERMAPWEB = 'http://openweathermap.org/'
 ####
 try:
     current_locale, encoding = locale.getdefaultlocale()
-    language = gettext.translation(APP, LANGDIR, [current_locale])
-    language.install()
-    print(language)
-    if sys.version_info[0] == 3:
+    if current_locale:
+        LANG = current_locale.split("_")[0]
+        language = gettext.translation(APP, LANGDIR, [current_locale])
+        language.install()
         _ = language.gettext
     else:
-        _ = language.ugettext
+        LANG = "en"
+        raise Exception("No current locale")
 except Exception as e:
-    print(e)
+    logger.error(e)
     _ = str
 APPNAME = _(APPNAME)
 
 
-def read_from_url(url, timeout=0):
+def read_from_url(url):
     try:
         url = url.replace(' ', '%20')
         ans = requests.get(url, proxies=urllib.request.getproxies())
         if ans.status_code == 200:
             return ans.text
     except Exception as e:
-        print(e)
+        logger.error(e)
     return None
 
 
-def read_json_from_url(url, timeout=0):
+def read_json_from_url(url):
     try:
         url = url.replace(' ', '%20')
         ans = requests.get(url, proxies=urllib.request.getproxies())
         if ans.status_code == 200:
             return ans.json()
         else:
-            print('==== **** ====')
-            print('Error accessing url: ', url, ans.status_code)
-            print('==== **** ====')
+            raise Exception(
+                    f"Error accessing url: {url} with {ans.status_code}")
     except Exception as e:
-        print(e)
+        logger.error(e)
     return None
 
 
@@ -202,7 +211,17 @@ def internet_on():
     return check_connectivity()
 
 
+def is_running(label="default"):
+    lock_file_pointer = os.open(f"/tmp/instance_{label}.lock", os.O_WRONLY)
+
+    try:
+        fcntl.lockf(lock_file_pointer, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        already_running = False
+    except IOError:
+        already_running = True
+
+    return already_running
+
+
 if __name__ == '__main__':
-    print(' === ')
-    print(internet_on())
-    print(' ======= ')
+    logger.info(internet_on())

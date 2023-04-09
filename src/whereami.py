@@ -28,41 +28,57 @@ try:
     gi.require_version('Gtk', '3.0')
     gi.require_version('Gtk', '3.0')
     gi.require_version('Gdk', '3.0')
-    gi.require_version('OsmGpsMap', '1.0')
     gi.require_version('GLib', '2.0')
     gi.require_version('WebKit2', '4.0')
 except ValueError as e:
     print(e)
     exit(-1)
-from gi.repository import Gtk
-from gi.repository import Gdk
-from gi.repository import WebKit2
-from gi.repository import OsmGpsMap
-from geolocation import get_latitude_longitude_city
+from gi.repository import Gtk  # pyright: ignore
+from gi.repository import Gdk  # pyright: ignore
+from gi.repository import WebKit2  # pyright: ignore
 from asyncf import async_function
+import json
+import comun
 import geocodeapi
 from comun import _
 from basedialog import BaseDialog
+import logging
+import sys
+import os
 
-
-def match_anywhere(completion, entrystr, iter, data):
-    modelstr = completion.get_model()[iter][2]['city'].lower()
-    print(entrystr, modelstr)
-    return modelstr.startswith(entrystr.lower())
+logger = logging.getLogger(__name__)
+logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+handler = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 class WhereAmI(BaseDialog):
-    def __init__(self, parent=None, location=None, latitude=0,
-                 longitude=0):
-        self.latitude = latitude
-        self.longitude = longitude
-        self.location = location
+    def __init__(self, parent=None, location="Silla", latitude=39.36667,
+                 longitude=-0.41667, timezone="Europe/Madrid"):
         BaseDialog.__init__(self, 'my-weather-indicator | ' + _('Where Am I'),
                             parent)
+        self.set_location(location)
+        self.set_timezone(timezone)
+        self.set_position(latitude, longitude)
+
+        self.set_wait_cursor()
+        if latitude and longitude and (location is None or location == ""):
+            self.do_search_location(latitude, longitude)
+        else:
+            self.do_center()
+
+        logger.info(f"location: {self._location}, latitude: {self._latitude}"
+                    ", longitude={self._longitude}")
+        self.set_normal_cursor()
 
     def init_ui(self):
         BaseDialog.init_ui(self)
         #
+        self.grid = Gtk.Grid()
+        self.set_content(self.grid)
         vbox = Gtk.Box.new(Gtk.Orientation.VERTICAL, 5)
         self.grid.attach(vbox, 0, 0, 1, 1)
 
@@ -106,8 +122,8 @@ class WhereAmI(BaseDialog):
         scrolledwindow0.set_shadow_type(Gtk.ShadowType.ETCHED_OUT)
         scrolledwindow0.set_size_request(450, 100)
         frame.add(scrolledwindow0)
-        # city, county, country, latitude, longitude
-        store = Gtk.ListStore(str, str, str, float, float)
+        # city, county, country, latitude, longitude, timezone
+        store = Gtk.ListStore(str, str, str, float, float, str)
         store.set_sort_column_id(2, Gtk.SortType.ASCENDING)
         self.treeview = Gtk.TreeView(model=store)
         self.treeview.set_reorderable(True)
@@ -137,144 +153,154 @@ class WhereAmI(BaseDialog):
         scrolledwindow.set_shadow_type(Gtk.ShadowType.IN)
         vbox.pack_start(scrolledwindow, True, True, 0)
         #
-        self.viewer = OsmGpsMap.Map()
-        self.viewer.layer_add(OsmGpsMap.MapOsd(show_dpad=True,
-                                               show_zoom=True,
-                                               show_crosshair=True))
-        # connect keyboard shortcuts
-        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.FULLSCREEN,
-                                          Gdk.keyval_from_name("F11"))
-        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.UP,
-                                          Gdk.keyval_from_name("Up"))
-        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.DOWN,
-                                          Gdk.keyval_from_name("Down"))
-        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.LEFT,
-                                          Gdk.keyval_from_name("Left"))
-        self.viewer.set_keyboard_shortcut(OsmGpsMap.MapKey_t.RIGHT,
-                                          Gdk.keyval_from_name("Right"))
+        self.viewer = WebKit2.WebView()
         scrolledwindow.add(self.viewer)
-        scrolledwindow.set_size_request(550, 550)
-
-        if self.latitude and self.longitude:
-            if self.location is not None and len(self.location) > 0:
-                self.entry1.set_text(self.location)
-            else:
-                self.do_search_location(self.latitude, self.longitude)
-        else:
-            self.search_location2()
-
-        self.set_wait_cursor()
-        self.search_string = ''
-        print('============================')
-        print(self.location, self.latitude, self.longitude)
-        print('============================')
+        scrolledwindow.set_size_request(900, 600)
+        self.viewer.connect('load-changed', self.load_changed)
+        self.viewer.connect('notify::title', self.on_title_changed)
+        logger.debug(f"File: {comun.HTML_WAI}")
+        self.viewer.load_uri('file://' + comun.HTML_WAI)
+        self.set_focus(self.viewer)
 
     def on_expander_expanded(self, widget, selected):
-        print(widget, selected)
+        logger.info(f"{widget}, {selected}")
         if not self.expander.get_expanded():
             self.resize(450, 350)
 
+    def on_title_changed(self, widget, data):
+        logger.debug("on_title_changed")
+        logger.debug(data)
+        logger.debug(self.viewer.get_title())
+        self.expander.set_expanded(False)
+        model = self.treeview.get_model()
+        model.clear()
+        data = json.loads(self.viewer.get_title())
+        latitude = data["latitude"] if "latitude" in data.keys() else None
+        longitude = data["longitude"] if "longitude" in data.keys() else None
+        logger.debug(f"{latitude},{longitude}")
+        if latitude and longitude:
+            logger.debug(f"{latitude},{longitude}")
+            self.do_search_location(latitude, longitude)
+
     def ontreeviewcursorchanged(self, treeview):
+        logger.info("ontreeviewcursorchanged")
         selection = treeview.get_selection()
         if selection is not None:
             model, aiter = treeview.get_selection().get_selected()
             if model is not None and aiter is not None:
-                self.entry1.set_text(model[aiter][0])
-                self.locality = model[aiter][0]
-                self.lat = model[aiter][3]
-                self.lng = model[aiter][4]
-                self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
+                self.set_location(model[aiter][0])
+                self.set_position(model[aiter][3], model[aiter][4])
+                self.set_timezone(model[aiter][5])
 
-    def on_icon_press(self, widget, icon_pos, event):
+    def on_icon_press(self, widget, icon_pos, event):  # pyright: ignore
         if icon_pos == Gtk.EntryIconPosition.PRIMARY:
             self.on_button1_clicked(None)
         elif icon_pos == Gtk.EntryIconPosition.SECONDARY:
             self.entry1.set_text('')
 
-    def on_permission_request(self, widget, frame, geolocationpolicydecision):
+    def on_permission_request(
+            self, widget, frame, geolocationpolicydecision):  # pyright: ignore
         WebKit2.geolocation_policy_allow(geolocationpolicydecision)
         return True
 
-    def on_button2_clicked(self, widget):
+    def on_button2_clicked(self, widget):  # pyright: ignore
         self.do_center()
 
     def do_center(self):
-        def on_center_done(result, error):
-            print(result)
+        def on_center_done(result, error):  # pyright: ignore
+            logger.info(result)
             if result is not None:
-                latitude, longitude, city = result
-                self.lat = latitude
-                self.lng = longitude
-                self.locality = city
-                self.entry1.set_text(city)
-                print(self.lat, self.lng)
-                self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
-            self.set_normal_cursor()
+                model = self.treeview.get_model()
+                model.clear()
+                self.expander.set_expanded(True)
+                self.entry1.set_text("")
+                model.append([result['city'], result['regionName'],
+                              result['country'], result['lat'],
+                              result['lon'], result["timezone"]])
+                self.set_location(result["city"])
+                self.set_position(result["lat"], result["lon"])
+                self.set_timezone(result["timezone"])
+
+                if len(model) > 0:
+                    self.treeview.set_cursor(0)
+                self.set_normal_cursor()
 
         @async_function(on_done=on_center_done)
         def do_center_in_thread():
-            return get_latitude_longitude_city()
+            return geocodeapi.get_latitude_longitude_city()
 
         self.set_wait_cursor()
         do_center_in_thread()
 
-    def on_button1_clicked(self, widget):
+    def on_button1_clicked(self, widget):  # pyright: ignore
+        logger.debug("on_button1_clicked")
         self.set_wait_cursor()
         search_string = self.entry1.get_text()
         model = self.treeview.get_model()
         model.clear()
         self.expander.set_expanded(True)
-        print(search_string)
+        self.entry1.set_text("")
+        logger.debug(f"Search for {search_string}")
         for direction in geocodeapi.get_directions(search_string):
-            print(direction)
-            # city, county, state, country, latitude, longitude
-            if 'city' in direction.keys() and\
-                    direction['city'] is not None and\
-                    len(direction['city']) > 0:
-                model.append([direction['city'], direction['state'],
-                              direction['country'], direction['lat'],
-                              direction['lng']])
+            logger.debug(direction)
+            if 'name' in direction.keys() and direction['name']:
+                if "admin1" in direction.keys():
+                    admin1 = direction["admin1"]
+                else:
+                    admin1 = ""
+                model.append([direction['name'], admin1,
+                              direction['country'], direction['latitude'],
+                              direction['longitude'], direction["timezone"]])
+                if self.entry1.get_text() == "":
+                    self.set_location(direction["name"])
+                    self.set_position(direction["latitude"],
+                                      direction["longitude"])
+                    self.set_timezone(direction["timezone"])
+
         if len(model) > 0:
             self.treeview.set_cursor(0)
+
         self.set_normal_cursor()
 
-    def search_location2(self):
-        self.do_center()
-
     def do_search_location(self, latitude, longitude):
-        def on_search_location_done(result, error):
-            print(6)
-            print(result)
+        logger.debug("do_search_location")
+
+        def on_search_location_done(result, error):  # pyright: ignore
+            logger.debug("on_search_location_done")
+            logger.debug(result)
             if result is not None:
-                self.lat = result['lat']
-                self.lng = result['lng']
-                if result['city'] is None:
-                    if result['state'] is not None:
-                        city = result['state']
-                    else:
-                        city = result['country']
-                else:
-                    city = result['city']
-                self.locality = city
-                self.entry1.set_text(city)
-                self.viewer.set_center_and_zoom(self.lat, self.lng, 14)
+                city = result["city"] if result["city"] else result["locality"]
+                self.set_location(city)
+                self.set_position(result["latitude"], result["longitude"])
             self.set_normal_cursor()
 
         @async_function(on_done=on_search_location_done)
         def do_search_location_in_thread(latitude, longitude):
-            print(5)
             return geocodeapi.get_inv_direction(latitude, longitude)
-        print(3)
         self.set_wait_cursor()
-        print(4)
         do_search_location_in_thread(latitude, longitude)
 
-    def on_close_application(self, widget):
+    def on_close_application(self, widget):  # pyright: ignore
         self.set_normal_cursor()
         self.hide()
 
-    def get_lat_lon_loc(self):
-        return self.lat, self.lng, self.locality
+    def get_data(self):
+        return self._latitude, self._longitude, self._location, self._timezone
+
+    def set_timezone(self, timezone):
+        logger.debug(f"Set timezone: {timezone}")
+        self._timezone = timezone
+
+    def set_location(self, location):
+        logger.debug(f"Set location: {location}")
+        self._location = location
+        self.entry1.set_text(location)
+
+    def set_position(self, latitude, longitude):
+        logger.debug(f"Set position: {latitude}, {longitude}")
+        self._latitude = latitude
+        self._longitude = longitude
+        self.web_send(f"setPosition({self._latitude}, {self._longitude});")
 
     def set_wait_cursor(self):
         Gdk.Screen.get_default().get_root_window().set_cursor(
@@ -288,11 +314,22 @@ class WhereAmI(BaseDialog):
         while Gtk.events_pending():
             Gtk.main_iteration()
 
+    def load_changed(self, widget, load_event):  # pyright: ignore
+        if load_event == WebKit2.LoadEvent.FINISHED:
+            logger.debug(f"setPosition({self._latitude}, {self._longitude});")
+            self.web_send(f"setPosition({self._latitude}, {self._longitude});")
+
+    def web_send(self, msg):
+        logger.debug(msg)
+        self.viewer.evaluate_javascript(msg, len(msg), None, "localhost", None)
+        while Gtk.events_pending():
+            Gtk.main_iteration()
+
 
 if __name__ == '__main__':
     cm = WhereAmI()
     if cm.run() == Gtk.ResponseType.ACCEPT:
-        print(cm.get_lat_lon_loc())
+        logger.info(cm.get_data())
     cm.hide()
     cm.destroy()
     exit(0)
