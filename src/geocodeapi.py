@@ -26,12 +26,11 @@
 import requests
 import datetime
 import pytz
-from timezonefinder import TimezoneFinder
-from geopy.geocoders import Nominatim
 from comun import LANG
 import logging
 import sys
 import os
+from urllib.parse import quote
 
 
 logger = logging.getLogger(__name__)
@@ -43,6 +42,8 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 BASE_URI = "https://geocoding-api.open-meteo.com"
+TZ_BASE_URI = "https://api.wheretheiss.at"
+GEO_BASE_URI = "https://api.bigdatacloud.net"
 
 
 def is_direction_in_directions(direction, directions):
@@ -80,14 +81,31 @@ def get_latitude_longitude_city(ip=None):
 
 
 def get_inv_direction(latitude, longitude):
-    geolocator = Nominatim(user_agent="geoapiExercises")
-    location = geolocator.reverse(f"{latitude},{longitude}")
-    logger.debug(location)
+    url = (f"{GEO_BASE_URI}/data/reverse-geocode-client?latitude={latitude}"
+           f"&longitude={longitude}&localityLanguage={LANG}")
+    try:
+        response = requests.get(url)
+        data = response.json()
+        if response.status_code == 200:
+            return data
+    except Exception as exception:
+        logger.error(exception)
+    return None
 
 
 def get_timezoneId(latitude, longitude):
-    tf = TimezoneFinder()
-    return tf.timezone_at(lng=longitude, lat=latitude)
+    url = f"{TZ_BASE_URI}/v1/coordinates/{latitude},{longitude}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        if response.status_code == 200:
+            return data["timezone_id"]
+        elif "error" in data.keys():
+            raise Exception(f"Error: {data['error']}")
+        raise Exception("Cant")
+    except Exception as exception:
+        logger.error(exception)
+    return None
 
 
 def get_rawOffset(timezoneId):
@@ -110,25 +128,28 @@ def get_rawOffset(timezoneId):
 
 
 def get_directions(name):
-    url = f"{BASE_URI}/v1/search?name={name}&language={LANG}"
+    logger.debug("get_directions")
+    search_string = quote(name)
+    url = f"{BASE_URI}/v1/search?name={search_string}&language={LANG}"
+    logger.debug(url)
     response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        if "results" in data.keys():
-            return data["results"]
+    try:
+        if response.status_code == 200:
+            data = response.json()
+            logger.debug(data)
+            if "results" in data.keys():
+                return data["results"]
+        raise Exception("Cant find")
+    except Exception as exception:
+        logger.error(exception)
     return []
 
 
 if __name__ == "__main__":
-    '''
-    logger.info(get_inv_direction(40, 0))
-    logger.info('************************************************')
-    logger.info(get_direction('Silla'))
-    logger.info('************************************************')
-    logger.info(get_woeid(40, 0))
-    logger.info(get_inv_direction(39.3667, -0.4167))
-    logger.info(get_inv_direction(39.4, -0.4))
-    '''
-    logger.info(get_timezoneId(40, 0))
-    latitude, longitude, city = get_directions('Silla')
-    logger.info(f"{latitude}, {longitude}, {city}")
+    data = get_inv_direction(40, 0)
+    from pprint import pprint
+    pprint(data)
+    # logger.info(get_timezoneId(40, 0))
+    # latitude, longitude, city = get_directions('Silla')
+    # logger.info(f"{latitude}, {longitude}, {city}")
+    # logger.info(get_timezoneId(40.0, 0.0))
