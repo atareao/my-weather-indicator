@@ -1,3 +1,11 @@
+my-weather-indicator (0.10.1-0extras23.04.00) jammy; urgency=medium
+
+  * fixed: crashes with widget "anotherone" #98
+  * fixed: Weather report shows N/A #99
+  * fixed: crashes after last update #101 
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:37:44 +0100
+
 my-weather-indicator (0.10.0-0extras23.04.00) jammy; urgency=medium
 
   * fixed bug #60, removed OpenWeatherMap as Service

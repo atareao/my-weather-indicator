@@ -101,7 +101,7 @@ PARAMS = {'first-time': True,
           'http-proxy': '',
           'http-port': 0,
           'https-proxy': '',
-          'https-port': 0,
+          'https-port': 0
           }
 
 APP = 'my-weather-indicator'

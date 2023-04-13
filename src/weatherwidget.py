@@ -487,7 +487,9 @@ class WeatherWidget(Gtk.Window):
                                 if text.find('$HUMIDITY$') > -1:
                                     text = text.replace('$HUMIDITY$', self.weather_data['current_conditions']['humidity'])
                                 if text.find('$PRESSURE$') > -1:
-                                    text = text.replace('$PRESSURE$', self.weather_data['current_conditions']['pressure'])
+                                    text = text.replace(
+                                            '$PRESSURE$',
+                                            str(self.weather_data['current_conditions']['pressure']))
                                 if text.find('$WIND$') > -1:
                                     text = text.replace('$WIND$', self.weather_data['current_conditions']['wind_condition'])
                                 if text.find('$CONDITION$') > -1:

@@ -24,18 +24,18 @@
 # SOFTWARE.
 
 import http.client
-import requests
 import socket
 import time
 import logging
 import sys
 import os
+import requests
 
 logger = logging.getLogger(__name__)
 logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
+
 handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 

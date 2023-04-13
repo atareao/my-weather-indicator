@@ -23,16 +23,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import dbus
-import comun
 import re
-import json
-from functools import partial
-from collections import namedtuple
-from geocodeapi import get_inv_direction
 import logging
 import os
 import sys
+import comun
 
 logger = logging.getLogger(__name__)
 logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
@@ -43,68 +38,11 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 
-def ip_address(data):
-    logger.info(data)
-
-
-def convert(dbus_obj):
-    """Converts dbus_obj from dbus type to python type.
-    :param dbus_obj: dbus object.
-    :returns: dbus_obj in python type.
-    """
-    _isinstance = partial(isinstance, dbus_obj)
-    ConvertType = namedtuple('ConvertType', 'pytype dbustypes')
-
-    pyint = ConvertType(int, (dbus.Byte, dbus.Int16, dbus.Int32, dbus.Int64,
-                              dbus.UInt16, dbus.UInt32, dbus.UInt64))
-    pybool = ConvertType(bool, (dbus.Boolean, ))
-    pyfloat = ConvertType(float, (dbus.Double, ))
-    pylist = ConvertType(lambda _obj: list(map(convert, dbus_obj)),
-                         (dbus.Array, ))
-    pytuple = ConvertType(lambda _obj: tuple(map(convert, dbus_obj)),
-                          (dbus.Struct, ))
-    types_str = (dbus.ObjectPath, dbus.Signature, dbus.String)
-    pystr = ConvertType(str, types_str)
-
-    pydict = ConvertType(
-        lambda _obj: dict(list(zip(list(map(convert, dbus_obj.keys())),
-                                   list(map(convert, dbus_obj.values()))
-                                   ))
-                          ),
-        (dbus.Dictionary, )
-    )
-
-    for conv in (pyint, pybool, pyfloat, pylist, pytuple, pystr, pydict):
-        if any(map(_isinstance, conv.dbustypes)):
-            return conv.pytype(dbus_obj)
-    else:
-        return dbus_obj
-
-
 def get_ip():
     url = 'http://whatismyip.org'
     ans = comun.read_from_url(url)
-    if ans and (data := re.compile(r'(\d+\.\d+\.\d+\.\d+)').search(ans)):
-        return data.group(1)
+    if ans:
+        data = re.compile(r'(\d+\.\d+\.\d+\.\d+)').search(ans)
+        if data:
+            return data.group(1)
     return None
-
-
-def get_current_location():
-    try:
-        url = 'http://ip-api.com/json'
-        if (response := comun.read_from_url(url)) and \
-                (ans := json.loads(response)):
-            return ans['lat'], ans['lon']
-    except Exception as e:
-        logger.error(e)
-    return 0, 0
-
-
-def get_address_from_ip():
-    lat, lon = get_current_location()
-    ans = get_inv_direction(lat, lon)
-    return ans
-
-
-if __name__ == "__main__":
-    logger.info(get_current_location())
