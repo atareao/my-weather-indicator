@@ -363,11 +363,11 @@ def change_velocity(valor, a):
             return _('Light breeze')
         elif valor <= 12:
             return _('Gentle breeze')
-        elif valor <= 17:
+        elif valor <= 18:
             return _('Moderate breeze')
         elif valor <= 24:
             return _('Fresh breeze')
-        elif valor <= 30:
+        elif valor <= 31:
             return _('Strong breeze')
         elif valor <= 38:
             return _('High wind')
