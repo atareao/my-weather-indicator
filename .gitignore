@@ -88,3 +88,4 @@ ENV/
 .ropeproject
 debian/files
 .mypy_cache/
+/.idea/

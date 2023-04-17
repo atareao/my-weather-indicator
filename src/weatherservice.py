@@ -356,31 +356,31 @@ def change_velocity(valor, a):
             valor * units_u[a])), units_m[a])
     if a == 'Beaufort':
         if valor <= 1:
-            return _('Calm')
+            return "0 - " + _('Calm')
         elif valor <= 3:
-            return _('Light air')
+            return "1 - " + _('Light air')
         elif valor <= 7:
-            return _('Light breeze')
+            return "2 - " + _('Light breeze')
         elif valor <= 12:
-            return _('Gentle breeze')
-        elif valor <= 17:
-            return _('Moderate breeze')
+            return "3 - " + _('Gentle breeze')
+        elif valor <= 18:
+            return "4 - " + _('Moderate breeze')
         elif valor <= 24:
-            return _('Fresh breeze')
-        elif valor <= 30:
-            return _('Strong breeze')
+            return "5 - " + _('Fresh breeze')
+        elif valor <= 31:
+            return "6 - " + _('Strong breeze')
         elif valor <= 38:
-            return _('High wind')
+            return "7 - " + _('High wind')
         elif valor <= 46:
-            return _('Gale')
+            return "8 - " + _('Gale')
         elif valor <= 54:
-            return _('Strong gale')
+            return "9 - " + _('Strong gale')
         elif valor <= 63:
-            return _('Storm')
+            return "10 - " + _('Storm')
         elif valor <= 72:
-            return _('Violent storm')
+            return "11 - " + _('Violent storm')
         elif valor > 72:
-            return _('Hurricane')
+            return "12 - " + _('Hurricane')
     return ''
 
 

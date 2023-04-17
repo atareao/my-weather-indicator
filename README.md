@@ -39,8 +39,8 @@ codefactor-badge: True
 
 Before you begin, ensure you have met the following requirements:
 
-* If you install it from PPA don't worry about, becouse all the requirements are included in the package
-* If you clone the repository, you need, at least, these dependecies,
+* If you install it from PPA don't worry about, because all the requirements are included in the package
+* If you clone the repository, you need, at least, these dependencies,
 
 ```
 gir1.2-gtk-3.0
@@ -86,7 +86,7 @@ When you start **<span id="project_title">My Weather Indicator</span>** it goes 
 
 In this screenshot, the language is Spanish, but, if there is no translation for your language, you will find the app in English.
 
-My-Weather-Indicator comes with a complete configuration dialog. You can set two locations for the wheater. In the mein location, you can set following options,
+My-Weather-Indicator comes with a complete configuration dialog. You can set two locations for the wheater. In the **Main location** tab, you can set following options,
 
 ![my-weather-indicator](./screenshots/screenshot_01.png)
 
