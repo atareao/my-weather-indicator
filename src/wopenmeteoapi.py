@@ -116,7 +116,8 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                "winddirection_10m_dominant,shortwave_radiation_sum,"
                "uv_index_max,uv_index_clear_sky_max"
                "&hourly=relativehumidity_2m,apparent_temperature,"
-               "pressure_msl,dewpoint_2m,cloudcover,visibility,uv_index")
+               "pressure_msl,dewpoint_2m,cloudcover,visibility,uv_index"
+               "&windspeed_unit=mph")
         print(url)
         logger.info(url)
         data = self._do_get(url)
@@ -216,7 +217,8 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                f"&longitude={self._longitude}&hourly=weathercode,"
                "temperature_2m,relativehumidity_2m,apparent_temperature,"
                "cloudcover,windspeed_10m,winddirection_10m,"
-               "precipitation_probability,visibility")
+               "precipitation_probability,visibility"
+               "&windspeed_unit=mph")
         logger.info(url)
         data = self._do_get(url)
         if data:
