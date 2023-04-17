@@ -49,8 +49,6 @@ gir1.2-gdkpixbuf-2.0
 gir1.2-appindicator3-0.1
 gir1.2-notify-0.7
 gir1.2-webkit2-4.0
-gir1.2-geocodeglib-1.0
-gir1.2-osmgpsmap-1.0
 python3-tz
 python3-tzlocal
 python3-cairo
