@@ -637,14 +637,14 @@ CONDITIONS = {
         'icon-light': 'mwil-snow.png',
         'icon-night-light': 'mwil-snow.png'
     },
-    'light snow showers.png': {
+    'light snow showers': {
         'text': _('Light snow showers'),
-        'image': 'mwig-rain.png',
-        'image-night': 'mwig-rain.png',
-        'icon-dark': 'mwid-rain.png',
-        'icon-night-dark': 'mwid-rain.png',
-        'icon-light': 'mwil-rain.png',
-        'icon-night-light': 'mwil-rain.png'
+        'image': 'mwig-rain-and-snow.png',
+        'image-night': 'mwig-rain-and-snow.png',
+        'icon-dark': 'mwid-rain-and-snow.png',
+        'icon-night-dark': 'mwid-rain-and-snow.png',
+        'icon-light': 'mwil-rain-and-snow.png',
+        'icon-night-light': 'mwil-rain-and-snow.png'
     },
     'light snow': {
         'text': _('Light snow'),
@@ -792,12 +792,12 @@ CONDITIONS = {
     },
     'moderate or heavy snow showers': {
         'text': _('Moderate or heavy snow showers'),
-        'image': 'mwig-rain.png',
-        'image-night': 'mwig-rain.png',
-        'icon-dark': 'mwid-rain.png',
-        'icon-night-dark': 'mwid-rain.png',
-        'icon-light': 'mwil-rain.png',
-        'icon-night-light': 'mwil-rain.png'
+        'image': 'mwig-rain-and-snow.png',
+        'image-night': 'mwig-rain-and-snow.png',
+        'icon-dark': 'mwid-rain-and-snow.png',
+        'icon-night-dark': 'mwid-rain-and-snow.png',
+        'icon-light': 'mwil-rain-and-snow.png',
+        'icon-night-light': 'mwil-rain-and-snow.png'
     },
     'moderate rain at times': {
         'text': _('Moderate rain at times'),

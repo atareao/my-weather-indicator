@@ -55,8 +55,8 @@ OMCONDITION = {
     80: "light intensity shower rain",
     81: "shower rain",
     82: "heavy intensity shower rain",
-    85: "light show snow",
-    86: "heavy show snow",
+    85: "light snow showers",
+    86: "moderate or heavy snow showers",
     95: "thunderstorm",
     96: "thunderstorm with light hail",
     99: "thunderstorm with heavy hail"
