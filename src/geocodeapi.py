@@ -111,7 +111,7 @@ def get_timezoneId(latitude, longitude):
 def get_rawOffset(timezoneId):
     logger.info('****** Calculating rawOffset')
     logger.info(f"Timezone: {timezoneId}")
-    if timezoneId is not None:
+    if timezoneId:
         try:
             timezone = pytz.timezone(timezoneId)
             logger.debug(f"Timezone: {timezone}")
@@ -146,10 +146,6 @@ def get_directions(name):
 
 
 if __name__ == "__main__":
-    data = get_inv_direction(40, 0)
-    from pprint import pprint
-    pprint(data)
-    # logger.info(get_timezoneId(40, 0))
-    # latitude, longitude, city = get_directions('Silla')
-    # logger.info(f"{latitude}, {longitude}, {city}")
-    # logger.info(get_timezoneId(40.0, 0.0))
+    timezone_id = get_timezoneId(0, 0)
+    logger.info(timezone_id)
+    logger.info(get_rawOffset(timezone_id))
