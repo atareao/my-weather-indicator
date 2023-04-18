@@ -57,9 +57,11 @@ def get_image_with_text(text, image_name="", impar=False):
     hbox = Gtk.HBox()
     hbox.set_name('forecast' if impar is not False else 'forecasti')
     image_file = os.path.join(comun.IMAGESDIR, image_name)
-    if image_name and (image := load_image(image_file)):
-        image.set_alignment(1, 0.5)
-        hbox.pack_start(image, True, True, 0)
+    if image_name:
+        image = load_image(image_file)
+        if image:
+            image.set_alignment(1, 0.5)
+            hbox.pack_start(image, True, True, 0)
     label = Gtk.Label.new(text)
     label.set_alignment(0, 0.5)
     hbox.pack_start(label, True, True, 0)

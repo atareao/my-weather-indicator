@@ -30,7 +30,6 @@ try:
     gi.require_version('Gtk', '3.0')
     gi.require_version('GdkPixbuf', '2.0')
     gi.require_version('Notify', '0.7')
-    gi.require_version('GeocodeGlib', '1.0')
     gi.require_version('WebKit2', '4.0')
 except Exception as e:
     print(e)

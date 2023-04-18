@@ -1,3 +1,14 @@
+my-weather-indicator (0.10.2-0extras23.04.00) jammy; urgency=medium
+
+  * crashes after last update (#101)
+  * Weather application is not displaying weather (#103)
+  * Weather Data Missing: Openweather Invalid API Key & wyahooapi.py: error (#106)
+  * wopenmeteoapi - ERROR - Error. HTTP Error code: 400. Invalid timezone (#107)
+  * Missing "show snow" in widget and forecast (#110)
+  * PPA version doesn't start on ubuntu 22.10 (kinetic) (#111)
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:37:44 +0100
+
 my-weather-indicator (0.10.1-0extras23.04.00) jammy; urgency=medium
 
   * fixed: crashes with widget "anotherone" #98
