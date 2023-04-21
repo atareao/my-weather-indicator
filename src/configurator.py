@@ -25,18 +25,11 @@
 
 import codecs
 import os
-import sys
 import json
 import comun
 import logging
 
 logger = logging.getLogger(__name__)
-logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 
 class Configuration(object):

@@ -28,18 +28,10 @@ import datetime
 import pytz
 from comun import LANG
 import logging
-import sys
-import os
 from urllib.parse import quote
 
 
 logger = logging.getLogger(__name__)
-logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 BASE_URI = "https://geocoding-api.open-meteo.com"
 TZ_BASE_URI = "https://api.wheretheiss.at"

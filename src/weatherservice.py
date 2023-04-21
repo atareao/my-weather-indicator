@@ -32,19 +32,11 @@ import geocodeapi
 import locale
 import math
 import logging
-import sys
-import os
 
 from comun import _
 from conditions import WINDS, WINDS2, CONDITIONS
 
 logger = logging.getLogger(__name__)
-logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 
 def degToCompass(num):

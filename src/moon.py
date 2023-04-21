@@ -12,16 +12,8 @@ import decimal
 import datetime
 from comun import _
 import logging
-import os
-import sys
 
 logger = logging.getLogger(__name__)
-logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 
 dec = decimal.Decimal

@@ -26,8 +26,6 @@ import requests
 import time
 import utils
 import weatherservice
-import os
-import sys
 
 BASE_URL = "https://api.open-meteo.com"
 
@@ -63,12 +61,6 @@ OMCONDITION = {
 }
 
 logger = logging.getLogger(__name__)
-logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 
 def get_value_for_time(hourly, timestamp, key):

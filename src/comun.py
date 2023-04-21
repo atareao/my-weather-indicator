@@ -27,7 +27,6 @@ import os
 import locale
 import logging
 import gettext
-import sys
 import requests
 import fcntl
 from check_connection import check_connectivity
@@ -42,12 +41,6 @@ __license__ = 'GPLV3'
 __url__ = 'http://www.atareao.es'
 
 logger = logging.getLogger(__name__)
-logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 
 def is_package():

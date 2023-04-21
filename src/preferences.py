@@ -35,9 +35,7 @@ import comun
 import os
 import shutil
 import geocodeapi
-import mipaddress
 import logging
-import sys
 from gi.repository import Gtk  # pyright: ignore
 from whereami import WhereAmI
 from configurator import Configuration
@@ -45,12 +43,6 @@ from comun import _
 from basedialog import BaseDialog
 
 logger = logging.getLogger(__name__)
-logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 APPDIR = comun.APPDIR
 AUTOSTART_FILE = 'my-weather-indicator-autostart.desktop'

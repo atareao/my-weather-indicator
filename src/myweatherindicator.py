@@ -68,13 +68,11 @@ import sys
 INDICATORS = 2
 TIME_TO_CHECK = 15
 
+FORMAT = "%(asctime)s | %(name)s | %(levelname)s | %(message)s"
+logging.basicConfig(stream=sys.stdout,
+                    format=FORMAT,
+                    level=logging.INFO)
 logger = logging.getLogger(__name__)
-logger.setLevel(os.getenv("LOGLEVEL", "DEBUG"))
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 
 class MWI(GObject.Object):
