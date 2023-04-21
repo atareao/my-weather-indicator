@@ -27,6 +27,8 @@ import time
 import utils
 import weatherservice
 
+logger = logging.getLogger(__name__)
+
 BASE_URL = "https://api.open-meteo.com"
 
 OMCONDITION = {
@@ -60,8 +62,6 @@ OMCONDITION = {
     99: "thunderstorm with heavy hail"
 }
 
-logger = logging.getLogger(__name__)
-
 
 def get_value_for_time(hourly, timestamp, key):
     for i, value in enumerate(hourly["time"]):
@@ -79,7 +79,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
     def _do_get(self, url):
         try:
             response = requests.get(url)
-            print(response.status_code)
+            logger.debug(response.status_code)
             if response.status_code == 200:
                 return response.json()
             data = {}
@@ -87,11 +87,10 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             msg = f"Error. HTTP Error code: {response.status_code}"
             if "error" in data.keys() and data["error"] and \
                     "reason" in data.keys():
-                print(data["reason"])
+                logger.debug(data["reason"])
                 msg = f"{msg}. {data['reason']}"
             raise Exception(msg)
         except Exception as exception:
-            print(exception)
             logger.error(exception)
         return None
 
@@ -110,7 +109,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                "&hourly=relativehumidity_2m,apparent_temperature,"
                "pressure_msl,dewpoint_2m,cloudcover,visibility,uv_index"
                "&windspeed_unit=mph")
-        print(url)
+        logger.debug(url)
         logger.info(url)
         data = self._do_get(url)
         if data:
@@ -246,9 +245,10 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
 
 
 if __name__ == "__main__":
-    import pprint
     longitude = -0.4016816
     latitude = 39.3527902
-    print(longitude)
-    omws = OpenMeteoWeatherService(longitude, latitude)
-    pprint.pprint(omws.get_weather())
+    location = "Silla"
+    timezone = "Europe/Madrid"
+    logger.info(longitude)
+    omws = OpenMeteoWeatherService(longitude, latitude, location, timezone)
+    logger.info(omws.get_weather())
