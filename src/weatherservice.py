@@ -34,7 +34,7 @@ import math
 import logging
 
 from comun import _
-from conditions import WINDS, WINDS2, CONDITIONS
+from conditions import WINDS, WINDS2, OMCONDITIONS
 
 logger = logging.getLogger(__name__)
 
@@ -86,11 +86,11 @@ def time_is_upper(time1, time2):
 
 
 def get_condition_om(condition, tipo):
-    if condition in CONDITIONS.keys():
-        return CONDITIONS[condition][tipo]
+    if condition in OMCONDITIONS.keys():
+        return OMCONDITIONS[condition][tipo]
     else:
         logger.error(f"Condition '{condition}' not found")
-        return CONDITIONS['not available'][tipo]
+        return OMCONDITIONS["NA"][tipo]
 
 
 def get_condition_wwa(condition, tipo):

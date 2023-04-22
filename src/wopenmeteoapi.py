@@ -31,37 +31,6 @@ logger = logging.getLogger(__name__)
 
 BASE_URL = "https://api.open-meteo.com"
 
-OMCONDITION = {
-    0:  "clear",
-    1:  "partly sunny",
-    2:  "partly cloudy",
-    3:  "overcast",
-    45: "fog",
-    48: "depositing rime fog",
-    51: "light intensity drizzle",
-    53: "drizzle",
-    55: "heavy intensity drizzle",
-    56: "freezing drizzle",
-    57: "heavy freezing drizzle",
-    61: "light rain",
-    63: "moderate rain",
-    65: "heavy intensity rain",
-    66: "freezing rain",
-    67: "heavy freezing rain",
-    71: "light snow",
-    73: "snow",
-    75: "heavy snow",
-    77: "snow grains",
-    80: "light intensity shower rain",
-    81: "shower rain",
-    82: "heavy intensity shower rain",
-    85: "light snow showers",
-    86: "moderate or heavy snow showers",
-    95: "thunderstorm",
-    96: "thunderstorm with light hail",
-    99: "thunderstorm with heavy hail"
-}
-
 
 def get_value_for_time(hourly, timestamp, key):
     for i, value in enumerate(hourly["time"]):
@@ -120,7 +89,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             timestamp = current_weather["time"]
             weather_data["update_time"] = time.time()
             weather_data["ok"] = True
-            condition = OMCONDITION[current_weather["weathercode"]]
+            condition = current_weather["weathercode"]
             temperature = current_weather["temperature"]
             velocity = current_weather["windspeed"]
             direction = current_weather["winddirection"]
@@ -169,7 +138,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                     velocity, wind_direction[0], self._units.wind)
             weather_data['current_conditions']['wind_icon'] = wind_direction[2]
             for i in range(0, len(daily["time"])):
-                condition = OMCONDITION[daily["weathercode"][i]]
+                condition = daily["weathercode"][i]
                 temp_max = daily["temperature_2m_max"][i]
                 temp_min = daily["temperature_2m_min"][i]
                 velocity = daily["windspeed_10m_max"][i]
@@ -218,7 +187,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
         if data:
             hourly = data["hourly"]
             for i in range(0, len(hourly["time"])):
-                condition = OMCONDITION[hourly["weathercode"][i]]
+                condition = hourly["weathercode"][i]
                 logger.debug(condition)
                 wind_direction = weatherservice.degToCompass2(
                         hourly["winddirection_10m"][i])

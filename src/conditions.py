@@ -24,6 +24,299 @@
 
 from comun import _
 
+OMCONDITIONS = {
+    "NA": {
+        "key": "not available",
+        "text": _("Not available"),
+        "image": "mwig-not-available.png",
+        "image-night": "mwig-not-available-night.png",
+        "icon-dark": "mwid-not-available.png",
+        "icon-night-dark": "mwid-not-available.png",
+        "icon-light": "mwil-not-available.png",
+        "icon-night-light": "mwil-not-available.png"
+    },
+    0: {
+        "key": "clear",
+        "text": _("Clear"),
+        "image": "mwig-clear.png",
+        "image-night": "mwig-clear-night.png",
+        "icon-dark": "mwid-clear.png",
+        "icon-night-dark": "mwid-clear-night.png",
+        "icon-light": "mwil-clear.png",
+        "icon-night-light": "mwil-clear-night.png"
+    },
+    1: {
+        "key": "partly sunny",
+        "text": _("Partly sunny"),
+        "image": "mwig-partly-cloudy.png",
+        "image-night": "mwig-partly-cloudy-night.png",
+        "icon-dark": "mwid-partly-cloudy.png",
+        "icon-night-dark": "mwid-partly-cloudy-night.png",
+        "icon-light": "mwil-partly-cloudy.png",
+        "icon-night-light": "mwil-partly-cloudy-night.png"
+    },
+    2: {
+        "key": "partly cloudy",
+        "text": _("Partly cloudy"),
+        "image": "mwig-partly-cloudy.png",
+        "image-night": "mwig-partly-cloudy-night.png",
+        "icon-dark": "mwid-partly-cloudy.png",
+        "icon-night-dark": "mwid-partly-cloudy-night.png",
+        "icon-light": "mwil-partly-cloudy.png",
+        "icon-night-light": "mwil-partly-cloudy-night.png"
+    },
+    3: {
+        "key": "overcast",
+        "text": _("Overcast"),
+        "image": "mwig-cloudy.png",
+        "image-night": "mwig-cloudy.png",
+        "icon-dark": "mwid-cloudy.png",
+        "icon-night-dark": "mwid-cloudy.png",
+        "icon-light": "mwil-cloudy.png",
+        "icon-night-light": "mwil-cloudy.png"
+    },
+    45: {
+        "key": "fog",
+        "text": _("Fog"),
+        "image": "mwig-fog.png",
+        "image-night": "mwig-fog-night.png",
+        "icon-dark": "mwid-fog.png",
+        "icon-night-dark": "mwid-fog-night.png",
+        "icon-light": "mwil-fog.png",
+        "icon-night-light": "mwil-fog-night.png"
+    },
+    48: {
+        "key": "depositing rime fog",
+        "text": _("Depositing rime fog"),
+        "image": "mwig-fog.png",
+        "image-night": "mwig-fog-night.png",
+        "icon-dark": "mwid-fog.png",
+        "icon-night-dark": "mwid-fog-night.png",
+        "icon-light": "mwil-fog.png",
+        "icon-night-light": "mwil-fog-night.png"
+    },
+    51: {
+        "key": "light intensity drizzle",
+        "text": _("Light drizzle"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    53: {
+        "key": "drizzle",
+        "text": _("Drizzle"),
+        "image": "mwig-light-rain.png",
+        "image-night": "mwig-light-rain.png",
+        "icon-dark": "mwid-light-rain.png",
+        "icon-night-dark": "mwid-light-rain.png",
+        "icon-light": "mwil-light-rain.png",
+        "icon-night-light": "mwil-light-rain.png"
+    },
+    55: {
+        "key": "heavy intensity drizzle",
+        "text": _("Heavy drizzle"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    56: {
+        "key": "freezing drizzle",
+        "text": _("Freezing drizzle"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    57: {
+        "key": "heavy freezing drizzle",
+        "text": _("Heavy freezing drizzle"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    61: {
+        "key": "light rain",
+        "text": _("Light rain"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    63: {
+        "key": "moderate rain",
+        "text": _("Moderate rain"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    65: {
+        "key": "heavy intensity rain",
+        "text": _("Heavy rain"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    66: {
+        "key": "freezing rain",
+        "text": _("Freezing rain"),
+        "image": "mwig-freezing-drizzle.png",
+        "image-night": "mwig-freezing-drizzle.png",
+        "icon-dark": "mwid-freezing-drizzle.png",
+        "icon-night-dark": "mwid-freezing-drizzle.png",
+        "icon-light": "mwil-freezing-drizzle.png",
+        "icon-night-light": "mwil-freezing-drizzle.png"
+    },
+    67: {
+        "key": "heavy freezing rain",
+        "text": _("Heavy freezing rain"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    71: {
+        "key": "light snow",
+        "text": _("Light snow"),
+        "image": "mwig-snow.png",
+        "image-night": "mwig-snow.png",
+        "icon-dark": "mwid-snow.png",
+        "icon-night-dark": "mwid-snow.png",
+        "icon-light": "mwil-snow.png",
+        "icon-night-light": "mwil-snow.png"
+    },
+    73: {
+        "key": "snow",
+        "text": _("Snow"),
+        "image": "mwig-snow.png",
+        "image-night": "mwig-snow.png",
+        "icon-dark": "mwid-snow.png",
+        "icon-night-dark": "mwid-snow.png",
+        "icon-light": "mwil-snow.png",
+        "icon-night-light": "mwil-snow.png"
+    },
+    75: {
+        "key": "heavy snow",
+        "text": _("Heavy snow"),
+        "image": "mwig-snow.png",
+        "image-night": "mwig-snow.png",
+        "icon-dark": "mwid-snow.png",
+        "icon-night-dark": "mwid-snow.png",
+        "icon-light": "mwil-snow.png",
+        "icon-night-light": "mwil-snow.png"
+    },
+    77: {
+        "key": "snow grains",
+        "text": _("Snow grains"),
+        "image": "mwig-snow.png",
+        "image-night": "mwig-snow.png",
+        "icon-dark": "mwid-snow.png",
+        "icon-night-dark": "mwid-snow.png",
+        "icon-light": "mwil-snow.png",
+        "icon-night-light": "mwil-snow.png"
+    },
+    80: {
+        "key": "light intensity shower rain",
+        "text": _("Light shower rain"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    81: {
+        "key": "shower rain",
+        "text": _("Shower rain"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    82: {
+        "key": "heavy intensity shower rain",
+        "text": _("Heavy shower rain"),
+        "image": "mwig-rain.png",
+        "image-night": "mwig-rain.png",
+        "icon-dark": "mwid-rain.png",
+        "icon-night-dark": "mwid-rain.png",
+        "icon-light": "mwil-rain.png",
+        "icon-night-light": "mwil-rain.png"
+    },
+    85: {
+        "key": "light snow showers",
+        "text": _("Light snow showers"),
+        "image": "mwig-rain-and-snow.png",
+        "image-night": "mwig-rain-and-snow.png",
+        "icon-dark": "mwid-rain-and-snow.png",
+        "icon-night-dark": "mwid-rain-and-snow.png",
+        "icon-light": "mwil-rain-and-snow.png",
+        "icon-night-light": "mwil-rain-and-snow.png"
+    },
+    86: {
+        "key": "moderate or heavy snow showers",
+        "text": _("Moderate or heavy snow showers"),
+        "image": "mwig-rain-and-snow.png",
+        "image-night": "mwig-rain-and-snow.png",
+        "icon-dark": "mwid-rain-and-snow.png",
+        "icon-night-dark": "mwid-rain-and-snow.png",
+        "icon-light": "mwil-rain-and-snow.png",
+        "icon-night-light": "mwil-rain-and-snow.png"
+    },
+    95: {
+        "key": "thunderstorm",
+        "text": _("Thunderstorm"),
+        "image": "mwig-storm.png",
+        "image-night": "mwig-storm.png",
+        "icon-dark": "mwid-storm.png",
+        "icon-night-dark": "mwid-storm.png",
+        "icon-light": "mwil-storm.png",
+        "icon-night-light": "mwil-storm.png"
+    },
+    96: {
+        "key": "thunderstorm with light hail",
+        "text": _("Thunderstorms with light hail"),
+        "image": "mwig-storm.png",
+        "image-night": "mwig-storm.png",
+        "icon-dark": "mwid-storm.png",
+        "icon-night-dark": "mwid-storm.png",
+        "icon-light": "mwil-storm.png",
+        "icon-night-light": "mwil-storm.png"
+    },
+    99: {
+        "key": "thunderstorm with heavy hail",
+        "text": _("Thunderstorms with heavy hail"),
+        "image": "mwig-storm.png",
+        "image-night": "mwig-storm.png",
+        "icon-dark": "mwid-storm.png",
+        "icon-night-dark": "mwid-storm.png",
+        "icon-light": "mwil-storm.png",
+        "icon-night-light": "mwil-storm.png"
+    }
+}
+
 CONDITIONS = {
     'blowing sand': {
         'text': _('Blowing sand'),
@@ -1287,6 +1580,24 @@ CONDITIONS = {
     },
     'thunderstorms and snow': {
         'text': _('Thunderstorms and snow'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorm with light hail': {
+        'text': _('Thunderstorms with light hail'),
+        'image': 'mwig-storm.png',
+        'image-night': 'mwig-storm.png',
+        'icon-dark': 'mwid-storm.png',
+        'icon-night-dark': 'mwid-storm.png',
+        'icon-light': 'mwil-storm.png',
+        'icon-night-light': 'mwil-storm.png'
+    },
+    'thunderstorm with heavy hail': {
+        'text': _('Thunderstorms with heavy hail'),
         'image': 'mwig-storm.png',
         'image-night': 'mwig-storm.png',
         'icon-dark': 'mwid-storm.png',
