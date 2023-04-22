@@ -97,7 +97,7 @@ class MWI(GObject.Object):
             fcntl.lockf(lock_file_pointer, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except IOError as exception:
             logger.error(exception)
-            logger.info("Application already running")
+            logger.error("Application already running")
             exit(1)
         self.weather_updater = 0
         self.widgets_updater = 0
@@ -146,7 +146,7 @@ class MWI(GObject.Object):
         return update
 
     def update_weather(self):
-        logger.info('***** refreshing weather *****')
+        logger.debug('***** refreshing weather *****')
         for i in range(INDICATORS):
             if self.preferences[i]['show']:
                 self.update_menu(i)
@@ -374,14 +374,14 @@ class MWI(GObject.Object):
             self.internet_updater = 0
 
     def looking_for_internet(self):
-        logger.info('*** Looking For Internet ***')
+        logger.debug('*** Looking For Internet ***')
         if internet_on():
-            logger.info('*** Internet Found ***')
+            logger.debug('*** Internet Found ***')
             self.stop_looking_for_internet()
             self.start_weather_updater()
             self.start_widgets_updater()
             return False
-        logger.info('*** Internet Not Found ***')
+        logger.debug('*** Internet Not Found ***')
         self.stop_weather_updater()
         self.stop_widgets_updater()
         return True
@@ -586,7 +586,6 @@ class MWI(GObject.Object):
 
     def update_menu(self, index):
         if not internet_on():
-            logger.info('--- Not internet connection ---')
             logger.error('--- Not internet connection ---')
             if self.icon_light:
                 icon = os.path.join(
@@ -609,7 +608,7 @@ class MWI(GObject.Object):
                 image)
             self.notifications[index].show()
             return
-        logger.info('--- Updating data in location %s ---' % (index))
+        logger.debug('--- Updating data in location %s ---' % (index))
         if self.preferences[index]['autolocation']:
             data = geocodeapi.get_latitude_longitude_city()
             if data:
@@ -625,10 +624,10 @@ class MWI(GObject.Object):
                         timezone=self.preferences[index]["timezone"],
                         units=self.units)
                 self.menus[index]['evolution'].show()
-        logger.info('****** Updating weather')
+        logger.debug('****** Updating weather')
         weather = self.weatherservices[index].get_weather()
-        logger.info('****** Updated weather')
-        logger.info(self.weathers[index])
+        logger.debug('****** Updated weather')
+        logger.debug(self.weathers[index])
         if weather is None or (weather['ok'] is False and (
                 self.weathers[index] is not None and
                 self.weathers[index]['ok'] is True)):
@@ -769,7 +768,7 @@ class MWI(GObject.Object):
                     logger.error(exception)
             while Gtk.events_pending():
                 Gtk.main_iteration()
-        logger.info('--- End of updating data in location %s ---' % (index))
+        logger.debug('--- End of updating data in location %s ---' % (index))
         self.last_update_time = time.time()
 
     def on_moon_clicked(self, widget):  # pyright: ignore
@@ -908,7 +907,7 @@ whochismo <https://launchpad.net/~whochismo>\n')
 
 def main():
     logger.info(machine_information.get_information())
-    logger.info('My-Weather-Indicator version: %s' % comun.VERSION)
+    logger.info(f"My-Weather-Indicator version: {comun.VERSION}")
     logger.info('#####################################################')
     load_css(CSS_FILE)
     Notify.init("my-weather-indicator")

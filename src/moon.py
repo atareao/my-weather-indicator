@@ -21,16 +21,11 @@ dec = decimal.Decimal
 
 class Moon(object):
     def __init__(self, date):
-        logger.info("__init__")
-        logger.debug(date)
         self._date = date
 
     def position(self):
-        logger.info("position")
         diff = self._date - datetime.datetime(2001, 1, 1)
-        logger.debug(f"Dif: {diff}")
         days = dec(diff.days) + (dec(diff.seconds) / dec(86400))
-        logger.debug(f"Days: {days}")
         lunations = dec('0.20439731') + (days * dec('0.03386319269'))
         return lunations % dec(1)
 
@@ -62,7 +57,9 @@ class Moon(object):
         index = str(index)
         if len(index) < 2:
             index = '0' + index
-        return 'mwi-moon' + index + '.png'
+        value = f"mwi-moon{index}.png"
+        logger.debug(f"Moon: {index} => {value}")
+        return value
 
     def image(self):
         pos = self.position()

@@ -56,7 +56,7 @@ def check_connectivity_with_httpconnection(reference):
     try:
         conn = http.client.HTTPConnection(reference)
         conn.close()
-        logger.info(f"OK. Internet connection. HTTPConnection: {reference}")
+        logger.debug(f"OK. Internet connection. HTTPConnection: {reference}")
         return True
     except Exception as ex:
         logger.error(f"No internet connection. HTTPConnection: {reference}")
@@ -68,7 +68,7 @@ def check_connectivity_with_socket(reference, port=80):
     try:
         conn = socket.create_connection((reference, port))
         conn.close()
-        logger.info(f"OK. Internet connection. Socket: {reference}")
+        logger.debug(f"OK. Internet connection. Socket: {reference}")
         return True
     except Exception as ex:
         logger.error(f"No internet connection. Socket: {reference}")
@@ -79,7 +79,7 @@ def check_connectivity_with_socket(reference, port=80):
 def check_connectivity_with_reference(reference, timeout=2):
     try:
         requests.get(reference, timeout=timeout, verify=False)
-        logger.info(f"OK. Internet connection. Url: {reference}")
+        logger.debug(f"OK. Internet connection. Url: {reference}")
         return True
     except Exception as ex:
         logger.error(f"No internet connection. Url: {reference}")
@@ -89,4 +89,4 @@ def check_connectivity_with_reference(reference, timeout=2):
 
 if __name__ == '__main__':
     atime = time.time()
-    logger.info(check_connectivity(), time.time() - atime)
+    logger.debug(check_connectivity(), time.time() - atime)
