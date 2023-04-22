@@ -1,3 +1,9 @@
+my-weather-indicator (0.10.5-0extras23.04.00) jammy; urgency=medium
+
+  * No image for thunderstorm with light hail (#112)
+  * Change conditions for Open Meteo
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:37:44 +0100
 my-weather-indicator (0.10.4-0extras23.04.00) jammy; urgency=medium
 
   *  No image for thunderstorm with light hail (#112)
