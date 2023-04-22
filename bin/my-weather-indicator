@@ -33,5 +33,8 @@ my-weather-indicator')
         sys.path.insert(1, os.path.normpath(
             os.path.join(os.path.dirname(__file__), '../src')))
     from myweatherindicator import main
-    main()
+    try:
+        main()
+    except KeyboardInterrupt as exception:
+        print(exception)
 exit(0)
