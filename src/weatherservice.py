@@ -85,6 +85,14 @@ def time_is_upper(time1, time2):
     return False
 
 
+def get_condition_om(condition, tipo):
+    if condition in CONDITIONS.keys():
+        return CONDITIONS[condition][tipo]
+    else:
+        logger.error(f"Condition '{condition}' not found")
+        return CONDITIONS['not available'][tipo]
+
+
 def get_condition_wwa(condition, tipo):
     if condition in CONDITIONS.keys():
         return CONDITIONS[condition][tipo]
@@ -128,15 +136,11 @@ def is_day_now(sunrise, sunset, rawOffset):
 
 
 def get_moon_icon(day):
-    logger.info("get_moon_icon")
-    logger.debug(day)
     moon = Moon(day)
     return moon.icon()
 
 
 def get_moon_phase(day):
-    logger.info("get_moon_phase")
-    logger.debug(day)
     moon = Moon(day)
     return moon.phase()
 
@@ -585,7 +589,6 @@ class WeatherService(object):
         i = 0
         while i < 7:
             i += 1
-            logger.info(f"=== {i} ===")
             fc = {}
             fc['day_of_week'] = dia.strftime('%A').capitalize()
             fc['low'] = _('N/A')

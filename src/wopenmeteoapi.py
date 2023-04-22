@@ -81,6 +81,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             response = requests.get(url)
             logger.debug(response.status_code)
             if response.status_code == 200:
+                logger.debug(response.json())
                 return response.json()
             data = {}
             data = response.json()
@@ -126,20 +127,22 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             humidity = \
                 get_value_for_time(hourly, timestamp, "relativehumidity_2m")
             wind_direction = weatherservice.degToCompass2(direction)
+            weather_data["current_conditions"]["condition_text"] =\
+                weatherservice.get_condition_om(condition, "text")
             if weather_data['current_conditions']['isday']:
                 weather_data['current_conditions']['condition_image'] =\
-                    weatherservice.get_condition(condition, 'image')
+                    weatherservice.get_condition_om(condition, 'image')
                 weather_data['current_conditions']['condition_icon_dark'] =\
-                    weatherservice.get_condition(condition, 'icon-dark')
+                    weatherservice.get_condition_om(condition, 'icon-dark')
                 weather_data['current_conditions']['condition_icon_light'] =\
-                    weatherservice.get_condition(condition, 'icon-light')
+                    weatherservice.get_condition_om(condition, 'icon-light')
             else:
                 weather_data['current_conditions']['condition_image'] =\
-                    weatherservice.get_condition(condition, 'image-night')
+                    weatherservice.get_condition_om(condition, 'image-night')
                 weather_data['current_conditions']['condition_icon_dark'] =\
-                    weatherservice.get_condition(condition, 'icon-night-dark')
+                    weatherservice.get_condition_om(condition, 'icon-night-dark')
                 weather_data['current_conditions']['condition_icon_light'] =\
-                    weatherservice.get_condition(condition, 'icon-night-light')
+                    weatherservice.get_condition_om(condition, 'icon-night-light')
             weather_data['current_conditions']['temperature'] =\
                 utils.change_temperature(temperature, self._units.temperature)
             weather_data["current_conditions"]["pressure"] = \
@@ -174,11 +177,11 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                 wind_direction = weatherservice.degToCompass2(direction)
                 weather_data['forecasts'][i]["condition"] = condition
                 weather_data['forecasts'][i]["condition_text"] =\
-                    weatherservice.get_condition(condition, 'text')
+                    weatherservice.get_condition_om(condition, 'text')
                 weather_data['forecasts'][i]["condition_image"] =\
-                    weatherservice.get_condition(condition, 'image')
+                    weatherservice.get_condition_om(condition, 'image')
                 weather_data['forecasts'][i]["condition_icon"] =\
-                    weatherservice.get_condition(condition, 'icon-light')
+                    weatherservice.get_condition_om(condition, 'icon-light')
                 weather_data['forecasts'][i]["low"] =\
                     utils.change_temperature(temp_min, self._units.temperature)
                 weather_data['forecasts'][i]["high"] =\
@@ -216,6 +219,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             hourly = data["hourly"]
             for i in range(0, len(hourly["time"])):
                 condition = OMCONDITION[hourly["weathercode"][i]]
+                logger.debug(condition)
                 wind_direction = weatherservice.degToCompass2(
                         hourly["winddirection_10m"][i])
                 velocity = hourly["windspeed_10m"][i]
@@ -226,11 +230,11 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                         hourly["time"][i],
                         "%Y-%m-%dT%H:%M"),
                     "condition": condition,
-                    "condition_text": weatherservice.get_condition(
+                    "condition_text": weatherservice.get_condition_om(
                         condition, 'text'),
-                    "condition_image": weatherservice.get_condition(
+                    "condition_image": weatherservice.get_condition_om(
                         condition, 'image'),
-                    "condition_icon": weatherservice.get_condition(
+                    "condition_icon": weatherservice.get_condition_om(
                         condition, 'icon-light'),
                     "temperature": hourly["temperature_2m"][i],
                     "high": hourly["temperature_2m"][i],
@@ -245,10 +249,11 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
 
 
 if __name__ == "__main__":
+    from pprint import pprint
     longitude = -0.4016816
     latitude = 39.3527902
     location = "Silla"
     timezone = "Europe/Madrid"
     logger.info(longitude)
     omws = OpenMeteoWeatherService(longitude, latitude, location, timezone)
-    logger.info(omws.get_weather())
+    pprint(omws.get_weather())
