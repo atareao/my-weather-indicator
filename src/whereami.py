@@ -313,7 +313,12 @@ class WhereAmI(BaseDialog):
 
     def web_send(self, msg):
         logger.debug(msg)
-        self.viewer.evaluate_javascript(msg, len(msg), None, "localhost", None)
+        try:
+            self.viewer.evaluate_javascript(msg, len(msg), None, "localhost",
+                                            None)
+        except Exception as exception:
+            self.viewer.run_javascript(msg)
+            logger.warn(exception)
         while Gtk.events_pending():
             Gtk.main_iteration()
 
