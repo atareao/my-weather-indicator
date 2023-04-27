@@ -26,7 +26,7 @@
 import gi
 try:
     gi.require_version('GLib', '2.0')
-    gi.require_version('AppIndicator3', '0.1')
+    gi.require_version('AyatanaAppIndicator3', '0.1')
     gi.require_version('Gtk', '3.0')
     gi.require_version('GdkPixbuf', '2.0')
     gi.require_version('Notify', '0.7')
@@ -36,7 +36,7 @@ except Exception as e:
     print('Repository version required not present')
     exit(1)
 from gi.repository import GLib  # pyright: ignore
-from gi.repository import AppIndicator3 as appindicator  # pyright: ignore
+from gi.repository import AyatanaAppIndicator3 as appindicator  # pyright: ignore
 from gi.repository import Gtk  # pyright: ignore
 from gi.repository import GdkPixbuf  # pyright: ignore
 from gi.repository import Notify  # pyright: ignore
