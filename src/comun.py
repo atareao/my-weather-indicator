@@ -28,7 +28,6 @@ import locale
 import logging
 import gettext
 import requests
-import fcntl
 from check_connection import check_connectivity
 import urllib.request
 import urllib.parse
