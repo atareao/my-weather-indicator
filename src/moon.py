@@ -57,8 +57,8 @@ class Moon(object):
         index = str(index)
         if len(index) < 2:
             index = '0' + index
-        value = f"mwi-moon{index}.png"
-        logger.debug(f"Moon: {index} => {value}")
+        value = "mwi-moon{}.png".format(index)
+        logger.debug("Moon: {} => {}".format(index, value))
         return value
 
     def image(self):
@@ -80,5 +80,6 @@ if __name__ == '__main__':
         phasename = moon.phase()
         roundedpos = round(float(moon.position()), 3)
         icon = moon.icon()
-        logger.info(f"dia {i} -> {phasename} ({roundedpos}): {icon}")
+        logger.info("dia {} -> {} ({}): {}".format(
+            i, phasename, roundedpos, icon))
     exit(0)

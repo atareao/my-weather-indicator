@@ -193,8 +193,8 @@ def read_json_from_url(url):
         if ans.status_code == 200:
             return ans.json()
         else:
-            raise Exception(
-                    f"Error accessing url: {url} with {ans.status_code}")
+            raise Exception("Error accessing url: {} with {}".format(
+                url, ans.status_code))
     except Exception as e:
         logger.error(e)
     return None
@@ -205,7 +205,8 @@ def internet_on():
 
 
 def is_running(label="default"):
-    lock_file_pointer = os.open(f"/tmp/instance_{label}.lock", os.O_WRONLY)
+    lock_file_pointer = os.open("/tmp/instance_{}.lock".format(label),
+                                os.O_WRONLY)
 
     try:
         fcntl.lockf(lock_file_pointer, fcntl.LOCK_EX | fcntl.LOCK_NB)

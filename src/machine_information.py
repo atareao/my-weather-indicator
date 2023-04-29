@@ -31,19 +31,28 @@ logger = logging.getLogger(__name__)
 
 
 def get_information():
-    information = ("\n#####################################################\n"
-                   f"System: {platform.system()}\n"
-                   f"Machine: {platform.machine()}\n"
-                   f"Node: {platform.node()}\n"
-                   f"Release: {platform.release()}\n"
-                   f"Version: {platform.version()}\n"
-                   f"Platform: {platform.platform()}\n"
-                   f"App: {comun.APPNAME}\n"
-                   f"App version: {comun.VERSION}\n"
-                   "#####################################################\n")
+    information = ("#######################################\n"
+                   "System: {}\n"
+                   "Machine: {}\n"
+                   "Node: {}\n"
+                   "Release: {}\n"
+                   "Version: {}\n"
+                   "Platform: {}\n"
+                   "App: {}\n"
+                   "App version: {}\n"
+                   "#######################################\n").format(
+                   platform.system(),
+                   platform.machine(),
+                   platform.node(),
+                   platform.release(),
+                   platform.version(),
+                   platform.platform(),
+                   comun.APPNAME,
+                   comun.VERSION
+                       )
     return information
 
 
 if __name__ == '__main__':
-    logger.info(get_information())
+    print(get_information())
     exit(0)

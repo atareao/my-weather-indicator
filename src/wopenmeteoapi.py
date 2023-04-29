@@ -54,11 +54,11 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                 return response.json()
             data = {}
             data = response.json()
-            msg = f"Error. HTTP Error code: {response.status_code}"
+            msg = "Error. HTTP Error code: {}".format(response.status_code)
             if "error" in data.keys() and data["error"] and \
                     "reason" in data.keys():
                 logger.debug(data["reason"])
-                msg = f"{msg}. {data['reason']}"
+                msg = "{}. {}".format(msg, data['reason'])
             raise Exception(msg)
         except Exception as exception:
             logger.error(exception)
@@ -66,9 +66,8 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
 
     def get_weather(self):
         weather_data = self.get_default_values()
-        url = (f"{BASE_URL}/v1/forecast?latitude={self._latitude}"
-               f"&longitude={self._longitude}&current_weather=true&timezone="
-               f"{self._timezone}&daily=temperature_2m_max,temperature_2m_min,"
+        url = ("{}/v1/forecast?latitude={}&longitude={}&current_weather=true&"
+               "timezone={}&daily=temperature_2m_max,temperature_2m_min,"
                "apparent_temperature_max,apparent_temperature_min,"
                "precipitation_sum,rain_sum,showers_sum,snowfall_sum,"
                "precipitation_hours,precipitation_probability_max,"
@@ -78,7 +77,8 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                "uv_index_max,uv_index_clear_sky_max"
                "&hourly=relativehumidity_2m,apparent_temperature,"
                "pressure_msl,dewpoint_2m,cloudcover,visibility,uv_index"
-               "&windspeed_unit=mph")
+               "&windspeed_unit=mph").format(BASE_URL, self._latitude,
+                                             self._longitude, self._timezone)
         logger.debug(url)
         logger.info(url)
         data = self._do_get(url)
@@ -109,14 +109,17 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                 weather_data['current_conditions']['condition_image'] =\
                     weatherservice.get_condition_om(condition, 'image-night')
                 weather_data['current_conditions']['condition_icon_dark'] =\
-                    weatherservice.get_condition_om(condition, 'icon-night-dark')
+                    weatherservice.get_condition_om(condition,
+                                                    'icon-night-dark')
                 weather_data['current_conditions']['condition_icon_light'] =\
-                    weatherservice.get_condition_om(condition, 'icon-night-light')
+                    weatherservice.get_condition_om(condition,
+                                                    'icon-night-light')
             weather_data['current_conditions']['temperature'] =\
                 utils.change_temperature(temperature, self._units.temperature)
             weather_data["current_conditions"]["pressure"] = \
                 get_value_for_time(hourly, timestamp, "pressure_msl")
-            weather_data["current_conditions"]["humidity"] = f"{humidity} %"
+            weather_data["current_conditions"]["humidity"] = "{} %".format(
+                    humidity)
             weather_data['current_conditions']['heat_index'] =\
                 weatherservice.get_heat_index(temperature, humidity)
             weather_data['current_conditions']['windchill'] =\
@@ -176,12 +179,12 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
 
     def get_hourly_weather(self):
         weatherdata = []
-        url = (f"{BASE_URL}/v1/forecast?latitude={self._latitude}"
-               f"&longitude={self._longitude}&hourly=weathercode,"
+        url = ("{}/v1/forecast?latitude={}&longitude={}&hourly=weathercode,"
                "temperature_2m,relativehumidity_2m,apparent_temperature,"
                "cloudcover,windspeed_10m,winddirection_10m,"
                "precipitation_probability,visibility"
-               "&windspeed_unit=mph")
+               "&windspeed_unit=mph").format(BASE_URL, self._latitude,
+                                             self._longitude)
         logger.info(url)
         data = self._do_get(url)
         if data:

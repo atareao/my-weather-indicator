@@ -89,7 +89,7 @@ def get_condition_om(condition, tipo):
     if condition in OMCONDITIONS.keys():
         return OMCONDITIONS[condition][tipo]
     else:
-        logger.error(f"Condition '{condition}' not found")
+        logger.error("Condition '{}' not found".format(condition))
         return OMCONDITIONS["NA"][tipo]
 
 
