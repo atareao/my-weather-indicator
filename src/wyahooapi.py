@@ -99,9 +99,6 @@ class YahooWeatherService(WeatherService):
         try:
             ans = requests.get(url, auth=self.oauth, params=params)
         except SSLError as e:
-            '''
-            Bug #1568774
-            '''
             print('wyahooapi.py: Bug #1568774', str(e))
             print('wyahooapi.py: Unable to query https url, switch to http url')
             url = 'http://query.yahooapis.com/v1/yql?q=%s' % q

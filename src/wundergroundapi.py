@@ -220,13 +220,6 @@ class UndergroundWeatherService(WeatherService):
         weather_data = None
         weather_data = self._get_weather()
         return weather_data
-        '''
-        try:
-            weather_data = self._get_weather()
-        except Exception as e:
-            print(e)
-        return weather_data
-        '''
 
 
 if __name__ == '__main__':

@@ -332,7 +332,7 @@ class WeatherWidget(Gtk.Window):
                     cairo.FORMAT_ARGB32, ans[0], ans[1])
                 cr = cairo.Context(mainsurface)
                 # try:
-                for index, line in enumerate(self.widgetdata.split('\n')):
+                for line in self.widgetdata.split('\n'):
                     row = line.split('|')
                     cr.save()
                     if row is not None and len(row) > 1:

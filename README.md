@@ -20,6 +20,7 @@ codefactor-badge: True
 ![Contributors](https://img.shields.io/github/contributors-anon/atareao/my-weather-indicator)
 ![Last commit](https://img.shields.io/github/last-commit/atareao/my-weather-indicator)
 [![CodeFactor](https://www.codefactor.io/repository/github/atareao/my-weather-indicator/badge)](https://www.codefactor.io/repository/github/atareao/my-weather-indicator)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/dfce16912d75471e87fe4de8d3012651)](https://app.codacy.com/gh/atareao/my-weather-indicator/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 <!-- end badges -->
 
 <!-- start description -->

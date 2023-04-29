@@ -333,18 +333,3 @@ if __name__ == "__main__":
     latitude = 39.3527902
     owm = OWMWeatherService(longitude=longitude, latitude=latitude)
     pprint.pprint(owm.get_weather())
-    '''
-    print(owm.get_hourly_weather())
-    result = 'Fecha,Temperature,Humidity,Cloudiness\\n'
-    for data in owm.get_hourly_weather():
-        print(data['datetime'])
-        print(data['temperature'])
-        print(data['avehumidity'])
-        result += str(data['datetime']) + ','
-        result += str(data['temperature']) + ','
-        result += str(data['avehumidity']) + ','
-        result += str(data['cloudiness'])+'\\n'
-    print(result)
-    from graph import Graph
-    graph = Graph(result)
-    '''
