@@ -4,14 +4,14 @@ msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-09 06:16+0000\n"
-"PO-Revision-Date: 2013-09-26 15:19+0000\n"
-"Last-Translator: Tobias Bannert <Unknown>\n"
+"PO-Revision-Date: 2023-04-27 10:27+0200\n"
+"Last-Translator: N. N. <@>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 17082)\n"
+"X-Generator: Poedit 2.3\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:00+0000\n"
 
 #: src/forecastw.py:71 src/myweatherindicator.py:410
@@ -79,7 +79,7 @@ msgstr "Staubverwehungen"
 
 #: src/conditions.py:65
 msgid "Blustery"
-msgstr ""
+msgstr "Stürmisches Wetter"
 
 #: src/conditions.py:74
 msgid "Chance of a thunderstorm"
@@ -159,7 +159,7 @@ msgstr "Nebelfelder"
 
 #: src/conditions.py:245
 msgid "Depositing rime fog"
-msgstr ""
+msgstr "Ablagerung von Reifnebeln"
 
 #: src/conditions.py:254
 msgid "Fog"
@@ -202,12 +202,10 @@ msgid "Heavy freezing drizzle"
 msgstr "Stark überfrierender Sprühregen"
 
 #: src/conditions.py:353 src/conditions.py:488
-#, fuzzy
 msgid "Heavy drizzle"
 msgstr "Stark überfrierender Sprühregen"
 
 #: src/conditions.py:362 src/conditions.py:497
-#, fuzzy
 msgid "Heavy drizzle rain"
 msgstr "Sehr heftiger Nieselregen"
 
@@ -216,7 +214,6 @@ msgid "Heavy rain"
 msgstr "Starkregen"
 
 #: src/conditions.py:380 src/conditions.py:515
-#, fuzzy
 msgid "Heavy shower rain"
 msgstr "Sehr heftige Regenschauer"
 
@@ -261,7 +258,6 @@ msgid "Isolated showers"
 msgstr "Einzelne Schauer"
 
 #: src/conditions.py:533
-#, fuzzy
 msgid "Isolated thundershowers"
 msgstr "Einzelne Gewitter"
 
@@ -278,14 +274,12 @@ msgid "Light freezing rain"
 msgstr "Leichter überfrierender Regen"
 
 #: src/conditions.py:578
-#, fuzzy
 msgid "Light drizzle rain"
 msgstr "Leichter Sprühregen"
 
 #: src/conditions.py:587
-#, fuzzy
 msgid "Light shower rain"
-msgstr "Weniger heftige Regenschauer"
+msgstr "Leichter Schauer-Regen"
 
 #: src/conditions.py:596
 msgid "Light rain shower"
@@ -812,9 +806,8 @@ msgid "General options"
 msgstr "Allgemeine Einstellungen"
 
 #: src/preferences.py:108 src/preferences.py:204
-#, fuzzy
 msgid "Show"
-msgstr "Schauer"
+msgstr "Anzeigen"
 
 #: src/preferences.py:115
 msgid "Auto Location"
@@ -837,9 +830,8 @@ msgid "Show notifications"
 msgstr "Benachrichtigungen anzeigen"
 
 #: src/preferences.py:151 src/preferences.py:239
-#, fuzzy
 msgid "Widget options"
-msgstr "Widget immer oben"
+msgstr "Widget Optionen"
 
 #: src/preferences.py:155 src/preferences.py:243
 msgid "Show widget"
@@ -859,7 +851,7 @@ msgstr "In der Benachrichtigungsleiste anzeigen"
 
 #: src/preferences.py:180 src/preferences.py:268
 msgid "On all desktops"
-msgstr ""
+msgstr "Auf allen Desktops"
 
 #: src/preferences.py:199
 msgid "Second Location"
@@ -1056,64 +1048,61 @@ msgstr "Letztes Viertel"
 
 #: src/mooncalendarwindow.py:47
 msgid "Monday"
-msgstr ""
+msgstr "Montag"
 
 #: src/mooncalendarwindow.py:47
 msgid "Tuesday"
-msgstr ""
+msgstr "Dienstag"
 
 #: src/mooncalendarwindow.py:47
 msgid "Wednesday"
-msgstr ""
+msgstr "Mittwoch"
 
 #: src/mooncalendarwindow.py:47
 msgid "Thursday"
-msgstr ""
+msgstr "Donnerstag"
 
 #: src/mooncalendarwindow.py:48
 msgid "Friday"
-msgstr ""
+msgstr "Freitag"
 
 #: src/mooncalendarwindow.py:48
 msgid "Saturday"
-msgstr ""
+msgstr "Samstag"
 
 #: src/mooncalendarwindow.py:48
 msgid "Sunday"
-msgstr ""
+msgstr "Sonntag"
 
 #: src/mooncalendarwindow.py:67
-#, fuzzy
 msgid "Moon phases"
-msgstr "Mondphase"
+msgstr "Mondphasen"
 
 #: src/mooncalendarwindow.py:82
 msgid "One year less"
-msgstr ""
+msgstr "Ein Jahr zurück"
 
 #: src/mooncalendarwindow.py:91
 msgid "One month less"
-msgstr ""
+msgstr "Ein Monat zurück"
 
 #: src/mooncalendarwindow.py:100
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: src/mooncalendarwindow.py:114
 msgid "One year more"
-msgstr ""
+msgstr "Ein Jahr weiter"
 
 #: src/mooncalendarwindow.py:123
 msgid "One month more"
-msgstr ""
+msgstr "Ein Monat weiter"
 
 #: src/mooncalendarwindow.py:205
-#, fuzzy
 msgid "Full moon"
 msgstr "Vollmond"
 
 #: src/mooncalendarwindow.py:207
-#, fuzzy
 msgid "New moon"
 msgstr "Neumond"
 
@@ -1213,7 +1202,7 @@ msgstr "Orkanartiger Sturm"
 #: src/weatherservice.py:586 src/weatherservice.py:587
 #: src/weatherservice.py:623 src/weatherservice.py:624
 msgid "Down all day"
-msgstr ""
+msgstr "Den ganzen Tag unten"
 
 #: src/weatherservice.py:522 src/weatherservice.py:523
 #: src/weatherservice.py:524 src/weatherservice.py:525
@@ -1223,7 +1212,7 @@ msgstr ""
 #: src/weatherservice.py:583 src/weatherservice.py:584
 #: src/weatherservice.py:626 src/weatherservice.py:627
 msgid "Up all day"
-msgstr ""
+msgstr "Den ganzen Tag oben"
 
 #: src/whereami.py:61
 msgid "Where Am I"
@@ -1250,9 +1239,8 @@ msgid "Find me"
 msgstr "Finde mich"
 
 #: src/whereami.py:109
-#, fuzzy
 msgid "Locations found"
-msgstr "Orte gefunden"
+msgstr "Gefundene Orte"
 
 #: src/whereami.py:130
 msgid "City"
@@ -1283,17 +1271,16 @@ msgid "Report a bug..."
 msgstr "Einen Fehler melden …"
 
 #: src/myweatherindicator.py:209
-#, fuzzy
 msgid "Contact me at Twitter"
 msgstr "Auf Twitter folgen"
 
 #: src/myweatherindicator.py:218
 msgid "Contact me at Mastodon"
-msgstr ""
+msgstr "Kontaktiere mich auf Mastodon"
 
 #: src/myweatherindicator.py:227
 msgid "Contact me at Telegram"
-msgstr ""
+msgstr "Kontaktiere mich auf Telegram"
 
 #: src/myweatherindicator.py:235
 msgid "About"
@@ -1304,14 +1291,12 @@ msgid "Evolution"
 msgstr "Entwicklung"
 
 #: src/myweatherindicator.py:424
-#, fuzzy
 msgid "Moon Phase Calendar"
-msgstr "Mondphase"
+msgstr "Mondphasen Kalender"
 
 #: src/myweatherindicator.py:435
-#, fuzzy
 msgid "Update weather"
-msgstr "Gerade aktualisiert"
+msgstr "Wetter aktualisieren"
 
 #: src/myweatherindicator.py:446 src/myweatherindicator.py:645
 msgid "Location"
@@ -1361,7 +1346,7 @@ msgstr "Beenden"
 
 #: src/myweatherindicator.py:604
 msgid "Not Internet connection"
-msgstr ""
+msgstr "Keine Internet Verbindung"
 
 #: src/myweatherindicator.py:752
 msgid "Conditions in"
