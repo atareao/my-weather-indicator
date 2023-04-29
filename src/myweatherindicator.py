@@ -907,7 +907,7 @@ whochismo <https://launchpad.net/~whochismo>\n')
 
 def main():
     logger.info(machine_information.get_information())
-    logger.info(f"My-Weather-Indicator version: {comun.VERSION}")
+    logger.info("My-Weather-Indicator version: {}".format(comun.VERSION))
     logger.info('#####################################################')
     load_css(CSS_FILE)
     Notify.init("my-weather-indicator")

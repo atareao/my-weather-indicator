@@ -63,7 +63,7 @@ def get_latitude_longitude_city(ip=None):
     if ip is None:
         ip = get_external_ip()
     if ip is not None:
-        url = f"http://ip-api.com/json/{ip}?lang={LANG}"
+        url = "http://ip-api.com/json/{}?lang={}".format(ip, LANG)
         response = requests.get(url, verify=False)
         if response.status_code == 200:
             position = response.json()
@@ -73,8 +73,9 @@ def get_latitude_longitude_city(ip=None):
 
 
 def get_inv_direction(latitude, longitude):
-    url = (f"{GEO_BASE_URI}/data/reverse-geocode-client?latitude={latitude}"
-           f"&longitude={longitude}&localityLanguage={LANG}")
+    url = ("{}/data/reverse-geocode-client?latitude={}"
+           "&longitude={}&localityLanguage={}").format(
+                   GEO_BASE_URI, latitude, longitude, LANG)
     try:
         response = requests.get(url)
         data = response.json()
@@ -86,14 +87,14 @@ def get_inv_direction(latitude, longitude):
 
 
 def get_timezoneId(latitude, longitude):
-    url = f"{TZ_BASE_URI}/v1/coordinates/{latitude},{longitude}"
+    url = "{}/v1/coordinates/{},{}".format(TZ_BASE_URI, latitude, longitude)
     try:
         response = requests.get(url)
         data = response.json()
         if response.status_code == 200:
             return data["timezone_id"]
         elif "error" in data.keys():
-            raise Exception(f"Error: {data['error']}")
+            raise Exception("Error: {}".format(data['error']))
         raise Exception("Cant")
     except Exception as exception:
         logger.error(exception)
@@ -102,15 +103,15 @@ def get_timezoneId(latitude, longitude):
 
 def get_rawOffset(timezoneId):
     logger.debug('****** Calculating rawOffset')
-    logger.debug(f"Timezone: {timezoneId}")
+    logger.debug("Timezone: {}".format(timezoneId))
     if timezoneId:
         try:
             timezone = pytz.timezone(timezoneId)
-            logger.debug(f"Timezone: {timezone}")
+            logger.debug("Timezone: {}".format(timezone))
             timeinzone = timezone.localize(datetime.datetime.now())
-            logger.debug(f"Time in zone: {timeinzone}")
+            logger.debug("Time in zone: {}".format(timeinzone))
             nowdelta = timeinzone.utcoffset()
-            logger.debug(f"Delta: {nowdelta}")
+            logger.debug("Delta: {}".format(nowdelta))
             if nowdelta:
                 return nowdelta.total_seconds() / 3600
         except Exception as e:
@@ -122,7 +123,8 @@ def get_rawOffset(timezoneId):
 def get_directions(name):
     logger.debug("get_directions")
     search_string = quote(name)
-    url = f"{BASE_URI}/v1/search?name={search_string}&language={LANG}"
+    url = "{}/v1/search?name={}&language={}".format(
+            BASE_URI, search_string, LANG)
     logger.debug(url)
     response = requests.get(url)
     try:
