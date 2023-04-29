@@ -1,3 +1,15 @@
+my-weather-indicator (0.10.8-0extras23.04.00) jammy; urgency=medium
+
+  *  Update translations
+  *  Change single instance
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:37:44 +0100
+my-weather-indicator (0.10.7-0extras23.04.00) jammy; urgency=medium
+
+  *   No longer works in Ubuntu 16.04 (#116)
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:37:44 +0100
+
 my-weather-indicator (0.10.6-0extras23.04.00) jammy; urgency=medium
 
   *  Unable to install my-weather-indicator on Debian 11 because of missed gir1.2-appindicator3-0.1 as it is replaced by gir1.2-ayatanaappindicator3-0.1 (#113)
