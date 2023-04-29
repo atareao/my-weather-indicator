@@ -28,9 +28,6 @@ import requests
 from requests_oauthlib import OAuth1
 from requests.exceptions import SSLError
 
-API_KEY = 'dj0yJmk9djNkNk5hRUZNODFCJmQ9WVdrOWVEbFVXRWxITTJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZW\
-NyZXQmeD1jMQ--'
-SHARED_SECRET = '27dcb39434d1ee95b90e5f3a7e227d3992ecd573'
 
 CODE = {}
 CODE[0] = 'tornado'
@@ -91,7 +88,7 @@ class YahooWeatherService(WeatherService):
                  latitude=39.360,
                  units=weatherservice.Units()):
         WeatherService.__init__(self, longitude, latitude, units)
-        self.oauth = OAuth1(API_KEY, SHARED_SECRET)
+        self.oauth = OAuth1("", "")
         self.woeid = geocodeapi.get_woeid(latitude, longitude)
 
     def run_query(self):
