@@ -62,8 +62,8 @@ class WhereAmI(BaseDialog):
         else:
             self.do_center()
 
-        logger.info(f"location: {self._location}, latitude: {self._latitude}"
-                    ", longitude={self._longitude}")
+        logger.info("location: {}, latitude: {}, longitude={}".format(
+            self._location, self._latitude, self._longitude))
         self.set_normal_cursor()
 
     def init_ui(self):
@@ -150,12 +150,12 @@ class WhereAmI(BaseDialog):
         scrolledwindow.set_size_request(900, 600)
         self.viewer.connect('load-changed', self.load_changed)
         self.viewer.connect('notify::title', self.on_title_changed)
-        logger.debug(f"File: {comun.HTML_WAI}")
+        logger.debug("File: {}".format(comun.HTML_WAI))
         self.viewer.load_uri('file://' + comun.HTML_WAI)
         self.set_focus(self.viewer)
 
     def on_expander_expanded(self, widget, selected):
-        logger.info(f"{widget}, {selected}")
+        logger.info("{}, {}".format(widget, selected))
         if not self.expander.get_expanded():
             self.resize(450, 350)
 
@@ -169,9 +169,8 @@ class WhereAmI(BaseDialog):
         data = json.loads(self.viewer.get_title())
         latitude = data["latitude"] if "latitude" in data.keys() else None
         longitude = data["longitude"] if "longitude" in data.keys() else None
-        logger.debug(f"{latitude},{longitude}")
+        logger.debug("{},{}".format(latitude, longitude))
         if latitude and longitude:
-            logger.debug(f"{latitude},{longitude}")
             self.do_search_location(latitude, longitude)
 
     def ontreeviewcursorchanged(self, treeview):
@@ -232,7 +231,7 @@ class WhereAmI(BaseDialog):
         model.clear()
         self.expander.set_expanded(True)
         self.entry1.set_text("")
-        logger.debug(f"Search for {search_string}")
+        logger.debug("Search for {}".format(search_string))
         for direction in geocodeapi.get_directions(search_string):
             logger.debug(direction)
             if 'name' in direction.keys() and direction['name']:
@@ -280,19 +279,19 @@ class WhereAmI(BaseDialog):
         return self._latitude, self._longitude, self._location, self._timezone
 
     def set_timezone(self, timezone):
-        logger.debug(f"Set timezone: {timezone}")
+        logger.debug("Set timezone: {}".format(timezone))
         self._timezone = timezone
 
     def set_location(self, location):
-        logger.debug(f"Set location: {location}")
+        logger.debug("Set location: {}".format(location))
         self._location = location
         self.entry1.set_text(location)
 
     def set_position(self, latitude, longitude):
-        logger.debug(f"Set position: {latitude}, {longitude}")
+        logger.debug("Set position: {}, {}".format(latitude, longitude))
         self._latitude = latitude
         self._longitude = longitude
-        self.web_send(f"setPosition({self._latitude}, {self._longitude});")
+        self.web_send("setPosition({}, {});".format(latitude, longitude))
 
     def set_wait_cursor(self):
         Gdk.Screen.get_default().get_root_window().set_cursor(
@@ -308,8 +307,8 @@ class WhereAmI(BaseDialog):
 
     def load_changed(self, widget, load_event):  # pyright: ignore
         if load_event == WebKit2.LoadEvent.FINISHED:
-            logger.debug(f"setPosition({self._latitude}, {self._longitude});")
-            self.web_send(f"setPosition({self._latitude}, {self._longitude});")
+            self.web_send("setPosition({}, {});".format(self._latitude,
+                                                        self._longitude))
 
     def web_send(self, msg):
         logger.debug(msg)

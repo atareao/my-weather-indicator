@@ -479,7 +479,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         self.checkbutton11.set_active(True)
         self.checkbutton21.set_active(True)
         if os.path.exists(
-                os.path.expanduser(f"~/.config/autostart/{AUTOSTART_FILE}")):
+                os.path.expanduser("~/.config/autostart/{}".format(
+                    AUTOSTART_FILE))):
             self.checkbutton1.set_active(True)
         #
         self.show_all()
@@ -728,7 +729,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         print('Saving...')
         configuration.save()
         #
-        filestart = os.path.expanduser(f"~/.config/autostart/{AUTOSTART_FILE}")
+        filestart = os.path.expanduser("~/.config/autostart/{}".format(
+            AUTOSTART_FILE))
         if self.checkbutton1.get_active():
             if not os.path.exists(os.path.dirname(filestart)):
                 os.makedirs(os.path.dirname(filestart))

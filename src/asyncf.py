@@ -45,7 +45,8 @@ def _async_call(f, args, kwargs, on_done):
             result = f(*args, **kwargs)
         except Exception as e:
             traces = traceback.format_exc()
-            error = f"Unhandled exception in asyn call: {e}\n{traces}"
+            error = "Unhandled exception in asyn call: {e}\n{traces}".format(
+                    e=e, traces=traces)
         GLib.idle_add(lambda: on_done(result, error))
 
     data = f, args, kwargs, on_done
