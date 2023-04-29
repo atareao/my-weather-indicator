@@ -4,14 +4,16 @@ msgstr ""
 "Project-Id-Version: my-weather-indicator 0.9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-09 06:16+0000\n"
-"PO-Revision-Date: 2014-04-23 06:40+0000\n"
-"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
-"Language-Team: Spanish\n"
+"PO-Revision-Date: 2023-04-29 07:31+0000\n"
+"Last-Translator: Weblate Admin <atareao@atareao.es>\n"
+"Language-Team: Spanish <http://weblate.territoriolinux.es/projects/"
+"my-weather-indicator/git/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Launchpad (build 17082)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2014-07-01 19:00+0000\n"
 
 #: src/forecastw.py:71 src/myweatherindicator.py:410
@@ -159,7 +161,7 @@ msgstr "Parches de niebla"
 
 #: src/conditions.py:245
 msgid "Depositing rime fog"
-msgstr ""
+msgstr "Escarcha"
 
 #: src/conditions.py:254
 msgid "Fog"
@@ -202,23 +204,20 @@ msgid "Heavy freezing drizzle"
 msgstr "Llovizna fuerte con heladas"
 
 #: src/conditions.py:353 src/conditions.py:488
-#, fuzzy
 msgid "Heavy drizzle"
-msgstr "Llovizna fuerte con heladas"
+msgstr "Llovizna fuerte"
 
 #: src/conditions.py:362 src/conditions.py:497
-#, fuzzy
 msgid "Heavy drizzle rain"
-msgstr "Fuerte llovizna"
+msgstr "Llovizna fuerte"
 
 #: src/conditions.py:371 src/conditions.py:398 src/conditions.py:506
 msgid "Heavy rain"
 msgstr "Lluvia fuerte"
 
 #: src/conditions.py:380 src/conditions.py:515
-#, fuzzy
 msgid "Heavy shower rain"
-msgstr "Fuertes aguaceros"
+msgstr "Lluvia torrencial"
 
 #: src/conditions.py:389
 msgid "Heavy rain at times"
@@ -261,7 +260,6 @@ msgid "Isolated showers"
 msgstr "tormentas aisladas"
 
 #: src/conditions.py:533
-#, fuzzy
 msgid "Isolated thundershowers"
 msgstr "Tormentas eléctricas aisladas"
 
@@ -278,12 +276,10 @@ msgid "Light freezing rain"
 msgstr "Granizo ligero"
 
 #: src/conditions.py:578
-#, fuzzy
 msgid "Light drizzle rain"
 msgstr "Lloviznas débiles"
 
 #: src/conditions.py:587
-#, fuzzy
 msgid "Light shower rain"
 msgstr "Lluvia moderada"
 
@@ -812,7 +808,6 @@ msgid "General options"
 msgstr "Opciones generales"
 
 #: src/preferences.py:108 src/preferences.py:204
-#, fuzzy
 msgid "Show"
 msgstr "Chaparrones"
 
@@ -837,7 +832,6 @@ msgid "Show notifications"
 msgstr "Mostrar notificaciones"
 
 #: src/preferences.py:151 src/preferences.py:239
-#, fuzzy
 msgid "Widget options"
 msgstr "Widget encima de todo"
 
@@ -974,7 +968,7 @@ msgstr "24 h"
 
 #: src/preferences.py:417
 msgid "AM/PM"
-msgstr "a.m./p.m."
+msgstr "AM/PM"
 
 #: src/preferences.py:434
 msgid "Autostart"
@@ -1107,12 +1101,10 @@ msgid "One month more"
 msgstr "Un mes mas"
 
 #: src/mooncalendarwindow.py:205
-#, fuzzy
 msgid "Full moon"
 msgstr "Luna llena"
 
 #: src/mooncalendarwindow.py:207
-#, fuzzy
 msgid "New moon"
 msgstr "Luna nueva"
 
@@ -1212,7 +1204,7 @@ msgstr "Viento violento"
 #: src/weatherservice.py:586 src/weatherservice.py:587
 #: src/weatherservice.py:623 src/weatherservice.py:624
 msgid "Down all day"
-msgstr ""
+msgstr "Abajo todo el día"
 
 #: src/weatherservice.py:522 src/weatherservice.py:523
 #: src/weatherservice.py:524 src/weatherservice.py:525
@@ -1222,7 +1214,7 @@ msgstr ""
 #: src/weatherservice.py:583 src/weatherservice.py:584
 #: src/weatherservice.py:626 src/weatherservice.py:627
 msgid "Up all day"
-msgstr ""
+msgstr "Arriba todo el día"
 
 #: src/whereami.py:61
 msgid "Where Am I"
@@ -1298,7 +1290,7 @@ msgstr "Acerca de"
 
 #: src/myweatherindicator.py:417
 msgid "Evolution"
-msgstr "Evolution"
+msgstr "Evolución"
 
 #: src/myweatherindicator.py:424
 msgid "Moon Phase Calendar"
@@ -1356,7 +1348,7 @@ msgstr "Salir"
 
 #: src/myweatherindicator.py:604
 msgid "Not Internet connection"
-msgstr "Sin conexión a  internet"
+msgstr "Sin conexión a internet"
 
 #: src/myweatherindicator.py:752
 msgid "Conditions in"
