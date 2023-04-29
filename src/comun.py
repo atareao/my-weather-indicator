@@ -204,18 +204,5 @@ def internet_on():
     return check_connectivity()
 
 
-def is_running(label="default"):
-    lock_file_pointer = os.open("/tmp/instance_{}.lock".format(label),
-                                os.O_WRONLY)
-
-    try:
-        fcntl.lockf(lock_file_pointer, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        already_running = False
-    except IOError:
-        already_running = True
-
-    return already_running
-
-
 if __name__ == '__main__':
     logger.info(internet_on())

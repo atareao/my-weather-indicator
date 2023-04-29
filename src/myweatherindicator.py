@@ -43,7 +43,6 @@ from gi.repository import Notify  # pyright: ignore
 from gi.repository import GObject  # pyright: ignore
 
 import comun
-import fcntl
 import geocodeapi
 import machine_information
 import os
@@ -63,6 +62,7 @@ from weatherwidget import WeatherWidget
 from mooncalendarwindow import CalendarWindow
 from utils import load_css
 import logging
+import socket
 import sys
 
 INDICATORS = 2
@@ -90,15 +90,6 @@ class MWI(GObject.Object):
 
     def __init__(self):
         GObject.Object.__init__(self)
-        lock_file_pointer = os.open(
-                "/tmp/instance_my_weather_indicator.lock",
-                os.O_WRONLY | os.O_CREAT)
-        try:
-            fcntl.lockf(lock_file_pointer, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except IOError as exception:
-            logger.error(exception)
-            logger.error("Application already running")
-            exit(1)
         self.weather_updater = 0
         self.widgets_updater = 0
         self.internet_updater = 0
@@ -906,6 +897,15 @@ whochismo <https://launchpad.net/~whochismo>\n')
 
 
 def main():
+    try:
+        s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        s.bind('\0_my_weather_indicator_lock')
+    except socket.error as e:
+        error_code = e.args[0]
+        error_string = e.args[1]
+        print("My Weather Indicator is already running ({}:{}). Exit".format(
+                error_code, error_string))
+        sys.exit(1)
     logger.info(machine_information.get_information())
     logger.info("My-Weather-Indicator version: {}".format(comun.VERSION))
     logger.info('#####################################################')
