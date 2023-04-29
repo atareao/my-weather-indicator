@@ -207,18 +207,6 @@ class YahooWeatherService(WeatherService):
                     weather_data['forecasts'][i]['high'] =\
                         cf.change_temperature(thight, self.units.temperature)
                     #
-                    weather_data['forecasts'][i]['qpf_allday'] = None
-                    weather_data['forecasts'][i]['qpf_day'] = None
-                    weather_data['forecasts'][i]['qpf_night'] = None
-                    weather_data['forecasts'][i]['snow_allday'] = None
-                    weather_data['forecasts'][i]['snow_day'] = None
-                    weather_data['forecasts'][i]['snow_night'] = None
-                    weather_data['forecasts'][i]['maxwind'] = None
-                    weather_data['forecasts'][i]['avewind'] = None
-                    weather_data['forecasts'][i]['avehumidity'] = None
-                    weather_data['forecasts'][i]['maxhumidity'] = None
-                    weather_data['forecasts'][i]['minhumidity'] = None
-                    #
                     condition = CODE[int(forecast_condition['code'])]
                     weather_data['forecasts'][i]['condition'] = condition
                     weather_data['forecasts'][i]['condition_text'] =\

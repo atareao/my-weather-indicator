@@ -108,18 +108,6 @@ class NOAAWeatherService(WeatherService):
                 weather_data['forecasts'][i]['low'] = cf.change_temperature(get_data(el, 'low'), self.units.temperature)
                 weather_data['forecasts'][i]['high'] = cf.change_temperature(get_data(el, 'high'), self.units.temperature)
                 #
-                weather_data['forecasts'][i]['qpf_allday'] = None
-                weather_data['forecasts'][i]['qpf_day'] = None
-                weather_data['forecasts'][i]['qpf_night'] = None
-                weather_data['forecasts'][i]['snow_allday'] = None
-                weather_data['forecasts'][i]['snow_day'] = None
-                weather_data['forecasts'][i]['snow_night'] = None
-                weather_data['forecasts'][i]['maxwind'] = None
-                weather_data['forecasts'][i]['avewind'] = None
-                weather_data['forecasts'][i]['avehumidity'] = None
-                weather_data['forecasts'][i]['maxhumidity'] = None
-                weather_data['forecasts'][i]['minhumidity'] = None
-                #
                 condition = get_data(el, 'condition').lower()
                 weather_data['forecasts'][i]['condition'] = condition
                 weather_data['forecasts'][i]['condition_text'] = weatherservice.get_condition(condition, 'text')
