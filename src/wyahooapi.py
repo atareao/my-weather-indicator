@@ -92,15 +92,16 @@ class YahooWeatherService(WeatherService):
         self.woeid = geocodeapi.get_woeid(latitude, longitude)
 
     def run_query(self):
-        q = 'select * from weather.forecast where woeid=%s' % self.woeid
-        url = 'https://query.yahooapis.com/v1/yql?q=%s' % q
+        q = 'select * from weather.forecast where woeid={}'.format(self.woeid)
+        url = ("https://query.yahooapis.com/v1/yql?q=select * from"
+               "weather.forecast where woeid={}").format(self.woeid)
         params = {}
         params['format'] = 'json'
         try:
             ans = requests.get(url, auth=self.oauth, params=params)
         except SSLError as e:
             print('wyahooapi.py: Bug #1568774', str(e))
-            print('wyahooapi.py: Unable to query https url, switch to http url')
+            print('wyahooapi.py: Unable to query https url, switch to http')
             url = 'http://query.yahooapis.com/v1/yql?q=%s' % q
             ans = requests.get(url, auth=self.oauth, params=params)
 
