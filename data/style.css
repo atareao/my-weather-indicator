@@ -1,45 +1,45 @@
 #forecasti,
-#forecast{
+#forecast {
     padding: 10px;
 }
 #forecasti,
 #forecast,
-#mcw_current_month{
+#mcw_current_month {
     border: 1px solid #c3c9d0;
 }
-#forecasti{
+#forecasti {
     color: #333;
     background-color: #F1E9CB;
 }
-#forecast{
+#forecast {
     color: #333;
     background-color: #E1C6AC;
 }
-#mcw_other_month{
+#mcw_other_month {
     background-color: #ddd;
     color: #888;
     border: 1px solid #c3c9d0;
 }
-#mcw_today{
+#mcw_today {
     border: 2px solid #d00;
 }
-#mcw_full{
+#mcw_full {
     background-color: #444;
     color: #fff;
     border: 1px solid #c3c9d0;
 }
-#mcw_med{
+#mcw_med {
     background-color: #c3c9d0;
     border: 1px solid #c3c9d0;
 }
-window hdycolumn box list row combobox{
+window hdycolumn box list row combobox {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-#sidewidget{
+#sidewidget {
     padding: 10px;
 }
-window hdycolumn box list row{
+window hdycolumn box list row {
     background-color: #f0f;
     padding: 2px 8px;
     margin: 0;
@@ -47,13 +47,13 @@ window hdycolumn box list row{
     border-bottom: 0px;
     color: #2d2d34;
 }
-window hdycolumn box list row:hover{
+window hdycolumn box list row:hover {
     background-color: #e0e0e1;
 }
-window hdycolumn box list row:selected{
+window hdycolumn box list row:selected {
     background-color: #e0e0e1;
 }
-window hdycolumn box list row:last-child{
+window hdycolumn box list row:last-child {
     border-bottom: 1px solid #c3c9d0;
 }
 
@@ -61,7 +61,7 @@ window hdycolumn box list row separator {
     background-color: #c3c9d0;
 }
 
-#special{
+#special {
     font-size: 14px;
     font-weight:bold;
     color: #403f38;
@@ -69,7 +69,7 @@ window hdycolumn box list row separator {
 }
 
 #label:hover,
-#label{
+#label {
     color: rgba(1, 1, 1, 1);
 }
 #label:selected{
@@ -88,6 +88,6 @@ window hdycolumn box list row separator {
     text-shadow: 0 0 rgba(0, 0, 0, 0);
     box-shadow: 0 0 rgba(0, 0, 0, 0), 0 0 rgba(0, 0, 0, 0);
 }
-#button:hover{
+#button:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
