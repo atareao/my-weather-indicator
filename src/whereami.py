@@ -316,8 +316,8 @@ class WhereAmI(BaseDialog):
             self.viewer.evaluate_javascript(msg, len(msg), None, "localhost",
                                             None)
         except Exception as exception:
-            self.viewer.run_javascript(msg)
             logger.warn(exception)
+            self.viewer.run_javascript(msg)
         while Gtk.events_pending():
             Gtk.main_iteration()
 

@@ -1,3 +1,8 @@
+my-weather-indicator (0.10.10-0extras23.04.00) jammy; urgency=medium
+
+  *  issue don´t fix #119
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 05 Dec 2020 19:37:44 +0100
 my-weather-indicator (0.10.9-0extras23.04.00) jammy; urgency=medium
 
   *  Latest version won't open #120
