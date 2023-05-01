@@ -68,7 +68,7 @@ import sys
 INDICATORS = 2
 TIME_TO_CHECK = 15
 
-FORMAT = "%(asctime)s | %(name)s | %(levelname)s | %(message)s"
+FORMAT = "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
 LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG")
 logging.basicConfig(stream=sys.stdout,
                     format=FORMAT,
