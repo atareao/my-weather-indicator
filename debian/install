@@ -1,8 +1,6 @@
 bin /opt/extras.ubuntu.com/my-weather-indicator
 debian/changelog /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
 src/*.py /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
-src/graph /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
-src/whereami /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
 data/logos /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
 data/social /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
 data/images /opt/extras.ubuntu.com/my-weather-indicator/share/my-weather-indicator
