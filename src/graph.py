@@ -85,7 +85,15 @@ class Graph(BaseDialog):
             self.update()
 
     def web_send(self, msg):
-        self.viewer.run_javascript(msg, None, None, None)
+        logger.debug(msg)
+        try:
+            self.viewer.evaluate_javascript(msg, len(msg), None, "localhost",
+                                            None)
+        except Exception as exception:
+            logger.warn(exception)
+            self.viewer.run_javascript(msg, None, None, None)
+        while Gtk.events_pending():
+            Gtk.main_iteration()
 
 
 if __name__ == '__main__':
