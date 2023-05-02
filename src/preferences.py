@@ -206,6 +206,7 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         self.entry21 = Gtk.Entry()
+        self.entry21.set_editable(False)
         table21.attach(self.entry21, 1, 2, 1, 2,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
