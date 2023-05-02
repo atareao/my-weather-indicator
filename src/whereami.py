@@ -57,9 +57,7 @@ class WhereAmI(BaseDialog):
         self.set_position(latitude, longitude)
 
         self.set_wait_cursor()
-        if latitude and longitude and (location is None or location == ""):
-            self.do_search_location(latitude, longitude)
-        else:
+        if not (latitude and longitude and location):
             self.do_center()
 
         logger.info("location: {}, latitude: {}, longitude={}".format(
@@ -317,7 +315,7 @@ class WhereAmI(BaseDialog):
                                             None)
         except Exception as exception:
             logger.warn(exception)
-            self.viewer.run_javascript(msg)
+            self.viewer.run_javascript(msg, None, None, None)
         while Gtk.events_pending():
             Gtk.main_iteration()
 
