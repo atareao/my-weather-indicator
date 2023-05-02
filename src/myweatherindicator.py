@@ -789,7 +789,7 @@ class MWI(GObject.Object):
             humidities.append([value, float(data['avehumidity'])])
             cloudinesses.append([value, float(data['cloudiness'])])
         title = _('Forecast for next hours')
-        subtitle = _('Weather service') + ': OpenWeatherMap'
+        subtitle = _('Weather service') + ': Open Meteo'
         graph = Graph(title, subtitle, temperature=temperatures,
                       humidity=humidities, cloudiness=cloudinesses,
                       temperature_unit=temperature_unit)
