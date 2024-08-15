@@ -27,11 +27,11 @@ import os
 import locale
 import logging
 import gettext
-import requests
-from check_connection import check_connectivity
 import urllib.request
 import urllib.parse
 import urllib.error
+import requests
+from check_connection import check_connectivity
 
 __author__ = 'Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>'
 __date__ = '$24/09/2011'
@@ -43,6 +43,12 @@ logger = logging.getLogger(__name__)
 
 
 def is_package():
+    """
+    Check if the current file is part of a package.
+
+    Returns:
+        bool: True if the file is part of a package, False otherwise.
+    """
     return __file__.find('src') < 0
 
 
@@ -136,9 +142,8 @@ else:
     AUTOSTART = os.path.join(DATADIR, 'my-weather-indicator-autostart.desktop')
     AEMETDB = os.path.join(DATADIR, 'spain-data.db')
 
-f = open(CHANGELOG, 'r')
-line = f.readline()
-f.close()
+with open(CHANGELOG, 'r', encoding='utf-8') as fr:
+    line = fr.readline()
 pos = line.find('(')
 posf = line.find(')', pos)
 VERSION = line[pos + 1:posf].strip()
@@ -159,7 +164,7 @@ OPENWEATHERMAPLOGO = os.path.join(LOGOSDIR, 'wopenweathermaplogo.png')
 OPENWEATHERMAPWEB = 'http://openweathermap.org/'
 ####
 try:
-    current_locale, encoding = locale.getdefaultlocale()
+    current_locale, encoding = locale.getlocale()
     if current_locale:
         LANG = current_locale.split("_")[0]
         language = gettext.translation(APP, LANGDIR, [current_locale])
@@ -175,9 +180,20 @@ APPNAME = _(APPNAME)
 
 
 def read_from_url(url):
+    """
+    Reads the content from the given URL.
+
+    Args:
+        url (str): The URL to read from.
+
+    Returns:
+        str or None: The content of the URL if the request is successful,
+        otherwise None.
+    """
     try:
         url = url.replace(' ', '%20')
-        ans = requests.get(url, proxies=urllib.request.getproxies())
+        ans = requests.get(url, proxies=urllib.request.getproxies(),
+                           timeout=60)
         if ans.status_code == 200:
             return ans.text
     except Exception as e:
@@ -186,20 +202,41 @@ def read_from_url(url):
 
 
 def read_json_from_url(url):
+    """
+    Reads JSON data from a given URL.
+
+    Args:
+        url (str): The URL to fetch the JSON data from.
+
+    Returns:
+        dict: A dictionary containing the JSON data.
+
+    Raises:
+        None
+
+    """
+    # code implementation here
     try:
         url = url.replace(' ', '%20')
-        ans = requests.get(url, proxies=urllib.request.getproxies())
+        ans = requests.get(url, proxies=urllib.request.getproxies(),
+                           timeout=60)
         if ans.status_code == 200:
             return ans.json()
         else:
-            raise Exception("Error accessing url: {} with {}".format(
-                url, ans.status_code))
-    except Exception as e:
-        logger.error(e)
+            logger.error("Error accessing url: %s with %s", url,
+                         ans.status_code)
+    except Exception as exception:
+        logger.error(exception)
     return None
 
 
 def internet_on():
+    """
+    Check if there is an internet connection.
+
+    Returns:
+        bool: True if there is an internet connection, False otherwise.
+    """
     return check_connectivity()
 
 
