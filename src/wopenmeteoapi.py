@@ -22,8 +22,8 @@
 
 import datetime
 import logging
-import requests
 import time
+import requests
 import utils
 import weatherservice
 
@@ -33,6 +33,19 @@ BASE_URL = "https://api.open-meteo.com"
 
 
 def get_value_for_time(hourly, timestamp, key):
+    """
+    Retrieves the value for a given timestamp and key from the hourly data.
+
+    Parameters:
+        hourly (dict): The hourly data containing timestamps and corresponding
+                       values.
+        timestamp (int): The timestamp to search for.
+        key (str): The key corresponding to the value to retrieve.
+
+    Returns:
+        The value corresponding to the given timestamp and key, or None if not
+        found.
+    """
     for i, value in enumerate(hourly["time"]):
         if value == timestamp:
             return hourly[key][i]
@@ -40,61 +53,122 @@ def get_value_for_time(hourly, timestamp, key):
 
 
 class OpenMeteoWeatherService(weatherservice.WeatherService):
+    """
+    _openmeteoweatherservice_
+
+    Attributes:
+        _longitude (float): The longitude of the location.
+        _latitude (float): The latitude of the location.
+        _location (str): The name of the location.
+        _timezone (str): The timezone of the location.
+        _units (weatherservice.Units): The units of measurement to be used.
+
+    Methods:
+        __init__(self, longitude, latitude, location, timezone,
+                 units=weatherservice.Units()):
+            Initializes a new instance of the OpenMeteoWeatherService class.
+
+        _do_get(self, url, params):
+
+        get_weather(self):
+            Retrieves the weather data for the specified location.
+
+    """
 
     def __init__(self, longitude, latitude, location, timezone,
                  units=weatherservice.Units()):
+        """
+        Initializes a new instance of the WOpenMeteoAPI class.
+
+        Args:
+            longitude (float): The longitude of the location.
+            latitude (float): The latitude of the location.
+            location (str): The name of the location.
+            timezone (str): The timezone of the location.
+            units (weatherservice.Units, optional): The units of measurement
+            to be used. Defaults to weatherservice.Units().
+
+        Returns:
+            None
+        """
         super().__init__(longitude, latitude, location, timezone, units)
 
-    def _do_get(self, url):
+    def _do_get(self, url, params):
+        """
+        Performs a GET request to the specified URL with the given parameters.
+
+        Args:
+            url (str): The URL to send the GET request to.
+            params (dict): The parameters to include in the GET request.
+
+        Returns:
+            dict or None: The JSON response if the request is successful, None
+            otherwise.
+        """
         try:
-            response = requests.get(url)
+            response = requests.get(url, params=params, timeout=60)
             logger.debug(response.status_code)
             if response.status_code == 200:
                 logger.debug(response.json())
                 return response.json()
-            data = {}
             data = response.json()
-            msg = "Error. HTTP Error code: {}".format(response.status_code)
+            msg = f"Error. HTTP Error: {response.status_code}. {response.text}"
             if "error" in data.keys() and data["error"] and \
                     "reason" in data.keys():
                 logger.debug(data["reason"])
-                msg = "{}. {}".format(msg, data['reason'])
-            raise Exception(msg)
+                msg = f"{msg}. {data['reason']}"
+                logger.error(msg)
         except Exception as exception:
             logger.error(exception)
         return None
 
     def get_weather(self):
         weather_data = self.get_default_values()
-        url = ("{}/v1/forecast?latitude={}&longitude={}&current_weather=true&"
-               "timezone={}&daily=temperature_2m_max,temperature_2m_min,"
-               "apparent_temperature_max,apparent_temperature_min,"
-               "precipitation_sum,rain_sum,showers_sum,snowfall_sum,"
-               "precipitation_hours,precipitation_probability_max,"
-               "precipitation_probability_min,precipitation_probability_mean,"
-               "weathercode,sunrise,sunset,windspeed_10m_max,"
-               "winddirection_10m_dominant,shortwave_radiation_sum,"
-               "uv_index_max,uv_index_clear_sky_max"
-               "&hourly=relativehumidity_2m,apparent_temperature,"
-               "pressure_msl,dewpoint_2m,cloudcover,visibility,uv_index"
-               "&windspeed_unit=mph").format(BASE_URL, self._latitude,
-                                             self._longitude, self._timezone)
+        url = f"{BASE_URL}/v1/forecast"
         logger.debug(url)
-        logger.info(url)
-        data = self._do_get(url)
+        current_options = ["temperature_2m", "relative_humidity_2m",
+                           "apparent_temperature", "is_day", "precipitation",
+                           "rain", "showers", "snowfall", "weather_code",
+                           "cloud_cover", "pressure_msl", "surface_pressure",
+                           "wind_speed_10m", "wind_direction_10m",
+                           "wind_gusts_10m"]
+        daily_options = ["temperature_2m_max", "temperature_2m_min",
+                         "apparent_temperature_max",
+                         "apparent_temperature_min", "precipitation_sum",
+                         "rain_sum", "showers_sum", "snowfall_sum",
+                         "precipitation_hours",
+                         "precipitation_probability_max",
+                         "precipitation_probability_min",
+                         "precipitation_probability_mean", "weathercode",
+                         "sunrise", "sunset", "windspeed_10m_max",
+                         "winddirection_10m_dominant",
+                         "shortwave_radiation_sum",
+                         "uv_index_max", "uv_index_clear_sky_max"]
+        hourly_options = ["relativehumidity_2m", "apparent_temperature",
+                          "pressure_msl,dewpoint_2m", "cloudcover,visibility",
+                          "uv_index"]
+        params = {
+            "latitude": self._latitude,
+            "longitude": self._longitude,
+            "timezone": self._timezone,
+            "current": ",".join(current_options),
+            "daily": ",".join(daily_options),
+            "hourly": ",".join(hourly_options),
+            "windspeed_unit": "mph"
+        }
+        data = self._do_get(url, params)
         if data:
-            current_weather = data["current_weather"]
+            current_weather = data["current"]
             daily = data["daily"]
             hourly = data["hourly"]
             timestamp = current_weather["time"]
             weather_data["update_time"] = time.time()
             weather_data["ok"] = True
-            condition = current_weather["weathercode"]
-            temperature = current_weather["temperature"]
-            velocity = current_weather["windspeed"]
-            direction = current_weather["winddirection"]
-            humidity = \
-                get_value_for_time(hourly, timestamp, "relativehumidity_2m")
+            condition = current_weather["weather_code"]
+            temperature = current_weather["temperature_2m"]
+            velocity = current_weather["wind_speed_10m"]
+            direction = current_weather["wind_direction_10m"]
+            humidity = current_weather["relative_humidity_2m"]
             wind_direction = weatherservice.degToCompass2(direction)
             weather_data["current_conditions"]["condition_text"] =\
                 weatherservice.get_condition_om(condition, "text")
@@ -118,8 +192,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                 utils.change_temperature(temperature, self._units.temperature)
             weather_data["current_conditions"]["pressure"] = \
                 get_value_for_time(hourly, timestamp, "pressure_msl")
-            weather_data["current_conditions"]["humidity"] = "{} %".format(
-                    humidity)
+            weather_data["current_conditions"]["humidity"] = f"{humidity} %"
             weather_data['current_conditions']['heat_index'] =\
                 weatherservice.get_heat_index(temperature, humidity)
             weather_data['current_conditions']['windchill'] =\
@@ -178,15 +251,44 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             return weather_data
 
     def get_hourly_weather(self):
+        """
+        Retrieves the hourly weather forecast for a specific location.
+
+        Returns:
+            list: A list of dictionaries containing the hourly weather data.
+                Each dictionary contains the following keys:
+                - datetime (datetime.datetime): The date and time of the
+                  weather data.
+                - condition (int): The weather condition code.
+                - condition_text (str): The text description of the weather
+                  condition.
+                - condition_image (str): The URL of the image representing the
+                  weather condition.
+                - condition_icon (str): The URL of the icon representing the
+                  weather condition.
+                - temperature (float): The temperature in degrees Celsius.
+                - high (float): The high temperature in degrees Celsius.
+                - low (float): The low temperature in degrees Celsius.
+                - cloudiness (float): The cloud cover percentage.
+                - avehumidity (float): The average humidity percentage.
+                - avewind (str): The average wind condition.
+                - wind_icon (str): The URL of the icon representing the wind
+                  direction.
+        """
         weatherdata = []
-        url = ("{}/v1/forecast?latitude={}&longitude={}&hourly=weathercode,"
-               "temperature_2m,relativehumidity_2m,apparent_temperature,"
-               "cloudcover,windspeed_10m,winddirection_10m,"
-               "precipitation_probability,visibility"
-               "&windspeed_unit=mph").format(BASE_URL, self._latitude,
-                                             self._longitude)
+        url = f"{BASE_URL}/v1/forecast"
+        hourly_options = ["weathercode", "temperature_2m",
+                          "relativehumidity_2m", "apparent_temperature",
+                          "cloudcover", "windspeed_10m", "winddirection_10m",
+                          "precipitation_probability", "visibility"]
+        params = {
+            "latitude": self._latitude,
+            "longitude": self._longitude,
+            "winspeed_unit": "mph",
+            "hourly": ",".join(hourly_options)
+        }
         logger.info(url)
-        data = self._do_get(url)
+        data = self._do_get(url, params=params)
         if data:
             hourly = data["hourly"]
             for i in range(0, len(hourly["time"])):
@@ -222,10 +324,6 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
 
 if __name__ == "__main__":
     from pprint import pprint
-    longitude = -0.4016816
-    latitude = 39.3527902
-    location = "Silla"
-    timezone = "Europe/Madrid"
-    logger.info(longitude)
-    omws = OpenMeteoWeatherService(longitude, latitude, location, timezone)
+    omws = OpenMeteoWeatherService(-0.4016816, 39.3527902, "Silla",
+                                   "Europe/Madrid")
     pprint(omws.get_weather())
