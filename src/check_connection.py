@@ -33,6 +33,12 @@ logger = logging.getLogger(__name__)
 
 
 def check_connectivity():
+    """
+    Check the connectivity to various sockets and URLs.
+
+    Returns:
+        bool: True if connectivity is successful, False otherwise.
+    """
     sockets = ['www.google.com',
                '216.58.192.142',
                'www.baidu.com']
@@ -53,38 +59,66 @@ def check_connectivity():
 
 
 def check_connectivity_with_httpconnection(reference):
+    """
+    Check the connectivity with the given HTTP connection reference.
+
+    Parameters:
+    - reference (str): The HTTP connection reference to check.
+
+    Returns:
+    - bool: True if the connection is successful, False otherwise.
+    """
     try:
         conn = http.client.HTTPConnection(reference)
         conn.close()
-        logger.debug("OK. Internet connection. HTTPConnection: {}".format(
-            reference))
+        logger.debug("OK. Internet connection. HTTPConnection: %s", reference)
         return True
     except Exception as ex:
-        logger.error("No internet connection. HTTPConnection: {}".format(
-            reference))
+        logger.error("No internet connection. HTTPConnection: %s. %s",
+                     reference, ex)
         logger.error(ex)
     return False
 
 
 def check_connectivity_with_socket(reference, port=80):
+    """
+    Check the connectivity with a socket.
+
+    Args:
+        reference (str): The reference to check the connectivity with.
+        port (int, optional): The port to use for the connection. Defaults to
+            80.
+
+    Returns:
+        bool: True if the connection is successful, False otherwise.
+    """
     try:
         conn = socket.create_connection((reference, port))
         conn.close()
-        logger.debug("OK. Internet connection. Socket: {}".format(reference))
+        logger.debug("OK. Internet connection. Socket: %s", reference)
         return True
     except Exception as ex:
-        logger.error("No internet connection. Socket: {}".format(reference))
-        logger.error(ex)
+        logger.error("No internet connection. Socket: %s. %s", reference, ex)
     return False
 
 
 def check_connectivity_with_reference(reference, timeout=2):
+    """
+    Check the connectivity with a reference URL.
+
+    Args:
+        reference (str): The URL to check the connectivity with.
+        timeout (int, optional): The timeout value in seconds. Defaults to 2.
+
+    Returns:
+        bool: True if the connection is successful, False otherwise.
+    """
     try:
         requests.get(reference, timeout=timeout, verify=False)
-        logger.debug("OK. Internet connection. Url: {}".format(reference))
+        logger.debug("OK. Internet connection. Url: %s", reference)
         return True
     except Exception as ex:
-        logger.error("No internet connection. Url: {}".format(reference))
+        logger.error("No internet connection. Url: %s. %s", reference, ex)
         logger.error(ex)
     return False
 
