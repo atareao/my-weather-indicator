@@ -886,7 +886,7 @@ class MWI(GObject.Object):
             ultraviolet = (
                 self.current_conditions[index]['UV'] is not None)
             precip_today = (
-                self.current_conditions[index]['precip_today'] is not None)
+                self.current_conditions[index]['precipitation'] is not None)
             self.menus[index]['pressure'].set_visible(pressure)
             self.menus[index]['visibility'].set_visible(visibility)
             self.menus[index]['cloudiness'].set_visible(cloudiness)
@@ -909,7 +909,7 @@ class MWI(GObject.Object):
                 self.menus[index]['uv'].set_label(
                     f"{_('UV')}: {value}")
             if precip_today:
-                value = self.current_conditions[index]['precip_today']
+                value = self.current_conditions[index]['precipitation']
                 self.menus[index]['precipitation'].set_label(
                     f"{_('Precipitation')}: {value}")
             if self.preferences[index]['show-temperature'] is True:

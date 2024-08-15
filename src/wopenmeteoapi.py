@@ -47,7 +47,7 @@ def get_value_for_time(hourly, timestamp, key):
         found.
     """
     for i, value in enumerate(hourly["time"]):
-        if value == timestamp:
+        if value >= timestamp:
             return hourly[key][i]
     return None
 
@@ -126,34 +126,37 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
         weather_data = self.get_default_values()
         url = f"{BASE_URL}/v1/forecast"
         logger.debug(url)
-        current_options = ["temperature_2m", "relative_humidity_2m",
-                           "apparent_temperature", "is_day", "precipitation",
-                           "rain", "showers", "snowfall", "weather_code",
-                           "cloud_cover", "pressure_msl", "surface_pressure",
-                           "wind_speed_10m", "wind_direction_10m",
-                           "wind_gusts_10m"]
-        daily_options = ["temperature_2m_max", "temperature_2m_min",
-                         "apparent_temperature_max",
-                         "apparent_temperature_min", "precipitation_sum",
-                         "rain_sum", "showers_sum", "snowfall_sum",
-                         "precipitation_hours",
-                         "precipitation_probability_max",
-                         "precipitation_probability_min",
-                         "precipitation_probability_mean", "weathercode",
-                         "sunrise", "sunset", "windspeed_10m_max",
-                         "winddirection_10m_dominant",
-                         "shortwave_radiation_sum",
-                         "uv_index_max", "uv_index_clear_sky_max"]
-        hourly_options = ["relativehumidity_2m", "apparent_temperature",
-                          "pressure_msl,dewpoint_2m", "cloudcover,visibility",
-                          "uv_index"]
+        current = ["temperature_2m", "relative_humidity_2m",
+                   "apparent_temperature", "is_day", "precipitation", "rain",
+                   "showers", "snowfall", "weather_code", "cloud_cover",
+                   "pressure_msl", "surface_pressure", "wind_speed_10m",
+                   "wind_direction_10m", "wind_gusts_10m"]
+        daily = ["temperature_2m_max", "temperature_2m_min",
+                 "apparent_temperature_max", "apparent_temperature_min",
+                 "precipitation_sum", "rain_sum", "showers_sum",
+                 "snowfall_sum", "precipitation_hours",
+                 "precipitation_probability_max",
+                 "precipitation_probability_min",
+                 "precipitation_probability_mean", "weathercode", "sunrise",
+                 "sunset", "windspeed_10m_max", "winddirection_10m_dominant",
+                 "shortwave_radiation_sum", "uv_index_max",
+                 "uv_index_clear_sky_max"]
+        hourly = ["relativehumidity_2m", "apparent_temperature",
+                  "pressure_msl,dewpoint_2m", "cloudcover,visibility",
+                  "uv_index"]
+        minutely_15 = ["temperature_2m", "relative_humidity_2m",
+                       "dew_point_2m", "apparent_temperature", "precipitation",
+                       "rain", "snowfall", "snowfall_height",
+                       "sunshine_duration", "weather_code", "wind_speed_10m",
+                       "wind_direction_10m", "wind_gusts_10m", "visibility"]
         params = {
             "latitude": self._latitude,
             "longitude": self._longitude,
             "timezone": self._timezone,
-            "current": ",".join(current_options),
-            "daily": ",".join(daily_options),
-            "hourly": ",".join(hourly_options),
+            "current": ",".join(current),
+            "daily": ",".join(daily),
+            "hourly": ",".join(hourly),
+            "minutely_15": ",".join(minutely_15),
             "windspeed_unit": "mph"
         }
         data = self._do_get(url, params)
@@ -161,14 +164,19 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
             current_weather = data["current"]
             daily = data["daily"]
             hourly = data["hourly"]
+            minutely_15 = data["minutely_15"]
             timestamp = current_weather["time"]
             weather_data["update_time"] = time.time()
             weather_data["ok"] = True
             condition = current_weather["weather_code"]
             temperature = current_weather["temperature_2m"]
+            feels_like = current_weather["apparent_temperature"]
             velocity = current_weather["wind_speed_10m"]
             direction = current_weather["wind_direction_10m"]
             humidity = current_weather["relative_humidity_2m"]
+            pressure = current_weather["pressure_msl"]
+            cloud_cover = current_weather["cloud_cover"]
+            precipitation = current_weather["precipitation"]
             wind_direction = weatherservice.degToCompass2(direction)
             weather_data["current_conditions"]["condition_text"] =\
                 weatherservice.get_condition_om(condition, "text")
@@ -190,21 +198,17 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                                                     'icon-night-light')
             weather_data['current_conditions']['temperature'] =\
                 utils.change_temperature(temperature, self._units.temperature)
-            weather_data["current_conditions"]["pressure"] = \
-                get_value_for_time(hourly, timestamp, "pressure_msl")
+            weather_data["current_conditions"]["pressure"] = pressure
             weather_data["current_conditions"]["humidity"] = f"{humidity} %"
             weather_data['current_conditions']['heat_index'] =\
                 weatherservice.get_heat_index(temperature, humidity)
             weather_data['current_conditions']['windchill'] =\
                 weatherservice.get_wind_chill(temperature, velocity)
             weather_data["current_conditions"]["dew_point"] = \
-                get_value_for_time(hourly, timestamp, "dewpoint_2m")
+                get_value_for_time(minutely_15, timestamp, "dew_point_2m")
             weather_data["current_conditions"]["feels_like"] = \
-                utils.change_temperature(get_value_for_time(
-                    hourly, timestamp, "apparent_temperature"),
-                                         self._units.temperature)
-            weather_data["current_conditions"]["cloudiness"] = \
-                get_value_for_time(hourly, timestamp, "cloudcover")
+                utils.change_temperature(feels_like, self._units.temperature)
+            weather_data["current_conditions"]["cloudiness"] = cloud_cover
             weather_data["current_conditions"]["visibility"] = \
                 get_value_for_time(hourly, timestamp, "visibility")
             weather_data["current_conditions"]["UV"] = \
@@ -213,6 +217,7 @@ class OpenMeteoWeatherService(weatherservice.WeatherService):
                 weatherservice.get_wind_condition2(
                     velocity, wind_direction[0], self._units.wind)
             weather_data['current_conditions']['wind_icon'] = wind_direction[2]
+            weather_data["current_conditions"]["precipitation"] = precipitation
             for i in range(0, len(daily["time"])):
                 condition = daily["weathercode"][i]
                 temp_max = daily["temperature_2m_max"][i]
