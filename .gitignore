@@ -89,3 +89,4 @@ ENV/
 debian/files
 .mypy_cache/
 /.idea/
+.vscode/launch.json
