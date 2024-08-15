@@ -23,18 +23,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
+import sys
 import gi
 try:
     gi.require_version('Gtk', '3.0')
     gi.require_version('Gdk', '3.0')
     gi.require_version('GdkPixbuf', '2.0')
-except ValueError as e:
-    print(e)
-    exit(1)
+except ValueError as value_error_exception:
+    print(value_error_exception)
+    sys.exit(1)
+# pylint: disable=wrong-import-position
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GdkPixbuf
-import os
 
 
 DEFAULT_CURSOR = Gdk.Cursor(Gdk.CursorType.ARROW)
@@ -42,7 +44,16 @@ WAIT_CURSOR = Gdk.Cursor(Gdk.CursorType.WATCH)
 
 
 def load_css(css_filename):
-    with open(css_filename, 'r') as css_file:
+    """
+    Load CSS code from a file and apply it to the GTK+ application.
+
+    Args:
+        css_filename (str): The path to the CSS file.
+
+    Returns:
+        None
+    """
+    with open(css_filename, "r", encoding="utf-8") as css_file:
         css_code = css_file.read()
         style_provider = Gtk.CssProvider()
         style_provider.load_from_data(css_code.encode())
@@ -53,6 +64,17 @@ def load_css(css_filename):
 
 
 def load_image(filename, size=24):
+    """
+    Load an image from a file and create a Gtk.Image object.
+
+    Args:
+        filename (str): The path to the image file.
+        size (int, optional): The desired size of the image. Defaults to 24.
+
+    Returns:
+        Gtk.Image or None: The Gtk.Image object created from the image file, or
+        None if the file does not exist.
+    """
     if os.path.exists(filename):
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(filename, size, size)
         return Gtk.Image.new_from_pixbuf(pixbuf)
@@ -60,17 +82,48 @@ def load_image(filename, size=24):
 
 
 def redondea(valor):
+    """
+    Rounds the given value to one decimal place.
+
+    Args:
+        valor (float): The value to be rounded.
+
+    Returns:
+        float: The rounded value.
+    """
     valor = valor * 10.0
     return int(valor) / 10.0
 
 
 def redondea_digits(valor, digits=0):
+    """
+    Rounds the given value to the specified number of digits.
+
+    Parameters:
+    - valor: The value to be rounded.
+    - digits: The number of digits to round to. Default is 0.
+
+    Returns:
+    - The rounded value.
+
+    Example:
+    redondea_digits(3.14159, 2)  # Returns 3.14
+    """
     if digits == 0:
         return int(round(valor, digits))
     return round(valor, digits)
 
 
 def s2f(cadena):
+    """
+    Converts a string to a float.
+
+    Args:
+        cadena (str): The string to be converted.
+
+    Returns:
+        float: The converted float value. If the conversion fails, returns 0.0.
+    """
     try:
         value = float(cadena)
     except BaseException:
@@ -79,6 +132,17 @@ def s2f(cadena):
 
 
 def s2f_print(word):
+    """
+    Converts a string to a float and prints an error message if conversion
+    fails.
+
+    Args:
+        word (str): The string to be converted to a float.
+
+    Returns:
+        float: The converted float value if successful, otherwise 0.
+
+    """
     try:
         return float(word)
     except Exception as e:
@@ -87,6 +151,20 @@ def s2f_print(word):
 
 
 def cambia(valor, a, SI=True):
+    """
+    Convert a temperature value from one unit to another.
+
+    Parameters:
+    - valor (str): The temperature value to be converted.
+    - a (str): The unit to convert the temperature to ('F' for Fahrenheit,
+      'K' for Kelvin).
+    - SI (bool, optional): Whether to use the SI unit conversion formula.
+      Defaults to True.
+
+    Returns:
+    - str: The converted temperature value as a string.
+
+    """
     if len(valor) == 0:
         return ''
     valor = float(valor)
@@ -100,6 +178,18 @@ def cambia(valor, a, SI=True):
 
 
 def change_temperature(valor, a):
+    """
+    Converts the temperature value from one unit to another.
+
+    Args:
+        valor (float): The temperature value to be converted.
+        a (str): The unit of the temperature value ('F' for Fahrenheit,
+        'K' for Kelvin).
+
+    Returns:
+        str: The converted temperature value as a string.
+
+    """
     valor = s2f(valor)
     # initial a in ºC
     if a == 'F':
@@ -110,8 +200,26 @@ def change_temperature(valor, a):
 
 
 def fa2f(temperature):
+    """
+    Converts temperature from Fahrenheit to Celsius.
+
+    Parameters:
+    temperature (float): The temperature in Fahrenheit.
+
+    Returns:
+    float: The temperature in Celsius.
+    """
     return (temperature - 273.15) * 9.0 / 5.0 + 32.0
 
 
 def f2c(temperature):
+    """
+    Converts temperature from Fahrenheit to Celsius.
+
+    Parameters:
+    temperature (float): The temperature in Fahrenheit.
+
+    Returns:
+    float: The temperature in Celsius.
+    """
     return (s2f(temperature) - 32.0) * 5.0 / 9.0

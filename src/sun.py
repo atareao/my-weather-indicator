@@ -27,16 +27,26 @@ Solar flux, equation of time and import of python library
 2007-12-12 - v1.5 by Miguel Tremblay: bug fix to solar flux calculation
 """
 
-import utils as cf
 import math
 from math import pi
 import calendar
+import utils as cf
 
 SUN_PY_VERSION = 1.5
 
 
-def from_utc_to_local(value, rawOffset=0):
-    value += rawOffset
+def from_utc_to_local(value, raw_offset=0):
+    """
+    Converts a UTC time value to the local time zone.
+
+    Args:
+        value (float): The UTC time value to convert.
+        raw_offset (int, optional): The raw offset in hours. Defaults to 0.
+
+    Returns:
+        str: The local time in the format "HH:MM".
+    """
+    value += raw_offset
     if value < 0:
         value = value + 24
     if value > 24:
@@ -50,7 +60,7 @@ def from_utc_to_local(value, rawOffset=0):
     hours = '0' * (2 - len(hours)) + hours
     minutes = str(minutes)
     minutes = '0' * (2 - len(minutes)) + minutes
-    return('%s:%s' % (hours, minutes))
+    return f"{hours}:{minutes}"
 
 
 class Sun(object):
@@ -58,44 +68,45 @@ class Sun(object):
     def __init__(self):
         """Init"""
         # Some conversion factors between radians and degrees
-        self.RADEG = 180.0 / pi
-        self.DEGRAD = pi / 180.0
-        self.INV360 = 1.0 / 360.0
+        self.radeg = 180.0 / pi
+        self.degrad = pi / 180.0
+        self.inv360 = 1.0 / 360.0
 
     def daysSince2000Jan0(self, y, m, d):
         """A macro to compute the number of days elapsed since 2000 Jan 0.0
            (which is equal to 1999 Dec 31, 0h UT)
         """
-        return (367 * (y) - ((7 * ((y) + (((m) + 9) / 12))) / 4) + ((275 * (m)) / 9) + (d) - 730530)
+        return (367 * (y) - ((7 * ((y) + (((m) + 9) / 12))) / 4) + 
+                ((275 * (m)) / 9) + (d) - 730530)
 
     # The trigonometric functions in degrees
     def sind(self, x):
         """Returns the sin in degrees"""
-        return math.sin(x * self.DEGRAD)
+        return math.sin(x * self.degrad)
 
     def cosd(self, x):
         """Returns the cos in degrees"""
-        return math.cos(x * self.DEGRAD)
+        return math.cos(x * self.degrad)
 
     def tand(self, x):
         """Returns the tan in degrees"""
-        return math.tan(x * self.DEGRAD)
+        return math.tan(x * self.degrad)
 
     def atand(self, x):
         """Returns the arc tan in degrees"""
-        return math.atan(x) * self.RADEG
+        return math.atan(x) * self.radeg
 
     def asind(self, x):
         """Returns the arc sin in degrees"""
-        return math.asin(x) * self.RADEG
+        return math.asin(x) * self.radeg
 
     def acosd(self, x):
         """Returns the arc cos in degrees"""
-        return math.acos(x) * self.RADEG
+        return math.acos(x) * self.radeg
 
     def atan2d(self, y, x):
         """Returns the atan2 in degrees"""
-        return math.atan2(y, x) * self.RADEG
+        return math.atan2(y, x) * self.radeg
 
     # Following are some macros around the "workhorse" function __daylen__
     # They mainly fill in the desired values for the reference altitude
@@ -225,7 +236,7 @@ class Sun(object):
         d = self.daysSince2000Jan0(year, month, day) + 0.5 - (lon / 360.0)
 
         # Compute local sidereal time of this moment
-        sidtime = self.revolution(self.GMST0(d) + 180.0 + lon)
+        sidtime = self.revolution(self.gmst0(d) + 180.0 + lon)
 
         # Compute Sun's RA + Decl at this moment
         res = self.sunRADec(d)
@@ -331,7 +342,7 @@ class Sun(object):
         e = 0.016709 - 1.151E-9 * d
 
         # Compute true longitude and radius vector
-        E = M + e * self.RADEG * self.sind(M) * (1.0 + e * self.cosd(M))
+        E = M + e * self.radeg * self.sind(M) * (1.0 + e * self.cosd(M))
         x = self.cosd(E) - e
         y = math.sqrt(1.0 - e * e) * self.sind(E)
         r = math.sqrt(x * x + y * y)
@@ -379,35 +390,35 @@ class Sun(object):
 
         Reduce angle to within 0..360 degrees
         """
-        return (x - 360.0 * math.floor(x * self.INV360))
+        return x - 360.0 * math.floor(x * self.inv360)
 
     def rev180(self, x):
         """
         Reduce angle to within +180..+180 degrees
         """
-        return (x - 360.0 * math.floor(x * self.INV360 + 0.5))
+        return x - 360.0 * math.floor(x * self.inv360 + 0.5)
 
-    def GMST0(self, d):
+    def gmst0(self, d):
         """
-        This function computes GMST0, the Greenwich Mean Sidereal Time
+        This function computes gmst0, the Greenwich Mean Sidereal Time
         at 0h UT (i.e. the sidereal time at the Greenwhich meridian at
         0h UT).  GMST is then the sidereal time at Greenwich at any
-        time of the day.  I've generalized GMST0 as well, and define it
-        as:  GMST0 = GMST - UT  --  this allows GMST0 to be computed at
+        time of the day.  I've generalized gmst0 as well, and define it
+        as:  gmst0 = GMST - UT  --  this allows gmst0 to be computed at
         other times than 0h UT as well.  While this sounds somewhat
         contradictory, it is very practical:  instead of computing
         GMST like:
 
-         GMST = (GMST0) + UT * (366.2422/365.2422)
+         GMST = (gmst0) + UT * (366.2422/365.2422)
 
-        where (GMST0) is the GMST last time UT was 0 hours, one simply
+        where (gmst0) is the GMST last time UT was 0 hours, one simply
         computes:
 
-         GMST = GMST0 + UT
+         GMST = gmst0 + UT
 
-        where GMST0 is the GMST "at 0h UT" but at the current moment!
-        Defined in this way, GMST0 will increase with about 4 min a
-        day.  It also happens that GMST0 (in degrees, 1 hr = 15 degr)
+        where gmst0 is the GMST "at 0h UT" but at the current moment!
+        Defined in this way, gmst0 will increase with about 4 min a
+        day.  It also happens that gmst0 (in degrees, 1 hr = 15 degr)
         is equal to the Sun's mean longitude plus/minus 180 degrees!
         (if we neglect aberration, which amounts to 20 seconds of arc
         or 1.33 seconds of time)
@@ -497,7 +508,7 @@ class Sun(object):
         # Julian date
         nJulianDate = self.Julian(year, month, day)
         # Check if it is a leap year
-        if(calendar.isleap(year)):
+        if calendar.isleap(year):
             fDivide = 366.0
         else:
             fDivide = 365.0

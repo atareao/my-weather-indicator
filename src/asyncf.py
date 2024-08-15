@@ -23,20 +23,38 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import sys
+import threading
+import traceback
 import gi
 try:
     gi.require_version('GLib', '2.0')
-except Exception as e:
-    print(e)
-    exit(1)
+except ValueError as value_error_exception:
+    print(value_error_exception)
+    sys.exit(1)
+# pylint: disable=wrong-import-position
 from gi.repository import GLib  # type: ignore
-import threading
-import traceback
 
 __all__ = ['async_function']
 
 
 def _async_call(f, args, kwargs, on_done):
+    """
+    Asynchronously calls a function with the given arguments and keyword
+    arguments.
+
+    Args:
+        f (function): The function to be called asynchronously.
+        args (tuple): The positional arguments to be passed to the function.
+        kwargs (dict): The keyword arguments to be passed to the function.
+        on_done (function): The callback function to be called when the
+        asynchronous call is done.
+            It takes two arguments: the result of the function call and any
+            error that occurred.
+
+    Returns:
+        None
+    """
     def run(data):
         f, args, kwargs, on_done = data
         error = None
@@ -45,8 +63,7 @@ def _async_call(f, args, kwargs, on_done):
             result = f(*args, **kwargs)
         except Exception as e:
             traces = traceback.format_exc()
-            error = "Unhandled exception in asyn call: {e}\n{traces}".format(
-                    e=e, traces=traces)
+            error = f"Unhandled exception in asyn call: {e}\n{traces}"
         GLib.idle_add(lambda: on_done(result, error))
 
     data = f, args, kwargs, on_done

@@ -23,6 +23,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
+import time
+import webbrowser
+from datetime import datetime, UTC
+import logging
+import socket
+import sys
 import gi
 try:
     gi.require_version('GLib', '2.0')
@@ -31,52 +38,72 @@ try:
     gi.require_version('GdkPixbuf', '2.0')
     gi.require_version('Notify', '0.7')
     gi.require_version('WebKit2', '4.0')
-except Exception as e:
+except ValueError as e:
     print(e)
     print('Repository version required not present')
-    exit(1)
-from gi.repository import GLib  # pyright: ignore
-from gi.repository import AyatanaAppIndicator3 as appindicator  # pyright: ignore
-from gi.repository import Gtk  # pyright: ignore
-from gi.repository import GdkPixbuf  # pyright: ignore
-from gi.repository import Notify  # pyright: ignore
-from gi.repository import GObject  # pyright: ignore
-
+    sys.exit(1)
+# pylint: disable=wrong-import-position
+from gi.repository import GLib
+from gi.repository import AyatanaAppIndicator3 as appindicator
+from gi.repository import Gtk
+from gi.repository import GdkPixbuf
+from gi.repository import Notify
+from gi.repository import GObject
 import comun
 import geocodeapi
 import machine_information
-import os
 import preferences
-import time
-import webbrowser
 import weatherservice
 import wopenmeteoapi
+from forecastw import FC
+from weatherwidget import WeatherWidget
+from mooncalendarwindow import CalendarWindow
+from graph import Graph
+from utils import load_css
 from comun import _
 from comun import internet_on
 from comun import CSS_FILE
 from configurator import Configuration
-from datetime import datetime
-from forecastw import FC
-from graph import Graph
-from weatherwidget import WeatherWidget
-from mooncalendarwindow import CalendarWindow
-from utils import load_css
-import logging
-import socket
-import sys
+
 
 INDICATORS = 2
 TIME_TO_CHECK = 15
 
 FORMAT = "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
-LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG").upper()
 logging.basicConfig(stream=sys.stdout,
                     format=FORMAT,
-                    level=logging.getLevelName(LOG_LEVEL))
+                    level=LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
 
 class MWI(GObject.Object):
+    """
+    MWI class represents the My Weather Indicator application.
+
+    Attributes:
+        weather_updater (int): The weather updater.
+        widgets_updater (int): The widgets updater.
+        internet_updater (int): The internet updater.
+        internet_connection (bool): The internet connection status.
+        menus (list): The list of menus.
+        indicators (list): The list of indicators.
+        notifications (list): The list of notifications.
+        widgets (list): The list of widgets.
+        weatherservices (list): The list of weather services.
+        weathers (list): The list of weather data.
+        current_conditions (list): The list of current weather conditions.
+        preferences (list): The list of user preferences.
+        last_update_time (int): The timestamp of the last update.
+
+    Methods:
+        __init__(): Initializes the MWI object.
+        update_widgets(): Updates the widgets.
+        update_weather(): Updates the weather.
+        open_in_browser(widget, url): Opens the specified URL in a web browser.
+        get_help_menu(): Returns the help menu.
+        load_preferences(): Loads the user preferences.
+    """
     __gsignals__ = {
         'internet-out': (GObject.SignalFlags.RUN_FIRST,
                          GObject.TYPE_NONE, ()),
@@ -89,6 +116,19 @@ class MWI(GObject.Object):
     }
 
     def __init__(self):
+        """
+        Initializes the MyWeatherIndicator class.
+
+        This method sets up the initial state of the MyWeatherIndicator object.
+        It initializes various attributes such as weather_updater,
+        widgets_updater, internet_updater, internet_connection, menus,
+        indicators, notifications, widgets, weatherservices, weathers,
+        current_conditions, preferences, and last_update_time. It also creates
+        appindicator indicators and notifications, and calls the create_menu()
+        method to create menus for each indicator.  Finally, it loads the
+        preferences using the load_preferences() method.
+        """
+        # code implementation
         GObject.Object.__init__(self)
         self.weather_updater = 0
         self.widgets_updater = 0
@@ -128,8 +168,14 @@ class MWI(GObject.Object):
         self.load_preferences()
 
     def update_widgets(self):
+        """
+        Updates the widgets with the current datetime in UTC.
+
+        Returns:
+            bool: True if any widget was updated, False otherwise.
+        """
         update = False
-        utcnow = datetime.utcnow()
+        utcnow = datetime.now(UTC)
         for i in range(INDICATORS):
             if self.widgets[i] is not None:
                 self.widgets[i].set_datetime(utcnow)
@@ -137,6 +183,18 @@ class MWI(GObject.Object):
         return update
 
     def update_weather(self):
+        """
+        Updates the weather indicators based on the user preferences.
+
+        This method iterates over the indicators and updates their status
+        based on the user preferences.
+        If a preference is set to 'show', the corresponding indicator is
+        updated and set to active status.
+        Otherwise, the indicator is set to passive status.
+
+        Returns:
+            bool: True if the weather indicators were successfully updated.
+        """
         logger.debug('***** refreshing weather *****')
         for i in range(INDICATORS):
             if self.preferences[i]['show']:
@@ -148,10 +206,24 @@ class MWI(GObject.Object):
                     appindicator.IndicatorStatus.PASSIVE)
         return True
 
-    def open_in_browser(self, widget, url):  # pyright: ignore
+    def open_in_browser(self, _widget, url):
+        """
+        Opens the specified URL in the default web browser.
+
+        Parameters:
+            _widget (Widget): The widget associated with the action.
+            url (str): The URL to be opened in the web browser.
+        """
         webbrowser.open(url)
 
     def get_help_menu(self):
+        """
+        Returns a Gtk.Menu object containing various help options for the
+        application.
+
+        Returns:
+            Gtk.Menu: A menu containing help options.
+        """
         help_menu = Gtk.Menu()
         #
         homepage_item = Gtk.MenuItem(label=_(
@@ -233,6 +305,25 @@ class MWI(GObject.Object):
         return help_menu
 
     def load_preferences(self):
+        """
+        Loads the preferences for the weather indicator.
+
+        This method checks if the configuration file exists. If it doesn't,
+        it creates a new configuration with default values and saves it. Then,
+        it prompts the user to enter their preferences using a preferences
+        dialog. If the user accepts, the preferences are saved. If the user
+        cancels, the program exits. After loading the configuration, the method
+        retrieves the preferences for the main and second locations, and sets
+        them in the `self.preferences` dictionary. It also retrieves other
+        configuration values such as temperature, pressure, visibility, wind,
+        snow, rain, and time format. The method then initializes the weather
+        services for each location based on the preferences. Finally, it
+        creates and initializes weather widgets for each location if the widget
+        is enabled in the preferences.
+
+        Returns:
+            None
+        """
         if not os.path.exists(comun.CONFIG_FILE):
             if internet_on():
                 configuration = Configuration()
@@ -329,6 +420,16 @@ class MWI(GObject.Object):
         self.start_looking_for_internet()
 
     def start_widgets_updater(self):
+        """
+        Starts the widgets updater.
+
+        This method removes any existing widgets updater if it is running and
+        then starts a new one.  The widgets updater periodically updates the
+        widgets by calling the `update_widgets` method.
+
+        Returns:
+            None
+        """
         if self.widgets_updater > 0:
             GLib.source_remove(self.widgets_updater)
         self.update_widgets()
@@ -336,11 +437,33 @@ class MWI(GObject.Object):
                                                 self.update_widgets)
 
     def stop_widgets_updater(self):
+        """
+        Stops the updater for the widgets.
+
+        If the updater is currently running, it will be stopped by removing the
+        source.
+        """
         if self.widgets_updater > 0:
             GLib.source_remove(self.widgets_updater)
             self.widgets_updater = 0
 
     def start_weather_updater(self):
+        """
+        Starts the weather updater.
+
+        This method is responsible for starting the weather updater. It first
+        checks if the weather updater is already running and if so, it removes
+        the existing source. Then, it calls the `update_weather` method to
+        immediately update the weather information. Finally, it schedules the
+        `update_weather` method to be called periodically based on the
+        `refresh` interval.
+
+        Parameters:
+        - None
+
+        Returns:
+        - None
+        """
         if self.weather_updater > 0:
             GLib.source_remove(self.weather_updater)
         self.update_weather()
@@ -348,11 +471,29 @@ class MWI(GObject.Object):
                                                         self.update_weather)
 
     def stop_weather_updater(self):
+        """
+        Stops the weather updater if it is currently running.
+
+        If the weather updater is running, this method will stop it by
+        removing the associated GLib source.
+        """
         if self.weather_updater > 0:
             GLib.source_remove(self.weather_updater)
             self.weather_updater = 0
 
     def start_looking_for_internet(self):
+        """
+        Starts looking for internet connection periodically.
+
+        If there is an existing internet updater, it is removed before
+        starting a new one. The method checks if there is an internet
+        connection by calling the `looking_for_internet` method.  If there is
+        an internet connection, it schedules a periodic check
+        using `GLib.timeout_add_seconds` with the specified time interval.
+
+        Returns:
+            None
+        """
         if self.internet_updater > 0:
             GLib.source_remove(self.internet_updater)
         if self.looking_for_internet():
@@ -360,11 +501,31 @@ class MWI(GObject.Object):
                 TIME_TO_CHECK, self.looking_for_internet)
 
     def stop_looking_for_internet(self):
+        """
+        Stops the process of looking for internet connection.
+
+        If the `internet_updater` is greater than 0, it removes the source
+        from the GLib event loop and sets `internet_updater` to 0.
+
+        Parameters:
+            self (MyWeatherIndicator): The instance of the MyWeatherIndicator
+            class.
+
+        Returns:
+            None
+        """
         if self.internet_updater > 0:
             GLib.source_remove(self.internet_updater)
             self.internet_updater = 0
 
     def looking_for_internet(self):
+        """
+        Checks if there is an internet connection available.
+
+        Returns:
+            bool: True if internet is not found, False otherwise.
+        """
+        # code implementation
         logger.debug('*** Looking For Internet ***')
         if internet_on():
             logger.debug('*** Internet Found ***')
@@ -377,8 +538,20 @@ class MWI(GObject.Object):
         self.stop_widgets_updater()
         return True
 
-    def on_pinit(self, widget, data, index):  # pyright: ignore
-        utcnow = datetime.utcnow()
+    def on_pinit(self, _widget, _data, index):
+        """
+        Callback function triggered when the 'pinit' event is emitted by a
+        widget.
+
+        Args:
+            _widget: The widget that emitted the event.
+            _data: Additional data associated with the event.
+            index: The index of the widget in the list.
+
+        Returns:
+            None
+        """
+        utcnow = datetime.now(UTC)
         self.widgets[index].is_above = not self.widgets[index].is_above
         weather = self.widgets[index].weather_data
         self.widgets[index].save_preferences()
@@ -392,6 +565,15 @@ class MWI(GObject.Object):
         self.widgets[index].set_weather(weather)
 
     def create_menu(self, index):
+        """
+        Create a menu for the weather indicator at the given index.
+
+        Parameters:
+        - index (int): The index of the weather indicator.
+
+        Returns:
+        - None
+        """
         self.menus[index] = {}
         main_menu = Gtk.Menu()
         #
@@ -576,6 +758,19 @@ class MWI(GObject.Object):
         self.indicators[index].set_menu(main_menu)
 
     def update_menu(self, index):
+        """
+        Update the menu for a specific index.
+
+        Parameters:
+        - index (int): The index of the menu to update.
+
+        Returns:
+        - None
+
+        Raises:
+        - None
+
+        """
         if not internet_on():
             logger.error('--- Not internet connection ---')
             if self.icon_light:
@@ -599,7 +794,7 @@ class MWI(GObject.Object):
                 image)
             self.notifications[index].show()
             return
-        logger.debug('--- Updating data in location %s ---' % (index))
+        logger.debug('--- Updating data in location %s ---', index)
         if self.preferences[index]['autolocation']:
             data = geocodeapi.get_latitude_longitude_city()
             if data:
@@ -631,18 +826,21 @@ class MWI(GObject.Object):
             if self.preferences[index]['location']:
                 self.menus[index]['location'].set_label(
                     _('Location') + ': ' + self.preferences[index]['location'])
-            self.menus[index]['temperature'].set_label(_('Temperature') + ': \
-{0}{1:c}'.format(self.current_conditions[index]['temperature'], 176))
+            self.menus[index]['temperature'].set_label(
+                f"{_('Temperature')}: "
+                f"{self.current_conditions[index]['temperature']}{176:c}")
             self.menus[index]['humidity'].set_label(
-                _('Humidity') + ': ' +
-                str(self.current_conditions[index]['humidity']))
-            self.menus[index]['feels_like'].set_label(_('Feels like') + ': \
-{0}{1:c}'.format(self.current_conditions[index]['feels_like'], 176))
-            self.menus[index]['dew_point'].set_label(_('Dew Point') + ': \
-{0}{1:c}'.format(self.current_conditions[index]['dew_point'], 176))
+                f"{_('Humidity')}: "
+                f"{self.current_conditions[index]['humidity']}")
+            self.menus[index]['feels_like'].set_label(
+                f"{_('Feels like')}: "
+                f"{self.current_conditions[index]['feels_like']}{176:c}")
+            self.menus[index]['dew_point'].set_label(
+                f"{_('Dew Point')}: "
+                f"{self.current_conditions[index]['dew_point']}{176:c}")
             self.menus[index]['wind'].set_label(
-                _('Wind') + ': ' +
-                self.current_conditions[index]['wind_condition'])
+                f"{_('Wind')}: "
+                f"{self.current_conditions[index]['wind_condition']}")
             if self.current_conditions[index]['wind_icon']:
                 image = Gtk.Image.new_from_file(
                     os.path.join(comun.IMAGESDIR,
@@ -659,14 +857,13 @@ class MWI(GObject.Object):
                     self.preferences[index]['location'])
                 self.widgets[index].set_weather(weather)
             self.menus[index]['dawn'].set_label(
-                _('Dawn') + ': ' + self.current_conditions[index]['dawn'])
+                f"{_('Dawn')}: {self.current_conditions[index]['dawn']}")
             self.menus[index]['sunrise'].set_label(
-                _('Sunrise') + ': ' +
-                self.current_conditions[index]['sunrise'])
+                f"{_('Sunrise')}: {self.current_conditions[index]['sunrise']}")
             self.menus[index]['sunset'].set_label(
-                _('Sunset') + ': ' + self.current_conditions[index]['sunset'])
+                f"{_('Sunset')}: {self.current_conditions[index]['sunset']}")
             self.menus[index]['dusk'].set_label(
-                _('Dusk') + ': ' + self.current_conditions[index]['dusk'])
+                f"{_('Dusk')}: {self.current_conditions[index]['dusk']}")
             self.menus[index]['moon_phase'].set_label(
                 self.current_conditions[index]['moon_phase'])
             self.menus[index]['moon_phase'].set_image(
@@ -686,39 +883,38 @@ class MWI(GObject.Object):
                 self.current_conditions[index]['cloudiness'] is not None)
             # solarradiation = (
             #    self.current_conditions[index]['solarradiation'] is not None)
-            UV = (
+            ultraviolet = (
                 self.current_conditions[index]['UV'] is not None)
             precip_today = (
                 self.current_conditions[index]['precip_today'] is not None)
             self.menus[index]['pressure'].set_visible(pressure)
             self.menus[index]['visibility'].set_visible(visibility)
             self.menus[index]['cloudiness'].set_visible(cloudiness)
-            self.menus[index]['uv'].set_visible(UV)
+            self.menus[index]['uv'].set_visible(ultraviolet)
             self.menus[index]['precipitation'].set_visible(precip_today)
             if pressure:
                 self.menus[index]['pressure'].set_label(
-                    ('%s: %s') % (_('Pressure'),
-                                  self.current_conditions[index]['pressure']))
+                    f"{_('Pressure')}: "
+                    f"{self.current_conditions[index]['pressure']}")
             if visibility:
                 value = self.current_conditions[index]['visibility']
                 self.menus[index]['visibility'].set_label(
-                    ('%s: %s') % (_('Visibility'), value))
+                    f"{_('Visibility')}: {value}")
             if cloudiness:
                 value = self.current_conditions[index]['cloudiness']
                 self.menus[index]['cloudiness'].set_label(
-                    ('%s: %s') % (_('Cloudiness'), value))
-            if UV:
+                    f"{_('Cloudiness')}: {value}")
+            if ultraviolet:
                 value = self.current_conditions[index]['UV']
                 self.menus[index]['uv'].set_label(
-                    ('%s: %s') % (_('UV'), value))
+                    f"{_('UV')}: {value}")
             if precip_today:
                 value = self.current_conditions[index]['precip_today']
                 self.menus[index]['precipitation'].set_label(
-                    ('%s: %s') % (_('Precipitation'), value))
+                    f"{_('Precipitation')}: {value}")
             if self.preferences[index]['show-temperature'] is True:
                 value = self.current_conditions[index]['temperature']
-                self.indicators[index].set_label(
-                    '{0}{1:c}'.format(value, 176), '')
+                self.indicators[index].set_label(f"{value}{176:c}", "100%")
             else:
                 self.indicators[index].set_label('', '')
             if self.preferences[index]['show'] is True:
@@ -759,14 +955,34 @@ class MWI(GObject.Object):
                     logger.error(exception)
             while Gtk.events_pending():
                 Gtk.main_iteration()
-        logger.debug('--- End of updating data in location %s ---' % (index))
+        logger.debug('--- End of updating data in location %s ---', index)
         self.last_update_time = time.time()
 
-    def on_moon_clicked(self, widget):  # pyright: ignore
+    def on_moon_clicked(self, _widget):
+        """
+        Handle the event when the moon button is clicked.
+
+        Parameters:
+        - _widget: The widget that triggered the event.
+
+        Returns:
+        None
+        """
         p = CalendarWindow()
         p.show_all()
 
     def menu_offon(self, ison):
+        """
+        Enable or disable the sensitivity of various menu items based on the
+        given 'ison' value.
+
+        Parameters:
+        - ison (bool): A boolean value indicating whether the menu items
+        should be enabled or disabled.
+
+        Returns:
+        - None
+        """
         for i in range(INDICATORS):
             self.menus[i]['forecast'].set_sensitive(ison)
             self.menus[i]['evolution'].set_sensitive(ison)
@@ -774,7 +990,18 @@ class MWI(GObject.Object):
             self.menus[i]['moon_calendar'].set_sensitive(ison)
             self.menus[i]['update'].set_sensitive(ison)
 
-    def menu_evolution_response(self, widget, index):  # pyright: ignore
+    def menu_evolution_response(self, _widget, index):
+        """
+        Handle the menu evolution response.
+
+        Parameters:
+        - _widget: The widget triggering the event.
+        - index: The index of the weather service.
+
+        Returns:
+        None
+        """
+        # Rest of the code...
         configuration = Configuration()
         temperature_unit = configuration.get('temperature')
         self.menu_offon(False)
@@ -796,13 +1023,37 @@ class MWI(GObject.Object):
         graph.run()
         self.menu_offon(True)
 
-    def menu_forecast_response(self, widget, index):  # pyright: ignore
+    def menu_forecast_response(self, _widget, index):
+        """
+        Handle the menu forecast response.
+
+        Parameters:
+        - _widget: The widget triggering the event.
+        - index: The index of the forecast in the preferences list.
+
+        Returns:
+        None
+        """
         self.menu_offon(False)
-        self.preferences[index]['location']
         FC(self.preferences[index]['location'], self.weathers[index])
         self.menu_offon(True)
 
-    def menu_set_preferences_response(self, widget):  # pyright: ignore
+    def menu_set_preferences_response(self, _widget):
+        """
+        Handle the response from the preferences menu.
+
+        Parameters:
+        - _widget: The widget that triggered the response.
+
+        Returns:
+        None
+
+        Description:
+        This method is called when the user responds to the preferences menu.
+        It disables the menu, opens the preferences dialog, saves the
+        preferences if accepted, and reloads the preferences.
+        Finally, it enables the menu again.
+        """
         self.menu_offon(False)
         cm = preferences.CM()
         if cm.run() == Gtk.ResponseType.ACCEPT:
@@ -814,14 +1065,42 @@ class MWI(GObject.Object):
         cm.destroy()
         self.menu_offon(True)
 
-    def menu_refresh_weather_response(self, widget, index):  # pyright: ignore
+    def menu_refresh_weather_response(self, _widget, _index):
+        """
+        Refreshes the weather response in the menu.
+
+        Parameters:
+        - _widget: The widget triggering the refresh.
+        - _index: The index of the widget.
+
+        Returns:
+        None
+        """
         if self.last_update_time + 600 < time.time():
             self.start_weather_updater()
 
-    def menu_exit_response(self, widget):  # pyright: ignore
-        exit(0)
+    def menu_exit_response(self, _widget):
+        """
+        Handles the response when the menu exit option is selected.
+
+        Parameters:
+        - _widget: The widget that triggered the event.
+
+        Returns:
+        None
+        """
+        sys.exit(0)
 
     def menu_about_response(self, widget):
+        """
+        Display the About dialog for the weather indicator.
+
+        Parameters:
+        - widget: The widget that triggered the event.
+
+        Returns:
+        None
+        """
         self.menu_offon(False)
         widget.set_sensitive(False)
         ad = Gtk.AboutDialog()
@@ -897,17 +1176,26 @@ whochismo <https://launchpad.net/~whochismo>\n')
 
 
 def main():
+    """
+    Entry point of the My Weather Indicator application.
+
+    This function initializes the necessary components, checks if the
+    application is already running, and starts the main event loop.
+
+    Raises:
+        socket.error: If there is an error while binding the socket.
+    """
     try:
         s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         s.bind('\0_my_weather_indicator_lock')
-    except socket.error as e:
-        error_code = e.args[0]
-        error_string = e.args[1]
-        print("My Weather Indicator is already running ({}:{}). Exit".format(
-                error_code, error_string))
+    except socket.error as socket_exception:
+        error_code = socket_exception.args[0]
+        error_string = socket_exception.args[1]
+        logger.error("My Weather Indicator is already running (%s:%s). Exit",
+                     error_code, error_string)
         sys.exit(1)
     logger.info(machine_information.get_information())
-    logger.info("My-Weather-Indicator version: {}".format(comun.VERSION))
+    logger.info("My-Weather-Indicator version: %s", comun.VERSION)
     logger.info('#####################################################')
     load_css(CSS_FILE)
     Notify.init("my-weather-indicator")
@@ -917,4 +1205,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    exit(0)
+    sys.exit(0)

@@ -23,18 +23,41 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import sys
 import gi
 try:
     gi.require_version('Gtk', '3.0')
     gi.require_version('Gdk', '3.0')
 except ValueError as e:
     print(e)
-    exit(1)
-from gi.repository import Gdk, Gtk  # type: ignore
+    sys.exit(1)
+# pylint: disable=wrong-import-position
+from gi.repository import Gdk
+from gi.repository import Gtk
 import comun
 
 
 class BaseDialog(Gtk.Dialog):
+    """
+    A base dialog class for creating custom dialogs in GTK.
+
+    Args:
+        title (str): The title of the dialog.
+        window (Gtk.Window, optional): The parent window for the dialog.
+        Defaults to None.
+        ok_button (bool, optional): Whether to include an OK button in the
+        dialog. Defaults to True.
+        cancel_button (bool, optional): Whether to include a Cancel button in
+        the dialog. Defaults to True.
+
+    Attributes:
+        headerbar (Gtk.HeaderBar): The header bar widget of the dialog.
+
+    Methods:
+        set_content(widget): Sets the content of the dialog.
+        init_ui(): Initializes the user interface of the dialog.
+        on_realize(*_): Callback function called when the dialog is realized.
+    """
     def __init__(self, title, window=None, ok_button=True, cancel_button=True):
         Gtk.Dialog.__init__(self, title, window)
         self.set_modal(True)
@@ -51,9 +74,30 @@ class BaseDialog(Gtk.Dialog):
         self.show_all()
 
     def set_content(self, widget):
+        """
+        Set the content of the dialog.
+
+        Parameters:
+        - widget: The widget to be added as the content of the dialog.
+
+        Returns:
+        None
+        """
         self.get_content_area().add(widget)
 
     def init_ui(self):
+        """
+        Initializes the user interface of the dialog.
+
+        This method creates and configures the header bar of the dialog.
+        It sets the title, subtitle, and close button visibility.
+
+        Parameters:
+        - self: The instance of the dialog.
+
+        Returns:
+        - None
+        """
         self.headerbar = Gtk.HeaderBar.new()
         self.headerbar.set_title(self.get_title())
         self.headerbar.set_subtitle('-')
@@ -61,6 +105,12 @@ class BaseDialog(Gtk.Dialog):
         self.set_titlebar(self.headerbar)
 
     def on_realize(self, *_):
+        """
+        This method is called when the widget is realized, meaning it has been
+        mapped to the screen and is visible to the user.
+        It calculates the position of the widget based on the monitor's
+        dimensions and centers it on the screen.
+        """
         monitor = Gdk.Display.get_primary_monitor(Gdk.Display.get_default())
         scale = monitor.get_scale_factor()
         monitor_width = monitor.get_geometry().width / scale

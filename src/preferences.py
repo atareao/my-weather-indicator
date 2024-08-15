@@ -24,19 +24,21 @@
 # SOFTWARE.
 
 
+import sys
+import os
+import shutil
+import logging
 import gi
 try:
     gi.require_version('Gtk', '3.0')
-except Exception as e:
-    print(e)
+except ValueError as gi_exception:
+    print(gi_exception)
     print('Repository version required not present')
-    exit(1)
-import comun
-import os
-import shutil
-import geocodeapi
-import logging
+    sys.exit(1)
+# pylint: disable=wrong-import-position
 from gi.repository import Gtk  # pyright: ignore
+import comun
+import geocodeapi
 from whereami import WhereAmI
 from configurator import Configuration
 from comun import _
@@ -49,22 +51,38 @@ AUTOSTART_FILE = 'my-weather-indicator-autostart.desktop'
 
 
 def get_skins():
+    """
+    Retrieves the available skins for the weather indicator.
+
+    Returns:
+        list: A list of skin names and their corresponding file paths.
+    """
     skins = []
     personal_dir = os.path.expanduser('~/.config/my-weather-indicator/skins')
     if os.path.exists(personal_dir):
-        for dn, dns, filenames in os.walk(personal_dir):  # pyright: ignore
+        for dn, dns, _filenames in os.walk(personal_dir):
             for sdn in dns:
                 skins.append([sdn, os.path.join(dn, sdn)])
     installation_dir = '/opt/extras.ubuntu.com/my-weather-indicator/share/\
 my-weather-indicator/skins'
     if os.path.exists(installation_dir):
-        for dn, dns, filenames in os.walk(installation_dir):  # pyright: ignore
+        for dn, dns, _filenames in os.walk(installation_dir):
             for sdn in dns:
                 skins.append([sdn, os.path.join(dn, sdn)])
     return skins
 
 
 def select_value_in_combo(combo, value):
+    """
+    Selects the specified value in the combo box.
+
+    Args:
+        combo: The combo box widget.
+        value: The value to be selected.
+
+    Returns:
+        None
+    """
     model = combo.get_model()
     for i, item in enumerate(model):
         if value == item[1]:
@@ -74,14 +92,88 @@ def select_value_in_combo(combo, value):
 
 
 def get_selected_value_in_combo(combo):
+    """
+    Get the selected value in a combo box.
+
+    Parameters:
+    combo (Gtk.ComboBox): The combo box to retrieve the selected value from.
+
+    Returns:
+    The selected value from the combo box.
+
+    """
     model = combo.get_model()
     return model.get_value(combo.get_active_iter(), 1)
 
 
 class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
+    """
+    Class representing the Preferences dialog.
+
+    Attributes:
+        checkbutton11 (Gtk.CheckButton): Check button for showing the main
+            location.
+        checkbutton10 (Gtk.CheckButton): Check button for enabling auto
+            location.
+        entry11 (Gtk.Entry): Entry field for the locality.
+        button10 (Gtk.Button): Button for searching the location.
+        checkbutton12 (Gtk.CheckButton): Check button for showing the
+            temperature.
+        checkbutton13 (Gtk.CheckButton): Check button for showing
+            notifications.
+        checkbutton14 (Gtk.CheckButton): Check button for showing the widget.
+        checkbutton15 (Gtk.CheckButton): Check button for hiding the indicator
+            when showing the widget.
+        checkbutton16 (Gtk.CheckButton): Check button for setting the widget
+            on top.
+        checkbutton17 (Gtk.CheckButton): Check button for showing the widget
+            in the taskbar.
+        checkbutton18 (Gtk.CheckButton): Check button for showing the widget
+            on all desktops.
+        comboboxskin1 (Gtk.ComboBox): ComboBox for selecting the skin.
+        checkbutton21 (Gtk.CheckButton): Check button for showing the second
+            location.
+        entry21 (Gtk.Entry): Entry field for the second locality.
+        button20 (Gtk.Button): Button for searching the second location.
+        checkbutton22 (Gtk.CheckButton): Check button for showing the
+            temperature of the second location.
+        checkbutton23 (Gtk.CheckButton): Check button for showing
+            notifications for the second location.
+        checkbutton24 (Gtk.CheckButton): Check button for showing the widget
+            for the second location.
+        checkbutton25 (Gtk.CheckButton): Check button for hiding the indicator
+            when showing the widget for the second location.
+        checkbutton26 (Gtk.CheckButton): Check button for setting the widget
+            on top for the second location.
+        checkbutton27 (Gtk.CheckButton): Check button for showing the widget
+            in the taskbar for the second location.
+        checkbutton28 (Gtk.CheckButton): Check button for showing the widget
+            on all desktops for the second location.
+        skinstore1 (Gtk.ListStore): ListStore for storing the skins.
+        skinstore2 (Gtk.ListStore): ListStore for storing the skins for the
+        second location.
+    """
     def __init__(self):
+        """
+        Initializes the Preferences class.
+
+        Parameters:
+        - None
+
+        Returns:
+        - None
+        """
         title = _("Preferences")
         BaseDialog.__init__(self, title, None, True, True)
+        self._location = None
+        self._latitude = None
+        self._longitude = None
+        self._timezone = None
+        self._location2 = None
+        self._latitude2 = None
+        self._longitude2 = None
+        self._timezone2 = None
+        self.ok = False
 
     def init_ui(self):
         BaseDialog.init_ui(self)
@@ -111,7 +203,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         label11 = Gtk.Label.new(_('Locality') + ':')
-        label11.set_alignment(0, 0.5)
+        label11.set_halign(Gtk.Align.START)
+        label11.set_valign(Gtk.Align.CENTER)
         table11.attach(label11, 0, 1, 2, 3,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
@@ -200,7 +293,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                        yoptions=Gtk.AttachOptions.FILL,
                        xpadding=5, ypadding=5)
         label21 = Gtk.Label.new(_('Locality') + ':')
-        label21.set_alignment(0, 0.5)
+        label21.set_halign(Gtk.Align.START)
+        label21.set_valign(Gtk.Align.CENTER)
         table21.attach(label21, 0, 1, 1, 2,
                        xoptions=Gtk.AttachOptions.FILL,
                        yoptions=Gtk.AttachOptions.FILL,
@@ -284,14 +378,15 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         table2 = Gtk.Table(n_rows=6, n_columns=2)
         frame2.add(table2)
         label3 = Gtk.Label.new(_('Temperature') + ':')
-        label3.set_alignment(0, 0.5)
+        label3.set_halign(Gtk.Align.START)
+        label3.set_valign(Gtk.Align.CENTER)
         table2.attach(label3, 0, 1, 0, 1,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         self.liststore3 = Gtk.ListStore(str, str)
-        self.liststore3.append(['{0:c} '.format(176) + _('Celsius'), 'C'])
-        self.liststore3.append(['{0:c} '.format(176) + _('Fahrenheit'), 'F'])
+        self.liststore3.append([f"{176:c} {_('Celsius')}", 'C'])
+        self.liststore3.append([f"{176:c} {_('Fahrenheit')}", 'F'])
         self.liststore3.append([_('Kelvin'), 'K'])
         self.combobox3 = Gtk.ComboBox.new()
         self.combobox3.set_model(self.liststore3)
@@ -303,7 +398,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         label32 = Gtk.Label.new(_('Pressure') + ':')
-        label32.set_alignment(0, 0.5)
+        label32.set_halign(Gtk.Align.START)
+        label32.set_valign(Gtk.Align.CENTER)
         table2.attach(label32, 0, 1, 1, 2,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
@@ -322,7 +418,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         label33 = Gtk.Label.new(_('Visibility') + ':')
-        label33.set_alignment(0, 0.5)
+        label33.set_halign(Gtk.Align.START)
+        label33.set_valign(Gtk.Align.CENTER)
         table2.attach(label33, 0, 1, 2, 3,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
@@ -340,7 +437,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         label31 = Gtk.Label.new(_('Wind velocity') + ':')
-        label31.set_alignment(0, 0.5)
+        label31.set_halign(Gtk.Align.START)
+        label31.set_valign(Gtk.Align.CENTER)
         table2.attach(label31, 0, 1, 3, 4,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
@@ -362,7 +460,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         label34 = Gtk.Label.new(_('Rain Gauge') + ':')
-        label34.set_alignment(0, 0.5)
+        label34.set_halign(Gtk.Align.START)
+        label34.set_valign(Gtk.Align.CENTER)
         table2.attach(label34, 0, 1, 4, 5,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
@@ -381,7 +480,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         label35 = Gtk.Label.new(_('Snow Gauge') + ':')
-        label35.set_alignment(0, 0.5)
+        label35.set_halign(Gtk.Align.START)
+        label35.set_valign(Gtk.Align.CENTER)
         table2.attach(label35, 0, 1, 5, 6,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
@@ -400,7 +500,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         label36 = Gtk.Label.new(_('Time Format') + ':')
-        label36.set_alignment(0, 0.5)
+        label36.set_halign(Gtk.Align.START)
+        label36.set_valign(Gtk.Align.CENTER)
         table2.attach(label36, 0, 1, 6, 7,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
@@ -424,13 +525,14 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         notebook.append_page(vbox3, Gtk.Label.new(_('General options')))
         table3 = Gtk.Table(n_rows=4, n_columns=2)
         frame3.add(table3)
-        self.checkbutton1 = Gtk.CheckButton(_('Autostart'))
+        self.checkbutton1 = Gtk.CheckButton.new_with_label(_('Autostart'))
         table3.attach(self.checkbutton1, 0, 2, 0, 1,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         label41 = Gtk.Label.new(_('Refresh frequency') + ':')
-        label41.set_alignment(0, 0.5)
+        label41.set_halign(Gtk.Align.START)
+        label41.set_valign(Gtk.Align.CENTER)
         table3.attach(label41, 0, 1, 1, 2,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
@@ -454,7 +556,8 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
                       yoptions=Gtk.AttachOptions.FILL,
                       xpadding=5, ypadding=5)
         label31 = Gtk.Label.new(_('Select icon theme') + ':')
-        label31.set_alignment(0, 0.5)
+        label31.set_halign(Gtk.Align.START)
+        label31.set_valign(Gtk.Align.CENTER)
         table3.attach(label31, 0, 2, 2, 3,
                       xoptions=Gtk.AttachOptions.FILL,
                       yoptions=Gtk.AttachOptions.FILL,
@@ -480,8 +583,7 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         self.checkbutton11.set_active(True)
         self.checkbutton21.set_active(True)
         if os.path.exists(
-                os.path.expanduser("~/.config/autostart/{}".format(
-                    AUTOSTART_FILE))):
+                os.path.expanduser(f"~/.config/autostart/{AUTOSTART_FILE}")):
             self.checkbutton1.set_active(True)
         #
         self.show_all()
@@ -515,13 +617,38 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
             self.checkbutton25.set_active(False)
             self.comboboxskin2.set_active(False)
 
-    def on_checkbutton10_toggled(self, widget):  # pyright: ignore
+    def on_checkbutton10_toggled(self, _widget):
+        """
+        Toggles the sensitivity of various UI elements based on the state of
+        checkbutton10.
+
+        Parameters:
+        - self: The instance of the class.
+
+        Returns:
+        None
+        """
         self.entry11.set_sensitive(not self.checkbutton10.get_active())
         self.button10.set_sensitive(not self.checkbutton10.get_active())
         self.checkbutton12.set_sensitive(not self.checkbutton10.get_active())
         self.checkbutton13.set_sensitive(not self.checkbutton10.get_active())
 
-    def on_checkbutton11_toggled(self, widget):  # pyright: ignore
+    def on_checkbutton11_toggled(self, _widget):
+        """
+        Callback function for the toggled event of checkbutton11.
+
+        Parameters:
+        - _widget: The widget that triggered the event.
+
+        Description:
+        - This function is called when checkbutton11 is toggled.
+        - It sets the sensitivity of frame1 based on the state of
+                checkbutton11.
+        - If checkbutton11 is not active, it disables checkbutton21.
+        - If checkbutton11 is active and checkbutton21 is not active, it
+                disables checkbutton11.
+        - If checkbutton21 is not sensitive, it enables checkbutton21.
+        """
         self.set_sensitive_frame1(self.checkbutton11.get_active())
         if self.checkbutton11.get_active() is False:
             self.checkbutton21.set_sensitive(False)
@@ -531,14 +658,34 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         elif self.checkbutton21.get_sensitive() is False:
             self.checkbutton21.set_sensitive(True)
 
-    def on_checkbutton14_toggled(self, widget):  # pyright: ignore
+    def on_checkbutton14_toggled(self, _widget):
+        """
+        Toggles the sensitivity of various check buttons and a combo box based
+        on the state of checkbutton14.
+
+        Parameters:
+        - _widget: The widget that triggered the toggled event.
+
+        Returns:
+        None
+        """
         self.checkbutton15.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton16.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton17.set_sensitive(self.checkbutton14.get_active())
         self.checkbutton18.set_sensitive(self.checkbutton14.get_active())
         self.comboboxskin1.set_sensitive(self.checkbutton14.get_active())
 
-    def on_checkbutton21_toggled(self, widget):  # pyright: ignore
+    def on_checkbutton21_toggled(self, _widget):
+        """
+        Toggles the sensitivity of checkbutton21 and checkbutton11 based on
+        the state of checkbutton21.
+
+        Parameters:
+        - self: The instance of the class.
+
+        Returns:
+        None
+        """
         self.set_sensitive_frame2(self.checkbutton21.get_active())
         (self.checkbutton21.get_active())
         if self.checkbutton21.get_active() is False:
@@ -549,24 +696,46 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         elif self.checkbutton11.get_sensitive() is False:
             self.checkbutton11.set_sensitive(True)
 
-    def on_checkbutton24_toggled(self, widget):  # pyright: ignore
+    def on_checkbutton24_toggled(self, _widget):
+        """
+        Toggles the sensitivity of several check buttons and a combo box based
+        on the state of checkbutton24.
+
+        Parameters:
+        - _widget: The widget that triggered the toggled event.
+
+        Returns:
+        None
+        """
         self.checkbutton25.set_sensitive(self.checkbutton24.get_active())
         self.checkbutton26.set_sensitive(self.checkbutton24.get_active())
         self.checkbutton27.set_sensitive(self.checkbutton24.get_active())
         self.checkbutton28.set_sensitive(self.checkbutton24.get_active())
         self.comboboxskin2.set_sensitive(self.checkbutton24.get_active())
 
-    def on_optionbutton41_toggled(self, widget):
-        self.frame41.set_sensitive(widget.get_active())
+    def close_application(self, _widget):
+        """
+        Closes the application.
 
-    def on_optionbutton42_toggled(self, widget):
-        self.frame42.set_sensitive(widget.get_active())
+        Parameters:
+        - _widget: The widget that triggered the close event.
 
-    def close_application(self, widget):  # pyright: ignore
+        Returns:
+        None
+        """
         self.ok = False
         self.destroy()
 
-    def search_location(self, widget):  # pyright: ignore
+    def search_location(self, _widget):
+        """
+        Search for a location using the WhereAmI class.
+
+        Parameters:
+        - _widget: The widget triggering the search.
+
+        Returns:
+        None
+        """
         cm1 = WhereAmI(self, location=self.entry11.get_text(),
                        latitude=self._latitude, longitude=self._longitude,
                        timezone=self._timezone)
@@ -576,7 +745,16 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
             self.entry11.set_text(self._location)
         cm1.destroy()
 
-    def search_location2(self, widget):  # pyright: ignore
+    def search_location2(self, _widget):
+        """
+        Search for a location using the WhereAmI class.
+
+        Parameters:
+        - _widget: The widget triggering the search.
+
+        Returns:
+        None
+        """
         cm2 = WhereAmI(self, location=self.entry21.get_text(),
                        latitude=self._latitude2, longitude=self._longitude2,
                        timezone=self._timezone2)
@@ -587,6 +765,22 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         cm2.destroy()
 
     def load_preferences(self):
+        """
+        Load the preferences from the configuration file and update the UI
+        accordingly.
+
+        This method retrieves the preferences from the configuration file and
+        sets the corresponding UI elements
+        to reflect the saved preferences. It updates the state of various
+        check buttons, entry fields, combo boxes,
+        and radio buttons based on the values stored in the configuration.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+        """
         configuration = Configuration()
         # first_time = configuration.get('first-time')
         # version = configuration.get('version')
@@ -646,6 +840,26 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         self.radiobutton32.set_active(not configuration.get('icon-light'))
 
     def save_preferences(self):
+        """
+        Save the preferences of the weather indicator.
+
+        This method saves the preferences of the weather indicator by updating
+        the configuration file.
+        It checks the status of various check buttons and entry fields to
+        determine which preferences to save.
+        If the 'autolocation' check button is active, it retrieves the
+        latitude, longitude, city, and timezone using the geocodeapi.
+        If the 'main-location' check button is active, it saves the location
+        entered in the entry field as the main location.
+        It also saves other preferences such as show-temperature,
+        show-notifications, widget settings, skin selection, etc.
+        Finally, it saves the preferences to the configuration file and
+        optionally sets up autostart.
+
+        Returns:
+            None
+        """
+        # code implementation
         configuration = Configuration()
         if self.checkbutton11.get_active() and\
                 (not self.entry11.get_text() or self._latitude is None or
@@ -730,8 +944,7 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
         print('Saving...')
         configuration.save()
         #
-        filestart = os.path.expanduser("~/.config/autostart/{}".format(
-            AUTOSTART_FILE))
+        filestart = os.path.expanduser(f"~/.config/autostart/{AUTOSTART_FILE}")
         if self.checkbutton1.get_active():
             if not os.path.exists(os.path.dirname(filestart)):
                 os.makedirs(os.path.dirname(filestart))
@@ -742,10 +955,9 @@ class CM(BaseDialog):  # needs GTK, Python, Webkit-GTK
 
 
 if __name__ == "__main__":
-
     cm = CM()
     if cm.run() == Gtk.ResponseType.ACCEPT:
         cm.save_preferences()
     cm.hide()
     cm.destroy()
-    exit(0)
+    sys.exit(0)
