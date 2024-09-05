@@ -29,7 +29,7 @@ try:
     gi.require_version('Gtk', '3.0')
     gi.require_version('Gdk', '3.0')
     gi.require_version('GLib', '2.0')
-    gi.require_version('WebKit2', '4.0')
+    gi.require_version('WebKit2', '4.1')
 except ValueError as e:
     print(e)
     exit(-1)

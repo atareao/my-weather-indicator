@@ -37,7 +37,7 @@ try:
     gi.require_version('Gtk', '3.0')
     gi.require_version('GdkPixbuf', '2.0')
     gi.require_version('Notify', '0.7')
-    gi.require_version('WebKit2', '4.0')
+    gi.require_version('WebKit2', '4.1')
 except ValueError as e:
     print(e)
     print('Repository version required not present')
