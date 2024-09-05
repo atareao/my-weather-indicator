@@ -1,4 +1,4 @@
-my-weather-indicator (0.10.15-0extras24.04.00) noble; urgency=medium
+my-weather-indicator (0.10.16-0extras24.04.00) noble; urgency=medium
 
   * Change dependencies to gir1.2-webkit2-4.1
 
