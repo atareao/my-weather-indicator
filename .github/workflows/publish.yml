@@ -1,0 +1,19 @@
+name: Publish PPA
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-ppa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Publish PPA
+        uses: atareao/publish-ppa-package@v2
+        with:
+          repository: "atareao/atareao"
+          gpg_private_key: ${{ secrets.PPA_GPG_PRIVATE_KEY }}
+          deb_email: "atareao@atareao.es"
+          deb_fullname: "Lorenzo Carbonell"
