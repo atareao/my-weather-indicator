@@ -1,6 +1,6 @@
 [project]
 name = "my-weather-indicator"
-version = "0.1.0"
+version = "0.10.16"
 description = "Add your description here"
 authors = [
     { name = "Lorenzo Carbonell <atareao@atareao.es", email = "lorenzo.carbonell.cerezo@gmail.com" }
