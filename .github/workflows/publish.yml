@@ -1,5 +1,9 @@
 name: Publish PPA
 on:
+  workflow_run:
+    workflows: ["Bump version workflow"]
+    types:
+      - completed
   push:
     branches:
       - main
@@ -7,6 +11,7 @@ on:
 jobs:
   publish-ppa:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
