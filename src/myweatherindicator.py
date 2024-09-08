@@ -26,7 +26,7 @@
 import os
 import time
 import webbrowser
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 import logging
 import socket
 import sys
@@ -175,7 +175,7 @@ class MWI(GObject.Object):
             bool: True if any widget was updated, False otherwise.
         """
         update = False
-        utcnow = datetime.now(UTC)
+        utcnow = datetime.now(timezone.utc)
         for i in range(INDICATORS):
             if self.widgets[i] is not None:
                 self.widgets[i].set_datetime(utcnow)
@@ -400,7 +400,7 @@ class MWI(GObject.Object):
         #
         self.icon_light = configuration.get('icon-light')
         #
-        utcnow = datetime.utcnow()
+        utcnow = datetime.now(timezone.utc)
         for i in range(INDICATORS):
             if self.preferences[i]['show'] and\
                     self.preferences[i]['widget']:
@@ -551,7 +551,7 @@ class MWI(GObject.Object):
         Returns:
             None
         """
-        utcnow = datetime.now(UTC)
+        utcnow = datetime.now()
         self.widgets[index].is_above = not self.widgets[index].is_above
         weather = self.widgets[index].weather_data
         self.widgets[index].save_preferences()
