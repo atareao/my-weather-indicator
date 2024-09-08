@@ -1,0 +1,93 @@
+name: Bump version workflow
+
+on:
+  push:
+    branches:
+      - development
+
+env:
+    GH_TOKEN: ${{ github.token }}
+
+jobs:
+  bump_version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v4
+      with:
+        ref: development
+    - name: Get action from comments
+      id: get_action
+      run: |
+        comments=$(git log --pretty=format:"%s" -1)
+        echo "Comments: ${comments}"
+        if [[ "$comments" =~ \#major ]]; then
+          action="major"
+        elif [[ "$comments" =~ \#minor ]]; then
+          action="minor"
+        elif [[ "$comments" =~ \#patch ]]; then
+          action="patch"
+        else
+          action="none"
+        fi
+        echo "action=${action}" >> $GITHUB_OUTPUT
+        echo "Selected action: ${action}"
+    - name: Install the latest version of rye
+      id: install_rye
+      if: ${{ steps.get_action.outputs.action != 'none' }}
+      uses: eifinger/setup-rye@v4
+    - name: Get current version
+      id: get_current_version
+      if: ${{ steps.get_action.outputs.action != 'none' }}
+      run: |
+        current_version=$(rye version)
+        echo "current_version=${current_version}" >> $GITHUB_OUTPUT
+    - name: Merge development into main
+      if: ${{ steps.get_action.outputs.action != 'none' }}
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        from_branch: development
+        target_branch: main
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: bump version
+      id: bump_version
+      if: ${{ steps.get_action.outputs.action != 'none' }}
+      run: |
+        action=${{ steps.get_action.outputs.action }}
+        rye version -b $action
+        new_version=$(rye version)
+        echo "new_version=${new_version}" >> $GITHUB_OUTPUT
+    - name: commit
+      uses: stefanzweifel/git-auto-commit-action@v5
+      if: ${{ steps.get_action.outputs.action != 'none' }}
+      with:
+        commit_message: "Bump version from ${{ steps.get_current_version.outputs.current_version}} to ${{ steps.bump_version.outputs.new_version }}"
+    - name: checkout main
+      uses: actions/checkout@v4
+      with:
+        ref: main
+    - name: create tag
+      id: create_tag
+      if: ${{ steps.get_action.outputs.action != 'none' }}
+      run: |
+        current_version=${{ steps.get_current_version.outputs.current_version }}
+        github_actor=${{ github.actor }}
+        git config user.name "${github_actor}"
+        git config user.email "${github_actor}@users.noreply.github.com"
+        git tag -a "v${current_version}" -m "Bump version to ${current_version}"
+        git push origin "v${current_version}"
+        gh release create "v${current_version}" --title "v${current_version}" --notes "Bump version to ${current_version}"
+    - name: exit code
+      id: exit_code
+      run: |
+        action=${{ steps.get_action.outputs.action }}
+        if [[ "$action" == "none" ]]; then
+          echo "Not created new release"
+          exit 1
+        fi
+        echo "Created new release"
+        exit 0
+
