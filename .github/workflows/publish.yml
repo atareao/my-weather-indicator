@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Publish PPA
-        uses: atareao/publish-ppa-package-from-source@v3
+        uses: atareao/publish-ppa-package-from-source@v4
         with:
           repository: "atareao/atareao"
           gpg_private_key: ${{ secrets.PPA_GPG_PRIVATE_KEY }}
